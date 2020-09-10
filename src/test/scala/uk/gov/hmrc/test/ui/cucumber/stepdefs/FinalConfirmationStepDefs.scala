@@ -34,7 +34,7 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
   }
 
   Then("""^the user should see a case reference number"""){() =>
-    assertElementText("330XGBNZJO04", caseRefNo)
+    assertElementText("PC12010081330XGBNZJO04", caseRefNo)
   }
 
   When("""^the user clicks to submit documents they will be back on the start page"""){() =>
