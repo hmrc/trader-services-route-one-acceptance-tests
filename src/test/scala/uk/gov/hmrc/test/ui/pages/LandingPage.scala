@@ -32,9 +32,14 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.WebElement
+
+
 trait LandingPage extends BasePage {
 
   val url: String = traderServicesBaseUrl + "/trader-services"
-  val heading = "Trader Services"
+  val heading = "Trader services"
+
+  def routeOneLink: WebElement = findElementByCss("#main-content > div > div > div.govuk-\\!-margin-bottom-6 > a:nth-child(4)")
 
 }
