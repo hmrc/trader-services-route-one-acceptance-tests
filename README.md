@@ -14,7 +14,7 @@ Prior to executing the tests ensure you have:
 Run the following command to start services locally:
 
     sudo mongod
-    sm --start PLACEHOLDER_SERVICE_MANAGER_PROFILE -f
+    sm --start TRADER_SERVICES_ALL -f
 
 Then execute the `run_tests.sh` script:
 
