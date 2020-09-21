@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 HM Revenue & Customs
+ * Copyright 2020 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,13 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
+trait ConsignmentNumPage extends BasePage {
 
-object ExamplePage extends BasePage {
-
-  val url: String = TestConfiguration.url("auth-login-stub") + "/gg-sign-in"
-  val title = "Authority Wizard"
+  val url: String = traderServicesBaseUrl + "/trader-services/route-one"
+  val heading = "What are the consignment details?"
 
 }

@@ -14,18 +14,17 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.runner
+package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import io.cucumber.junit.Cucumber
-import io.cucumber.junit.CucumberOptions
-import org.junit.runner.RunWith
+import io.cucumber.scala.{EN, ScalaDsl}
+import uk.gov.hmrc.test.ui.pages.{BasePage, LandingPage}
 
-@RunWith(classOf[Cucumber])
-@CucumberOptions(
-  features = Array("src/test/resources/features"),
-  glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
-  plugin = Array ("pretty", "html:target/cucumber", "json:target/cucumber.json"),
-  tags = "@ZAP"
-)
-class ZapRunner {
+
+class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with EN {
+
+  Given("""^the user is on the landing page$""") { () =>
+    confirmUrl(url)
+  }
 }
+
+//    verifyHeading(heading)
