@@ -19,6 +19,7 @@ package uk.gov.hmrc.test.ui.pages
 trait ConsignmentNumPage extends BasePage {
 
   val url: String = traderServicesBaseUrl + "/trader-services/route-one"
-  val heading = "What are the consignment details?"
 
 }
+
+//val heading = "What are the consignment details?"

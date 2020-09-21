@@ -17,18 +17,14 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.test.ui.pages.{BasePage, LandingPage}
+import uk.gov.hmrc.test.ui.pages.{BasePage, ConsignmentNumPage}
 
 
-class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with EN {
+class ConsignmentNumStepDefs extends ConsignmentNumPage with BasePage with ScalaDsl with EN {
 
-  Given("""^the user is on the landing page for trader services$""") { () =>
+  Given("""^the user is on the consignment number page$""") { () =>
     confirmUrl(url)
-    verifyHeading(heading)
-  }
-
-  When("""^the user clicks the link to enter the route1 journey$""") { () =>
-   routeOneLink.click()
-
   }
 }
+
+//verifyHeading(heading)
