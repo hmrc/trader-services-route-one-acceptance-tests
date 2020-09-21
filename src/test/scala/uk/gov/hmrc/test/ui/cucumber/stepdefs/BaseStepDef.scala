@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 HM Revenue & Customs
+ * Copyright 2020 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,19 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.scalatest.Matchers
 import org.scalatest.concurrent.Eventually
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 import io.cucumber.scala.{EN, ScalaDsl}
+import uk.gov.hmrc.test.ui.conf.Configuration
+import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.webdriver.SingletonDriver
 
 import scala.util.Try
 
-trait BaseStepDef extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers{
+class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with Eventually with Matchers {
 
   sys.addShutdownHook {
     Try(SingletonDriver.closeInstance)
+  }
+
+  Given("""^the user logs in$""") { () =>
+    navigateTo(Configuration.settings.SIGN_IN_PAGE)
+    login()
+  }
+
+  And("""^the user clicks Continue""") { () =>
+    clickContinue()
+  }
+
+  And("""^the user clicks Submit""") { () =>
+    clickSubmit()
   }
 }

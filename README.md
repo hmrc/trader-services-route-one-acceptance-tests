@@ -1,7 +1,7 @@
 **This is a template README.md.  Be sure to update this with project specific content that describes your ui test project.**
 
 # trader-services-route-one-acceptance-tests
-UI test suite for the `<digital service name>` using WebDriver and `<scalatest/cucumber>`.  
+UI test suite for `Trader Services` using WebDriver and `Cucumber`.  
 
 ## Running the tests
 
@@ -14,7 +14,7 @@ Prior to executing the tests ensure you have:
 Run the following command to start services locally:
 
     sudo mongod
-    sm --start UI_TEST_TEMPLATE -f
+    sm --start TRADER_SERVICES_ALL -f
 
 Then execute the `run_tests.sh` script:
 
