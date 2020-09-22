@@ -18,12 +18,13 @@ package uk.gov.hmrc.test.ui.driver
 
 import com.typesafe.scalalogging.LazyLogging
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.chrome.ChromeDriverService
 import uk.gov.hmrc.webdriver.SingletonDriver
 
 trait BrowserDriver extends LazyLogging {
   logger.info(s"Instantiating Browser: ${sys.props.getOrElse("browser", "'browser' System property not set. This is required")}")
 
-//  System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, "/usr/local/bin/chromedriver")
+  System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, "/usr/local/bin/chromedriver")
 
   def driver: WebDriver = SingletonDriver.getInstance()
 }
