@@ -26,9 +26,8 @@ class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with E
     confirmUrl(url)
     verifyHeading(heading)
   }
-
-  When("""^the user clicks the link to enter the route1 journey$""") { () =>
-   routeOneLink.click()
-
+  When("""^the user clicks the link to enter the route1 journey$""") {() =>
+   findRouteOneLink.click()
   }
-}
+  }
+
