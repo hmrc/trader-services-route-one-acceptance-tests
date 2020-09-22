@@ -23,7 +23,7 @@ import uk.gov.hmrc.webdriver.SingletonDriver
 trait BrowserDriver extends LazyLogging {
   logger.info(s"Instantiating Browser: ${sys.props.getOrElse("browser", "'browser' System property not set. This is required")}")
 
-  System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver")
+//  System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, "/usr/local/bin/chromedriver")
 
   def driver: WebDriver = SingletonDriver.getInstance()
 }
