@@ -34,6 +34,7 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
 
   Given("""^the user logs in$""") { () =>
     navigateTo(Configuration.settings.SIGN_IN_PAGE)
+    verifyHeading("Sign in")
     login()
   }
 
