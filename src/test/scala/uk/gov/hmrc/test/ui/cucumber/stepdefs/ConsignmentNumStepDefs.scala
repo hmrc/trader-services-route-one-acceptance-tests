@@ -24,7 +24,16 @@ class ConsignmentNumStepDefs extends ConsignmentNumPage with BasePage with Scala
 
   Given("""^the user is on the consignment number page$""") { () =>
     confirmUrl(url)
+    verifyHeading(heading)
   }
-}
 
-//verifyHeading(heading)
+  When ("""^the user enters the following valid consignment details""") {() =>
+    epu.sendKeys("123")
+    entryNumber.sendKeys("A23456Z")
+    dayDate.sendKeys("01")
+    dayMonth.sendKeys("09")
+    dayYear.sendKeys("2020")
+
+  }
+
+}

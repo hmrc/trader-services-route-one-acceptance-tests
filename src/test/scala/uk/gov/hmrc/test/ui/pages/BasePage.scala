@@ -67,21 +67,35 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def verifyHeading(text: String): Unit = findElementByCss("h1").getText shouldBe text
 
-  def clickContinue(): Unit = findElementByCss(".button").click()
+  def clickContinue(): Unit = findElementByCss(".govuk-button").click()
 
   def clickSubmit(): Unit = findElementByCss("input[type=Submit]").click()
 
   def clickById(id: String): Unit = findElementById(id).click()
 
-  def signOut: WebElement = findElementById("sign-out")
+  def signOut: WebElement = findElementByCss("#navigation > li > a")
 
   def navigateTo(url: String): Unit = driver.navigate().to(url)
 
   def login(): Unit = {
+    if (env == "local") {
       userid.sendKeys("abc")
       planetid.sendKeys("def")
       signinBtn.click()
+    } else if (env == "Qa") {
+      userid.sendKeys("test")
+      planetid.sendKeys("test")
+      signinBtn.click()
+    } else if (env == "Dev") {
+      userid.sendKeys("test")
+      planetid.sendKeys("test")
+      signinBtn.click()
+    } else if (env == "Staging") {
+      userid.sendKeys("test")
+      planetid.sendKeys("test")
+      signinBtn.click()
     }
+  }
 
   def userid: WebElement = driver.findElement(By.id("userId"))
   def planetid: WebElement = driver.findElement(By.id("planetId"))
