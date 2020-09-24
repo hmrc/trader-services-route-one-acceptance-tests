@@ -73,14 +73,16 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def clickById(id: String): Unit = findElementById(id).click()
 
+  def clickByCSS(css: String): Unit = driver.findElement(By.cssSelector(css)).click()
+
   def signOut: WebElement = findElementByCss("#navigation > li > a")
 
   def navigateTo(url: String): Unit = driver.navigate().to(url)
 
   def login(): Unit = {
     if (env == "local") {
-      userid.sendKeys("abc")
-      planetid.sendKeys("def")
+      userid.sendKeys("test")
+      planetid.sendKeys("test")
       signinBtn.click()
     } else if (env == "Qa") {
       userid.sendKeys("test")
@@ -96,9 +98,15 @@ trait BasePage extends Matchers with BrowserDriver {
       signinBtn.click()
     }
   }
+  def createUser(): Unit = {
+    clickByCSS("#affinityGroup-Individual")
+    clickById("principalEnrolments[0].key-HMRC-CUS-ORG")
+    clickByCSS("#update")
+  }
 
   def userid: WebElement = driver.findElement(By.id("userId"))
   def planetid: WebElement = driver.findElement(By.id("planetId"))
   def signinBtn: WebElement = driver.findElement(By.id("signIn"))
 
 }
+

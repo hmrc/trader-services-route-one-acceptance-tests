@@ -32,9 +32,8 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     Try(SingletonDriver.closeInstance)
   }
 
-  Given("""^the user logs in$""") { () =>
+  Given("""^the user attempts to log in$""") { () =>
     navigateTo(Configuration.settings.SIGN_IN_PAGE)
-    verifyHeading("Sign in")
     login()
   }
 
@@ -47,6 +46,11 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
   }
 
   And("""^the user signs out""") { () =>
-  signOut
+    signOut
+  }
+
+  Then("""^a user is created""") { () =>
+    createUser()
+    clickByCSS("#update")
   }
 }
