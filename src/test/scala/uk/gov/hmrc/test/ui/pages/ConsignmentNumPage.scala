@@ -30,3 +30,7 @@ trait ConsignmentNumPage extends BasePage {
   def dayMonth: WebElement = findElementById("entryDate.month")
   def dayYear: WebElement = findElementById("entryDate.year")
 }
+
+// trader-services/declaration-details
+// What are the declaration details?
+

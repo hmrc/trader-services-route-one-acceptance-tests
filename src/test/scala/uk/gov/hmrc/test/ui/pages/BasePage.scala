@@ -80,24 +80,11 @@ trait BasePage extends Matchers with BrowserDriver {
   def navigateTo(url: String): Unit = driver.navigate().to(url)
 
   def login(): Unit = {
-    if (env == "local") {
-      userid.sendKeys("test")
-      planetid.sendKeys("test")
-      signinBtn.click()
-    } else if (env == "Qa") {
-      userid.sendKeys("test")
-      planetid.sendKeys("test")
-      signinBtn.click()
-    } else if (env == "Dev") {
-      userid.sendKeys("test")
-      planetid.sendKeys("test")
-      signinBtn.click()
-    } else if (env == "Staging") {
-      userid.sendKeys("test")
-      planetid.sendKeys("test")
-      signinBtn.click()
-    }
+    userid.sendKeys("testUser")
+    planetid.sendKeys("testPlanet")
+    signinBtn.click()
   }
+
   def createUser(): Unit = {
     clickByCSS("#affinityGroup-Individual")
     clickById("principalEnrolments[0].key-HMRC-CUS-ORG")
@@ -109,4 +96,20 @@ trait BasePage extends Matchers with BrowserDriver {
   def signinBtn: WebElement = driver.findElement(By.id("signIn"))
 
 }
+
+//
+//} else if (env == "Qa") {
+//  userid.sendKeys("test")
+//  planetid.sendKeys("test")
+//  signinBtn.click()
+//} else if (env == "Dev") {
+//  userid.sendKeys("test")
+//  planetid.sendKeys("test")
+//  signinBtn.click()
+//} else if (env == "Staging") {
+//  userid.sendKeys("test")
+//  planetid.sendKeys("test")
+//  signinBtn.click()
+//}
+//}
 
