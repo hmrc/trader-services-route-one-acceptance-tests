@@ -44,7 +44,7 @@ object Configuration {
       case Environment.Local =>
         new Configuration(
           baseUrl = "http://localhost",
-          SIGN_IN_PAGE = "http://localhost:9379/trader-services/"
+          SIGN_IN_PAGE = "http://localhost:9099/agents-external-stubs/user/create?continue=http%3A%2F%2Flocalhost%3A9379%2Ftrader-services"
         )
       case Environment.Dev =>
         new Configuration(

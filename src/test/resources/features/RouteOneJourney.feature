@@ -2,7 +2,8 @@
 Feature: RouteOne Journey
   Scenario: A user wants to complete a RouteOne journey
 
-    Given the user logs in
+    Given the user attempts to log in
+    Then a user is created
     Then the user is on the landing page for trader services
     When the user clicks the link to enter the route1 journey
     Then the user is on the consignment number page
