@@ -35,7 +35,6 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
   Given("""^the user logs in$""") { () =>
     navigateTo(Configuration.settings.SIGN_IN_PAGE)
     verifyHeading("Sign in")
-    confirmUrl("http://localhost:9025/gg/sign-in?continue=http%3A%2F%2Flocalhost%3A9379%2Ftrader-services&origin=trader-services-frontend")
     login()
   }
 
