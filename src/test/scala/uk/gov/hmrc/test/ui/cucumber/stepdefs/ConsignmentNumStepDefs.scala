@@ -27,7 +27,7 @@ class ConsignmentNumStepDefs extends ConsignmentNumPage with BasePage with Scala
     verifyHeading(heading)
   }
 
-  Then("""^the user enters valid consignment details (.*) and (.*)$""") {
+  Then("""^the user enters consignment details (.*) and (.*)$""") {
     (epu: String, entryNo:String) =>
       writeById("epu", epu)
       writeById("entryNo", entryNo)

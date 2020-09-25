@@ -7,7 +7,7 @@
 #    Then the user is on the landing page for trader services
 #    When the user clicks the link to enter the route1 journey
 #    Then the user is on the consignment number page
-#    When the user enters valid consignment details <epu> and <entryNo>
+#    When the user enters consignment details <epu> and <entryNo>
 #    And the user enters a date <day> <month> <year>
 #    And the user clicks Continue
 #    Then the user is on the Export question page

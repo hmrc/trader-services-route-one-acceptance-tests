@@ -80,8 +80,8 @@ trait BasePage extends Matchers with BrowserDriver {
   def navigateTo(url: String): Unit = driver.navigate().to(url)
 
   def login(): Unit = {
-    userid.sendKeys("testUser")
-    planetid.sendKeys("testPlanet")
+    userid.sendKeys("User1")
+    planetid.sendKeys("Planet1")
     signinBtn.click()
   }
 
@@ -91,25 +91,17 @@ trait BasePage extends Matchers with BrowserDriver {
     clickByCSS("#update")
   }
 
+  def destroyUser(): Unit = {
+    navigateTo("http://localhost:9099/agents-external-stubs/")
+    clickByCSS("#destroyPlanet")
+    driver.switchTo().alert().accept()
+  }
+//^^ @Before and @After
+
   def userid: WebElement = driver.findElement(By.id("userId"))
   def planetid: WebElement = driver.findElement(By.id("planetId"))
   def signinBtn: WebElement = driver.findElement(By.id("signIn"))
 
 }
 
-//
-//} else if (env == "Qa") {
-//  userid.sendKeys("test")
-//  planetid.sendKeys("test")
-//  signinBtn.click()
-//} else if (env == "Dev") {
-//  userid.sendKeys("test")
-//  planetid.sendKeys("test")
-//  signinBtn.click()
-//} else if (env == "Staging") {
-//  userid.sendKeys("test")
-//  planetid.sendKeys("test")
-//  signinBtn.click()
-//}
-//}
 

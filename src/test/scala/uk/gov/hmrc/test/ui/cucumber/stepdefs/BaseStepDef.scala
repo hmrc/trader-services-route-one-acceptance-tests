@@ -20,6 +20,7 @@ import org.scalatest.Matchers
 import org.scalatest.concurrent.Eventually
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 import io.cucumber.scala.{EN, ScalaDsl}
+import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.Configuration
 import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.webdriver.SingletonDriver
@@ -38,6 +39,14 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     verifyHeading("Sign in")
     login()
   }
+  Then("""^a user is created""") { () =>
+    createUser()
+    clickByCSS("#update")
+  }
+
+  Then("""^the test data is destroyed$""") { () =>
+    destroyUser()
+  }
 
   And("""^the user clicks Continue""") { () =>
     clickContinue()
@@ -51,8 +60,15 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     signOut
   }
 
-  Then("""^a user is created""") { () =>
-    createUser()
-    clickByCSS("#update")
+  Then("""^the user should see "([^"]*)" error message for "([^"]*)" on the page$""") { (errorMessage: String, fieldTitle: String) =>
+
+    driver.findElement(By.id("error-summary-heading")).getText shouldBe "There is a problem"
+    driver.findElement(By.id(s"$fieldTitle-error-summary")).getText shouldBe errorMessage
+    driver.findElement(By.id(s"$fieldTitle-error")).getText.contains(errorMessage)
+
+    driver.findElement(By.id("error-summary-heading")).isDisplayed
+    driver.findElement(By.id(s"$fieldTitle-error-summary")).isDisplayed
+    driver.findElement(By.id(s"$fieldTitle-error")).isDisplayed
+
   }
 }
