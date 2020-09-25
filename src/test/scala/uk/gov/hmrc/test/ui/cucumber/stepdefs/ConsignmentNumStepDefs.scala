@@ -27,13 +27,26 @@ class ConsignmentNumStepDefs extends ConsignmentNumPage with BasePage with Scala
     verifyHeading(heading)
   }
 
-  When ("""^the user enters the following valid consignment details""") {() =>
-    epu.sendKeys("123")
-    entryNumber.sendKeys("A23456Z")
-    dayDate.sendKeys("01")
-    dayMonth.sendKeys("09")
-    dayYear.sendKeys("2020")
+  Then("""^the user enters valid consignment details (.*) and (.*)$""") {
+    (epu: String, entryNo:String) =>
+      writeById("epu", epu)
+      writeById("entryNo", entryNo)
+  }
 
+  Then("""^the user enters a date (.*) (.*) (.*)$""") {
+    (dateDay:String, dateMonth:String, dateYear:String) =>
+      writeById("dateDay", dateDay)
+      writeById("dateMonth", dateMonth)
+      writeById("dateYear", dateYear)
   }
 
 }
+
+//When ("""^the user enters the following valid consignment details""") {() =>
+//  epu.sendKeys("123")
+//  entryNumber.sendKeys("123456Z")
+//  dayDate.sendKeys("01")
+//  dayMonth.sendKeys("09")
+//  dayYear.sendKeys("2020")
+//
+//}
