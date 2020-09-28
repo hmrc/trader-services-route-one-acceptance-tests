@@ -16,21 +16,9 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.WebElement
-
 trait ConsignmentNumPage extends BasePage {
 
-  val url: String = traderServicesBaseUrl + "/trader-services/route-one"
+  val url: String = traderServicesBaseUrl + "/trader-services/pre-clearance"
   val heading = "What are the consignment details?"
 
-  def epu: WebElement = findElementById("epu")
-  def entryNumber: WebElement = findElementById("entryNumber")
-
-  def dayDate: WebElement = findElementById("entryDate.day")
-  def dayMonth: WebElement = findElementById("entryDate.month")
-  def dayYear: WebElement = findElementById("entryDate.year")
 }
-
-// trader-services/declaration-details
-// What are the declaration details?
-

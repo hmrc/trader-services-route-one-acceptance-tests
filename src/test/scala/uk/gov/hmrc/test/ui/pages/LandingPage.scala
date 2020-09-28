@@ -37,8 +37,8 @@ import org.openqa.selenium.WebElement
 
 trait LandingPage extends BasePage {
 
-  val url: String = traderServicesBaseUrl + "/trader-services"
-  val heading = "Trader services"
+  val traderServicesUrl: String = traderServicesBaseUrl + "/trader-services"
+  val landingHeading = "Trader services"
 
   def findRouteOneLink: WebElement = findElementByCss("#main-content > div > div > div.govuk-\\!-margin-bottom-6 > p:nth-child(4) > a")
 }

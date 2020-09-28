@@ -16,9 +16,11 @@
 
 package uk.gov.hmrc.test.ui.cucumber.runner
 
-import io.cucumber.junit.Cucumber
-import io.cucumber.junit.CucumberOptions
+import io.cucumber.junit.{Cucumber, CucumberOptions}
 import org.junit.runner.RunWith
+import org.junit.{AfterClass, BeforeClass}
+import uk.gov.hmrc.test.ui.conf.Configuration
+import uk.gov.hmrc.test.ui.pages.BasePage
 
 @RunWith(classOf[Cucumber])
 @CucumberOptions(
@@ -27,5 +29,21 @@ import org.junit.runner.RunWith
   plugin = Array ("pretty", "html:target/cucumber", "json:target/cucumber.json"),
   tags = "@TraderService"
 )
-class Runner {
+class Runner
+object Runner extends Runner with BasePage {
+  @BeforeClass
+  def setupUser(): Unit = {
+    navigateTo(Configuration.settings.SIGN_IN_PAGE)
+    login()
+    createUser()
+    clickByCSS("#update")
+  }
+
+  @AfterClass
+  def destroyUser(): Unit = {
+    navigateTo("http://localhost:9099/agents-external-stubs/")
+    clickByCSS("#destroyPlanet")
+    driver.switchTo().alert().accept()
+  }
+
 }
