@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.pages
 
 import java.time.Duration
+
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.scalatest.Matchers
@@ -84,24 +85,13 @@ trait BasePage extends Matchers with BrowserDriver {
     planetid.sendKeys("Planet1")
     signinBtn.click()
   }
+  def userid: WebElement = driver.findElement(By.id("userId"))
+  def planetid: WebElement = driver.findElement(By.id("planetId"))
+  def signinBtn: WebElement = driver.findElement(By.id("signIn"))
 
   def createUser(): Unit = {
     clickByCSS("#affinityGroup-Individual")
     clickById("principalEnrolments[0].key-HMRC-CUS-ORG")
     clickByCSS("#update")
   }
-
-  def destroyUser(): Unit = {
-    navigateTo("http://localhost:9099/agents-external-stubs/")
-    clickByCSS("#destroyPlanet")
-    driver.switchTo().alert().accept()
-  }
-//^^ @Before and @After
-
-  def userid: WebElement = driver.findElement(By.id("userId"))
-  def planetid: WebElement = driver.findElement(By.id("planetId"))
-  def signinBtn: WebElement = driver.findElement(By.id("signIn"))
-
 }
-
-

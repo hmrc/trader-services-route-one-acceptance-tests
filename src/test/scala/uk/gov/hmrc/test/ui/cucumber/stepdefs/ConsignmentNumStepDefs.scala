@@ -22,31 +22,41 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, ConsignmentNumPage}
 
 class ConsignmentNumStepDefs extends ConsignmentNumPage with BasePage with ScalaDsl with EN {
 
+  Given("""^the user navigates to the declaration details page$""") { () =>
+    navigateTo(url)
+  }
+
   Given("""^the user is on the consignment number page$""") { () =>
     confirmUrl(url)
     verifyHeading(heading)
   }
 
-  Then("""^the user enters consignment details (.*) and (.*)$""") {
-    (epu: String, entryNo:String) =>
+  Then("""^the user enters consignment details "(.*)" and "(.*)"$""") {
+    (epu: String, entryNumber: String) =>
       writeById("epu", epu)
-      writeById("entryNo", entryNo)
+      writeById("entryNumber", entryNumber)
   }
 
-  Then("""^the user enters a date (.*) (.*) (.*)$""") {
-    (dateDay:String, dateMonth:String, dateYear:String) =>
-      writeById("dateDay", dateDay)
-      writeById("dateMonth", dateMonth)
-      writeById("dateYear", dateYear)
+  Then("""^the user enters a date "(.*)" "(.*)" "(.*)"$""") {
+    (dateDay: String, dateMonth: String, dateYear: String) =>
+      writeById("entryDate.day", dateDay)
+      writeById("entryDate.month", dateMonth)
+      writeById("entryDate.year", dateYear)
   }
-
 }
 
-//When ("""^the user enters the following valid consignment details""") {() =>
-//  epu.sendKeys("123")
-//  entryNumber.sendKeys("123456Z")
-//  dayDate.sendKeys("01")
-//  dayMonth.sendKeys("09")
-//  dayYear.sendKeys("2020")
+//  When("""^the user enters the following details on the declaration page$""") { dataTable: DataTable =>
 //
-//}
+//    for (data: java.util.Map[String, String] <- dataTable.asMaps(classOf[String], classOf[String])) {
+//      val field = data.get("Field") match {
+//        case "epu" => "epu"
+//        case "entryNumber" => "entryNumber"
+//        case "Day" => "entryDate.day"
+//        case "Month" => "entryDate.month"
+//        case "Year" => "entryDate.year"
+//      }
+//      val value = data.get("Value")
+//      driver.findElement(By.id(field)).sendKeys(value)
+//    }
+//  }
+

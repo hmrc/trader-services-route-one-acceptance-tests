@@ -27,7 +27,6 @@ trait QuestionPages extends BasePage {
   val headingExport = "Tell us about your exports"
 
   //Import
-
   def requestNew: WebElement = findElementById("")
   def requestCancel: WebElement = findElementById("")
   def requestHold: WebElement = findElementById("")
