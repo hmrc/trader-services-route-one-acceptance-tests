@@ -32,12 +32,11 @@ trait QuestionPages extends BasePage {
   val urlExportRequest: String = traderServicesBaseUrl + ""
   val headingExportRequest: String = "What type of export request is this?"
 
-  val urlRoute: String = traderServicesBaseUrl + ""
+  val urlRouteImport: String = traderServicesBaseUrl + ""
+  val urlRouteExport: String = traderServicesBaseUrl + ""
   val headingRoute: String = "Which route is this?"
 
-  val urlPriority: String = traderServicesBaseUrl + ""
-  val headingPriority: String = "Does the consignment contain any priority goods?"
-
-  val urlFreight: String = traderServicesBaseUrl + ""
+  val urlFreightImport: String = traderServicesBaseUrl + ""
+  val urlFreightExport: String = traderServicesBaseUrl + ""
   val headingFreight: String = "How is it being transported?"
 }
