@@ -16,9 +16,16 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-trait DeclarationNumPage extends BasePage {
+import org.openqa.selenium.WebElement
 
-  val urlDecDetails: String = traderServicesBaseUrl + "/trader-services/pre-clearance"
-  val headingDecDetails = "What are the consignment details?"
+trait UploadPages extends BasePage {
 
+  val urlUploadDec: String = traderServicesBaseUrl + ""
+  val headingUploadDec = "About the documents you are uploading"
+
+  val urlUpload: String = traderServicesBaseUrl + ""
+  val headingUpload = "Upload your files"
+
+  def uploadAmount: WebElement = findElementByCss("")
+  //more to be added here for actual upload page
 }

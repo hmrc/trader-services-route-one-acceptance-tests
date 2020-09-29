@@ -9,10 +9,10 @@ Feature: Pre-clearance - Import Journeys
     And the user enters a date "<day>" "<month>" "<year>"
     And the user clicks Continue
 #    Then the user is on the "Import" question page
-#    And the user selects "<requestType>" for Export REQUEST TYPE
-#    Then the user selects "<route>" for ROUTE
-#    And the user selects "<priority>" for PRIORITY
-#    And the user selects "<freight>" for FREIGHT
+#    Then the user is on the Import Request Type page and selects <requestType>
+#    And the user is on the Route Type Page and selects <route>
+#    Then the user is one the Priority Page and selects <priority>
+#    Then the user is on the Freight Page and selects <freight>
 #    When the user clicks Continue
     #  Then the user will be on the contact details page ....
 
@@ -27,16 +27,21 @@ Feature: Pre-clearance - Import Journeys
 #    When the user enters declaration details "<epu>" and "<entryNo>"
 #    And the user enters a date "<day>" "<month>" "<year>"
 #    And the user clicks Continue
-#    Then the user is on the "Export" question page
-#    And the user selects "<requestType>" for Export REQUEST TYPE
-#    Then the user selects "<route>" for ROUTE
-#    And the user selects "<priority>" for PRIORITY
+#    Then the user is on the "Import" question page
+#    Then the user is on the Import Request Type page and selects <requestType>
+#    And the user is on the Route Type Page and selects <route>
+#    Then the user is one the Priority Page and selects <priority>
+#    Then the user is on the Freight Page and selects <freight>
 #    When the user clicks Continue
 #     Then the user will be on the vessel questions page ...
 #
 #    Examples:
 #      | epu | entryNo | day | month | year |requestType | route  | priority| freight  |
 #      | 123 | A23456A | 01  | 09    | 2020 |Hold        | Route3 | None    | Maritime |
+
+
+#  ALVS Question to slot into this journey
+
 
 
 #  Scenario Outline: A user wants to amend an existing RouteOne journey (Import)

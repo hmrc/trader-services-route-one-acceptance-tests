@@ -16,9 +16,15 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-trait DeclarationNumPage extends BasePage {
+import org.openqa.selenium.WebElement
 
-  val urlDecDetails: String = traderServicesBaseUrl + "/trader-services/pre-clearance"
-  val headingDecDetails = "What are the consignment details?"
+trait ContactDetailsPage extends BasePage {
 
+  val urlContactDetails: String = traderServicesBaseUrl + ""
+  val headingContactDetails = "Who can we contact if we need more information?"
+
+  def phoneNumber:WebElement = findElementByCss("")
+  def emailAddress: WebElement = findElementByCss("")
 }
+//css tbc
+

@@ -19,9 +19,25 @@ package uk.gov.hmrc.test.ui.pages
 trait QuestionPages extends BasePage {
 
   val urlImport: String = traderServicesBaseUrl + "/trader-services/pre-clearance/import-questions"
-  val urlExport: String = traderServicesBaseUrl + "/trader-services/pre-clearance/export-questions"
-
   val headingImport = "Tell us about your imports"
+
+  val urlExport: String = traderServicesBaseUrl + "/trader-services/pre-clearance/export-questions"
   val headingExport = "Tell us about your exports"
 
+  //Above to be replaced
+
+  val urlImportRequest: String = traderServicesBaseUrl + ""
+  val headingImportRequest: String = "What type of import request is this?"
+
+  val urlExportRequest: String = traderServicesBaseUrl + ""
+  val headingExportRequest: String = "What type of export request is this?"
+
+  val urlRoute: String = traderServicesBaseUrl + ""
+  val headingRoute: String = "Which route is this?"
+
+  val urlPriority: String = traderServicesBaseUrl + ""
+  val headingPriority: String = "Does the consignment contain any priority goods?"
+
+  val urlFreight: String = traderServicesBaseUrl + ""
+  val headingFreight: String = "How is it being transported?"
 }
