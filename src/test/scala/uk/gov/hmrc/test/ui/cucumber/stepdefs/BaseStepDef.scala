@@ -20,7 +20,6 @@ import io.cucumber.scala.{EN, ScalaDsl}
 import org.openqa.selenium.By
 import org.scalatest.Matchers
 import org.scalatest.concurrent.Eventually
-import uk.gov.hmrc.test.ui.conf.Configuration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.webdriver.SingletonDriver
@@ -31,11 +30,6 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
 
   sys.addShutdownHook {
     Try(SingletonDriver.closeInstance)
-  }
-
-  Given("""^the user logs in$""") { () =>
-    navigateTo(Configuration.settings.SIGN_IN_PAGE)
-    login()
   }
 
   And("""^the user clicks Continue""") { () =>
@@ -58,8 +52,14 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     driver.findElement(By.id(s"$fieldTitle-error")).isDisplayed
     driver.findElement(By.id(s"$fieldTitle-error")).getText.replaceAll("\n", "") shouldBe errorMessage
   }
-
-  And("""^the HMRC user clicks on the "([^"]*)" button$""") { button: String =>
-    driver.findElement(By.id(button)).click()
-  }
 }
+
+//
+//  Given("""^the user logs in$""") { () =>
+//    navigateTo(Configuration.settings.SIGN_IN_PAGE)
+//    login()
+//  }
+//  And("""^the HMRC user clicks on the "([^"]*)" button$""") { button: String =>
+//    driver.findElement(By.id(button)).click()
+//  }
+

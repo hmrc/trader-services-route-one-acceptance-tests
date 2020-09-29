@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-trait ConsignmentNumPage extends BasePage {
+trait DeclarationNumPage extends BasePage {
 
   val url: String = traderServicesBaseUrl + "/trader-services/pre-clearance"
   val heading = "What are the consignment details?"

@@ -17,21 +17,21 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.test.ui.pages.{BasePage, ConsignmentNumPage}
+import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage}
 
 
-class ConsignmentNumStepDefs extends ConsignmentNumPage with BasePage with ScalaDsl with EN {
+class DeclarationNumStepDefs extends DeclarationNumPage with BasePage with ScalaDsl with EN {
 
   Given("""^the user navigates to the declaration details page$""") { () =>
     navigateTo(url)
   }
 
-  Given("""^the user is on the consignment number page$""") { () =>
+  Given("""^the user is on the declaration details page$""") { () =>
     confirmUrl(url)
     verifyHeading(heading)
   }
 
-  Then("""^the user enters consignment details "(.*)" and "(.*)"$""") {
+  Then("""^the user enters declaration details "(.*)" and "(.*)"$""") {
     (epu: String, entryNumber: String) =>
       writeById("epu", epu)
       writeById("entryNumber", entryNumber)

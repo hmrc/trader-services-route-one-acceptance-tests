@@ -23,7 +23,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, QuestionPages}
 class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl with EN {
 
 
-  Given("""^the user is on the (.*) question page$""") { (EntryNo: String) =>
+  Given("""^the user is on the "(.*)" question page$""") { (EntryNo: String) =>
     EntryNo match {
       case "Import" => confirmUrl(urlImport)
         verifyHeading(headingImport)
@@ -32,55 +32,57 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     }
   }
 
-  When("""^the user selects (.*) for Import REQUEST TYPE""") { (RequestType: String) =>
+  When("""^the user selects "(.*)" for Import REQUEST TYPE""") { (RequestType: String) =>
     RequestType match {
-      case "New" => requestNew.click()
-      case "Cancel" => requestCancel.click()
-      case "Hold" => requestHold.click()
-      case "ALVS" => requestALVS.click()
+      case "New" => findElementById("requestType").click()
+      case "Cancel" => findElementById("requestType-2").click()
+      case "Hold" => findElementById("requestType-3").click()
     }
   }
 
-  When("""^the user selects (.*) for Export REQUEST TYPE""") { (RequestType: String) =>
+  When("""^the user selects "(.*)" for Export REQUEST TYPE""") { (RequestType: String) =>
     RequestType match {
-      case "New" => requestNew.click()
-      case "Cancel" => requestCancel.click()
-      case "Hold" => requestHold.click()
-      case "C1601" => requestC1601.click()
-      case "C1602" => requestC1602.click()
-      case "C1603" => requestC1603.click()
-      case "Withdrawal" => requestWithdrawal.click()
+      case "New" => clickByCSS("#requestType")
+      case "Cancel" => clickByCSS("#requestType-2")
+      case "Hold" => clickByCSS("#requestType-3")
+      case "C1601" => clickByCSS("#requestType-4")
+      case "C1602" => clickByCSS("#requestType-5")
+      case "C1603" => clickByCSS("#requestType-6")
+      case "Withdrawal" => clickByCSS("#requestType-7")
     }
   }
 
-  When("""^the user selects (.*) for ROUTE""") { (RequestType: String) =>
+
+  When("""^the user selects "(.*)" for ROUTE""") { (RequestType: String) =>
     RequestType match {
-      case "Route1" => route1.click()
-      case "Route1CAP" => route1CAP.click()
-      case "Route2" => route2.click()
-      case "Route3" => route3.click()
-      case "Route6" => route6.click()
-      case "Hold" => routeHold.click()
+      case "Route1" => clickByCSS("#routeType")
+      case "Route1CAP" => clickByCSS("#routeType-2")
+      case "Route2" => clickByCSS("#routeType-3")
+      case "Route3" => clickByCSS("#routeType-4")
+      case "Route6" => clickByCSS("#routeType-5")
+      case "Hold" => clickByCSS("#routeType-6")
     }
   }
 
-  When("""^the user selects (.*) for PRIORITY""") { (RequestType: String) =>
+  When("""^the user selects "(.*)" for PRIORITY""") { (RequestType: String) =>
     RequestType match {
-      case "None" => priorityNone.click()
-      case "LiveAnimals" => priorityLiveAnimals.click()
-      case "HumanRemains" => priorityHumanRemains.click()
-      case "Explosives" => priorityExplosives.click()
-      case "HighValueArt" => priorityArt.click()
-      case "ClassAs" => priorityClassA.click()
+      case "None" => clickByCSS("#goodsPriority")
+      case "LiveAnimals" => clickByCSS("#goodsPriority-2")
+      case "HumanRemains" => clickByCSS("#goodsPriority-3")
+      case "Explosives" => clickByCSS("#goodsPriority-4")
+      case "HighValueArt" => clickByCSS("#goodsPriority-5")
+      case "ClassAs" => clickByCSS("#goodsPriority-6")
     }
   }
 
-  When("""^the user selects (.*) for FREIGHT""") { (RequestType: String) =>
+  When("""^the user selects "(.*)" for FREIGHT""") { (RequestType: String) =>
     RequestType match {
-      case "Maritime" => freightMaritime.click()
-      case "Air" => freightAir.click()
-      case "RoadRoRoRail" => freightRoadRoRoRail.click()
+      case "Maritime" => clickByCSS("#freightType")
+      case "Air" => clickByCSS("#freightType-2")
+      case "RoadRoRoRail" => clickByCSS("#freightType-3")
 
     }
   }
 }
+
+//case "ALVS" => findElementById("requestType").click()
