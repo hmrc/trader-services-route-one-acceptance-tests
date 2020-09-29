@@ -1,5 +1,5 @@
 @TraderService @ZAP
-Feature: Pre-clearance - Consignment validation
+Feature: Pre-clearance - Declaration details validation
 
   Scenario: Error validation on declaration page (all blank fields)
     Then the user navigates to the declaration details page
@@ -11,51 +11,51 @@ Feature: Pre-clearance - Consignment validation
 
   Scenario: Error validation on declaration page - EPU
     When the user navigates to the declaration details page
-    And the user enters consignment details "1234" and "123456A"
+    And the user enters declaration details "1234" and "123456A"
     And the user enters a date "01" "09" "2020"
     Then the user clicks Continue
     Then the user should see "Error:EPU number must be 3 characters" error message for "epu" on the page
 
-    When the user enters consignment details "12" and "123456A"
+    When the user enters declaration details "12" and "123456A"
     Then the user clicks Continue
     Then the user should see "Error:EPU number must be 3 characters" error message for "epu" on the page
 
-    When the user enters consignment details "abc" and "123456A"
+    When the user enters declaration details "abc" and "123456A"
     Then the user clicks Continue
     Then the user should see "Error:EPU number must only contain numbers 0 to 9" error message for "epu" on the page
 
-    When the user enters consignment details "701" and "123456A"
+    When the user enters declaration details "701" and "123456A"
     Then the user clicks Continue
     Then the user should see "Error:EPU number must be 700 or less" error message for "epu" on the page
 
 
   Scenario: Error validation on declaration page - Entry number
     Given the user navigates to the declaration details page
-    And the user enters consignment details "123" and "1"
+    And the user enters declaration details "123" and "1"
     And the user enters a date "01" "09" "2020"
     Then the user clicks Continue
     Then the user should see "Error:Entry number must be 7 characters" error message for "entryNumber" on the page
 
-    When the user enters consignment details "123" and "12345678"
+    When the user enters declaration details "123" and "12345678"
     Then the user clicks Continue
     And the user should see "Error:Entry number must be 7 characters" error message for "entryNumber" on the page
 
-    When the user enters consignment details "123" and "abcdefg"
+    When the user enters declaration details "123" and "abcdefg"
     Then the user clicks Continue
     Then the user should see "Error:Entry number must have letters before and after the number only" error message for "entryNumber" on the page
 
-    When the user enters consignment details "123" and "A!2345B"
+    When the user enters declaration details "123" and "A!2345B"
     Then the user clicks Continue
     Then the user should see "Error:Entry number must only contain numbers 0 to 9 and letters" error message for "entryNumber" on the page
 
-    When the user enters consignment details "123" and "A123456"
+    When the user enters declaration details "123" and "A123456"
     Then the user clicks Continue
     Then the user should see "Error:Entry number must have a letter at the end" error message for "entryNumber" on the page
 
 
   Scenario: Error validation on declaration page - Date (Each one blank in turn)
     When the user navigates to the declaration details page
-    And the user enters consignment details "123" and "123456A"
+    And the user enters declaration details "123" and "123456A"
     And the user enters a date "" "09" "2020"
     Then the user clicks Continue
     Then the user should see "Error:Entry date must include a day" error message for "entryDate" on the page
@@ -68,7 +68,7 @@ Feature: Pre-clearance - Consignment validation
 
   Scenario: Error validation on declaration page - Date (Invalid dates)
     When the user navigates to the declaration details page
-    And the user enters consignment details "123" and "123456A"
+    And the user enters declaration details "123" and "123456A"
     And the user enters a date "31" "09" "2020"
     Then the user clicks Continue
     Then the user should see "Error:Entry date must be a real date" error message for "entryDate" on the page
