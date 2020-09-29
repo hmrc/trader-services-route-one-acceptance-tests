@@ -16,9 +16,9 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-trait DeclarationNumPage extends BasePage {
+trait CheckAnswersPage extends BasePage {
 
-  val urlDecDetails: String = traderServicesBaseUrl + "/trader-services/pre-clearance"
-  val headingDecDetails = "What are the consignment details?"
+  val urlCYA: String = traderServicesBaseUrl + ""
+  val headingCYA = "Check the details"
 
 }

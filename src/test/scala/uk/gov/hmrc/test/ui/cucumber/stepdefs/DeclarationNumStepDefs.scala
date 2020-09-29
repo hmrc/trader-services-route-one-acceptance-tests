@@ -23,12 +23,12 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage}
 class DeclarationNumStepDefs extends DeclarationNumPage with BasePage with ScalaDsl with EN {
 
   Given("""^the user navigates to the declaration details page$""") { () =>
-    navigateTo(url)
+    navigateTo(urlDecDetails)
   }
 
   Given("""^the user is on the declaration details page$""") { () =>
-    confirmUrl(url)
-    verifyHeading(heading)
+    confirmUrl(urlDecDetails)
+    verifyHeading(headingDecDetails)
   }
 
   Then("""^the user enters declaration details "(.*)" and "(.*)"$""") {

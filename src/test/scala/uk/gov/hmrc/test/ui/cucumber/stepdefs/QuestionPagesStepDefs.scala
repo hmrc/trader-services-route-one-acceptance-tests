@@ -32,15 +32,24 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     }
   }
 
-  When("""^the user selects "(.*)" for Import REQUEST TYPE""") { (RequestType: String) =>
+
+  When("""^the user is on the Import Request Type page and selects (.*)""") { (RequestType: String) =>
+//    confirmUrl(urlImportRequest)
+//    verifyHeading(headingImportRequest)
+
     RequestType match {
       case "New" => findElementById("requestType").click()
       case "Cancel" => findElementById("requestType-2").click()
       case "Hold" => findElementById("requestType-3").click()
+      case "None" =>
     }
+//    clickContinue()
   }
 
-  When("""^the user selects "(.*)" for Export REQUEST TYPE""") { (RequestType: String) =>
+  When("""^the user is on the Export Request Type page and selects (.*)""") { (RequestType: String) =>
+//  confirmUrl(urlExportRequest)
+//  verifyHeading(headingExportRequest)
+
     RequestType match {
       case "New" => clickByCSS("#requestType")
       case "Cancel" => clickByCSS("#requestType-2")
@@ -49,11 +58,16 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
       case "C1602" => clickByCSS("#requestType-5")
       case "C1603" => clickByCSS("#requestType-6")
       case "Withdrawal" => clickByCSS("#requestType-7")
+      case "None" =>
     }
+        clickContinue()
   }
 
 
-  When("""^the user selects "(.*)" for ROUTE""") { (RequestType: String) =>
+  When("""^the user is on the Route Type Page and selects (.*)""") { (RequestType: String) =>
+//        confirmUrl(urlRoute)
+//        verifyHeading(headingRoute)
+
     RequestType match {
       case "Route1" => clickByCSS("#routeType")
       case "Route1CAP" => clickByCSS("#routeType-2")
@@ -61,10 +75,15 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
       case "Route3" => clickByCSS("#routeType-4")
       case "Route6" => clickByCSS("#routeType-5")
       case "Hold" => clickByCSS("#routeType-6")
+      case "None" =>
     }
+    //    clickContinue()
   }
 
-  When("""^the user selects "(.*)" for PRIORITY""") { (RequestType: String) =>
+  When("""^the user is one the Priority Page and selects (.*)""") { (RequestType: String) =>
+//    confirmUrl(urlPriority)
+//    verifyHeading(headingPriority)
+
     RequestType match {
       case "None" => clickByCSS("#goodsPriority")
       case "LiveAnimals" => clickByCSS("#goodsPriority-2")
@@ -72,17 +91,22 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
       case "Explosives" => clickByCSS("#goodsPriority-4")
       case "HighValueArt" => clickByCSS("#goodsPriority-5")
       case "ClassAs" => clickByCSS("#goodsPriority-6")
+      case "None" =>
     }
+    //    clickContinue()
   }
 
-  When("""^the user selects "(.*)" for FREIGHT""") { (RequestType: String) =>
+  When("""^the user is on the Freight Page and selects (.*)""") { (RequestType: String) =>
+//    confirmUrl(urlFreight)
+//    verifyHeading(headingFreight)
+
     RequestType match {
       case "Maritime" => clickByCSS("#freightType")
       case "Air" => clickByCSS("#freightType-2")
       case "RoadRoRoRail" => clickByCSS("#freightType-3")
+      case "None" =>
 
     }
+    //    clickContinue()
   }
 }
-
-//case "ALVS" => findElementById("requestType").click()

@@ -16,9 +16,20 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-trait DeclarationNumPage extends BasePage {
+import org.openqa.selenium.WebElement
 
-  val urlDecDetails: String = traderServicesBaseUrl + "/trader-services/pre-clearance"
-  val headingDecDetails = "What are the consignment details?"
+trait VesselQuestionsPage extends BasePage {
+
+  val urlVessel: String = traderServicesBaseUrl + ""
+  val headingVessel = "Tell us about your vessel"
+
+  def vesselName: WebElement = findElementByCss("")
+
+  def vesselDateDay: WebElement = findElementByCss("")
+  def vesselDateMonth: WebElement = findElementByCss("")
+  def vesselDateYear: WebElement = findElementByCss("")
+
+  def vesselTimeMins: WebElement = findElementByCss("")
+  def vesselTimeHrs: WebElement = findElementByCss("")
 
 }

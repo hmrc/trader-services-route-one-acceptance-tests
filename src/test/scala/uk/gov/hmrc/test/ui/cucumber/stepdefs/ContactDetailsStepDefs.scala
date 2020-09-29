@@ -17,27 +17,13 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.test.ui.pages.{BasePage, LandingPage}
+import uk.gov.hmrc.test.ui.pages.BasePage
 
 
-class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with EN {
+class ContactDetailsStepDefs extends BasePage with ScalaDsl with EN {
 
-  Given("""^the user is on the landing page for trader services$""") { () =>
-    navigateTo(traderServicesUrl)
-    confirmUrl(traderServicesUrl)
-    verifyHeading(landingHeading)
-  }
+//check for pre pop
+  // stub user needed for this??
 
-  When("""^the user clicks the link to enter the route1 journey$""") { () =>
-    clickRouteOneLink()
-  }
-
-  When("""^the user clicks the link to add info or documents$""") { () =>
-    clickAddInfo()
-  }
-
-  When("""^the user clicks the link to check the status of their case$""") { () =>
-    clickCheckStatus()
-  }
 }
 
