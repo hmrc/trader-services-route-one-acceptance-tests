@@ -18,25 +18,20 @@ package uk.gov.hmrc.test.ui.pages
 
 trait QuestionPages extends BasePage {
 
-  val urlImport: String = traderServicesBaseUrl + "/trader-services/pre-clearance/import-questions"
-  val headingImport = "Tell us about your imports"
 
-  val urlExport: String = traderServicesBaseUrl + "/trader-services/pre-clearance/export-questions"
-  val headingExport = "Tell us about your exports"
-
-  //Above to be replaced
-
-  val urlImportRequest: String = traderServicesBaseUrl + ""
+  val urlImportRequest: String = traderServicesBaseUrl + "/pre-clearance/import-questions/request-type"
   val headingImportRequest: String = "What type of import request is this?"
 
-  val urlExportRequest: String = traderServicesBaseUrl + ""
+  val urlExportRequest: String = traderServicesBaseUrl + "/pre-clearance/export-questions/request-type"
   val headingExportRequest: String = "What type of export request is this?"
 
-  val urlRouteImport: String = traderServicesBaseUrl + ""
-  val urlRouteExport: String = traderServicesBaseUrl + ""
+
+
+  val urlRouteImport: String = traderServicesBaseUrl + "/pre-clearance/import-questions/route-type"
+  val urlRouteExport: String = traderServicesBaseUrl + "/pre-clearance/export-questions/route-type"
   val headingRoute: String = "Which route is this?"
 
-  val urlFreightImport: String = traderServicesBaseUrl + ""
-  val urlFreightExport: String = traderServicesBaseUrl + ""
-  val headingFreight: String = "How is it being transported?"
+  val urlTransportImport: String = traderServicesBaseUrl + ""
+  val urlTransportExport: String = traderServicesBaseUrl + ""
+  val headingTransport: String = "How is it being transported?"
 }

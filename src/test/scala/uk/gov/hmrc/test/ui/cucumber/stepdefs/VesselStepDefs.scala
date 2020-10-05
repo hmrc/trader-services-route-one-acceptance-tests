@@ -31,8 +31,6 @@ class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl wit
   Then("""^the user enters a vessel name$""") { () =>
     vesselName.sendKeys("")
   }
-  //Validation on name? If none can be static entry
-
 
   Then("""^the user enters a date for the vessel "(.*)" "(.*)" "(.*)"$""") {
     (vesselDay: String, vesselMonth: String, vesselYear: String) =>
@@ -46,13 +44,4 @@ class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl wit
       writeById("", vesselHrs)
       writeById("", vesselMins)
   }
-
-//  When("""^the user enters the following vessel details $""") {() =>
-//    vesselName.sendKeys("")
-//    vesselDateDay.sendKeys("")
-//    vesselDateMonth.sendKeys("")
-//    vesselDateYear.sendKeys("")
-//    vesselTimeHrs.sendKeys("")
-//    vesselTimeMins.sendKeys("")
-//  }
 }

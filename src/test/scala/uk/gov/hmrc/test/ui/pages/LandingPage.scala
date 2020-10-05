@@ -37,10 +37,10 @@ import org.openqa.selenium.By
 
 trait LandingPage extends BasePage {
 
-  val traderServicesUrl: String = traderServicesBaseUrl + "/trader-services"
+  val traderServicesUrl: String = traderServicesBaseUrl
   val landingHeading = "Trader services"
 
-  def clickRouteOneLink(): Unit = driver.findElement(By.linkText("Start a route 1 pre-clearance check submission")).click()
+  def clickRouteOneLink(): Unit = driver.findElement(By.linkText("Start a pre-clearance case")).click()
 
   def clickAddInfo(): Unit = driver.findElement(By.linkText("Add documents or information")).click()
 
@@ -49,9 +49,6 @@ trait LandingPage extends BasePage {
   //  def overpayments(): Unit = driver.findElement(By.linkText("Apply for a refund"))
   //  def underpayments(): Unit = driver.findElement(By.linkText("Disclose an underpayment"))
   //  def securities(): Unit = driver.findElement(By.linkText("Apply for a refund"))
+  //just check handoff (confirm(url))
 
 }
-
-//link text to be updated in time
-//the urls for top 3x should be confirmed via journeys
-//just check handoff for last 3x, confirm(url)

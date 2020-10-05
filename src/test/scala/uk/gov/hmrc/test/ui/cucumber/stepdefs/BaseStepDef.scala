@@ -40,14 +40,6 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     clickSubmit()
   }
 
-  And("""^the user selects "(.*)"""") { (YesNo: String) =>
-    YesNo match {
-      case "Yes" => findElementByCss("#yes_no-yes").click()
-      case "No" => findElementByCss("#yes_no-yes").click()
-      //confirm when page is up
-    }
-  }
-
 
   And("""^the user signs out""") { () =>
     signOut
