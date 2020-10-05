@@ -39,7 +39,7 @@ trait BasePage extends Matchers with BrowserDriver {
     case _ => s"http://localhost:$localPort"
   }
 
-  val traderServicesBaseUrl: String = host(9379)
+  val traderServicesBaseUrl: String = host(9379) + "/trader-services"
 
   def confirmUrl(url: String): Unit = {
     fluentWait.until(ExpectedConditions.urlContains(url))

@@ -22,25 +22,32 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, PriorityPages}
 
 class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN {
 
-  Given("""^the user is one the Priority Page""") { () =>
+  Given("""^the user is on the YesNo Priority Page and selects (.*)""") { (YesNo: String) =>
     confirmUrl(urlYesNoPriority)
     verifyHeading(headingYesNoPriority)
 
+    YesNo match {
+      case "Yes" => findElementByCss("#yes_no-yes").click()
+      case "No" => findElementByCss("#yes_no-yes").click()
+    }
+
+    clickContinue()
   }
 
-//    When("""^the user is one the Priority Page and selects (.*)""") { (RequestType: String) =>
-//      confirmUrl(urlPriority)
-//      verifyHeading(headingPriority)
-//
-//    RequestType match {
-//      case "ClassA" => clickByCSS("#goodsPriority")
-//      case "Explosives" => clickByCSS("#goodsPriority-2")
-//      case "HighValueArt" => clickByCSS("#goodsPriority-3")
-//      case "HumanRemains" => clickByCSS("#goodsPriority-4")
-//      case "LiveAnimals" => clickByCSS("#goodsPriority-5")
-//      case "None" =>
-//    }
-//    //    clickContinue()
-//  }
+
+    When("""^the user is on the Priority Options Page and selects (.*)""") { (RequestType: String) =>
+      confirmUrl(urlPriority)
+      verifyHeading(headingPriority)
+
+    RequestType match {
+      case "ClassA" => clickByCSS("#goodsPriority")
+      case "Explosives" => clickByCSS("#goodsPriority-2")
+      case "HighValueArt" => clickByCSS("#goodsPriority-3")
+      case "HumanRemains" => clickByCSS("#goodsPriority-4")
+      case "LiveAnimals" => clickByCSS("#goodsPriority-5")
+      case "None" =>
+    }
+        clickContinue()
+  }
 }
 

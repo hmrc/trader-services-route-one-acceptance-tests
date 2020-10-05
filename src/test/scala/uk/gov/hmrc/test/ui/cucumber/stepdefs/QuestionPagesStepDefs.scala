@@ -22,19 +22,10 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, QuestionPages}
 
 class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl with EN {
 
-  Given("""^the user is on the "(.*)" question page$""") { (EntryNo: String) =>
-    EntryNo match {
-      case "Import" => confirmUrl(urlImport)
-        verifyHeading(headingImport)
-      case "Export" => confirmUrl(urlExport)
-        verifyHeading(headingExport)
-    }
-  }
-// above to be deleted in time
 
   When("""^the user is on the Import Request Type page and selects (.*)""") { (RequestType: String) =>
-//    confirmUrl(urlImportRequest)
-//    verifyHeading(headingImportRequest)
+    confirmUrl(urlImportRequest)
+    verifyHeading(headingImportRequest)
 
     RequestType match {
       case "New" => findElementById("requestType").click()
@@ -42,12 +33,12 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
       case "Hold" => findElementById("requestType-3").click()
       case "NoOption" =>
     }
-//    clickContinue()
+    clickContinue()
   }
 
   When("""^the user is on the Export Request Type page and selects (.*)""") { (RequestType: String) =>
-//  confirmUrl(urlExportRequest)
-//  verifyHeading(headingExportRequest)
+  confirmUrl(urlExportRequest)
+  verifyHeading(headingExportRequest)
 
     RequestType match {
       case "New" => clickByCSS("#requestType")
@@ -59,13 +50,21 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
       case "Withdrawal" => clickByCSS("#requestType-7")
       case "NoOption" =>
     }
-//        clickContinue()
+        clickContinue()
   }
 
 
-  When("""^the user is on the Route Type Page and selects (.*)""") { (RequestType: String) =>
-//        confirmUrl(urlRouteImport) OR confirmUrl(urlRouteImport)
-//        verifyHeading(headingRoute)
+  When("""^the user is on the (.*) Route Type Page and selects (.*)""") { (Journey: String, RequestType: String) =>
+
+    Journey match {
+      case "Import" =>
+        confirmUrl(urlRouteImport)
+
+      case "Export" =>
+        confirmUrl(urlRouteExport)
+    }
+
+    verifyHeading(headingRoute)
 
     RequestType match {
       case "Route1" => clickByCSS("#routeType")
@@ -76,29 +75,20 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
       case "Hold" => clickByCSS("#routeType-6")
       case "NoOption" =>
     }
-    //    clickContinue()
+        clickContinue()
   }
 
-  When("""^the user is one the Priority Page and selects (.*)""") { (RequestType: String) =>
-//    confirmUrl(urlPriorityImport) OR confirmUrl(urlPriorityExport)
-//    verifyHeading(headingPriority)
 
-    RequestType match {
-      case "None" => clickByCSS("#goodsPriority")
-      case "LiveAnimals" => clickByCSS("#goodsPriority-2")
-      case "HumanRemains" => clickByCSS("#goodsPriority-3")
-      case "Explosives" => clickByCSS("#goodsPriority-4")
-      case "HighValueArt" => clickByCSS("#goodsPriority-5")
-      case "ClassAs" => clickByCSS("#goodsPriority-6")
-      case "NoOption" =>
+  When("""^the user is on the (.*) Transport Type Page and selects (.*)""") { (Journey: String, RequestType: String) =>
+    Journey match {
+      case "Import" =>
+        confirmUrl(urlTransportImport)
+
+      case "Export" =>
+        confirmUrl(urlTransportExport)
     }
-    //    clickContinue()
-  }
-  //prio page to be amended alongside DOR-61
 
-  When("""^the user is on the Freight Page and selects (.*)""") { (RequestType: String) =>
-//    confirmUrl(urlFreightImport) OR confirmUrl(urlFreightExport)
-//    verifyHeading(headingFreight)
+    verifyHeading(headingTransport)
 
     RequestType match {
       case "Maritime" => clickByCSS("#freightType")
@@ -107,7 +97,6 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
       case "NoOption" =>
 
     }
-    //    clickContinue()
+        clickContinue()
   }
 }
-//using separate urls for each journey => restructure to make dynamic
