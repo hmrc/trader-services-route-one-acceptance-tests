@@ -1,4 +1,4 @@
-@TraderService2
+@TraderService
 Feature: Pre-clearance - Export Journeys
 
   Scenario Outline: A user wants to complete a New EXPORT RouteOne journey
