@@ -26,12 +26,12 @@ trait QuestionPages extends BasePage {
   val headingExportRequest: String = "What type of export request is this?"
 
 
-
   val urlRouteImport: String = traderServicesBaseUrl + "/pre-clearance/import-questions/route-type"
   val urlRouteExport: String = traderServicesBaseUrl + "/pre-clearance/export-questions/route-type"
-  val headingRoute: String = "Which route is this?"
+  val headingRoute: String = "Which route is this declaration for?"
 
-  val urlTransportImport: String = traderServicesBaseUrl + ""
-  val urlTransportExport: String = traderServicesBaseUrl + ""
-  val headingTransport: String = "How is it being transported?"
+
+  val urlTransportImport: String = traderServicesBaseUrl + "/pre-clearance/import-questions/transport-type"
+  val urlTransportExport: String = traderServicesBaseUrl + "/pre-clearance/export-questions/transport-type"
+  val headingTransport: String = "Which type of transport are you using?"
 }
