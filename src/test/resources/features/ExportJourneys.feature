@@ -13,6 +13,7 @@ Feature: Pre-clearance - Export Journeys
       Then the user is on the YesNo Priority Page and selects Yes
       When the user is on the Priority Options Page and selects <priority>
       Then the user is on the Export Transport Type Page and selects <transport>
+      Then the user is on the contact details page
 
     Examples:
       | epu | entryNo | day | month | year |requestType | route  | priority | transport |
@@ -63,10 +64,23 @@ Feature: Pre-clearance - Export Journeys
 
 
 
-#  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (vessel qs)
-#    Examples:
-#      | epu | entryNo | day | month | year | requestType | route | priority |
-#      | 123 | A23456A | 01  | 09    | 2020 | C1601       | Hold  | None     |
+  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (Mandatory Vessel Qs)
+
+    Given the user is on the landing page for trader services
+    When the user clicks the link to enter the route1 journey
+    Then the user is on the declaration details page
+    When the user enters declaration details "<epu>" and "<entryNo>"
+    And the user enters a date "<day>" "<month>" "<year>"
+    And the user clicks Continue
+    Then the user is on the Export Request Type page and selects <requestType>
+    Then the user is on the Export Route Type Page and selects <route>
+    Then the user is on the YesNo Priority Page and selects No
+    Then the user is on the Export Transport Type Page and selects <transport>
+    Then the user is on the vessel page
+
+    Examples:
+      | epu | entryNo | day | month | year | requestType | route |transport    |
+      | 123 | A23456A | 01  | 09    | 2020 | C1601       | Hold  |RoadRoRoRail |
 
 
 #  Scenario Outline: A user wants to make changes to an Existing EXPORT RouteOne journey

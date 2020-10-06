@@ -17,13 +17,20 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.ContactDetailsPage
 
 
-class ContactDetailsStepDefs extends BasePage with ScalaDsl with EN {
+class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
 
-//check for pre pop
-  // stub user needed for this??
+  Then("""^the user is on the contact details page"""){ () =>
+  confirmUrl(urlContactDetails)
+//    verifyHeading(headingContactDetails)
+  }
 
 }
+
+//check for pre pop
+// stub user needed for this??
+
+
 
