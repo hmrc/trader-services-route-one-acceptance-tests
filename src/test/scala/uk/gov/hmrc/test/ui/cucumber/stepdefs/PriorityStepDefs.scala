@@ -27,8 +27,9 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
     verifyHeading(headingYesNoPriority)
 
     YesNo match {
-      case "Yes" => findElementByCss("#yes_no-yes").click()
-      case "No" => findElementByCss("#yes_no-yes").click()
+      case "Yes" => clickByCSS("#hasPriorityGoods")
+      case "No" => clickByCSS("#hasPriorityGoods-2")
+      case "None" =>
     }
 
     clickContinue()
@@ -40,12 +41,12 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
       verifyHeading(headingPriority)
 
     RequestType match {
-      case "ClassA" => clickByCSS("#goodsPriority")
-      case "Explosives" => clickByCSS("#goodsPriority-2")
-      case "HighValueArt" => clickByCSS("#goodsPriority-3")
-      case "HumanRemains" => clickByCSS("#goodsPriority-4")
-      case "LiveAnimals" => clickByCSS("#goodsPriority-5")
-      case "None" =>
+      case "ClassA" => clickByCSS("#priorityGoods")
+      case "Explosives" => clickByCSS("#priorityGoods-2")
+      case "Art" => clickByCSS("#priorityGoods-3")
+      case "HumanRemains" => clickByCSS("#priorityGoods-4")
+      case "LiveAnimals" => clickByCSS("#priorityGoods-5")
+      case "NoOption" =>
     }
         clickContinue()
   }

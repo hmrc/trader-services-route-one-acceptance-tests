@@ -45,7 +45,7 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     signOut
   }
 
-  Then("""^the user should see "([^"]*)" error message for "([^"]*)" on the page$""") { (errorMessage: String, fieldTitle: String) =>
+  Then("""^the user should see "([^"]*)" error message for "([^"]*)"$""") { (errorMessage: String, fieldTitle: String) =>
 
     driver.findElement(By.cssSelector("#error-summary-title")).isDisplayed
     driver.findElement(By.cssSelector("#error-summary-title")).getText shouldBe "There is a problem"
