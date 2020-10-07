@@ -23,8 +23,13 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, VesselQuestionsPage}
 class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl with EN {
 
 
-  Given("""^the user is on the vessel page$""") { () =>
-    confirmUrl(urlVessel)
+  Given("""^the user is on the (.*) Vessel Page$""") { (Journey: String) =>
+
+    Journey match {
+      case "Import" => confirmUrl(urlImportVessel)
+      case "Export" => confirmUrl(urlExportVessel)
+
+    }
 //    verifyHeading(headingVessel)
   }
 

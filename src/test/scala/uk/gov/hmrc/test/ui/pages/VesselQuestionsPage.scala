@@ -20,7 +20,8 @@ import org.openqa.selenium.WebElement
 
 trait VesselQuestionsPage extends BasePage {
 
-  val urlVessel: String = traderServicesBaseUrl + "/pre-clearance/export-questions/vessel-info"
+  val urlImportVessel: String = traderServicesBaseUrl + importJourneyUrl + "/vessel-info"
+  val urlExportVessel: String = traderServicesBaseUrl + exportJourneyUrl + "/vessel-info"
   val headingVessel = "Tell us about your vessel"
 
   def vesselName: WebElement = findElementByCss("")
