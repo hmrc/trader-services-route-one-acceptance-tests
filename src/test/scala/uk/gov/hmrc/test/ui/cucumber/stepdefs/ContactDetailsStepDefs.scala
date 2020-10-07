@@ -22,9 +22,13 @@ import uk.gov.hmrc.test.ui.pages.ContactDetailsPage
 
 class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
 
-  Then("""^the user is on the contact details page"""){ () =>
-  confirmUrl(urlContactDetails)
-//    verifyHeading(headingContactDetails)
+  Then("""^the user is on the (.*) contact details page"""){ (Journey: String) =>
+
+    Journey match {
+      case "Import" => confirmUrl(urlImportContact)
+      case "Export" => confirmUrl(urlExportContact)
+    }
+//    verifyHeading(headingContactInfo)
   }
 
 }

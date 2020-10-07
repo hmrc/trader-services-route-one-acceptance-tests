@@ -40,6 +40,8 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   val traderServicesBaseUrl: String = host(9379) + "/trader-services"
+  val importJourneyUrl: String = "/pre-clearance/import-questions"
+  val exportJourneyUrl: String = "/pre-clearance/export-questions"
 
   def confirmUrl(url: String): Unit = {
     fluentWait.until(ExpectedConditions.urlContains(url))

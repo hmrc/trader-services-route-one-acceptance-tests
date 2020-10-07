@@ -22,9 +22,14 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, PriorityPages}
 
 class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN {
 
-  Given("""^the user is on the YesNo Priority Page and selects (.*)""") { (YesNo: String) =>
-    confirmUrl(urlYesNoPriority)
-    verifyHeading(headingYesNoPriority)
+  Given("""^the user is on the (.*) YesNo Priority Page and selects (.*)""") { (Journey: String, YesNo: String) =>
+
+    Journey match {
+      case "Import" => confirmUrl (urlImportYNPriority)
+      case "Export" => confirmUrl(urlExportYNPriority)
+    }
+
+    verifyHeading (headingYesNoPriority)
 
     YesNo match {
       case "Yes" => clickByCSS("#hasPriorityGoods")
@@ -36,8 +41,13 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
   }
 
 
-    When("""^the user is on the Priority Options Page and selects (.*)""") { (RequestType: String) =>
-      confirmUrl(urlPriority)
+    When("""^the user is on the (.*) Priority Options Page and selects (.*)""") { (Journey: String, RequestType: String) =>
+
+      Journey match {
+        case "Import" => confirmUrl (urlImportPriority)
+        case "Export" => confirmUrl(urlExportPriority)
+      }
+
       verifyHeading(headingPriority)
 
     RequestType match {

@@ -19,19 +19,19 @@ package uk.gov.hmrc.test.ui.pages
 trait QuestionPages extends BasePage {
 
 
-  val urlImportRequest: String = traderServicesBaseUrl + "/pre-clearance/import-questions/request-type"
+  val urlImportRequest: String = traderServicesBaseUrl + importJourneyUrl + "/request-type"
   val headingImportRequest: String = "What type of import request is this?"
 
-  val urlExportRequest: String = traderServicesBaseUrl + "/pre-clearance/export-questions/request-type"
+  val urlExportRequest: String = traderServicesBaseUrl + exportJourneyUrl + "/request-type"
   val headingExportRequest: String = "What type of export request is this?"
 
 
-  val urlRouteImport: String = traderServicesBaseUrl + "/pre-clearance/import-questions/route-type"
-  val urlRouteExport: String = traderServicesBaseUrl + "/pre-clearance/export-questions/route-type"
+  val urlRouteImport: String = traderServicesBaseUrl + importJourneyUrl + "/route-type"
+  val urlRouteExport: String = traderServicesBaseUrl + exportJourneyUrl + "/route-type"
   val headingRoute: String = "Which route is this declaration for?"
 
 
-  val urlTransportImport: String = traderServicesBaseUrl + "/pre-clearance/import-questions/transport-type"
-  val urlTransportExport: String = traderServicesBaseUrl + "/pre-clearance/export-questions/transport-type"
+  val urlTransportImport: String = traderServicesBaseUrl + importJourneyUrl + "/transport-type"
+  val urlTransportExport: String = traderServicesBaseUrl + exportJourneyUrl + "/transport-type"
   val headingTransport: String = "Which type of transport are you using?"
 }

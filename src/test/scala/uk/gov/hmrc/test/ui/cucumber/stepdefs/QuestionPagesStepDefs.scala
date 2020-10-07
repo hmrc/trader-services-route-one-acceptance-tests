@@ -28,9 +28,9 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     verifyHeading(headingImportRequest)
 
     RequestType match {
-      case "New" => findElementById("requestType").click()
-      case "Cancel" => findElementById("requestType-2").click()
-      case "Hold" => findElementById("requestType-3").click()
+      case "New" => clickByCSS("#requestType")
+      case "Cancel" => clickByCSS("#requestType-2")
+      case "Hold" => clickByCSS("#requestType-3")
       case "NoOption" =>
     }
     clickContinue()
