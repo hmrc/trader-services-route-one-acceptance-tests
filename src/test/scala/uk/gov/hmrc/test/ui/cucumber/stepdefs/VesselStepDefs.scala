@@ -28,6 +28,7 @@ class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl wit
     Journey match {
       case "Import" => confirmUrl(urlImportVessel)
       case "Export" => confirmUrl(urlExportVessel)
+      case "Mandatory" => confirmUrl(urlMandatoryVessel)
 
     }
 //    verifyHeading(headingVessel)

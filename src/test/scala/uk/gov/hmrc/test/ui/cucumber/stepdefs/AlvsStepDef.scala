@@ -14,10 +14,25 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-trait ALVSPage extends BasePage {
+import io.cucumber.scala.{EN, ScalaDsl}
+import uk.gov.hmrc.test.ui.pages.{ALVSPage, BasePage, VesselQuestionsPage}
 
-  val urlALVS: String = traderServicesBaseUrl + importJourneyUrl + "/automatic-licence-verification"
-  val headingALVS = "Do you use an Automatic Licence Verification System (ALVS)?"
+
+class AlvsStepDef extends ALVSPage with BasePage with ScalaDsl with EN {
+
+
+  Given("""^the user is on the ALVS Page and selects (.*)$""") { (YesNo: String) =>
+    confirmUrl(urlALVS)
+    verifyHeading(headingALVS)
+
+    YesNo match {
+      case "Yes" => clickByCSS("#hasALVS")
+      case "No" => clickByCSS("#hasALVS-2")
+      case "NoOption" =>
+    }
+
+    clickContinue()
+  }
 }
