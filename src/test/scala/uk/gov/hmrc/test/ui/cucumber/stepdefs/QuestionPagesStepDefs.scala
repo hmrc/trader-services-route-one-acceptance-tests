@@ -91,8 +91,8 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     verifyHeading(headingTransport)
 
     RequestType match {
-      case "Maritime" => clickByCSS("#freightType")
-      case "Air" => clickByCSS("#freightType-2")
+      case "Air" => clickByCSS("#freightType")
+      case "Maritime" => clickByCSS("#freightType-2")
       case "RoadRoRoRail" => clickByCSS("#freightType-3")
       case "NoOption" =>
 
