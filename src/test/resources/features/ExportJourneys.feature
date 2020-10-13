@@ -13,9 +13,10 @@ Feature: Pre-clearance - Export Journeys
       Then the user is on the Export YesNo Priority Page and selects Yes
       When the user is on the Export Priority Options Page and selects <priority>
       Then the user is on the Export Transport Type Page and selects <transport>
-#      Then the user is on the Optional Vessel Page
-#      And the user clicks Continue
-#      Then the user is on the Export contact details page
+      Then the user is on the Export contact details page
+      Then the user is on the Export Vessel Page
+      Then the user clicks Continue
+
 
     Examples:
       | epu | entryNo | day | month | year |requestType | route  | priority | transport |
@@ -50,10 +51,13 @@ Feature: Pre-clearance - Export Journeys
     Then the user is on the Export Route Type Page and selects <route>
     Then the user is on the Export YesNo Priority Page and selects No
     Then the user is on the Export Transport Type Page and selects <transport>
-#    Then the user is on the Mandatory Vessel Page
-#    Then the user ENTERS DETAILS
-#    And the user clicks Continue
-#    Then the user is on the Export contact details page
+
+    Then the user is on the Export-Mandatory Vessel Page
+    Then the user enters Test Vessel for vessel name
+    Then the user enters a date for the vessel "01" "11" "2021"
+    Then the user enters a time for the vessel "10" "10"
+    Then the user clicks Continue
+
 
     Examples:
       | epu | entryNo | day | month | year | requestType | route  | transport    |

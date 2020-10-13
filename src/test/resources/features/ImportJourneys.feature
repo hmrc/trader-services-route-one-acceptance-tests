@@ -14,6 +14,12 @@ Feature: Pre-clearance - Import Journeys
     When the user is on the Import Priority Options Page and selects <priority>
     Then the user is on the ALVS Page and selects Yes
     Then the user is on the Import Transport Type Page and selects <transport>
+    Then the user is on the Import Vessel Page
+    Then the user enters Test Vessel for vessel name
+    Then the user enters a date for the vessel "01" "11" "2021"
+    Then the user enters a time for the vessel "10" "10"
+    Then the user clicks Continue
+#    Then the user is on the Import contact details page
 
 
     Examples:
@@ -31,6 +37,11 @@ Feature: Pre-clearance - Import Journeys
     And the user clicks Continue
     When the user is on the Import Request Type page and selects <requestType>
     Then the user is on the Import YesNo Priority Page and selects No
+    Then the user is on the Import Transport Type Page and selects Maritime
+    Then the user is on the ALVS Page and selects Yes
+    Then the user is on the Import Vessel Page
+    Then the user clicks Continue
+#    Then the user is on the Import contact details page
 
     Examples:
       | epu | entryNo | day | month | year |requestType | transport |

@@ -33,8 +33,5 @@ class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
 
 }
 
-//check for pre pop
-// stub user needed for this??
-
 
 
