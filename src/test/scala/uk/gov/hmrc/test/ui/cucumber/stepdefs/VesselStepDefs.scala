@@ -50,6 +50,14 @@ class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl wit
       writeById("timeOfArrival.hour", vesselHrs)
       writeById("timeOfArrival.minutes", vesselMins)
   }
+
+  Then("""^the user enters selects period (.*) for the vessel$""") {(period: String) =>
+      period match {
+        case "AM" => clickByCSS("#timeOfArrival.period-am")
+        case "PM" => clickByCSS("#timeOfArrival.period-pm")
+      }
+  }
+
 }
 
 
