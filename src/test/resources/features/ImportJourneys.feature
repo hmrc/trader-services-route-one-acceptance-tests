@@ -14,6 +14,9 @@ Feature: Pre-clearance - Import Journeys
     When the user is on the Import Priority Options Page and selects <priority>
     Then the user is on the ALVS Page and selects Yes
     Then the user is on the Import Transport Type Page and selects <transport>
+    Then the user is on the Import Vessel Page
+    Then the user clicks Continue
+#    Then the user is on the Import contact details page
 
 
     Examples:
@@ -21,8 +24,7 @@ Feature: Pre-clearance - Import Journeys
       | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air       |
 
 
-
-  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (Selects HOLD - no route Qs)
+  Scenario Outline: A user wants to complete a HOLD EXPORT RouteOne journey (Skips route, mandatory Vessel Qs)
     Given the user is on the landing page for trader services
     When the user clicks the link to enter the route1 journey
     Then the user is on the declaration details page
@@ -31,14 +33,43 @@ Feature: Pre-clearance - Import Journeys
     And the user clicks Continue
     When the user is on the Import Request Type page and selects <requestType>
     Then the user is on the Import YesNo Priority Page and selects No
+    Then the user is on the ALVS Page and selects No
+    Then the user is on the Import Transport Type Page and selects <transport>
+#    Then the user is on the Mandatory-Import Vessel Page
+#    Then the user enters Test Vessel for vessel name
+#    Then the user enters a date for the vessel "01" "11" "2021"
+#    Then the user enters a time for the vessel "10" "10"
+#    Then the user is on the Import contact details page
 
     Examples:
       | epu | entryNo | day | month | year |requestType | transport |
       | 123 | 123456A | 01  | 10    | 2020 |Hold        | Maritime  |
 
 
-#  Scenario Outline: A user wants to amend an existing RouteOne journey (Import)
-#  Scenario Outline: A user wants to cancel an Existing RouteOne journey (Import)
+  Scenario Outline: A user wants to complete a New IMPORT RouteOne journey
+    Given the user is on the landing page for trader services
+    When the user clicks the link to enter the route1 journey
+    Then the user is on the declaration details page
+    When the user enters declaration details "<epu>" and "<entryNo>"
+    And the user enters a date "<day>" "<month>" "<year>"
+    And the user clicks Continue
+    Then the user is on the Import Request Type page and selects <requestType>
+    Then the user is on the Import Route Type Page and selects <route>
+    Then the user is on the Import YesNo Priority Page and selects Yes
+    When the user is on the Import Priority Options Page and selects <priority>
+    Then the user is on the ALVS Page and selects Yes
+    Then the user is on the Import Transport Type Page and selects <transport>
+    Then the user is on the Import Vessel Page
+    Then the user clicks Continue
+#    Then the user is on the Import contact details page
+
+
+    Examples:
+      | epu | entryNo | day | month | year |requestType | route  | priority     | transport |
+      | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air       |
+
+
+
 
 
   Scenario Outline: Error validation - no options selected

@@ -28,28 +28,36 @@ class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl wit
     Journey match {
       case "Import" => confirmUrl(urlImportVessel)
       case "Export" => confirmUrl(urlExportVessel)
-      case "Mandatory" => confirmUrl(urlMandatoryVessel)
-      //mandatory option only appears if C1601 selected for route (export option only)
+      case "Export-Mandatory" => confirmUrl(urlMandatoryVessel)
+
     }
-//    verifyHeading(headingVessel)
+    verifyHeading(headingVessel)
   }
 
-  Then("""^the user enters a vessel name$""") { () =>
-    vesselName.sendKeys("")
+  Then("""^the user enters (.*) for vessel name$""") { (vesselName:String) =>
+    writeById("vesselName", vesselName)
   }
 
   Then("""^the user enters a date for the vessel "(.*)" "(.*)" "(.*)"$""") {
     (vesselDay: String, vesselMonth: String, vesselYear: String) =>
-      writeById("", vesselDay)
-      writeById("", vesselMonth)
-      writeById("", vesselYear)
+      writeById("dateOfArrival.day", vesselDay)
+      writeById("dateOfArrival.month", vesselMonth)
+      writeById("dateOfArrival.year", vesselYear)
   }
 
   Then("""^the user enters a time for the vessel "(.*)" "(.*)"$""") {
     (vesselHrs: String, vesselMins: String) =>
-      writeById("", vesselHrs)
-      writeById("", vesselMins)
+      writeById("timeOfArrival.hour", vesselHrs)
+      writeById("timeOfArrival.minutes", vesselMins)
   }
+
+  Then("""^the user enters selects period (.*) for the vessel$""") {(period: String) =>
+      period match {
+        case "AM" => clickByCSS("#timeOfArrival.period-am")
+        case "PM" => clickByCSS("#timeOfArrival.period-pm")
+      }
+  }
+
 }
 
 
