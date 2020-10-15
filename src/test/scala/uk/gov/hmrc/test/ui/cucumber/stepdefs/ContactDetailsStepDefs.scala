@@ -28,10 +28,22 @@ class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
       case "Import" => confirmUrl(urlImportContact)
       case "Export" => confirmUrl(urlExportContact)
     }
-//    verifyHeading(headingContactInfo)
+    verifyHeading(headingContactInfo)
   }
 
-}
+  Then("""^the user enters a name "(.*)"$""") {
+    (name: String) =>
+      writeById("emailAddress", name)
+  }
 
+  Then("""^the user enters an email address "(.*)"$""") {
+    (email: String) =>
+      writeById("emailAddress", email)
+  }
 
+  Then("""^the user enters a phone number "(.*)"$""") {
+    (phone: String) =>
+      writeById("phoneNumber", phone)
+  }
+  }
 

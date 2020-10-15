@@ -15,13 +15,12 @@ Feature: Pre-clearance - Import Journeys
     Then the user is on the ALVS Page and selects Yes
     Then the user is on the Import Transport Type Page and selects <transport>
     Then the user is on the Import Vessel Page
-    Then the user clicks Continue
+#    Then the user clicks Continue
 #    Then the user is on the Import contact details page
 
-
     Examples:
-      | epu | entryNo | day | month | year |requestType | route  | priority     | transport |
-      | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air       |
+      | epu | entryNo | day | month | year |requestType | route  | priority     | transport | name      | email      |
+      | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air       | Abc Testb | a@test.com |
 
 
   Scenario Outline: A user wants to complete a HOLD EXPORT RouteOne journey (Skips route, mandatory Vessel Qs)
@@ -60,17 +59,12 @@ Feature: Pre-clearance - Import Journeys
     Then the user is on the ALVS Page and selects Yes
     Then the user is on the Import Transport Type Page and selects <transport>
     Then the user is on the Import Vessel Page
-    Then the user clicks Continue
+#    Then the user clicks Continue
 #    Then the user is on the Import contact details page
-
 
     Examples:
       | epu | entryNo | day | month | year |requestType | route  | priority     | transport |
-      | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air       |
-
-
-
-
+      | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air
 
   Scenario Outline: Error validation - no options selected
     Given the user navigates to the declaration details page

@@ -16,15 +16,11 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.WebElement
-
 trait ContactDetailsPage extends BasePage {
 
   val urlImportContact: String = traderServicesBaseUrl + importJourneyUrl + "/contact-info"
   val urlExportContact: String = traderServicesBaseUrl + exportJourneyUrl + "/contact-info"
-  val headingContactInfo = "Who can we contact if we need more information?"
+  val headingContactInfo = "What are your contact details?"
 
-  def phoneNumber:WebElement = findElementByCss("")
-  def emailAddress: WebElement = findElementByCss("")
 }
 
