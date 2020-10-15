@@ -1,17 +1,5 @@
 @TraderService @ZAP
-Feature: Pre-clearance - Declaration details validation
-
-#  Scenario: Optional Vessel Page (Import)
-#    Then the user navigates to the declaration details page
-#    When the user enters declaration details "123" and "012345B"
-#    And the user enters a date "10" "10" "2020"
-#    And the user clicks Continue
-#    Then the user is on the Import Request Type page and selects Hold
-#    Then the user is on the Import YesNo Priority Page and selects No
-#    Then the user is on the ALVS Page and selects Yes
-#    Then the user is on the Import Transport Type Page and selects Air
-#    Then the user is on the Import Vessel Page
-
+Feature: Vessel page validation
 
 #    All blank fields
   Scenario: Mandatory (Export) Vessel Page
@@ -89,24 +77,24 @@ Feature: Pre-clearance - Declaration details validation
     Then the user should see "Error:Enter the vessel name" error message for "vesselName"
     Then the user should see "Error:Day of arrival must only contain numbers" error message for "dateOfArrival"
     Then the user should see "Error:Time of arrival must only contain numbers" error message for "timeOfArrival"
-
+#Hour of
     Then the user enters 1234567 for vessel name
     Then the user enters a date for the vessel "01" "ab" "2020"
-    Then the user enters a time for the vessel "ab" "01"
+    Then the user enters a time for the vessel "10" "!1"
     And the user clicks Continue
     Then the user should see "Error:Month of arrival must only contain numbers" error message for "dateOfArrival"
     Then the user should see "Error:Time of arrival must only contain numbers" error message for "timeOfArrival"
-
+#Minutes of arrival
     Then the user enters a date for the vessel "01" "01" "abcd"
-    Then the user enters a time for the vessel "!1" "01"
+    Then the user enters a time for the vessel "01" "10"
     And the user clicks Continue
     Then the user should see "Error:Year of arrival must only contain numbers" error message for "dateOfArrival"
-    Then the user should see "Error:Time of arrival must only contain numbers" error message for "timeOfArrival"
+    Then the user should see "Error:Time of arrival must include period" error message for "timeOfArrival"
 
 #  Invalid date/time (too far in past or future)
     Then the user enters a date for the vessel "01" "01" "2022"
     Then the user enters a time for the vessel "01" "01"
-    And the user clicks Continue
+#    And the user clicks Continue
 #    Then the user should see "Error:Date of arrival must be today or in the next 6 months" error message for ""
 
 #    Then the user enters a date for the vessel "01" "01" "2022"
@@ -118,5 +106,6 @@ Feature: Pre-clearance - Declaration details validation
 #  At present no field error, time and date need to be analysed together, what is solution?
 # Will need to implement logic for 6months in past to be acceptable
 
+#invalid date
 
 #Test for presence of more than one....

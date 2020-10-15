@@ -16,7 +16,9 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import io.cucumber.datatable.DataTable
 import io.cucumber.scala.{EN, ScalaDsl}
+import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage}
 
 
@@ -43,8 +45,8 @@ class DeclarationNumStepDefs extends DeclarationNumPage with BasePage with Scala
       writeById("entryDate.month", dateMonth)
       writeById("entryDate.year", dateYear)
   }
-}
 
+//
 //  When("""^the user enters the following details on the declaration page$""") { dataTable: DataTable =>
 //
 //    for (data: java.util.Map[String, String] <- dataTable.asMaps(classOf[String], classOf[String])) {
@@ -59,4 +61,4 @@ class DeclarationNumStepDefs extends DeclarationNumPage with BasePage with Scala
 //      driver.findElement(By.id(field)).sendKeys(value)
 //    }
 //  }
-
+}
