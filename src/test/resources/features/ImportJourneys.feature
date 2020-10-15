@@ -64,7 +64,7 @@ Feature: Pre-clearance - Import Journeys
 
     Examples:
       | epu | entryNo | day | month | year |requestType | route  | priority     | transport |
-      | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air
+      | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air       |
 
   Scenario Outline: Error validation - no options selected
     Given the user navigates to the declaration details page
