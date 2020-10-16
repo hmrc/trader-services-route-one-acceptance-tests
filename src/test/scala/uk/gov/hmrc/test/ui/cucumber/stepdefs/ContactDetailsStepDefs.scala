@@ -22,14 +22,23 @@ import uk.gov.hmrc.test.ui.pages.ContactDetailsPage
 
 class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
 
-  Then("""^the user is on the (.*) contact details page"""){ (Journey: String) =>
 
+  When ("""^the user navigates to the (.*) contact details page""") { (Journey:String) =>
+    Journey match {
+      case "Import" => navigateTo(urlImportContact)
+      case "Export" => navigateTo(urlExportContact)
+    }
+  }
+
+
+  Then("""^the user is on the (.*) Contact Details Page$""") { (Journey: String) =>
     Journey match {
       case "Import" => confirmUrl(urlImportContact)
       case "Export" => confirmUrl(urlExportContact)
     }
     verifyHeading(headingContactInfo)
   }
+
 
   Then("""^the user enters a name "(.*)"$""") {
     (name: String) =>
@@ -38,12 +47,12 @@ class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
 
   Then("""^the user enters an email address "(.*)"$""") {
     (email: String) =>
-      writeById("emailAddress", email)
+      writeById("contactEmail", email)
   }
 
   Then("""^the user enters a phone number "(.*)"$""") {
     (phone: String) =>
-      writeById("phoneNumber", phone)
+      writeById("contactNumber", phone)
   }
   }
 

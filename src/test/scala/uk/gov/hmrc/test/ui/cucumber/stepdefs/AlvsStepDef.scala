@@ -23,7 +23,16 @@ import uk.gov.hmrc.test.ui.pages.{ALVSPage, BasePage, VesselQuestionsPage}
 class AlvsStepDef extends ALVSPage with BasePage with ScalaDsl with EN {
 
 
-  Given("""^the user is on the ALVS Page and selects (.*)$""") { (YesNo: String) =>
+  When ("""^the user navigates to the ALVS page""") { () =>
+    navigateTo(urlALVS)
+  }
+
+  Then("""^the user is on the ALVS Page$""") { () =>
+    confirmUrl(urlALVS)
+    verifyHeading(headingALVS)
+  }
+
+  When("""^the user is on the ALVS Page and selects (.*)$""") { (YesNo: String) =>
     confirmUrl(urlALVS)
     verifyHeading(headingALVS)
 

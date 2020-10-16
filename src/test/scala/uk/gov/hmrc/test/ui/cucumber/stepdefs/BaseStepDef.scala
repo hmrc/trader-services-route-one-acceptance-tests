@@ -40,10 +40,15 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     clickSubmit()
   }
 
+  And("""^the user clicks back""") { () =>
+    clickBack()
+  }
+
 
   And("""^the user signs out""") { () =>
     signOut
   }
+
 
   Then("""^the user should see "([^"]*)" error message for "([^"]*)"$""") { (errorMessage: String, fieldTitle: String) =>
 

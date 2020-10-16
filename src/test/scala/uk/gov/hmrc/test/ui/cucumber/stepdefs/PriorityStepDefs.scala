@@ -22,7 +22,24 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, PriorityPages}
 
 class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN {
 
-  Given("""^the user is on the (.*) YesNo Priority Page and selects (.*)""") { (Journey: String, YesNo: String) =>
+  //Has-priority-goods (Y/N)
+
+  When ("""^the user navigates to the (.*) YN priority type page""") {(Journey:String) =>
+    Journey match {
+      case "Import" => navigateTo(urlImportYNPriority)
+      case "Export" => navigateTo(urlExportYNPriority)
+    }
+  }
+
+  Then("""^the user is on the (.*) YN Priority Page""") { (Journey: String) =>
+    Journey match {
+      case "Import" => confirmUrl(urlImportYNPriority)
+      case "Export" => confirmUrl(urlExportYNPriority)
+    }
+    verifyHeading(headingYesNoPriority)
+  }
+
+  When("""^the user is on the (.*) YesNo Priority Page and selects (.*)""") { (Journey: String, YesNo: String) =>
 
     Journey match {
       case "Import" => confirmUrl (urlImportYNPriority)
@@ -36,12 +53,28 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
       case "No" => clickByCSS("#hasPriorityGoods-2")
       case "None" =>
     }
-
     clickContinue()
   }
 
 
-    When("""^the user is on the (.*) Priority Options Page and selects (.*)""") { (Journey: String, RequestType: String) =>
+  //Which-priority-goods
+
+  When ("""^the user navigates to the (.*) priority goods page""") {(Journey:String) =>
+    Journey match {
+      case "Import" => navigateTo(urlImportPriority)
+      case "Export" => navigateTo(urlExportPriority)
+    }
+  }
+
+  Then("""^the user is on the (.*) Priority Goods Page""") { (Journey: String) =>
+    Journey match {
+      case "Import" => confirmUrl(urlImportPriority)
+      case "Export" => confirmUrl(urlExportPriority)
+    }
+    verifyHeading(headingPriority)
+  }
+
+  When("""^the user is on the (.*) Priority Options Page and selects (.*)""") { (Journey: String, RequestType: String) =>
 
       Journey match {
         case "Import" => confirmUrl (urlImportPriority)
