@@ -19,8 +19,10 @@ package uk.gov.hmrc.test.ui.pages
 trait VesselQuestionsPage extends BasePage {
 
   val urlImportVessel: String = traderServicesBaseUrl + importJourneyUrl + "/vessel-info"
+  val urlImpMandatoryVessel: String = traderServicesBaseUrl + importJourneyUrl + "/vessel-info-required"
+
   val urlExportVessel: String = traderServicesBaseUrl + exportJourneyUrl + "/vessel-info"
-  val urlMandatoryVessel: String = traderServicesBaseUrl + exportJourneyUrl + "/vessel-info-required"
+  val urlExpMandatoryVessel: String = traderServicesBaseUrl + exportJourneyUrl + "/vessel-info-required"
 
   val headingVessel = "Tell us about your vessel"
 

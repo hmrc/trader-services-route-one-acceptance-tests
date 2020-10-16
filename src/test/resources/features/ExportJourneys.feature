@@ -83,13 +83,14 @@ Feature: Pre-clearance - Export Journeys
     Then the user is on the Export Route Type Page and selects <route>
     Then the user is on the Export YesNo Priority Page and selects No
     Then the user is on the Export Transport Type Page and selects <transport>
-
     Then the user is on the Export-Mandatory Vessel Page
     Then the user enters Test Vessel for vessel name
     Then the user enters a date for the vessel "01" "11" "2021"
     Then the user enters a time for the vessel "10" "10"
     Then the user clicks Continue
 #    Then the user is on the Export contact details page
+
+#    NAVIGATES TO
 
 
     Examples:
@@ -98,7 +99,8 @@ Feature: Pre-clearance - Export Journeys
 #Update to C1602 once logic in place
 
 
-  Scenario Outline: Error validation - no options selected
+  Scenario Outline: Error validation - no options selected (Question pages only)
+#    Question pages include pages with radio options, more detailed validation done on own feature files
     Given the user navigates to the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters a date "<day>" "<month>" "<year>"
@@ -119,5 +121,5 @@ Feature: Pre-clearance - Export Journeys
     Then the user should see "Error:Select the type of transport you're using" error message for "freightType"
 
     Examples:
-      | epu | entryNo | day | month | year |requestType | route     | priority | transport    |
-      | 123 | A23456A | 01  | 09    | 2020 |Cancel      | Route1CAP | Art      | RoadRoRoRail |
+      | epu | entryNo | day | month | year |requestType | route     | priority |
+      | 123 | A23456A | 01  | 09    | 2020 |Cancel      | Route1CAP | Art      |

@@ -23,16 +23,27 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, VesselQuestionsPage}
 class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl with EN {
 
 
-  Given("""^the user is on the (.*) Vessel Page$""") { (Journey: String) =>
+  When ("""^the user navigates to the (.*) vessel page""") {(Journey:String) =>
+    Journey match {
+      case "Import" => navigateTo(urlImportVessel)
+      case "Import-Mandatory" => navigateTo(urlImpMandatoryVessel)
+      case "Export" => navigateTo(urlExportVessel)
+      case "Export-Mandatory" => navigateTo(urlExpMandatoryVessel)
+    }
+  }
+
+  Then("""^the user is on the (.*) Vessel Page$""") { (Journey: String) =>
 
     Journey match {
       case "Import" => confirmUrl(urlImportVessel)
+      case "Import-Mandatory" => confirmUrl(urlImpMandatoryVessel)
       case "Export" => confirmUrl(urlExportVessel)
-      case "Export-Mandatory" => confirmUrl(urlMandatoryVessel)
+      case "Export-Mandatory" => confirmUrl(urlExpMandatoryVessel)
 
     }
     verifyHeading(headingVessel)
   }
+
 
   Then("""^the user enters (.*) for vessel name$""") { (vesselName:String) =>
     writeById("vesselName", vesselName)
@@ -57,7 +68,6 @@ class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl wit
         case "PM" => clickByCSS("#timeOfArrival.period-pm")
       }
   }
-
 }
 
 

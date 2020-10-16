@@ -74,6 +74,8 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def clickSubmit(): Unit = findElementByCss("input[type=Submit]").click()
 
+  def clickBack(): Unit = findElementById("back-link").click()
+
   def clickById(id: String): Unit = findElementById(id).click()
 
   def clickByCSS(css: String): Unit = driver.findElement(By.cssSelector(css)).click()

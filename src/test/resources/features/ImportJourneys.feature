@@ -15,12 +15,14 @@ Feature: Pre-clearance - Import Journeys
     Then the user is on the ALVS Page and selects Yes
     Then the user is on the Import Transport Type Page and selects <transport>
     Then the user is on the Import Vessel Page
-#    Then the user clicks Continue
-#    Then the user is on the Import contact details page
+    Then the user clicks Continue
+    Then the user is on the Import Contact Details Page
+#    When the user enters a name "<name>"
+    And the user enters an email address "<email>"
 
     Examples:
-      | epu | entryNo | day | month | year |requestType | route  | priority     | transport | name      | email      |
-      | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air       | Abc Testb | a@test.com |
+      | epu | entryNo | day | month | year |requestType | route  | priority     | transport | name      | email          |
+      | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air       | Abc Testb | valid@test.com |
 
 
   Scenario Outline: A user wants to complete a HOLD EXPORT RouteOne journey (Skips route, mandatory Vessel Qs)
@@ -59,14 +61,14 @@ Feature: Pre-clearance - Import Journeys
     Then the user is on the ALVS Page and selects Yes
     Then the user is on the Import Transport Type Page and selects <transport>
     Then the user is on the Import Vessel Page
-#    Then the user clicks Continue
-#    Then the user is on the Import contact details page
+    Then the user clicks Continue
+    Then the user is on the Import Contact Details Page
 
     Examples:
       | epu | entryNo | day | month | year |requestType | route  | priority     | transport |
       | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air       |
 
-  Scenario Outline: Error validation - no options selected
+  Scenario Outline: Error validation - no options selected (Question pages only)
     Given the user navigates to the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters a date "<day>" "<month>" "<year>"
@@ -90,5 +92,5 @@ Feature: Pre-clearance - Import Journeys
     Then the user should see "Error:Select the type of transport you're using" error message for "freightType"
 
     Examples:
-      | epu | entryNo | day | month | year |requestType | route     | priority | transport    |
-      | 123 | 123456A | 01  | 09    | 2020 |Cancel      | Route1CAP | Art      | RoadRoRoRail |
+      | epu | entryNo | day | month | year |requestType | route     | priority |
+      | 123 | 123456A | 01  | 09    | 2020 |Cancel      | Route1CAP | Art      |

@@ -3,6 +3,8 @@ Feature: Pre-clearance - Declaration details validation
 
   Scenario: Error validation on declaration page (all blank fields)
     Given the user navigates to the declaration details page
+    Then the user enters declaration details "" and ""
+    And the user enters a date "" "" ""
     When the user clicks Continue
     Then the user should see "Error:Enter an EPU number" error message for "epu"
     And the user should see "Error:Enter an entry number" error message for "entryNumber"
@@ -19,6 +21,7 @@ Feature: Pre-clearance - Declaration details validation
     When the user enters declaration details "abc" and "123456A"
     And the user clicks Continue
     Then the user should see "Error:EPU number must only contain numbers 0 to 9" error message for "epu"
+#    EPU number must only contain numbers
 
     When the user enters declaration details "701" and "123456A"
     And the user clicks Continue
@@ -85,15 +88,20 @@ Feature: Pre-clearance - Declaration details validation
     When the user enters a date "01" "09" "2021"
     And the user clicks Continue
     Then the user should see "Error:Entry date must be today or in the past" error message for "entryDate"
-#
-#    When the user enters a date "dd" "09" "2020"
-#    And the user clicks Continue
-#    Then the user should see "Error:Entry date must only contain numbers" error message for "entryDate"
-#
-#    When the user enters a date "01" "mm" "2020"
-#    And the user clicks Continue
-#    Then the user should see "Error:Entry date must only contain numbers" error message for "entryDate"
-#
-#    When the user enters a date "01" "10" "yyyy"
-#    And the user clicks Continue
-#    Then the user should see "Error:Entry date must only contain numbers" error message for "entryDate"
+
+    When the user enters a date "dd" "09" "2020"
+    And the user clicks Continue
+    Then the user should see "Error:Entry date must only contain numbers 0 to 9" error message for "entryDate"
+
+    When the user enters a date "01" "mm" "2020"
+    And the user clicks Continue
+    Then the user should see "Error:Entry date must only contain numbers 0 to 9" error message for "entryDate"
+
+    When the user enters a date "01" "10" "yyyy"
+    And the user clicks Continue
+    Then the user should see "Error:Entry date must only contain numbers 0 to 9" error message for "entryDate"
+
+#    Content change for 3x messages (DOR-77):
+#  Entry day must only contain numbers
+#  Entry month must only contain numbers
+#  Entry year must only contain numbers
