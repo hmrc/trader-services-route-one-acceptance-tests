@@ -1,5 +1,5 @@
 @TraderService
-Feature: Check Change Links & Back Links
+Feature: Check Back Links & Change Links
 
   Scenario Outline: A user wants to change an answer - Import
     Given the user is on the landing page for trader services
@@ -42,7 +42,7 @@ Feature: Check Change Links & Back Links
       | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air       | Abc Testb | a@test.com |
 
 
-  Scenario Outline: A user wants to change an answer - Import
+  Scenario Outline: A user wants to change an answer - Export
     Given the user is on the landing page for trader services
     When the user clicks the link to enter the route1 journey
     Then the user is on the declaration details page
@@ -56,20 +56,33 @@ Feature: Check Change Links & Back Links
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export Vessel Page
 #    Then the user clicks Continue
-#    Then the user is on the Import contact details page
+#    Then the user is on the Export contact details page
 
     When the user clicks back
     Then the user is on the Export Transport Page
+    And the last selected option for vessel should be pre filled with <transport>
+
     When the user clicks back
     Then the user is on the Export Priority Goods Page
+    And the last selected option for priority goods should be pre filled with <priority>
+
     When the user clicks back
     Then the user is on the Export YN Priority Page
+    And the last selected option for YN Priority should be pre filled with Yes
+
     When the user clicks back
     Then the user is on the Export Route Type Page
+    And the last selected option for Route should be pre filled with <route>
+
     When the user clicks back
     Then the user is on the Export Request Type Page
+    And the last selected option for Export Request should be pre filled with <requestType>
+
     When the user clicks back
     Then the user is on the declaration details page
+    And the details entered for EPU & EntryNo should be pre filled with <epu> & <entryNo>
+    And the details entered for Declaration Date should be pre filled with <day>, <month> & <year>
+
     When the user clicks back
     Then the user is on the landing page for trader services
 

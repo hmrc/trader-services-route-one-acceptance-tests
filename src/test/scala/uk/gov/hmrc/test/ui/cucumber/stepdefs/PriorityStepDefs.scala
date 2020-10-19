@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
+import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.{BasePage, PriorityPages}
 
 
@@ -56,6 +57,14 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
     clickContinue()
   }
 
+  Then("""^the last selected option for YN Priority should be pre filled with (.*)$""") { (YNpriority:String) =>
+
+    YNpriority match {
+      case "Yes" => optionSelected("#hasPriorityGoods")
+      case "No" => optionSelected("#hasPriorityGoods-2")
+    }
+  }
+
 
   //Which-priority-goods
 
@@ -92,6 +101,17 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
       case "NoOption" =>
     }
         clickContinue()
+  }
+
+  Then("""^the last selected option for priority goods should be pre filled with (.*)$""") { (priority:String) =>
+
+    priority match {
+      case "ClassA" => optionSelected("#priorityGoods-2")
+      case "Explosives" => optionSelected("#priorityGoods-2")
+      case "Art" => optionSelected("#priorityGoods-3")
+      case "HumanRemains" => optionSelected("#priorityGoods-4")
+      case "LiveAnimals" => optionSelected("#priorityGoods-5")
+    }
   }
 }
 

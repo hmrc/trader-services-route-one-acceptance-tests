@@ -101,7 +101,8 @@ Feature: Pre-clearance - Export Journeys
 
   Scenario Outline: Error validation - no options selected (Question pages only)
 #    Question pages include pages with radio options, more detailed validation done on own feature files
-    Given the user navigates to the declaration details page
+    Given the user is on the landing page for trader services
+    Then the user clicks the link to enter the route1 journey
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters a date "<day>" "<month>" "<year>"
     And the user clicks Continue

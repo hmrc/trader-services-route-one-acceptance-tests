@@ -16,9 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import io.cucumber.datatable.DataTable
 import io.cucumber.scala.{EN, ScalaDsl}
-import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage}
 
 
@@ -44,6 +42,20 @@ class DeclarationNumStepDefs extends DeclarationNumPage with BasePage with Scala
       writeById("entryDate.day", dateDay)
       writeById("entryDate.month", dateMonth)
       writeById("entryDate.year", dateYear)
+  }
+
+
+  Then("""^the details entered for EPU & EntryNo should be pre filled with (.*) & (.*)$""") {
+    (epu:String, entryNo:String) =>
+      verifyInput("epu", epu)
+      verifyInput("entryNumber", entryNo)
+  }
+
+  Then("""^the details entered for Declaration Date should be pre filled with (.*), (.*) & (.*)$""") {
+    (dateDay:String, dateMonth:String, dateYear:String) =>
+      verifyInput("entryDate.day", dateDay)
+      verifyInput("entryDate.month", dateMonth)
+      verifyInput("entryDate.year", dateYear)
   }
 
 //
