@@ -26,6 +26,7 @@ Feature: Pre-clearance - Declaration details validation
     When the user enters declaration details "701" and "123456A"
     And the user clicks Continue
     Then the user should see "Error:EPU number must be 700 or less" error message for "epu"
+#    Will this change in the future? 669
 
 
   Scenario: Error validation on declaration page - Entry number
@@ -69,17 +70,32 @@ Feature: Pre-clearance - Declaration details validation
     Given the user navigates to the declaration details page
 
     When the user enters declaration details "123" and "123456A"
-    Then the user enters a date "31" "09" "2020"
+    Then the user enters a date "32" "09" "2020"
     And the user clicks Continue
     Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
+    #Day must be a number between 1 and 31
 
     When the user enters a date "01" "13" "2020"
     And the user clicks Continue
     Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
+    #Month must be a number between 1 and 12
 
-    When the user enters a date "01" "13" "20202"
+    When the user enters a date "01" "13" "202"
     And the user clicks Continue
     Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
+    #Entry year must be a number between 2020 and 2050
+
+    When the user enters declaration details "123" and "123456A"
+    Then the user enters a date "31" "09" "2020"
+    And the user clicks Continue
+    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
+    #Updates to come for the above three error messages (to be more specific)
+
+    When the user enters declaration details "123" and "123456A"
+    Then the user enters a date "32" "13" "2020"
+    And the user clicks Continue
+    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
+#    Do we want one error message in these instances or 2x??
 
     When the user enters a date "01" "09" "2019"
     And the user clicks Continue
@@ -101,7 +117,7 @@ Feature: Pre-clearance - Declaration details validation
     And the user clicks Continue
     Then the user should see "Error:Entry date must only contain numbers 0 to 9" error message for "entryDate"
 
-#    Content change for 3x messages (DOR-77):
+#   Content change for 3x messages (DOR-77):
 #  Entry day must only contain numbers
 #  Entry month must only contain numbers
 #  Entry year must only contain numbers
