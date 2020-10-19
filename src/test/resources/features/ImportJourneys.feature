@@ -68,6 +68,8 @@ Feature: Pre-clearance - Import Journeys
       | epu | entryNo | day | month | year |requestType | route  | priority     | transport |
       | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air       |
 
+
+
   Scenario Outline: Error validation - no options selected (Question pages only)
     Given the user navigates to the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
