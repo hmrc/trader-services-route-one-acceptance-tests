@@ -69,28 +69,33 @@ class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl wit
   }
 
 
-  Then("""^the details entered for Vessel Name should be pre filled with Name:(.*), Date:(.*),(.*),(.*) & Time: (.*)(.*)$""") {
-    (vesselName:String, vesselDay: String, vesselMonth: String, vesselYear: String, vesselHrs: String, vesselMins: String) =>
-      verifyInput("vesselName", vesselName)
-      verifyInput("dateOfArrival.day", vesselDay)
-      verifyInput("dateOfArrival.month", vesselMonth)
-      verifyInput("dateOfArrival.year", vesselYear)
-      verifyInput("timeOfArrival.hour", vesselHrs)
-      verifyInput("imeOfArrival.minutes", vesselMins)
-  }
-//
-//  Then("""^the details entered for Date of Arrival should be pre filled with (.*), (.*) & (.*)$""") {
-//    (vesselDay: String, vesselMonth: String, vesselYear: String) =>
+//  Then("""^the details entered for Vessel Name should be pre filled with Name:(.*), Date:(.*),(.*),(.*) & Time:(.*),(.*)$""") {
+//    (vesselName:String, vesselDay: String, vesselMonth: String, vesselYear: String, vesselHrs: String, vesselMins: String) =>
+//      verifyInput("vesselName", vesselName)
 //      verifyInput("dateOfArrival.day", vesselDay)
 //      verifyInput("dateOfArrival.month", vesselMonth)
 //      verifyInput("dateOfArrival.year", vesselYear)
-//  }
-//
-//  Then("""^the details entered for Time of Arrival should be pre filled with (.*) & (.*)$""") {
-//    (vesselHrs: String, vesselMins: String) =>
 //      verifyInput("timeOfArrival.hour", vesselHrs)
 //      verifyInput("imeOfArrival.minutes", vesselMins)
-//
 //  }
+
+  Then("""^the details entered for Vessel Name should be pre filled with (.*)$""") {
+    (vesselName: String) =>
+      verifyInput("vesselName", vesselName)
+  }
+
+  Then("""^the details entered for Date of Arrival should be pre filled with (.*), (.*) & (.*)$""") {
+    (vesselDay: String, vesselMonth: String, vesselYear: String) =>
+      verifyInput("dateOfArrival.day", vesselDay)
+      verifyInput("dateOfArrival.month", vesselMonth)
+      verifyInput("dateOfArrival.year", vesselYear)
+  }
+
+  Then("""^the details entered for Time of Arrival should be pre filled with (.*) & (.*)$""") {
+    (vesselHrs: String, vesselMins: String) =>
+      verifyInput("timeOfArrival.hour", vesselHrs)
+      verifyInput("timeOfArrival.minutes", vesselMins)
+
+  }
 
 }

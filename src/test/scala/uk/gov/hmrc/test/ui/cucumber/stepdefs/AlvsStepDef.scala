@@ -44,4 +44,12 @@ class AlvsStepDef extends ALVSPage with BasePage with ScalaDsl with EN {
 
     clickContinue()
   }
+
+  Then("""^the last selected option for ALVS should be pre filled with (.*)$""") { (ALVS:String) =>
+
+    ALVS match {
+      case "Yes" => optionSelected("#hasALVS")
+      case "No" => optionSelected("#hasALVS-2")
+    }
+  }
 }

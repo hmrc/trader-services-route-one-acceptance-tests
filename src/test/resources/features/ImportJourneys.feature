@@ -90,9 +90,9 @@ Feature: Pre-clearance - Import Journeys
       | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air       |
 
 
-
   Scenario Outline: Error validation - no options selected (Question pages only)
-    Given the user navigates to the declaration details page
+    Given the user is on the landing page for trader services
+    Then the user clicks the link to enter the route1 journey
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters a date "<day>" "<month>" "<year>"
     And the user clicks Continue
@@ -116,4 +116,4 @@ Feature: Pre-clearance - Import Journeys
 
     Examples:
       | epu | entryNo | day | month | year |requestType | route     | priority |
-      | 123 | 123456A | 01  | 09    | 2020 |Cancel      | Route1CAP | Art      |
+      | 123 | 123456A | 01  | 09    | 2020 |New         | Route1CAP | Art      |
