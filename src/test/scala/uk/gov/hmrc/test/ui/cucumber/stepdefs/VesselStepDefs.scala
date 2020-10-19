@@ -94,21 +94,3 @@ class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl wit
 //  }
 
 }
-
-
-//DATA TABLE
-//When("""^the HMRC user enters all below mandatory customer details on the customer search page$""") { dataTable: DataTable => //Generic case for any feature test 96, 98, 99
-//
-//  for (data: java.util.Map[String, String] <- dataTable.asMaps(classOf[String], classOf[String])) {
-//  val field = data.get("Field") match {
-//  case "NINO" => "nino"
-//  case "First name" => "givenName"
-//  case "Family name" => "familyName"
-//  case "Day" => "dateOfBirth.day"
-//  case "Month" => "dateOfBirth.month"
-//  case "Year" => "dateOfBirth.year"
-//}
-//  val value = data.get("Value")
-//  webDriver.findElement(By.id(field)).sendKeys(value)
-//}
-//}

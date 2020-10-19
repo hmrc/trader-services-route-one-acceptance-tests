@@ -35,8 +35,6 @@ Feature: Check Back Links & Change Links
     When the user clicks back
     Then the user is on the landing page for trader services
 
-# CHECK FOR PRE-POP/REMEMBERED ANSWERS!
-
     Examples:
       | epu | entryNo | day | month | year |requestType | route  | priority     | transport | name      | email      |
       | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air       | Abc Testb | a@test.com |

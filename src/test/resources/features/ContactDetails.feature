@@ -1,4 +1,4 @@
-@TraderService
+@TraderService2
 Feature: Contact Details
 
   Scenario Outline: Contact details - validation test
@@ -17,7 +17,6 @@ Feature: Contact Details
     Then the user is on the Import Vessel Page
     Then the user clicks Continue
     When the user is on the Import Contact Details Page
-
 #    Then the user clicks Continue
 #    Then the user should see "Error:Enter your full name" error message for "name"
 #    Then the user should see "Error:Enter an email address" error message for "email"
@@ -27,9 +26,17 @@ Feature: Contact Details
     Then the user enters a phone number "xyz"
     Then the user clicks Continue
 ##    Then the user should see "Error:Enter your full name" error message for "name"
-#    Then the user should see "Error:Enter an email address in the correct format, like name@example.com" error message for "contactEmail"
+    Then the user should see "Error:Enter an email address in the correct format, like name@example.com" error message for "contactEmail"
     Then the user should see "Error:Enter a valid phone number" error message for "contactNumber"
 
+    Then the user enters an email address "abctest.com"
+    Then the user enters a phone number "123456789100"
+    Then the user clicks Continue
+    Then the user should see "Error:Enter an email address in the correct format, like name@example.com" error message for "contactEmail"
+    Then the user should see "Error:Enter a valid phone number" error message for "contactNumber"
+
+#    email address may need to contain more validation? currently accepts abc@test
+#    will also need to be mandatory
 #    Phone number must contain numbers only
 
 
