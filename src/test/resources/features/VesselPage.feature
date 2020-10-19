@@ -106,4 +106,33 @@ Feature: Vessel page validation
 
 #invalid dates ie. 29 feb etc, story yet to be played
 
+#    When the user enters declaration details "123" and "123456A"
+#    Then the user enters a date "32" "09" "2020"
+#    And the user clicks Continue
+#    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
+#    #Day must be a number between 1 and 31
+#
+#    When the user enters a date "01" "13" "2020"
+#    And the user clicks Continue
+#    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
+#    #Month must be a number between 1 and 12
+#
+#    When the user enters a date "01" "13" "202"
+#    And the user clicks Continue
+#    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
+#    #Entry year must be a number between 2020 and 2050
+#
+#    When the user enters declaration details "123" and "123456A"
+#    Then the user enters a date "31" "09" "2020"
+#    And the user clicks Continue
+#    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
+#    #Updates to come for the above three error messages (to be more specific)
+#
+#    When the user enters declaration details "123" and "123456A"
+#    Then the user enters a date "32" "13" "2020"
+#    And the user clicks Continue
+#    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
+##    Do we want one error message in these instances or 2x??
+#
+
 #Test for presence of more than one....

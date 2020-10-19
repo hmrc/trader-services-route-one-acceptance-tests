@@ -20,7 +20,8 @@ Feature: Contact Details
 #    Then the user clicks Continue
 #    Then the user should see "Error:Enter your full name" error message for "name"
 #    Then the user should see "Error:Enter an email address" error message for "email"
-#
+
+
 #    Then the user enters a name "INVALID_NAME?!()_"
     Then the user enters an email address "abc"
     Then the user enters a phone number "xyz"
@@ -28,6 +29,7 @@ Feature: Contact Details
 ##    Then the user should see "Error:Enter your full name" error message for "name"
     Then the user should see "Error:Enter an email address in the correct format, like name@example.com" error message for "contactEmail"
     Then the user should see "Error:Enter a valid phone number" error message for "contactNumber"
+
 
     Then the user enters an email address "abctest.com"
     Then the user enters a phone number "123456789100"
@@ -37,7 +39,12 @@ Feature: Contact Details
 
 #    email address may need to contain more validation? currently accepts abc@test
 #    will also need to be mandatory
-#    Phone number must contain numbers only
+#    Phone number must contain numbers only - needs to be 11 digits?
+
+    Then the user enters an email address "abc@test.com"
+    Then the user enters a phone number "123456789"
+    Then the user clicks Continue
+    Then the user should see "Error:Enter a valid phone number" error message for "contactNumber"
 
 
     Examples:
