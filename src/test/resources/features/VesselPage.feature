@@ -94,18 +94,16 @@ Feature: Vessel page validation
 #  Invalid date/time (too far in past or future)
     Then the user enters a date for the vessel "01" "01" "2022"
     Then the user enters a time for the vessel "01" "01"
-#    And the user clicks Continue
-#    Then the user should see "Error:Date of arrival must be today or in the next 6 months" error message for ""
+    And the user clicks Continue
+    Then the user should see "Error:Date of arrival must be within the past 6 months or in the next 6 months" error message for "dateOfArrival"
 
-#    Then the user enters a date for the vessel "01" "01" "2022"
-#    Then the user enters a time for the vessel "01" "01"
-#    And the user clicks Continue
-#    Then the user should see "Error:Date of arrival must be today or in the next 6 months" error message for "dateOfArrival"
-#    Then the user should see "Error:Date of arrival must be today or in the next 6 months" error message for "timeOfArrival"
+    Then the user enters a date for the vessel "01" "01" "2020"
+    Then the user enters a time for the vessel "01" "01"
+    And the user clicks Continue
+    Then the user should see "Error:Date of arrival must be within the past 6 months or in the next 6 months" error message for "dateOfArrival"
 
-#  At present no field error, time and date need to be analysed together, what is solution?
-# Will need to implement logic for 6months in past to be acceptable
+#placeholder text for erroring date - will be dynamic when next story played
 
-#invalid date
+#invalid dates ie. 29 feb etc, story yet to be played
 
 #Test for presence of more than one....

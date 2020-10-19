@@ -20,9 +20,8 @@ import java.time.Duration
 
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import org.openqa.selenium.{By, WebDriver, WebElement}
-import org.scalatest.Matchers
+import org.scalatest.{Assertion, Matchers}
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-
 
 trait BasePage extends Matchers with BrowserDriver {
 
@@ -80,7 +79,22 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def clickByCSS(css: String): Unit = driver.findElement(By.cssSelector(css)).click()
 
+  def optionSelected(css: String): Unit = driver.findElement(By.cssSelector(css)).isSelected shouldBe true
+
+  def verifyInput(id: String, expectedValue: String):
+  Assertion = findElementById(id).getAttribute("value") shouldBe expectedValue
+
   def signOut: WebElement = findElementByCss("#navigation > li > a")
+
+  def assertElementText(content: String, element: WebElement): Unit = {
+    assert(element.getText.equals(content), message (s"Element displayed is: ${element.getText} Expecting: $content"))
+  }
+
+//  def assertElementIsNotVisibleById(id: String): Unit = {
+//    driver.manage.timeouts.implicitlyWait(0, TimeUnit.SECONDS)
+//    assert(driver.findElements(By.id(id)).size() == 0, message(s"The element with id $id was visible. Expected not visible"))
+//    driver.manage.timeouts.implicitlyWait(20, TimeUnit.SECONDS)
+//  }
 
   def navigateTo(url: String): Unit = driver.navigate().to(url)
 

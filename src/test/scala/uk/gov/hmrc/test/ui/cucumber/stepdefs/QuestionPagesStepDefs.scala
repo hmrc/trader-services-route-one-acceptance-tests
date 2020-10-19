@@ -70,6 +70,29 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     }
   }
 
+  Then("""^the last selected option for Import Request should be pre filled with (.*)$""") { (request:String) =>
+
+    request match {
+      case "New" => optionSelected("#requestType")
+      case "Cancel" => optionSelected("#requestType-2")
+      case "Hold" => optionSelected("#requestType-3")
+    }
+  }
+
+  Then("""^the last selected option for Export Request should be pre filled with (.*)$""") { (request:String) =>
+
+    request match {
+      case "New" => optionSelected("#requestType")
+      case "Cancel" => optionSelected("#requestType-2")
+      case "C1601" => optionSelected("#requestType-3")
+      case "C1602" => optionSelected("#requestType-4")
+      case "C1603" => optionSelected("#requestType-5")
+      case "Hold" => optionSelected("#requestType-6")
+      case "Withdrawal" => optionSelected("#requestType-7")
+    }
+  }
+
+
 
   //Route
 
@@ -113,6 +136,19 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     verifyHeading(headingRoute)
   }
 
+  Then("""^the last selected option for Route should be pre filled with (.*)$""") { (route:String) =>
+
+    route match {
+      case "Route1" => optionSelected("#routeType")
+      case "Route1CAP" => optionSelected("#routeType-2")
+      case "Route2" => optionSelected("#routeType-3")
+      case "Route3" => optionSelected("#routeType-4")
+      case "Route6" => optionSelected("#routeType-5")
+      case "Hold" => optionSelected("#routeType-6")
+
+    }
+  }
+
 
   //Transport
 
@@ -152,5 +188,16 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
         confirmUrl(urlTransportExport)
     }
     verifyHeading(headingTransport)
+  }
+
+
+  Then("""^the last selected option for vessel should be pre filled with (.*)$""") { (transport:String) =>
+
+    transport match {
+      case "Air" => optionSelected("#freightType")
+      case "Maritime" => optionSelected("#freightType-2")
+      case "RoadRoRoRail" => optionSelected("#freightType-3")
+
+    }
   }
 }

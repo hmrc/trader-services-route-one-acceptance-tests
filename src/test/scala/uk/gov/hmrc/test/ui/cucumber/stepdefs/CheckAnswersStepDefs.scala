@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
+import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.{BasePage, CheckAnswersPage}
 
 
@@ -25,6 +26,5 @@ class CheckAnswersStepDefs extends CheckAnswersPage with BasePage with ScalaDsl 
   Given("""^the user is on the CYA page$""") { () =>
     confirmUrl(urlCYA)
     verifyHeading(headingCYA)
-
   }
-}
+  }
