@@ -30,7 +30,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
 
     RequestType match {
       case "New" => clickByCSS("#requestType")
-      case "Cancel" => clickByCSS("#requestType-2")
+      case "Cancellation" => clickByCSS("#requestType-2")
       case "Hold" => clickByCSS("#requestType-3")
       case "NoOption" =>
     }
@@ -43,7 +43,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
 
     RequestType match {
       case "New" => clickByCSS("#requestType")
-      case "Cancel" => clickByCSS("#requestType-2")
+      case "Cancellation" => clickByCSS("#requestType-2")
       case "C1601" => clickByCSS("#requestType-3")
       case "C1602" => clickByCSS("#requestType-4")
       case "C1603" => clickByCSS("#requestType-5")
@@ -74,7 +74,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
 
     request match {
       case "New" => optionSelected("#requestType")
-      case "Cancel" => optionSelected("#requestType-2")
+      case "Cancellation" => optionSelected("#requestType-2")
       case "Hold" => optionSelected("#requestType-3")
     }
   }
@@ -83,7 +83,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
 
     request match {
       case "New" => optionSelected("#requestType")
-      case "Cancel" => optionSelected("#requestType-2")
+      case "Cancellation" => optionSelected("#requestType-2")
       case "C1601" => optionSelected("#requestType-3")
       case "C1602" => optionSelected("#requestType-4")
       case "C1603" => optionSelected("#requestType-5")
@@ -109,11 +109,11 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     verifyHeading(headingRoute)
 
     RequestType match {
-      case "Route1" => clickByCSS("#routeType")
-      case "Route1CAP" => clickByCSS("#routeType-2")
-      case "Route2" => clickByCSS("#routeType-3")
-      case "Route3" => clickByCSS("#routeType-4")
-      case "Route6" => clickByCSS("#routeType-5")
+      case "Route 1" => clickByCSS("#routeType")
+      case "Route 1 CAP" => clickByCSS("#routeType-2")
+      case "Route 2" => clickByCSS("#routeType-3")
+      case "Route 3" => clickByCSS("#routeType-4")
+      case "Route 6" => clickByCSS("#routeType-5")
       case "Hold" => clickByCSS("#routeType-6")
       case "NoOption" =>
     }
@@ -139,11 +139,11 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
   Then("""^the last selected option for Route should be pre filled with (.*)$""") { (route:String) =>
 
     route match {
-      case "Route1" => optionSelected("#routeType")
-      case "Route1CAP" => optionSelected("#routeType-2")
-      case "Route2" => optionSelected("#routeType-3")
-      case "Route3" => optionSelected("#routeType-4")
-      case "Route6" => optionSelected("#routeType-5")
+      case "Route 1" => optionSelected("#routeType")
+      case "Route 1 CAP" => optionSelected("#routeType-2")
+      case "Route 2" => optionSelected("#routeType-3")
+      case "Route 3" => optionSelected("#routeType-4")
+      case "Route 6" => optionSelected("#routeType-5")
       case "Hold" => optionSelected("#routeType-6")
 
     }

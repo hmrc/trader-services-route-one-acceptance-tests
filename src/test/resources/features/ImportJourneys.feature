@@ -18,11 +18,27 @@ Feature: Pre-clearance - Import Journeys
     Then the user clicks Continue
     Then the user is on the Import Contact Details Page
 #    When the user enters a name "<name>"
-    And the user enters an email address "<email>"
+    When the user enters an email address "<email>"
+    And the user clicks Continue
+    Then the user is on the Import CYA page
+    Then the user should see the EPU row & the correct response <epu> on the CYA page
+    And the user should see the Entry No row & the correct response <entryNo> on the CYA page
+    And the user should see the Entry Date row & the correct response "1 October 2020" on the CYA page
+    Then the user should see the Request Type row & the correct response <requestType> on the CYA page
+    And the user should see the Route row & the correct response <route> on the CYA page
+Then the user should see the Priority YN row & the correct response Yes on the CYA page
+    And the user should see the Priority Goods row & the correct response <priority> on the CYA page
+    And the user should see the ALVS row & the correct response Yes on the CYA page
+And the user should see the Import transport row & the correct response <transport> on the CYA page
+Then the user should see the Vessel Name row & the correct response - on the CYA page
+    And the user should see the Vessel Date row & the correct response "-" on the CYA page
+    And the user should see the Vessel Time row & the correct response "-" on the CYA page
+Then the user should see the Contact details row & the correct response <email> on the CYA page
+
 
     Examples:
       | epu | entryNo | day | month | year |requestType | route  | priority     | transport | name      | email          |
-      | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air       | Abc Testb | valid@test.com |
+      | 123 | 123456A | 01  | 10    | 2020 |New      | Route 6 | Human remains | Air       | Abc Testb | valid@test.com |
 
 
 #  Scenario Outline: A user wants to complete a HOLD EXPORT RouteOne journey (Skips route, mandatory Vessel Qs)
@@ -84,10 +100,13 @@ Feature: Pre-clearance - Import Journeys
     Then the user is on the Import Vessel Page
     Then the user clicks Continue
     Then the user is on the Import Contact Details Page
+    When the user enters an email address "<email>"
+    When the user clicks Continue
+    Then the user is on the Import CYA page
 
     Examples:
-      | epu | entryNo | day | month | year |requestType | route  | priority     | transport |
-      | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air       |
+      | epu | entryNo | day | month | year |requestType | route  | priority     | transport | email   |
+      | 123 | 123456A | 01  | 10    | 2020 |Cancellation    | Route 6 | Human remains | Air       | a@a.com |
 
 
   Scenario Outline: Error validation - no options selected (Question pages only)
@@ -116,4 +135,4 @@ Feature: Pre-clearance - Import Journeys
 
     Examples:
       | epu | entryNo | day | month | year |requestType | route     | priority |
-      | 123 | 123456A | 01  | 09    | 2020 |New         | Route1CAP | Art      |
+      | 123 | 123456A | 01  | 09    | 2020 |New         | Route 1 CAP | Art      |

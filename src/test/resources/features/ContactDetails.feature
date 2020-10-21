@@ -28,14 +28,14 @@ Feature: Contact Details
     Then the user clicks Continue
 ##    Then the user should see "Error:Enter your full name" error message for "name"
     Then the user should see "Error:Enter an email address in the correct format, like name@example.com" error message for "contactEmail"
-    Then the user should see "Error:Enter a valid phone number" error message for "contactNumber"
+    Then the user should see "Error:Phone number must contain numbers only" error message for "contactNumber"
 
-
+#Error messaging & validation to be done in another story
     Then the user enters an email address "abctest.com"
     Then the user enters a phone number "123456789100"
     Then the user clicks Continue
     Then the user should see "Error:Enter an email address in the correct format, like name@example.com" error message for "contactEmail"
-    Then the user should see "Error:Enter a valid phone number" error message for "contactNumber"
+    Then the user should see "Error:Phone number must contain numbers only" error message for "contactNumber"
 
 #    email address may need to contain more validation? currently accepts abc@test
 #    will also need to be mandatory
@@ -44,9 +44,9 @@ Feature: Contact Details
     Then the user enters an email address "abc@test.com"
     Then the user enters a phone number "123456789"
     Then the user clicks Continue
-    Then the user should see "Error:Enter a valid phone number" error message for "contactNumber"
+    Then the user should see "Error:Phone number must contain numbers only" error message for "contactNumber"
 
 
     Examples:
       | epu | entryNo | day | month | year |requestType | route  | priority     | transport |
-      | 123 | 123456A | 01  | 10    | 2020 |Cancel      | Route6 | HumanRemains | Air       |
+      | 123 | 123456A | 01  | 10    | 2020 |Cancellation     | Route 6 | Human remains | Air       |

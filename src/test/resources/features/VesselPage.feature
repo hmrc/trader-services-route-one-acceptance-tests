@@ -8,7 +8,7 @@ Feature: Vessel page validation
     And the user enters a date "10" "10" "2020"
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects C1601
-    Then the user is on the Export Route Type Page and selects Route2
+    Then the user is on the Export Route Type Page and selects Route 2
     Then the user is on the Export YesNo Priority Page and selects No
     Then the user is on the Export Transport Type Page and selects Air
     Then the user is on the Export-Mandatory Vessel Page
@@ -26,7 +26,7 @@ Feature: Vessel page validation
     And the user enters a date "10" "10" "2020"
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects New
-    Then the user is on the Export Route Type Page and selects Route1
+    Then the user is on the Export Route Type Page and selects Route 1
     Then the user is on the Export YesNo Priority Page and selects No
     Then the user is on the Export Transport Type Page and selects Air
     Then the user is on the Export Vessel Page

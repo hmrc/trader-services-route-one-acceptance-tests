@@ -16,75 +16,74 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import io.cucumber.datatable.DataTable
-import org.openqa.selenium.WebElement
-
 trait CheckAnswersPage extends BasePage with DeclarationNumPage with QuestionPages with PriorityPages {
 
-  val urlCYA: String = traderServicesBaseUrl + ""
-  val headingCYA = "Check the details"
+  val urlImportCYA: String = traderServicesBaseUrl + importJourneyUrl + "/check-your-answers"
+  val urlExportCYA: String = traderServicesBaseUrl + exportJourneyUrl + "/check-your-answers"
+
+  val headingMainCYA = "Review your pre-clearance case details"
+
+  val h2Dec = "Declaration information"
+  val summaryEPU = "EPU number"
+  val summaryEntryNo = "Entry number"
+  val summaryDate = "Entry date"
+
+  val h2Questions = "Pre-clearance information"
+  val summaryImportRequest = "Type of import request"
+  val summaryExportRequest = "Type of export request"
+  val summaryRoute = "Route"
+  val summaryPriorityYN = "Priority goods"
+  val summaryPriorityGoods = "Type of priority goods"
+  val summaryALVS = "ALVS"
+  val summaryTransport = "Type of transport"
+
+  val h2Vessel = "Vessel information"
+  val summaryVesselName = "Vessel name"
+  val summaryVesselDate = "Date of arrival"
+  val summaryVesselTime = "Time of arrival"
+
+  val h2ContactDetails = "Contact details"
+
+  val change = "Change"
+
+  def verifyH2Declaration(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(2)").getText shouldBe text
+
+  def verifyH2Questions(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(4)").getText shouldBe text
+
+  def verifyH2Vessel(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(6)").getText shouldBe text
+
+  def verifyH2Contact(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(8)").getText shouldBe text
+
+//CHANGE links
+//
+//  def epuChange:Unit = clickByCSS("dl.govuk-summary-list:nth-child(3) > div:nth-child(1) > dd:nth-child(3) > a:nth-child(1)")
+//  def entryNoChange:Unit = clickByCSS("dl.govuk-summary-list:nth-child(3) > div:nth-child(2) > dd:nth-child(3) > a:nth-child(1)")
+//  def entryDateChange:Unit = clickByCSS("dl.govuk-summary-list:nth-child(3) > div:nth-child(3) > dd:nth-child(3) > a:nth-child(1)")
+//
+//
+//  def requestChange:Unit = clickByCSS("dl.govuk-summary-list:nth-child(5) > div:nth-child(1) > dd:nth-child(3) > a:nth-child(1)")
+//
+//  def routeChange:Unit = clickByCSS("dl.govuk-summary-list:nth-child(5) > div:nth-child(2) > dd:nth-child(3) > a:nth-child(1)")
+//
+//  def PriorityYNChange:Unit = clickByCSS("dl.govuk-summary-list:nth-child(5) > div:nth-child(3) > dd:nth-child(3) > a:nth-child(1)")
+//
+//  def PriorityGoodsChange:Unit = clickByCSS("dl.govuk-summary-list:nth-child(5) > div:nth-child(4) > dd:nth-child(3) > a:nth-child(1)")
+//  def ALVSChange:Unit = clickByCSS("dl.govuk-summary-list:nth-child(5) > div:nth-child(5) > dd:nth-child(3) > a:nth-child(1)")
+//  def transportChange:Unit = clickByCSS("div.govuk-summary-list__row:nth-child(5) > dd:nth-child(3) > a:nth-child(1)")
+//
+//
+//  def vesselNameChange:Unit = clickByCSS("dl.govuk-summary-list:nth-child(7) > div:nth-child(1) > dd:nth-child(3) > a:nth-child(1))")
+//  def dateChange:Unit = clickByCSS("dl.govuk-summary-list:nth-child(7) > div:nth-child(2) > dd:nth-child(3) > a:nth-child(1)")
+//  def timeChange:Unit = clickByCSS("dl.govuk-summary-list:nth-child(7) > div:nth-child(3) > dd:nth-child(3) > a:nth-child(1)")
+//
+//  def contactChange:Unit = clickByCSS("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(3) > a:nth-child(1)")
+//
+//
+//
 
 }
 
-//  private val checkYourAnswersContainerSelector: String = ".govuk-check-your-answers"
-//  private val questionSelector: String = ".cya-question"
-//  private val answerSelector: String = ".cya-answer"
-//  private val changeSelector: String = ".cya-change > a"
-//
-//
-//  private val answerRowMapping: Map[String, String] = {
-//    Map(
-//        "Declaration" -> headingDecDetails,
-//      "ImportRequest" ->
-//        "ImportRoute" ->
-//        "PriorityYN" ->
-//        "PriorityGoods" ->
-//        "Transport" ->
-//        "Vessel" ->
-//        "ContacctDetails" ->
-//    )
-//  }
-//a
-//  private def assertQuestionAnswer(row: Int, question: String, answer: String): Unit = {
-//    val rowSelector: String = s"$checkYourAnswersContainerSelector > div:nth-of-type($row)"
-//    val questionElement: WebElement = findElementByCss(s"$rowSelector > $questionSelector")
-//    val answerElement: WebElement = findElementByCss(s"$rowSelector > $answerSelector")
-//
-//    assertElementText(question, questionElement)
-//    assertElementText(answer, answerElement)
-//  }
-//
-//  def checkQuestionsAndAnswers(data: DataTable): Unit = {
-//
-//    val questionColumnId: Int = 0
-//    val answerColumnId: Int = 1
-//    val tableContent: util.List[util.Map[String, String]] = data.asMaps(classOf[String], classOf[String])
-//
-//    for (rowId <- 0 to tableContent.toArray().length) {
-//
-//      val question: String = answerRowMapping.getOrElse(
-//        data.raw().get(rowId).get(questionColumnId),
-//        throw new IllegalArgumentException("Invalid CYA question key: check pages/deregVat/CheckYourAnswersPage.answerRowMapping for valid keys")
-//      )
-//
-//      val answer: String = question match {
-//        case EnterCancellationDatePage.checkYourAnswersQuestion =>
-//          data.raw().get(rowId).get(answerColumnId) match {
-//            case "" => EnterCancellationDatePage.checkYourAnswersDate
-//            case value => value
-//          }
-//
-//        case _ => data.raw().get(rowId).get(answerColumnId)
-//      }
-//
-//      assertQuestionAnswer(rowId + 1, question, answer)
-//    }
-//  }
-//
-//  def selectChangeLink(questionNumber: Int): Unit = {
-//    val rowSelector: String = s"$checkYourAnswersContainerSelector > div:nth-of-type($questionNumber)"
-//    findElementByCss(s"$rowSelector > $changeSelector").click()
-//  }
-//}
-//
-//}
+
+
+
+
