@@ -51,16 +51,16 @@ Feature: Pre-clearance - Export Journeys
     Then the user is on the Export Transport Type Page and selects <transport>
 #    Then the user is on the Export-Mandatory Vessel Page
 #    Then the user enters Test Vessel for vessel name
-#    Then the user enters a date for the vessel "01" "11" "2021"
+#    Then the user enters a date for the vessel "<day>" "<month>" "<year>"
 #    Then the user enters a time for the vessel "17" "30"
 #    Then the user clicks Continue
 #    Then the user is on the Export Contact Details Page
 #    And the user clicks Continue
 #    Then the user is on the Export CYA page
-#
+
     Examples:
-      | epu | entryNo | day | month | year |requestType | transport |
-      | 123 | A23456A | 01  | 09    | 2020 |Hold        | Air       |
+      | epu | entryNo | day | month | year | requestType | transport |
+      | 123 | A23456A | 01  | 09    | 2020 | Hold        | Air       |
 
 
   Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (Mandatory Vessel Qs - C1601)
@@ -75,19 +75,18 @@ Feature: Pre-clearance - Export Journeys
     Then the user is on the Export Route Type Page and selects <route>
     Then the user is on the Export YesNo Priority Page and selects No
     Then the user is on the Export Transport Type Page and selects <transport>
-
-#    Then the user is on the Export-Mandatory Vessel Page
-#    Then the user enters Test Vessel for vessel name
-#    Then the user enters a date for the vessel "01" "11" "2021"
-#    Then the user enters a time for the vessel "13" "10"
-#    Then the user clicks Continue
-#    Then the user is on the Export Contact Details Page
-#    And the user clicks Continue
-#    Then the user is on the Export CYA page
+    Then the user is on the Export-Mandatory Vessel Page
+    Then the user enters <vesselName> for vessel name
+    Then the user enters a date for the vessel "<day>" "<month>" "<year>"
+    Then the user enters a time for the vessel "13" "10"
+    Then the user clicks Continue
+    Then the user is on the Export Contact Details Page
+    And the user clicks Continue
+    Then the user is on the Export CYA page
 
     Examples:
-      | epu | entryNo | day | month | year | requestType | route  | transport    |
-      | 123 | A23456A | 01  | 09    | 2020 | C1601       | Route 1 | RoadRoRoRail |
+      | epu | entryNo | day | month | year | requestType | route   | transport    | vesselName  |
+      | 123 | A23456A | 01  | 09    | 2020 | C1601       | Route 1 | RoadRoRoRail | test vessel |
 
 
 #  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (Mandatory Vessel Qs - C1602)

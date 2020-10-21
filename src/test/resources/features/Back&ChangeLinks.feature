@@ -34,7 +34,7 @@ Feature: Check Back Links & Change Links
     Then the user is on the Import Vessel Page
     And the details entered for Vessel Name should be pre filled with <vesselName>
     And the details entered for Date of Arrival should be pre filled with <day>, <month> & <year>
-    And the details entered for Time of Arrival should be pre filled with 11 & 15
+    And the details entered for Time of Arrival should be pre filled with 23 & 15
 
     When the user clicks back
     Then the user is on the Import Transport Page
@@ -118,8 +118,8 @@ Feature: Check Back Links & Change Links
     Then the user is on the landing page for trader services
 
     Examples:
-      | epu | entryNo | day | month | year |requestType | route  | priority     | transport | name      | email      |
-      | 553 | A33456A | 01  | 10    | 2020 |Cancellation      | Route 6 | Human remains | Air       | Abc Testb | a@test.com |
+      | epu | entryNo | day | month | year |requestType  | route   | priority      | transport | name      | email      |
+      | 553 | A33456A | 01  | 10    | 2020 |Cancellation | Route 6 | Human remains | Air       | Abc Testb | a@test.com |
 
 
 #CHANGE LINKS
@@ -151,5 +151,5 @@ Feature: Check Back Links & Change Links
 
 
     Examples:
-      | epu | entryNo | day | month | year | requestType | route  | priority   | transport | vesselName | name      | email      |
+      | epu | entryNo | day | month | year | requestType | route   | priority   | transport | vesselName | name      | email      |
       | 113 | 993456A | 12  |09     | 2020 | New         | Route 3 | Explosives | Maritime  | TestShip   | Abc Testb | a@test.com |

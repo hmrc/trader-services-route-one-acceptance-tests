@@ -26,19 +26,19 @@ Feature: Pre-clearance - Import Journeys
     And the user should see the Entry Date row & the correct response "1 October 2020" on the CYA page
     Then the user should see the Request Type row & the correct response <requestType> on the CYA page
     And the user should see the Route row & the correct response <route> on the CYA page
-Then the user should see the Priority YN row & the correct response Yes on the CYA page
+    Then the user should see the Priority YN row & the correct response Yes on the CYA page
     And the user should see the Priority Goods row & the correct response <priority> on the CYA page
     And the user should see the ALVS row & the correct response Yes on the CYA page
-And the user should see the Import transport row & the correct response <transport> on the CYA page
-Then the user should see the Vessel Name row & the correct response - on the CYA page
+    And the user should see the Import transport row & the correct response <transport> on the CYA page
+    Then the user should see the Vessel Name row & the correct response - on the CYA page
     And the user should see the Vessel Date row & the correct response "-" on the CYA page
     And the user should see the Vessel Time row & the correct response "-" on the CYA page
-Then the user should see the Contact details row & the correct response <email> on the CYA page
-
+    Then the user should see the Contact details row & the correct response <email> on the CYA page
+#Check for NAME & Email?
 
     Examples:
-      | epu | entryNo | day | month | year |requestType | route  | priority     | transport | name      | email          |
-      | 123 | 123456A | 01  | 10    | 2020 |New      | Route 6 | Human remains | Air       | Abc Testb | valid@test.com |
+      | epu | entryNo | day | month | year |requestType | route  | priority    | transport | name       | email          |
+      | 123 | 123456A | 01  | 10    | 2020 |New      | Route 6 | Human remains | Air       | Abc Testb  | valid@test.com |
 
 
 #  Scenario Outline: A user wants to complete a HOLD EXPORT RouteOne journey (Skips route, mandatory Vessel Qs)

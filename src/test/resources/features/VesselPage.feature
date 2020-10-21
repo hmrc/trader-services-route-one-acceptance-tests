@@ -46,11 +46,8 @@ Feature: Vessel page validation
     Then the user should see "Error:Time of arrival must include minutes" error message for "timeOfArrival"
 
     Then the user enters a date for the vessel "01" "01" ""
-    Then the user enters a time for the vessel "12" "15"
     And the user clicks Continue
     Then the user should see "Error:Date of arrival must include a year" error message for "dateOfArrival"
-    Then the user should see "Error:Time of arrival must include period" error message for "timeOfArrival"
-  # Will be switching to 24hr time...
 
 
 #    Invalid - outside bounds
@@ -59,7 +56,7 @@ Feature: Vessel page validation
     Then the user enters a time for the vessel "59" "59"
     And the user clicks Continue
     Then the user should see "Error:Date of arrival must be a real date" error message for "dateOfArrival"
-    Then the user should see "Error:Hours must be between 1 and 12" error message for "timeOfArrival"
+    Then the user should see "Error:Hours must be between 0 and 23" error message for "timeOfArrival"
 
 #    Invalid month & minutes field
     Then the user enters a date for the vessel "01" "13" "2021"
@@ -89,7 +86,6 @@ Feature: Vessel page validation
     Then the user enters a time for the vessel "01" "10"
     And the user clicks Continue
     Then the user should see "Error:Year of arrival must only contain numbers" error message for "dateOfArrival"
-    Then the user should see "Error:Time of arrival must include period" error message for "timeOfArrival"
 
 #  Invalid date/time (too far in past or future)
     Then the user enters a date for the vessel "01" "01" "2022"
