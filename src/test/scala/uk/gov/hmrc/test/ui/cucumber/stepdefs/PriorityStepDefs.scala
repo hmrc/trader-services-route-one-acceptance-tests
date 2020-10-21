@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.{BasePage, PriorityPages}
 
 
@@ -93,11 +92,11 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
       verifyHeading(headingPriority)
 
     RequestType match {
-      case "ClassA" => clickByCSS("#priorityGoods")
+      case "Class A drugs" => clickByCSS("#priorityGoods")
       case "Explosives" => clickByCSS("#priorityGoods-2")
       case "Art" => clickByCSS("#priorityGoods-3")
-      case "HumanRemains" => clickByCSS("#priorityGoods-4")
-      case "LiveAnimals" => clickByCSS("#priorityGoods-5")
+      case "Human remains" => clickByCSS("#priorityGoods-4")
+      case "Live animals" => clickByCSS("#priorityGoods-5")
       case "NoOption" =>
     }
         clickContinue()
@@ -106,11 +105,11 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
   Then("""^the last selected option for priority goods should be pre filled with (.*)$""") { (priority:String) =>
 
     priority match {
-      case "ClassA" => optionSelected("#priorityGoods-2")
+      case "Class A drugs" => optionSelected("#priorityGoods-2")
       case "Explosives" => optionSelected("#priorityGoods-2")
       case "Art" => optionSelected("#priorityGoods-3")
-      case "HumanRemains" => optionSelected("#priorityGoods-4")
-      case "LiveAnimals" => optionSelected("#priorityGoods-5")
+      case "Human remains" => optionSelected("#priorityGoods-4")
+      case "Live animals" => optionSelected("#priorityGoods-5")
     }
   }
 }
