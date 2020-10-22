@@ -7,15 +7,15 @@ Feature: Pre-clearance - Import Journeys
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters a date "<day>" "<month>" "<year>"
-    And the user clicks Continue
-    Then the user is on the Import Request Type page and selects <requestType>
+    Then the user clicks Continue
+    When the user is on the Import Request Type page and selects <requestType>
     Then the user is on the Import Route Type Page and selects <route>
-    Then the user is on the Import YesNo Priority Page and selects Yes
-    When the user is on the Import Priority Options Page and selects <priority>
-    Then the user is on the ALVS Page and selects Yes
+    When the user is on the Import YesNo Priority Page and selects Yes
+    Then the user is on the Import Priority Options Page and selects <priority>
+    When the user is on the ALVS Page and selects Yes
     Then the user is on the Import Transport Type Page and selects <transport>
     Then the user is on the Import Vessel Page
-    Then the user clicks Continue
+    And the user clicks Continue
     Then the user is on the Import Contact Details Page
 #    When the user enters a name "<name>"
     When the user enters an email address "<email>"
@@ -37,11 +37,11 @@ Feature: Pre-clearance - Import Journeys
 #Check for NAME & Email?
 
     Examples:
-      | epu | entryNo | day | month | year |requestType | route  | priority    | transport | name       | email          |
-      | 123 | 123456A | 01  | 10    | 2020 |New      | Route 6 | Human remains | Air       | Abc Testb  | valid@test.com |
+      | epu | entryNo | day | month | year |requestType | route   | priority      | transport | name       | email          |
+      | 123 | 123456A | 01  | 10    | 2020 |New         | Route 6 | Human remains | Air       | Abc Testb  | valid@test.com |
 
 
-  Scenario Outline: A user wants to complete a HOLD EXPORT RouteOne journey (Skips route, mandatory Vessel Qs)
+  Scenario Outline: A user wants to complete a HOLD IMPORT RouteOne journey (Skips route, mandatory Vessel Qs)
     Given the user is on the landing page for trader services
     When the user clicks the link to enter the route1 journey
     Then the user is on the declaration details page
@@ -106,8 +106,8 @@ Feature: Pre-clearance - Import Journeys
     Then the user is on the Import CYA page
 
     Examples:
-      | epu | entryNo | day | month | year |requestType | route  | priority     | transport | email   |
-      | 123 | 123456A | 01  | 10    | 2020 |Cancellation    | Route 6 | Human remains | Air       | a@a.com |
+      | epu | entryNo | day | month | year |requestType  | route   | priority      | transport | email   |
+      | 123 | 123456A | 01  | 10    | 2020 |Cancellation | Route 6 | Human remains | Air       | a@a.com |
 
 
   Scenario Outline: Error validation - no options selected (Question pages only)
