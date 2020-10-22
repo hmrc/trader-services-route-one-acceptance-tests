@@ -1,4 +1,4 @@
-@TraderService @ZAP
+@TraderService2 @ZAP
 Feature: Vessel page validation
 
 #    All blank fields
@@ -65,23 +65,21 @@ Feature: Vessel page validation
     Then the user should see "Error:Date of arrival must be a real date" error message for "dateOfArrival"
     Then the user should see "Error:Minutes must be between 00 and 59" error message for "timeOfArrival"
 
-#     Invalid - name invalid & date/time contains characters other than numbers
-#     Content for the Enter vessel name to be updated with specific error, pending confirmation on validation done on vessel name
     Then the user enters ab: for vessel name
     Then the user enters a date for the vessel "ab" "12" "2020"
     Then the user enters a time for the vessel "ab" "01"
     And the user clicks Continue
-    Then the user should see "Error:Enter the vessel name" error message for "vesselName"
+    Then the user should see "Error:Vessel name must only include letters a to z, numbers, spaces, hyphens, ampersands, apostrophes and full stops" error message for "vesselName"
     Then the user should see "Error:Day of arrival must only contain numbers" error message for "dateOfArrival"
-    Then the user should see "Error:Time of arrival must only contain numbers" error message for "timeOfArrival"
-#Hour of
+    Then the user should see "Error:Hour of arrival must only contain numbers" error message for "timeOfArrival"
+
     Then the user enters 1234567 for vessel name
     Then the user enters a date for the vessel "01" "ab" "2020"
     Then the user enters a time for the vessel "10" "!1"
     And the user clicks Continue
     Then the user should see "Error:Month of arrival must only contain numbers" error message for "dateOfArrival"
-    Then the user should see "Error:Time of arrival must only contain numbers" error message for "timeOfArrival"
-#Minutes of arrival
+    Then the user should see "Error:Minutes of arrival must only contain numbers" error message for "timeOfArrival"
+
     Then the user enters a date for the vessel "01" "01" "abcd"
     Then the user enters a time for the vessel "01" "10"
     And the user clicks Continue
@@ -91,14 +89,19 @@ Feature: Vessel page validation
     Then the user enters a date for the vessel "01" "01" "2022"
     Then the user enters a time for the vessel "01" "01"
     And the user clicks Continue
-    Then the user should see "Error:Date of arrival must be within the past 6 months or in the next 6 months" error message for "dateOfArrival"
+    Then the user should see the invalid date range error message for "dateOfArrival" field
+
+#  Then the user should see "Error:Date of arrival must be between 22 April 2020 and 22 April 2021" error message for "dateOfArrival"
+#  Error message: Date of arrival must be between [6 months past from today] or [6 months future of today]
+#MAKE DYNAMIC?
 
     Then the user enters a date for the vessel "01" "01" "2020"
     Then the user enters a time for the vessel "01" "01"
     And the user clicks Continue
-    Then the user should see "Error:Date of arrival must be within the past 6 months or in the next 6 months" error message for "dateOfArrival"
+   Then the user should see the invalid date range error message for "dateOfArrival" field
 
-#placeholder text for erroring date - will be dynamic when next story played
+
+
 
 #invalid dates ie. 29 feb etc, story yet to be played
 

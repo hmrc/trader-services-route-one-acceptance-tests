@@ -16,6 +16,8 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import java.time.LocalDate
+
 import io.cucumber.scala.{EN, ScalaDsl}
 import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage}
 
@@ -44,6 +46,13 @@ class DeclarationNumStepDefs extends DeclarationNumPage with BasePage with Scala
       writeById("entryDate.year", dateYear)
   }
 
+  Then("""^the user enters today's date$""") {
+    writeById("entryDate.day", entryDate.getDayOfMonth.toString)
+    writeById("entryDate.month", entryDate.getMonthValue.toString)
+    writeById("entryDate.year", entryDate.getYear.toString)
+  }
+  lazy val entryDate: LocalDate = LocalDate.now()
+
 
   Then("""^the details entered for EPU & EntryNo should be pre filled with (.*) & (.*)$""") {
     (epu:String, entryNo:String) =>
@@ -57,20 +66,4 @@ class DeclarationNumStepDefs extends DeclarationNumPage with BasePage with Scala
       verifyInput("entryDate.month", dateMonth)
       verifyInput("entryDate.year", dateYear)
   }
-
-//
-//  When("""^the user enters the following details on the declaration page$""") { dataTable: DataTable =>
-//
-//    for (data: java.util.Map[String, String] <- dataTable.asMaps(classOf[String], classOf[String])) {
-//      val field = data.get("Field") match {
-//        case "epu" => "epu"
-//        case "entryNumber" => "entryNumber"
-//        case "Day" => "entryDate.day"
-//        case "Month" => "entryDate.month"
-//        case "Year" => "entryDate.year"
-//      }
-//      val value = data.get("Value")
-//      driver.findElement(By.id(field)).sendKeys(value)
-//    }
-//  }
 }
