@@ -1,4 +1,4 @@
-@TraderService2 @ZAP
+@TraderService @ZAP
 Feature: Vessel page validation
 
 #    All blank fields
