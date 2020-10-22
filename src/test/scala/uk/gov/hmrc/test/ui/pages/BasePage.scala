@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import java.time.Duration
+import java.time.{Duration, LocalDate}
 
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import org.openqa.selenium.{By, WebDriver, WebElement}
@@ -102,6 +102,7 @@ trait BasePage extends Matchers with BrowserDriver {
   def assertElementText(content: String, element: WebElement): Unit = {
     assert(element.getText.equals(content), message (s"Element displayed is: ${element.getText} Expecting: $content"))
   }
+
 
 //  def assertElementIsNotVisibleById(id: String): Unit = {
 //    driver.manage.timeouts.implicitlyWait(0, TimeUnit.SECONDS)

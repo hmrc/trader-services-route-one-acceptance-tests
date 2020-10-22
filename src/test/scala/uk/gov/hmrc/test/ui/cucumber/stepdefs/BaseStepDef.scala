@@ -58,6 +58,29 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     driver.findElement(By.id(s"$fieldTitle-error")).isDisplayed
     driver.findElement(By.id(s"$fieldTitle-error")).getText.replaceAll("\n", "") shouldBe errorMessage
   }
+
+
+  And("""^the user should see the invalid date range error message for "(.*)" field""") { (fieldTitle:String) =>
+    driver.findElement(By.cssSelector("#error-summary-title")).isDisplayed
+    driver.findElement(By.cssSelector("#error-summary-title")).getText shouldBe "There is a problem"
+
+    driver.findElement(By.id(s"$fieldTitle-error")).isDisplayed
+    driver.findElement(By.id(s"$fieldTitle-error")).getText should startWith("Error:\nDate of arrival must be between")
+  }
 }
+
+
+//  Then("""^the user should see below error messages in below order$""") { dataTable: DataTable =>
+//
+//    dataTable.asMaps(classOf[String], classOf[String]).asScala.foreach { data =>
+//      val fieldname: String = data.get("FieldValue")
+//      //println("***** field name:   "  +fieldname)
+//      val value: String = data.get("ExpectedValue")
+//      //  println("***** expectedValue:  "  +value)
+//      val pageValue: String = driver.findElement(By.id(s"$fieldname-error-summary")).getText
+//      //  println("***** pageValue:  "  +pageValue)
+//      assert(value == pageValue)
+//    }
+//  }
 
 
