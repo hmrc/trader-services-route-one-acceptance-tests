@@ -3,9 +3,10 @@ Feature: Vessel page validation
 
 #    All blank fields
   Scenario: Mandatory (Export) Vessel Page
+    Given the user is on the landing page for trader services
     Then the user navigates to the declaration details page
     When the user enters declaration details "123" and "A12345B"
-    And the user enters a date "10" "10" "2020"
+    And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects C1601
     Then the user is on the Export Route Type Page and selects Route 2
