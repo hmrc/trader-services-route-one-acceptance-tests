@@ -14,10 +14,10 @@ Feature: Review/CYA page
     Then the user is on the Import Priority Options Page and selects <priority>
     When the user is on the ALVS Page and selects Yes
     Then the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import Vessel Page
+    Then the user is on the Import-Optional Vessel Page
     And the user clicks Continue
     Then the user is on the Import Contact Details Page
-#    When the user enters a name "<name>"
+    When the user enters a name "<name>"
     When the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the Import CYA page
@@ -33,7 +33,7 @@ Feature: Review/CYA page
     Then the user should see the Vessel Name row & the correct response - on the CYA page
     And the user should see the Vessel Date row & the correct response "-" on the CYA page
     And the user should see the Vessel Time row & the correct response "-" on the CYA page
-    Then the user should see the Contact details row & the correct response <email> on the CYA page
+    Then the user should see the Contact details row & the correct responses <name> on the CYA page
 #Check for NAME & Email?
 
     Examples:
@@ -53,11 +53,12 @@ Feature: Review/CYA page
     Then the user is on the Export YesNo Priority Page and selects Yes
     When the user is on the Export Priority Options Page and selects <priority>
     Then the user is on the Export Transport Type Page and selects <transport>
-    Then the user is on the Export Vessel Page
-    Then the user enters <vesselName> for vessel name
+    Then the user is on the Export-Optional Vessel Page
+    Then the user enters "<vesselName>" for vessel name
     And the user enters today's date for vesselDate
     Then the user clicks Continue
     Then the user is on the Export Contact Details Page
+    When the user enters a name "<name>"
     And the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the Export CYA page
@@ -72,8 +73,8 @@ Feature: Review/CYA page
     Then the user should see the Vessel Name row & the correct response <vesselName> on the CYA page
     And the user should see the Vessel Date row & the correct response "23 October 2020" on the CYA page
     And the user should see the Vessel Time row & the correct response "-" on the CYA page
-    And the user should see the Contact details row & the blank response - on the CYA page
+    And the user should see the Contact details row & the correct responses <name> on the CYA page
 
     Examples:
-      | epu | entryNo |requestType | route   | priority      | transport | vesselName  | email   | entryDateCYA |
-      | 123 | A23456A |New         | Route 1 | Class A drugs | Maritime  | Test Vessel | a@a.com | Today        |
+      | epu | entryNo |requestType | route   | priority      | transport | vesselName  | name  | email   | entryDateCYA |
+      | 123 | A23456A |New         | Route 1 | Class A drugs | Maritime  | Test Vessel | 123?  | a@a.com | Today        |

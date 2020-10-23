@@ -25,9 +25,9 @@ class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl wit
 
   When ("""^the user navigates to the (.*) vessel page""") {(Journey:String) =>
     Journey match {
-      case "Import" => navigateTo(urlImportVessel)
+      case "Import-Optional" => navigateTo(urlImportVessel)
       case "Import-Mandatory" => navigateTo(urlImpMandatoryVessel)
-      case "Export" => navigateTo(urlExportVessel)
+      case "Export-Optional" => navigateTo(urlExportVessel)
       case "Export-Mandatory" => navigateTo(urlExpMandatoryVessel)
     }
   }
@@ -35,16 +35,16 @@ class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl wit
   Then("""^the user is on the (.*) Vessel Page$""") { (Journey: String) =>
 
     Journey match {
-      case "Import" => confirmUrl(urlImportVessel)
+      case "Import-Optional" => confirmUrl(urlImportVessel)
       case "Import-Mandatory" => confirmUrl(urlImpMandatoryVessel)
-      case "Export" => confirmUrl(urlExportVessel)
+      case "Export-Optional" => confirmUrl(urlExportVessel)
       case "Export-Mandatory" => confirmUrl(urlExpMandatoryVessel)
 
     }
     verifyHeading(headingVessel)
   }
 
-  Then("""^the user enters (.*) for vessel name$""") { (vesselName:String) =>
+  Then("""^the user enters "(.*)" for vessel name$""") { (vesselName:String) =>
     writeById("vesselName", vesselName)
   }
 
@@ -68,7 +68,7 @@ class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl wit
       }
   }
 
-  Then("""^the details entered for Vessel Name should be pre filled with (.*)$""") {
+  Then("""^the details entered for Vessel Name should be pre filled with "(.*)"$""") {
     (vesselName: String) =>
       verifyInput("vesselName", vesselName)
   }
@@ -87,7 +87,7 @@ class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl wit
   }
 
 
-  Then("""^the details entered for Time of Arrival should be pre filled with (.*) & (.*)$""") {
+  Then("""^the details entered for Time of Arrival should be pre filled with "(.*)" & "(.*)"$""") {
     (vesselHrs: String, vesselMins: String) =>
       verifyInput("timeOfArrival.hour", vesselHrs)
       verifyInput("timeOfArrival.minutes", vesselMins)

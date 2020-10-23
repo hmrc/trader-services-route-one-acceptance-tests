@@ -14,19 +14,19 @@ Feature: Contact Details
     When the user is on the Import Priority Options Page and selects <priority>
     Then the user is on the ALVS Page and selects Yes
     Then the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import Vessel Page
+    Then the user is on the Import-Optional Vessel Page
     Then the user clicks Continue
     When the user is on the Import Contact Details Page
-#    Then the user clicks Continue
-#    Then the user should see "Error:Enter your full name" error message for "name"
-#    Then the user should see "Error:Enter an email address" error message for "email"
+    Then the user clicks Continue
+    Then the user should see "Error:Enter your full name" error message for "contactName"
+    Then the user should see "Error:Enter an email address" error message for "contactEmail"
 
 
-#    Then the user enters a name "INVALID_NAME?!()_"
+#    Then the user enters a name "Invalid name?"
     Then the user enters an email address "abc"
     Then the user enters a phone number "xyz"
     Then the user clicks Continue
-##    Then the user should see "Error:Enter your full name" error message for "name"
+##    Then the user should see "Error:Enter a valid name?/Name must only contain..?" error message for "name"
     Then the user should see "Error:Enter an email address in the correct format, like name@example.com" error message for "contactEmail"
     Then the user should see "Error:Phone number must contain numbers only" error message for "contactNumber"
 
@@ -37,9 +37,8 @@ Feature: Contact Details
     Then the user should see "Error:Enter an email address in the correct format, like name@example.com" error message for "contactEmail"
     Then the user should see "Error:Phone number must contain numbers only" error message for "contactNumber"
 
-#    email address may need to contain more validation? currently accepts abc@test
-#    will also need to be mandatory
 #    Phone number must contain numbers only - needs to be 11 digits?
+# Test to ensure phone number is converted ie. +44/44 -> 07
 
     Then the user enters an email address "abc@test.com"
     Then the user enters a phone number "123456789"
@@ -48,5 +47,5 @@ Feature: Contact Details
 
 
     Examples:
-      | epu | entryNo | day | month | year |requestType | route  | priority     | transport |
-      | 123 | 123456A | 01  | 10    | 2020 |Cancellation     | Route 6 | Human remains | Air       |
+      | epu | entryNo | day | month | year |requestType  | route   | priority      | transport |
+      | 123 | 123456A | 01  | 10    | 2020 |Cancellation | Route 6 | Human remains | Air       |

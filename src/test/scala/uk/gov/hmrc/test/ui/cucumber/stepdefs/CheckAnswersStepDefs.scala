@@ -119,9 +119,9 @@ class CheckAnswersStepDefs extends CheckAnswersPage with BasePage with ScalaDsl 
 
   }
 
-  Then("""^the user should see the Contact details row & the correct response (.*) on the CYA page$""") { (Answer:String) =>
+  Then("""^the user should see the Contact details row & the correct responses (.*) on the CYA page$""") { (AnswerName:String) =>
     driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[4]/div/dt")).isDisplayed
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[4]/div/dd[1]/div[1]")).getText shouldBe Answer
+    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[4]/div/dd[1]/div[1]")).getText shouldBe AnswerName
 
   }
 
