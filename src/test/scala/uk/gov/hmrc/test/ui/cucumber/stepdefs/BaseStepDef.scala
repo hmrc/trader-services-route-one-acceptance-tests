@@ -49,6 +49,21 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     signOut
   }
 
+  Then("""^the user enters today's date for (.*)$""") { (dateField:String) =>
+    dateField match {
+
+      case "entryDate" =>
+        writeById ("entryDate.day", todayDate.getDayOfMonth.toString)
+        writeById ("entryDate.month", todayDate.getMonthValue.toString)
+        writeById ("entryDate.year", todayDate.getYear.toString)
+
+      case "vesselDate" =>
+        writeById ("dateOfArrival.day", todayDate.getDayOfMonth.toString)
+        writeById ("dateOfArrival.month", todayDate.getMonthValue.toString)
+        writeById ("dateOfArrival.year", todayDate.getYear.toString)
+    }
+  }
+
 
   Then("""^the user should see "([^"]*)" error message for "([^"]*)"$""") { (errorMessage: String, fieldTitle: String) =>
 

@@ -47,10 +47,13 @@ class CheckAnswersStepDefs extends CheckAnswersPage with BasePage with ScalaDsl 
 
   }
 
-  Then("""^the user should see the Entry Date row & the correct response "(.*)" on the CYA page$""") { (Answer:String) =>
+  Then("""^the user should see the Entry Date row & the date (.*) on the CYA page$""") { (Answer:String) =>
     driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[1]/div[3]/dt")).isDisplayed
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[1]/div[3]/dd[1]")).getText shouldBe Answer
 
+    Answer match {
+      case "Today" => assertElementText(todayDateCYA, driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[1]/div[3]/dd[1]")))
+      case _ => driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[1]/div[3]/dd[1]")).getText shouldBe Answer
+    }
   }
 
   Then("""^the user should see the Request Type row & the correct response (.*) on the CYA page$""") { (Answer:String) =>
@@ -94,7 +97,11 @@ class CheckAnswersStepDefs extends CheckAnswersPage with BasePage with ScalaDsl 
 
   Then("""^the user should see the Vessel Date row & the correct response "(.*)" on the CYA page$""") { (Answer:String) =>
     driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[3]/div[2]/dt")).isDisplayed
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[3]/div[2]/dd[1]")).getText shouldBe Answer
+
+    Answer match {
+      case "Today" => assertElementText(todayDateCYA, driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[3]/div[2]/dd[1]")))
+      case _ => driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[3]/div[2]/dd[1]")).getText shouldBe Answer
+    }
 
   }
 

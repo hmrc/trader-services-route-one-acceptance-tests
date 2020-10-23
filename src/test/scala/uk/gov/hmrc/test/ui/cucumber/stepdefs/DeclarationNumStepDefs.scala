@@ -16,8 +16,6 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import java.time.LocalDate
-
 import io.cucumber.scala.{EN, ScalaDsl}
 import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage}
 
@@ -46,13 +44,6 @@ class DeclarationNumStepDefs extends DeclarationNumPage with BasePage with Scala
       writeById("entryDate.year", dateYear)
   }
 
-  Then("""^the user enters today's date$""") {
-    writeById("entryDate.day", entryDate.getDayOfMonth.toString)
-    writeById("entryDate.month", entryDate.getMonthValue.toString)
-    writeById("entryDate.year", entryDate.getYear.toString)
-  }
-  lazy val entryDate: LocalDate = LocalDate.now()
-
 
   Then("""^the details entered for EPU & EntryNo should be pre filled with (.*) & (.*)$""") {
     (epu:String, entryNo:String) =>
@@ -65,5 +56,12 @@ class DeclarationNumStepDefs extends DeclarationNumPage with BasePage with Scala
       verifyInput("entryDate.day", dateDay)
       verifyInput("entryDate.month", dateMonth)
       verifyInput("entryDate.year", dateYear)
+  }
+
+  Then("""^the details entered for Declaration Date should be pre filled with today's date$""") {
+    () =>
+      verifyInput("entryDate.day",  todayDate.getDayOfMonth.toString)
+      verifyInput("entryDate.month", todayDate.getMonthValue.toString)
+      verifyInput("entryDate.year", todayDate.getYear.toString)
   }
 }

@@ -7,7 +7,7 @@ Feature: Check Back Links & Change Links
     When the user clicks the link to enter the route1 journey
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
-    And the user enters a date "<day>" "<month>" "<year>"
+    And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Import Request Type page and selects <requestType>
     Then the user is on the Import Route Type Page and selects <route>
@@ -17,7 +17,7 @@ Feature: Check Back Links & Change Links
     Then the user is on the Import Transport Type Page and selects <transport>
     Then the user is on the Import Vessel Page
     When the user enters <vesselName> for vessel name
-    And the user enters a date for the vessel "<day>" "<month>" "<year>"
+    And the user enters today's date for vesselDate
     And the user enters a time for the vessel "23" "15"
     And the user clicks Continue
     Then the user is on the Import Contact Details Page
@@ -33,7 +33,7 @@ Feature: Check Back Links & Change Links
     When the user clicks back
     Then the user is on the Import Vessel Page
     And the details entered for Vessel Name should be pre filled with <vesselName>
-    And the details entered for Date of Arrival should be pre filled with <day>, <month> & <year>
+    And the details entered for Date of Arrival should be pre filled with today's date
     And the details entered for Time of Arrival should be pre filled with 23 & 15
 
     When the user clicks back
@@ -63,14 +63,14 @@ Feature: Check Back Links & Change Links
     When the user clicks back
     Then the user is on the declaration details page
     And the details entered for EPU & EntryNo should be pre filled with <epu> & <entryNo>
-    And the details entered for Declaration Date should be pre filled with <day>, <month> & <year>
+    And the details entered for Declaration Date should be pre filled with today's date
 
     When the user clicks back
     Then the user is on the landing page for trader services
 
     Examples:
-| epu | entryNo | day | month | year | requestType | route  | priority   | transport | vesselName | name      | email      |
-| 113 | 993456A | 12  |09     | 2020 | New         | Route 3 | Explosives | Maritime  | TestShip   |Abc Testb  | a@test.com |
+| epu | entryNo | requestType | route   | priority   | transport | vesselName | name       | email      |
+| 113 | 993456A | New         | Route 3 | Explosives | Maritime  | TestShip   | Abc Testb  | a@test.com |
 
 
   Scenario Outline: A user wants to go back through the journey - Export

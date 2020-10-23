@@ -6,7 +6,7 @@ Feature: Pre-clearance - Import Journeys
     When the user clicks the link to enter the route1 journey
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
-    And the user enters a date "<day>" "<month>" "<year>"
+    And the user enters today's date for entryDate
     Then the user clicks Continue
     When the user is on the Import Request Type page and selects <requestType>
     Then the user is on the Import Route Type Page and selects <route>
@@ -21,24 +21,10 @@ Feature: Pre-clearance - Import Journeys
     When the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the Import CYA page
-    Then the user should see the EPU row & the correct response <epu> on the CYA page
-    And the user should see the Entry No row & the correct response <entryNo> on the CYA page
-    And the user should see the Entry Date row & the correct response "1 October 2020" on the CYA page
-    Then the user should see the Request Type row & the correct response <requestType> on the CYA page
-    And the user should see the Route row & the correct response <route> on the CYA page
-    Then the user should see the Priority YN row & the correct response Yes on the CYA page
-    And the user should see the Priority Goods row & the correct response <priority> on the CYA page
-    And the user should see the ALVS row & the correct response Yes on the CYA page
-    And the user should see the Import transport row & the correct response <transport> on the CYA page
-    Then the user should see the Vessel Name row & the correct response - on the CYA page
-    And the user should see the Vessel Date row & the correct response "-" on the CYA page
-    And the user should see the Vessel Time row & the correct response "-" on the CYA page
-    Then the user should see the Contact details row & the correct response <email> on the CYA page
-#Check for NAME & Email?
 
     Examples:
-      | epu | entryNo | day | month | year |requestType | route   | priority      | transport | name       | email          |
-      | 123 | 123456A | 01  | 10    | 2020 |New         | Route 6 | Human remains | Air       | Abc Testb  | valid@test.com |
+      | epu | entryNo |requestType | route   | priority      | transport | name       | email          |
+      | 123 | 123456A |New         | Route 6 | Human remains | Air       | Abc Testb  | valid@test.com |
 
 
   Scenario Outline: A user wants to complete a HOLD IMPORT RouteOne journey (Skips route, mandatory Vessel Qs)
@@ -46,22 +32,22 @@ Feature: Pre-clearance - Import Journeys
     When the user clicks the link to enter the route1 journey
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
-    And the user enters a date "<day>" "<month>" "<year>"
-    And the user clicks Continue
-    When the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import YesNo Priority Page and selects No
+    And the user enters today's date for entryDate
+    When the user clicks Continue
+    Then the user is on the Import Request Type page and selects <requestType>
+    When the user is on the Import YesNo Priority Page and selects No
     Then the user is on the ALVS Page and selects No
-    Then the user is on the Import Transport Type Page and selects <transport>
+    When the user is on the Import Transport Type Page and selects <transport>
     Then the user is on the Import-Mandatory Vessel Page
-    Then the user enters <vesselName> for vessel name
-    Then the user enters a date for the vessel "<day>" "<month>" "<year>"
-    Then the user enters a time for the vessel "10" "10"
-    And the user clicks Continue
+    When the user enters <vesselName> for vessel name
+    Then the user enters today's date for vesselDate
+    And the user enters a time for the vessel "10" "10"
+    When the user clicks Continue
     Then the user is on the Import Contact Details Page
 
     Examples:
-      | epu | entryNo | day | month | year |requestType | transport | vesselName |
-      | 123 | 123456A | 01  | 10    | 2020 |Hold        | Maritime  | ship1      |
+      | epu | entryNo |requestType | transport | vesselName |
+      | 123 | 123456A |Hold        | Maritime  | ship1      |
 
 #  Scenario Outline: A user wants to complete a Route-Hold IMPORT RouteOne journey
 #    Given the user is on the landing page for trader services
@@ -90,7 +76,7 @@ Feature: Pre-clearance - Import Journeys
     When the user clicks the link to enter the route1 journey
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
-    And the user enters a date "<day>" "<month>" "<year>"
+    And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Import Request Type page and selects <requestType>
     Then the user is on the Import Route Type Page and selects <route>
@@ -106,15 +92,15 @@ Feature: Pre-clearance - Import Journeys
     Then the user is on the Import CYA page
 
     Examples:
-      | epu | entryNo | day | month | year |requestType  | route   | priority      | transport | email   |
-      | 123 | 123456A | 01  | 10    | 2020 |Cancellation | Route 6 | Human remains | Air       | a@a.com |
+      | epu | entryNo | requestType  | route   | priority      | transport | email   |
+      | 123 | 123456A | Cancellation | Route 6 | Human remains | Air       | a@a.com |
 
 
   Scenario Outline: Error validation - no options selected (Question pages only)
     Given the user is on the landing page for trader services
     Then the user clicks the link to enter the route1 journey
     When the user enters declaration details "<epu>" and "<entryNo>"
-    And the user enters a date "<day>" "<month>" "<year>"
+    And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Import Request Type page and selects NoOption
     Then the user should see "Error:Select the type of import request" error message for "requestType"
@@ -135,5 +121,5 @@ Feature: Pre-clearance - Import Journeys
     Then the user should see "Error:Select the type of transport you're using" error message for "freightType"
 
     Examples:
-      | epu | entryNo | day | month | year |requestType | route       | priority |
-      | 123 | 123456A | 01  | 09    | 2020 |New         | Route 1 CAP | Art      |
+      | epu | entryNo | requestType | route       | priority |
+      | 123 | 123456A | New         | Route 1 CAP | Art      |

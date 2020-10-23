@@ -103,6 +103,12 @@ trait BasePage extends Matchers with BrowserDriver {
     assert(element.getText.equals(content), message (s"Element displayed is: ${element.getText} Expecting: $content"))
   }
 
+  lazy val todayDate: LocalDate = LocalDate.now()
+
+  def todayDateCYA: String = {
+    s"${todayDate.getDayOfMonth.toString} ${todayDate.getMonth.toString.toLowerCase.capitalize} ${todayDate.getYear.toString}"
+  }
+
 
 //  def assertElementIsNotVisibleById(id: String): Unit = {
 //    driver.manage.timeouts.implicitlyWait(0, TimeUnit.SECONDS)
