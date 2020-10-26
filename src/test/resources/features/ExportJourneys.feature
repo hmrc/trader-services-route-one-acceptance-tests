@@ -13,21 +13,22 @@ Feature: Pre-clearance - Export Journeys
       Then the user is on the Export YesNo Priority Page and selects Yes
       When the user is on the Export Priority Options Page and selects <priority>
       Then the user is on the Export Transport Type Page and selects <transport>
-      Then the user is on the Export Vessel Page
-      Then the user enters <vesselName> for vessel name
+      Then the user is on the Export-Optional Vessel Page
+      Then the user enters "<vesselName>" for vessel name
       And the user enters today's date for vesselDate
       Then the user clicks Continue
       Then the user is on the Export Contact Details Page
-      And the user enters an email address ""
+      And the user enters an email address "<email>"
+      When the user enters a name "<name>"
       And the user clicks Continue
       Then the user is on the Export CYA page
 
     Examples:
-      | epu | entryNo | requestType | route   | priority      | transport | vesselName  | email  |
-      | 123 | A23456A | New         | Route 1 | Class A drugs | Maritime  | Test Vessel | a@a.com|
+      | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   |
+      | 123 | A23456A | New         | Route 1 | Class A drugs | Maritime  | Test Vessel | Mr. F | a@a.com |
 
 
-  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (Selects HOLD - no route Qs & mandatory Vessel)
+  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (HOLD: No Route Q & Mandatory Vessel Qs)
     Given the user is on the landing page for trader services
     When the user clicks the link to enter the route1 journey
     Then the user is on the declaration details page
@@ -37,21 +38,14 @@ Feature: Pre-clearance - Export Journeys
     Then the user is on the Export Request Type page and selects <requestType>
     When the user is on the Export YesNo Priority Page and selects No
     Then the user is on the Export Transport Type Page and selects <transport>
-#    Then the user is on the Export-Mandatory Vessel Page
-#    Then the user enters Test Vessel for vessel name
-#    Then the user enters a date for the vessel "<day>" "<month>" "<year>"
-#    Then the user enters a time for the vessel "17" "30"
-#    Then the user clicks Continue
-#    Then the user is on the Export Contact Details Page
-#    And the user clicks Continue
-#    Then the user is on the Export CYA page
+    Then the user is on the Export-Mandatory Vessel Page
 
     Examples:
       | epu | entryNo | requestType | transport |
       | 123 | A23456A | Hold        | Air       |
 
 
-  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (Mandatory Vessel Qs - C1601)
+  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (C1601: Mandatory Vessel Qs)
 
     Given the user is on the landing page for trader services
     When the user clicks the link to enter the route1 journey
@@ -64,20 +58,14 @@ Feature: Pre-clearance - Export Journeys
     Then the user is on the Export YesNo Priority Page and selects No
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Mandatory Vessel Page
-    Then the user enters <vesselName> for vessel name
-    And the user enters today's date for vesselDate
-    Then the user enters a time for the vessel "13" "10"
-    Then the user clicks Continue
-    Then the user is on the Export Contact Details Page
-    And the user clicks Continue
-    Then the user is on the Export CYA page
+
 
     Examples:
-      | epu | entryNo | requestType | route   | transport    | vesselName  |
-      | 123 | A23456A | C1601       | Route 1 | RoadRoRoRail | test vessel |
+      | epu | entryNo | requestType | route   | transport    |
+      | 123 | A23456A | C1601       | Route 1 | RoadRoRoRail |
 
 
-  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (Mandatory Vessel Qs - C1602)
+  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (C1602: Mandatory Vessel Qs)
 
     Given the user is on the landing page for trader services
     When the user clicks the link to enter the route1 journey
@@ -95,28 +83,6 @@ Feature: Pre-clearance - Export Journeys
       | epu | entryNo | requestType | route  | transport    |
       | 123 | A23456A | C1602       | Route 1 | RoadRoRoRail |
 
-
-  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (Mandatory Vessel Qs - Hold)
-
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
-    And the user enters today's date for entryDate
-    And the user clicks Continue
-    Then the user is on the Export Request Type page and selects <requestType>
-    Then the user is on the Export YesNo Priority Page and selects No
-    Then the user is on the Export Transport Type Page and selects <transport>
-    Then the user is on the Export-Mandatory Vessel Page
-    Then the user enters Test Vessel for vessel name
-    Then the user enters today's date for vesselDate
-    Then the user enters a time for the vessel "10" "10"
-    Then the user clicks Continue
-
-
-    Examples:
-      | epu | entryNo | requestType | transport    |
-      | 123 | A23456A | Hold        | RoadRoRoRail |
 
 #  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (Mandatory Vessel Qs - Route-Hold)
 #

@@ -14,14 +14,14 @@ Feature: Pre-clearance - Import Journeys
     Then the user is on the Import Priority Options Page and selects <priority>
     When the user is on the ALVS Page and selects Yes
     Then the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import Vessel Page
+    Then the user is on the Import-Optional Vessel Page
     And the user clicks Continue
     Then the user is on the Import Contact Details Page
-#    When the user enters a name "<name>"
+    When the user enters a name "<name>"
     When the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the Import CYA page
-
+#for more complete journey add vessel details? (separate?)
     Examples:
       | epu | entryNo |requestType | route   | priority      | transport | name       | email          |
       | 123 | 123456A |New         | Route 6 | Human remains | Air       | Abc Testb  | valid@test.com |
@@ -39,15 +39,10 @@ Feature: Pre-clearance - Import Journeys
     Then the user is on the ALVS Page and selects No
     When the user is on the Import Transport Type Page and selects <transport>
     Then the user is on the Import-Mandatory Vessel Page
-    When the user enters <vesselName> for vessel name
-    Then the user enters today's date for vesselDate
-    And the user enters a time for the vessel "10" "10"
-    When the user clicks Continue
-    Then the user is on the Import Contact Details Page
 
     Examples:
-      | epu | entryNo |requestType | transport | vesselName |
-      | 123 | 123456A |Hold        | Maritime  | ship1      |
+      | epu | entryNo |requestType | transport |
+      | 123 | 123456A |Hold        | Maritime  |
 
 #  Scenario Outline: A user wants to complete a Route-Hold IMPORT RouteOne journey
 #    Given the user is on the landing page for trader services
@@ -84,16 +79,17 @@ Feature: Pre-clearance - Import Journeys
     When the user is on the Import Priority Options Page and selects <priority>
     Then the user is on the ALVS Page and selects Yes
     Then the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import Vessel Page
+    Then the user is on the Import-Optional Vessel Page
     Then the user clicks Continue
     Then the user is on the Import Contact Details Page
     When the user enters an email address "<email>"
+    When the user enters a name "<name>"
     When the user clicks Continue
     Then the user is on the Import CYA page
 
     Examples:
-      | epu | entryNo | requestType  | route   | priority      | transport | email   |
-      | 123 | 123456A | Cancellation | Route 6 | Human remains | Air       | a@a.com |
+      | epu | entryNo | requestType  | route   | priority      | transport | name | email   |
+      | 123 | 123456A | Cancellation | Route 6 | Human remains | Air       | name | a@a.com |
 
 
   Scenario Outline: Error validation - no options selected (Question pages only)

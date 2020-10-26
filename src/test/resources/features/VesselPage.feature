@@ -30,10 +30,10 @@ Feature: Vessel page validation
     Then the user is on the Export Route Type Page and selects Route 1
     Then the user is on the Export YesNo Priority Page and selects No
     Then the user is on the Export Transport Type Page and selects Air
-    Then the user is on the Export Vessel Page
+    Then the user is on the Export-Optional Vessel Page
 
 #    Incomplete fields (time and date must be whole)
-    Then the user enters a-b-c/de&f\1_1+2' for vessel name
+    Then the user enters "a-b-c/de&f\1_1+2'" for vessel name
     Then the user enters a date for the vessel "" "01" "2021"
     Then the user enters a time for the vessel "" "59"
     And the user clicks Continue
@@ -66,7 +66,7 @@ Feature: Vessel page validation
     Then the user should see "Error:Date of arrival must be a real date" error message for "dateOfArrival"
     Then the user should see "Error:Minutes must be between 00 and 59" error message for "timeOfArrival"
 
-    Then the user enters ab: for vessel name
+    Then the user enters "ab:" for vessel name
     Then the user enters a date for the vessel "ab" "12" "2020"
     Then the user enters a time for the vessel "ab" "01"
     And the user clicks Continue
@@ -74,7 +74,7 @@ Feature: Vessel page validation
     Then the user should see "Error:Day of arrival must only contain numbers" error message for "dateOfArrival"
     Then the user should see "Error:Hour of arrival must only contain numbers" error message for "timeOfArrival"
 
-    Then the user enters 1234567 for vessel name
+    Then the user enters "1234567" for vessel name
     Then the user enters a date for the vessel "01" "ab" "2020"
     Then the user enters a time for the vessel "10" "!1"
     And the user clicks Continue
@@ -102,7 +102,7 @@ Feature: Vessel page validation
    Then the user should see the invalid date range error message for "dateOfArrival" field
 
 
-
+#NEED FOR IMPORT
 
 #invalid dates ie. 29 feb etc, story yet to be played
 

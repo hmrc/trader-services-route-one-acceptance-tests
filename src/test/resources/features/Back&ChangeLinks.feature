@@ -15,26 +15,26 @@ Feature: Check Back Links & Change Links
     When the user is on the Import Priority Options Page and selects <priority>
     Then the user is on the ALVS Page and selects Yes
     Then the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import Vessel Page
-    When the user enters <vesselName> for vessel name
+    Then the user is on the Import-Optional Vessel Page
+    When the user enters "<vesselName>" for vessel name
     And the user enters today's date for vesselDate
     And the user enters a time for the vessel "23" "15"
     And the user clicks Continue
     Then the user is on the Import Contact Details Page
-    When the user enters an email address "<email>"
+    When the user enters a name "<name>"
+    Then the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the Import CYA page
 
     When the user clicks back
     Then the user is on the Import Contact Details Page
-    And the details entered for name, email and phone number should be pre-filled with "<email>" & ""
-#To be updated when NAME implemented
+    And the details entered for name, email and phone number should be pre-filled with "<name>", "<email>" & ""
 
     When the user clicks back
-    Then the user is on the Import Vessel Page
-    And the details entered for Vessel Name should be pre filled with <vesselName>
+    Then the user is on the Import-Optional Vessel Page
+    And the details entered for Vessel Name should be pre filled with "<vesselName>"
     And the details entered for Date of Arrival should be pre filled with today's date
-    And the details entered for Time of Arrival should be pre filled with 23 & 15
+    And the details entered for Time of Arrival should be pre filled with "23" & "15"
 
     When the user clicks back
     Then the user is on the Import Transport Page
@@ -78,16 +78,31 @@ Feature: Check Back Links & Change Links
     When the user clicks the link to enter the route1 journey
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
-    And the user enters a date "<day>" "<month>" "<year>"
+    And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
     Then the user is on the Export Route Type Page and selects <route>
     Then the user is on the Export YesNo Priority Page and selects Yes
     When the user is on the Export Priority Options Page and selects <priority>
     Then the user is on the Export Transport Type Page and selects <transport>
-    Then the user is on the Export Vessel Page
-#    Then the user clicks Continue
-#    Then the user is on the Export contact details page
+    Then the user is on the Export-Optional Vessel Page
+    And the user enters today's date for vesselDate
+    Then the user clicks Continue
+    Then the user is on the Export Contact Details Page
+    When the user enters a name "<name>"
+    Then the user enters an email address "<email>"
+    Then the user clicks Continue
+    And the user is on the Export CYA page
+
+    When the user clicks back
+    Then the user is on the Export Contact Details Page
+    And the details entered for name, email and phone number should be pre-filled with "<name>", "<email>" & ""
+
+    When the user clicks back
+    Then the user is on the Export-Optional Vessel Page
+    And the details entered for Vessel Name should be pre filled with ""
+    And the details entered for Date of Arrival should be pre filled with today's date
+    And the details entered for Time of Arrival should be pre filled with "" & ""
 
     When the user clicks back
     Then the user is on the Export Transport Page
@@ -112,14 +127,14 @@ Feature: Check Back Links & Change Links
     When the user clicks back
     Then the user is on the declaration details page
     And the details entered for EPU & EntryNo should be pre filled with <epu> & <entryNo>
-    And the details entered for Declaration Date should be pre filled with <day>, <month> & <year>
+    And the details entered for Declaration Date should be pre filled with today's date
 
     When the user clicks back
     Then the user is on the landing page for trader services
 
     Examples:
-      | epu | entryNo | day | month | year |requestType  | route   | priority      | transport | name      | email      |
-      | 553 | A33456A | 01  | 10    | 2020 |Cancellation | Route 6 | Human remains | Air       | Abc Testb | a@test.com |
+      | epu | entryNo | requestType  | route   | priority      | transport | name      | email      |
+      | 553 | A33456A | Cancellation | Route 6 | Human remains | Air       | Abc Testb | a@test.com |
 
 
 #CHANGE LINKS
@@ -128,7 +143,7 @@ Feature: Check Back Links & Change Links
     When the user clicks the link to enter the route1 journey
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
-    And the user enters a date "<day>" "<month>" "<year>"
+    And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Import Request Type page and selects <requestType>
     Then the user is on the Import Route Type Page and selects <route>
@@ -136,12 +151,13 @@ Feature: Check Back Links & Change Links
     When the user is on the Import Priority Options Page and selects <priority>
     Then the user is on the ALVS Page and selects Yes
     Then the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import Vessel Page
-    When the user enters <vesselName> for vessel name
+    Then the user is on the Import-Optional Vessel Page
+    When the user enters "<vesselName>" for vessel name
     And the user enters a date for the vessel "<day>" "<month>" "<year>"
     And the user enters a time for the vessel "23" "15"
     And the user clicks Continue
     Then the user is on the Import Contact Details Page
+    And the user enters a name "<name>"
     When the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the Import CYA page
