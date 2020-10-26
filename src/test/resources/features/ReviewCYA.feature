@@ -71,7 +71,7 @@ Feature: Review/CYA page
     Then the user should see the Priority Goods row & the correct response <priority> on the CYA page
     And the user should see the Export Transport row & the correct response <transport> on the CYA page
     Then the user should see the Vessel Name row & the correct response <vesselName> on the CYA page
-    And the user should see the Vessel Date row & the correct response "23 October 2020" on the CYA page
+    And the user should see the Vessel Date row & the correct response "<entryDateCYA>" on the CYA page
     And the user should see the Vessel Time row & the correct response "-" on the CYA page
     And the user should see the Contact details row & the correct responses <name> on the CYA page
 
