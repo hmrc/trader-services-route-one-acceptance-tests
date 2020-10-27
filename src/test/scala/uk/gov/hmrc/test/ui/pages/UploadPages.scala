@@ -16,16 +16,47 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.WebElement
+import java.time.Duration
+
+import org.openqa.selenium.support.ui.FluentWait
+import org.openqa.selenium.{By, WebDriver}
 
 trait UploadPages extends BasePage {
 
-  val urlUploadDec: String = traderServicesBaseUrl + ""
-  val headingUploadDec = "About the documents you are uploading"
+  val urlUpload: String = traderServicesBaseUrl + "/pre-clearance/file-upload"
+  val headingUpload = "Upload your first document"
+  val headingUploadAnother = "Upload another document"
 
-  val urlUpload: String = traderServicesBaseUrl + ""
-  val headingUpload = "Upload your files"
+  val urlUploadConfirm: String = traderServicesBaseUrl + "/pre-clearance/file-verification"
+  val headingUploadConfirm = "You have uploaded 1 document"
 
-  def uploadAmount: WebElement = findElementByCss("")
-  //more to be added here for actual upload page
+  //1, 2, 3 documents etc....
+
+  val usrDir = System.getProperty("user.dir") + "/src/test/resources/uploadFiles/"
+  var filePath = ""
+
+  val chooseFileId = "upload-file"
+
+  val fluentWaitUpload: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
+    .withTimeout(Duration.ofSeconds(60))
+    .pollingEvery(Duration.ofMillis(250))
+
+
+  def uploadFile(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId)
+
+  def uploadAnother(): Unit = clickByCSS("p.govuk-body:nth-child(3) > a:nth-child(1)")
+
+  def uploadFilesToBrowser(fileSeq: String, elementID: String): Unit = {
+    fileSeq match {
+      case "first" => filePath = usrDir + "test.jpg"
+      case "second"  => filePath = usrDir + "testNCH1.pdf"
+      case "last"  => filePath = usrDir + "testNCH1.pdf"
+    }
+
+//    if(driver.targetBrowser.startsWith("remote")) {
+//      driver.webDriver.asInstanceOf[RemoteWebDriver].setFileDetector(new LocalFileDetector)
+//    }
+    driver.findElement(By.id(elementID)).sendKeys(filePath)
+  }
+
 }
