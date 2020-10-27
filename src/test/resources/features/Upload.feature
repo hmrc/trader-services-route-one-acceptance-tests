@@ -22,9 +22,9 @@ Feature: A user wants to upload documents
     And the user clicks Continue
     Then the user is on the Import CYA page
     And the user clicks Continue
-    Then the user is on the initial upload page
-    When the user clicks the button to upload and selects "first" file
-    Then the user should be on the first file uploading page
+#    Then the user is on the initial upload page
+#    When the user clicks the button to upload and selects "first" file
+#    Then the user should be on the first file uploading page
 #    Then the user should be on the file upload confirmation page
 #    When the user chooses to upload another document and selects the "second" file
 #    Then the user should be on the <any> file uploading page
