@@ -191,7 +191,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
   }
 
 
-  Then("""^the last selected option for vessel should be pre filled with (.*)$""") { (transport:String) =>
+  Then("""^the last selected option for transport type should be pre filled with (.*)$""") { (transport:String) =>
 
     transport match {
       case "Air" => optionSelected("#freightType")

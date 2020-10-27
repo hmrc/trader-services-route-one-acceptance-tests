@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.test.ui.pages.{ALVSPage, BasePage, VesselQuestionsPage}
+import uk.gov.hmrc.test.ui.pages.{ALVSPage, BasePage}
 
 
 class AlvsStepDef extends ALVSPage with BasePage with ScalaDsl with EN {
