@@ -36,14 +36,9 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     clickContinue()
   }
 
-  And("""^the user clicks Submit""") { () =>
-    clickSubmit()
-  }
-
   And("""^the user clicks back""") { () =>
     clickBack()
   }
-
 
   And("""^the user signs out""") { () =>
     signOut

@@ -72,7 +72,3 @@ object Environment extends Enumeration {
   type Name = Value
   val Local, Dev, Qa, Staging = Value
 }
-
-
-
-//SIGN_IN_PAGE = "http://localhost:9099/agents-external-stubs/user/create?continue=http%3A%2F%2Flocalhost%3A9379%2Ftrader"
