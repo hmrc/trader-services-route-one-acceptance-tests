@@ -79,6 +79,8 @@ trait BasePage extends Matchers with BrowserDriver {
     assert(href == hrefValue, s"Heading was '$href' but expected '$hrefValue'")
   }
 
+  def clickHref(href:String):Unit = driver.findElement(By.cssSelector((href))).click()
+
   def verifyHeading(text: String): Unit = findElementByCss("h1").getText shouldBe text
 
   def clickContinue(): Unit = findElementByCss(".govuk-button").click()

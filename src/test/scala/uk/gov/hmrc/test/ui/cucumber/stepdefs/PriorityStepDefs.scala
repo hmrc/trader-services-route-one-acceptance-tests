@@ -105,7 +105,7 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
   Then("""^the last selected option for priority goods should be pre filled with (.*)$""") { (priority:String) =>
 
     priority match {
-      case "Class A drugs" => optionSelected("#priorityGoods-2")
+      case "Class A drugs" => optionSelected("#priorityGoods")
       case "Explosives" => optionSelected("#priorityGoods-2")
       case "Art" => optionSelected("#priorityGoods-3")
       case "Human remains" => optionSelected("#priorityGoods-4")
