@@ -16,10 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import java.time.Duration
-
-import org.openqa.selenium.support.ui.FluentWait
-import org.openqa.selenium.{By, WebDriver}
+import org.openqa.selenium.By
 
 trait UploadPages extends BasePage {
 
@@ -27,30 +24,26 @@ trait UploadPages extends BasePage {
   val headingUpload = "Upload your first document"
   val headingUploadAnother = "Upload another document"
 
-  val urlUploadConfirm: String = traderServicesBaseUrl + "/pre-clearance/file-verification"
-  val headingUploadConfirm = "You have uploaded 1 document"
+  val urlUploadVer: String = traderServicesBaseUrl + "/pre-clearance/file-verification"
 
-  //1, 2, 3 documents etc....
+  val headingUploadConfirm1 = "You have uploaded 1 document"
+  val headingUploadConfirm2 = "You have uploaded 2 documents"
+  val headingUploadConfirm3 = "You have uploaded 3 documents"
+
+  val urlUploaded: String = traderServicesBaseUrl + "/pre-clearance/file-uploaded"
 
   val usrDir = System.getProperty("user.dir") + "/src/test/resources/uploadFiles/"
   var filePath = ""
 
   val chooseFileId = "upload-file"
 
-  val fluentWaitUpload: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
-    .withTimeout(Duration.ofSeconds(60))
-    .pollingEvery(Duration.ofMillis(250))
-
-
   def uploadFile(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId)
-
-  def uploadAnother(): Unit = clickByCSS("p.govuk-body:nth-child(3) > a:nth-child(1)")
 
   def uploadFilesToBrowser(fileSeq: String, elementID: String): Unit = {
     fileSeq match {
       case "first" => filePath = usrDir + "test.jpg"
-      case "second"  => filePath = usrDir + "testNCH1.pdf"
-      case "last"  => filePath = usrDir + "testNCH1.pdf"
+      case "next"  => filePath = usrDir + "testNCH1.pdf"
+      case "last"  => filePath = usrDir + "govuk.xls"
     }
 
 //    if(driver.targetBrowser.startsWith("remote")) {
@@ -58,5 +51,10 @@ trait UploadPages extends BasePage {
 //    }
     driver.findElement(By.id(elementID)).sendKeys(filePath)
   }
-
 }
+
+
+//Step for file verification page/css processing ring
+//val fluentWaitUpload: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
+//.withTimeout(Duration.ofSeconds(60))
+//.pollingEvery(Duration.ofMillis(250))
