@@ -79,6 +79,8 @@ trait BasePage extends Matchers with BrowserDriver {
     assert(href == hrefValue, s"Heading was '$href' but expected '$hrefValue'")
   }
 
+  def findByXpath(xpath:String): WebElement = driver.findElement(By.xpath(xpath))
+
   def clickHref(href:String):Unit = driver.findElement(By.cssSelector(href)).click()
 
   def verifyHeading(text: String): Unit = findElementByCss("h1").getText shouldBe text
@@ -90,8 +92,6 @@ trait BasePage extends Matchers with BrowserDriver {
   def clickById(id: String): Unit = findElementById(id).click()
 
   def clickByCSS(css: String): Unit = driver.findElement(By.cssSelector(css)).click()
-
-  def clickByXpath(xpath:String): Unit = driver.findElement(By.xpath(xpath)).click()
 
   def optionSelected(css: String): Unit = driver.findElement(By.cssSelector(css)).isSelected shouldBe true
 

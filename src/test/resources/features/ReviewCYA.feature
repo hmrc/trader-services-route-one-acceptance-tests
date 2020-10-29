@@ -1,4 +1,4 @@
-@TraderService
+@TraderService2
 Feature: Review/CYA page
 
   Scenario Outline: A user wants to review their answers (Import)
@@ -19,26 +19,25 @@ Feature: Review/CYA page
     Then the user is on the Import Contact Details Page
     When the user enters a name "<name>"
     When the user enters an email address "<email>"
+    And the user enters a phone number "<phone>"
     And the user clicks Continue
     Then the user is on the Import CYA page
-    Then the user should see the EPU row & the correct response <epu> on the CYA page
-    And the user should see the Entry No row & the correct response <entryNo> on the CYA page
+    Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
     And the user should see the Entry Date row & the date <entryDateCYA> on the CYA page
-    Then the user should see the Request Type row & the correct response <requestType> on the CYA page
+    Then the user should see the Import Request Type row & the correct response <requestType> on the CYA page
     And the user should see the Route row & the correct response <route> on the CYA page
     Then the user should see the Priority YN row & the correct response Yes on the CYA page
     And the user should see the Priority Goods row & the correct response <priority> on the CYA page
     And the user should see the ALVS row & the correct response Yes on the CYA page
-    And the user should see the Import transport row & the correct response <transport> on the CYA page
-    Then the user should see the Vessel Name row & the correct response - on the CYA page
+#    TRANSPORT ROW
+    Then the user should see the Vessel Name row & the correct response "-" on the CYA page
     And the user should see the Vessel Date row & the correct response "-" on the CYA page
     And the user should see the Vessel Time row & the correct response "-" on the CYA page
-    Then the user should see the Contact details row & the correct responses <name> on the CYA page
-#Check for NAME & Email?
+    And the user should see the Full Contact details row & the correct responses "<name>", "<email>" & "<phone>" on the CYA page
 
     Examples:
-      | epu | entryNo |requestType | route   | priority      | transport | name       | email          | entryDateCYA |
-      | 123 | 123456A |New         | Route 6 | Human remains | Air       | Abc Testb  | valid@test.com | Today        |
+      | epu | entryNo |requestType | route   | priority      | transport | name       | email          | phone       | entryDateCYA |
+      | 123 | 123456A |New         | Route 6 | Human remains | Air       | Abc Testb  | valid@test.com | 01234567899 | Today        |
 
 
   Scenario Outline: A user wants to review their answers (Export)
@@ -62,18 +61,17 @@ Feature: Review/CYA page
     And the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the Export CYA page
-    Then the user should see the EPU row & the correct response <epu> on the CYA page
-    And the user should see the Entry No row & the correct response <entryNo> on the CYA page
+    Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
     And the user should see the Entry Date row & the date <entryDateCYA> on the CYA page
-    Then the user should see the Request Type row & the correct response <requestType> on the CYA page
+    Then the user should see the Export Request Type row & the correct response <requestType> on the CYA page
     And the user should see the Route row & the correct response <route> on the CYA page
-    Then the user should see the Priority YN row & the correct response Yes on the CYA page
+    Then the user should see the Priority YN row & the correct response No on the CYA page
     Then the user should see the Priority Goods row & the correct response <priority> on the CYA page
     And the user should see the Export Transport row & the correct response <transport> on the CYA page
-    Then the user should see the Vessel Name row & the correct response <vesselName> on the CYA page
+    Then the user should see the Vessel Name row & the correct response "<vesselName>" on the CYA page
     And the user should see the Vessel Date row & the correct response "<entryDateCYA>" on the CYA page
     And the user should see the Vessel Time row & the correct response "-" on the CYA page
-    And the user should see the Contact details row & the correct responses <name> on the CYA page
+    And the user should see the Mandatory Contact details row & the correct responses "<name>", "<email>" & "" on the CYA page
 
     Examples:
       | epu | entryNo |requestType | route   | priority      | transport | vesselName  | name  | email   | entryDateCYA |

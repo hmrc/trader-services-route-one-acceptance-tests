@@ -35,48 +35,52 @@ class CheckAnswersStepDefs extends CheckAnswersPage with BasePage with ContactDe
     verifyH2Contact(h2ContactDetails)
   }
 
-  //TOP 4 will not change
-  Then("""^the user should see the EPU row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[1]/div[1]/dt")).isDisplayed
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[1]/div[1]/dd[1]")).getText shouldBe Answer
+  Then("""^the user should see the EPU & Entry No Rows & the correct responses (.*) & (.*) on the CYA page$""") { (EPU: String, EntryNo:String) =>
+    assertElementText(summaryEPU, epuRow)
+    assertElementText(EPU, epuAnswer)
+
+    assertElementText(summaryEntryNo, entryNoRow)
+    assertElementText(EntryNo, entryNoAnswer)
   }
 
-  Then("""^the user should see the Entry No row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[1]/div[2]/dt")).isDisplayed
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[1]/div[2]/dd[1]")).getText shouldBe Answer
+  Then("""^the user should see the Entry Date row & the date (.*) on the CYA page$""") { (Date: String) =>
+    assertElementText(summaryEntryDate, findElementByCss("dl.govuk-summary-list:nth-child(3) > div:nth-child(3) > dt:nth-child(1)"))
 
-  }
-
-  Then("""^the user should see the Entry Date row & the date (.*) on the CYA page$""") { (Answer: String) =>
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[1]/div[3]/dt")).isDisplayed
-
-    Answer match {
-      case "Today" => assertElementText(todayDateCYA, driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[1]/div[3]/dd[1]")))
-      case _ => driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[1]/div[3]/dd[1]")).getText shouldBe Answer
+    Date match {
+      case "Today" => assertElementText(todayDateCYA, entryDateAnswer)
+      case _ => assertElementText(Date, entryDateAnswer)
     }
   }
 
-  Then("""^the user should see the Request Type row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[2]/div[1]/dt")).isDisplayed
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[2]/div[1]/dd[1]")).getText shouldBe Answer
+  Then("""^the user should see the (.*) Request Type row & the correct response (.*) on the CYA page$""") { (Journey:String, Answer: String) =>
+
+    Journey match {
+      case "Import" => assertElementText(summaryImportRequest, requestRow)
+      case "Export" => assertElementText(summaryExportRequest, requestRow)
+    }
+    assertElementText(Answer, requestAnswer)
   }
 
 
-  //ROUTE MAY NOT BE PRESENT - ORDER IMPACTED IF SO -> TO BE RESOLVED
   Then("""^the user should see the Route row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[2]/div[2]/dt")).isDisplayed
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[2]/div[2]/dd[1]")).getText shouldBe Answer
+    assertElementText(summaryRoute, routeRow)
+    assertElementText(Answer, routeAnswer)
   }
 
-  //IF NO - ORDER IMPACTED -> TO BE RESOLVED
+
   Then("""^the user should see the Priority YN row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[2]/div[3]/dt")).isDisplayed
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[2]/div[3]/dd[1]")).getText shouldBe Answer
+    assertElementText(summaryPriorityYN, priorityYNRow)
+    assertElementText(Answer, priorityYNAnswer)
   }
 
   Then("""^the user should see the Priority Goods row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[2]/div[4]/dt")).isDisplayed
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[2]/div[4]/dd[1]")).getText shouldBe Answer
+    assertElementText(summaryPriorityGoods, priorityGoodsRow)
+    assertElementText(Answer, priorityGoodsAnswer)
+  }
+
+  Then("""^the user should see the ALVS row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
+    assertElementText(summaryALVS, ALVSRow)
+    assertElementText(Answer, ALVSAnswer)
   }
 
   Then("""^the user should see the Export Transport row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
@@ -84,46 +88,40 @@ class CheckAnswersStepDefs extends CheckAnswersPage with BasePage with ContactDe
     driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[2]/div[5]/dd[1]")).getText shouldBe Answer
   }
 
-  //VESSEL Qs - Should be static
-  Then("""^the user should see the Vessel Name row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[3]/div[1]/dt")).isDisplayed
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[3]/div[1]/dd[1]")).getText shouldBe Answer
-  }
 
+
+  Then("""^the user should see the Vessel Name row & the correct response "(.*)" on the CYA page$""") { (Answer: String) =>
+    assertElementText(summaryVesselName, vesselNameRow)
+    assertElementText(Answer, vesselNameAnswer)
+  }
   Then("""^the user should see the Vessel Date row & the correct response "(.*)" on the CYA page$""") { (Answer: String) =>
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[3]/div[2]/dt")).isDisplayed
+    assertElementText(summaryVesselDate, vesselDateRow)
     Answer match {
-      case "Today" => assertElementText(todayDateCYA, driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[3]/div[2]/dd[1]")))
-      case _ => driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[3]/div[2]/dd[1]")).getText shouldBe Answer
+      case "Today" => assertElementText(todayDateCYA, vesselDateAnswer)
+      case _ =>     assertElementText(Answer, vesselDateAnswer)
     }
   }
-
   Then("""^the user should see the Vessel Time row & the correct response "(.*)" on the CYA page$""") { (Answer: String) =>
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[3]/div[3]/dt")).isDisplayed
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[3]/div[3]/dd[1]")).getText shouldBe Answer
+    assertElementText(summaryVesselTime, vesselTimeRow)
+    assertElementText(Answer, vesselTimeAnswer)
   }
 
 
-  //SORT OUT BLANK RESPONSE
-  Then("""^the user should see the Contact details row & the blank response (.*) on the CYA page$""") { (Answer: String) =>
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[4]/div/dt")).isDisplayed
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[3]/div[3]/dd[1]")).getText shouldBe Answer
-  }
+  Then("""^the user should see the (.*) Contact details row & the correct responses "(.*)", "(.*)" & "(.*)" on the CYA page$""") {
+    (ContactDetails: String, AnswerName: String, AnswerEmail: String, AnswerPhone: String) =>
 
-  Then("""^the user should see the Contact details row & the correct responses (.*) on the CYA page$""") { (AnswerName: String) =>
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[4]/div/dt")).isDisplayed
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[4]/div/dd[1]/div[1]")).getText shouldBe AnswerName
-  }
+      ContactDetails match {
 
-  //PRESENCE OF ALVS ALTERS ORDER -> TO BE RESOLVED
-  Then("""^the user should see the ALVS row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[2]/div[5]/dt")).isDisplayed
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[2]/div[5]/dd[1]")).getText shouldBe Answer
-  }
+        case "Full" =>
+      assertElementText (h2ContactDetails, contactDetailRow)
+      assertElementText (AnswerName, contactDetailAnswerName)
+      assertElementText (AnswerEmail, contactDetailAnswerEmail)
+      assertElementText (AnswerPhone, contactDetailAnswerPhone)
 
-  Then("""^the user should see the Import transport row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
-    driver.findElement(By.xpath("//html/body/div/main/div/div/div[1]/dl[2]/div[6]/dt")).isDisplayed
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[2]/div[6]/dd[1]")).getText shouldBe Answer
+        case "Mandatory" =>
+          assertElementText (h2ContactDetails, contactDetailRow)
+          assertElementText (AnswerName, contactDetailAnswerName)
+      }
   }
 
 
