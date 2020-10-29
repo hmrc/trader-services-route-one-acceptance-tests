@@ -197,7 +197,6 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
       case "Air" => optionSelected("#freightType")
       case "Maritime" => optionSelected("#freightType-2")
       case "RoadRoRoRail" => optionSelected("#freightType-3")
-
     }
   }
 }

@@ -42,8 +42,8 @@ Feature: A user wants to upload documents
 #    When the user clicks the button to upload and selects "last" file
 
     Examples:
-| epu | entryNo | requestType | route   | priority   | transport | name       | email      |
-| 113 | 993456A | New         | Route 3 | Explosives | Maritime  | Abc Testb  | a@test.com |
+| epu | entryNo | requestType | route   | priority                | transport | name       | email      |
+| 113 | 993456A | New         | Route 3 | Explosives or fireworks | Maritime  | Abc Testb  | a@test.com |
 
 
 

@@ -93,8 +93,8 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
 
     RequestType match {
       case "Class A drugs" => clickByCSS("#priorityGoods")
-      case "Explosives" => clickByCSS("#priorityGoods-2")
-      case "Art" => clickByCSS("#priorityGoods-3")
+      case "Explosives or fireworks" => clickByCSS("#priorityGoods-2")
+      case "High value art" => clickByCSS("#priorityGoods-3")
       case "Human remains" => clickByCSS("#priorityGoods-4")
       case "Live animals" => clickByCSS("#priorityGoods-5")
       case "NoOption" =>
@@ -106,8 +106,8 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
 
     priority match {
       case "Class A drugs" => optionSelected("#priorityGoods")
-      case "Explosives" => optionSelected("#priorityGoods-2")
-      case "Art" => optionSelected("#priorityGoods-3")
+      case "Explosives or fireworks" => optionSelected("#priorityGoods-2")
+      case "High value art" => optionSelected("#priorityGoods-3")
       case "Human remains" => optionSelected("#priorityGoods-4")
       case "Live animals" => optionSelected("#priorityGoods-5")
     }

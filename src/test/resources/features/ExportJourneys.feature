@@ -1,7 +1,7 @@
 @TraderService
 Feature: Pre-clearance - Export Journeys
 
-  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey
+  Scenario Outline: A user wants to complete a New Export RouteOne journey
       Given the user is on the landing page for trader services
       When the user clicks the link to enter the route1 journey
       Then the user is on the declaration details page
@@ -22,93 +22,78 @@ Feature: Pre-clearance - Export Journeys
       When the user enters a name "<name>"
       And the user clicks Continue
       Then the user is on the Export CYA page
+#    Then the user clicks Continue
+#    Then the user is on the First upload page
+#    When the user clicks the button to upload and selects "first" file
+#    Then the user should be on the file upload confirmation page after uploading 1 document/s
+#    Then the user clicks Continue
+#    Then the user is on the final confirmation page
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   |
       | 123 | A23456A | New         | Route 1 | Class A drugs | Maritime  | Test Vessel | Mr. F | a@a.com |
 
-
-  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (HOLD: No Route Q & Mandatory Vessel Qs)
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
-    And the user enters today's date for entryDate
-    And the user clicks Continue
-    Then the user is on the Export Request Type page and selects <requestType>
-    When the user is on the Export YesNo Priority Page and selects No
-    Then the user is on the Export Transport Type Page and selects <transport>
-    Then the user is on the Export-Mandatory Vessel Page
-
-    Examples:
-      | epu | entryNo | requestType | transport |
-      | 123 | A23456A | Hold        | Air       |
-
-
-  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (C1601: Mandatory Vessel Qs)
-
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
-    And the user enters today's date for entryDate
-    And the user clicks Continue
-    Then the user is on the Export Request Type page and selects <requestType>
-    Then the user is on the Export Route Type Page and selects <route>
-    Then the user is on the Export YesNo Priority Page and selects No
-    Then the user is on the Export Transport Type Page and selects <transport>
-    Then the user is on the Export-Mandatory Vessel Page
-
-
-    Examples:
-      | epu | entryNo | requestType | route   | transport    |
-      | 123 | A23456A | C1601       | Route 1 | RoadRoRoRail |
-
-
-  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (C1602: Mandatory Vessel Qs)
-
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
-    And the user enters today's date for entryDate
-    And the user clicks Continue
-    Then the user is on the Export Request Type page and selects <requestType>
-    Then the user is on the Export Route Type Page and selects <route>
-    Then the user is on the Export YesNo Priority Page and selects No
-    Then the user is on the Export Transport Type Page and selects <transport>
-    Then the user is on the Export-Mandatory Vessel Page
-
-    Examples:
-      | epu | entryNo | requestType | route  | transport    |
-      | 123 | A23456A | C1602       | Route 1 | RoadRoRoRail |
-
-
-#  Scenario Outline: A user wants to complete a New EXPORT RouteOne journey (Mandatory Vessel Qs - Route-Hold)
-#
+# DOR-111
+#  Scenario Outline: Route-Hold: A user should reach the mandatory vessel page
 #    Given the user is on the landing page for trader services
 #    When the user clicks the link to enter the route1 journey
 #    Then the user is on the declaration details page
 #    When the user enters declaration details "<epu>" and "<entryNo>"
-#    And the user enters a date "<day>" "<month>" "<year>"
+#    And the user enters today's date for entryDate
 #    And the user clicks Continue
 #    Then the user is on the Export Request Type page and selects <requestType>
 #    Then the user is on the Export Route Type Page and selects <route>
-#    Then the user is on the Export YesNo Priority Page and selects No
+#    When the user is on the Export YesNo Priority Page and selects No
 #    Then the user is on the Export Transport Type Page and selects <transport>
 #    Then the user is on the Export-Mandatory Vessel Page
-#    Then the user enters Test Vessel for vessel name
-#    Then the user enters a date for the vessel "01" "11" "2021"
-#    Then the user enters a time for the vessel "10" "10"
-#    Then the user clicks Continue
-#
 #
 #    Examples:
-#      | epu | entryNo | day | month | year | requestType | route  | transport    |
-#      | 123 | A23456A | 01  | 09    | 2020 | New         | Hold   | RoadRoRoRail |
+#      | epu | entryNo | requestType | route | transport |
+#      | 123 | A23456A | New         | Hold  | Air       |
+
+  Scenario Outline: C1601: A user should reach the mandatory vessel page
+
+    Given the user is on the landing page for trader services
+    When the user clicks the link to enter the route1 journey
+    Then the user is on the declaration details page
+    When the user enters declaration details "<epu>" and "<entryNo>"
+    And the user enters today's date for entryDate
+    And the user clicks Continue
+    Then the user is on the Export Request Type page and selects <requestType>
+    Then the user is on the Export Route Type Page and selects <route>
+    Then the user is on the Export YesNo Priority Page and selects No
+    Then the user is on the Export Transport Type Page and selects <transport>
+    Then the user is on the Export-Mandatory Vessel Page
+    Then the user enters "<vesselName>" for vessel name
+    And the user enters today's date for vesselDate
+    And the user enters a time for the vessel "16" "20"
+    Then the user clicks Continue
+
+    Examples:
+      | epu | entryNo | requestType | route   | transport    | vesselName |
+      | 123 | A23456A | C1601       | Route 1 | RoadRoRoRail | Train1     |
 
 
-  Scenario Outline: Error validation - no options selected (Question pages only)
+  Scenario Outline: C1602: A user should be on the mandatory vessel page
+
+    Given the user is on the landing page for trader services
+    When the user clicks the link to enter the route1 journey
+    Then the user is on the declaration details page
+    When the user enters declaration details "<epu>" and "<entryNo>"
+    And the user enters today's date for entryDate
+    And the user clicks Continue
+    Then the user is on the Export Request Type page and selects <requestType>
+    Then the user is on the Export Route Type Page and selects <route>
+    Then the user is on the Export YesNo Priority Page and selects No
+    Then the user is on the Export Transport Type Page and selects <transport>
+    Then the user is on the Export-Mandatory Vessel Page
+
+    Examples:
+      | epu | entryNo | requestType | route   | transport     |
+      | 123 | A23456A | C1602       | Route 1 | RoadRoRoRail  |
+
+
+  Scenario Outline: Export questions: error validation - no options selected
 #    Question pages include pages with radio options, more detailed validation done on own feature files
     Given the user is on the landing page for trader services
     Then the user clicks the link to enter the route1 journey
@@ -131,5 +116,5 @@ Feature: Pre-clearance - Export Journeys
     Then the user should see "Error:Select the type of transport you're using" error message for "freightType"
 
     Examples:
-      | epu | entryNo | requestType  | route       | priority |
-      | 123 | A23456A | Cancellation | Route 1 CAP | Art      |
+      | epu | entryNo | requestType  | route       | priority       |
+      | 123 | A23456A | Cancellation | Route 1 CAP | High value art |
