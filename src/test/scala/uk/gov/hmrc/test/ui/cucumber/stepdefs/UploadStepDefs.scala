@@ -17,19 +17,23 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.{BasePage, UploadPages}
 
 
 class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
 
 
-  Then("""^the user is on the initial upload page"""){ () =>
+  Then("""^the user is on the (.*) upload page"""){ (page:String) =>
+
     confirmUrl(urlUpload)
-    verifyHeading(headingUpload)
+
+    page match {
+      case "First" => verifyHeading(headingUpload)
+      case "Another" => verifyHeading(headingUploadAnother)
+    }
   }
 
-  //Step here to confirm prog disc content
+  //Step here to confirm prog disc content once implemented
 
   Then("""^the user clicks the button to upload and selects "([^"]*)" file"""){ (file:String) =>
     clickByCSS(".govuk-button")
@@ -38,30 +42,54 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     clickContinue()
   }
 
-  When("""^the user should be on the (.*) file uploading page"""){(uploadNo:String) =>
+  Then("""^the user should be on the file upload confirmation page after uploading (.*) document/s"""){
+    (docAmount:String) =>
+      confirmUrl(urlUploaded)
 
-    uploadNo match {
-      case "first" => verifyHeading (headingUpload)
-      case _ => verifyHeading(headingUploadAnother)
+      docAmount match {
+        case "1"=> verifyHeading(headingUploadConfirm1)
+        case "2"=> verifyHeading(headingUploadConfirm2)
+        case "3"=> verifyHeading(headingUploadConfirm3)
+      }
+  }
+
+  Then("""^the user should see their first uploaded doc (.*) on upload review page$""") { (Answer: String) =>
+    findElementByCss("div.govuk-summary-list__row:nth-child(1) > dt:nth-child(1)").isDisplayed
+    findElementByCss("div.govuk-summary-list__row:nth-child(1) > dd:nth-child(2)").getText shouldBe Answer
+  }
+
+  When("""^the user clicks the button to remove a document$""") { () =>
+  clickHref("a[href*='remove']")
+  }
+
+  Then("""^the user should see the message saying they have uploaded the max amount of docs""") { () =>
+    assertElementText("You have uploaded the maximum number of files and cannot add any more.",
+    findElementByCss("p.govuk-body"))
+  }
+
+  Then("""^the user selects (.*) to to uploading another file""") { (yesNo: String) =>
+    yesNo match {
+      case "Yes" => clickByCSS("#uploadAnotherFile")
+      case "No" => clickByCSS("#uploadAnotherFile-2")
     }
-
-    confirmUrl(urlUploadConfirm)
-    assertElementText("We are checking your file, please wait",
-      driver.findElement(By.cssSelector(".govuk-heading-m")))
-
-    driver.findElement(By.cssSelector(".ccms-loader"))
-
-    assertElementIsNotVisibleById(".ccms-loader")
-
-  }
-
-  Then("""^the user should be on the file upload confirmation page"""){() =>
-    confirmUrl(urlUploadConfirm)
-    verifyHeading(headingUploadConfirm)
-  }
-
-  And("""^the user chooses to upload another document and selects the "([^"]*)" file"""){(file:String) =>
-    uploadAnother()
-    uploadFile(file)
+    clickContinue()
   }
 }
+
+// Stepdef for checking file verification page (inaccessible via standard upscan stub)
+//  Then("""^the user should be on the (.*) file uploading page"""){(uploadNo:String) =>
+//
+//    uploadNo match {
+//      case "first" => verifyHeading (headingUpload)
+//      case _ => verifyHeading(headingUploadAnother)
+//    }
+//
+//    confirmUrl(urlUploadVer)
+//    assertElementText("We are checking your file, please wait",
+//      driver.findElement(By.cssSelector(".govuk-heading-m")))
+//
+//    driver.findElement(By.cssSelector(".ccms-loader"))
+//
+//    assertElementIsNotVisibleById(".ccms-loader")
+//
+//  }

@@ -62,8 +62,6 @@ class CheckAnswersStepDefs extends CheckAnswersPage with BasePage with ContactDe
   }
 
 
-
-
   //ROUTE MAY NOT BE PRESENT - ORDER IMPACTED IF SO -> TO BE RESOLVED
   Then("""^the user should see the Route row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
     driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[2]/div[2]/dt")).isDisplayed
