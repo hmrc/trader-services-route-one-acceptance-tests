@@ -50,7 +50,6 @@ Feature: Vessel page validation
     And the user clicks Continue
     Then the user should see "Error:Date of arrival must include a year" error message for "dateOfArrival"
 
-
 #    Invalid - outside bounds
 #    Invalid day & hour field
     Then the user enters a date for the vessel "32" "01" "2021"
@@ -65,6 +64,23 @@ Feature: Vessel page validation
     Then the user clicks Continue
     Then the user should see "Error:Date of arrival must be a real date" error message for "dateOfArrival"
     Then the user should see "Error:Minutes must be between 00 and 59" error message for "timeOfArrival"
+
+#    Invalid only when computed as a whole (within bounds)
+#    When the user enters declaration details "123" and "123456A"
+#    Then the user enters a date "31" "09" "2020"
+#    And the user clicks Continue
+#    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
+
+#Invalid year (not enough chars)
+#    When the user enters a date "01" "10" "202"
+#    And the user clicks Continue
+#    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
+
+#Invalid year (outside bounds)
+#    CHECK IF IN PAST WHICH ERROR PRECEDES ie. date must be in past/future OR not valid
+#    When the user enters a date "01" "10" "2051"
+#    And the user clicks Continue
+#    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
 
     Then the user enters "ab:" for vessel name
     Then the user enters a date for the vessel "ab" "12" "2020"
@@ -94,45 +110,12 @@ Feature: Vessel page validation
 
 #  Then the user should see "Error:Date of arrival must be between 22 April 2020 and 22 April 2021" error message for "dateOfArrival"
 #  Error message: Date of arrival must be between [6 months past from today] or [6 months future of today]
-#MAKE DYNAMIC?
 
     Then the user enters a date for the vessel "01" "01" "2020"
     Then the user enters a time for the vessel "01" "01"
     And the user clicks Continue
-   Then the user should see the invalid date range error message for "dateOfArrival" field
+    Then the user should see the invalid date range error message for "dateOfArrival" field
 
 
-#NEED FOR IMPORT
 
-#invalid dates ie. 29 feb etc, story yet to be played
 
-#    When the user enters declaration details "123" and "123456A"
-#    Then the user enters a date "32" "09" "2020"
-#    And the user clicks Continue
-#    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
-#    #Day must be a number between 1 and 31
-#
-#    When the user enters a date "01" "13" "2020"
-#    And the user clicks Continue
-#    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
-#    #Month must be a number between 1 and 12
-#
-#    When the user enters a date "01" "13" "202"
-#    And the user clicks Continue
-#    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
-#    #Entry year must be a number between 2020 and 2050
-#
-#    When the user enters declaration details "123" and "123456A"
-#    Then the user enters a date "31" "09" "2020"
-#    And the user clicks Continue
-#    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
-#    #Updates to come for the above three error messages (to be more specific)
-#
-#    When the user enters declaration details "123" and "123456A"
-#    Then the user enters a date "32" "13" "2020"
-#    And the user clicks Continue
-#    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
-##    Do we want one error message in these instances or 2x??
-#
-
-#Test for presence of more than one....

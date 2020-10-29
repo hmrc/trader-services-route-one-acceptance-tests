@@ -1,7 +1,7 @@
 @TraderService
 Feature: Pre-clearance - Import Journeys
 
-  Scenario Outline: A user wants to complete a New IMPORT RouteOne journey
+  Scenario Outline: A user wants to complete a New Import journey
     Given the user is on the landing page for trader services
     When the user clicks the link to enter the route1 journey
     Then the user is on the declaration details page
@@ -21,78 +21,39 @@ Feature: Pre-clearance - Import Journeys
     When the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the Import CYA page
-#for more complete journey add vessel details? (separate?)
+#    And the user clicks Continue
+#    Then the user is on the First upload page
+#    When the user clicks the button to upload and selects "first" file
+#    Then the user should be on the file upload confirmation page after uploading 1 document/s
+#    Then the user clicks Continue
+#    Then the user is on the final confirmation page
+
     Examples:
       | epu | entryNo |requestType | route   | priority      | transport | name       | email          |
       | 123 | 123456A |New         | Route 6 | Human remains | Air       | Abc Testb  | valid@test.com |
 
 
-  Scenario Outline: A user wants to complete a HOLD IMPORT RouteOne journey (Skips route, mandatory Vessel Qs)
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
-    And the user enters today's date for entryDate
-    When the user clicks Continue
-    Then the user is on the Import Request Type page and selects <requestType>
-    When the user is on the Import YesNo Priority Page and selects No
-    Then the user is on the ALVS Page and selects No
-    When the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import-Mandatory Vessel Page
-
-    Examples:
-      | epu | entryNo |requestType | transport |
-      | 123 | 123456A |Hold        | Maritime  |
-
-#  Scenario Outline: A user wants to complete a Route-Hold IMPORT RouteOne journey
+    #    DOR-111
+#  Scenario Outline: Route-Hold: A user should reach the mandatory vessel page
 #    Given the user is on the landing page for trader services
 #    When the user clicks the link to enter the route1 journey
 #    Then the user is on the declaration details page
 #    When the user enters declaration details "<epu>" and "<entryNo>"
-#    And the user enters a date "<day>" "<month>" "<year>"
-#    And the user clicks Continue
-#    When the user is on the Import Request Type page and selects <requestType>
+#    And the user enters today's date for entryDate
+#    When the user clicks Continue
+#    Then the user is on the Import Request Type page and selects <requestType>
 #    Then the user is on the Import Route Type Page and selects <route>
-#    Then the user is on the Import YesNo Priority Page and selects No
+#    When the user is on the Import YesNo Priority Page and selects No
 #    Then the user is on the ALVS Page and selects No
-#    Then the user is on the Import Transport Type Page and selects <transport>
-#    Then the user is on the Mandatory-Import Vessel Page
-#    Then the user enters Test Vessel for vessel name
-#    Then the user enters a date for the vessel "01" "11" "2021"
-#    Then the user enters a time for the vessel "10" "10"
+#    When the user is on the Import Transport Type Page and selects <transport>
+#    Then the user is on the Import-Mandatory Vessel Page
 #
 #    Examples:
-#      | epu | entryNo | day | month | year |requestType | route | transport |
-#      | 123 | 123456A | 01  | 10    | 2020 |New         | Hold  | Maritime  |
+#      | epu | entryNo |requestType  | route | transport |
+#      | 123 | 123456A |Cancellation | Hold | Maritime   |
 
 
-  Scenario Outline: A user wants to complete a Cancellation IMPORT RouteOne journey
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
-    And the user enters today's date for entryDate
-    And the user clicks Continue
-    Then the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import Route Type Page and selects <route>
-    Then the user is on the Import YesNo Priority Page and selects Yes
-    When the user is on the Import Priority Options Page and selects <priority>
-    Then the user is on the ALVS Page and selects Yes
-    Then the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import-Optional Vessel Page
-    Then the user clicks Continue
-    Then the user is on the Import Contact Details Page
-    When the user enters an email address "<email>"
-    When the user enters a name "<name>"
-    When the user clicks Continue
-    Then the user is on the Import CYA page
-
-    Examples:
-      | epu | entryNo | requestType  | route   | priority      | transport | name | email   |
-      | 123 | 123456A | Cancellation | Route 6 | Human remains | Air       | name | a@a.com |
-
-
-  Scenario Outline: Error validation - no options selected (Question pages only)
+  Scenario Outline: Import questions: error validation - no options selected
     Given the user is on the landing page for trader services
     Then the user clicks the link to enter the route1 journey
     When the user enters declaration details "<epu>" and "<entryNo>"
@@ -117,5 +78,5 @@ Feature: Pre-clearance - Import Journeys
     Then the user should see "Error:Select the type of transport you're using" error message for "freightType"
 
     Examples:
-      | epu | entryNo | requestType | route       | priority |
-      | 123 | 123456A | New         | Route 1 CAP | Art      |
+      | epu | entryNo | requestType | route       | priority       |
+      | 123 | 123456A | New         | Route 1 CAP | High value art |

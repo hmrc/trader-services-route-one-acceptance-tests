@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.{BasePage, CheckAnswersPage, ContactDetailsPage}
 
 
@@ -55,39 +54,59 @@ class CheckAnswersStepDefs extends CheckAnswersPage with BasePage with ContactDe
   Then("""^the user should see the (.*) Request Type row & the correct response (.*) on the CYA page$""") { (Journey:String, Answer: String) =>
 
     Journey match {
-      case "Import" => assertElementText(summaryImportRequest, requestRow)
-      case "Export" => assertElementText(summaryExportRequest, requestRow)
+      case "Import" => assertElementText(summaryImportRequest, firstQRow)
+      case "Export" => assertElementText(summaryExportRequest, firstQRow)
     }
-    assertElementText(Answer, requestAnswer)
+    assertElementText(Answer, firstQAnswer)
   }
-
 
   Then("""^the user should see the Route row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
-    assertElementText(summaryRoute, routeRow)
-    assertElementText(Answer, routeAnswer)
+    assertElementText(summaryRoute, secondQRow)
+    assertElementText(Answer, secondQAnswer)
   }
-
 
   Then("""^the user should see the Priority YN row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
-    assertElementText(summaryPriorityYN, priorityYNRow)
-    assertElementText(Answer, priorityYNAnswer)
+    assertElementText(summaryPriorityYN, thirdQRow)
+    assertElementText(Answer, thirdQAnswer)
   }
 
-  Then("""^the user should see the Priority Goods row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
-    assertElementText(summaryPriorityGoods, priorityGoodsRow)
-    assertElementText(Answer, priorityGoodsAnswer)
+
+  When("""^the user answered (.*) then they should see the correct responses for the Import journey "(.*)", "(.*)" & "(.*)"$""") {
+    (YesNo:String, PriorityGoods:String, ALVS: String, Transport:String ) =>
+
+    YesNo match {
+      case "YesToPriority" => assertElementText (summaryPriorityGoods, fourthQRow)
+                              assertElementText (PriorityGoods, fourthQAnswer)
+
+                              assertElementText (summaryALVS, fifthQRow)
+                              assertElementText (ALVS, fifthQAnswer)
+
+                              assertElementText (summaryTransport, sixthQRow)
+                              assertElementText (Transport, sixthQAnswer)
+
+
+      case "NoToPriority" =>  assertElementText (summaryALVS, fourthQRow)
+                              assertElementText (ALVS, fourthQAnswer)
+
+                              assertElementText (summaryTransport, fifthQRow)
+                              assertElementText (Transport, fifthQAnswer)
+    }
   }
 
-  Then("""^the user should see the ALVS row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
-    assertElementText(summaryALVS, ALVSRow)
-    assertElementText(Answer, ALVSAnswer)
-  }
+  When("""^the user answered (.*) then they should see the correct responses for the Export journey "(.*)" & "(.*)"$""") {
+    (YesNo:String, PriorityGoods:String, Transport:String ) =>
 
-  Then("""^the user should see the Export Transport row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[2]/div[5]/dt")).isDisplayed
-    driver.findElement(By.xpath("/html/body/div/main/div/div/div[1]/dl[2]/div[5]/dd[1]")).getText shouldBe Answer
-  }
+      YesNo match {
+        case "YesToPriority" => assertElementText (summaryPriorityGoods, fourthQRow)
+                                assertElementText (PriorityGoods, fourthQAnswer)
 
+                                assertElementText (summaryTransport, fifthQRow)
+                                assertElementText (Transport, fifthQAnswer)
+
+        case "NoToPriority" => assertElementText (summaryTransport, fourthQRow)
+                               assertElementText (Transport, fourthQAnswer)
+      }
+  }
 
 
   Then("""^the user should see the Vessel Name row & the correct response "(.*)" on the CYA page$""") { (Answer: String) =>

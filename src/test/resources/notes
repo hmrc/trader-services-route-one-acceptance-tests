@@ -1,18 +1,13 @@
 
 To do (general):
-Tidy up review page step defs (less brittle selectors)
-
 Implement Data tables?
-
 General tidy up/review
-
-
 ----------------
 Sprint 6: Upload journey
 ----------------
 Sprint 7: Finish upload & general enhancements
 
-DOR-111
+DOR-111 (uncomment)
 Remove route from request type  - remove/refactor tests to remove & handle routing
 
 DOR-88

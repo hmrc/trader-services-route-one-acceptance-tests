@@ -41,7 +41,6 @@ class AlvsStepDef extends ALVSPage with BasePage with ScalaDsl with EN {
       case "No" => clickByCSS("#hasALVS-2")
       case "NoOption" =>
     }
-
     clickContinue()
   }
 

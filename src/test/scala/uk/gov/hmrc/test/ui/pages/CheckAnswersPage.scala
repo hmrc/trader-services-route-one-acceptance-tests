@@ -30,7 +30,7 @@ trait CheckAnswersPage extends BasePage with DeclarationNumPage with QuestionPag
   def verifyH2Contact(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(8)").getText shouldBe text
 
 
-  //Declaration detail section
+  //Declaration details section
   val h2Dec = "Declaration information"
   val summaryEPU = "EPU number"
   val summaryEntryNo = "Entry number"
@@ -46,7 +46,7 @@ trait CheckAnswersPage extends BasePage with DeclarationNumPage with QuestionPag
   def entryDateAnswer:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(3) > div:nth-child(3) > dd:nth-child(2)")
 
 
-  //Question Sections (order may vary.....)
+  //Question Section (order may vary)
   val h2Questions = "Pre-clearance information"
   val summaryImportRequest = "Type of import request"
   val summaryExportRequest = "Type of export request"
@@ -56,27 +56,28 @@ trait CheckAnswersPage extends BasePage with DeclarationNumPage with QuestionPag
   val summaryALVS = "ALVS"
   val summaryTransport = "Type of transport"
 
-  def requestRow:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(5) > div:nth-child(1) > dt:nth-child(1)")
-  def requestAnswer:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(5) > div:nth-child(1) > dd:nth-child(2)")
+  //Always request type
+  def firstQRow:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(5) > div:nth-child(1) > dt:nth-child(1)")
+  def firstQAnswer:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(5) > div:nth-child(1) > dd:nth-child(2)")
 
-  def routeRow:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(5) > div:nth-child(2) > dt:nth-child(1)")
-  def routeAnswer:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(5) > div:nth-child(2) > dd:nth-child(2)")
+  //Always route type
+  def secondQRow:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(5) > div:nth-child(2) > dt:nth-child(1)")
+  def secondQAnswer:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(5) > div:nth-child(2) > dd:nth-child(2)")
 
-  def priorityYNRow:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(5) > div:nth-child(3) > dt:nth-child(1)")
-  def priorityYNAnswer:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(5) > div:nth-child(3) > dd:nth-child(2)")
+  //Always Priority YN
+  def thirdQRow:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(5) > div:nth-child(3) > dt:nth-child(1)")
+  def thirdQAnswer:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(5) > div:nth-child(3) > dd:nth-child(2)")
 
-  //if yes ->
-  def priorityGoodsRow:WebElement = findElementByCss("div.govuk-summary-list__row:nth-child(4) > dt:nth-child(1)")
-  def priorityGoodsAnswer:WebElement = findElementByCss("div.govuk-summary-list__row:nth-child(4) > dd:nth-child(2)")
-  //if NO then the above will become the ALVS row, and the ALVS row will become the transport row
+  //The following vary based on journey (exp/imp) & answer to priority goods
+  def fourthQRow:WebElement = findElementByCss("div.govuk-summary-list__row:nth-child(4) > dt:nth-child(1)")
+  def fourthQAnswer:WebElement = findElementByCss("div.govuk-summary-list__row:nth-child(4) > dd:nth-child(2)")
 
-  def ALVSRow:WebElement = findElementByCss("div.govuk-summary-list__row:nth-child(5) > dt:nth-child(1)")
-  def ALVSAnswer:WebElement = findElementByCss("div.govuk-summary-list__row:nth-child(5) > dd:nth-child(2)")
+  def fifthQRow:WebElement = findElementByCss("div.govuk-summary-list__row:nth-child(5) > dt:nth-child(1)")
+  def fifthQAnswer:WebElement = findElementByCss("div.govuk-summary-list__row:nth-child(5) > dd:nth-child(2)")
 
-  def transportRow:WebElement = findElementByCss("div.govuk-summary-list__row:nth-child(6) > dt:nth-child(1)")
-  def transportAnswer:WebElement = findElementByCss("div.govuk-summary-list__row:nth-child(6) > dd:nth-child(2)")
-
-  //Best way to sort? Numbers?
+  //Only accessible in Import & Yes to priority
+  def sixthQRow:WebElement = findElementByCss("div.govuk-summary-list__row:nth-child(6) > dt:nth-child(1)")
+  def sixthQAnswer:WebElement = findElementByCss("div.govuk-summary-list__row:nth-child(6) > dd:nth-child(2)")
 
 
   //Vessel Section
