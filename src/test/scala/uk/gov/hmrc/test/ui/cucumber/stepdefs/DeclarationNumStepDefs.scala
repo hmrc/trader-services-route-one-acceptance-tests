@@ -44,7 +44,6 @@ class DeclarationNumStepDefs extends DeclarationNumPage with BasePage with Scala
       writeById("entryDate.year", dateYear)
   }
 
-
   Then("""^the details entered for EPU & EntryNo should be pre filled with (.*) & (.*)$""") {
     (epu:String, entryNo:String) =>
       verifyInput("epu", epu)
@@ -57,21 +56,4 @@ class DeclarationNumStepDefs extends DeclarationNumPage with BasePage with Scala
       verifyInput("entryDate.month", dateMonth)
       verifyInput("entryDate.year", dateYear)
   }
-
-  Then("""^the details entered for (.*) should be pre filled with today's date$""") {
-    (dateField: String) =>
-
-      dateField match {
-
-case "Declaration Date" =>
-      verifyInput ("entryDate.day", todayDate.getDayOfMonth.toString)
-      verifyInput ("entryDate.month", todayDate.getMonthValue.toString)
-      verifyInput ("entryDate.year", todayDate.getYear.toString)
-
-case "Date of Arrival" =>
-      verifyInput ("dateOfArrival.day", todayDate.getDayOfMonth.toString)
-      verifyInput ("dateOfArrival.month", todayDate.getMonthValue.toString)
-      verifyInput ("dateOfArrival.year", todayDate.getYear.toString)
-      }
-      }
   }

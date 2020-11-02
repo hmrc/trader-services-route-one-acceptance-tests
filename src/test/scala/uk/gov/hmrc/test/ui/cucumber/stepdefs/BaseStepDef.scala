@@ -59,6 +59,22 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     }
   }
 
+  Then("""^the details entered for (.*) should be pre filled with today's date$""") {
+    (dateField: String) =>
+      dateField match {
+
+        case "entryDate" =>
+          verifyInput ("entryDate.day", todayDate.getDayOfMonth.toString.replaceFirst("", "0"))
+          verifyInput ("entryDate.month", todayDate.getMonthValue.toString)
+          verifyInput ("entryDate.year", todayDate.getYear.toString)
+
+        case "vesselDate" =>
+          verifyInput ("dateOfArrival.day", todayDate.getDayOfMonth.toString.replaceFirst("", "0"))
+          verifyInput ("dateOfArrival.month", todayDate.getMonthValue.toString)
+          verifyInput ("dateOfArrival.year", todayDate.getYear.toString)
+      }
+  }
+
 
   Then("""^the user should see "([^"]*)" error message for "([^"]*)"$""") { (errorMessage: String, fieldTitle: String) =>
 
