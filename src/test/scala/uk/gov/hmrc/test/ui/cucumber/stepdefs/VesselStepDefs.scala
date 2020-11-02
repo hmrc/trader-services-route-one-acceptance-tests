@@ -80,11 +80,11 @@ class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl wit
       verifyInput("dateOfArrival.year", vesselYear)
   }
 
-  Then("""^the details entered for Date of Arrival should be pre filled with today's date$""") { () =>
-      verifyInput("dateOfArrival.day", todayDate.getDayOfMonth.toString)
-      verifyInput("dateOfArrival.month", todayDate.getMonthValue.toString)
-      verifyInput("dateOfArrival.year", todayDate.getYear.toString)
-  }
+//  Then("""^the details entered for Date of Arrival should be pre filled with today's date$""") { () =>
+//      verifyInput("dateOfArrival.day", todayDate.getDayOfMonth.toString)
+//      verifyInput("dateOfArrival.month", todayDate.getMonthValue.toString)
+//      verifyInput("dateOfArrival.year", todayDate.getYear.toString)
+//  }
 
 
   Then("""^the details entered for Time of Arrival should be pre filled with "(.*)" & "(.*)"$""") {

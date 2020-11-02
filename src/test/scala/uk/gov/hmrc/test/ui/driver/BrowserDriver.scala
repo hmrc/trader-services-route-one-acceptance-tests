@@ -24,4 +24,26 @@ trait BrowserDriver extends LazyLogging {
   logger.info(s"Instantiating Browser: ${sys.props.getOrElse("browser", "'browser' System property not set. This is required")}")
 
   def driver: WebDriver = SingletonDriver.getInstance()
+
+//  object Driver extends Driver
+//  class Driver {
+//
+//    val targetBrowser: String = Option(systemProperties.getProperty("browser")).map(_.toLowerCase).getOrElse("chrome")
+//    //  private val pwd: String = System.getProperty("user.dir")
+//    //  System.setProperty("webdriver.chrome.driver", pwd + "/drivers/chromedriver")
+//
+//    val webDriver: WebDriver = {
+//      var selectedDriver: WebDriver = null
+//      sys addShutdownHook {
+//        Try(webDriver.quit())
+//      }
+//      targetBrowser match {
+//        case "chrome" | "firefox" | "zap-firefox" | "zap-chrome" | "remote-chrome" | "remote-firefox" => selectedDriver = driver
+//        case _ => throw new IllegalArgumentException(s"target browser $targetBrowser not recognised")
+//      }
+//      selectedDriver.getWindowHandle
+//      selectedDriver
+//    }
+//  }
+
 }

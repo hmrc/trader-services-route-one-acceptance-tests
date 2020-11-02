@@ -21,11 +21,11 @@ Feature: Pre-clearance - Import Journeys
     When the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the Import CYA page
-#    And the user clicks Continue
-#    Then the user is on the First upload page
-#    When the user clicks the button to upload and selects "first" file
-#    Then the user should be on the file upload confirmation page after uploading 1 document/s
-#    Then the user clicks Continue
+    And the user clicks Continue
+    Then the user is on the First upload page
+    When the user clicks the button to upload and selects "first" file
+    Then the user should be on the file upload confirmation page after uploading 1 document/s
+    Then the user selects No to to uploading another file
 #    Then the user is on the final confirmation page
 
     Examples:

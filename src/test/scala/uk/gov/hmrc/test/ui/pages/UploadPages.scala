@@ -42,11 +42,11 @@ trait UploadPages extends BasePage {
   def uploadFilesToBrowser(fileSeq: String, elementID: String): Unit = {
     fileSeq match {
       case "first" => filePath = usrDir + "test.jpg"
-      case "next"  => filePath = usrDir + "testNCH1.pdf"
-      case "last"  => filePath = usrDir + "govuk.xls"
+      case "next" => filePath = usrDir + "testNCH1.pdf"
+      case "last" => filePath = usrDir + "govuk.xls"
     }
 
-//    if(driver.targetBrowser.startsWith("remote")) {
+//    if (driver.targetBrowser.startsWith("remote")) {
 //      driver.webDriver.asInstanceOf[RemoteWebDriver].setFileDetector(new LocalFileDetector)
 //    }
     driver.findElement(By.id(elementID)).sendKeys(filePath)
