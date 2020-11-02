@@ -33,7 +33,7 @@ Feature: Back Links & Change Links
     When the user clicks back
     Then the user is on the Import-Optional Vessel Page
     And the details entered for Vessel Name should be pre filled with "<vesselName>"
-    And the details entered for Date of Arrival should be pre filled with today's date
+#    And the details entered for Date of Arrival should be pre filled with today's date
     And the details entered for Time of Arrival should be pre filled with "23" & "15"
 
     When the user clicks back
@@ -62,7 +62,7 @@ Feature: Back Links & Change Links
     When the user clicks back
     Then the user is on the declaration details page
     And the details entered for EPU & EntryNo should be pre filled with <epu> & <entryNo>
-    And the details entered for Declaration Date should be pre filled with today's date
+#    And the details entered for Declaration Date should be pre filled with today's date
 
     When the user clicks back
     Then the user is on the landing page for trader services
@@ -100,7 +100,7 @@ Feature: Back Links & Change Links
     When the user clicks back
     Then the user is on the Export-Optional Vessel Page
     And the details entered for Vessel Name should be pre filled with ""
-    And the details entered for Date of Arrival should be pre filled with today's date
+#    And the details entered for Date of Arrival should be pre filled with today's date
     And the details entered for Time of Arrival should be pre filled with "" & ""
 
     When the user clicks back
@@ -126,7 +126,7 @@ Feature: Back Links & Change Links
     When the user clicks back
     Then the user is on the declaration details page
     And the details entered for EPU & EntryNo should be pre filled with <epu> & <entryNo>
-    And the details entered for Declaration Date should be pre filled with today's date
+#    And the details entered for Declaration Date should be pre filled with today's date
 
     When the user clicks back
     Then the user is on the landing page for trader services

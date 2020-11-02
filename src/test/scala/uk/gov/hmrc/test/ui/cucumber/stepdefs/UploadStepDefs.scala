@@ -33,8 +33,6 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     }
   }
 
-  //Step here to confirm prog disc content once implemented
-
   Then("""^the user clicks the button to upload and selects "([^"]*)" file"""){ (file:String) =>
     clickByCSS(".govuk-button")
     uploadFile(file)
@@ -71,6 +69,7 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     yesNo match {
       case "Yes" => clickByCSS("#uploadAnotherFile")
       case "No" => clickByCSS("#uploadAnotherFile-2")
+      case "NoOption" =>
     }
     clickContinue()
   }
