@@ -1,4 +1,4 @@
-@TraderService2
+@TraderService
 Feature: Back Links & Change Links
 
   #BACK LINKS
