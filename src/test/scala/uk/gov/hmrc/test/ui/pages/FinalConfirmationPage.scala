@@ -18,13 +18,11 @@ package uk.gov.hmrc.test.ui.pages
 
 trait FinalConfirmationPage extends BasePage {
 
-val urlConfirmation = traderServicesBaseUrl + "TBC"
+val urlConfirmation = traderServicesBaseUrl + "/pre-clearance/confirmation"
   val headingConfirmation = "You've submitted your documents"
 
 //  //placeholders
 //  def caseRefNo:Unit = findElementById("")
 //  def linkPreClearance:Unit = findElementById("")
-//  def linkC1601:Unit = findElementById("")
-//  def linkC1602:Unit = findElementById("")
-//  def linkC1603:Unit = findElementById("")
+//  def linkC1Forms:Unit = findElementById("")
 }

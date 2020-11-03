@@ -25,13 +25,20 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage with
   Given("""^the user is on the final confirmation page""") { () =>
     confirmUrl(urlConfirmation)
     verifyHeading(headingConfirmation)
+//    assertElementText("Save your case reference number", findElementByCss(""))
+//    assertElementText("You might need it if you contact us with any queries", findElementByCss(""))
+//
+//    assertElementText("Next steps", findElementByCss(""))
+//    assertElementText("You will hear from us soon via CHIEF or your declaration software.", findElementByCss(""))
   }
 
   Then("""^the user should see guidance links on the page""") {() =>
   }
 
-  Then("""^the user should see a case reference number??>??"""){() =>
+  Then("""^the user should see a case reference number"""){() =>
+    assertElementText("TBC", findElementByCss(".govuk-panel__body > strong:nth-child(2)"))
   }
+  //TBC...
 
   When("""^the user clicks to submit documents for a new case they will be back on dec details page"""){() =>
     clickContinue()
