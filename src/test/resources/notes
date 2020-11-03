@@ -10,8 +10,5 @@ Sprint 7: Finish upload & general enhancements
 DOR-111 (uncomment)
 Remove route from request type  - remove/refactor tests to remove & handle routing
 
-DOR-88
-Date field validation - Only see one error message for invalid dates
-
 DOR-52
 Final confirmation page - Add steps to complete existing journeys
