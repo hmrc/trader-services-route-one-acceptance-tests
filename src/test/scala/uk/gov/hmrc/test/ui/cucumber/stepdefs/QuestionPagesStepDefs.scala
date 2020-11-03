@@ -31,7 +31,6 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     RequestType match {
       case "New" => clickByCSS("#requestType")
       case "Cancellation" => clickByCSS("#requestType-2")
-      case "Hold" => clickByCSS("#requestType-3")
       case "NoOption" =>
     }
     clickContinue()
@@ -47,8 +46,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
       case "C1601" => clickByCSS("#requestType-3")
       case "C1602" => clickByCSS("#requestType-4")
       case "C1603" => clickByCSS("#requestType-5")
-      case "Hold" => clickByCSS("#requestType-6")
-      case "Withdrawal" => clickByCSS("#requestType-7")
+      case "Withdrawal" => clickByCSS("#requestType-6")
       case "NoOption" =>
     }
     clickContinue()
@@ -75,7 +73,6 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     request match {
       case "New" => optionSelected("#requestType")
       case "Cancellation" => optionSelected("#requestType-2")
-      case "Hold" => optionSelected("#requestType-3")
     }
   }
 
@@ -87,11 +84,9 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
       case "C1601" => optionSelected("#requestType-3")
       case "C1602" => optionSelected("#requestType-4")
       case "C1603" => optionSelected("#requestType-5")
-      case "Hold" => optionSelected("#requestType-6")
-      case "Withdrawal" => optionSelected("#requestType-7")
+      case "Withdrawal" => optionSelected("#requestType-6")
     }
   }
-
 
 
   //Route
