@@ -16,15 +16,22 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.WebElement
+
 trait FinalConfirmationPage extends BasePage {
 
-val urlConfirmation = traderServicesBaseUrl + "TBC"
+val urlConfirmation = traderServicesBaseUrl + "/pre-clearance/confirmation"
   val headingConfirmation = "You've submitted your documents"
 
-//  //placeholders
-//  def caseRefNo:Unit = findElementById("")
-//  def linkPreClearance:Unit = findElementById("")
-//  def linkC1601:Unit = findElementById("")
-//  def linkC1602:Unit = findElementById("")
-//  def linkC1603:Unit = findElementById("")
+  def caseRefNo:WebElement = findElementByCss(".govuk-panel__body > strong:nth-child(2)")
+
+  def subheading1:WebElement = findElementByCss("h2.govuk-heading-m:nth-child(2)")
+  def content1:WebElement = findElementByCss("p.govuk-body:nth-child(3)")
+  def subheading2:WebElement = findElementByCss("h2.govuk-heading-m:nth-child(4)")
+  def content2:WebElement = findElementByCss("p.govuk-body:nth-child(5)")
+
+
+ //placeholders
+  def linkPreClearance:Unit = findElementById("")
+  def linkC1Forms:Unit = findElementById("")
 }
