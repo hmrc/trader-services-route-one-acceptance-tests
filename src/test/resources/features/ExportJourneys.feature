@@ -1,4 +1,4 @@
-@TraderService
+@TraderService @ZAP
 Feature: Pre-clearance - Export Journeys
 
   Scenario Outline: A user wants to complete a New Export RouteOne journey

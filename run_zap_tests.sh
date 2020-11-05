@@ -1,17 +1,21 @@
-#!/usr/bin/env bash
+#! /bin/sh
 
-ENV=${1:-local}
-BROWSER=${2:-chrome}
-
-if [ "$BROWSER" = "chrome" ]; then
-    DRIVER="-Dwebdriver.chrome.driver=/usr/local/bin/chromedriver"
-elif [ "$BROWSER" = "firefox" ]; then
-    DRIVER="-Dwebdriver.gecko.driver=/usr/local/bin/geckodriver"
+MACOS_ZAP="/Applications/OWASP ZAP.app/Contents/Java/zap.sh"
+LINUX_ZAP="/usr/share/ZAP_2.7.0/ZAP_2.7.0/zap.sh"
+if [ "$ZAP" == "" ]; then
+    if [ -x "$MACOS_ZAP" ]; then
+       ZAP="$MACOS_ZAP"
+    elif [ -x "$LINUX_ZAP" ]; then
+       ZAP="$LINUX_ZAP"
+    fi
+fi
+if [ "$ZAP" == "" ]; then
+    echo Could not find Zap >&2
+    echo Tried $MACOS_ZAP >&2
+    echo Also tried $LINUX_ZAP >&2
+    echo If Zap is not installed please install it >&2
+    echo If Zap is installed please teach the $0 script how to find it >&2
+    exit 1
 fi
 
-# NOTE: It is not required to proxy every journey test via ZAP. The intention of proxying a test through ZAP is to expose all the
-# relevant pages of an application to ZAP. So tagging a subset of the journey tests or creating a
-# single ZAP focused journey test is sufficient.
-
-sbt -Dbrowser=$BROWSER -Denvironment=$ENV $DRIVER -Dzap.proxy=true "testOnly uk.gov.hmrc.test.ui.cucumber.runner.ZapRunner"
-sbt "testOnly uk.gov.hmrc.test.ui.ZapSpec"
+"$ZAP" -daemon -config api.disablekey=true -port 11000

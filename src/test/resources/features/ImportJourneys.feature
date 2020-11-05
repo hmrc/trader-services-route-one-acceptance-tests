@@ -1,4 +1,4 @@
-@TraderService
+@TraderService @ZAP
 Feature: Pre-clearance - Import Journeys
 
   Scenario Outline: A user wants to complete a New Import journey
