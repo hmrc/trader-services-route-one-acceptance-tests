@@ -19,3 +19,6 @@ if [ "$ZAP" == "" ]; then
 fi
 
 "$ZAP" -daemon -config api.disablekey=true -port 11000
+
+sbt -Dbrowser=$BROWSER -Denvironment=$ENV $DRIVER -Dzap.proxy=true "testOnly uk.gov.hmrc.test.ui.cucumber.runner.ZapRunner"
+sbt "testOnly uk.gov.hmrc.test.ui.ZapSpec"
