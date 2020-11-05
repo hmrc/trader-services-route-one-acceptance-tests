@@ -1,4 +1,4 @@
-@TraderService @ZAP
+@TraderService
 Feature: Declaration details validation
 
   Scenario: Error validation on declaration page (all blank fields)

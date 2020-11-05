@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui
+package uk.gov.hmrc.test.ui.cucumber.Utils
 
 import com.typesafe.config.{Config, ConfigFactory}
 import org.scalatest.WordSpec

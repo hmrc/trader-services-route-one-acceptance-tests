@@ -14,22 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.driver
+package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import com.typesafe.scalalogging.LazyLogging
-import org.openqa.selenium.WebDriver
-import uk.gov.hmrc.webdriver.SingletonDriver
-
-trait BrowserDriver extends LazyLogging {
-  logger.info(s"Instantiating Browser: ${sys.props.getOrElse("browser", "'browser' System property not set. This is required")}")
-
-  def driver: WebDriver = SingletonDriver.getInstance()
+import io.cucumber.scala.{EN, ScalaDsl}
+import uk.gov.hmrc.test.ui.pages.{BasePage, WavePage}
 
 
-//  var options = new ChromeOptions()
-//  options.addArguments("test-type")
-//  options.addArguments("--proxy-server=http://localhost:11000")
-//
-//  var zapDriver = new ChromeDriver(options)
+class WaveStepDefs extends WavePage with BasePage with ScalaDsl with EN {
 
+  When("""^I click on the Wave extension for HTML report, with errors=(.*)$""") { (withErrors: Boolean) =>
+    clickWave(withErrors)
+  }
+
+  Then("""^I save the WAVE report$""") {
+    saveReport()
+  }
 }

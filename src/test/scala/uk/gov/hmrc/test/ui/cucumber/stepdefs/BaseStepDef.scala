@@ -95,7 +95,6 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
   }
 }
 
-
 //  Then("""^the user should see below error messages in below order$""") { dataTable: DataTable =>
 //
 //    dataTable.asMaps(classOf[String], classOf[String]).asScala.foreach { data =>

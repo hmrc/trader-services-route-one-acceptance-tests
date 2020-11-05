@@ -17,9 +17,10 @@
 package uk.gov.hmrc.test.ui.cucumber.runner
 
 import io.cucumber.junit.{Cucumber, CucumberOptions}
-import org.junit.runner.RunWith
 import org.junit.{AfterClass, BeforeClass}
+import org.junit.runner.RunWith
 import uk.gov.hmrc.test.ui.conf.Configuration
+import uk.gov.hmrc.test.ui.cucumber.runner.Runner.{clickByCSS, createUser, driver, login, navigateTo}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 @RunWith(classOf[Cucumber])
@@ -27,25 +28,23 @@ import uk.gov.hmrc.test.ui.pages.BasePage
   features = Array("src/test/resources/features"),
   glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
   plugin = Array ("pretty", "html:target/cucumber", "json:target/cucumber.json"),
-  tags = "@ZAP"
+  tags = "@wave"
 )
-class ZapRunner {
+class WaveRunner
+object WaveRunner extends WaveRunner with BasePage {
+  @BeforeClass
+  def setupUser(): Unit = {
+    navigateTo(Configuration.settings.SIGN_IN_PAGE)
+    login()
+    createUser()
+    clickByCSS("#update")
+  }
 
-  object ZapRunner extends ZapRunner with BasePage {
-    @BeforeClass
-    def setupUser(): Unit = {
-      navigateTo(Configuration.settings.SIGN_IN_PAGE)
-      login()
-      createUser()
-      clickByCSS("#update")
-    }
-
-    @AfterClass
-    def destroyUser(): Unit = {
-      navigateTo("http://localhost:9099/agents-external-stubs/")
-      clickByCSS("#destroyPlanet")
-      driver.switchTo().alert().accept()
-    }
+  @AfterClass
+  def destroyUser(): Unit = {
+    navigateTo("http://localhost:9099/agents-external-stubs/")
+    clickByCSS("#destroyPlanet")
+    driver.switchTo().alert().accept()
   }
 
 }
