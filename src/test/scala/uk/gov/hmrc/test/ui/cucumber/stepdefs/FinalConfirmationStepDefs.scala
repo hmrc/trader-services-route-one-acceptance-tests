@@ -35,9 +35,9 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage with
   }
 
   Then("""^the user should see a case reference number"""){() =>
-    assertElementText("330XGBNZJO04", caseRefNo)
+    assertElementText("TBC", caseRefNo)
   }
-  //TBC...
+  //TBC... 330XGBNZJO04
 
   When("""^the user clicks to submit documents for a new case they will be back on dec details page"""){() =>
     clickContinue()
