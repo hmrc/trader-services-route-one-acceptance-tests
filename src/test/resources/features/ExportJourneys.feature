@@ -35,23 +35,23 @@ Feature: Pre-clearance - Export Journeys
       | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   |
       | 123 | A23456A | New         | Route 1 | Class A drugs | Maritime  | Test Vessel | Mr. F | a@a.com |
 
-# DOR-111
-#  Scenario Outline: Route-Hold: A user should reach the mandatory vessel page
-#    Given the user is on the landing page for trader services
-#    When the user clicks the link to enter the route1 journey
-#    Then the user is on the declaration details page
-#    When the user enters declaration details "<epu>" and "<entryNo>"
-#    And the user enters today's date for entryDate
-#    And the user clicks Continue
-#    Then the user is on the Export Request Type page and selects <requestType>
-#    Then the user is on the Export Route Type Page and selects <route>
-#    When the user is on the Export YesNo Priority Page and selects No
-#    Then the user is on the Export Transport Type Page and selects <transport>
-#    Then the user is on the Export-Mandatory Vessel Page
-#
-#    Examples:
-#      | epu | entryNo | requestType | route | transport |
-#      | 123 | A23456A | New         | Hold  | Air       |
+
+  Scenario Outline: Route-Hold: A user should reach the mandatory vessel page
+    Given the user is on the landing page for trader services
+    When the user clicks the link to enter the route1 journey
+    Then the user is on the declaration details page
+    When the user enters declaration details "<epu>" and "<entryNo>"
+    And the user enters today's date for entryDate
+    And the user clicks Continue
+    Then the user is on the Export Request Type page and selects <requestType>
+    Then the user is on the Export Route Type Page and selects <route>
+    When the user is on the Export YesNo Priority Page and selects No
+    Then the user is on the Export Transport Type Page and selects <transport>
+    Then the user is on the Export-Mandatory Vessel Page
+
+    Examples:
+      | epu | entryNo | requestType | route | transport |
+      | 123 | A23456A | New         | Hold  | Air       |
 
   Scenario Outline: C1601: A user should reach the mandatory vessel page
 
