@@ -131,10 +131,13 @@ trait BasePage extends Matchers with BrowserDriver {
   def userid: WebElement = driver.findElement(By.id("userId"))
   def planetid: WebElement = driver.findElement(By.id("planetId"))
   def signinBtn: WebElement = driver.findElement(By.id("signIn"))
+  def enrollment:WebElement = findElementById("principalEnrolments[0].identifiers[0].value")
 
   def createUser(): Unit = {
     clickByCSS("#affinityGroup-Individual")
     clickById("principalEnrolments[0].key-HMRC-CUS-ORG")
     clickByCSS("#update")
+    enrollment.clear()
+    enrollment.sendKeys("GB123456789012345")
   }
 }
