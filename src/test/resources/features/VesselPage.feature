@@ -82,6 +82,7 @@ Feature: Vessel page validation
 
 #    CONTENT FOR ABOVE TO BE UPDATED
 
+    When the user enters "Valid vessel name" for vessel name
     Then the user enters a date for the vessel "01" "01" "abcd"
     Then the user enters a time for the vessel "01" "10"
     And the user clicks Continue
@@ -101,15 +102,15 @@ Feature: Vessel page validation
     And the user clicks Continue
     Then the user should see the invalid date range error message for "dateOfArrival" field
 
-    Then the user enters a date "321" "09" "2020"
+    Then the user enters a date for the vessel "321" "11" "2020"
     And the user clicks Continue
-    Then the user should see "Error:Entry date must be a real date" error message for "dateOfArrival"
+    Then the user should see "Error:Date of arrival must be a real date" error message for "dateOfArrival"
 
-    When the user enters a date "01" "321" "2020"
+    Then the user enters a date for the vessel "01" "321" "2020"
     And the user clicks Continue
-    Then the user should see "Error:Entry date must be a real date" error message for "dateOfArrival"
+    Then the user should see "Error:Date of arrival must be a real date" error message for "dateOfArrival"
 
-    When the user enters a date "01" "13" "202056"
+    Then the user enters a date for the vessel "01" "11" "202055"
     And the user clicks Continue
-    Then the user should see "Error:Entry date must be a real date" error message for "dateOfArrival"
+    Then the user should see "Error:Date of arrival must be a real date" error message for "dateOfArrival"
 
