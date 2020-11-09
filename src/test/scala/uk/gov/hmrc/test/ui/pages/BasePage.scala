@@ -98,6 +98,11 @@ trait BasePage extends Matchers with BrowserDriver {
   def verifyInput(id: String, expectedValue: String):
   Assertion = findElementById(id).getAttribute("value") shouldBe expectedValue
 
+  def sendNCharactersById(id: String, n: Int, char: String = "a"): Unit = {
+    findElementById(id).clear()
+    findElementById(id).sendKeys(char * n)
+  }
+
   def signOut: WebElement = findElementByCss("#navigation > li > a")
 
   def assertElementText(content: String, element: WebElement): Unit = {
@@ -131,10 +136,13 @@ trait BasePage extends Matchers with BrowserDriver {
   def userid: WebElement = driver.findElement(By.id("userId"))
   def planetid: WebElement = driver.findElement(By.id("planetId"))
   def signinBtn: WebElement = driver.findElement(By.id("signIn"))
+  def enrollment:WebElement = findElementById("principalEnrolments[0].identifiers[0].value")
 
   def createUser(): Unit = {
     clickByCSS("#affinityGroup-Individual")
     clickById("principalEnrolments[0].key-HMRC-CUS-ORG")
     clickByCSS("#update")
+    enrollment.clear()
+    enrollment.sendKeys("GB123456789012345")
   }
 }
