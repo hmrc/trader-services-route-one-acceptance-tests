@@ -20,7 +20,6 @@ Feature: Vessel page validation
     Then the user should see "Error:Enter the time of arrival" error message for "timeOfArrival"
 
 #    The below validation is carried out on all pages (ie mandatory/optional, import/export)
-
   Scenario: Optional Vessel Page (Export)
     Then the user navigates to the declaration details page
     When the user enters declaration details "123" and "A12345B"
@@ -65,23 +64,6 @@ Feature: Vessel page validation
     Then the user should see "Error:Date of arrival must be a real date" error message for "dateOfArrival"
     Then the user should see "Error:Minutes must be between 00 and 59" error message for "timeOfArrival"
 
-#    Invalid only when computed as a whole (within bounds)
-#    When the user enters declaration details "123" and "123456A"
-#    Then the user enters a date "31" "09" "2020"
-#    And the user clicks Continue
-#    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
-
-#Invalid year (not enough chars)
-#    When the user enters a date "01" "10" "202"
-#    And the user clicks Continue
-#    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
-
-#Invalid year (outside bounds)
-#    CHECK IF IN PAST WHICH ERROR PRECEDES ie. date must be in past/future OR not valid
-#    When the user enters a date "01" "10" "2051"
-#    And the user clicks Continue
-#    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
-
     Then the user enters "ab:" for vessel name
     Then the user enters a date for the vessel "ab" "12" "2020"
     Then the user enters a time for the vessel "ab" "01"
@@ -90,12 +72,15 @@ Feature: Vessel page validation
     Then the user should see "Error:Day of arrival must only contain numbers" error message for "dateOfArrival"
     Then the user should see "Error:Hour of arrival must only contain numbers" error message for "timeOfArrival"
 
-    Then the user enters "1234567" for vessel name
+    Then the user enters too many characters for vesselName
     Then the user enters a date for the vessel "01" "ab" "2020"
     Then the user enters a time for the vessel "10" "!1"
     And the user clicks Continue
+    Then the user should see "Error:Enter the vessel name" error message for "vesselName"
     Then the user should see "Error:Month of arrival must only contain numbers" error message for "dateOfArrival"
     Then the user should see "Error:Minutes of arrival must only contain numbers" error message for "timeOfArrival"
+
+#    CONTENT FOR ABOVE TO BE UPDATED
 
     Then the user enters a date for the vessel "01" "01" "abcd"
     Then the user enters a time for the vessel "01" "10"
@@ -116,6 +101,15 @@ Feature: Vessel page validation
     And the user clicks Continue
     Then the user should see the invalid date range error message for "dateOfArrival" field
 
+    Then the user enters a date "321" "09" "2020"
+    And the user clicks Continue
+    Then the user should see "Error:Entry date must be a real date" error message for "dateOfArrival"
 
+    When the user enters a date "01" "321" "2020"
+    And the user clicks Continue
+    Then the user should see "Error:Entry date must be a real date" error message for "dateOfArrival"
 
+    When the user enters a date "01" "13" "202056"
+    And the user clicks Continue
+    Then the user should see "Error:Entry date must be a real date" error message for "dateOfArrival"
 

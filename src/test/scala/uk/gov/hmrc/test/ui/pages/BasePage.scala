@@ -98,6 +98,11 @@ trait BasePage extends Matchers with BrowserDriver {
   def verifyInput(id: String, expectedValue: String):
   Assertion = findElementById(id).getAttribute("value") shouldBe expectedValue
 
+  def sendNCharactersById(id: String, n: Int, char: String = "a"): Unit = {
+    findElementById(id).clear()
+    findElementById(id).sendKeys(char * n)
+  }
+
   def signOut: WebElement = findElementByCss("#navigation > li > a")
 
   def assertElementText(content: String, element: WebElement): Unit = {

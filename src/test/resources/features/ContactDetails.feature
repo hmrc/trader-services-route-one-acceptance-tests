@@ -37,6 +37,13 @@ Feature: Contact Details
     Then the user should see "Error:Enter an email address in the correct format, like name@example.com" error message for "contactEmail"
     Then the user should see "Error:Phone number must contain numbers only" error message for "contactNumber"
 
+
+    Then the user enters too many characters for fullName
+    Then the user enters too many characters for contactEmail
+    Then the user clicks Continue
+#Error messages to come
+
+
 #    Phone number must contain numbers only - needs to be 11 digits?
 # Test to ensure phone number is converted ie. +44/44 -> 07
 

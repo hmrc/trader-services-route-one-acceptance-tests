@@ -44,6 +44,15 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     signOut
   }
 
+  And("""^the user enters too many characters for (.*)""") { (field:String) =>
+
+    field match {
+      case "vesselName" => sendNCharactersById ("vesselName", 129)
+      case "fullName" => sendNCharactersById ("contactName", 129)
+      case "contactEmail" => sendNCharactersById ("contactEmail", 129)
+    }
+  }
+
   Then("""^the user enters today's date for (.*)$""") { (dateField:String) =>
     dateField match {
 

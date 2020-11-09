@@ -18,6 +18,10 @@ Feature: Declaration details validation
     And the user clicks Continue
     Then the user should see "Error:EPU number must be 3 characters" error message for "epu"
 
+    When the user enters declaration details "1234" and "123456A"
+    And the user clicks Continue
+    Then the user should see "Error:EPU number must be 3 characters" error message for "epu"
+
     When the user enters declaration details "abc" and "123456A"
     And the user clicks Continue
     Then the user should see "Error:EPU number must only contain numbers" error message for "epu"
@@ -32,6 +36,11 @@ Feature: Declaration details validation
     Given the user navigates to the declaration details page
 
     When the user enters declaration details "123" and "1"
+    Then the user enters a date "01" "09" "2020"
+    And the user clicks Continue
+    Then the user should see "Error:Entry number must be 7 characters" error message for "entryNumber"
+
+    When the user enters declaration details "123" and "1234567N"
     Then the user enters a date "01" "09" "2020"
     And the user clicks Continue
     Then the user should see "Error:Entry number must be 7 characters" error message for "entryNumber"
@@ -81,12 +90,10 @@ Feature: Declaration details validation
     And the user clicks Continue
     Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
 
-    When the user enters declaration details "123" and "123456A"
     Then the user enters a date "31" "09" "2020"
     And the user clicks Continue
     Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
 
-    When the user enters declaration details "123" and "123456A"
     Then the user enters a date "32" "13" "2020"
     And the user clicks Continue
     Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
@@ -110,3 +117,16 @@ Feature: Declaration details validation
     When the user enters a date "01" "10" "yyyy"
     And the user clicks Continue
     Then the user should see "Error:Entry year must only contain numbers" error message for "entryDate"
+
+    Then the user enters a date "132" "09" "2020"
+    And the user clicks Continue
+    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
+
+    When the user enters a date "01" "123" "2020"
+    And the user clicks Continue
+    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
+
+    When the user enters a date "01" "13" "20202"
+    And the user clicks Continue
+    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
+
