@@ -42,6 +42,7 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
 
   Then("""^the user should be on the file upload confirmation page after uploading (.*) document/s"""){
     (docAmount:String) =>
+      Thread.sleep(1000L)
       confirmUrl(urlUploaded)
 
       docAmount match {
