@@ -35,7 +35,7 @@ Feature: Accessibility test the service
       | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   |
       | 123 | A23456A | New         | Route 1 | Class A drugs | Maritime  | Test Vessel | Mr. F | a@a.com |
 
-  Scenario Outline: Accessibility - every page in journey hit (Import - Vessel-Mandatory)
+  Scenario Outline: Accessibility - every page in journey hit (Export - Vessel-Mandatory)
 
     Given the user is on the landing page for trader services
     When the user clicks the link to enter the route1 journey
