@@ -94,6 +94,7 @@ trait BasePage extends Matchers with BrowserDriver {
   def clickByCSS(css: String): Unit = driver.findElement(By.cssSelector(css)).click()
 
   def optionSelected(css: String): Unit = driver.findElement(By.cssSelector(css)).isSelected shouldBe true
+  def optionNotSelected(css: String): Unit = driver.findElement(By.cssSelector(css)).isSelected shouldBe false
 
   def verifyInput(id: String, expectedValue: String):
   Assertion = findElementById(id).getAttribute("value") shouldBe expectedValue
