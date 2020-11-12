@@ -73,6 +73,8 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     request match {
       case "New" => optionSelected("#requestType")
       case "Cancellation" => optionSelected("#requestType-2")
+      case _ => optionNotSelected("#requestType")
+                optionNotSelected("#requestType-2")
     }
   }
 
@@ -85,6 +87,13 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
       case "C1602" => optionSelected("#requestType-4")
       case "C1603" => optionSelected("#requestType-5")
       case "Withdrawal" => optionSelected("#requestType-6")
+
+      case _ => optionNotSelected("#requestType")
+                optionNotSelected("#requestType-2")
+                optionNotSelected("#requestType-3")
+                optionNotSelected("#requestType-4")
+                optionNotSelected("#requestType-5")
+                optionNotSelected("#requestType-6")
     }
   }
 

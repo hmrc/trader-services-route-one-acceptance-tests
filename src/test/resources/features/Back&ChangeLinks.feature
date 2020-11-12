@@ -144,57 +144,87 @@ Feature: Back Links & Change Links
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue
-    Then the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import Route Type Page and selects <route>
+    Then the user is on the Import Request Type page and selects New
+    Then the user is on the Import Route Type Page and selects Route 1
     Then the user is on the Import YesNo Priority Page and selects Yes
     When the user is on the Import Priority Options Page and selects <priority>
     Then the user is on the ALVS Page and selects No
     Then the user is on the Import Transport Type Page and selects Air
     Then the user is on the Import-Optional Vessel Page
     When the user enters "Test Shop" for vessel name
-    And the user enters today's date for vesselDate
-    And the user enters a time for the vessel "23" "15"
     And the user clicks Continue
     Then the user is on the Import Contact Details Page
     And the user enters a name "<name>"
     When the user enters an email address "<email>"
+    And the user enters a phone number "<phoneNo>"
     And the user clicks Continue
     Then the user is on the Import CYA page
     When the user answered YesToPriority then they should see the correct responses for the Import journey "<priority>", "No" & "Air"
 
     When the user clicks the change link for ContactDetails
     Then the user is on the Import Contact Details Page
-    And the details entered for name, email and phone number should be pre-filled with "<name>", "<email>" & ""
-
+    And the details entered for name, email and phone number should be pre-filled with "<name>", "<email>" & "<phoneNo>"
+    Then the user enters a phone number ""
     Then the user clicks Continue
-    Then the user clicks the change link for Vessel
+    Then the user is on the Import CYA page
+
+    When the user clicks the change link for Transport
+    Then the user is on the Import Transport Type Page and selects <transport>
+    Then the user is on the Import CYA page
+
+    When the user clicks the change link for Vessel
     Then the user is on the Import-Optional Vessel Page
     And the user enters "<vesselName>" for vessel name
-    Then the user clicks Continue
-    Then the user clicks Continue
-
+    When the user clicks Continue
     Then the user is on the Import CYA page
-    And the user clicks the change link for ALVS
-    Then the user is on the ALVS Page and selects <ALVS>
 
-    Then the user is on the Import Transport Type Page and selects <transport>
-    And the user clicks Continue
-    And the user clicks Continue
+    When the user clicks the change link for ALVS
+    Then the user is on the ALVS Page and selects <ALVS>
     Then the user is on the Import CYA page
 
     When the user clicks the change link for PriorityYN
     Then the user is on the Import YesNo Priority Page and selects No
-    Then the user is on the ALVS Page
-    And the user clicks Continue
-    And the user clicks Continue
-    Then the user clicks Continue
-    Then the user clicks Continue
     Then the user is on the Import CYA page
+
+    When the user clicks the change link for Route
+    Then the user is on the Import Route Type Page and selects <route>
+    Then the user is on the Import YN Priority Page
+    When the user clicks Continue
+    Then the user is on the ALVS Page
+    When the user clicks Continue
+    Then the user is on the Import Transport Page
+    And the user clicks Continue
+    Then the user is on the Import-Mandatory Vessel Page
+    And the user enters "<vesselName>" for vessel name
+    And the user enters today's date for vesselDate
+    And the user enters a time for the vessel "11" "15"
+    When the user clicks Continue
+    Then the user is on the Import CYA page
+
+    When the user clicks the change link for Request
+    Then the user is on the Import Request Type page and selects <requestType>
+    Then the user is on the Import CYA page
+
+    Then the user should see the Import Request Type row & the correct response <requestType> on the CYA page
+    And the user should see the Route row & the correct response Hold (for pre-lodged requests) on the CYA page
+    And the user should see the Priority YN row & the correct response No on the CYA page
     When the user answered NoToPriority then they should see the correct responses for the Import journey "", "<ALVS>" & "<transport>"
-    
+    And the user should see the Vessel Name row & the correct response "<vesselName>" on the CYA page
+    And the user should see the Vessel Date row & the correct response "<entryDateCYA>" on the CYA page
+    And the user should see the Vessel Time row & the correct response "11:15 am" on the CYA page
+    And the user should see the Mandatory Contact details row & the correct responses "<name>", "<email>" & "" on the CYA page
+
+    Then the user clicks the change link for Declaration
+    Then the details entered for EPU & EntryNo should be pre filled with <epu> & <entryNo>
+    Then the user enters declaration details "<epu>" and "X00000H"
+    And the user enters today's date for entryDate
+    When the user clicks Continue
+    Then the last selected option for Export Request should be pre filled with Nothing
+
+
     Examples:
-      | epu | entryNo | requestType | route   | priority       | ALVS | transport | vesselName | name      | email      |
-      | 113 | 993456A | New         | Route 3 | High value art | Yes  | Maritime  | TestShip   | Abc Testb | a@test.com |
+| epu | entryNo | requestType  | route | priority   | ALVS | transport | vesselName | name      | email      | phoneNo    | entryDateCYA|
+| 113 | 993456A | Cancellation | Hold  | High value art | Yes  | Maritime  | TestShip   | Abc Testb | a@test.com | 01234567891 | Today       |
 
 
   Scenario Outline: Export: A user wants to change an answer via the CYA page
@@ -220,38 +250,58 @@ Feature: Back Links & Change Links
     Then the user is on the Export CYA page
     When the user answered NoToPriority then they should see the correct responses for the Export journey "" & "<transport>"
 
+    When the user clicks the change link for Request
+    Then the user is on the Export Request Type page and selects <requestType>
+    Then the user is on the Export CYA page
+
+    When the user clicks the change link for Route
+    Then the user is on the Export Route Type Page and selects <route>
+    Then the user is on the Export CYA page
+
     When the user clicks the change link for PriorityYN
     Then the user is on the Export YesNo Priority Page and selects Yes
     Then the user is on the Export Priority Options Page and selects <priority>
-    
-    Then the user is on the Export Transport Page
-    And the last selected option for transport type should be pre filled with <transport>
-    And the user clicks Continue
-    Then the user is on the Export-Mandatory Vessel Page
-    And the details entered for Vessel Name should be pre filled with "<vesselName>"
-    And the user clicks Continue
-    Then the user is on the Export Contact Details Page
-    And the details entered for name, email and phone number should be pre-filled with "<name>", "<email>" & ""
-    And the user clicks Continue
     Then the user is on the Export CYA page
-    
-    When the user clicks the change link for Request
-    Then the user is on the Export Request Type page and selects <requestType>
-    Then the last selected option for Route should be pre filled with <route>
-    And the user clicks Continue
-    Then the user is on the Export YN Priority Page
-    Then the user clicks Continue
-    Then the user is on the Export Priority Goods Page
+
+    When the user clicks the change link for PriorityGoods
     And the last selected option for priority goods should be pre filled with <priority>
-    Then the user clicks Continue
-    Then the user clicks Continue
-    Then the user is on the Export-Optional Vessel Page
-    And the user clicks Continue
-    Then the user is on the Export Contact Details Page
     And the user clicks Continue
     Then the user is on the Export CYA page
+
+    When the user clicks the change link for Vessel
+    And the user is on the Export-Optional Vessel Page
+    And the details entered for Vessel Name should be pre filled with "<vesselName>"
+    And the details entered for vesselDate should be pre filled with today's date
+    And the details entered for Time of Arrival should be pre filled with "12" & "34"
+    Then the user clicks Continue
+    Then the user is on the Export CYA page
+
+    When the user clicks the change link for Transport
+    And the user is on the Export Transport Type Page and selects <transport>
+    Then the user is on the Export CYA page
+
+    When the user clicks the change link for ContactDetails
+    Then the user is on the Export Contact Details Page
+    And the user enters a phone number "<phoneNo>"
+    When the user clicks Continue
+    Then the user is on the Export CYA page
+
+    Then the user should see the Export Request Type row & the correct response <requestType> on the CYA page
+    Then the user should see the Route row & the correct response <route> on the CYA page
+    Then the user should see the Priority YN row & the correct response Yes on the CYA page
     When the user answered YesToPriority then they should see the correct responses for the Export journey "<priority>" & "<transport>"
+    And the user should see the Vessel Name row & the correct response "<vesselName>" on the CYA page
+    And the user should see the Vessel Date row & the correct response "<entryDateCYA>" on the CYA page
+    And the user should see the Vessel Time row & the correct response "12:34 pm" on the CYA page
+    And the user should see the Full Contact details row & the correct responses "<name>", "<email>" & "<phoneNo>" on the CYA page
+
+    Then the user clicks the change link for Declaration
+    Then the details entered for EPU & EntryNo should be pre filled with <epu> & <entryNo>
+    Then the user enters declaration details "<epu>" and "000000H"
+    And the user enters today's date for entryDate
+    And the user clicks Continue
+    Then the last selected option for Import Request should be pre filled with Nothing
 
     Examples:
-      | epu | entryNo | requestType | route   | priority     | transport | vesselName | name     | email        |
-      | 669 | X12088M | New         | Route 2 | Live animals | Air       | Ship Test  | Ms. Test | xyz@test.com |
+| epu | entryNo | requestType | route   | priority     | transport | vesselName | name     | email        | phoneNo    | entryDateCYA |
+| 669 | X12088M | New         | Route 2 | Live animals | Air       | Ship Test  | Ms. Test | xyz@test.com | 07712345671 | Today        |
