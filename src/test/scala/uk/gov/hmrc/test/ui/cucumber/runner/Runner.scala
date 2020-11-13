@@ -59,11 +59,10 @@ object Runner extends Runner with BasePage {
   @AfterClass
   def destroyUser(): Unit = {
     navigateTo("http://localhost:9099/agents-external-stubs/")
-    clickByCSS("#destroyPlanet")
+    clickByCSS("#link_planet_destroy")
     driver.switchTo().alert().accept()
   }
 }
-
 
 //@BeforeClass
 //def setup(): Unit = {
