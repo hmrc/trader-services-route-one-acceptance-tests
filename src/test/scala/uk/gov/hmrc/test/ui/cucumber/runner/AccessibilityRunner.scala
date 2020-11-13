@@ -20,7 +20,7 @@ import io.cucumber.junit.{Cucumber, CucumberOptions}
 import org.junit.runner.RunWith
 import org.junit.{AfterClass, BeforeClass}
 import uk.gov.hmrc.test.ui.conf.Configuration
-import uk.gov.hmrc.test.ui.cucumber.runner.Runner.{clickByCSS, isElementVisible}
+import uk.gov.hmrc.test.ui.cucumber.runner.Runner.{clickByCSS, destroyPlanet, destroyPlanetLink, isElementVisible}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 @RunWith(classOf[Cucumber])
@@ -44,9 +44,12 @@ object AccessibilityRunner extends AccessibilityRunner with BasePage {
   @AfterClass
   def destroyUser(): Unit = {
     navigateTo("http://localhost:9099/agents-external-stubs/")
-    if (isElementVisible("#destroyPlanet")) clickByCSS("#destroyPlanet") else
-      clickByCSS("#link_planet_destroy")
+    if (destroyPlanetLink.isDisplayed.equals(true)){destroyPlanetLink.click()}
+    else clickByCSS("#destroy-planet")
     driver.switchTo().alert().accept()
   }
 
 }
+
+//if (destroyPlanet.isDisplayed.equals(true)){destroyPlanet.click()}
+//else clickByCSS("#link_planet_destroy")

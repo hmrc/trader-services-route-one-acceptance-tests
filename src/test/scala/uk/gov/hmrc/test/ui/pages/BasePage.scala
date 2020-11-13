@@ -123,7 +123,7 @@ trait BasePage extends Matchers with BrowserDriver {
     s"${todayDate.getDayOfMonth.toString} ${todayDate.getMonth.toString.toLowerCase.capitalize} ${todayDate.getYear.toString}"
   }
 
-  def isElementVisible(id: String): Boolean = findElementById(id).isDisplayed
+  def isElementVisible(css: String): Boolean = findElementByCss(css).isDisplayed
 
   def assertElementIsNotVisibleById(id: String): Unit = {
     driver.manage.timeouts.implicitlyWait(50, TimeUnit.SECONDS)
@@ -146,10 +146,11 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   def userid: WebElement = driver.findElement(By.id("userId"))
-
   def planetid: WebElement = driver.findElement(By.id("planetId"))
-
   def signinBtn: WebElement = driver.findElement(By.id("signIn"))
+
+  def destroyPlanet: WebElement = driver.findElement(By.cssSelector("#destroy-planet"))
+  def destroyPlanetLink: WebElement = driver.findElement(By.cssSelector("#link_planet_destroy"))
 
   def enrollment: WebElement = findElementById("principalEnrolments[0].identifiers[0].value")
 

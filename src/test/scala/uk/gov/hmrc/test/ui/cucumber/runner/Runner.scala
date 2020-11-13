@@ -36,7 +36,7 @@ import uk.gov.hmrc.test.ui.pages.BasePage
   features = Array("src/test/resources/features"),
   glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
   plugin = Array ("pretty", "html:target/cucumber", "json:target/cucumber.json"),
-  tags = "@TraderService"
+  tags = "@TraderService2"
 
 )
 class Runner
@@ -60,11 +60,15 @@ object Runner extends Runner with BasePage {
   @AfterClass
   def destroyUser(): Unit = {
     navigateTo("http://localhost:9099/agents-external-stubs/")
-    if (isElementVisible("destroyPlanet")) clickByCSS("#destroyPlanet") else
-    clickByCSS("#link_planet_destroy")
+    confirmUrl("http://localhost:9099/agents-external-stubs/")
+    if (destroyPlanetLink.isDisplayed.equals(true)){destroyPlanetLink.click()} else clickByCSS("#destroy-planet")
     driver.switchTo().alert().accept()
   }
 }
+
+//if (isElementVisible("#link_planet_destroy")) clickByCSS("#link_planet_destroy") else
+//clickByCSS("#destroy-planet")
+
 
 //@BeforeClass
 //def setup(): Unit = {
