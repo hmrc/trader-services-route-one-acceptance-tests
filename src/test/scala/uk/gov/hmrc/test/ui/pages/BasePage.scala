@@ -123,6 +123,8 @@ trait BasePage extends Matchers with BrowserDriver {
     s"${todayDate.getDayOfMonth.toString} ${todayDate.getMonth.toString.toLowerCase.capitalize} ${todayDate.getYear.toString}"
   }
 
+  def isElementVisible(id: String): Boolean = findElementById(id).isDisplayed
+
   def assertElementIsNotVisibleById(id: String): Unit = {
     driver.manage.timeouts.implicitlyWait(50, TimeUnit.SECONDS)
     assert(driver.findElements(By.id(id)).size() == 0, message(s"The element with id $id was visible. Expected not visible"))

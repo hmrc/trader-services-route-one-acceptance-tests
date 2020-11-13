@@ -28,6 +28,7 @@ import uk.gov.hmrc.extentreport.ExtentProperties.webDriver
 import uk.gov.hmrc.extentreport.{ExtentProperties, Reporter}
 import uk.gov.hmrc.test.ui.conf.Configuration
 import uk.gov.hmrc.test.ui.conf.Configuration.driverInstance
+import uk.gov.hmrc.test.ui.cucumber.runner.AccessibilityRunner.findElementByCss
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 @RunWith(classOf[Cucumber])
@@ -35,7 +36,7 @@ import uk.gov.hmrc.test.ui.pages.BasePage
   features = Array("src/test/resources/features"),
   glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
   plugin = Array ("pretty", "html:target/cucumber", "json:target/cucumber.json"),
-  tags = "@TraderService"
+  tags = "@TraderService2"
 
 )
 class Runner
@@ -59,6 +60,7 @@ object Runner extends Runner with BasePage {
   @AfterClass
   def destroyUser(): Unit = {
     navigateTo("http://localhost:9099/agents-external-stubs/")
+    if (isElementVisible("destroyPlanet")) clickByCSS("#destroyPlanet") else
     clickByCSS("#link_planet_destroy")
     driver.switchTo().alert().accept()
   }
