@@ -34,8 +34,7 @@ import uk.gov.hmrc.test.ui.pages.BasePage
 @CucumberOptions(
   features = Array("src/test/resources/features"),
   glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
-  plugin = Array ("pretty", "html:target/cucumber", "json:target/cucumber.json",
-    "junit:target/test-reports/TEST-cucumber-junit-report.xml"),
+  plugin = Array ("pretty", "html:target/cucumber", "json:target/cucumber.json"),
   tags = "@TraderService"
 
 )
@@ -56,14 +55,6 @@ object Runner extends Runner with BasePage {
     createUser()
     clickByCSS("#update")
   }
-  @BeforeClass
-  def setup(): Unit = {
-    val dirName = "target/test-reports/html-report"
-    val extentProperties = ExtentProperties.INSTANCE
-    val dir = new File(dirName)
-    val successful = dir.mkdir()
-    ExtentProperties.create(driverInstance, dirName + "/index.html")
-  }
 
   @AfterClass
   def destroyUser(): Unit = {
@@ -71,27 +62,38 @@ object Runner extends Runner with BasePage {
     clickByCSS("#destroyPlanet")
     driver.switchTo().alert().accept()
   }
-
-  @AfterClass
-  def writeExtentReport(): Unit =
-    Reporter.loadXMLConfig("src/test/resources/extent-config.xml")
-
-  @After
-  def tearDown(result: Scenario) {
-    if (result.isFailed) {
-      webDriver match {
-        case screenshot1: TakesScreenshot =>
-          try {
-            val screenshot = screenshot1.getScreenshotAs(OutputType.BYTES)
-            result.embed(screenshot, "image/png")
-          } catch {
-            case somePlatformsDontSupportScreenshots: WebDriverException => System.err.println(somePlatformsDontSupportScreenshots.getMessage)
-          }
-        case _ =>
-      }
-    }
-  }
 }
+
+
+//@BeforeClass
+//def setup(): Unit = {
+//  val dirName = "target/test-reports/html-report"
+//  val extentProperties = ExtentProperties.INSTANCE
+//  val dir = new File(dirName)
+//  val successful = dir.mkdir()
+//  ExtentProperties.create(driverInstance, dirName + "/index.html")
+//}
+
+//  @AfterClass
+//  def writeExtentReport(): Unit =
+//    Reporter.loadXMLConfig("src/test/resources/extent-config.xml")
+//
+//  @After
+//  def tearDown(result: Scenario) {
+//    if (result.isFailed) {
+//      webDriver match {
+//        case screenshot1: TakesScreenshot =>
+//          try {
+//            val screenshot = screenshot1.getScreenshotAs(OutputType.BYTES)
+//            result.embed(screenshot, "image/png")
+//          } catch {
+//            case somePlatformsDontSupportScreenshots: WebDriverException => System.err.println(somePlatformsDontSupportScreenshots.getMessage)
+//          }
+//        case _ =>
+//      }
+//    }
+//  }
+//}
 //"uk.gov.hmrc.extentreport.ExtentCucumberFormatter:target/test-reports/html-report/index.html"
 //"com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html"
 //"junit:target/test-reports/TEST-cucumber-junit-report.xml"
