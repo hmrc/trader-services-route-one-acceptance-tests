@@ -14,4 +14,5 @@ lazy val testSuite = (project in file("."))
       Resolver.typesafeRepo("releases"),
       "hmrc-releases" at "https://artefacts.tax.service.gov.uk/artifactory/hmrc-releases/"
     )
+
   )

@@ -17,10 +17,14 @@
 package uk.gov.hmrc.test.ui.conf
 
 import com.typesafe.config.{Config, ConfigFactory}
+import org.openqa.selenium.WebDriver
+import uk.gov.hmrc.webdriver.SingletonDriver
 
 case class Configuration(baseUrl: String, SIGN_IN_PAGE: String)
 
 object Configuration {
+
+  val driverInstance: WebDriver = SingletonDriver.getInstance()
 
   val config: Config = ConfigFactory.load()
   val defaultConfig: Config = config
