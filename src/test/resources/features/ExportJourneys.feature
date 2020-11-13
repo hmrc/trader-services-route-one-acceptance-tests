@@ -3,7 +3,7 @@ Feature: Pre-clearance - Export Journeys
 
     Scenario Outline: A user wants to complete a New Export RouteOne journey (upload-pre)
         Given the user is on the landing page for trader services
-        When the user clicks the link to enter the route1 journey
+        And the user clicks the link to enter the route1 journey
         Then the user is on the declaration details page
         When the user enters declaration details "<epu>" and "<entryNo>"
         And the user enters today's date for entryDate
@@ -25,6 +25,7 @@ Feature: Pre-clearance - Export Journeys
         Then the user clicks Continue
         Then the user is on the First upload page
         When the user clicks the button to upload and selects "first" file
+        Then the user navigates to the landing page for trader services
 
         Examples:
 | epu | entryNo | requestType  | route   | priority      | transport | vesselName  | name  | email   |
