@@ -16,20 +16,17 @@
 
 package uk.gov.hmrc.test.ui.cucumber.runner
 
-import com.typesafe.config.{Config, ConfigFactory}
-import org.scalatest.WordSpec
-import uk.gov.hmrc.zap.ZapTest
-import uk.gov.hmrc.zap.config.ZapConfiguration
+import cucumber.api.CucumberOptions
+import cucumber.api.junit.Cucumber
+import org.junit.runner.RunWith
 
-class ZapRunner extends WordSpec with ZapTest {
-
-  val customConfig: Config =  ConfigFactory.load().getConfig("zap-automation-config")
-
-  override val zapConfiguration: ZapConfiguration = new ZapConfiguration(customConfig)
-
-  "Kicking off the zap scan" should {
-    "should complete successfully" in {
-      triggerZapScan()
-    }
-  }
+@RunWith(classOf[Cucumber])
+@CucumberOptions(
+  features = Array("src/test/resources/features"),
+  glue = Array("uk.gov.hmrc.stepdefs"),
+  plugin = Array("pretty", "html:target/cucumber", "json:target/cucumber.json"),
+  tags=Array("@ZAP")
+)
+class RunZap {
 }
+

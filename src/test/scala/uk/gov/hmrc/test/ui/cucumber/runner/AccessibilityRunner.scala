@@ -48,8 +48,4 @@ object AccessibilityRunner extends AccessibilityRunner with BasePage {
     else clickByCSS("#destroy-planet")
     driver.switchTo().alert().accept()
   }
-
 }
-
-//if (destroyPlanet.isDisplayed.equals(true)){destroyPlanet.click()}
-//else clickByCSS("#link_planet_destroy")
