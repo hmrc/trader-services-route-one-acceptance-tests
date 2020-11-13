@@ -1,4 +1,4 @@
-@TraderService
+@TraderService2
 Feature: A user wants to upload documents
 
   Scenario Outline: A user wants upload some documents
@@ -47,6 +47,7 @@ Feature: A user wants to upload documents
     Then the user selects Yes to to uploading another file
     Then the user is on the Another upload page
     When the user clicks the button to upload and selects "last" file
+    Then the user navigates to the landing page for trader services
 
     Examples:
 | epu | entryNo | requestType | route   | priority                | transport | name       | email      |
