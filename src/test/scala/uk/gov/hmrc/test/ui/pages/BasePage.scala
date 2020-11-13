@@ -16,21 +16,27 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import java.io.File
 import java.time.{Duration, LocalDate}
 import java.util.concurrent.TimeUnit
 
+import org.openqa.selenium._
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
-import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.scalatest.{Assertion, Matchers}
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 trait BasePage extends Matchers with BrowserDriver {
 
+
+  def copyFile(srcFile: File, destFile: File): Unit = {
+    copyFile(srcFile, destFile)
+  }
+
   val env: String = System.getProperty("environment")
 
   val fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
-        .withTimeout(Duration.ofSeconds(20))
-        .pollingEvery(Duration.ofMillis(250))
+    .withTimeout(Duration.ofSeconds(20))
+    .pollingEvery(Duration.ofMillis(250))
 
   def host(localPort: Int): String = env match {
     case "development" => "https://www.development.tax.service.gov.uk"
@@ -79,9 +85,9 @@ trait BasePage extends Matchers with BrowserDriver {
     assert(href == hrefValue, s"Heading was '$href' but expected '$hrefValue'")
   }
 
-  def findByXpath(xpath:String): WebElement = driver.findElement(By.xpath(xpath))
+  def findByXpath(xpath: String): WebElement = driver.findElement(By.xpath(xpath))
 
-  def clickHref(href:String):Unit = driver.findElement(By.cssSelector(href)).click()
+  def clickHref(href: String): Unit = driver.findElement(By.cssSelector(href)).click()
 
   def verifyHeading(text: String): Unit = findElementByCss("h1").getText shouldBe text
 
@@ -94,6 +100,7 @@ trait BasePage extends Matchers with BrowserDriver {
   def clickByCSS(css: String): Unit = driver.findElement(By.cssSelector(css)).click()
 
   def optionSelected(css: String): Unit = driver.findElement(By.cssSelector(css)).isSelected shouldBe true
+
   def optionNotSelected(css: String): Unit = driver.findElement(By.cssSelector(css)).isSelected shouldBe false
 
   def verifyInput(id: String, expectedValue: String):
@@ -107,7 +114,7 @@ trait BasePage extends Matchers with BrowserDriver {
   def signOut: WebElement = findElementByCss("#navigation > li > a")
 
   def assertElementText(content: String, element: WebElement): Unit = {
-    assert(element.getText.equals(content), message (s"Element displayed is: ${element.getText} Expecting: $content"))
+    assert(element.getText.equals(content), message(s"Element displayed is: ${element.getText} Expecting: $content"))
   }
 
   lazy val todayDate: LocalDate = LocalDate.now()
@@ -124,20 +131,25 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def navigateTo(url: String): Unit = driver.navigate().to(url)
 
-//  def validateErrorSummaryLinksToError(pageField: String, bodyField: String): Boolean = {
-//    clickById(pageField + "PageErrMsg")
-//    findElementById(bodyField).isSelected
-//  }
+
+  //  def validateErrorSummaryLinksToError(pageField: String, bodyField: String): Boolean = {
+  //    clickById(pageField + "PageErrMsg")
+  //    findElementById(bodyField).isSelected
+  //  }
 
   def login(): Unit = {
     userid.sendKeys("User1")
     planetid.sendKeys("Planet1")
     signinBtn.click()
   }
+
   def userid: WebElement = driver.findElement(By.id("userId"))
+
   def planetid: WebElement = driver.findElement(By.id("planetId"))
+
   def signinBtn: WebElement = driver.findElement(By.id("signIn"))
-  def enrollment:WebElement = findElementById("principalEnrolments[0].identifiers[0].value")
+
+  def enrollment: WebElement = findElementById("principalEnrolments[0].identifiers[0].value")
 
   def createUser(): Unit = {
     clickByCSS("#affinityGroup-Individual")
