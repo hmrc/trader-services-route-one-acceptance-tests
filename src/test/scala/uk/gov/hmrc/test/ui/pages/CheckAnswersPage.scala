@@ -22,7 +22,7 @@ trait CheckAnswersPage extends BasePage with DeclarationNumPage with QuestionPag
 
   val urlImportCYA: String = traderServicesBaseUrl + importJourneyUrl + "/check-your-answers"
   val urlExportCYA: String = traderServicesBaseUrl + exportJourneyUrl + "/check-your-answers"
-  val headingMainCYA = "Review your pre-clearance case details"
+  val headingMainCYA = "Review your case details"
 
   def verifyH2Declaration(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(2)").getText shouldBe text
   def verifyH2Questions(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(4)").getText shouldBe text
@@ -47,7 +47,7 @@ trait CheckAnswersPage extends BasePage with DeclarationNumPage with QuestionPag
 
 
   //Question Section (order may vary)
-  val h2Questions = "Pre-clearance information"
+  val h2Questions = "Customs information"
   val summaryImportRequest = "Type of import request"
   val summaryExportRequest = "Type of export request"
   val summaryRoute = "Route"
@@ -81,10 +81,10 @@ trait CheckAnswersPage extends BasePage with DeclarationNumPage with QuestionPag
 
 
   //Vessel Section
-  val h2Vessel = "Vessel information"
-  val summaryVesselName = "Vessel name"
+  val h2Vessel = "Transport information"
+  val summaryVesselName = "Name of plane, ship or vehicle"
   val summaryVesselDate = "Date of arrival"
-  val summaryVesselTime = "Time of arrival"
+  val summaryVesselTime = "Estimated time of arrival"
 
   def vesselNameRow:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(1) > dt:nth-child(1)")
   def vesselNameAnswer:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(1) > dd:nth-child(2)")

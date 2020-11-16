@@ -26,9 +26,7 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage with
     confirmUrl(urlConfirmation)
     verifyHeading(headingConfirmation)
     assertElementText("Save your case reference number", subheading1)
-    assertElementText("You might need it if you contact us with any queries.", content1)
-    assertElementText("Next steps", subheading2)
-    assertElementText("You will hear from us soon via CHIEF or your declaration software.", content2)
+    assertElementText("You will have to provide your case reference number if:", content1)
   }
 
   Then("""^the user should see guidance links on the page""") {() =>
@@ -37,7 +35,6 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage with
   Then("""^the user should see a case reference number"""){() =>
     assertElementText("330XGBNZJO04", caseRefNo)
   }
-  //TBC... 330XGBNZJO04
 
   When("""^the user clicks to submit documents for a new case they will be back on dec details page"""){() =>
     clickContinue()
