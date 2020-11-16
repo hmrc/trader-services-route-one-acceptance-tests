@@ -16,36 +16,20 @@
 
 package uk.gov.hmrc.test.ui.cucumber.runner
 
-import io.cucumber.junit.{Cucumber, CucumberOptions}
-import org.junit.runner.RunWith
-import org.junit.{AfterClass, BeforeClass}
-import uk.gov.hmrc.test.ui.conf.Configuration
-import uk.gov.hmrc.test.ui.pages.BasePage
+import com.typesafe.config.{Config, ConfigFactory}
+import org.scalatest.WordSpec
+import uk.gov.hmrc.zap.ZapTest
+import uk.gov.hmrc.zap.config.ZapConfiguration
 
-@RunWith(classOf[Cucumber])
-@CucumberOptions(
-  features = Array("src/test/resources/features"),
-  glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
-  plugin = Array ("pretty", "html:target/cucumber", "json:target/cucumber.json"),
-  tags = "@ZAP"
-)
-class ZapRunner {
+class ZapRunner extends WordSpec with ZapTest {
 
-  object ZapRunner extends ZapRunner with BasePage {
-    @BeforeClass
-    def setupUser(): Unit = {
-      navigateTo(Configuration.settings.SIGN_IN_PAGE)
-      login()
-      createUser()
-      clickByCSS("#update")
-    }
+  val customConfig: Config =  ConfigFactory.load().getConfig("zap-automation-config")
 
-    @AfterClass
-    def destroyUser(): Unit = {
-      navigateTo("http://localhost:9099/agents-external-stubs/")
-      clickByCSS("#destroyPlanet")
-      driver.switchTo().alert().accept()
+  override val zapConfiguration: ZapConfiguration = new ZapConfiguration(customConfig)
+
+  "Kicking off the zap scan" should {
+    "should complete successfully" in {
+      triggerZapScan()
     }
   }
-
 }

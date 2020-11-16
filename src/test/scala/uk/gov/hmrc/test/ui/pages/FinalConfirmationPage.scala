@@ -27,11 +27,8 @@ val urlConfirmation = traderServicesBaseUrl + "/pre-clearance/confirmation"
 
   def subheading1:WebElement = findElementByCss("h2.govuk-heading-m:nth-child(2)")
   def content1:WebElement = findElementByCss("p.govuk-body:nth-child(3)")
-  def subheading2:WebElement = findElementByCss("h2.govuk-heading-m:nth-child(4)")
-  def content2:WebElement = findElementByCss("p.govuk-body:nth-child(5)")
-
 
  //placeholders
-  def linkPreClearance:Unit = findElementById("")
-  def linkC1Forms:Unit = findElementById("")
+//  def linkPreClearance:Unit = findElementById("")
+//  def linkC1Forms:Unit = findElementById("")
 }

@@ -14,10 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.cucumber.runner
 
-trait ALVSPage extends BasePage {
+import cucumber.api.CucumberOptions
+import cucumber.api.junit.Cucumber
+import org.junit.runner.RunWith
 
-  val urlALVS: String = traderServicesBaseUrl + importJourneyUrl + "/automatic-licence-verification"
-  val headingALVS = "Do you use Defra’s Automatic Licence Verification System (ALVS)?"
+@RunWith(classOf[Cucumber])
+@CucumberOptions(
+  features = Array("src/test/resources/features"),
+  glue = Array("uk.gov.hmrc.stepdefs"),
+  plugin = Array("pretty", "html:target/cucumber", "json:target/cucumber.json"),
+  tags=Array("@ZAP")
+)
+class RunZap {
 }
+

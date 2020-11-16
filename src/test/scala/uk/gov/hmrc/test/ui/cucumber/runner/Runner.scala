@@ -16,19 +16,12 @@
 
 package uk.gov.hmrc.test.ui.cucumber.runner
 
-import java.io.File
-
-import cucumber.api.Scenario
-import cucumber.api.java.{After, Before}
+import cucumber.api.java.Before
 import io.cucumber.junit.{Cucumber, CucumberOptions}
 import org.junit.runner.RunWith
 import org.junit.{AfterClass, BeforeClass}
-import org.openqa.selenium.{OutputType, TakesScreenshot, WebDriverException}
 import uk.gov.hmrc.extentreport.ExtentProperties.webDriver
-import uk.gov.hmrc.extentreport.{ExtentProperties, Reporter}
 import uk.gov.hmrc.test.ui.conf.Configuration
-import uk.gov.hmrc.test.ui.conf.Configuration.driverInstance
-import uk.gov.hmrc.test.ui.cucumber.runner.AccessibilityRunner.findElementByCss
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 @RunWith(classOf[Cucumber])
@@ -66,9 +59,8 @@ object Runner extends Runner with BasePage {
   }
 }
 
-//if (isElementVisible("#link_planet_destroy")) clickByCSS("#link_planet_destroy") else
-//clickByCSS("#destroy-planet")
 
+//Reporting setup - WIP
 
 //@BeforeClass
 //def setup(): Unit = {
@@ -102,3 +94,19 @@ object Runner extends Runner with BasePage {
 //"uk.gov.hmrc.extentreport.ExtentCucumberFormatter:target/test-reports/html-report/index.html"
 //"com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html"
 //"junit:target/test-reports/TEST-cucumber-junit-report.xml"
+
+//
+//import java.io.File
+//
+//import cucumber.api.Scenario
+//import cucumber.api.java.{After, Before}
+//import io.cucumber.junit.{Cucumber, CucumberOptions}
+//import org.junit.runner.RunWith
+//import org.junit.{AfterClass, BeforeClass}
+//import org.openqa.selenium.{OutputType, TakesScreenshot, WebDriverException}
+//import uk.gov.hmrc.extentreport.ExtentProperties.webDriver
+//import uk.gov.hmrc.extentreport.{ExtentProperties, Reporter}
+//import uk.gov.hmrc.test.ui.conf.Configuration
+//import uk.gov.hmrc.test.ui.conf.Configuration.driverInstance
+//import uk.gov.hmrc.test.ui.cucumber.runner.AccessibilityRunner.findElementByCss
+//import uk.gov.hmrc.test.ui.pages.BasePage
