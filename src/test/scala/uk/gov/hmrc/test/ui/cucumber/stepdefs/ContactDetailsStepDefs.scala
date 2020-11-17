@@ -42,24 +42,24 @@ class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
 
   Then("""^the user enters a name "(.*)"$""") {
     (name: String) =>
-      writeById("contactName", name)
+      findWriteById("contactName", name)
   }
 
   Then("""^the user enters an email address "(.*)"$""") {
     (email: String) =>
-      writeById("contactEmail", email)
+      findWriteById("contactEmail", email)
   }
 
   Then("""^the user enters a phone number "(.*)"$""") {
     (phone: String) =>
-      writeById("contactNumber", phone)
+      findWriteById("contactNumber", phone)
   }
 
 
 Then("""^the details entered for name, email and phone number should be pre-filled with "(.*)", "(.*)" & "(.*)"$""") {
   (name:String, email:String, phone:String) =>
-  verifyInput("contactName", name)
-  verifyInput("contactEmail", email)
-  verifyInput("contactNumber", phone)
+  findVerifyInput("contactName", name)
+  findVerifyInput("contactEmail", email)
+  findVerifyInput("contactNumber", phone)
 }
 }

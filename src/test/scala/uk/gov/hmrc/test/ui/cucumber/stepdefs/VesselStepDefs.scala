@@ -45,46 +45,39 @@ class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl wit
   }
 
   Then("""^the user enters "(.*)" for vessel name$""") { (vesselName:String) =>
-    writeById("vesselName", vesselName)
+    writeById(vesselQName, vesselName)
   }
 
   Then("""^the user enters a date for the vessel "(.*)" "(.*)" "(.*)"$""") {
     (vesselDay: String, vesselMonth: String, vesselYear: String) =>
-      writeById("dateOfArrival.day", vesselDay)
-      writeById("dateOfArrival.month", vesselMonth)
-      writeById("dateOfArrival.year", vesselYear)
+      writeById(vesselQDay, vesselDay)
+      writeById(vesselQMonth, vesselMonth)
+      writeById(vesselQYear, vesselYear)
   }
 
   Then("""^the user enters a time for the vessel "(.*)" "(.*)"$""") {
     (vesselHrs: String, vesselMins: String) =>
-      writeById("timeOfArrival.hour", vesselHrs)
-      writeById("timeOfArrival.minutes", vesselMins)
-  }
-
-  Then("""^the user enters selects period (.*) for the vessel$""") {(period: String) =>
-      period match {
-        case "AM" => clickByCSS("#timeOfArrival.period-am")
-        case "PM" => clickByCSS("#timeOfArrival.period-pm")
-      }
+      writeById(vesselQHours, vesselHrs)
+      writeById(vesselQMinutes, vesselMins)
   }
 
   Then("""^the details entered for Vessel Name should be pre filled with "(.*)"$""") {
     (vesselName: String) =>
-      verifyInput("vesselName", vesselName)
+      verifyInput(vesselQName, vesselName)
   }
 
   Then("""^the details entered for Date of Arrival should be pre filled with (.*), (.*) & (.*)$""") {
     (vesselDay: String, vesselMonth: String, vesselYear: String) =>
-      verifyInput("dateOfArrival.day", vesselDay)
-      verifyInput("dateOfArrival.month", vesselMonth)
-      verifyInput("dateOfArrival.year", vesselYear)
+      verifyInput(vesselQDay, vesselDay)
+      verifyInput(vesselQMonth, vesselMonth)
+      verifyInput(vesselQYear, vesselYear)
   }
 
 
   Then("""^the details entered for Time of Arrival should be pre filled with "(.*)" & "(.*)"$""") {
     (vesselHrs: String, vesselMins: String) =>
-      verifyInput("timeOfArrival.hour", vesselHrs)
-      verifyInput("timeOfArrival.minutes", vesselMins)
+      verifyInput(vesselQHours, vesselHrs)
+      verifyInput(vesselQMinutes, vesselMins)
 
   }
 }

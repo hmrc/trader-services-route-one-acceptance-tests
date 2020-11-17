@@ -16,9 +16,17 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.WebElement
+
 trait DeclarationNumPage extends BasePage {
 
   val urlDecDetails: String = traderServicesBaseUrl + "/pre-clearance/declaration-details"
   val headingDecDetails = "What are your declaration details?"
 
+  def EPU: WebElement = findElementById("epu")
+  def entryNo: WebElement = findElementById("entryNumber")
+
+  def entryDay: WebElement = findElementById("entryDate.day")
+  def entryMonth: WebElement = findElementById("entryDate.month")
+  def entryYear: WebElement = findElementById("entryDate.year")
 }

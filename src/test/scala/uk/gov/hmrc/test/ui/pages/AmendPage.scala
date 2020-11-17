@@ -16,21 +16,26 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.WebElement
+import org.openqa.selenium.{By, WebElement}
 
 trait AmendPage extends BasePage {
 
-  val urlCaseRef: String = traderServicesBaseUrl + "/pre-clearance/amend/case-reference-number"
-val caseRefHeading: String = "What's the case reference number?"
-
-val urlHowToSend:String = traderServicesBaseUrl + "/pre-clearance/amend/select-how-to-send"
-val howToSendHeading:String = ""
+  val urlCaseRef: String = traderServicesBaseUrl + amendUrl + "/case-reference-number"
+  val caseRefHeading: String = "What's the case reference number?"
 
   def caseRefInput: WebElement = findElementByCss("#caseReferenceNumber")
 
+  def amendNCHLink(): Unit = driver.findElement(By.linkText("National clearance hub"))
 
-//  def linkNCH: WebElement = findElementByCss("p.govuk-body:nth-child(2) > a:nth-child(1)")
-  //https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-clearance-hub
+  val urlHowToSend:String = traderServicesBaseUrl + amendUrl + "/type-of-amendment"
+  val howToSendHeading:String = "How do you want to send us more information?"
+
+  val urlWriteResponse: String = traderServicesBaseUrl + amendUrl + ""
+  val writeResponseHeading: String = ""
+
+  def textFieldInput(): WebElement = driver.findElement(By.cssSelector("XXX"))
+
+  //upload SAME??
+
+
 }
-
-//hint -> For example PC12010081330XGBNZJO04
