@@ -35,13 +35,5 @@ class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with E
   When("""^the user clicks the link to enter the route1 journey$""") { () =>
     clickRouteOneLink()
   }
-
-  When("""^the user clicks the link to add info or documents$""") { () =>
-    clickAddInfo()
-  }
-
-  When("""^the user clicks the link to check the status of their case$""") { () =>
-    clickCheckStatus()
-  }
 }
 

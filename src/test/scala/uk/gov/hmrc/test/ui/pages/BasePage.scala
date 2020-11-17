@@ -23,25 +23,20 @@ import java.util.concurrent.TimeUnit
 import org.openqa.selenium._
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import org.scalatest.{Assertion, Matchers}
+import uk.gov.hmrc.test.ui.conf.Configuration.environment
+import uk.gov.hmrc.test.ui.conf.Environment
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 trait BasePage extends Matchers with BrowserDriver {
-
-
-  def copyFile(srcFile: File, destFile: File): Unit = {
-    copyFile(srcFile, destFile)
-  }
-
-  val env: String = System.getProperty("environment")
 
   val fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
     .withTimeout(Duration.ofSeconds(20))
     .pollingEvery(Duration.ofMillis(250))
 
-  def host(localPort: Int): String = env match {
-    case "development" => "https://www.development.tax.service.gov.uk"
-    case "qa" => "https://www.qa.tax.service.gov.uk"
-    case "staging" => "https://www.staging.tax.service.gov.uk"
+  def host(localPort: Int): String = environment match {
+    case Environment.Dev => "https://www.development.tax.service.gov.uk"
+    case Environment.Qa => "https://www.qa.tax.service.gov.uk"
+    case Environment.Staging => "https://www.staging.tax.service.gov.uk"
     case _ => s"http://localhost:$localPort"
   }
 
@@ -85,19 +80,21 @@ trait BasePage extends Matchers with BrowserDriver {
     assert(href == hrefValue, s"Heading was '$href' but expected '$hrefValue'")
   }
 
+  def navigateTo(url: String): Unit = driver.navigate().to(url)
+
   def findByXpath(xpath: String): WebElement = driver.findElement(By.xpath(xpath))
 
   def clickHref(href: String): Unit = driver.findElement(By.cssSelector(href)).click()
 
   def verifyHeading(text: String): Unit = findElementByCss("h1").getText shouldBe text
 
-  def clickContinue(): Unit = findElementByCss(".govuk-button").click()
-
-  def clickBack(): Unit = findElementById("back-link").click()
-
   def clickById(id: String): Unit = findElementById(id).click()
 
   def clickByCSS(css: String): Unit = driver.findElement(By.cssSelector(css)).click()
+
+  def clickContinue(): Unit = findElementByCss(".govuk-button").click()
+
+  def clickBack(): Unit = findElementById("back-link").click()
 
   def optionSelected(css: String): Unit = driver.findElement(By.cssSelector(css)).isSelected shouldBe true
 
@@ -111,16 +108,8 @@ trait BasePage extends Matchers with BrowserDriver {
     findElementById(id).sendKeys(char * n)
   }
 
-  def signOut: WebElement = findElementByCss("#navigation > li > a")
-
   def assertElementText(content: String, element: WebElement): Unit = {
     assert(element.getText.equals(content), message(s"Element displayed is: ${element.getText} Expecting: $content"))
-  }
-
-  lazy val todayDate: LocalDate = LocalDate.now()
-
-  def todayDateCYA: String = {
-    s"${todayDate.getDayOfMonth.toString} ${todayDate.getMonth.toString.toLowerCase.capitalize} ${todayDate.getYear.toString}"
   }
 
   def isElementVisible(css: String): Boolean = findElementByCss(css).isDisplayed
@@ -131,14 +120,25 @@ trait BasePage extends Matchers with BrowserDriver {
     driver.manage.timeouts.implicitlyWait(50, TimeUnit.SECONDS)
   }
 
-  def navigateTo(url: String): Unit = driver.navigate().to(url)
+  lazy val todayDate: LocalDate = LocalDate.now()
+
+  def todayDateCYA: String = {
+    s"${todayDate.getDayOfMonth.toString} ${todayDate.getMonth.toString.toLowerCase.capitalize} ${todayDate.getYear.toString}"
+  }
+
+  def copyFile(srcFile: File, destFile: File): Unit = {
+    copyFile(srcFile, destFile)
+  }
+
+//  def signOut: WebElement = findElementByCss("#navigation > li > a")
+
+//  def validateErrorSummaryLinksToError(pageField: String, bodyField: String): Boolean = {
+//      clickById(pageField + "PageErrMsg")
+//      findElementById(bodyField).isSelected
+//    }
 
 
-  //  def validateErrorSummaryLinksToError(pageField: String, bodyField: String): Boolean = {
-  //    clickById(pageField + "PageErrMsg")
-  //    findElementById(bodyField).isSelected
-  //  }
-
+  //Agent-stubs
   def login(): Unit = {
     userid.sendKeys("User1")
     planetid.sendKeys("Planet1")

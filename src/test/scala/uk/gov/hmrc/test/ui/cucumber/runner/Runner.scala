@@ -52,13 +52,11 @@ object Runner extends Runner with BasePage {
 
   @AfterClass
   def destroyUser(): Unit = {
-    navigateTo("http://localhost:9099/agents-external-stubs/")
-    confirmUrl("http://localhost:9099/agents-external-stubs/")
+  navigateTo(Configuration.settings.DESTROY_PLANET)
     if (destroyPlanetLink.isDisplayed.equals(true)){destroyPlanetLink.click()} else clickByCSS("#destroy-planet")
     driver.switchTo().alert().accept()
   }
 }
-
 
 //Reporting setup - WIP
 
