@@ -34,21 +34,11 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
 
-
 trait LandingPage extends BasePage {
 
   val traderServicesUrl: String = traderServicesBaseUrl
   val landingHeading = "Trader services"
 
   def clickRouteOneLink(): Unit = driver.findElement(By.linkText("Start a pre-clearance case")).click()
-
-  def clickAddInfo(): Unit = driver.findElement(By.linkText("Add documents or information")).click()
-
-  def clickCheckStatus(): Unit = driver.findElement(By.linkText("Check status")).click()
-
-  //  def overpayments(): Unit = driver.findElement(By.linkText("Apply for a refund"))
-  //  def underpayments(): Unit = driver.findElement(By.linkText("Disclose an underpayment"))
-  //  def securities(): Unit = driver.findElement(By.linkText("Apply for a refund"))
-  //just check handoff (confirm(url))
 
 }

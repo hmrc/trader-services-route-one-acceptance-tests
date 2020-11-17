@@ -40,10 +40,6 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     clickBack()
   }
 
-  And("""^the user signs out""") { () =>
-    signOut
-  }
-
   And("""^the user enters too many characters for (.*)""") { (field:String) =>
 
     field match {
