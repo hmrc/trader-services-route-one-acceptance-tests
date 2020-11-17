@@ -43,6 +43,7 @@ trait BasePage extends Matchers with BrowserDriver {
   val traderServicesBaseUrl: String = host(9379) + "/trader-services"
   val importJourneyUrl: String = "/pre-clearance/import-questions"
   val exportJourneyUrl: String = "/pre-clearance/export-questions"
+  val amendUrl: String = "/pre-clearance/amend"
 
   def confirmUrl(url: String): Unit = {
     fluentWait.until(ExpectedConditions.urlContains(url))
@@ -50,8 +51,12 @@ trait BasePage extends Matchers with BrowserDriver {
     assert(currentUrl.contains(url) || url.contains(currentUrl), message(s"Expected url is: $url. Actual url is: $currentUrl"))
   }
 
-  def writeById(id: String, value: String = "") {
+  def findWriteById(id: String, value: String = "") {
     writeByElement(findElementById(id), value)
+  }
+
+  def writeById(id: WebElement, value: String = "") {
+    writeByElement(id, value)
   }
 
   def writeByElement(element: WebElement, value: String = "") {
@@ -100,8 +105,11 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def optionNotSelected(css: String): Unit = driver.findElement(By.cssSelector(css)).isSelected shouldBe false
 
-  def verifyInput(id: String, expectedValue: String):
+  def findVerifyInput(id: String, expectedValue: String):
   Assertion = findElementById(id).getAttribute("value") shouldBe expectedValue
+
+  def verifyInput(id: WebElement, expectedValue: String):
+  Assertion = id.getAttribute("value") shouldBe expectedValue
 
   def sendNCharactersById(id: String, n: Int, char: String = "a"): Unit = {
     findElementById(id).clear()

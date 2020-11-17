@@ -33,27 +33,27 @@ class DeclarationNumStepDefs extends DeclarationNumPage with BasePage with Scala
 
   Then("""^the user enters declaration details "(.*)" and "(.*)"$""") {
     (epu: String, entryNumber: String) =>
-      writeById("epu", epu)
-      writeById("entryNumber", entryNumber)
+      writeById(EPU, epu)
+      writeById(entryNo, entryNumber)
   }
 
   Then("""^the user enters a date "(.*)" "(.*)" "(.*)"$""") {
     (dateDay: String, dateMonth: String, dateYear: String) =>
-      writeById("entryDate.day", dateDay)
-      writeById("entryDate.month", dateMonth)
-      writeById("entryDate.year", dateYear)
+      writeById(entryDay, dateDay)
+      writeById(entryMonth, dateMonth)
+      writeById(entryYear, dateYear)
   }
 
   Then("""^the details entered for EPU & EntryNo should be pre filled with (.*) & (.*)$""") {
-    (epu:String, entryNo:String) =>
-      verifyInput("epu", epu)
-      verifyInput("entryNumber", entryNo)
+    (epu:String, entryNumber:String) =>
+      verifyInput(EPU, epu)
+      verifyInput(entryNo, entryNumber)
   }
 
   Then("""^the details entered for Declaration Date should be pre filled with (.*), (.*) & (.*)$""") {
     (dateDay:String, dateMonth:String, dateYear:String) =>
-      verifyInput("entryDate.day", dateDay)
-      verifyInput("entryDate.month", dateMonth)
-      verifyInput("entryDate.year", dateYear)
+      verifyInput(entryDay, dateDay)
+      verifyInput(entryMonth, dateMonth)
+      verifyInput(entryYear, dateYear)
   }
   }

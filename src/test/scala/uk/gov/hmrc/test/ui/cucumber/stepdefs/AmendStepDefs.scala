@@ -19,11 +19,10 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import io.cucumber.scala.{EN, ScalaDsl}
 import uk.gov.hmrc.test.ui.pages.{AmendPage, BasePage}
 
-
 class AmendStepDefs extends AmendPage with BasePage with ScalaDsl with EN {
 
 
-  When ("""^the user enters the amend journey and is on the case ref number page""") { () =>
+  When("""^the user enters the amend journey and is on the case ref number page""") { () =>
     navigateTo(urlCaseRef)
     confirmUrl(urlCaseRef)
     verifyHeading(caseRefHeading)
@@ -33,12 +32,6 @@ class AmendStepDefs extends AmendPage with BasePage with ScalaDsl with EN {
     confirmUrl(urlCaseRef)
     verifyHeading(caseRefHeading)
   }
-
-  Then("""^the user is on the how to send page$""") { () =>
-    confirmUrl(urlHowToSend)
-//    verifyHeading(howToSendHeading)
-  }
-
   Then("""^the user enters (.*) characters for case reference number$""") { (caseNo: String) =>
 
     caseNo match {
@@ -49,7 +42,37 @@ class AmendStepDefs extends AmendPage with BasePage with ScalaDsl with EN {
     }
     clickContinue()
   }
-}
 
-//this will be more stringent in time...
-//refactor
+  Then("""^the user is on the how to respond page$""") { () =>
+    confirmUrl(urlHowToSend)
+    verifyHeading(howToSendHeading)
+  }
+
+  Then("""^the user is on the how to respond page and selects (.*)""") { (caseNo: String) =>
+    confirmUrl(urlHowToSend)
+    verifyHeading(howToSendHeading)
+
+    caseNo match {
+      case "writeOnly" => clickByCSS("#typeOfAmendment")
+      case "uploadOnly" => clickByCSS("#typeOfAmendment-2")
+      case "write&Upload" => clickByCSS("#typeOfAmendment-3")
+      case "noOption" =>
+    }
+    clickContinue()
+  }
+
+  Then("""^the user is on the write response page""") { () =>
+    confirmUrl(urlHowToSend)
+    verifyHeading(howToSendHeading)
+  }
+
+  Then("""^the user is on upload documents page""") { () =>
+    confirmUrl(urlHowToSend)
+    verifyHeading(howToSendHeading)
+  }
+
+    Then("""^the user is on the how to write a response page""") { () =>
+      confirmUrl(urlWriteResponse)
+      verifyHeading(writeResponseHeading)
+    }
+  }

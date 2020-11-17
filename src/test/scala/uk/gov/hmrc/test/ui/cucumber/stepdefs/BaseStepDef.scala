@@ -21,12 +21,13 @@ import org.openqa.selenium.By
 import org.scalatest.Matchers
 import org.scalatest.concurrent.Eventually
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage, VesselQuestionsPage}
 import uk.gov.hmrc.webdriver.SingletonDriver
 
 import scala.util.Try
 
-class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with Eventually with Matchers {
+class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with Eventually
+  with Matchers with DeclarationNumPage with VesselQuestionsPage {
 
   sys.addShutdownHook {
     Try(SingletonDriver.closeInstance)
@@ -53,14 +54,14 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     dateField match {
 
       case "entryDate" =>
-        writeById ("entryDate.day", todayDate.getDayOfMonth.toString)
-        writeById ("entryDate.month", todayDate.getMonthValue.toString)
-        writeById ("entryDate.year", todayDate.getYear.toString)
+        writeById (entryDay, todayDate.getDayOfMonth.toString)
+        writeById (entryMonth, todayDate.getMonthValue.toString)
+        writeById (entryYear, todayDate.getYear.toString)
 
       case "vesselDate" =>
-        writeById ("dateOfArrival.day", todayDate.getDayOfMonth.toString)
-        writeById ("dateOfArrival.month", todayDate.getMonthValue.toString)
-        writeById ("dateOfArrival.year", todayDate.getYear.toString)
+        writeById (vesselQDay, todayDate.getDayOfMonth.toString)
+        writeById (vesselQMonth, todayDate.getMonthValue.toString)
+        writeById (vesselQYear, todayDate.getYear.toString)
     }
   }
 
@@ -85,14 +86,14 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
       dateField match {
 
         case "entryDate" =>
-          verifyInput ("entryDate.day", todayDate.getDayOfMonth.toString)
-          verifyInput ("entryDate.month", todayDate.getMonthValue.toString)
-          verifyInput ("entryDate.year", todayDate.getYear.toString)
+          verifyInput (entryDay, todayDate.getDayOfMonth.toString)
+          verifyInput (entryMonth, todayDate.getMonthValue.toString)
+          verifyInput (entryYear, todayDate.getYear.toString)
 
         case "vesselDate" =>
-          verifyInput ("dateOfArrival.day", todayDate.getDayOfMonth.toString)
-          verifyInput ("dateOfArrival.month", todayDate.getMonthValue.toString)
-          verifyInput ("dateOfArrival.year", todayDate.getYear.toString)
+          verifyInput (vesselQDay, todayDate.getDayOfMonth.toString)
+          verifyInput (vesselQMonth, todayDate.getMonthValue.toString)
+          verifyInput (vesselQYear, todayDate.getYear.toString)
       }
   }
 

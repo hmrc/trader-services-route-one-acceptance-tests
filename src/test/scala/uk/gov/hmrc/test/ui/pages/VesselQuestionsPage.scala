@@ -16,6 +16,8 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.WebElement
+
 trait VesselQuestionsPage extends BasePage {
 
   val urlImportVessel: String = traderServicesBaseUrl + importJourneyUrl + "/vessel-info"
@@ -25,5 +27,14 @@ trait VesselQuestionsPage extends BasePage {
   val urlExpMandatoryVessel: String = traderServicesBaseUrl + exportJourneyUrl + "/vessel-info-required"
 
   val headingVessel = "Tell us about your transport"
+
+  def vesselQName: WebElement = findElementById("vesselName")
+
+  def vesselQDay: WebElement = findElementById("dateOfArrival.day")
+  def vesselQMonth: WebElement = findElementById("dateOfArrival.month")
+  def vesselQYear: WebElement = findElementById("dateOfArrival.year")
+
+  def vesselQHours: WebElement = findElementById("timeOfArrival.hour")
+  def vesselQMinutes: WebElement = findElementById("timeOfArrival.minutes")
 
 }

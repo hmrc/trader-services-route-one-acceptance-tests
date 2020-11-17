@@ -20,7 +20,6 @@ import io.cucumber.junit.{Cucumber, CucumberOptions}
 import org.junit.runner.RunWith
 import org.junit.{AfterClass, BeforeClass}
 import uk.gov.hmrc.test.ui.conf.Configuration
-import uk.gov.hmrc.test.ui.cucumber.runner.Runner.{clickByCSS, destroyPlanet, destroyPlanetLink, isElementVisible}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 @RunWith(classOf[Cucumber])
