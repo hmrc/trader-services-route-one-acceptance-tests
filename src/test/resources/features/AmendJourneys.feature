@@ -1,4 +1,4 @@
-@TraderService
+@TraderService2
 Feature: Amend Journeys
 
   Scenario: Amend case (error validation)
@@ -23,16 +23,28 @@ Feature: Amend Journeys
     When the user is on the how to respond page and selects write&Upload
     Then the user is on the write response page
     And the user enters a response with valid characters
-#    Then the user is on the <any> upload page??
-#Then the user is on the final confirmation page - rework??
+    Then the user is on the Amend upload page
+    Then the user clicks the button to upload and selects "first" file
+    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
+    Then the user should see their first uploaded doc test.jpg on upload review page
+    Then the user selects No to to uploading another file
+#Then the user is on the final confirmation page - rework THIS
 
 
 Scenario: A user wants to amend their case details (upload only)
     Given the user enters the amend journey and is on the case ref number page
     When the user enters valid characters for case reference number
     Then the user is on the how to respond page and selects uploadOnly
-#    Then the user is on the <any> upload page??
-#Then the user is on the final confirmation page - rework??
+    Then the user is on the Amend upload page
+    Then the user clicks the button to upload and selects "first" file
+    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
+    Then the user should see their first uploaded doc test.jpg on upload review page
+    Then the user selects Yes to to uploading another file
+    Then the user is on the AnotherAmend upload page
+    Then the user clicks the button to upload and selects "next" file
+    Then the user should be on the amend file upload confirmation page after uploading 2 document/s
+    Then the user selects No to to uploading another file
+#Then the user is on the final confirmation page
 
   Scenario: A user wants to amend their case details (write response only)
     Given the user enters the amend journey and is on the case ref number page
@@ -42,8 +54,6 @@ Scenario: A user wants to amend their case details (upload only)
     When the user enters a response with no characters
     Then the user should see "Error:Enter a response to a query from HMRC" error message for "responseText"
     When the user enters a response with tooMany characters
-    Then the user should see "Error:Enter a response to a query from HMRC" error message for "responseText"
+    Then the user should see "Error:Response must be 1000 characters or fewer" error message for "responseText"
     When the user enters a response with valid characters
 #    Then the user is on the final confirmation page
-#Todo: update content for too many
-#  Response must be 1000 characters or fewer
