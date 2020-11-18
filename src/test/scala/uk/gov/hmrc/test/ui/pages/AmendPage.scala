@@ -30,10 +30,10 @@ trait AmendPage extends BasePage {
   val urlHowToSend:String = traderServicesBaseUrl + amendUrl + "/type-of-amendment"
   val howToSendHeading:String = "How do you want to send us more information?"
 
-  val urlWriteResponse: String = traderServicesBaseUrl + amendUrl + ""
-  val writeResponseHeading: String = ""
+  val urlWriteResponse: String = traderServicesBaseUrl + amendUrl + "/write-response"
+  val writeResponseHeading: String = " Write a response to a query from HMRC"
 
-  def textFieldInput(): WebElement = driver.findElement(By.cssSelector("XXX"))
+  def textInput: WebElement = driver.findElement(By.cssSelector("#responseText"))
 
   //upload SAME??
 

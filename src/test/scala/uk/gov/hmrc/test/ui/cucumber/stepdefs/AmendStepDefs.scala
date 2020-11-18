@@ -32,10 +32,10 @@ class AmendStepDefs extends AmendPage with BasePage with ScalaDsl with EN {
     confirmUrl(urlCaseRef)
     verifyHeading(caseRefHeading)
   }
-  Then("""^the user enters (.*) characters for case reference number$""") { (caseNo: String) =>
+  Then("""^the user enters (.*) characters for (.*)$""") { (caseNo: String) =>
 
     caseNo match {
-      case "no" => sendNCharactersById("caseReferenceNumber", 0)
+      case "no" => sendNCharactersById(textInput, 0)
       case "tooFew" => sendNCharactersById("caseReferenceNumber", 21)
       case "tooMany" => sendNCharactersById("caseReferenceNumber", 23)
       case "valid" => sendNCharactersById("caseReferenceNumber", 22)
@@ -75,4 +75,14 @@ class AmendStepDefs extends AmendPage with BasePage with ScalaDsl with EN {
       confirmUrl(urlWriteResponse)
       verifyHeading(writeResponseHeading)
     }
+
+  Then("""^the user enters a response with (.*) characters""") { (characters: String) =>
+
+    characters match {
+      case "tooMany" => sendNCharactersById(textInput, 1001)
+      case "valid" => sendNCharactersById(textInput, 999)
+      case "no" => sendNCharactersById(textInput, 0)
+    }
+    clickContinue()
+  }
   }

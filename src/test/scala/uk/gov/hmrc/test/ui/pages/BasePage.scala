@@ -111,9 +111,9 @@ trait BasePage extends Matchers with BrowserDriver {
   def verifyInput(id: WebElement, expectedValue: String):
   Assertion = id.getAttribute("value") shouldBe expectedValue
 
-  def sendNCharactersById(id: String, n: Int, char: String = "a"): Unit = {
-    findElementById(id).clear()
-    findElementById(id).sendKeys(char * n)
+  def sendNCharactersById(id: WebElement, n: Int, char: String = "a"): Unit = {
+    id.clear()
+    id.sendKeys(char * n)
   }
 
   def assertElementText(content: String, element: WebElement): Unit = {
