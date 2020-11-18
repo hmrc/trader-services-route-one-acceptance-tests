@@ -43,7 +43,6 @@ Feature: Contact Details
     Then the user clicks Continue
 #Error messages to come
 
-
 #    Phone number must contain numbers only - needs to be 11 digits?
 # Test to ensure phone number is converted ie. +44/44 -> 07
 
