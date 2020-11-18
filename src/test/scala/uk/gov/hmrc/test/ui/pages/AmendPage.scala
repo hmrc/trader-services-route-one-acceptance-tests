@@ -31,7 +31,7 @@ trait AmendPage extends BasePage {
   val howToSendHeading:String = "How do you want to send us more information?"
 
   val urlWriteResponse: String = traderServicesBaseUrl + amendUrl + "/write-response"
-  val writeResponseHeading: String = " Write a response to a query from HMRC"
+  val writeResponseHeading: String = "Write a response to a query from HMRC"
 
   def textInput: WebElement = driver.findElement(By.cssSelector("#responseText"))
 

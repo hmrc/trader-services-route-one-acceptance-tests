@@ -40,9 +40,10 @@ Scenario: A user wants to amend their case details (upload only)
     Then the user is on the how to respond page and selects writeOnly
     Then the user is on the write response page
     When the user enters a response with no characters
-    Then the user should see "Enter a response to a query from HMRC" error message for "responseText"
+    Then the user should see "Error:Enter a response to a query from HMRC" error message for "responseText"
     When the user enters a response with tooMany characters
-    Then the user should see "Enter a response to a query from HMRC" error message for "responseText"
+    Then the user should see "Error:Enter a response to a query from HMRC" error message for "responseText"
     When the user enters a response with valid characters
 #    Then the user is on the final confirmation page
 #Todo: update content for too many
+#  Response must be 1000 characters or fewer
