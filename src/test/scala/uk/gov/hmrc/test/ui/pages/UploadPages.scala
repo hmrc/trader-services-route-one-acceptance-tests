@@ -21,6 +21,8 @@ import org.openqa.selenium.By
 trait UploadPages extends BasePage {
 
   val urlUpload: String = traderServicesBaseUrl + "/pre-clearance/file-upload"
+  val urlUploadAmend: String = traderServicesBaseUrl + "/pre-clearance/amend/file-upload"
+
   val headingUpload = "Upload your first document"
   val headingUploadAnother = "Upload another document"
 
@@ -31,6 +33,7 @@ trait UploadPages extends BasePage {
   val headingUploadConfirm3 = "You have uploaded 3 documents"
 
   val urlUploaded: String = traderServicesBaseUrl + "/pre-clearance/file-uploaded"
+  val urlUploadedAmend: String = traderServicesBaseUrl + "/pre-clearance/amend/file-uploaded"
 
   val usrDir = System.getProperty("user.dir") + "/src/test/resources/uploadFiles/"
   var filePath = ""

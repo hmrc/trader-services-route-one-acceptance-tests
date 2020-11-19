@@ -24,7 +24,7 @@ Feature: A user wants to upload documents
     And the user clicks Continue
     Then the user is on the First upload page
     When the user clicks the button to upload and selects "first" file
-    Then the user should be on the file upload confirmation page after uploading 1 document/s
+    Then the user should be on the new file upload confirmation page after uploading 1 document/s
     Then the user should see their first uploaded doc test.jpg on upload review page
     
     Then the user selects NoOption to to uploading another file
@@ -33,17 +33,17 @@ Feature: A user wants to upload documents
     Then the user selects Yes to to uploading another file
     Then the user is on the Another upload page
     When the user clicks the button to upload and selects "next" file
-    Then the user should be on the file upload confirmation page after uploading 2 document/s
+    Then the user should be on the new file upload confirmation page after uploading 2 document/s
 
     Then the user selects Yes to to uploading another file
     Then the user is on the Another upload page
     When the user clicks the button to upload and selects "last" file
-    Then the user should be on the file upload confirmation page after uploading 3 document/s
+    Then the user should be on the new file upload confirmation page after uploading 3 document/s
 #    And the user should see the message saying they have uploaded the max amount of docs
 #    For testing purposes 3 was max - this is now 10. I am content this works
 
     Then the user clicks the button to remove a document
-    Then the user should be on the file upload confirmation page after uploading 2 document/s
+    Then the user should be on the new file upload confirmation page after uploading 2 document/s
     Then the user selects Yes to to uploading another file
     Then the user is on the Another upload page
     When the user clicks the button to upload and selects "last" file

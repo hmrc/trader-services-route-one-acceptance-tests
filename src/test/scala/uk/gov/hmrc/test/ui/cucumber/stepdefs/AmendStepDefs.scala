@@ -75,7 +75,7 @@ class AmendStepDefs extends AmendPage with BasePage with ScalaDsl with EN {
 
     characters match {
       case "tooMany" => sendNCharactersById(textInput, 1001)
-      case "valid" => sendNCharactersById(textInput, 999)
+      case "valid" => sendNCharactersById(textInput, 1000)
       case "no" => sendNCharactersById(textInput, 0)
     }
     clickContinue()

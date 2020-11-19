@@ -25,11 +25,15 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
 
   Then("""^the user is on the (.*) upload page"""){ (page:String) =>
 
-    confirmUrl(urlUpload)
-
     page match {
-      case "First" => verifyHeading(headingUpload)
-      case "Another" => verifyHeading(headingUploadAnother)
+      case "First" => confirmUrl(urlUpload)
+                      verifyHeading(headingUpload)
+      case "Another" => confirmUrl(urlUpload)
+                        verifyHeading(headingUploadAnother)
+      case "Amend" => confirmUrl(urlUploadAmend)
+                      verifyHeading(headingUpload)
+      case "AnotherAmend" => confirmUrl(urlUploadAmend)
+                             verifyHeading(headingUploadAnother)
     }
   }
 
@@ -40,14 +44,18 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     clickContinue()
   }
 
-  Then("""^the user should be on the file upload confirmation page after uploading (.*) document/s"""){
-    (docAmount:String) =>
-      confirmUrl(urlUploaded)
+  Then("""^the user should be on the (.*) file upload confirmation page after uploading (.*) document/s"""){
+    (journey:String, docAmount:String) =>
+
+      journey match {
+        case "new" => confirmUrl (urlUploaded)
+        case "amend" => confirmUrl(urlUploadedAmend)
 
       docAmount match {
-        case "1"=> verifyHeading(headingUploadConfirm1)
-        case "2"=> verifyHeading(headingUploadConfirm2)
-        case "3"=> verifyHeading(headingUploadConfirm3)
+      case "1" => verifyHeading (headingUploadConfirm1)
+      case "2" => verifyHeading (headingUploadConfirm2)
+      case "3" => verifyHeading (headingUploadConfirm3)
+      }
       }
   }
 
