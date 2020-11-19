@@ -1,4 +1,4 @@
-@TraderService2
+@TraderService
 Feature: Amend Journeys
 
   Scenario: Amend case (error validation)
