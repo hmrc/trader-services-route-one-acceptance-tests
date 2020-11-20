@@ -19,6 +19,8 @@ Run the following command to start services locally:
 Then execute the `run_tests.sh` script:
 
     ./run_tests.sh <environment> <browser-driver>
+    
+    ie. /run_tests.sh dev chrome
 
 The `run_tests.sh` script defaults to the `local` environment with the locally installed `chrome` driver binary.  For a complete list of supported param values, see:
  - `src/test/resources/application.conf` for **environment** 

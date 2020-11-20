@@ -33,6 +33,10 @@ trait BasePage extends Matchers with BrowserDriver {
     .withTimeout(Duration.ofSeconds(20))
     .pollingEvery(Duration.ofMillis(250))
 
+  val fluentWaitUpload: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
+    .withTimeout(Duration.ofSeconds(45))
+    .pollingEvery(Duration.ofMillis(250))
+
   def host(localPort: Int): String = environment match {
     case Environment.Dev => "https://www.development.tax.service.gov.uk"
     case Environment.Qa => "https://www.qa.tax.service.gov.uk"
@@ -47,6 +51,12 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def confirmUrl(url: String): Unit = {
     fluentWait.until(ExpectedConditions.urlContains(url))
+    val currentUrl = driver.getCurrentUrl
+    assert(currentUrl.contains(url) || url.contains(currentUrl), message(s"Expected url is: $url. Actual url is: $currentUrl"))
+  }
+
+  def confirmUrlUpload(url: String): Unit = {
+    fluentWaitUpload.until(ExpectedConditions.urlContains(url))
     val currentUrl = driver.getCurrentUrl
     assert(currentUrl.contains(url) || url.contains(currentUrl), message(s"Expected url is: $url. Actual url is: $currentUrl"))
   }

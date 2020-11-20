@@ -22,7 +22,6 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, UploadPages}
 
 class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
 
-
   Then("""^the user is on the (.*) upload page"""){ (page:String) =>
 
     page match {
@@ -48,8 +47,8 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     (journey:String, docAmount:String) =>
 
       journey match {
-        case "new" => confirmUrl (urlUploaded)
-        case "amend" => confirmUrl(urlUploadedAmend)
+        case "new" => confirmUrlUpload(urlUploaded)
+        case "amend" => confirmUrlUpload(urlUploadedAmend)
 
       docAmount match {
       case "1" => verifyHeading (headingUploadConfirm1)
