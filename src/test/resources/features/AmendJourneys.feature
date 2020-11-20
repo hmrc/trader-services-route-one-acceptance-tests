@@ -17,6 +17,10 @@ Feature: Amend Journeys
     Then the user is on the how to respond page and selects noOption
     Then the user should see "Error:Select how you want to send us more information" error message for "typeOfAmendment"
 
+    When the user is on the how to respond page and selects uploadOnly
+    Then the user is on the Amend upload page
+    Then the user clicks the button to upload and selects "first" file
+    Then the user navigates to the landing page for trader services
 
   Scenario: Amend: A user wants to amend their case details (write response + upload)
     Given the user is on the start page for trader services and selects Amend
