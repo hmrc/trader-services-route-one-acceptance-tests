@@ -22,12 +22,6 @@ import uk.gov.hmrc.test.ui.pages.{AmendPage, BasePage}
 class AmendStepDefs extends AmendPage with BasePage with ScalaDsl with EN {
 
 
-  When("""^the user enters the amend journey and is on the case ref number page""") { () =>
-    navigateTo(urlCaseRef)
-    confirmUrl(urlCaseRef)
-    verifyHeading(caseRefHeading)
-  }
-
   Then("""^the user is on the case ref number page$""") { () =>
     confirmUrl(urlCaseRef)
     verifyHeading(caseRefHeading)
@@ -61,9 +55,28 @@ class AmendStepDefs extends AmendPage with BasePage with ScalaDsl with EN {
     clickContinue()
   }
 
+  Then("""^the last selected option for type of amendment should be (.*)$""") { (request: String) =>
+
+    request match {
+      case "writeOnly" => optionSelected("#typeOfAmendment")
+      case "uploadOnly" => optionSelected("#typeOfAmendment-2")
+      case "write&Upload" => optionSelected("#typeOfAmendment-3")
+    }
+  }
+
   Then("""^the user is on the write response page""") { () =>
     confirmUrl(urlWriteResponse)
     verifyHeading(writeResponseHeading)
+  }
+
+  Then("""^the details in the case ref field should be pre-filled with "(.*)"$""") {
+    (caseRef:String) =>
+      verifyInput(caseRefInput, caseRef)
+  }
+
+  Then("""^the details in the text box should be pre-filled with "(.*)"$""") {
+    (text:String) =>
+      verifyInput(textInput, text)
   }
 
   Then("""^the user is on upload documents page""") { () =>
@@ -72,7 +85,6 @@ class AmendStepDefs extends AmendPage with BasePage with ScalaDsl with EN {
   }
 
   Then("""^the user enters a response with (.*) characters""") { (characters: String) =>
-
     characters match {
       case "tooMany" => sendNCharactersById(textInput, 1001)
       case "valid" => sendNCharactersById(textInput, 1000)
@@ -80,4 +92,17 @@ class AmendStepDefs extends AmendPage with BasePage with ScalaDsl with EN {
     }
     clickContinue()
   }
+
+  Then("""^the user enters a response "(.*)" and continues$""") {
+    (response:String) =>
+      writeById(textInput, response)
+      clickContinue()
   }
+
+  Then("""^the user enters a case ref number "(.*)" and continues$""") {
+    (caseRef:String) =>
+      writeById(caseRefInput, caseRef)
+      clickContinue()
+  }
+}
+

@@ -3,8 +3,7 @@
 Feature: Accessibility test the service
 
   Scenario Outline: Accessibility - every page in journey hit (Export - Vessel-Optional)
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -34,8 +33,7 @@ Feature: Accessibility test the service
 
   Scenario Outline: Accessibility - every page in journey hit (Export - Vessel-Mandatory)
 
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -56,8 +54,7 @@ Feature: Accessibility test the service
 
 
   Scenario Outline: Accessibility - every page in journey hit (Import - Vessel-Optional)
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -88,8 +85,7 @@ Feature: Accessibility test the service
       | 123 | 123456A |New         | Route 6 | Human remains | Air       | Abc Testb  | valid@test.com |
 
   Scenario Outline: Accessibility - every page in journey hit (Import - Vessel-Mandatory)
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -104,3 +100,18 @@ Feature: Accessibility test the service
     Examples:
       | epu | entryNo |requestType  | route | transport |
       | 123 | 123456A |Cancellation | Hold | Maritime   |
+
+
+  Scenario: Amend: A user wants to amend their case details (write response + upload)
+    Given the user is on the start page for trader services and selects Amend
+    Then the user is on the case ref number page
+    When the user enters valid characters for case reference number
+    When the user is on the how to respond page and selects write&Upload
+    Then the user is on the write response page
+    And the user enters a response with valid characters
+    Then the user is on the Amend upload page
+    Then the user clicks the button to upload and selects "first" file
+    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
+    Then the user should see their first uploaded doc test.jpg on upload review page
+    Then the user selects No to to uploading another file
+#    Confirmation page to be built

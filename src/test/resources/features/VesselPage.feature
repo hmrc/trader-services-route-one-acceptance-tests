@@ -3,8 +3,8 @@ Feature: Vessel page validation
 
 #    All blank fields
   Scenario: Mandatory (Export) Vessel Page
-    Given the user is on the landing page for trader services
-    Then the user navigates to the declaration details page
+    Given the user is on the start page for trader services and selects New
+    Then the user is on the declaration details page
     When the user enters declaration details "123" and "A12345B"
     And the user enters today's date for entryDate
     And the user clicks Continue
@@ -14,6 +14,9 @@ Feature: Vessel page validation
     Then the user is on the Export Transport Type Page and selects Air
     Then the user is on the Export-Mandatory Vessel Page
 
+    When the user enters "" for vessel name
+    When the user enters a date for the vessel "" "" ""
+    When the user enters a time for the vessel "" ""
     When the user clicks Continue
     Then the user should see "Error:Enter the ship, plane or vehicle name" error message for "vesselName"
     Then the user should see "Error:Enter the date of arrival" error message for "dateOfArrival"

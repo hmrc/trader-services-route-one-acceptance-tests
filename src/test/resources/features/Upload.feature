@@ -2,8 +2,7 @@
 Feature: A user wants to upload documents
 
   Scenario Outline: A user wants upload some documents
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -39,15 +38,14 @@ Feature: A user wants to upload documents
     Then the user is on the Another upload page
     When the user clicks the button to upload and selects "last" file
     Then the user should be on the new file upload confirmation page after uploading 3 document/s
-#    And the user should see the message saying they have uploaded the max amount of docs
-#    For testing purposes 3 was max - this is now 10. I am content this works
-
     Then the user clicks the button to remove a document
     Then the user should be on the new file upload confirmation page after uploading 2 document/s
     Then the user selects Yes to to uploading another file
     Then the user is on the Another upload page
     When the user clicks the button to upload and selects "last" file
-    Then the user navigates to the landing page for trader services
+    Then the user should be on the new file upload confirmation page after uploading 3 document/s
+    Then the user selects No to to uploading another file
+    Then the user is on the final confirmation page
 
     Examples:
 | epu | entryNo | requestType | route   | priority                | transport | name       | email      |

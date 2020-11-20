@@ -17,9 +17,10 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage, FinalConfirmationPage}
+import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage, FinalConfirmationPage, LandingPage}
 
-class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage with DeclarationNumPage with ScalaDsl with EN {
+class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
+  with LandingPage with ScalaDsl with EN {
 
 
   Given("""^the user is on the final confirmation page""") { () =>
@@ -36,9 +37,9 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage with
     assertElementText("330XGBNZJO04", caseRefNo)
   }
 
-  When("""^the user clicks to submit documents for a new case they will be back on dec details page"""){() =>
+  When("""^the user clicks to submit documents they will be back on the start page"""){() =>
     clickContinue()
-    confirmUrl(urlDecDetails)
-    verifyHeading(headingDecDetails)
+    confirmUrl(traderServicesUrl)
+    verifyHeading(landingHeading)
   }
 }
