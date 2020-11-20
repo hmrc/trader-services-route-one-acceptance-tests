@@ -17,10 +17,10 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage, FinalConfirmationPage, LandingPage}
+import uk.gov.hmrc.test.ui.pages.{AmendPage, BasePage, DeclarationNumPage, FinalConfirmationPage, LandingPage}
 
 class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
-  with LandingPage with ScalaDsl with EN {
+  with LandingPage with AmendPage with ScalaDsl with EN {
 
 
   Given("""^the user is on the final confirmation page""") { () =>
@@ -41,5 +41,16 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     clickContinue()
     confirmUrl(traderServicesUrl)
     verifyHeading(landingHeading)
+  }
+
+  When("""^the user will be on the duplicate case error page"""){() =>
+    confirmUrl(urlDuplicate)
+    verifyHeading(headingDuplicate)
+  }
+
+  When("""^the user clicks the link to add documents they will be redirected to amend journey"""){() =>
+    clickLinkToAmend
+    confirmUrl(urlCaseRef)
+    verifyHeading(caseRefHeading)
   }
 }

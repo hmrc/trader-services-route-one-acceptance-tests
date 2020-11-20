@@ -31,9 +31,9 @@ Feature: Amend Journeys
     And the user enters a response with valid characters
     Then the user is on the Amend upload page
     Then the user clicks the button to upload and selects "first" file
-    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
-    Then the user should see their first uploaded doc test.jpg on upload review page
-    Then the user selects No to to uploading another file
+#    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
+#    Then the user should see their first uploaded doc test.jpg on upload review page
+#    Then the user selects No to to uploading another file
 #Then the user is on the final confirmation page - rework THIS
 
 

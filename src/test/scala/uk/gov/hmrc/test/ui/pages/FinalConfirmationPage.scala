@@ -16,12 +16,16 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.WebElement
+import org.openqa.selenium.{By, WebElement}
 
 trait FinalConfirmationPage extends BasePage {
 
-val urlConfirmation = traderServicesBaseUrl + "/confirmation"
+  val urlConfirmation = traderServicesBaseUrl + "/confirmation"
   val headingConfirmation = "You've submitted your documents"
+
+  val urlDuplicate = traderServicesBaseUrl + "/case-already-exists"
+  val headingDuplicate = "This case already exists"
+  def clickLinkToAmend(): Unit = driver.findElement(By.linkText("add more information or documents to the existing case")).click()
 
   def caseRefNo:WebElement = findElementByCss(".govuk-panel__body > strong:nth-child(2)")
 
