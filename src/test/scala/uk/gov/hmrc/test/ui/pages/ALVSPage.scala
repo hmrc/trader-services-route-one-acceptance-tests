@@ -19,5 +19,5 @@ package uk.gov.hmrc.test.ui.pages
 trait ALVSPage extends BasePage {
 
   val urlALVS: String = traderServicesBaseUrl + importJourneyUrl + "/automatic-licence-verification"
-  val headingALVS = "Do you use Defra’s Automatic Licence Verification System (ALVS)?"
+  val headingALVS = "Do you use Defra's Automatic Licence Verification System (ALVS)?"
 }
