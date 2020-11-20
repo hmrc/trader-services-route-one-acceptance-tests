@@ -34,7 +34,7 @@ trait BasePage extends Matchers with BrowserDriver {
     .pollingEvery(Duration.ofMillis(250))
 
   val fluentWaitUpload: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
-    .withTimeout(Duration.ofSeconds(45))
+    .withTimeout(Duration.ofSeconds(60))
     .pollingEvery(Duration.ofMillis(250))
 
   def host(localPort: Int): String = environment match {
