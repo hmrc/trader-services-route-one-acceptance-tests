@@ -2,8 +2,7 @@
 Feature: Pre-clearance - Export Journeys
 
     Scenario Outline: A user wants to complete a New Export RouteOne journey (upload-pre)
-        Given the user is on the landing page for trader services
-        And the user clicks the link to enter the route1 journey
+      Given the user is on the start page for trader services and selects New
         Then the user is on the declaration details page
         When the user enters declaration details "<epu>" and "<entryNo>"
         And the user enters today's date for entryDate
@@ -33,8 +32,7 @@ Feature: Pre-clearance - Export Journeys
 
 
   Scenario Outline: A user wants to complete a New Export RouteOne journey
-      Given the user is on the landing page for trader services
-      When the user clicks the link to enter the route1 journey
+    Given the user is on the start page for trader services and selects New
       Then the user is on the declaration details page
       When the user enters declaration details "<epu>" and "<entryNo>"
       And the user enters today's date for entryDate
@@ -60,7 +58,7 @@ Feature: Pre-clearance - Export Journeys
       Then the user selects No to to uploading another file
       Then the user is on the final confirmation page
       And the user should see a case reference number
-      When the user clicks to submit documents for a new case they will be back on dec details page
+      When the user clicks to submit documents they will be back on the start page
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   |
@@ -68,8 +66,7 @@ Feature: Pre-clearance - Export Journeys
 
 
   Scenario Outline: Route-Hold: A user should reach the mandatory vessel page
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -85,9 +82,7 @@ Feature: Pre-clearance - Export Journeys
       | 123 | A23456A | New         | Hold  | Air       |
 
   Scenario Outline: C1601: A user should reach the mandatory vessel page
-
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -108,9 +103,7 @@ Feature: Pre-clearance - Export Journeys
 
 
   Scenario Outline: C1602: A user should be on the mandatory vessel page
-
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -127,9 +120,7 @@ Feature: Pre-clearance - Export Journeys
 
 
   Scenario Outline: Export questions: error validation - no options selected
-#    Question pages include pages with radio options, more detailed validation done on own feature files
-    Given the user is on the landing page for trader services
-    Then the user clicks the link to enter the route1 journey
+    Given the user is on the start page for trader services and selects New
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue

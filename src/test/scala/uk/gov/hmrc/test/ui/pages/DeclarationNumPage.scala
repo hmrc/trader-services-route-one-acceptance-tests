@@ -20,7 +20,7 @@ import org.openqa.selenium.WebElement
 
 trait DeclarationNumPage extends BasePage {
 
-  val urlDecDetails: String = traderServicesBaseUrl + "/pre-clearance/declaration-details"
+  val urlDecDetails: String = traderServicesBaseUrl + "/declaration-details"
   val headingDecDetails = "What are your declaration details?"
 
   def EPU: WebElement = findElementById("epu")

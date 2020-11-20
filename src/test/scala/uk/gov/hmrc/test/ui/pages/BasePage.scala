@@ -40,10 +40,10 @@ trait BasePage extends Matchers with BrowserDriver {
     case _ => s"http://localhost:$localPort"
   }
 
-  val traderServicesBaseUrl: String = host(9379) + "/trader-services"
-  val importJourneyUrl: String = "/pre-clearance/import-questions"
-  val exportJourneyUrl: String = "/pre-clearance/export-questions"
-  val amendUrl: String = "/pre-clearance/amend"
+  val traderServicesBaseUrl: String = host(9379) + "/trader-services/pre-clearance"
+  val importJourneyUrl: String = "/import-questions"
+  val exportJourneyUrl: String = "/export-questions"
+  val amendUrl: String = "/amend"
 
   def confirmUrl(url: String): Unit = {
     fluentWait.until(ExpectedConditions.urlContains(url))

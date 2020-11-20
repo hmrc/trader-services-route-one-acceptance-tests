@@ -16,24 +16,24 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
+import org.openqa.selenium.{By, WebElement}
 
 trait UploadPages extends BasePage {
 
-  val urlUpload: String = traderServicesBaseUrl + "/pre-clearance/file-upload"
-  val urlUploadAmend: String = traderServicesBaseUrl + "/pre-clearance/amend/file-upload"
+  val urlUpload: String = traderServicesBaseUrl + "/file-upload"
+  val urlUploadAmend: String = traderServicesBaseUrl + "/amend/file-upload"
 
   val headingUpload = "Upload your first document"
   val headingUploadAnother = "Upload another document"
 
-  val urlUploadVer: String = traderServicesBaseUrl + "/pre-clearance/file-verification"
+  val urlUploadVer: String = traderServicesBaseUrl + "/file-verification"
 
   val headingUploadConfirm1 = "You have uploaded 1 document"
   val headingUploadConfirm2 = "You have uploaded 2 documents"
   val headingUploadConfirm3 = "You have uploaded 3 documents"
 
-  val urlUploaded: String = traderServicesBaseUrl + "/pre-clearance/file-uploaded"
-  val urlUploadedAmend: String = traderServicesBaseUrl + "/pre-clearance/amend/file-uploaded"
+  val urlUploaded: String = traderServicesBaseUrl + "/file-uploaded"
+  val urlUploadedAmend: String = traderServicesBaseUrl + "/amend/file-uploaded"
 
   val usrDir = System.getProperty("user.dir") + "/src/test/resources/uploadFiles/"
   var filePath = ""
@@ -50,6 +50,8 @@ trait UploadPages extends BasePage {
     }
     driver.findElement(By.id(elementID)).sendKeys(filePath)
   }
+
+  def noConditionalReveal:WebElement = findElementById("conditional-uploadAnotherFile-2")
 }
 
 

@@ -77,11 +77,14 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     yesNo match {
       case "Yes" => clickByCSS("#uploadAnotherFile")
       case "No" => clickByCSS("#uploadAnotherFile-2")
+                  assertElementText("By continuing, you will now submit all the documents you've uploaded",
+                    noConditionalReveal)
       case "NoOption" =>
     }
     clickContinue()
   }
 }
+
 
 // Stepdef for checking file verification page (inaccessible via standard upscan stub)
 //  Then("""^the user should be on the (.*) file uploading page"""){(uploadNo:String) =>

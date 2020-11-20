@@ -3,8 +3,7 @@ Feature: Back Links & Change Links
 
   #BACK LINKS
   Scenario Outline: Import: A user wants to go back through the journey
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -65,7 +64,8 @@ Feature: Back Links & Change Links
     And the details entered for entryDate should be pre filled with today's date
 
     When the user clicks back
-    Then the user is on the landing page for trader services
+    Then the user is on the start page for trader services
+    And the last selected option for journey type should be pre filled with New
 
     Examples:
 | epu | entryNo | requestType | route   | priority                | transport | vesselName | name       | email      |
@@ -73,8 +73,7 @@ Feature: Back Links & Change Links
 
 
   Scenario Outline: Export: A user wants to go back through the journey
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -129,17 +128,45 @@ Feature: Back Links & Change Links
     And the details entered for entryDate should be pre filled with today's date
 
     When the user clicks back
-    Then the user is on the landing page for trader services
+    Then the user is on the start page for trader services
+    And the last selected option for journey type should be pre filled with New
 
     Examples:
       | epu | entryNo | requestType  | route   | priority      | transport | name      | email      |
       | 553 | A33456A | Cancellation | Route 6 | Human remains | Air       | Abc Testb | a@test.com |
 
+    Scenario Outline: Amend - A user wants to go back to the start
+      Given the user is on the start page for trader services and selects <journey>
+      Then the user is on the case ref number page
+      When the user enters a case ref number "<caseRef>" and continues
+      When the user is on the how to respond page and selects <amendType>
+      Then the user is on the write response page
+      And the user enters a response "<text>" and continues
+      Then the user is on the Amend upload page
+      Then the user clicks the button to upload and selects "first" file
+      Then the user should be on the amend file upload confirmation page after uploading 1 document/s
+      Then the user should see their first uploaded doc test.jpg on upload review page
+      Then the user clicks back
+      Then the user is on the write response page
+      And the details in the text box should be pre-filled with "<text>"
+      When the user clicks back
+      Then the user is on the how to respond page
+      And the last selected option for type of amendment should be <amendType>
+      When the user clicks back
+      Then the user is on the case ref number page
+      And the details in the case ref field should be pre-filled with "<caseRef>"
+      When the user clicks back
+      Then the user is on the start page for trader services
+      And the last selected option for journey type should be pre filled with <journey>
+
+      Examples:
+      | journey  | caseRef                | amendType    | text      |
+      |  Amend   | PC12010081330XGBNZJO04 | write&Upload | test text |
+
 
 #CHANGE LINKS
   Scenario Outline: Import: A user wants to change an answer via the CYA page
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -228,8 +255,7 @@ Feature: Back Links & Change Links
 
 
   Scenario Outline: Export: A user wants to change an answer via the CYA page
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate

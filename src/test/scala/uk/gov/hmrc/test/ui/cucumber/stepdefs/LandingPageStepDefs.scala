@@ -26,14 +26,31 @@ class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with E
     navigateTo(traderServicesUrl)
   }
 
-  Given("""^the user is on the landing page for trader services$""") { () =>
-    navigateTo(traderServicesUrl)
+  Then("""^the user is on the start page for trader services$""") { () =>
     confirmUrl(traderServicesUrl)
     verifyHeading(landingHeading)
   }
 
-  When("""^the user clicks the link to enter the route1 journey$""") { () =>
-    clickRouteOneLink()
+  Given("""^the user is on the start page for trader services and selects (.*)$""") { (journey:String) =>
+    navigateTo(traderServicesUrl)
+    confirmUrl(traderServicesUrl)
+    verifyHeading(landingHeading)
+
+    journey match {
+    case "New" => selectNew
+    case "Amend" => selectAmend
+  }
+    clickContinue()
+  }
+
+  Then("""^the last selected option for journey type should be pre filled with (.*)$""") { (request:String) =>
+
+    request match {
+      case "New" => optionSelected("#newOrExistingCase")
+      case "Amend" => optionSelected("#newOrExistingCase-2")
+      case _ => optionNotSelected("#newOrExistingCase")
+                optionNotSelected("#newOrExistingCase-2")
+    }
   }
 }
 

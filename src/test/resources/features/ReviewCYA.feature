@@ -2,8 +2,7 @@
 Feature: Review/CYA page
 
   Scenario Outline: A user wants to review their answers (Import)
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -39,8 +38,7 @@ Feature: Review/CYA page
 
 
   Scenario Outline: A user wants to review their answers (Export)
-    Given the user is on the landing page for trader services
-    When the user clicks the link to enter the route1 journey
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate

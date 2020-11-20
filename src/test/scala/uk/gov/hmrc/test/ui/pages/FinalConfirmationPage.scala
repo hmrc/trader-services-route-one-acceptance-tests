@@ -20,7 +20,7 @@ import org.openqa.selenium.WebElement
 
 trait FinalConfirmationPage extends BasePage {
 
-val urlConfirmation = traderServicesBaseUrl + "/pre-clearance/confirmation"
+val urlConfirmation = traderServicesBaseUrl + "/confirmation"
   val headingConfirmation = "You've submitted your documents"
 
   def caseRefNo:WebElement = findElementByCss(".govuk-panel__body > strong:nth-child(2)")
