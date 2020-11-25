@@ -21,13 +21,13 @@ import org.openqa.selenium.By
 import org.scalatest.Matchers
 import org.scalatest.concurrent.Eventually
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import uk.gov.hmrc.test.ui.pages.{BasePage, ContactDetailsPage, DeclarationNumPage, VesselQuestionsPage}
+import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage, VesselQuestionsPage}
 import uk.gov.hmrc.webdriver.SingletonDriver
 
 import scala.util.Try
 
 class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with Eventually
-  with Matchers with DeclarationNumPage with VesselQuestionsPage with ContactDetailsPage {
+  with Matchers with DeclarationNumPage with VesselQuestionsPage {
 
   sys.addShutdownHook {
     Try(SingletonDriver.closeInstance)
@@ -41,13 +41,8 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     clickBack()
   }
 
-  And("""^the user enters too many characters for (.*)""") { (field:String) =>
-
-    field match {
-      case "vesselName" => sendNCharactersById (vesselQName, 129)
-      case "fullName" => sendNCharactersById (fullName, 129)
-      case "contactEmail" => sendNCharactersById (email, 129)
-    }
+  When("""^the user navigates to the following (.*)""") { (url:String) =>
+    navigateTo(traderServicesBaseUrl + url)
   }
 
   Then("""^the user enters today's date for (.*)$""") { (dateField:String) =>

@@ -102,6 +102,9 @@ trait CheckAnswersPage extends BasePage with DeclarationNumPage with QuestionPag
   def contactDetailAnswerName:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(1)")
   def contactDetailAnswerEmail:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(2)")
   def contactDetailAnswerPhone:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(3)")
+
+
+  def contactDetailAnswerEmailOnly:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(1)")
 }
 
 

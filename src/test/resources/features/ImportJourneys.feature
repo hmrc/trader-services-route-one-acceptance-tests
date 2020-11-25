@@ -30,8 +30,8 @@ Feature: Pre-clearance - Import Journeys
     When the user clicks to submit documents they will be back on the start page
 
     Examples:
-      | epu | entryNo |requestType | route   | priority      | transport | name       | email          |
-      | 123 | 123456A |New         | Route 6 | Human remains | Air       | Abc Testb  | valid@test.com |
+      | epu | entryNo |requestType | route   | priority      | transport | name   | email          |
+      | 123 | 123456A |New         | Route 6 | Human remains | Air       | Mr. F  | valid@test.com |
 
 
 

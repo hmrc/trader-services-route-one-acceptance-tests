@@ -43,11 +43,6 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     verifyHeading(landingHeading)
   }
 
-  When("""^the user will be on the duplicate case error page"""){() =>
-    confirmUrl(urlDuplicate)
-    verifyHeading(headingDuplicate)
-  }
-
   When("""^the user clicks the link to add documents they will be redirected to amend journey"""){() =>
     clickLinkToAmend
     confirmUrl(urlCaseRef)

@@ -48,7 +48,6 @@ Feature: Pre-clearance - Export Journeys
       Then the user clicks Continue
       Then the user is on the Export Contact Details Page
       And the user enters an email address "<email>"
-      When the user enters a name "<name>"
       And the user clicks Continue
       Then the user is on the Export CYA page
       Then the user clicks Continue
@@ -61,8 +60,8 @@ Feature: Pre-clearance - Export Journeys
       When the user clicks to submit documents they will be back on the start page
 
     Examples:
-      | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   |
-      | 123 | A23456A | New         | Route 1 | Class A drugs | Maritime  | Test Vessel | Mr. F | a@a.com |
+      | epu | entryNo | requestType | route   | priority      | transport | vesselName  | email   |
+      | 123 | A23456A | New         | Route 1 | Class A drugs | Maritime  | Test Vessel | a@a.com |
 
 
   Scenario Outline: Route-Hold: A user should reach the mandatory vessel page

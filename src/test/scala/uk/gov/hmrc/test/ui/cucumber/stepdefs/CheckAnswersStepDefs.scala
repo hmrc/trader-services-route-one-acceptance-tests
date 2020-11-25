@@ -139,7 +139,7 @@ class CheckAnswersStepDefs extends CheckAnswersPage with BasePage with ContactDe
 
         case "Mandatory" =>
           assertElementText (h2ContactDetails, contactDetailRow)
-          assertElementText (AnswerName, contactDetailAnswerName)
+          assertElementText (AnswerEmail, contactDetailAnswerEmailOnly)
       }
   }
 
