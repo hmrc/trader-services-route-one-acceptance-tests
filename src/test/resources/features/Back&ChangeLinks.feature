@@ -191,6 +191,7 @@ Feature: Back Links & Change Links
     When the user clicks the change link for ContactDetails
     Then the user is on the Import Contact Details Page
     And the details entered for name, email and phone number should be pre-filled with "<name>", "<email>" & "<phoneNo>"
+    Then the user enters a name ""
     Then the user enters a phone number ""
     Then the user clicks Continue
     Then the user is on the Import CYA page
@@ -239,7 +240,7 @@ Feature: Back Links & Change Links
     And the user should see the Vessel Name row & the correct response "<vesselName>" on the CYA page
     And the user should see the Vessel Date row & the correct response "<entryDateCYA>" on the CYA page
     And the user should see the Vessel Time row & the correct response "11:15 am" on the CYA page
-    And the user should see the Mandatory Contact details row & the correct responses "<name>", "<email>" & "" on the CYA page
+    And the user should see the Mandatory Contact details row & the correct responses "", "<email>" & "" on the CYA page
 
     Then the user clicks the change link for Declaration
     Then the details entered for EPU & EntryNo should be pre filled with <epu> & <entryNo>

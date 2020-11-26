@@ -1,7 +1,6 @@
 @TraderService
 Feature: Error Pages
 
-
   Scenario Outline: A user enters a duplicate case
     Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
@@ -33,3 +32,13 @@ Feature: Error Pages
     Examples:
       | epu | entryNo | requestType  | route   | priority      | transport | vesselName  | name  | email   |
       | 667 | A23456A | Cancellation | Route 2 | Class A drugs | Air       | Test Vessel | Mr. F | a@a.com |
+
+
+  Scenario: A user hits the wrong url
+    Given the user is on the start page for trader services and selects New
+    Then the user is on the declaration details page
+    When the user navigates to the following /declaration-detailx
+    Then the user is on the error page for page not found
+    When the user clicks the link on the page not found they will be on the start page
+
+
