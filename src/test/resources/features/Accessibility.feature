@@ -102,7 +102,7 @@ Feature: Accessibility test the service
       | 123 | 123456A |Cancellation | Hold | Maritime   |
 
 
-  Scenario: Amend: A user wants to amend their case details (write response + upload)
+  Scenario: Amend: Hit each page
     Given the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
     When the user enters valid characters for case reference number
@@ -111,7 +111,7 @@ Feature: Accessibility test the service
     And the user enters a response with valid characters
     Then the user is on the Amend upload page
     Then the user clicks the button to upload and selects "first" file
-    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
-    Then the user should see their first uploaded doc test.jpg on upload review page
-    Then the user selects No to to uploading another file
+#    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
+#    Then the user should see their first uploaded doc test.jpg on upload review page
+#    Then the user selects No to to uploading another file
 #    Confirmation page to be built
