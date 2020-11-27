@@ -42,13 +42,13 @@ Feature: Amend Journeys
     Then the user is on the how to respond page and selects uploadOnly
     Then the user is on the Amend upload page
     Then the user clicks the button to upload and selects "first" file
-#    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
-#    Then the user should see their first uploaded doc test.jpg on upload review page
-#    Then the user selects Yes to to uploading another file
-#    Then the user is on the AnotherAmend upload page
-#    Then the user clicks the button to upload and selects "next" file
-#    Then the user should be on the amend file upload confirmation page after uploading 2 document/s
-#    Then the user selects No to to uploading another file
+    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
+    Then the user should see their first uploaded doc test.jpg on upload review page
+    Then the user selects Yes to to uploading another file
+    Then the user is on the AnotherAmend upload page
+    Then the user clicks the button to upload and selects "next" file
+    Then the user should be on the amend file upload confirmation page after uploading 2 document/s
+    Then the user selects No to to uploading another file
 #Then the user is on the final confirmation page
 
   Scenario: Amend: A user wants to amend their case details (write response + upload)
@@ -59,10 +59,10 @@ Feature: Amend Journeys
     Then the user is on the write response page
     And the user enters a response with valid characters
     Then the user is on the Amend upload page
-#    Then the user clicks the button to upload and selects "first" file
-#    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
-#    Then the user should see their first uploaded doc test.jpg on upload review page
-#    Then the user selects No to to uploading another file
+    Then the user clicks the button to upload and selects "first" file
+    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
+    Then the user should see their first uploaded doc test.jpg on upload review page
+    Then the user selects No to to uploading another file
 #Then the user is on the final confirmation page - rework THIS
 
 
