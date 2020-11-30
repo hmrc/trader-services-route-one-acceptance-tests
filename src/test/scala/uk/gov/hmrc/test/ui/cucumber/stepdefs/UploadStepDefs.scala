@@ -39,8 +39,13 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
   Then("""^the user clicks the button to upload and selects "([^"]*)" file"""){ (file:String) =>
     Thread.sleep(1500L)
     uploadFile(file)
+    clickUploadContinue()
+  }
+
+  Then("""^ensure the user is on the correct page and click continue if not""") { () =>
     Thread.sleep(1500L)
-    clickContinue()
+    val uploadUrl = driver.getCurrentUrl
+    if (uploadUrl.contains(urlUpload)){clickUploadContinue()}
   }
 
   Then("""^the user should be on the (.*) file upload confirmation page after uploading (.*) document/s"""){
@@ -49,12 +54,11 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
       journey match {
         case "new" => confirmUrlUpload(urlUploaded)
         case "amend" => confirmUrlUpload(urlUploadedAmend)
-
+      }
       docAmount match {
       case "1" => verifyHeading (headingUploadConfirm1)
       case "2" => verifyHeading (headingUploadConfirm2)
       case "3" => verifyHeading (headingUploadConfirm3)
-      }
       }
   }
 
@@ -73,14 +77,15 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
   }
 
   Then("""^the user selects (.*) to to uploading another file""") { (yesNo: String) =>
+    Thread.sleep(2000L)
     yesNo match {
       case "Yes" => clickByCSS("#uploadAnotherFile")
       case "No" => clickByCSS("#uploadAnotherFile-2")
-                  assertElementText("By continuing, you will now submit all the documents you've uploaded",
+                  assertElementText("By continuing, you will now submit all the documents you’ve uploaded",
                     noConditionalReveal)
       case "NoOption" =>
     }
-    clickContinue()
+    clickUploadContinue()
   }
 }
 

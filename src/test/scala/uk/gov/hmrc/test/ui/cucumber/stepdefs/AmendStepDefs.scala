@@ -17,9 +17,9 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.test.ui.pages.{AmendPage, BasePage}
+import uk.gov.hmrc.test.ui.pages.{AmendPage, BasePage, FinalConfirmationPage}
 
-class AmendStepDefs extends AmendPage with BasePage with ScalaDsl with EN {
+class AmendStepDefs extends AmendPage with FinalConfirmationPage with BasePage with ScalaDsl with EN {
 
 
   Then("""^the user is on the case ref number page$""") { () =>
@@ -27,12 +27,13 @@ class AmendStepDefs extends AmendPage with BasePage with ScalaDsl with EN {
     verifyHeading(caseRefHeading)
   }
   Then("""^the user enters (.*) characters for case reference number$""") { (caseNo: String) =>
+    caseRefInput.clear()
 
     caseNo match {
-      case "no" => sendNCharactersById(caseRefInput, 0)
       case "tooFew" => sendNCharactersById(caseRefInput, 21)
       case "tooMany" => sendNCharactersById(caseRefInput, 23)
-      case "valid" => sendNCharactersById(caseRefInput, 22)
+      case "valid" => caseRefInput.sendKeys(userCaseRef)
+      case "no" => caseRefInput.sendKeys("")
     }
     clickContinue()
   }

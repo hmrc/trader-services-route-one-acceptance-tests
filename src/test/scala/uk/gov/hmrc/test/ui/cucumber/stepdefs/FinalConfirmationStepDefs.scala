@@ -23,18 +23,23 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
   with LandingPage with AmendPage with ScalaDsl with EN {
 
 
-  Given("""^the user is on the final confirmation page""") { () =>
-    confirmUrl(urlConfirmation)
-    verifyHeading(headingConfirmation)
+  Given("""^the user is on the (.*) confirmation page""") { (journey: String) =>
+
+    journey match {
+      case "New" =>
+        confirmUrl(urlConfirmation)
+        verifyHeading(headingConfirmation)
+
+      case "Amend" =>
+        confirmUrl(urlAmendConfirm)
+        verifyHeading(headingAmendConfirm)
+    }
+
+    assertElementText(userCaseRef, caseRefNo)
     assertElementText("Save your case reference number", subheading1)
-    assertElementText("You will have to provide your case reference number if:", content1)
   }
 
   Then("""^the user should see guidance links on the page""") {() =>
-  }
-
-  Then("""^the user should see a case reference number"""){() =>
-    assertElementText("PC12010081330XGBNZJO04", caseRefNo)
   }
 
   When("""^the user clicks to submit documents they will be back on the start page"""){() =>
