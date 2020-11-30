@@ -33,7 +33,7 @@ Feature: Amend Journeys
     When the user enters a response with tooMany characters
     Then the user should see "Error:Response must be 1000 characters or fewer" error message for "responseText"
     When the user enters a response with valid characters
-#    Then the user is on the final confirmation page
+    Then the user is on the Amend confirmation page
 
   Scenario: A user wants to amend their case details (upload only)
     Given the user is on the start page for trader services and selects Amend
@@ -47,9 +47,10 @@ Feature: Amend Journeys
     Then the user selects Yes to to uploading another file
     Then the user is on the AnotherAmend upload page
     Then the user clicks the button to upload and selects "next" file
+    Then ensure the user is on the correct page and click continue if not
     Then the user should be on the amend file upload confirmation page after uploading 2 document/s
     Then the user selects No to to uploading another file
-#Then the user is on the final confirmation page
+    Then the user is on the Amend confirmation page
 
   Scenario: Amend: A user wants to amend their case details (write response + upload)
     Given the user is on the start page for trader services and selects Amend
@@ -60,9 +61,10 @@ Feature: Amend Journeys
     And the user enters a response with valid characters
     Then the user is on the Amend upload page
     Then the user clicks the button to upload and selects "first" file
+    Then ensure the user is on the correct page and click continue if not
     Then the user should be on the amend file upload confirmation page after uploading 1 document/s
     Then the user should see their first uploaded doc test.jpg on upload review page
     Then the user selects No to to uploading another file
-#Then the user is on the final confirmation page - rework THIS
+    Then the user is on the Amend confirmation page
 
 

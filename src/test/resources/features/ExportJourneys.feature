@@ -23,10 +23,10 @@ Feature: Pre-clearance - Export Journeys
       Then the user clicks Continue
       Then the user is on the First upload page
       When the user clicks the button to upload and selects "first" file
+      Then ensure the user is on the correct page and click continue if not
       Then the user should be on the new file upload confirmation page after uploading 1 document/s
       Then the user selects No to to uploading another file
-      Then the user is on the final confirmation page
-      And the user should see a case reference number
+      Then the user is on the New confirmation page
       When the user clicks to submit documents they will be back on the start page
 
     Examples:
@@ -100,13 +100,13 @@ Feature: Pre-clearance - Export Journeys
     Then the user should see "Error:Select the route" error message for "routeType"
     When the user is on the Export Route Type Page and selects <route>
     Then the user is on the Export YesNo Priority Page and selects None
-    Then the user should see "Error:Select yes if you're moving priority goods" error message for "hasPriorityGoods"
+    Then the user should see "Error:Select yes if you’re moving priority goods" error message for "hasPriorityGoods"
     When the user is on the Export YesNo Priority Page and selects Yes
     When the user is on the Export Priority Options Page and selects NoOption
     Then the user should see "Error:Select the type of priority goods" error message for "priorityGoods"
     When the user is on the Export Priority Options Page and selects <priority>
     Then the user is on the Export Transport Type Page and selects NoOption
-    Then the user should see "Error:Select the type of transport you're using" error message for "freightType"
+    Then the user should see "Error:Select the type of transport you’re using" error message for "freightType"
 
     Examples:
       | epu | entryNo | requestType  | route       | priority       |

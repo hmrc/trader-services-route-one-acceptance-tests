@@ -29,6 +29,8 @@ import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 trait BasePage extends Matchers with BrowserDriver {
 
+  val userCaseRef = "PC12010081330XGBNZJO04"
+
   val fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
     .withTimeout(Duration.ofSeconds(20))
     .pollingEvery(Duration.ofMillis(250))
@@ -79,6 +81,11 @@ trait BasePage extends Matchers with BrowserDriver {
     driver.findElement(By.id(id))
   }
 
+  def elementToBeClickable(css: String): WebElement = {
+    fluentWaitUpload.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector(css))))
+    driver.findElement(By.cssSelector(css))
+  }
+
   def findElementByCss(css: String): WebElement = {
     fluentWait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(css))))
     driver.findElement(By.cssSelector(css))
@@ -106,8 +113,11 @@ trait BasePage extends Matchers with BrowserDriver {
   def clickById(id: String): Unit = findElementById(id).click()
 
   def clickByCSS(css: String): Unit = driver.findElement(By.cssSelector(css)).click()
+//  def clickByCSS(css: String): Unit = elementToBeClickable(css).click
 
   def clickContinue(): Unit = findElementByCss(".govuk-button").click()
+
+  def clickUploadContinue(): Unit = elementToBeClickable(".govuk-button").click()
 
   def clickBack(): Unit = findElementById("back-link").click()
 

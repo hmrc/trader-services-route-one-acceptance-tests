@@ -37,6 +37,12 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     clickContinue()
   }
 
+  And("""^the user clicks Continue and waits""") { () =>
+    clickContinue()
+    Thread.sleep(1500L)
+  }
+
+
   And("""^the user clicks back""") { () =>
     clickBack()
   }

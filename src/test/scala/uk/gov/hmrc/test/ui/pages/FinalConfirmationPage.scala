@@ -21,18 +21,22 @@ import org.openqa.selenium.{By, WebElement}
 trait FinalConfirmationPage extends BasePage {
 
   val urlConfirmation = traderServicesBaseUrl + "/confirmation"
-  val headingConfirmation = "You've submitted your documents"
+  val headingConfirmation = "You’ve submitted your documents"
 
   val urlDuplicate = traderServicesBaseUrl + "/case-already-exists"
   val headingDuplicate = "This case already exists"
+
+  val urlAmendConfirm = traderServicesBaseUrl + "/amend/confirmation"
+  val headingAmendConfirm = "You’ve submitted your extra information"
+
   def clickLinkToAmend(): Unit = driver.findElement(By.linkText("add more information or documents to the existing case")).click()
 
   def caseRefNo:WebElement = findElementByCss(".govuk-panel__body > strong:nth-child(2)")
 
   def subheading1:WebElement = findElementByCss("h2.govuk-heading-m:nth-child(2)")
-  def content1:WebElement = findElementByCss("p.govuk-body:nth-child(3)")
 
  //placeholders
 //  def linkPreClearance:Unit = findElementById("")
 //  def linkC1Forms:Unit = findElementById("")
+
 }

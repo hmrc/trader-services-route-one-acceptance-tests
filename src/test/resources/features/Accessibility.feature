@@ -77,8 +77,7 @@ Feature: Accessibility test the service
     When the user clicks the button to upload and selects "first" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
     Then the user selects No to to uploading another file
-    Then the user is on the final confirmation page
-    And the user should see a case reference number
+    Then the user is on the New confirmation page
 
     Examples:
       | epu | entryNo |requestType | route   | priority      | transport | name       | email          |

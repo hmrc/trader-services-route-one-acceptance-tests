@@ -21,7 +21,7 @@ import org.openqa.selenium.{By, WebElement}
 trait AmendPage extends BasePage {
 
   val urlCaseRef: String = traderServicesBaseUrl + amendUrl + "/case-reference-number"
-  val caseRefHeading: String = "What's the case reference number?"
+  val caseRefHeading: String = "What’s the case reference number?"
 
   def caseRefInput: WebElement = findElementByCss("#caseReferenceNumber")
 
