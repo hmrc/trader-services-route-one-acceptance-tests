@@ -77,7 +77,6 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
   }
 
   Then("""^the user selects (.*) to to uploading another file""") { (yesNo: String) =>
-    Thread.sleep(2000L)
     yesNo match {
       case "Yes" => clickByCSS("#uploadAnotherFile")
       case "No" => clickByCSS("#uploadAnotherFile-2")
@@ -85,6 +84,7 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
                     noConditionalReveal)
       case "NoOption" =>
     }
+    Thread.sleep(750L)
     clickUploadContinue()
   }
 }
