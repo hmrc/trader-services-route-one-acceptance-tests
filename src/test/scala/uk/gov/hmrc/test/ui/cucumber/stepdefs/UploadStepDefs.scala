@@ -37,15 +37,15 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
   }
 
   Then("""^the user clicks the button to upload and selects "([^"]*)" file"""){ (file:String) =>
-    Thread.sleep(1500L)
+    Thread.sleep(500L)
     uploadFile(file)
     clickUploadContinue()
   }
 
   Then("""^ensure the user is on the correct page and click continue if not""") { () =>
-    Thread.sleep(1500L)
+    Thread.sleep(1000L)
     val uploadUrl = driver.getCurrentUrl
-    if (uploadUrl.contains(urlUpload)){clickUploadContinue()}
+    if (uploadUrl.equals(urlUpload)){clickUploadContinue()}
   }
 
   Then("""^the user should be on the (.*) file upload confirmation page after uploading (.*) document/s"""){
@@ -84,7 +84,6 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
                     noConditionalReveal)
       case "NoOption" =>
     }
-    Thread.sleep(750L)
     clickUploadContinue()
   }
 }
