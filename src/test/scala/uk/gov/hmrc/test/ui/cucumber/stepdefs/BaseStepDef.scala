@@ -47,57 +47,57 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     clickBack()
   }
 
-  When("""^the user navigates to the following (.*)""") { (url:String) =>
+  When("""^the user navigates to the following (.*)""") { (url: String) =>
     navigateTo(traderServicesBaseUrl + url)
   }
 
-  Then("""^the user enters today's date for (.*)$""") { (dateField:String) =>
+  Then("""^the user enters today's date for (.*)$""") { (dateField: String) =>
     dateField match {
 
       case "entryDate" =>
-        writeById (entryDay, todayDate.getDayOfMonth.toString)
-        writeById (entryMonth, todayDate.getMonthValue.toString)
-        writeById (entryYear, todayDate.getYear.toString)
+        writeById(entryDay, todayDate.getDayOfMonth.toString)
+        writeById(entryMonth, todayDate.getMonthValue.toString)
+        writeById(entryYear, todayDate.getYear.toString)
 
       case "vesselDate" =>
-        writeById (vesselQDay, todayDate.getDayOfMonth.toString)
-        writeById (vesselQMonth, todayDate.getMonthValue.toString)
-        writeById (vesselQYear, todayDate.getYear.toString)
+        writeById(vesselQDay, todayDate.getDayOfMonth.toString)
+        writeById(vesselQMonth, todayDate.getMonthValue.toString)
+        writeById(vesselQYear, todayDate.getYear.toString)
     }
   }
 
-//  Then("""^the details entered for (.*) should be pre filled with today's date$""") {
-//    (dateField: String) =>
-//      dateField match {
-//
-//        case "entryDate" =>
-//          verifyInput ("entryDate.day", todayDate.getDayOfMonth.toString.replaceFirst("", "0"))
-//          verifyInput ("entryDate.month", todayDate.getMonthValue.toString)
-//          verifyInput ("entryDate.year", todayDate.getYear.toString)
-//
-//        case "vesselDate" =>
-//          verifyInput ("dateOfArrival.day", todayDate.getDayOfMonth.toString.replaceFirst("", "0"))
-//          verifyInput ("dateOfArrival.month", todayDate.getMonthValue.toString)
-//          verifyInput ("dateOfArrival.year", todayDate.getYear.toString)
-//      }
-//  }
-
   Then("""^the details entered for (.*) should be pre filled with today's date$""") {
     (dateField: String) =>
-      dateField match {
 
-        case "entryDate" =>
-          verifyInput (entryDay, todayDate.getDayOfMonth.toString)
-          verifyInput (entryMonth, todayDate.getMonthValue.toString)
-          verifyInput (entryYear, todayDate.getYear.toString)
+      if (todayDate.getDayOfMonth <= 9) {
+        dateField match {
 
-        case "vesselDate" =>
-          verifyInput (vesselQDay, todayDate.getDayOfMonth.toString)
-          verifyInput (vesselQMonth, todayDate.getMonthValue.toString)
-          verifyInput (vesselQYear, todayDate.getYear.toString)
+          case "entryDate" =>
+            verifyInput(entryDay, todayDate.getDayOfMonth.toString.replaceFirst("", "0"))
+            verifyInput(entryMonth, todayDate.getMonthValue.toString)
+            verifyInput(entryYear, todayDate.getYear.toString)
+
+          case "vesselDate" =>
+            verifyInput(vesselQDay, todayDate.getDayOfMonth.toString.replaceFirst("", "0"))
+            verifyInput(vesselQMonth, todayDate.getMonthValue.toString)
+            verifyInput(vesselQYear, todayDate.getYear.toString)
+
+        }
+      }
+      else {
+        dateField match {
+          case "entryDate" =>
+            verifyInput(entryDay, todayDate.getDayOfMonth.toString)
+            verifyInput(entryMonth, todayDate.getMonthValue.toString)
+            verifyInput(entryYear, todayDate.getYear.toString)
+
+          case "vesselDate" =>
+            verifyInput(vesselQDay, todayDate.getDayOfMonth.toString)
+            verifyInput(vesselQMonth, todayDate.getMonthValue.toString)
+            verifyInput(vesselQYear, todayDate.getYear.toString)
+        }
       }
   }
-
 
   Then("""^the user should see "([^"]*)" error message for "([^"]*)"$""") { (errorMessage: String, fieldTitle: String) =>
 
