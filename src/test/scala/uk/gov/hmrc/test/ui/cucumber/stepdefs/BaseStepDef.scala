@@ -109,14 +109,21 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
   }
 
 
-  And("""^the user should see the invalid date range error message for "(.*)" field""") { (fieldTitle:String) =>
+  And("""^the user should see the invalid date range error message for "(.*)" field""") { (fieldTitle: String) =>
     driver.findElement(By.cssSelector("#error-summary-title")).isDisplayed
     driver.findElement(By.cssSelector("#error-summary-title")).getText shouldBe "There is a problem"
 
     driver.findElement(By.id(s"$fieldTitle-error")).isDisplayed
     driver.findElement(By.id(s"$fieldTitle-error")).getText should startWith("Error:\nDate of arrival must be between")
   }
-}
+
+  When("""^the user clicks the error link for "([^"]*)" it should link to the same field""") {
+    (fieldID: String) =>
+    clickHref(s"a[href*='$fieldID']")
+      findElementById(fieldID).isSelected
+//      findElementById(fieldID).clear()
+    }
+  }
 
 //  Then("""^the user should see below error messages in below order$""") { dataTable: DataTable =>
 //

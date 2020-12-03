@@ -27,6 +27,7 @@ trait VesselQuestionsPage extends BasePage {
   val urlExpMandatoryVessel: String = traderServicesBaseUrl + exportJourneyUrl + "/vessel-info-required"
 
   val headingVessel = "Tell us about your transport"
+  // "More details about your transport"
 
   def vesselQName: WebElement = findElementById("vesselName")
 

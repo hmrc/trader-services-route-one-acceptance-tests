@@ -101,6 +101,7 @@ Feature: Pre-clearance - Export Journeys
     When the user is on the Export Route Type Page and selects <route>
     Then the user is on the Export YesNo Priority Page and selects None
     Then the user should see "Error:Select yes if you’re moving priority goods" error message for "hasPriorityGoods"
+#    Then the user should see "Error:Select yes if you’re exporting priority goods" error message for "hasPriorityGoods"
     When the user is on the Export YesNo Priority Page and selects Yes
     When the user is on the Export Priority Options Page and selects NoOption
     Then the user should see "Error:Select the type of priority goods" error message for "priorityGoods"
