@@ -26,16 +26,18 @@ Feature: Contact Details
     Then the user should see "Error:Full name must be 2 characters or more" error message for "contactName"
     Then the user should see "Error:Enter an email address in the correct format, like name@example.com" error message for "contactEmail"
     Then the user should see "Error:Enter a telephone number in the correct format" error message for "contactNumber"
+    When the user clicks the error link for "contactName" it should link to the contactName field
+    When the user clicks the error link for "contactEmail" it should link to the contactEmail field
+    When the user clicks the error link for "contactNumber" it should link to the contactNumber field
 
     When the user enters too many characters for fullName
-#    Then the user enters too many characters for contactEmail
+    Then the user enters too many characters for contactEmail
     Then the user enters a phone number "123456789100"
     Then the user clicks Continue
     Then the user should see "Error:Full name must be 128 characters or fewer" error message for "contactName"
-#    Then the user should see "Error:Email address must be 128 characters or fewer" error message for "contactEmail"
+    Then the user should see "Error:Email address must be 128 characters or fewer" error message for "contactEmail"
     Then the user should see "Error:Enter a telephone number in the correct format" error message for "contactNumber"
 
-# Test to ensure phone number is converted ie. +44/44/0044 -> 07??
     When the user enters a name "Abc"
     When the user enters an email address "<email>"
     When the user enters a phone number "+447123456789"

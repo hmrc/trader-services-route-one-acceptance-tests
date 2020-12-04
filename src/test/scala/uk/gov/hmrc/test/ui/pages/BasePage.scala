@@ -160,12 +160,6 @@ trait BasePage extends Matchers with BrowserDriver {
 
 //  def signOut: WebElement = findElementByCss("#navigation > li > a")
 
-//  def validateErrorSummaryLinksToError(pageField: String, bodyField: String): Boolean = {
-//      clickById(pageField + "PageErrMsg")
-//      findElementById(bodyField).isSelected
-//    }
-
-
   //Agent-stubs
   def login(): Unit = {
     userid.sendKeys("User1")

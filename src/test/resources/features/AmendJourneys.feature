@@ -42,6 +42,7 @@ Feature: Amend Journeys
     Then the user is on the how to respond page and selects uploadOnly
     Then the user is on the Amend upload page
     Then the user clicks the button to upload and selects "first" file
+    Then ensure the user is on the correct Amend page and click continue if not
     Then the user should be on the amend file upload confirmation page after uploading 1 document/s
     Then the user should see their first uploaded doc test.jpg on upload review page
     Then the user selects Yes to to uploading another file

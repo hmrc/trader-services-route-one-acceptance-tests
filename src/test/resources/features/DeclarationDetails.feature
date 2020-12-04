@@ -2,14 +2,17 @@
 Feature: Declaration details validation
 
   Scenario: Error validation on declaration page (all blank fields)
-    Given the user navigates to the declaration details page
+    Given the user is on the start page for trader services and selects New
+    Then the user is on the declaration details page
     Then the user enters declaration details "" and ""
     And the user enters a date "" "" ""
     When the user clicks Continue
     Then the user should see "Error:Enter an EPU number" error message for "epu"
     And the user should see "Error:Enter an entry number" error message for "entryNumber"
     And the user should see "Error:Enter the entry date" error message for "entryDate"
-
+    When the user clicks the error link for "epu" it should link to the epu field
+    When the user clicks the error link for "entryNumber" it should link to the entryNumber field
+    When the user clicks the error link for "entryDate" it should link to the entryDate.day field
 
   Scenario: Error validation on declaration page - EPU
     Given the user navigates to the declaration details page
