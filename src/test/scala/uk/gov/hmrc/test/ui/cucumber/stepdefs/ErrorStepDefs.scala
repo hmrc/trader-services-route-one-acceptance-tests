@@ -30,7 +30,8 @@ class ErrorStepDefs extends FinalConfirmationPage with BasePage
     field match {
       case "vesselName" => sendNCharactersById (vesselQName, 129)
       case "fullName" => sendNCharactersById (fullName, 129)
-      case "contactEmail" => sendNCharactersById (email, 129)
+      case "contactEmail" => sendNCharactersById (email, 123)
+                              email.sendKeys("@a.com")
     }
   }
 

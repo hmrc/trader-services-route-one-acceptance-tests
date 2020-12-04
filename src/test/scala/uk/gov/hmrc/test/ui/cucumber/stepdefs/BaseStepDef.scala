@@ -117,11 +117,11 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     driver.findElement(By.id(s"$fieldTitle-error")).getText should startWith("Error:\nDate of arrival must be between")
   }
 
-  When("""^the user clicks the error link for "([^"]*)" it should link to the same field""") {
-    (fieldID: String) =>
+  When("""^the user clicks the error link for "([^"]*)" it should link to the (.*) field""") {
+    (fieldID: String, fieldBodyID:String) =>
     clickHref(s"a[href*='$fieldID']")
-      findElementById(fieldID).isSelected
-//      findElementById(fieldID).clear()
+      findElementById(fieldBodyID).isSelected
+      findElementById(fieldBodyID).clear()
     }
   }
 

@@ -135,7 +135,7 @@ Feature: Back Links & Change Links
       | epu | entryNo | requestType  | route   | priority      | transport | name      | email      |
       | 553 | A33456A | Cancellation | Route 6 | Human remains | Air       | Abc Testb | a@test.com |
 
-    Scenario Outline: Back links - A user wants to go back to the start
+    Scenario Outline: Amend Back links - A user wants to go back to the start
       Given the user is on the start page for trader services and selects <journey>
       Then the user is on the case ref number page
       When the user enters a case ref number "<caseRef>" and continues

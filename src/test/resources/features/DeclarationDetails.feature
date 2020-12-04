@@ -10,9 +10,9 @@ Feature: Declaration details validation
     Then the user should see "Error:Enter an EPU number" error message for "epu"
     And the user should see "Error:Enter an entry number" error message for "entryNumber"
     And the user should see "Error:Enter the entry date" error message for "entryDate"
-    When the user clicks the error link for "epu" it should link to the same field
-    When the user clicks the error link for "entryNumber" it should link to the same field
-    When the user clicks the error link for "entryDate" it should link to the same field
+    When the user clicks the error link for "epu" it should link to the epu field
+    When the user clicks the error link for "entryNumber" it should link to the entryNumber field
+    When the user clicks the error link for "entryDate" it should link to the entryDate.day field
 
   Scenario: Error validation on declaration page - EPU
     Given the user navigates to the declaration details page

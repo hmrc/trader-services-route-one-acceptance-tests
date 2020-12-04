@@ -21,9 +21,9 @@ Feature: Vessel page validation
     Then the user should see "Error:Enter the ship, plane or vehicle name" error message for "vesselName"
     Then the user should see "Error:Enter the date of arrival" error message for "dateOfArrival"
     Then the user should see "Error:Enter the estimated time of arrival" error message for "timeOfArrival"
-    When the user clicks the error link for "vesselName" it should link to the same field
-    When the user clicks the error link for "dateOfArrival" it should link to the same field
-    When the user clicks the error link for "timeOfArrival" it should link to the same field
+    When the user clicks the error link for "vesselName" it should link to the vesselName field
+    When the user clicks the error link for "dateOfArrival" it should link to the dateOfArrival.day field
+    When the user clicks the error link for "timeOfArrival" it should link to the timeOfArrival.hour field
 
 #    The below validation is carried out on all pages (ie mandatory/optional, import/export)
   Scenario: Optional Vessel Page (Export)
