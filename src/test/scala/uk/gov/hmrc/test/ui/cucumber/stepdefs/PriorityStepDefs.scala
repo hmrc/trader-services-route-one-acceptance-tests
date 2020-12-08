@@ -34,19 +34,20 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
   Then("""^the user is on the (.*) YN Priority Page""") { (Journey: String) =>
     Journey match {
       case "Import" => confirmUrl(urlImportYNPriority)
+        verifyHeading(headingImportYNPrio)
       case "Export" => confirmUrl(urlExportYNPriority)
+        verifyHeading(headingExportYNPrio)
     }
-    verifyHeading(headingYesNoPriority)
   }
 
   When("""^the user is on the (.*) YesNo Priority Page and selects (.*)""") { (Journey: String, YesNo: String) =>
 
     Journey match {
-      case "Import" => confirmUrl (urlImportYNPriority)
+      case "Import" => confirmUrl(urlImportYNPriority)
+        verifyHeading(headingImportYNPrio)
       case "Export" => confirmUrl(urlExportYNPriority)
+        verifyHeading(headingExportYNPrio)
     }
-
-    verifyHeading (headingYesNoPriority)
 
     YesNo match {
       case "Yes" => clickByCSS("#hasPriorityGoods")

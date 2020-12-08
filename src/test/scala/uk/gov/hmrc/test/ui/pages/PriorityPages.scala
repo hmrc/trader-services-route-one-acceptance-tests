@@ -20,7 +20,6 @@ trait PriorityPages extends BasePage {
 
   val urlImportYNPriority: String = traderServicesBaseUrl + importJourneyUrl + "/has-priority-goods"
   val urlExportYNPriority: String = traderServicesBaseUrl + exportJourneyUrl + "/has-priority-goods"
-  val headingYesNoPriority = "Are you moving any priority goods?"
 
   val headingImportYNPrio = "Are you importing any priority goods?"
   val headingExportYNPrio = "Are you exporting any priority goods?"

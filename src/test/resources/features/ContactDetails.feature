@@ -57,10 +57,10 @@ Feature: Contact Details
 
 
     Then the user clicks the change link for ContactDetails
-    Then the user enters a phone number "07123 456 789"
+    Then the user enters a phone number "071(234-567)89"
     When the user clicks Continue
     Then the user should see the Full Contact details row & the correct responses "Abc", "<email>" & "<phone>" on the CYA page
 
     Examples:
       | epu | entryNo | day | month | year |requestType  | route   | priority      | transport | email   | phone       |
-      | 123 | 123456A | 01  | 10    | 2020 |Cancellation | Route 6 | Human remains | Air       | a@a.com | 07123456789 |
+      | 123 | 123456A | 01  | 10    | 2020 |Cancellation | Route 6 | Human remains | Air       | a@a.com | 07123 456 789 |

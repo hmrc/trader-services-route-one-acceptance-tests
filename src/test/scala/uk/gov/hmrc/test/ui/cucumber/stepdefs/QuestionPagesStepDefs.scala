@@ -43,10 +43,10 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     RequestType match {
       case "New" => clickByCSS("#requestType")
       case "Cancellation" => clickByCSS("#requestType-2")
-      case "C1601" => clickByCSS("#requestType-3")
-      case "C1602" => clickByCSS("#requestType-4")
-      case "C1603" => clickByCSS("#requestType-5")
-      case "Withdrawal" => clickByCSS("#requestType-6")
+      case "Withdrawal" => clickByCSS("#requestType-3")
+      case "C1601" => clickByCSS("#requestType-4")
+      case "C1602" => clickByCSS("#requestType-5")
+      case "C1603" => clickByCSS("#requestType-6")
       case "NoOption" =>
     }
     clickContinue()
