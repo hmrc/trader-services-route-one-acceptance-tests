@@ -18,7 +18,7 @@ Feature: Vessel page validation
     When the user enters a date for the vessel "" "" ""
     When the user enters a time for the vessel "" ""
     When the user clicks Continue
-    Then the user should see "Error:Enter the ship, plane or vehicle name" error message for "vesselName"
+    Then the user should see "Error:Enter the ship, vehicle or airline name" error message for "vesselName"
     Then the user should see "Error:Enter the date of arrival" error message for "dateOfArrival"
     Then the user should see "Error:Enter the estimated time of arrival" error message for "timeOfArrival"
     When the user clicks the error link for "vesselName" it should link to the vesselName field

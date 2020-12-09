@@ -68,4 +68,4 @@ Feature: Review/CYA page
 
     Examples:
       | epu | entryNo |requestType | route   | transport | vesselName  | email   | entryDateCYA |
-      | 123 | A23456A |New         | Route 1 | Maritime  | Test Vessel | a@a.com | Today        |
+      | 123 | A23456A |New         | Route 1 | Maritime  | Test Vessel | abc@test.com| Today        |

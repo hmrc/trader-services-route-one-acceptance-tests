@@ -16,6 +16,8 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import java.util.UUID
+
 import io.cucumber.scala.{EN, ScalaDsl}
 import uk.gov.hmrc.test.ui.pages.ContactDetailsPage
 
@@ -47,7 +49,11 @@ class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
 
   Then("""^the user enters an email address "(.*)"$""") {
     (emailAddress: String) =>
-      writeById(email, emailAddress)
+
+      emailAddress match {
+        case "testEmail" => writeById(email, generateTestEmailAddress)
+        case _ => writeById (email, emailAddress)
+      }
   }
 
   Then("""^the user enters a phone number "(.*)"$""") {
@@ -62,4 +68,10 @@ Then("""^the details entered for name, email and phone number should be pre-fill
   verifyInput(email, emailAddress)
   verifyInput(phoneNo, phone)
 }
+
+  var lastUsedTestEmail: String = ""
+  def generateTestEmailAddress: String = {
+    lastUsedTestEmail = s"test${UUID.randomUUID().toString}@test.com"
+    lastUsedTestEmail
+  }
 }

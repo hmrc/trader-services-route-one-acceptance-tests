@@ -28,9 +28,9 @@ trait UploadPages extends BasePage {
 
   val urlUploadVer: String = traderServicesBaseUrl + "/file-verification"
 
-  val headingUploadConfirm1 = "You have uploaded 1 document"
-  val headingUploadConfirm2 = "You have uploaded 2 documents"
-  val headingUploadConfirm3 = "You have uploaded 3 documents"
+  val headingUploadConfirm1 = "You’ve uploaded 1 document"
+  val headingUploadConfirm2 = "You’ve uploaded 2 documents"
+  val headingUploadConfirm3 = "You’ve uploaded 3 documents"
   // You’ve
 
   val urlUploaded: String = traderServicesBaseUrl + "/file-uploaded"
