@@ -1,5 +1,5 @@
 @TraderService @ZAP
-Feature: Pre-clearance - Import Journeys
+Feature: Customs check - Import Journeys
 
   Scenario Outline: A user wants to complete a New Import journey
     Given the user is on the start page for trader services and selects New

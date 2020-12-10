@@ -154,8 +154,8 @@ class CheckAnswersStepDefs extends CheckAnswersPage with BasePage with ContactDe
       case "PriorityGoods" => clickHref("a[href*='which-priority-goods']")
       case "ALVS" => clickHref("a[href*='automatic-licence-verification']")
       case "Transport" => clickHref("a[href*='transport-type']")
-      case "Vessel" => clickHref("a[href*='vessel-info']")
-      case "ContactDetails" => clickHref("a[href*='contact-info']")
+      case "Vessel" => clickHref("a[href*='transport-information']")
+      case "ContactDetails" => clickHref("a[href*='contact-information']")
     }
   }
   }

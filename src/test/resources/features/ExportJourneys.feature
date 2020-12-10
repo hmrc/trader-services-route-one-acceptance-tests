@@ -1,5 +1,5 @@
 @TraderService @ZAP
-Feature: Pre-clearance - Export Journeys
+Feature: Customs check - Export Journeys
 
   Scenario Outline: A user wants to complete a New Export RouteOne journey
     Given the user is on the start page for trader services and selects New

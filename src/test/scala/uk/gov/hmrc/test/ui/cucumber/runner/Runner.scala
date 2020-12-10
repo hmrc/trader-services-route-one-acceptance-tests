@@ -40,6 +40,7 @@ object Runner extends Runner with BasePage {
     webDriver.manage().deleteAllCookies()
     webDriver.navigate.refresh()
     webDriver.manage().deleteAllCookies()
+    webDriver.manage().window.maximize
   }
 
   @BeforeClass
