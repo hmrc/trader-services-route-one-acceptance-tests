@@ -1,6 +1,6 @@
 #!/bin/bash
 ENV=${1:-local}
-BROWSER=${2:-firefox}
+BROWSER=${2:-chrome}
 DRIVER=
 
 if [ "$BROWSER" = "chrome" ]; then
