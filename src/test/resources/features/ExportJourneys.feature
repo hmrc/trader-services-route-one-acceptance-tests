@@ -1,6 +1,35 @@
 @TraderService @ZAP
 Feature: Customs check - Export Journeys
 
+  Scenario Outline: A user wants to complete a New Export RouteOne journey - pre upload
+    Given the user is on the start page for trader services and selects New
+    Then the user is on the declaration details page
+    When the user enters declaration details "<epu>" and "<entryNo>"
+    And the user enters today's date for entryDate
+    And the user clicks Continue
+    Then the user is on the Export Request Type page and selects <requestType>
+    Then the user is on the Export Route Type Page and selects <route>
+    Then the user is on the Export YesNo Priority Page and selects Yes
+    When the user is on the Export Priority Options Page and selects <priority>
+    Then the user is on the Export Transport Type Page and selects <transport>
+    Then the user is on the Export-Optional Vessel Page
+    Then the user enters "<vesselName>" for vessel name
+    And the user enters today's date for vesselDate
+    Then the user clicks Continue
+    Then the user is on the Export Contact Details Page
+    And the user enters an email address "<email>"
+    And the user clicks Continue
+    Then the user is on the Export CYA page
+    Then the user clicks Continue
+    Then the user is on the First upload page
+    When the user clicks the button to upload and selects "first" file
+    Then ensure the user is on the correct New page and click continue if not
+
+    Examples:
+      | epu | entryNo | requestType | route   | priority      | transport | vesselName  | email   |
+      | 123 | A23456A | New         | Route 1 | Class A drugs | Maritime  | Test Vessel | a@a.com |
+
+
   Scenario Outline: A user wants to complete a New Export RouteOne journey
     Given the user is on the start page for trader services and selects New
       Then the user is on the declaration details page
