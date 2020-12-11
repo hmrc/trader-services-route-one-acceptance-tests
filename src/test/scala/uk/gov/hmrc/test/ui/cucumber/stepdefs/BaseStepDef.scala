@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
 import org.openqa.selenium.By
+import org.openqa.selenium.interactions.Actions
 import org.scalatest.Matchers
 import org.scalatest.concurrent.Eventually
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
@@ -37,11 +38,18 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     clickContinue()
   }
 
+//
+//  And("""^the user clicks Continue""") { () =>
+//    val action = new Actions(driver)
+//    action.moveToElement(findElementByCss(".govuk-button")).click()
+//
+//  }
+
+
   And("""^the user clicks Continue and waits""") { () =>
     clickContinue()
     Thread.sleep(1500L)
   }
-
 
   And("""^the user clicks back""") { () =>
     clickBack()
