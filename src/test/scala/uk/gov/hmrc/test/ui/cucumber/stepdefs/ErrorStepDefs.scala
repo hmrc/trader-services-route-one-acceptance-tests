@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
 import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages.{AmendPage, BasePage, ContactDetailsPage, FinalConfirmationPage, LandingPage, VesselQuestionsPage}
+import uk.gov.hmrc.test.ui.pages._
 
 class ErrorStepDefs extends FinalConfirmationPage with BasePage
   with VesselQuestionsPage with ContactDetailsPage with

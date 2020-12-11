@@ -1,5 +1,5 @@
 @TraderService @ZAP
-Feature: Pre-clearance - Import Journeys
+Feature: Customs check - Import Journeys
 
   Scenario Outline: A user wants to complete a New Import journey
     Given the user is on the start page for trader services and selects New
@@ -66,8 +66,7 @@ Feature: Pre-clearance - Import Journeys
     Then the user should see "Error:Select the route" error message for "routeType"
     When the user is on the Import Route Type Page and selects <route>
     Then the user is on the Import YesNo Priority Page and selects None
-    Then the user should see "Error:Select yes if you’re moving priority goods" error message for "hasPriorityGoods"
-#    Then the user should see "Error:Select yes if you’re importing priority goods" error message for "hasPriorityGoods"
+    Then the user should see "Error:Select yes if you’re importing priority goods" error message for "hasPriorityGoods"
     When the user is on the Import YesNo Priority Page and selects Yes
     When the user is on the Import Priority Options Page and selects NoOption
     Then the user should see "Error:Select the type of priority goods" error message for "priorityGoods"

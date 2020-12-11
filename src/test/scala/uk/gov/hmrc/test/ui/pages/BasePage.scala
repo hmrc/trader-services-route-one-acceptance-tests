@@ -46,10 +46,10 @@ trait BasePage extends Matchers with BrowserDriver {
     case _ => s"http://localhost:$localPort"
   }
 
-  val traderServicesBaseUrl: String = host(9379) + "/trader-services/pre-clearance"
-  val importJourneyUrl: String = "/import-questions"
-  val exportJourneyUrl: String = "/export-questions"
-  val amendUrl: String = "/amend"
+  val traderServicesBaseUrl: String = host(9379) + "/send-documents-for-customs-check"
+  val importJourneyUrl: String = "/new/import"
+  val exportJourneyUrl: String = "/new/export"
+  val amendUrl: String = "/add"
 
   def confirmUrl(url: String): Unit = {
     fluentWait.until(ExpectedConditions.urlContains(url))
@@ -113,10 +113,8 @@ trait BasePage extends Matchers with BrowserDriver {
   def clickById(id: String): Unit = findElementById(id).click()
 
   def clickByCSS(css: String): Unit = driver.findElement(By.cssSelector(css)).click()
-//  def clickByCSS(css: String): Unit = elementToBeClickable(css).click
 
   def clickContinue(): Unit = findElementByCss(".govuk-button").click()
-
   def clickUploadContinue(): Unit = elementToBeClickable(".govuk-button").click()
 
   def clickBack(): Unit = findElementById("back-link").click()

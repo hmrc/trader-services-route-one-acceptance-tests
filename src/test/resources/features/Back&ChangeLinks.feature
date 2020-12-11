@@ -331,4 +331,4 @@ Feature: Back Links & Change Links
 
     Examples:
 | epu | entryNo | requestType | route   | priority     | transport | vesselName | name     | email        | phoneNo    | entryDateCYA |
-| 669 | X12088M | New         | Route 2 | Live animals | Air       | Ship Test  | Ms. Test | xyz@test.com | 07712345671 | Today        |
+| 669 | X12088M | New         | Route 2 | Live animals | Air       | Ship Test  | Ms. Test | xyz@test.com | 07712 345 671 | Today        |

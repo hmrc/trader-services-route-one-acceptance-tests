@@ -82,7 +82,7 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
   }
 
   Then("""^the user should see the message saying they have uploaded the max amount of docs""") { () =>
-    assertElementText("You have uploaded the maximum number of files and cannot add any more.",
+    assertElementText("You’ve uploaded the maximum number of files and cannot add any more.",
     findElementByCss("p.govuk-body"))
   }
 

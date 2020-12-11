@@ -20,14 +20,13 @@ import org.openqa.selenium.WebElement
 
 trait VesselQuestionsPage extends BasePage {
 
-  val urlImportVessel: String = traderServicesBaseUrl + importJourneyUrl + "/vessel-info"
-  val urlImpMandatoryVessel: String = traderServicesBaseUrl + importJourneyUrl + "/vessel-info-required"
+  val urlImportVessel: String = traderServicesBaseUrl + importJourneyUrl + "/transport-information"
+  val urlImpMandatoryVessel: String = traderServicesBaseUrl + importJourneyUrl + "/transport-information-required"
 
-  val urlExportVessel: String = traderServicesBaseUrl + exportJourneyUrl + "/vessel-info"
-  val urlExpMandatoryVessel: String = traderServicesBaseUrl + exportJourneyUrl + "/vessel-info-required"
+  val urlExportVessel: String = traderServicesBaseUrl + exportJourneyUrl + "/transport-information"
+  val urlExpMandatoryVessel: String = traderServicesBaseUrl + exportJourneyUrl + "/transport-information-required"
 
-  val headingVessel = "Tell us about your transport"
-  // "More details about your transport"
+  val headingVessel = "More details about your transport"
 
   def vesselQName: WebElement = findElementById("vesselName")
 

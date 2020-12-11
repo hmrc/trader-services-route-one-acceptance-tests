@@ -34,7 +34,7 @@ Feature: Review/CYA page
 
     Examples:
       | epu | entryNo |requestType | route   | priority      | ALVS | transport | name       | email          | phone       | entryDateCYA |
-      | 123 | 123456A |New         | Route 6 | Human remains | Yes  | Air       | Abc Testb  | valid@test.com | 01234567899 | Today        |
+      | 003 | 123456A |New         | Route 6 | Human remains | Yes  | Air       | Abc Testb  | valid@test.com | 01234 567 899 | Today        |
 
 
   Scenario Outline: A user wants to review their answers (Export)
@@ -68,4 +68,4 @@ Feature: Review/CYA page
 
     Examples:
       | epu | entryNo |requestType | route   | transport | vesselName  | email   | entryDateCYA |
-      | 123 | A23456A |New         | Route 1 | Maritime  | Test Vessel | a@a.com | Today        |
+      | 123 | A23456A |New         | Route 1 | Maritime  | Test Vessel | abc@test.com| Today        |

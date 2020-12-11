@@ -20,21 +20,21 @@ import org.openqa.selenium.{By, WebElement}
 
 trait UploadPages extends BasePage {
 
-  val urlUpload: String = traderServicesBaseUrl + "/file-upload"
-  val urlUploadAmend: String = traderServicesBaseUrl + "/amend/file-upload"
+  val urlUpload: String = traderServicesBaseUrl + "/new/file-upload"
+  val urlUploadAmend: String = traderServicesBaseUrl + amendUrl + "/file-upload"
 
   val headingUpload = "Upload your first document"
   val headingUploadAnother = "Upload another document"
 
-  val urlUploadVer: String = traderServicesBaseUrl + "/file-verification"
+  val urlUploadVer: String = traderServicesBaseUrl + "/new/file-verification"
+  val urlUploadVerAmend: String = traderServicesBaseUrl + amendUrl + "/file-verification"
 
-  val headingUploadConfirm1 = "You have uploaded 1 document"
-  val headingUploadConfirm2 = "You have uploaded 2 documents"
-  val headingUploadConfirm3 = "You have uploaded 3 documents"
-  // You’ve
+  val headingUploadConfirm1 = "You’ve uploaded 1 document"
+  val headingUploadConfirm2 = "You’ve uploaded 2 documents"
+  val headingUploadConfirm3 = "You’ve uploaded 3 documents"
 
-  val urlUploaded: String = traderServicesBaseUrl + "/file-uploaded"
-  val urlUploadedAmend: String = traderServicesBaseUrl + "/amend/file-uploaded"
+  val urlUploaded: String = traderServicesBaseUrl + "/new/file-uploaded"
+  val urlUploadedAmend: String = traderServicesBaseUrl + amendUrl + "/file-uploaded"
 
   val usrDir = System.getProperty("user.dir") + "/src/test/resources/uploadFiles/"
   var filePath = ""

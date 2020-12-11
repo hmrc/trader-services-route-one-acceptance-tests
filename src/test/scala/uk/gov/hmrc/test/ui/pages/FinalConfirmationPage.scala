@@ -20,13 +20,13 @@ import org.openqa.selenium.{By, WebElement}
 
 trait FinalConfirmationPage extends BasePage {
 
-  val urlConfirmation = traderServicesBaseUrl + "/confirmation"
+  val urlConfirmation = traderServicesBaseUrl + "/new/confirmation"
   val headingConfirmation = "You’ve submitted your documents"
 
-  val urlDuplicate = traderServicesBaseUrl + "/case-already-exists"
+  val urlDuplicate = traderServicesBaseUrl + "/new/case-already-exists"
   val headingDuplicate = "This case already exists"
 
-  val urlAmendConfirm = traderServicesBaseUrl + "/amend/confirmation"
+  val urlAmendConfirm = traderServicesBaseUrl + amendUrl + "/confirmation"
   val headingAmendConfirm = "You’ve submitted your extra information"
 
   def clickLinkToAmend(): Unit = driver.findElement(By.linkText("add more information or documents to the existing case")).click()

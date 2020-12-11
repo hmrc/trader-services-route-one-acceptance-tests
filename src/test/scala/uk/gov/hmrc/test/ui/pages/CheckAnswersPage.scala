@@ -82,7 +82,7 @@ trait CheckAnswersPage extends BasePage with DeclarationNumPage with QuestionPag
 
   //Vessel Section
   val h2Vessel = "Transport information"
-  val summaryVesselName = "Name of plane, ship or vehicle"
+  val summaryVesselName = "Name of ship, vehicle or airline"
   val summaryVesselDate = "Date of arrival"
   val summaryVesselTime = "Estimated time of arrival"
 
