@@ -111,15 +111,15 @@ Feature: Declaration details validation
 
     When the user enters a date "dd" "09" "2020"
     And the user clicks Continue
-    Then the user should see "Error:Entry day must only contain numbers" error message for "entryDate"
+    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
 
     When the user enters a date "01" "mm" "2020"
     And the user clicks Continue
-    Then the user should see "Error:Entry month must only contain numbers" error message for "entryDate"
+    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
 
     When the user enters a date "01" "10" "yyyy"
     And the user clicks Continue
-    Then the user should see "Error:Entry year must only contain numbers" error message for "entryDate"
+    Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
 
     Then the user enters a date "132" "09" "2020"
     And the user clicks Continue

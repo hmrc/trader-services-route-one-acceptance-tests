@@ -71,7 +71,7 @@ Feature: Accessibility test the service
     And the user clicks Continue
     Then the user is on the First upload page
     When the user clicks the button to upload and selects "first" file
-    Then ensure the user is on the correct New page and click continue if not
+#    Then ensure the user is on the correct New page and click continue if not
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
     Then the user selects No to to uploading another file
     Then the user is on the New confirmation page
@@ -107,7 +107,7 @@ Feature: Accessibility test the service
     And the user enters a response with valid characters
     Then the user is on the Amend upload page
     Then the user clicks the button to upload and selects "first" file
-    Then ensure the user is on the correct Amend page and click continue if not
+#    Then ensure the user is on the correct Amend page and click continue if not
     Then the user should be on the amend file upload confirmation page after uploading 1 document/s
     Then the user should see their first uploaded doc test.jpg on upload review page
     Then the user selects No to to uploading another file
