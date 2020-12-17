@@ -23,7 +23,7 @@ Feature: Customs check - Import Journeys
     And the user clicks Continue
     Then the user is on the First upload page
     When the user clicks the button to upload and selects "first" file
-#    Then ensure the user is on the correct New page and click continue if not
+    Then ensure the user is on the correct New page and click continue if not
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
     Then the user selects No to to uploading another file
     Then the user is on the New confirmation page
