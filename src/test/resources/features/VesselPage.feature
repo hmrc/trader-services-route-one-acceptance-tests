@@ -75,7 +75,7 @@ Feature: Vessel page validation
     Then the user enters a time for the vessel "ab" "01"
     And the user clicks Continue
     Then the user should see "Error:Name must only include letters a to z, numbers, spaces, hyphens, ampersands, apostrophes and full stops" error message for "vesselName"
-    Then the user should see "Error:Day of arrival must only contain numbers" error message for "dateOfArrival"
+    Then the user should see "Error:Date of arrival must be a real date" error message for "dateOfArrival"
     Then the user should see "Error:Hour of arrival must only contain numbers" error message for "timeOfArrival"
 
     Then the user enters too many characters for vesselName
@@ -83,7 +83,7 @@ Feature: Vessel page validation
     Then the user enters a time for the vessel "10" "!1"
     And the user clicks Continue
     Then the user should see "Error:Name must be 128 characters or fewer" error message for "vesselName"
-    Then the user should see "Error:Month of arrival must only contain numbers" error message for "dateOfArrival"
+    Then the user should see "Error:Date of arrival must be a real date" error message for "dateOfArrival"
     Then the user should see "Error:Minutes of arrival must only contain numbers" error message for "timeOfArrival"
 
 #    CONTENT FOR ABOVE TO BE UPDATED
@@ -92,7 +92,7 @@ Feature: Vessel page validation
     Then the user enters a date for the vessel "01" "01" "abcd"
     Then the user enters a time for the vessel "01" "10"
     And the user clicks Continue
-    Then the user should see "Error:Year of arrival must only contain numbers" error message for "dateOfArrival"
+    Then the user should see "Error:Date of arrival must be a real date" error message for "dateOfArrival"
 
 #  Invalid date/time (too far in past or future)
     Then the user enters a date for the vessel "01" "01" "2022"
