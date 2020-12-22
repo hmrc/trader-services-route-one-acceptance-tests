@@ -239,7 +239,7 @@ Feature: Back Links & Change Links
     When the user answered NoToPriority then they should see the correct responses for the Import journey "", "<ALVS>" & "<transport>"
     And the user should see the Vessel Name row & the correct response "<vesselName>" on the CYA page
     And the user should see the Vessel Date row & the correct response "<entryDateCYA>" on the CYA page
-    And the user should see the Vessel Time row & the correct response "11:15 am" on the CYA page
+    And the user should see the Vessel Time row & the correct response "11:15" on the CYA page
     And the user should see the Mandatory Contact details row & the correct responses "", "<email>" & "" on the CYA page
 
     Then the user clicks the change link for Declaration
@@ -319,7 +319,7 @@ Feature: Back Links & Change Links
     When the user answered YesToPriority then they should see the correct responses for the Export journey "<priority>" & "<transport>"
     And the user should see the Vessel Name row & the correct response "<vesselName>" on the CYA page
     And the user should see the Vessel Date row & the correct response "<entryDateCYA>" on the CYA page
-    And the user should see the Vessel Time row & the correct response "12:34 pm" on the CYA page
+    And the user should see the Vessel Time row & the correct response "12:34" on the CYA page
     And the user should see the Full Contact details row & the correct responses "<name>", "<email>" & "<phoneNo>" on the CYA page
 
     Then the user clicks the change link for Declaration
