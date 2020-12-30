@@ -16,17 +16,34 @@
 
 package uk.gov.hmrc.test.ui.cucumber.runner
 
-import cucumber.api.CucumberOptions
-import cucumber.api.junit.Cucumber
+import io.cucumber.junit.{Cucumber, CucumberOptions}
 import org.junit.runner.RunWith
+import org.junit.{AfterClass, BeforeClass}
+import uk.gov.hmrc.test.ui.conf.Configuration
+import uk.gov.hmrc.test.ui.pages.BasePage
 
 @RunWith(classOf[Cucumber])
 @CucumberOptions(
   features = Array("src/test/resources/features"),
-  glue = Array("uk.gov.hmrc.stepdefs"),
-  plugin = Array("pretty", "html:target/cucumber", "json:target/cucumber.json"),
-  tags=Array("@ZAP")
-)
-class RunZap {
-}
+  glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
+  plugin = Array ("pretty", "html:target/cucumber", "json:target/cucumber.json"),
+  tags = "@ZAP"
 
+)
+class RunZap
+object RunZap extends RunZap with BasePage {
+  @BeforeClass
+  def setupUser(): Unit = {
+    navigateTo(Configuration.settings.SIGN_IN_PAGE)
+    login()
+    createUser()
+    clickByCSS("#update")
+  }
+
+  @AfterClass
+  def destroyUser(): Unit = {
+    navigateTo(Configuration.settings.DESTROY_PLANET)
+    if (destroyPlanetLink.isDisplayed.equals(true)){destroyPlanetLink.click()} else clickByCSS("#destroy-planet")
+    driver.switchTo().alert().accept()
+  }
+}

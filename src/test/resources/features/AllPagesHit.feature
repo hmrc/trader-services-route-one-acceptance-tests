@@ -1,8 +1,8 @@
-@accessibility
+@accessibility @ZAP
 
-Feature: Accessibility test the service
+Feature: Hit all pages within the service - ZAP & Accessibility testing
 
-  Scenario Outline: Accessibility - every page in journey hit (Export - Vessel-Optional)
+  Scenario Outline: a11y/ZAP- every page in journey hit (Export - Vessel-Optional)
     Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
@@ -27,7 +27,7 @@ Feature: Accessibility test the service
       | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   |
       | 123 | A23456A | New         | Route 1 | Class A drugs | Maritime  | Test Vessel | Mr. F | a@a.com |
 
-  Scenario Outline: Accessibility - every page in journey hit (Export - Vessel-Mandatory)
+  Scenario Outline: a11y/ZAP - every page in journey hit (Export - Vessel-Mandatory)
 
     Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
@@ -49,7 +49,7 @@ Feature: Accessibility test the service
       | 123 | A23456A | C1601       | Route 1 | RoadRoRoRail | Train1     |
 
 
-  Scenario Outline: Accessibility - every page in journey hit (Import - Vessel-Optional)
+  Scenario Outline: a11y/ZAP - every page in journey hit (Import - Vessel-Optional)
     Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
@@ -80,7 +80,7 @@ Feature: Accessibility test the service
       | epu | entryNo |requestType | route   | priority      | transport | name       | email          |
       | 123 | 123456A |New         | Route 6 | Human remains | Air       | Abc Testb  | valid@test.com |
 
-  Scenario Outline: Accessibility - every page in journey hit (Import - Vessel-Mandatory)
+  Scenario Outline: a11y/ZAP - every page in journey hit (Import - Vessel-Mandatory)
     Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
@@ -98,7 +98,7 @@ Feature: Accessibility test the service
       | 123 | 123456A |Cancellation | Hold | Maritime   |
 
 
-  Scenario: Amend: Hit each page
+  Scenario: 11y/ZAP - Amend: Hit each page
     Given the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
     When the user enters valid characters for case reference number

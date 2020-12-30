@@ -1,4 +1,4 @@
-@TraderService @ZAP
+@TraderService
 Feature: Customs check - Import Journeys
 
   Scenario Outline: A user wants to complete a New Import journey
