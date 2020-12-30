@@ -1,4 +1,4 @@
-@TraderService @ZAP
+@TraderService
 Feature: Customs check - Export Journeys
 
   Scenario Outline: A user wants to complete a New Export RouteOne journey - pre upload
