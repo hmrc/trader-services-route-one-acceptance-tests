@@ -27,7 +27,7 @@ Feature: Customs check - Export Journeys
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | vesselName  | email   |
-      | 123 | A23456A | New         | Route 1 | Class A drugs | Maritime  | Test Vessel | a@a.com |
+      | 123 | A23456A | New         | Route 1 | Human remains | Maritime  | Test Vessel | a@a.com |
 
 
   Scenario Outline: A user wants to complete a New Export RouteOne journey
@@ -60,7 +60,7 @@ Feature: Customs check - Export Journeys
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | vesselName  | email   |
-      | 123 | A23456A | New         | Route 1 | Class A drugs | Maritime  | Test Vessel | a@a.com |
+      | 123 | A23456A | New         | Route 1 | Human remains | Maritime  | Test Vessel | a@a.com |
 
 
   Scenario Outline: Route-Hold: A user should reach the mandatory vessel page
@@ -139,4 +139,4 @@ Feature: Customs check - Export Journeys
 
     Examples:
       | epu | entryNo | requestType  | route       | priority       |
-      | 123 | A23456A | Cancellation | Route 1 CAP | High value art |
+      | 123 | A23456A | Cancellation | Route 1 CAP | Human remains  |

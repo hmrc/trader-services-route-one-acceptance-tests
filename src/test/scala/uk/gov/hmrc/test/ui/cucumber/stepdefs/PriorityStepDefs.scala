@@ -93,11 +93,9 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
       verifyHeading(headingPriority)
 
     RequestType match {
-      case "Class A drugs" => clickByCSS("#priorityGoods")
-      case "Explosives or fireworks" => clickByCSS("#priorityGoods-2")
-      case "High value art" => clickByCSS("#priorityGoods-3")
-      case "Human remains" => clickByCSS("#priorityGoods-4")
-      case "Live animals" => clickByCSS("#priorityGoods-5")
+      case "Explosives or fireworks" => clickByCSS("#priorityGoods")
+      case "Human remains" => clickByCSS("#priorityGoods-2")
+      case "Live animals" => clickByCSS("#priorityGoods-3")
       case "NoOption" =>
     }
         clickContinue()
@@ -106,11 +104,9 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
   Then("""^the last selected option for priority goods should be pre filled with (.*)$""") { (priority:String) =>
 
     priority match {
-      case "Class A drugs" => optionSelected("#priorityGoods")
-      case "Explosives or fireworks" => optionSelected("#priorityGoods-2")
-      case "High value art" => optionSelected("#priorityGoods-3")
-      case "Human remains" => optionSelected("#priorityGoods-4")
-      case "Live animals" => optionSelected("#priorityGoods-5")
+      case "Explosives or fireworks" => optionSelected("#priorityGoods")
+      case "Human remains" => optionSelected("#priorityGoods-2")
+      case "Live animals" => optionSelected("#priorityGoods-3")
     }
   }
 }

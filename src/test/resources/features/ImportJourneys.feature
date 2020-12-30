@@ -79,4 +79,4 @@ Feature: Customs check - Import Journeys
 
     Examples:
       | epu | entryNo | requestType | route       | priority       |
-      | 123 | 123456A | New         | Route 1 CAP | High value art |
+      | 123 | 123456A | New         | Route 1 CAP | Human remains |
