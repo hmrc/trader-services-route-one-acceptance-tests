@@ -31,7 +31,7 @@ Feature: Error Pages
 
     Examples:
       | epu | entryNo | requestType  | route   | priority      | transport | vesselName  | name  | email   |
-      | 667 | A23456A | Cancellation | Route 2 | Class A drugs | Air       | Test Vessel | Mr. F | a@a.com |
+      | 667 | A23456A | Cancellation | Route 2 | Human remains | Air       | Test Vessel | Mr. F | a@a.com |
 
 
   Scenario: A user hits the wrong url

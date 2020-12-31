@@ -252,7 +252,7 @@ Feature: Back Links & Change Links
 
     Examples:
 | epu | entryNo | requestType  | route | priority   | ALVS | transport | vesselName | name      | email      | phoneNo    | entryDateCYA|
-| 113 | 993456A | Cancellation | Hold  | High value art | Yes  | Maritime  | TestShip   | Abc Testb | a@test.com | 01234567891 | Today       |
+| 113 | 993456A | Cancellation | Hold  | Human remains | Yes  | Maritime  | TestShip   | Abc Testb | a@test.com | 01234567891 | Today       |
 
 
   Scenario Outline: Export: A user wants to change an answer via the CYA page

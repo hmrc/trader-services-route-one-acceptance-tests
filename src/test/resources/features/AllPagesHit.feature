@@ -25,7 +25,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   |
-      | 123 | A23456A | New         | Route 1 | Class A drugs | Maritime  | Test Vessel | Mr. F | a@a.com |
+      | 123 | A23456A | New         | Route 1 | Human remains | Maritime  | Test Vessel | Mr. F | a@a.com |
 
   Scenario Outline: a11y/ZAP - every page in journey hit (Export - Vessel-Mandatory)
 
