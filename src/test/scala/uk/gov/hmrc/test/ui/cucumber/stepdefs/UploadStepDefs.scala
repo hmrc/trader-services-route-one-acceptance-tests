@@ -42,21 +42,21 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     clickUploadContinue()
   }
 
-  Then("""^ensure the user is on the correct (.*) page and click continue if not""") { (journey: String) =>
-    journey match {
-      case "New" =>
-    Thread.sleep (1000L)
-    val uploadUrl = driver.getCurrentUrl
-    if (uploadUrl.equals (urlUpload))
-    {clickUploadContinue()}
-
-      case "Amend" =>
-      Thread.sleep (1000L)
-      val uploadUrl = driver.getCurrentUrl
-      if (uploadUrl.equals (urlUploadAmend) )
-      {clickUploadContinue()}
-    }
-  }
+//  Then("""^ensure the user is on the correct (.*) page and click continue if not""") { (journey: String) =>
+//    journey match {
+//      case "New" =>
+//    Thread.sleep (1000L)
+//    val uploadUrl = driver.getCurrentUrl
+//    if (uploadUrl.equals (urlUpload))
+//    {clickUploadContinue()}
+//
+//      case "Amend" =>
+//      Thread.sleep (1000L)
+//      val uploadUrl = driver.getCurrentUrl
+//      if (uploadUrl.equals (urlUploadAmend) )
+//      {clickUploadContinue()}
+//    }
+//  }
 
   Then("""^the user should be on the (.*) file upload confirmation page after uploading (.*) document/s"""){
     (journey:String, docAmount:String) =>
