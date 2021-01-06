@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2021 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -85,12 +85,12 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
 
           case "entryDate" =>
             verifyInput(entryDay, todayDate.getDayOfMonth.toString.replaceFirst("", "0"))
-            verifyInput(entryMonth, todayDate.getMonthValue.toString)
+            verifyInput(entryMonth, todayDate.getMonthValue.toString.replaceFirst("", "0"))
             verifyInput(entryYear, todayDate.getYear.toString)
 
           case "vesselDate" =>
             verifyInput(vesselQDay, todayDate.getDayOfMonth.toString.replaceFirst("", "0"))
-            verifyInput(vesselQMonth, todayDate.getMonthValue.toString)
+            verifyInput(vesselQMonth, todayDate.getMonthValue.toString.replaceFirst("", "0"))
             verifyInput(vesselQYear, todayDate.getYear.toString)
 
         }
