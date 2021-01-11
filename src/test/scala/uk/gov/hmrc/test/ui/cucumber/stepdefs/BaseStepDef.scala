@@ -41,6 +41,10 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
       clickContinue()
   }
 
+  And("""^the user clicks the link to return to the landing page""") { () =>
+    Thread.sleep(1500)
+   findElementByCss(".govuk-header__link--service-name").click()
+  }
 //
 //  And("""^the user clicks Continue""") { () =>
 //    val action = new Actions(driver)
@@ -105,20 +109,6 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
             verifyInput(vesselQYear, todayDate.getYear.toString)
 
         }
-
-//       {
-//        dateField match {
-//          case "entryDate" =>
-//            verifyInput(entryDay, todayDate.getDayOfMonth.toString)
-//            verifyInput(entryMonth, todayDate.getMonthValue.toString)
-//            verifyInput(entryYear, todayDate.getYear.toString)
-//
-//          case "vesselDate" =>
-//            verifyInput(vesselQDay, todayDate.getDayOfMonth.toString)
-//            verifyInput(vesselQMonth, todayDate.getMonthValue.toString)
-//            verifyInput(vesselQYear, todayDate.getYear.toString)
-//        }
-
   }
 
   Then("""^the user should see "([^"]*)" error message for "([^"]*)"$""") { (errorMessage: String, fieldTitle: String) =>

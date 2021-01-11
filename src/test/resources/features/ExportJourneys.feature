@@ -1,7 +1,7 @@
 @TraderService
 Feature: Customs check - Export Journeys
 
-  Scenario Outline: A user wants to complete a New Export RouteOne journey - pre upload
+  Scenario Outline: A user user goes back to the start after uploading a file (information cleared)
     Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
@@ -23,7 +23,8 @@ Feature: Customs check - Export Journeys
     Then the user clicks Continue
     Then the user is on the First upload page
     When the user clicks the button to upload and selects "first" file
-#    Then ensure the user is on the correct New page and click continue if not
+    Then the user clicks the link to return to the landing page
+    Then the user is on the start page for trader services
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | vesselName  | email   |
