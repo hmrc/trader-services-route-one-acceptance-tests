@@ -47,7 +47,7 @@ Feature: A user wants to upload documents
     Then the user should be on the new file upload confirmation page after uploading 2 document/s
     Then the user selects Yes to to uploading another file
     Then the user is on the Another upload page
-    When the user clicks the button to upload and selects "last" file
+    When the user clicks the button to upload and selects "first" file
 #    Then ensure the user is on the correct New page and click continue if not
     Then the user should be on the new file upload confirmation page after uploading 3 document/s
     Then the user selects No to to uploading another file
