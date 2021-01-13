@@ -114,8 +114,8 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def clickByCSS(css: String): Unit = driver.findElement(By.cssSelector(css)).click()
 
-  def clickContinue(): Unit = findElementByCss(".govuk-button").click()
-  def clickUploadContinue(): Unit = elementToBeClickable(".govuk-button").click()
+  def clickContinue(): Unit = findElementByCss(".govuk-button:last-of-type").click()
+  def clickUploadContinue(): Unit = elementToBeClickable(".govuk-button:last-of-type").click()
 
   def clickBack(): Unit = findElementById("back-link").click()
 
