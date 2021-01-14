@@ -43,7 +43,7 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
   }
 
   When("""^the user clicks to submit documents they will be back on the start page"""){() =>
-    clickContinue()
+    clickFinalContinue()
     confirmUrl(traderServicesUrl)
     verifyHeading(landingHeading)
   }

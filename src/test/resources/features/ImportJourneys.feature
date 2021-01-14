@@ -1,4 +1,4 @@
-@TraderService
+@TraderService2
 Feature: Customs check - Import Journeys
 
   Scenario Outline: A user wants to complete a New Import journey
@@ -19,13 +19,12 @@ Feature: Customs check - Import Journeys
     When the user enters a name "<name>"
     When the user enters an email address "<email>"
     And the user clicks Continue
-    Then the user is on the Import CYA page
-    And the user clicks Continue
     Then the user is on the First upload page
     When the user clicks the button to upload and selects "first" file
-#    Then ensure the user is on the correct New page and click continue if not
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
     Then the user selects No to to uploading another file
+    Then the user is on the Import CYA page
+    And the user clicks Submit on the CYA page
     Then the user is on the New confirmation page
     When the user clicks to submit documents they will be back on the start page
 
