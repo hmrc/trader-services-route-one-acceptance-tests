@@ -42,7 +42,7 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
    clickCYAContinue()
   }
 
-  And("""^the user clicks the link to return to the landing page""") { () =>
+  And("""^the user clicks the banner link to return to the landing page""") { () =>
     Thread.sleep(1500)
    findElementByCss(".govuk-header__link--service-name").click()
   }

@@ -21,7 +21,7 @@ Feature: Back Links & Change Links
     And the user clicks Continue
     Then the user is on the First upload page
     When the user clicks the button to upload and selects "first" file
-    Then the user clicks the link to return to the landing page
+    Then the user clicks the banner link to return to the landing page
     Then the user is on the start page for trader services
 
     Examples:
@@ -215,7 +215,7 @@ Feature: Back Links & Change Links
     Then the user is on the First upload page
     When the user clicks the button to upload and selects "first" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
-    Then the user selects No to to uploading another file
+    Then the user selects No to uploading another file
     Then the user is on the Import CYA page
     When the user answered YesToPriority then they should see the correct responses for the Import journey "<priority>", "No" & "Air"
 
@@ -308,7 +308,7 @@ Feature: Back Links & Change Links
     Then the user is on the First upload page
     When the user clicks the button to upload and selects "first" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
-    Then the user selects No to to uploading another file
+    Then the user selects No to uploading another file
     Then the user is on the Export CYA page
     When the user answered NoToPriority then they should see the correct responses for the Export journey "" & "<transport>"
 

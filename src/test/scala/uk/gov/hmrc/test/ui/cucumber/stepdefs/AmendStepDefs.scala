@@ -35,7 +35,7 @@ class AmendStepDefs extends AmendPage with FinalConfirmationPage with BasePage w
       case "valid" => caseRefInput.sendKeys(userCaseRef)
       case "no" => caseRefInput.sendKeys("")
     }
-    clickContinueAmend()
+    clickContinueCaseRef()
   }
 
   Then("""^the user is on the how to respond page$""") { () =>
@@ -103,7 +103,7 @@ class AmendStepDefs extends AmendPage with FinalConfirmationPage with BasePage w
   Then("""^the user enters a case ref number "(.*)" and continues$""") {
     (caseRef:String) =>
       writeById(caseRefInput, caseRef)
-      clickContinueAmend()
+      clickContinueCaseRef()
   }
 }
 

@@ -120,7 +120,7 @@ trait BasePage extends Matchers with BrowserDriver {
   def clickUploadContinue(): Unit = elementToBeClickable("button.govuk-button:nth-child(6)").click()
 
   def clickContinue(): Unit = findElementByCss("button.govuk-button:nth-child(3)").click()
-  def clickContinueAmend(): Unit = findElementByCss("button.govuk-button:nth-child(4)").click()
+  def clickContinueCaseRef(): Unit = findElementByCss("button.govuk-button:nth-child(4)").click()
 
   def clickCYAContinue(): Unit = findElementByCss("button.govuk-button:nth-child(2)").click()
 
@@ -196,6 +196,6 @@ trait BasePage extends Matchers with BrowserDriver {
 //def clickUploadContinue(): Unit = elementToBeClickable("button.govuk-button:nth-child(6)").click()
 //
 //def clickContinue(): Unit = findElementByCss("button.govuk-button:nth-child(3)").click()
-//def clickContinueAmend(): Unit = findElementByCss("button.govuk-button:nth-child(4)").click()
+//def clickContinueCaseRef(): Unit = findElementByCss("button.govuk-button:nth-child(4)").click()
 //
 //def clickCYAContinue(): Unit = findElementByCss("button.govuk-button:nth-child(2)").click()

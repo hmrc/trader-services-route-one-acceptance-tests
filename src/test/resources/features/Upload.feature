@@ -26,25 +26,25 @@ Feature: A user wants to upload documents
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
     Then the user should see their first uploaded doc test.jpg on upload review page
     
-    Then the user selects NoOption to to uploading another file
+    Then the user selects NoOption to uploading another file
     And the user should see "Error:Select yes if you want to upload another document" error message for "uploadAnotherFile"
 
-    Then the user selects Yes to to uploading another file
+    Then the user selects Yes to uploading another file
     Then the user is on the Another upload page
     When the user clicks the button to upload and selects "next" file
     Then the user should be on the new file upload confirmation page after uploading 2 document/s
 
-    Then the user selects Yes to to uploading another file
+    Then the user selects Yes to uploading another file
     Then the user is on the Another upload page
     When the user clicks the button to upload and selects "last" file
     Then the user should be on the new file upload confirmation page after uploading 3 document/s
     Then the user clicks the button to remove a document
     Then the user should be on the new file upload confirmation page after uploading 2 document/s
-    Then the user selects Yes to to uploading another file
+    Then the user selects Yes to uploading another file
     Then the user is on the Another upload page
     When the user clicks the button to upload and selects "first" file
     Then the user should be on the new file upload confirmation page after uploading 3 document/s
-    Then the user selects No to to uploading another file
+    Then the user selects No to uploading another file
     Then the user is on the Import CYA page
     And the user clicks Submit on the CYA page
     Then the user is on the New confirmation page

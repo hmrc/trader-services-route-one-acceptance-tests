@@ -86,7 +86,7 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     findElementByCss("p.govuk-body"))
   }
 
-  Then("""^the user selects (.*) to to uploading another file""") { (yesNo: String) =>
+  Then("""^the user selects (.*) to uploading another file""") { (yesNo: String) =>
     yesNo match {
       case "Yes" => clickByCSS("#uploadAnotherFile")
       case "No" => clickByCSS("#uploadAnotherFile-2")

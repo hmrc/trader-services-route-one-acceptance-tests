@@ -23,7 +23,7 @@ Feature: Review/CYA page
     Then the user is on the First upload page
     When the user clicks the button to upload and selects "first" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
-    Then the user selects No to to uploading another file
+    Then the user selects No to uploading another file
 
     Then the user is on the Import CYA page
     Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
@@ -62,7 +62,7 @@ Feature: Review/CYA page
     Then the user is on the First upload page
     When the user clicks the button to upload and selects "first" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
-    Then the user selects No to to uploading another file
+    Then the user selects No to uploading another file
     Then the user is on the Export CYA page
     Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
     And the user should see the Entry Date row & the date <entryDateCYA> on the CYA page
