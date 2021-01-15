@@ -35,26 +35,21 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
   }
 
   And("""^the user clicks Continue""") { () =>
-      val actions = new Actions(driver)
-      val continue = driver.findElement(By.cssSelector(".govuk-button"))
-      actions.moveToElement(continue).perform()
-      clickContinue()
+    clickContinue()
   }
 
-  And("""^the user clicks the link to return to the landing page""") { () =>
+  And("""^the user clicks Submit on the CYA page""") { () =>
+   clickCYAContinue()
+  }
+
+  And("""^the user clicks the banner link to return to the landing page""") { () =>
     Thread.sleep(1500)
    findElementByCss(".govuk-header__link--service-name").click()
   }
-//
-//  And("""^the user clicks Continue""") { () =>
-//    val action = new Actions(driver)
-//    action.moveToElement(findElementByCss(".govuk-button")).click()
-//
-//  }
 
 
   And("""^the user clicks Continue and waits""") { () =>
-    clickContinue()
+    clickUploadFirst()
     Thread.sleep(1500L)
   }
 

@@ -114,8 +114,16 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def clickByCSS(css: String): Unit = driver.findElement(By.cssSelector(css)).click()
 
-  def clickContinue(): Unit = findElementByCss(".govuk-button").click()
-  def clickUploadContinue(): Unit = elementToBeClickable(".govuk-button").click()
+
+  def clickFinalContinue():Unit = findElementByCss("a.govuk-button").click()
+  def clickUploadFirst(): Unit = elementToBeClickable(".file-upload__submit").click()
+  def clickUploadContinue(): Unit = elementToBeClickable("button.govuk-button:nth-child(6)").click()
+
+  def clickContinue(): Unit = findElementByCss("button.govuk-button:nth-child(3)").click()
+  def clickContinueCaseRef(): Unit = findElementByCss("button.govuk-button:nth-child(4)").click()
+
+  def clickCYAContinue(): Unit = findElementByCss("button.govuk-button:nth-child(2)").click()
+
 
   def clickBack(): Unit = findElementById("back-link").click()
 
@@ -182,3 +190,12 @@ trait BasePage extends Matchers with BrowserDriver {
     enrollment.sendKeys("GB123456789012345")
   }
 }
+
+//def clickFinalContinue():Unit = findElementByCss("a.govuk-button").click()
+//def clickUploadFirst(): Unit = elementToBeClickable(".file-upload__submit").click()
+//def clickUploadContinue(): Unit = elementToBeClickable("button.govuk-button:nth-child(6)").click()
+//
+//def clickContinue(): Unit = findElementByCss("button.govuk-button:nth-child(3)").click()
+//def clickContinueCaseRef(): Unit = findElementByCss("button.govuk-button:nth-child(4)").click()
+//
+//def clickCYAContinue(): Unit = findElementByCss("button.govuk-button:nth-child(2)").click()

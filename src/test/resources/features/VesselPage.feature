@@ -1,4 +1,4 @@
-@TraderService
+@TraderServiceErrors
 Feature: Vessel page validation
 
 #    All blank fields

@@ -39,7 +39,7 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
   Then("""^the user clicks the button to upload and selects "([^"]*)" file"""){ (file:String) =>
     Thread.sleep(500L)
     uploadFile(file)
-    clickUploadContinue()
+    clickUploadFirst()
   }
 
 //  Then("""^ensure the user is on the correct (.*) page and click continue if not""") { (journey: String) =>
@@ -86,12 +86,10 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     findElementByCss("p.govuk-body"))
   }
 
-  Then("""^the user selects (.*) to to uploading another file""") { (yesNo: String) =>
+  Then("""^the user selects (.*) to uploading another file""") { (yesNo: String) =>
     yesNo match {
       case "Yes" => clickByCSS("#uploadAnotherFile")
       case "No" => clickByCSS("#uploadAnotherFile-2")
-                  assertElementText("By continuing, you will now submit all the documents you’ve uploaded",
-                    noConditionalReveal)
       case "NoOption" =>
     }
     clickUploadContinue()

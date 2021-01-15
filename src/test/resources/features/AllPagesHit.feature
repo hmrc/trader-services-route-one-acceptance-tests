@@ -14,18 +14,23 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     When the user is on the Export Priority Options Page and selects <priority>
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Optional Vessel Page
-    Then the user enters "<vesselName>" for vessel name
-    And the user enters today's date for vesselDate
     Then the user clicks Continue
     Then the user is on the Export Contact Details Page
     And the user enters an email address "<email>"
-    When the user enters a name "<name>"
     And the user clicks Continue
+    Then the user is on the First upload page
+    When the user clicks the button to upload and selects "first" file
+    Then the user should be on the new file upload confirmation page after uploading 1 document/s
+    Then the user selects No to uploading another file
     Then the user is on the Export CYA page
+    Then the user clicks Submit on the CYA page
+    Then the user is on the New confirmation page
+    When the user clicks to submit documents they will be back on the start page
+
 
     Examples:
-      | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   |
-      | 123 | A23456A | New         | Route 1 | Human remains | Maritime  | Test Vessel | Mr. F | a@a.com |
+      | epu | entryNo | requestType | route   | priority      | transport | email   |
+      | 123 | A23456A | New         | Route 1 | Human remains | Maritime  | a@a.com |
 
   Scenario Outline: a11y/ZAP - every page in journey hit (Export - Vessel-Mandatory)
 
@@ -67,13 +72,12 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     When the user enters a name "<name>"
     When the user enters an email address "<email>"
     And the user clicks Continue
-    Then the user is on the Import CYA page
-    And the user clicks Continue
     Then the user is on the First upload page
     When the user clicks the button to upload and selects "first" file
-#    Then ensure the user is on the correct New page and click continue if not
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
-    Then the user selects No to to uploading another file
+    Then the user selects No to uploading another file
+    Then the user is on the Import CYA page
+    Then the user clicks Submit on the CYA page
     Then the user is on the New confirmation page
 
     Examples:
@@ -107,8 +111,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     And the user enters a response with valid characters
     Then the user is on the Amend upload page
     Then the user clicks the button to upload and selects "first" file
-#    Then ensure the user is on the correct Amend page and click continue if not
     Then the user should be on the amend file upload confirmation page after uploading 1 document/s
     Then the user should see their first uploaded doc test.jpg on upload review page
-    Then the user selects No to to uploading another file
+    Then the user selects No to uploading another file
     Then the user is on the Amend confirmation page
