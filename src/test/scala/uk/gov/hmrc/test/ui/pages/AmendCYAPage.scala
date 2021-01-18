@@ -34,10 +34,12 @@ trait AmendCYAPage extends BasePage with DeclarationNumPage with QuestionPages {
   val h2Additional = "Additional information"
   val additionalInfoType = "Information type"
 
-  val additionalInfoResponse = "Message"
+  val messageOnly = "Message"
+  val uploadOnly = "Documents"
+  val messageAndUpload= "Message and documents"
+
   val h2Documents = "Documents you are submitting"
   val documentsInfo = "File names"
-
 
   def caseRefRow:WebElement = findElementByCss("/html/body/div/main/div/div/div/dl[1]/div/dt")
   def caseRefAnswer:WebElement = findByXpath("/html/body/div/main/div/div/div/dl[1]/div/dd[1]")

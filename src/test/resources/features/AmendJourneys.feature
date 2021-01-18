@@ -33,7 +33,7 @@ Feature: Amend Journeys
     When the user enters a response with tooMany characters
     Then the user should see "Error:Response must be 1000 characters or fewer" error message for "responseText"
     When the user enters a response with valid characters
-    Then the user is on the Amend writeOnly review page
+    Then the user is on the Amend writeOnly review page and should see their responses
     When the user clicks Submit on the CYA page
     Then the user is on the Amend confirmation page
 
@@ -51,7 +51,7 @@ Feature: Amend Journeys
     Then the user clicks the button to upload and selects "next" file
     Then the user should be on the amend file upload confirmation page after uploading 2 document/s
     Then the user selects No to uploading another file
-    Then the user is on the Amend uploadOnly review page
+    Then the user is on the Amend uploadOnly review page and should see their responses
     When the user clicks Submit on the CYA page
     Then the user is on the Amend confirmation page
 
@@ -67,6 +67,6 @@ Feature: Amend Journeys
     Then the user should be on the amend file upload confirmation page after uploading 1 document/s
     Then the user should see their first uploaded doc test.jpg on upload review page
     Then the user selects No to uploading another file
-    Then the user is on the Amend writeAndupload review page
+    Then the user is on the Amend writeAndupload review page and should see their responses
     When the user clicks Submit on the CYA page
     Then the user is on the Amend confirmation page

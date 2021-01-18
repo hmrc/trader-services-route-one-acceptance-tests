@@ -21,28 +21,32 @@ import uk.gov.hmrc.test.ui.pages.{AmendCYAPage, AmendPage, BasePage}
 
 class AmendCYAStepDefs extends AmendPage with AmendCYAPage with BasePage with ScalaDsl with EN {
 
-  Given("""^the user is on the Amend (.*) review page$""") { (journey: String) =>
+  Given("""^the user is on the Amend (.*) review page and should see their responses$""") { (journey: String) =>
     confirmUrl(urlAmendCYA)
     verifyHeading(headingMainCYA)
     verifyH2DecInfo(h2Dec)
     assertElementText(additionalInfoType, infoTypeRow)
-
+    assertElementText(userCaseRef, caseRefAnswer)
 
     journey match {
       case "writeOnly" =>
         verifyH2AddInfo(h2Additional)
-        assertElementText(additionalInfoResponse, messageRow)
+        assertElementText(messageOnly, infoTypeAnswer)
+//        assertElementText("USER TEXT HERE", messageAnswer)
 
       case "uploadOnly" =>
         verifyH2Documents(h2Documents)
+        assertElementText(uploadOnly, infoTypeAnswer)
         assertElementText(documentsInfo, uploadRow)
 
       case "writeAndupload" =>
         verifyH2AddInfo(h2Additional)
-        assertElementText(additionalInfoResponse, messageRow)
+        assertElementText(messageAndUpload, infoTypeAnswer)
 
         verifyH2Documents(h2Documents)
         assertElementText(documentsInfo, uploadRow)
+      //        assertElementText("FILE NAMES??", messageAnswer)
+
     }
   }
 
