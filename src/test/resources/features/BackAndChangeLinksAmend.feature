@@ -6,7 +6,7 @@ Feature: Back Links & Change Links - Amend
     Given the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
     When the user enters valid characters for case reference number
-    When the user is on the how to respond page and selects write&Upload
+    When the user is on the how to respond page and selects writeAndupload
     Then the user is on the write response page
     And the user enters a response with valid characters
     Then the user is on the Amend upload page
@@ -75,4 +75,4 @@ Feature: Back Links & Change Links - Amend
 
       Examples:
       | journey  | caseRef                | amendType    | text      |
-      |  Amend   | PC12010081330XGBNZJO04 | write&Upload | test text |
+      |  Amend   | PC12010081330XGBNZJO04 | writeAndupload | test text |

@@ -50,7 +50,7 @@ class AmendStepDefs extends AmendPage with FinalConfirmationPage with BasePage w
     caseNo match {
       case "writeOnly" => clickByCSS("#typeOfAmendment")
       case "uploadOnly" => clickByCSS("#typeOfAmendment-2")
-      case "write&Upload" => clickByCSS("#typeOfAmendment-3")
+      case "writeAndupload" => clickByCSS("#typeOfAmendment-3")
       case "noOption" =>
     }
     clickContinue()
@@ -61,7 +61,7 @@ class AmendStepDefs extends AmendPage with FinalConfirmationPage with BasePage w
     request match {
       case "writeOnly" => optionSelected("#typeOfAmendment")
       case "uploadOnly" => optionSelected("#typeOfAmendment-2")
-      case "write&Upload" => optionSelected("#typeOfAmendment-3")
+      case "writeAndupload" => optionSelected("#typeOfAmendment-3")
     }
   }
 

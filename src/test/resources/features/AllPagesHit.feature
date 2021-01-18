@@ -106,7 +106,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     Given the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
     When the user enters valid characters for case reference number
-    When the user is on the how to respond page and selects write&Upload
+    When the user is on the how to respond page and selects writeAndupload
     Then the user is on the write response page
     And the user enters a response with valid characters
     Then the user is on the Amend upload page

@@ -32,7 +32,6 @@ class AmendCYAStepDefs extends AmendPage with AmendCYAPage with BasePage with Sc
       case "writeOnly" =>
         verifyH2AddInfo(h2Additional)
         assertElementText(messageOnly, infoTypeAnswer)
-//        assertElementText("USER TEXT HERE", messageAnswer)
 
       case "uploadOnly" =>
         verifyH2Documents(h2Documents)
@@ -45,7 +44,6 @@ class AmendCYAStepDefs extends AmendPage with AmendCYAPage with BasePage with Sc
 
         verifyH2Documents(h2Documents)
         assertElementText(documentsInfo, uploadRow)
-      //        assertElementText("FILE NAMES??", messageAnswer)
 
     }
   }
@@ -58,5 +56,13 @@ class AmendCYAStepDefs extends AmendPage with AmendCYAPage with BasePage with Sc
       case "message" => clickHref("a[href*='write-response']")
       case "documents" => clickHref("a[href*='file-uploaded']")
     }
+  }
+
+  Then("""^the user should see what they entered as their message "(.*)"$""") { (response: String) =>
+    assertElementText(response, messageAnswer)
+  }
+
+  Then("""^the user should see what the files they uploaded "(.*)"$""") { (uploads: String) =>
+    assertElementTextContains(uploads, uploadAnswer)
   }
 }

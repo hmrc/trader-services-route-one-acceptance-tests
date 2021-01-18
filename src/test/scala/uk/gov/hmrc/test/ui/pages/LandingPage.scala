@@ -32,13 +32,8 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
-
 trait LandingPage extends BasePage {
 
   val traderServicesUrl: String = traderServicesBaseUrl + "/new-or-existing"
   val landingHeading = "What do you want to do?"
-
-  def selectNew: Unit = driver.findElement(By.cssSelector("#newOrExistingCase")).click()
-  def selectAmend: Unit = driver.findElement(By.cssSelector("#newOrExistingCase-2")).click()
 }
