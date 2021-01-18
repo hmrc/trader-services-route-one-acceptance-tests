@@ -52,5 +52,11 @@ class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with E
                 optionNotSelected("#newOrExistingCase-2")
     }
   }
+
+  And("""^the user clicks the banner link to return to the landing page""") { () =>
+    Thread.sleep(1500)
+    findElementByCss(".govuk-header__link--service-name").click()
+    confirmUrl(traderServicesUrl)
+  }
 }
 
