@@ -20,7 +20,7 @@ import org.openqa.selenium.WebElement
 
 trait AmendCYAPage extends BasePage with DeclarationNumPage with QuestionPages {
 
-  val urlAmendCYA: String = traderServicesBaseUrl + "/amendment-review"
+  val urlAmendCYA: String = traderServicesBaseUrl + "/add/check-your-answers"
   val headingMainCYA = "Review your case details"
 
   def verifyH2DecInfo(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(2)").getText shouldBe text
