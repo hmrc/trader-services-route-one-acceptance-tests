@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
+import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.{BasePage, LandingPage}
 
 
@@ -37,8 +38,8 @@ class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with E
     verifyHeading(landingHeading)
 
     journey match {
-    case "New" => selectNew
-    case "Amend" => selectAmend
+    case "New" => driver.findElement(By.cssSelector("#newOrExistingCase")).click()
+    case "Amend" =>  driver.findElement(By.cssSelector("#newOrExistingCase-2")).click()
   }
     clickContinue()
   }
@@ -51,6 +52,12 @@ class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with E
       case _ => optionNotSelected("#newOrExistingCase")
                 optionNotSelected("#newOrExistingCase-2")
     }
+  }
+
+  And("""^the user clicks the banner link to return to the landing page""") { () =>
+    Thread.sleep(1500)
+    findElementByCss(".govuk-header__link--service-name").click()
+    confirmUrl(traderServicesUrl)
   }
 }
 

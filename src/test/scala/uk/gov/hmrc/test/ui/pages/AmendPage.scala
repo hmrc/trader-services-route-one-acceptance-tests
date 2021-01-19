@@ -35,7 +35,4 @@ trait AmendPage extends BasePage {
 
   def textInput: WebElement = driver.findElement(By.cssSelector("#responseText"))
 
-  //upload SAME??
-
-
 }

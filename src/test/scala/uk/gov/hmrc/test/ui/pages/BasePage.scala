@@ -146,6 +146,10 @@ trait BasePage extends Matchers with BrowserDriver {
     assert(element.getText.equals(content), message(s"Element displayed is: ${element.getText} Expecting: $content"))
   }
 
+  def assertElementTextContains(content: String, element: WebElement): Unit = {
+    assert(element.getText.contains(content), message(s"Element displayed is: ${element.getText} Expecting: $content"))
+  }
+
   def isElementVisible(css: String): Boolean = findElementByCss(css).isDisplayed
 
   def assertElementIsNotVisibleById(id: String): Unit = {

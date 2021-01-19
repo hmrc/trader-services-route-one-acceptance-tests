@@ -22,7 +22,7 @@ import org.openqa.selenium.interactions.Actions
 import org.scalatest.Matchers
 import org.scalatest.concurrent.Eventually
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage, VesselQuestionsPage}
+import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage, LandingPage, VesselQuestionsPage}
 import uk.gov.hmrc.webdriver.SingletonDriver
 
 import scala.util.Try
@@ -41,12 +41,6 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
   And("""^the user clicks Submit on the CYA page""") { () =>
    clickCYAContinue()
   }
-
-  And("""^the user clicks the banner link to return to the landing page""") { () =>
-    Thread.sleep(1500)
-   findElementByCss(".govuk-header__link--service-name").click()
-  }
-
 
   And("""^the user clicks Continue and waits""") { () =>
     clickUploadFirst()

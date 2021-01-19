@@ -17,10 +17,10 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.test.ui.pages.{BasePage, CheckAnswersPage, ContactDetailsPage}
+import uk.gov.hmrc.test.ui.pages.{BasePage, NewCYAPage, ContactDetailsPage}
 
 
-class CheckAnswersStepDefs extends CheckAnswersPage with BasePage with ContactDetailsPage with ScalaDsl with EN {
+class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage with ScalaDsl with EN {
 
   Given("""^the user is on the (.*) CYA page$""") { (Journey: String) =>
     Journey match {

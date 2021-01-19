@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.WebElement
 
-trait CheckAnswersPage extends BasePage with DeclarationNumPage with QuestionPages with PriorityPages {
+trait NewCYAPage extends BasePage with DeclarationNumPage with QuestionPages with PriorityPages {
 
   val urlImportCYA: String = traderServicesBaseUrl + importJourneyUrl + "/check-your-answers"
   val urlExportCYA: String = traderServicesBaseUrl + exportJourneyUrl + "/check-your-answers"
