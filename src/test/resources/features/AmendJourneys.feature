@@ -74,3 +74,4 @@ Feature: Amend Journeys
     Then the user is on the Amend writeAndupload review page and should see their responses
     When the user clicks Submit on the CYA page
     Then the user is on the Amend confirmation page
+    When the user clicks the send docs link on the Amend confirmation page they will go back to the start

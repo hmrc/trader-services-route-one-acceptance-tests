@@ -42,8 +42,12 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
   Then("""^the user should see guidance links on the page""") {() =>
   }
 
-  When("""^the user clicks to submit documents they will be back on the start page"""){() =>
-    clickFinalContinue()
+  When("""^the user clicks the send docs link on the (.*) confirmation page they will go back to the start"""){(journey:String) =>
+
+    journey match {
+      case "New" => clickFinalContinueNew()
+      case "Amend"=> clickFinalContinueAmend()
+    }
     confirmUrl(traderServicesUrl)
     verifyHeading(landingHeading)
   }

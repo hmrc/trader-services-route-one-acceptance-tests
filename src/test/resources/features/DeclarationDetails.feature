@@ -29,10 +29,9 @@ Feature: Declaration details validation
     And the user clicks Continue
     Then the user should see "Error:EPU number must only contain numbers" error message for "epu"
 
-    When the user enters declaration details "701" and "123456A"
+    When the user enters declaration details "670" and "123456A"
     And the user clicks Continue
-    Then the user should see "Error:EPU number must be 700 or less" error message for "epu"
-#    Will this change in the future? 669 or list?
+    Then the user should see "Error:EPU number must be 669 or less" error message for "epu"
 
 
   Scenario: Error validation on declaration page - Entry number
