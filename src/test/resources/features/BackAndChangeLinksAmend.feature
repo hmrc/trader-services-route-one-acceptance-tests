@@ -1,6 +1,17 @@
 @TraderService
 Feature: Back Links & Change Links - Amend
 
+  Scenario: Amend: A user wants to go back to the start part way through (banner link)
+    Given the user is on the start page for trader services and selects Amend
+    Then the user is on the case ref number page
+    When the user enters valid characters for case reference number
+    When the user is on the how to respond page and selects writeAndupload
+    Then the user is on the write response page
+    And the user enters a response with valid characters
+    Then the user is on the Amend upload page
+    Then the user clicks the button to upload and selects "first" file
+    Then the user clicks the banner link to return to the landing page
+
 
   Scenario: Amend: A user wants to change their request type and information via the CYA page
     Given the user is on the start page for trader services and selects Amend
