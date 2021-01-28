@@ -30,8 +30,12 @@ trait QuestionPages extends BasePage {
   val urlRouteExport: String = traderServicesBaseUrl + exportJourneyUrl + "/route-type"
   val headingRoute: String = "Which route is this declaration for?"
 
-
   val urlTransportImport: String = traderServicesBaseUrl + importJourneyUrl + "/transport-type"
   val urlTransportExport: String = traderServicesBaseUrl + exportJourneyUrl + "/transport-type"
   val headingTransport: String = "Which type of transport are you using?"
+
+  //ALVS - Import only
+  val urlALVS: String = traderServicesBaseUrl + importJourneyUrl + "/automatic-licence-verification"
+  val headingALVS = "Do you use Defra’s Automatic Licence Verification System (ALVS)?"
+
 }

@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.{By, WebElement}
 
-trait AmendPage extends BasePage {
+trait AmendPages extends BasePage {
 
   val urlCaseRef: String = traderServicesBaseUrl + amendUrl + "/case-reference-number"
   val caseRefHeading: String = "What’s the case reference number?"

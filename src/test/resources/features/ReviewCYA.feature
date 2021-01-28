@@ -38,7 +38,7 @@ Feature: Review/CYA page
     And the user should see the Full Contact details row & the correct responses "<name>", "<email>" & "<phone>" on the CYA page
 
     Examples:
-      | epu | entryNo |requestType | route   | priority      | ALVS | transport | name       | email          | phone       | entryDateCYA |
+      | epu | entryNo |requestType | route   | priority      | ALVS | transport | name       | email          | phone         | entryDateCYA |
       | 003 | 123456A |New         | Route 6 | Human remains | Yes  | Air       | Abc Testb  | valid@test.com | 01234 567 899 | Today        |
 
 
@@ -76,5 +76,5 @@ Feature: Review/CYA page
     And the user should see the Mandatory Contact details row & the correct responses "", "<email>" & "" on the CYA page
 
     Examples:
-      | epu | entryNo |requestType | route   | transport | vesselName  | email   | entryDateCYA |
-      | 123 | A23456A |New         | Route 1 | Maritime  | Test Vessel | abc@test.com| Today        |
+      | epu | entryNo |requestType | route   | transport | vesselName  | email        | entryDateCYA |
+      | 123 | A23456A |New         | Route 1 | Maritime  | Test Vessel | abc@test.com | Today        |

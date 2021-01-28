@@ -1,6 +1,7 @@
 @TraderService
-Feature: Back Links & Change Links (New - Import & Export)
+Feature: Back Links & Change Links
 
+#  BANNER LINK - RestartCall
   Scenario Outline: A user user goes back to the start after uploading a file (information cleared)
     Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
@@ -23,12 +24,13 @@ Feature: Back Links & Change Links (New - Import & Export)
     When the user clicks the button to upload and selects "first" file
     Then the user clicks the banner link to return to the landing page
     Then the user is on the start page for trader services
+#     not be pre populated
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | vesselName  | email   |
       | 123 | A23456A | New         | Route 1 | Human remains | Maritime  | Test Vessel | a@a.com |
 
-  #BACK LINKS
+  #IMPORT
   Scenario Outline: Import: A user wants to go back through the journey
     Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
@@ -98,72 +100,6 @@ Feature: Back Links & Change Links (New - Import & Export)
 | epu | entryNo | requestType | route   | priority                | transport | vesselName | name       | email      |
 | 113 | 993456A | New         | Route 3 | Explosives or fireworks | Maritime  | TestShip   | Abc Testb  | a@test.com |
 
-
-  Scenario Outline: Export: A user wants to go back through the journey
-    Given the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
-    And the user enters today's date for entryDate
-    And the user clicks Continue
-    Then the user is on the Export Request Type page and selects <requestType>
-    Then the user is on the Export Route Type Page and selects <route>
-    Then the user is on the Export YesNo Priority Page and selects Yes
-    When the user is on the Export Priority Options Page and selects <priority>
-    Then the user is on the Export Transport Type Page and selects <transport>
-    Then the user is on the Export-Optional Vessel Page
-    And the user enters today's date for vesselDate
-    Then the user clicks Continue
-    Then the user is on the Export Contact Details Page
-    When the user enters a name "<name>"
-    Then the user enters an email address "<email>"
-    Then the user clicks Continue
-    And the user is on the First upload page
-
-    When the user clicks back
-    Then the user is on the Export Contact Details Page
-    And the details entered for name, email and phone number should be pre-filled with "<name>", "<email>" & ""
-
-    When the user clicks back
-    Then the user is on the Export-Optional Vessel Page
-    And the details entered for Vessel Name should be pre filled with ""
-    And the details entered for vesselDate should be pre filled with today's date
-    And the details entered for Time of Arrival should be pre filled with "" & ""
-
-    When the user clicks back
-    Then the user is on the Export Transport Page
-    And the last selected option for transport type should be pre filled with <transport>
-
-    When the user clicks back
-    Then the user is on the Export Priority Goods Page
-    And the last selected option for priority goods should be pre filled with <priority>
-
-    When the user clicks back
-    Then the user is on the Export YN Priority Page
-    And the last selected option for YN Priority should be pre filled with Yes
-
-    When the user clicks back
-    Then the user is on the Export Route Type Page
-    And the last selected option for Route should be pre filled with <route>
-
-    When the user clicks back
-    Then the user is on the Export Request Type Page
-    And the last selected option for Export Request should be pre filled with <requestType>
-
-    When the user clicks back
-    Then the user is on the declaration details page
-    And the details entered for EPU & EntryNo should be pre filled with <epu> & <entryNo>
-    And the details entered for entryDate should be pre filled with today's date
-
-    When the user clicks back
-    Then the user is on the start page for trader services
-    And the last selected option for journey type should be pre filled with New
-
-    Examples:
-      | epu | entryNo | requestType  | route   | priority      | transport | name      | email      |
-      | 553 | A33456A | Cancellation | Route 6 | Human remains | Air       | Abc Testb | a@test.com |
-
-
-#CHANGE LINKS
   Scenario Outline: Import: A user wants to change an answer via the CYA page
     Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
@@ -254,8 +190,72 @@ Feature: Back Links & Change Links (New - Import & Export)
 
 
     Examples:
-| epu | entryNo | requestType  | route | priority   | ALVS | transport | vesselName | name      | email      | phoneNo    | entryDateCYA|
-| 113 | 993456A | Cancellation | Hold  | Human remains | Yes  | Maritime  | TestShip   | Abc Testb | a@test.com | 01234567891 | Today       |
+      | epu | entryNo | requestType  | route | priority   | ALVS | transport | vesselName | name      | email      | phoneNo    | entryDateCYA|
+      | 113 | 993456A | Cancellation | Hold  | Human remains | Yes  | Maritime  | TestShip   | Abc Testb | a@test.com | 01234567891 | Today       |
+
+#EXPORT
+  Scenario Outline: Export: A user wants to go back through the journey
+    Given the user is on the start page for trader services and selects New
+    Then the user is on the declaration details page
+    When the user enters declaration details "<epu>" and "<entryNo>"
+    And the user enters today's date for entryDate
+    And the user clicks Continue
+    Then the user is on the Export Request Type page and selects <requestType>
+    Then the user is on the Export Route Type Page and selects <route>
+    Then the user is on the Export YesNo Priority Page and selects Yes
+    When the user is on the Export Priority Options Page and selects <priority>
+    Then the user is on the Export Transport Type Page and selects <transport>
+    Then the user is on the Export-Optional Vessel Page
+    And the user enters today's date for vesselDate
+    Then the user clicks Continue
+    Then the user is on the Export Contact Details Page
+    When the user enters a name "<name>"
+    Then the user enters an email address "<email>"
+    Then the user clicks Continue
+    And the user is on the First upload page
+
+    When the user clicks back
+    Then the user is on the Export Contact Details Page
+    And the details entered for name, email and phone number should be pre-filled with "<name>", "<email>" & ""
+
+    When the user clicks back
+    Then the user is on the Export-Optional Vessel Page
+    And the details entered for Vessel Name should be pre filled with ""
+    And the details entered for vesselDate should be pre filled with today's date
+    And the details entered for Time of Arrival should be pre filled with "" & ""
+
+    When the user clicks back
+    Then the user is on the Export Transport Page
+    And the last selected option for transport type should be pre filled with <transport>
+
+    When the user clicks back
+    Then the user is on the Export Priority Goods Page
+    And the last selected option for priority goods should be pre filled with <priority>
+
+    When the user clicks back
+    Then the user is on the Export YN Priority Page
+    And the last selected option for YN Priority should be pre filled with Yes
+
+    When the user clicks back
+    Then the user is on the Export Route Type Page
+    And the last selected option for Route should be pre filled with <route>
+
+    When the user clicks back
+    Then the user is on the Export Request Type Page
+    And the last selected option for Export Request should be pre filled with <requestType>
+
+    When the user clicks back
+    Then the user is on the declaration details page
+    And the details entered for EPU & EntryNo should be pre filled with <epu> & <entryNo>
+    And the details entered for entryDate should be pre filled with today's date
+
+    When the user clicks back
+    Then the user is on the start page for trader services
+    And the last selected option for journey type should be pre filled with New
+
+    Examples:
+      | epu | entryNo | requestType  | route   | priority      | transport | name      | email      |
+      | 553 | A33456A | Cancellation | Route 6 | Human remains | Air       | Abc Testb | a@test.com |
 
 
   Scenario Outline: Export: A user wants to change an answer via the CYA page
@@ -339,3 +339,79 @@ Feature: Back Links & Change Links (New - Import & Export)
     Examples:
 | epu | entryNo | requestType | route   | priority     | transport | vesselName | name     | email        | phoneNo    | entryDateCYA |
 | 669 | X12088M | New         | Route 2 | Live animals | Air       | Ship Test  | Ms. Test | xyz@test.com | 07712 345 671 | Today        |
+
+#    AMEND
+  Scenario: Amend: A user wants to change their request type and information via the CYA page
+    Given the user is on the start page for trader services and selects Amend
+    Then the user is on the case ref number page
+    When the user enters valid characters for case reference number
+    When the user is on the how to respond page and selects writeAndupload
+    Then the user is on the write response page
+    And the user enters a response with valid characters
+    Then the user is on the Amend upload page
+    Then the user clicks the button to upload and selects "first" file
+    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
+    Then the user should see their first uploaded doc test.jpg on upload review page
+    Then the user selects No to uploading another file
+    Then the user is on the Amend writeAndupload review page and should see their responses
+
+    When the user clicks the change link on the amend review page for caseRef
+    Then the user is on the case ref number page
+    When the user enters valid characters for case reference number
+    When the user is on the how to respond page and selects writeOnly
+    And the user enters a response with valid characters
+    Then the user is on the Amend writeOnly review page and should see their responses
+
+    When the user clicks the change link on the amend review page for message
+    Then the user is on the write response page
+    And the user enters a response "Sample message for PEGA" and continues
+
+    When the user clicks the change link on the amend review page for amendment
+    Then the user is on the how to respond page and selects uploadOnly
+    Then the user is on the Amend upload page
+    Then the user clicks the button to upload and selects "first" file
+    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
+    Then the user selects No to uploading another file
+    Then the user is on the Amend uploadOnly review page and should see their responses
+    When the user clicks the change link on the amend review page for documents
+    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
+    Then the user selects Yes to uploading another file
+    Then the user clicks the button to upload and selects "next" file
+    Then the user should be on the amend file upload confirmation page after uploading 2 document/s
+    Then the user selects No to uploading another file
+    Then the user is on the Amend uploadOnly review page and should see their responses
+    When the user clicks Submit on the CYA page
+    Then the user is on the Amend confirmation page
+
+  Scenario Outline: Amend Back links - A user wants to go back to the start
+    Given the user is on the start page for trader services and selects <journey>
+    Then the user is on the case ref number page
+    When the user enters a case ref number "<caseRef>" and continues
+    When the user is on the how to respond page and selects <amendType>
+    Then the user is on the write response page
+    And the user enters a response "<text>" and continues
+    Then the user is on the Amend upload page
+    Then the user clicks the button to upload and selects "first" file
+    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
+    Then the user should see their first uploaded doc test.jpg on upload review page
+    When the user selects No to uploading another file
+    Then the user is on the Amend writeAndupload review page and should see their responses
+    Then the user clicks back
+    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
+    Then the user clicks back
+    Then the user is on the write response page
+    And the details in the text box should be pre-filled with "<text>"
+    When the user clicks back
+    Then the user is on the how to respond page
+    And the last selected option for type of amendment should be <amendType>
+    When the user clicks back
+    Then the user is on the case ref number page
+    And the details in the case ref field should be pre-filled with "<caseRef>"
+    When the user clicks back
+    Then the user is on the start page for trader services
+    And the last selected option for journey type should be pre filled with <journey>
+    Then the user clicks the banner link to return to the landing page
+
+    Examples:
+      | journey  | caseRef                | amendType    | text      |
+      |  Amend   | PC12010081330XGBNZJO04 | writeAndupload | test text |

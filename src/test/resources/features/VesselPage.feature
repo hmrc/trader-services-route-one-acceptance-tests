@@ -100,8 +100,8 @@ Feature: Vessel page validation
     And the user clicks Continue
     Then the user should see the invalid date range error message for "dateOfArrival" field
 
-#  Then the user should see "Error:Date of arrival must be between 22 April 2020 and 22 April 2021" error message for "dateOfArrival"
-#  Error message: Date of arrival must be between [6 months past from today] or [6 months future of today]
+#  Error message: Date of arrival must be between [date of entry] or [6 months future of today]
+#    Test to see error if date is before date of entry..... today date - 1 day?
 
     Then the user enters a date for the vessel "01" "01" "2020"
     Then the user enters a time for the vessel "01" "01"

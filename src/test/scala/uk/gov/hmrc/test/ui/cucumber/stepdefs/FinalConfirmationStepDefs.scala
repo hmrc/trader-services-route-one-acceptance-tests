@@ -17,10 +17,10 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.test.ui.pages.{AmendPage, BasePage, FinalConfirmationPage, LandingPage}
+import uk.gov.hmrc.test.ui.pages.{AmendPages, BasePage, FinalConfirmationPage, LandingPage}
 
 class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
-  with LandingPage with AmendPage with ScalaDsl with EN {
+  with LandingPage with AmendPages with ScalaDsl with EN {
 
 
   Given("""^the user is on the (.*) confirmation page""") { (journey: String) =>

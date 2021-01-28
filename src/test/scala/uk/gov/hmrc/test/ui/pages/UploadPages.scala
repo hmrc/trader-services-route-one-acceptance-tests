@@ -54,9 +54,3 @@ trait UploadPages extends BasePage {
 
   def noConditionalReveal:WebElement = findElementById("conditional-uploadAnotherFile-2")
 }
-
-
-//Step for file verification page/css processing ring
-//val fluentWaitUpload: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
-//.withTimeout(Duration.ofSeconds(60))
-//.pollingEvery(Duration.ofMillis(250))

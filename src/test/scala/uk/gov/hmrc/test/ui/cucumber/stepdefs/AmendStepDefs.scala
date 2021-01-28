@@ -17,9 +17,9 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.test.ui.pages.{AmendPage, BasePage, FinalConfirmationPage}
+import uk.gov.hmrc.test.ui.pages.{AmendPages, BasePage, FinalConfirmationPage}
 
-class AmendStepDefs extends AmendPage with FinalConfirmationPage with BasePage with ScalaDsl with EN {
+class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage with ScalaDsl with EN {
 
 
   Then("""^the user is on the case ref number page$""") { () =>

@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.WebElement
 
-trait NewCYAPage extends BasePage with DeclarationNumPage with QuestionPages with PriorityPages {
+trait NewCYAPage extends BasePage {
 
   val urlImportCYA: String = traderServicesBaseUrl + importJourneyUrl + "/check-your-answers"
   val urlExportCYA: String = traderServicesBaseUrl + exportJourneyUrl + "/check-your-answers"
@@ -102,7 +102,6 @@ trait NewCYAPage extends BasePage with DeclarationNumPage with QuestionPages wit
   def contactDetailAnswerName:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(1)")
   def contactDetailAnswerEmail:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(2)")
   def contactDetailAnswerPhone:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(3)")
-
 
   def contactDetailAnswerEmailOnly:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(1)")
 }
