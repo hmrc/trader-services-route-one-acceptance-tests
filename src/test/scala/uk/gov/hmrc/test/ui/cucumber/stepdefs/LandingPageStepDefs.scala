@@ -49,7 +49,7 @@ class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with E
     request match {
       case "New" => optionSelected("#newOrExistingCase")
       case "Amend" => optionSelected("#newOrExistingCase-2")
-      case _ => optionNotSelected("#newOrExistingCase")
+      case "Nothing" => optionNotSelected("#newOrExistingCase")
                 optionNotSelected("#newOrExistingCase-2")
     }
   }

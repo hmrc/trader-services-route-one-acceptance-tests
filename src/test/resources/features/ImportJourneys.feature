@@ -27,7 +27,7 @@ Feature: Customs check - Import Journeys
     And the user clicks Submit on the CYA page
     Then the user is on the New confirmation page
     When the user clicks the send docs link on the New confirmation page they will go back to the start
-    # nothing pre filled
+    And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
       | epu | entryNo |requestType | route   | priority      | transport | name   | email          |

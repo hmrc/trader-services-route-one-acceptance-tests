@@ -24,7 +24,7 @@ Feature: Back Links & Change Links
     When the user clicks the button to upload and selects "first" file
     Then the user clicks the banner link to return to the landing page
     Then the user is on the start page for trader services
-#     not be pre populated
+    And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | vesselName  | email   |
@@ -95,6 +95,10 @@ Feature: Back Links & Change Links
     When the user clicks back
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with New
+
+    Then the user clicks the banner link to return to the landing page
+    Then the user is on the start page for trader services
+    And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
 | epu | entryNo | requestType | route   | priority                | transport | vesselName | name       | email      |
@@ -252,6 +256,10 @@ Feature: Back Links & Change Links
     When the user clicks back
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with New
+    
+    Then the user clicks the banner link to return to the landing page
+    Then the user is on the start page for trader services
+    And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
       | epu | entryNo | requestType  | route   | priority      | transport | name      | email      |
@@ -411,6 +419,7 @@ Feature: Back Links & Change Links
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with <journey>
     Then the user clicks the banner link to return to the landing page
+    And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
       | journey  | caseRef                | amendType    | text      |

@@ -26,7 +26,7 @@ Feature: Amend Journeys
     Then the user is on the Amend upload page
     Then the user clicks the button to upload and selects "first" file
     Then the user clicks the banner link to return to the landing page
-#    nothing selected...
+    And the last selected option for journey type should be pre filled with Nothing
 
 #    Write Response
   Scenario: A user wants to add a message to their case (write response only)
