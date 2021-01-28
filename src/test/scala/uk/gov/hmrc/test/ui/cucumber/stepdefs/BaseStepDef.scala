@@ -18,11 +18,10 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
 import org.openqa.selenium.By
-import org.openqa.selenium.interactions.Actions
 import org.scalatest.Matchers
 import org.scalatest.concurrent.Eventually
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage, LandingPage, VesselQuestionsPage}
+import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage, VesselQuestionsPage}
 import uk.gov.hmrc.webdriver.SingletonDriver
 
 import scala.util.Try
@@ -125,18 +124,5 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
       findElementById(fieldBodyID).clear()
     }
   }
-
-//  Then("""^the user should see below error messages in below order$""") { dataTable: DataTable =>
-//
-//    dataTable.asMaps(classOf[String], classOf[String]).asScala.foreach { data =>
-//      val fieldname: String = data.get("FieldValue")
-//      //println("***** field name:   "  +fieldname)
-//      val value: String = data.get("ExpectedValue")
-//      //  println("***** expectedValue:  "  +value)
-//      val pageValue: String = driver.findElement(By.id(s"$fieldname-error-summary")).getText
-//      //  println("***** pageValue:  "  +pageValue)
-//      assert(value == pageValue)
-//    }
-//  }
 
 

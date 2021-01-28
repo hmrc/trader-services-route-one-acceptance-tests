@@ -42,22 +42,6 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     clickUploadFirst()
   }
 
-//  Then("""^ensure the user is on the correct (.*) page and click continue if not""") { (journey: String) =>
-//    journey match {
-//      case "New" =>
-//    Thread.sleep (1000L)
-//    val uploadUrl = driver.getCurrentUrl
-//    if (uploadUrl.equals (urlUpload))
-//    {clickUploadContinue()}
-//
-//      case "Amend" =>
-//      Thread.sleep (1000L)
-//      val uploadUrl = driver.getCurrentUrl
-//      if (uploadUrl.equals (urlUploadAmend) )
-//      {clickUploadContinue()}
-//    }
-//  }
-
   Then("""^the user should be on the (.*) file upload confirmation page after uploading (.*) document/s"""){
     (journey:String, docAmount:String) =>
 
@@ -95,22 +79,3 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     clickUploadContinue()
   }
 }
-
-
-// Stepdef for checking file verification page (inaccessible via standard upscan stub)
-//  Then("""^the user should be on the (.*) file uploading page"""){(uploadNo:String) =>
-//
-//    uploadNo match {
-//      case "first" => verifyHeading (headingUpload)
-//      case _ => verifyHeading(headingUploadAnother)
-//    }
-//
-//    confirmUrl(urlUploadVer)
-//    assertElementText("We are checking your file, please wait",
-//      driver.findElement(By.cssSelector(".govuk-heading-m")))
-//
-//    driver.findElement(By.cssSelector(".ccms-loader"))
-//
-//    assertElementIsNotVisibleById(".ccms-loader")
-//
-//  }

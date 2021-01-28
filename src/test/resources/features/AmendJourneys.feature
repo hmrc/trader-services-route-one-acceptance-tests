@@ -23,11 +23,12 @@ Feature: Amend Journeys
     When the user enters a response with tooMany characters
     Then the user should see "Error:Response must be 1000 characters or fewer" error message for "responseText"
     When the user enters a response with valid characters
-    
     Then the user is on the Amend upload page
     Then the user clicks the button to upload and selects "first" file
     Then the user clicks the banner link to return to the landing page
+    And the last selected option for journey type should be pre filled with Nothing
 
+#    Write Response
   Scenario: A user wants to add a message to their case (write response only)
     Given the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
@@ -40,6 +41,7 @@ Feature: Amend Journeys
     When the user clicks Submit on the CYA page
     Then the user is on the Amend confirmation page
 
+#    Upload Only
   Scenario: A user wants to add another document to a case (upload only)
     Given the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
@@ -59,6 +61,7 @@ Feature: Amend Journeys
     When the user clicks Submit on the CYA page
     Then the user is on the Amend confirmation page
 
+#    Write Response & Upload
   Scenario: Amend: A user adds a message and a document to a case (write response + upload)
     Given the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page

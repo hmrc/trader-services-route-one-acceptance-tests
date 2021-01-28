@@ -17,9 +17,9 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.test.ui.pages.{AmendCYAPage, AmendPage, BasePage}
+import uk.gov.hmrc.test.ui.pages.{AmendCYAPage, AmendPages, BasePage}
 
-class AmendCYAStepDefs extends AmendPage with AmendCYAPage with BasePage with ScalaDsl with EN {
+class AmendCYAStepDefs extends AmendPages with AmendCYAPage with BasePage with ScalaDsl with EN {
 
   Given("""^the user is on the Amend (.*) review page and should see their responses$""") { (journey: String) =>
     confirmUrl(urlAmendCYA)

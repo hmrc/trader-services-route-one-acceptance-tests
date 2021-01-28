@@ -25,7 +25,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     Then the user is on the Export CYA page
     Then the user clicks Submit on the CYA page
     Then the user is on the New confirmation page
-    When the user clicks to submit documents they will be back on the start page
+    When the user clicks the send docs link on the New confirmation page they will go back to the start
 
 
     Examples:
