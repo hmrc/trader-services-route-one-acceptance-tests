@@ -46,6 +46,11 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     Thread.sleep(1500L)
   }
 
+  And("""^the user waits""") { () =>
+    Thread.sleep(7000l)
+  }
+
+
   And("""^the user clicks back""") { () =>
     clickBack()
   }
@@ -123,6 +128,12 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
       findElementById(fieldBodyID).isSelected
       findElementById(fieldBodyID).clear()
     }
+
+  When("""^the user logs into QA""") {
+    navigateTo("https://www.qa.tax.service.gov.uk/auth-login-stub/gg-sign-in")
+    writeById(findElementById("redirectionUrl"), "/send-documents-for-customs-check")
+    clickByCSS("#inputForm > div.form-field-group > p > input")
+  }
   }
 
 

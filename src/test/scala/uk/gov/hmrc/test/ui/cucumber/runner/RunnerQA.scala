@@ -16,43 +16,14 @@
 
 package uk.gov.hmrc.test.ui.cucumber.runner
 
-import cucumber.api.java.Before
 import io.cucumber.junit.{Cucumber, CucumberOptions}
 import org.junit.runner.RunWith
-import org.junit.{AfterClass, BeforeClass}
-import uk.gov.hmrc.extentreport.ExtentProperties.webDriver
-import uk.gov.hmrc.test.ui.conf.Configuration
-import uk.gov.hmrc.test.ui.pages.BasePage
 
 @RunWith(classOf[Cucumber])
 @CucumberOptions(
   features = Array("src/test/resources/features"),
   glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
   plugin = Array ("pretty", "html:target/cucumber", "json:target/cucumber.json"),
-  tags = "@TraderService"
+  tags = "@TraderServiceQA"
 )
-class Runner
-object Runner extends Runner with BasePage {
-
-  @Before
-  def initialize(): Unit = {
-    webDriver.manage().deleteAllCookies()
-    webDriver.navigate.refresh()
-    webDriver.manage().deleteAllCookies()
-  }
-//
-//  @BeforeClass
-//  def setupUser(): Unit = {
-//    navigateTo(Configuration.settings.SIGN_IN_PAGE)
-//    login()
-//    createUser()
-//    clickByCSS("#update")
-//  }
-//
-//  @AfterClass
-//  def destroyUser(): Unit = {
-//  navigateTo(Configuration.settings.DESTROY_PLANET)
-//    if (destroyPlanetLink.isDisplayed.equals(true)){destroyPlanetLink.click()} else clickByCSS("#destroy-planet")
-//    driver.switchTo().alert().accept()
-//  }
-}
+class RunnerQA
