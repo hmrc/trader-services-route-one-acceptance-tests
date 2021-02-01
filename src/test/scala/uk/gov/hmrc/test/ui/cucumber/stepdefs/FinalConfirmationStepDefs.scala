@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
+import play.twirl.api.TemplateMagic.anyToDefault
 import uk.gov.hmrc.test.ui.pages.{AmendPages, BasePage, FinalConfirmationPage, LandingPage}
 
 class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
@@ -40,6 +41,18 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
   }
 
   Then("""^the user should see guidance links on the page""") {() =>
+  }
+
+//  def caseRefOutput = caseRefNo.getText.copy()
+
+  Then("""^the user copies the case reference number""") {() =>
+    val caseRefOutput = caseRefNo.getText.copy()
+    print(caseRefOutput)
+  }
+
+  Then("""^the user pastes the case reference number and continues""") {() =>
+    writeById(caseRefNo, "")
+    clickContinueCaseRef()
   }
 
   When("""^the user clicks the send docs link on the (.*) confirmation page they will go back to the start"""){(journey:String) =>

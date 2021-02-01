@@ -45,9 +45,28 @@ trait UploadPages extends BasePage {
 
   def uploadFilesToBrowser(fileSeq: String, elementID: String): Unit = {
     fileSeq match {
-      case "first" => filePath = usrDir + "test.jpg"
-      case "next" => filePath = usrDir + "testNCH1.pdf"
-      case "last" => filePath = usrDir + "govuk.xls"
+      case "jpg" => filePath = usrDir + "testJpg.jpg"
+      case "jpeg" => filePath = usrDir + "testJpeg.jpeg"
+
+      case "TIF" => filePath = usrDir + "testTif.TIF"
+      case "tiff" => filePath = usrDir + "testTiff.tiff"
+
+      case "png" => filePath = usrDir + "testPng.png"
+
+      case "pdf" => filePath = usrDir + "testPdf.pdf"
+
+      case "doc" => filePath = usrDir + "testDoc.doc"
+      case "docx" => filePath = usrDir + "testDocx.docx"
+      case "odt" => filePath = usrDir + "testOdt.odt"
+
+      case "xls" => filePath = usrDir + "testXls.xls"
+      case "xlsx" => filePath = usrDir + "testXlsx.xlsx"
+      case "ods" => filePath = usrDir + "testOds.ods"
+
+      case "ppt" => filePath = usrDir + "testPpt.ppt"
+      case "pptx" => filePath = usrDir + "testPptx.pptx"
+      case "odp" => filePath = usrDir + "testOdp.odp"
+
     }
     driver.findElement(By.id(elementID)).sendKeys(filePath)
   }

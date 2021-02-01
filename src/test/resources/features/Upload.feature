@@ -22,27 +22,27 @@ Feature: A user wants to upload documents
     Then the user is on the First upload page
     When the user clicks Continue and waits
     Then the user should see "Error:Select a file" error message for "upload-file"
-    When the user clicks the button to upload and selects "first" file
+    When the user clicks the button to upload and selects the "pdf" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
-    Then the user should see their first uploaded doc test.jpg on upload review page
+    Then the user should see their first uploaded doc testPdf.pdf on upload review page
     
     Then the user selects NoOption to uploading another file
     And the user should see "Error:Select yes if you want to upload another document" error message for "uploadAnotherFile"
 
     Then the user selects Yes to uploading another file
     Then the user is on the Another upload page
-    When the user clicks the button to upload and selects "next" file
+    When the user clicks the button to upload and selects the "ppt" file
     Then the user should be on the new file upload confirmation page after uploading 2 document/s
 
     Then the user selects Yes to uploading another file
     Then the user is on the Another upload page
-    When the user clicks the button to upload and selects "last" file
+    When the user clicks the button to upload and selects the "jpeg" file
     Then the user should be on the new file upload confirmation page after uploading 3 document/s
     Then the user clicks the button to remove a document
     Then the user should be on the new file upload confirmation page after uploading 2 document/s
     Then the user selects Yes to uploading another file
     Then the user is on the Another upload page
-    When the user clicks the button to upload and selects "first" file
+    When the user clicks the button to upload and selects the "ods" file
     Then the user should be on the new file upload confirmation page after uploading 3 document/s
     Then the user selects No to uploading another file
     Then the user is on the Import CYA page

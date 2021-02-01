@@ -24,7 +24,7 @@ Feature: Amend Journeys
     Then the user should see "Error:Response must be 1000 characters or fewer" error message for "responseText"
     When the user enters a response with valid characters
     Then the user is on the Amend upload page
-    Then the user clicks the button to upload and selects "first" file
+    Then the user clicks the button to upload and selects the "xls" file
     Then the user clicks the banner link to return to the landing page
     And the last selected option for journey type should be pre filled with Nothing
 
@@ -48,16 +48,16 @@ Feature: Amend Journeys
     When the user enters valid characters for case reference number
     Then the user is on the how to respond page and selects uploadOnly
     Then the user is on the Amend upload page
-    Then the user clicks the button to upload and selects "first" file
+    Then the user clicks the button to upload and selects the "jpg" file
     Then the user should be on the amend file upload confirmation page after uploading 1 document/s
-    Then the user should see their first uploaded doc test.jpg on upload review page
+    Then the user should see their first uploaded doc testJpg.jpg on upload review page
     Then the user selects Yes to uploading another file
     Then the user is on the AnotherAmend upload page
-    Then the user clicks the button to upload and selects "next" file
+    Then the user clicks the button to upload and selects the "docx" file
     Then the user should be on the amend file upload confirmation page after uploading 2 document/s
     Then the user selects No to uploading another file
     Then the user is on the Amend uploadOnly review page and should see their responses
-    And the user should see what the files they uploaded "test.jpg"
+    And the user should see what the files they uploaded "testDocx.docx"
     When the user clicks Submit on the CYA page
     Then the user is on the Amend confirmation page
 
@@ -70,9 +70,9 @@ Feature: Amend Journeys
     Then the user is on the write response page
     And the user enters a response with valid characters
     Then the user is on the Amend upload page
-    Then the user clicks the button to upload and selects "first" file
+    Then the user clicks the button to upload and selects the "png" file
     Then the user should be on the amend file upload confirmation page after uploading 1 document/s
-    Then the user should see their first uploaded doc test.jpg on upload review page
+    Then the user should see their first uploaded doc testPng.png on upload review page
     Then the user selects No to uploading another file
     Then the user is on the Amend writeAndupload review page and should see their responses
     When the user clicks Submit on the CYA page

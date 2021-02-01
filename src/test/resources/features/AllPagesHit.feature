@@ -19,7 +19,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     And the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the First upload page
-    When the user clicks the button to upload and selects "first" file
+    When the user clicks the button to upload and selects the "pdf" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
     Then the user selects No to uploading another file
     Then the user is on the Export CYA page
@@ -73,7 +73,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     When the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the First upload page
-    When the user clicks the button to upload and selects "first" file
+    When the user clicks the button to upload and selects the "xlsx" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
     Then the user selects No to uploading another file
     Then the user is on the Import CYA page
@@ -110,7 +110,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     Then the user is on the write response page
     And the user enters a response with valid characters
     Then the user is on the Amend upload page
-    Then the user clicks the button to upload and selects "first" file
+    Then the user clicks the button to upload and selects the "doc" file
     Then the user should be on the amend file upload confirmation page after uploading 1 document/s
     Then the user should see their first uploaded doc test.jpg on upload review page
     Then the user selects No to uploading another file

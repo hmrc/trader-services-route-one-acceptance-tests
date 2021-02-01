@@ -21,7 +21,7 @@ Feature: Back Links & Change Links
     And the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the First upload page
-    When the user clicks the button to upload and selects "first" file
+    When the user clicks the button to upload and selects the "odt" file
     Then the user clicks the banner link to return to the landing page
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with Nothing
@@ -125,7 +125,7 @@ Feature: Back Links & Change Links
     And the user enters a phone number "<phoneNo>"
     And the user clicks Continue
     Then the user is on the First upload page
-    When the user clicks the button to upload and selects "first" file
+    When the user clicks the button to upload and selects the "TIF" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
     Then the user selects No to uploading another file
     Then the user is on the Import CYA page
@@ -194,8 +194,8 @@ Feature: Back Links & Change Links
 
 
     Examples:
-      | epu | entryNo | requestType  | route | priority   | ALVS | transport | vesselName | name      | email      | phoneNo    | entryDateCYA|
-      | 113 | 993456A | Cancellation | Hold  | Human remains | Yes  | Maritime  | TestShip   | Abc Testb | a@test.com | 01234567891 | Today       |
+      | epu | entryNo | requestType  | route | priority      | ALVS | transport | vesselName | name      | email      | phoneNo     | entryDateCYA |
+      | 113 | 993456A | Cancellation | Hold  | Human remains | Yes  | Maritime  | TestShip   | Abc Testb | a@test.com | 01234567891 | Today        |
 
 #EXPORT
   Scenario Outline: Export: A user wants to go back through the journey
@@ -286,7 +286,7 @@ Feature: Back Links & Change Links
     When the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the First upload page
-    When the user clicks the button to upload and selects "first" file
+    When the user clicks the button to upload and selects the "tiff" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
     Then the user selects No to uploading another file
     Then the user is on the Export CYA page
@@ -357,9 +357,9 @@ Feature: Back Links & Change Links
     Then the user is on the write response page
     And the user enters a response with valid characters
     Then the user is on the Amend upload page
-    Then the user clicks the button to upload and selects "first" file
+    Then the user clicks the button to upload and selects the "pptx" file
     Then the user should be on the amend file upload confirmation page after uploading 1 document/s
-    Then the user should see their first uploaded doc test.jpg on upload review page
+    Then the user should see their first uploaded doc testPptx.pptx on upload review page
     Then the user selects No to uploading another file
     Then the user is on the Amend writeAndupload review page and should see their responses
 
@@ -377,14 +377,14 @@ Feature: Back Links & Change Links
     When the user clicks the change link on the amend review page for amendment
     Then the user is on the how to respond page and selects uploadOnly
     Then the user is on the Amend upload page
-    Then the user clicks the button to upload and selects "first" file
+    Then the user clicks the button to upload and selects the "ppt" file
     Then the user should be on the amend file upload confirmation page after uploading 1 document/s
     Then the user selects No to uploading another file
     Then the user is on the Amend uploadOnly review page and should see their responses
     When the user clicks the change link on the amend review page for documents
     Then the user should be on the amend file upload confirmation page after uploading 1 document/s
     Then the user selects Yes to uploading another file
-    Then the user clicks the button to upload and selects "next" file
+    Then the user clicks the button to upload and selects the "xls" file
     Then the user should be on the amend file upload confirmation page after uploading 2 document/s
     Then the user selects No to uploading another file
     Then the user is on the Amend uploadOnly review page and should see their responses
@@ -399,9 +399,9 @@ Feature: Back Links & Change Links
     Then the user is on the write response page
     And the user enters a response "<text>" and continues
     Then the user is on the Amend upload page
-    Then the user clicks the button to upload and selects "first" file
+    Then the user clicks the button to upload and selects the "odp" file
     Then the user should be on the amend file upload confirmation page after uploading 1 document/s
-    Then the user should see their first uploaded doc test.jpg on upload review page
+    Then the user should see their first uploaded doc testOdp.odp on upload review page
     When the user selects No to uploading another file
     Then the user is on the Amend writeAndupload review page and should see their responses
     Then the user clicks back
