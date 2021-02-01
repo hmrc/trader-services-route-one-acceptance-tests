@@ -48,9 +48,9 @@ Feature: Amend Journeys
     When the user enters valid characters for case reference number
     Then the user is on the how to respond page and selects uploadOnly
     Then the user is on the Amend upload page
-    Then the user clicks the button to upload and selects the "jpeg" file
+    Then the user clicks the button to upload and selects the "jpg" file
     Then the user should be on the amend file upload confirmation page after uploading 1 document/s
-    Then the user should see their first uploaded doc testJpeg.jpeg on upload review page
+    Then the user should see their first uploaded doc testJpg.jpg on upload review page
     Then the user selects Yes to uploading another file
     Then the user is on the AnotherAmend upload page
     Then the user clicks the button to upload and selects the "docx" file
