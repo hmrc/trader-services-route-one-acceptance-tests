@@ -60,7 +60,7 @@ Feature: Review/CYA page
     And the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the First upload page
-    When the user clicks the button to upload and selects the "tiff" file
+    When the user clicks the button to upload and selects the "ods" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
     Then the user selects No to uploading another file
     Then the user is on the Export CYA page

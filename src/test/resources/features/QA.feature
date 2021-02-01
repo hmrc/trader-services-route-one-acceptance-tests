@@ -46,23 +46,22 @@ Feature: Customs check - Export Journey
 
 Examples:
 | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   | phone |
-| 234 | C11456A | C1601       | Route 1 | Human remains | Maritime  | Test Vessel |  mr c | informationy@xxq-logistics.com | 01296 427444      |
+| 235 | C11456A | C1601       | Route 1 | Human remains | Maritime  | Test Vessel |  mr c | informationy@xxq-logistics.com | 01296 427444      |
 
 
-#AMEND
-#  Scenario: Amend: A user adds a message and a document to a case (write response + upload)
-#    Given the user is on the start page for trader services and selects Amend
-#    Then the user is on the case ref number page
-#    When the user pastes the case reference number and continues
-#    When the user is on the how to respond page and selects writeAndupload
-#    Then the user is on the write response page
-#    And the user enters a response with valid characters
-#    Then the user is on the Amend upload page
-#    Then the user clicks the button to upload and selects the "png" file
-#    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
-#    Then the user should see their first uploaded doc test.jpg on upload review page
-#    Then the user selects No to uploading another file
-#    When the user clicks Submit on the CYA page
-#    Then the user waits
+
+  Scenario: Amend: A user adds a message and a document to a case (write response + upload)
+    Given the user is on the start page for trader services and selects Amend
+    Then the user is on the case ref number page
+    When the user is on the how to respond page and selects writeAndupload
+    Then the user is on the write response page
+    And the user enters a response with valid characters
+    Then the user is on the Amend upload page
+    Then the user clicks the button to upload and selects the "png" file
+    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
+    Then the user should see their first uploaded doc test.jpg on upload review page
+    Then the user selects No to uploading another file
+    When the user clicks Submit on the CYA page
+    Then the user waits
 
 
