@@ -26,15 +26,16 @@ Feature: Customs check - Export Journeys
       Then the user is on the Export CYA page
       Then the user clicks Submit on the CYA page
       Then the user is on the New confirmation page
-      When the user clicks the send docs link on the New confirmation page they will go back to the start
+      And the user should see 2 Hour SLA
+      When the user clicks the send docs link on the NewSLA confirmation page they will go back to the start
       And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
-      | epu | entryNo | requestType | route   | priority      | transport | vesselName  | email   |
-      | 123 | A23456A | New         | Route 1 | Human remains | Maritime  | Test Vessel | a@a.com |
+      | epu | entryNo | requestType | route   | priority      | transport    | vesselName  | email   |
+      | 123 | A23456A | New         | Route 1 | Human remains | RoadRoRoRail | Test Vessel | a@a.com |
 
 
-  Scenario Outline: Route-Hold: A user should reach the mandatory vessel page
+  Scenario Outline: Route-Hold: A user should reach the mandatory vessel page & no SLA provided
     Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
@@ -45,12 +46,30 @@ Feature: Customs check - Export Journeys
     When the user is on the Export YesNo Priority Page and selects No
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Mandatory Vessel Page
+    Then the user enters "<vesselName>" for vessel name
+    And the user enters today's date for vesselDate
+    And the user enters a time for the vessel "23" "59"
+    Then the user clicks Continue
+    Then the user is on the Export Contact Details Page
+    And the user enters an email address "<email>"
+    And the user clicks Continue
+    Then the user is on the First upload page
+    When the user clicks the button to upload and selects the "odt" file
+    Then the user should be on the new file upload confirmation page after uploading 1 document/s
+    Then the user selects No to uploading another file
+    Then the user is on the Export CYA page
+    Then the user clicks Submit on the CYA page
+    Then the user is on the New confirmation page
+    And the user should see No SLA
+    When the user clicks the send docs link on the NewHold confirmation page they will go back to the start
+    And the last selected option for journey type should be pre filled with Nothing
+
 
     Examples:
-      | epu | entryNo | requestType | route | transport |
-      | 123 | A23456A | New         | Hold  | Air       |
+      | epu | entryNo | requestType | route | transport | vesselName  | email                 |
+      | 424 | j66666x | New         | Hold  | Maritime  | Test Vessel | person_real@ymail.com |
 
-  Scenario Outline: C1601: A user should reach the mandatory vessel page
+  Scenario Outline: C1601: A user should reach the mandatory vessel page & SLA for Maritime
     Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
@@ -65,10 +84,24 @@ Feature: Customs check - Export Journeys
     And the user enters today's date for vesselDate
     And the user enters a time for the vessel "16" "20"
     Then the user clicks Continue
+    Then the user is on the Export Contact Details Page
+    And the user enters an email address "<email>"
+    And the user clicks Continue
+    Then the user is on the First upload page
+    When the user clicks the button to upload and selects the "odt" file
+    Then the user should be on the new file upload confirmation page after uploading 1 document/s
+    Then the user selects No to uploading another file
+    Then the user is on the Export CYA page
+    Then the user clicks Submit on the CYA page
+    Then the user is on the New confirmation page
+    And the user should see 2 Hour SLA
+    When the user clicks the send docs link on the NewSLA confirmation page they will go back to the start
+    And the last selected option for journey type should be pre filled with Nothing
+
 
     Examples:
-      | epu | entryNo | requestType | route   | transport    | vesselName |
-      | 123 | A23456A | C1601       | Route 1 | RoadRoRoRail | Train1     |
+      | epu | entryNo | requestType | route  | transport | vesselName  | email                     |
+      | 424 | l15125z | C1601       | Route 3 | Maritime  | Test Vessel | real-person@hotmail.co.uk |
 
 
   Scenario Outline: C1602: A user should be on the mandatory vessel page

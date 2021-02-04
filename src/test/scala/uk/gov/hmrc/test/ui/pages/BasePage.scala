@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.pages
 
 import java.io.File
-import java.time.{Duration, LocalDate}
+import java.time.{Duration, LocalDate, LocalTime}
 import java.util.concurrent.TimeUnit
 
 import org.openqa.selenium._
@@ -114,7 +114,9 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def clickByCSS(css: String): Unit = driver.findElement(By.cssSelector(css)).click()
 
-  def clickFinalContinueNew():Unit = findElementByCss("p.govuk-body:nth-child(8) > a:nth-child(1)").click()
+  def clickFinalContinueNewSLA():Unit = findElementByCss("p.govuk-body:nth-child(9) > a:nth-child(1)").click()
+  def clickFinalContinueNewNoSLA():Unit = findElementByCss("p.govuk-body:nth-child(8) > a:nth-child(1)").click()
+
   def clickFinalContinueAmend():Unit = findElementByCss("  p.govuk-body:nth-child(7) > a:nth-child(1)").click()
 
   def clickUploadFirst(): Unit = elementToBeClickable(".file-upload__submit").click()
@@ -159,9 +161,21 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   lazy val todayDate: LocalDate = LocalDate.now()
+  lazy val nowTime:LocalTime = LocalTime.now()
+  lazy val sla2Hour = nowTime.plusHours(2)
+  lazy val sla3Hour = nowTime.plusHours(3)
+
 
   def todayDateCYA: String = {
     s"${todayDate.getDayOfMonth.toString} ${todayDate.getMonth.toString.toLowerCase.capitalize} ${todayDate.getYear.toString}"
+  }
+
+  def localTimePlus2: String = {
+    s"${sla2Hour.getHour}:${sla2Hour.getMinute}"
+  }
+
+  def localTimePlus3: String = {
+    s"${sla3Hour.getHour} ${sla3Hour.getMinute}"
   }
 
   def copyFile(srcFile: File, destFile: File): Unit = {
