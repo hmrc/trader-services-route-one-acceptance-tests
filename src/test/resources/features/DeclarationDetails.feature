@@ -31,7 +31,11 @@ Feature: Declaration details validation
 
     When the user enters declaration details "670" and "123456A"
     And the user clicks Continue
-    Then the user should see "Error:EPU number must be 669 or less" error message for "epu"
+    Then the user should see "Error:EPU number must be between 001 and 669" error message for "epu"
+
+    When the user enters declaration details "000" and "123456A"
+    And the user clicks Continue
+    Then the user should see "Error:EPU number must be between 001 and 669" error message for "epu"
 
 
   Scenario: Error validation on declaration page - Entry number
