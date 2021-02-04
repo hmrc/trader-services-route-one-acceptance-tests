@@ -21,7 +21,7 @@ Feature: Error Pages
     When the user enters a name "<name>"
     And the user clicks Continue
     Then the user is on the First upload page
-    When the user clicks the button to upload and selects "first" file
+    When the user clicks the button to upload and selects the "pdf" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
     Then the user selects No to uploading another file
     Then the user is on the Export CYA page
