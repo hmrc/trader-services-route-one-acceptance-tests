@@ -112,6 +112,10 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     Then the user is on the Amend upload page
     Then the user clicks the button to upload and selects the "doc" file
     Then the user should be on the amend file upload confirmation page after uploading 1 document/s
-    Then the user should see their first uploaded doc test.jpg on upload review page
+    Then the user should see their first uploaded doc testDoc.doc on upload review page
     Then the user selects No to uploading another file
+    Then the user is on the Amend writeAndupload review page and should see their responses
+    When the user clicks Submit on the CYA page
     Then the user is on the Amend confirmation page
+    When the user clicks the send docs link on the Amend confirmation page they will go back to the start
+
