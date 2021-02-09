@@ -40,34 +40,56 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     assertElementText("Save your case reference number", subheading1)
   }
 
-  Then("""^the user should see guidance links on the page""") {() =>
+  Then("""^the user should see guidance links on the page""") { () =>
   }
 
-//  def caseRefOutput = caseRefNo.getText.copy()
+  //  def caseRefOutput = caseRefNo.getText.copy()
 
-  Then("""^the user copies the case reference number""") {() =>
+  Then("""^the user copies the case reference number""") { () =>
     val caseRefOutput = caseRefNo.getText.copy()
     print(caseRefOutput)
   }
 
-  Then("""^the user pastes the case reference number and continues""") {() =>
+  Then("""^the user pastes the case reference number and continues""") { () =>
     writeById(caseRefNo, "")
     clickContinueCaseRef()
   }
 
-  When("""^the user clicks the send docs link on the (.*) confirmation page they will go back to the start"""){(journey:String) =>
+  When("""^the user clicks the send docs link on the (.*) confirmation page they will go back to the start""") { (journey: String) =>
 
     journey match {
-      case "New" => clickFinalContinueNew()
-      case "Amend"=> clickFinalContinueAmend()
+      case "NewHold" => clickFinalContinueNewNoSLA()
+      case "NewSLA" => clickFinalContinueNewSLA()
+      case "Amend" => clickFinalContinueAmend()
     }
     confirmUrl(traderServicesUrl)
     verifyHeading(landingHeading)
   }
 
-  When("""^the user clicks the link to add documents they will be redirected to amend journey"""){() =>
+  When("""^the user clicks the link to add documents they will be redirected to amend journey""") { () =>
     clickLinkToAmend
     confirmUrl(urlCaseRef)
     verifyHeading(caseRefHeading)
   }
+
+  Then("""^the user should see (.*) SLA""") { (sla: String) =>
+
+    sla match {
+        //Air - both, Roro - both, Maritime - Export
+    case "2 Hour" => assertElementTextContains("Your document checks should be completed by " + localTimePlus2 + " today.", slaPara)
+
+      //Maritime - Import
+    case "3 Hour" => assertElementTextContains("Your document checks should be completed by " + localTimePlus3 + " today.", slaPara)
+
+      //Maritime - Import After 1500 but before midnight
+    case "PreMidnight" => assertElementTextContains("Your document checks should be completed by 08:00 tomorrow.", slaPara)
+
+    //Maritime - Import After 1500 (after midnight but before 0500)
+    case "PostMidnight" => assertElementTextContains("Your document checks should be completed by 08:00 today.", slaPara)
+
+      //Route Hold (No SLA)
+    case "No" =>  assertElementTextContains(holdSLA, slaParaHold)
+  }
 }
+}
+

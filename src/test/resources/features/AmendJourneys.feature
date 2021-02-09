@@ -27,6 +27,7 @@ Feature: Amend Journeys
     Then the user clicks the button to upload and selects the "xls" file
     Then the user clicks the banner link to return to the landing page
     And the last selected option for journey type should be pre filled with Nothing
+    Then the user clicks the gov uk icon to go to gov uk
 
 #    Write Response
   Scenario: A user wants to add a message to their case (write response only)

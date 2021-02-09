@@ -48,7 +48,8 @@ Feature: A user wants to upload documents
     Then the user is on the Import CYA page
     And the user clicks Submit on the CYA page
     Then the user is on the New confirmation page
+    And the user should see 2 Hour SLA
 
     Examples:
-      | epu | entryNo | requestType | route   | priority                | transport | name       | email      |
-      | 113 | 993456A | New         | Route 3 | Explosives or fireworks | Maritime  | Abc Testb  | a@test.com |
+      | epu | entryNo | requestType | route   | priority                | transport    | name       | email      |
+      | 113 | 993456A | New         | Route 3 | Explosives or fireworks | RoadRoRoRail | Abc Testb  | a@test.com |

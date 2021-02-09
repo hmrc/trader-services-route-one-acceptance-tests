@@ -6,8 +6,6 @@ error validation on vessel date
 ----
 tests for feedback (QA), conf, amend, signout
 ----
-tests to check SLA?
-----
 test to check welsh toggle works?
 ----
 multi-file upload overhaul...

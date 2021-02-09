@@ -40,10 +40,11 @@ Feature: Customs check - Export Journey
     Then the user selects No to uploading another file
     Then the user is on the Export CYA page
     Then the user clicks Submit on the CYA page
+#    And the user should see 2 Hour SLA
     Then the user copies the case reference number
     Then the user waits
 
-
+#TEST SLA here
 Examples:
 | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   | phone |
 | 223 | C11456A | C1603       | Route 1 | Human remains | Maritime  | Test/Vessel | a. a. smith-smith & smith | log-abc-i@itwRWx.net | 0177 111 1111      |

@@ -25,12 +25,13 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     Then the user is on the Export CYA page
     Then the user clicks Submit on the CYA page
     Then the user is on the New confirmation page
-    When the user clicks the send docs link on the New confirmation page they will go back to the start
+    And the user should see 2 Hour SLA
+    When the user clicks the send docs link on the NewSLA confirmation page they will go back to the start
 
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | email   |
-      | 123 | A23456A | New         | Route 1 | Human remains | Maritime  | a@a.com |
+      | 123 | A23456A | New         | Route 1 | Human remains | Air       | a@a.com |
 
   Scenario Outline: a11y/ZAP - every page in journey hit (Export - Vessel-Mandatory)
 
