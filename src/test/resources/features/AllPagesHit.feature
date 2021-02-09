@@ -1,4 +1,4 @@
-@accessibility @ZAP @TraderService
+@accessibility @ZAP
 
 Feature: Hit all pages within the service - ZAP & Accessibility testing
 
