@@ -1,7 +1,7 @@
 @TraderService
 Feature: Customs check - Export Journeys
 
-  Scenario Outline: A user wants to complete a New Export RouteOne journey
+  Scenario Outline: A user wants to complete a New Export RouteOne journey & see RoRo SLA
     Given the user is on the start page for trader services and selects New
       Then the user is on the declaration details page
       When the user enters declaration details "<epu>" and "<entryNo>"

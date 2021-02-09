@@ -1,4 +1,5 @@
 @TraderService
+
 Feature: Customs check - Import Journeys
 
   Scenario Outline: A user wants to complete a New Import journey & see the Air SLA
@@ -79,7 +80,7 @@ Feature: Customs check - Import Journeys
     Then the user is on the Import CYA page
     And the user clicks Submit on the CYA page
     Then the user is on the New confirmation page
-    And the user should see PreMidnight SLA
+    And the user should see 3 Hour SLA
     When the user clicks the send docs link on the NewSLA confirmation page they will go back to the start
     And the last selected option for journey type should be pre filled with Nothing
 

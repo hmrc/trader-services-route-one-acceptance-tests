@@ -51,6 +51,8 @@ trait BasePage extends Matchers with BrowserDriver {
   val exportJourneyUrl: String = "/new/export"
   val amendUrl: String = "/add"
 
+  val govukExternal = "https://www.gov.uk/"
+
   def confirmUrl(url: String): Unit = {
     fluentWait.until(ExpectedConditions.urlContains(url))
     val currentUrl = driver.getCurrentUrl
@@ -171,12 +173,49 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   def localTimePlus2: String = {
+    if (sla2Hour.getHour <10 && sla2Hour.getMinute <10) {
+      s"0${sla2Hour.getHour}:0${sla2Hour.getMinute}"
+    }
+    else if (sla2Hour.getHour <10) {
+      s"0${sla2Hour.getHour}:${sla2Hour.getMinute}"
+    }
+    else if (sla2Hour.getMinute <10){
+      s"${sla2Hour.getHour}:0${sla2Hour.getMinute}"
+    }
+    else
     s"${sla2Hour.getHour}:${sla2Hour.getMinute}"
   }
 
   def localTimePlus3: String = {
-    s"${sla3Hour.getHour} ${sla3Hour.getMinute}"
+    if (sla3Hour.getHour <10 && sla3Hour.getMinute <10) {
+      s"0${sla3Hour.getHour}:0${sla3Hour.getMinute}"
+    }
+    else if (sla3Hour.getHour <10) {
+      s"0${sla3Hour.getHour}:${sla3Hour.getMinute}"
+    }
+
+    else if (sla3Hour.getMinute <10){
+      s"${sla3Hour.getHour}:0${sla3Hour.getMinute}"
+    }
+    else
+      s"${sla3Hour.getHour}:${sla3Hour.getMinute}"
   }
+
+//  def localTimePlusTIDY: String = {
+//    if (sla2Hour.getHour <10) {
+//      s"0${sla2Hour.getHour}"}
+//
+//    if (sla2Hour.getMinute <10){":0${sla2Hour.getMinute}"}
+//    }
+//    else if (sla2Hour.getHour <10) {
+//      s"0${sla2Hour.getHour}:${sla2Hour.getMinute}"
+//    }
+//    else if (sla2Hour.getMinute <10){
+//      s"${sla2Hour.getHour}:0${sla2Hour.getMinute}"
+//    }
+//    else
+//      s"${sla2Hour.getHour}:${sla2Hour.getMinute}"
+//  }
 
   def copyFile(srcFile: File, destFile: File): Unit = {
     copyFile(srcFile, destFile)

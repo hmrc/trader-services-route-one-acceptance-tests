@@ -59,5 +59,11 @@ class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with E
     findElementByCss(".govuk-header__link--service-name").click()
     confirmUrl(traderServicesUrl)
   }
+
+  And("""^the user clicks the gov uk icon to go to gov uk""") { () =>
+    Thread.sleep(1500)
+    findElementByCss(".govuk-header__logotype-text").click()
+    confirmUrl(govukExternal)
+  }
 }
 

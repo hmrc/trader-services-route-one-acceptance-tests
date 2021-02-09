@@ -12,7 +12,7 @@ object Dependencies {
     "io.cucumber"                %  "cucumber-junit"          % "6.1.1" % "test",
     "junit"                      %  "junit"                   % "4.12"  % "test",
     "com.novocode"               %  "junit-interface"         % "0.11"  % "test",
-    "uk.gov.hmrc"                %% "zap-automation"          % "2.7.0" % "test",
+    "uk.gov.hmrc"                %% "zap-automation"          % "2.8.0" % "test",
     "com.typesafe"               %  "config"                  % "1.3.2" % "test",
     "org.seleniumhq.selenium"    % "selenium-chrome-driver"   % "3.9.1" % "test",
     "org.seleniumhq.selenium"    % "selenium-support"         % "3.9.1" % "test",
