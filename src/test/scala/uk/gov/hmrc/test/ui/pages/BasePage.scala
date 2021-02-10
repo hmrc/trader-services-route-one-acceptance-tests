@@ -52,6 +52,7 @@ trait BasePage extends Matchers with BrowserDriver {
   val amendUrl: String = "/add"
 
   val govukExternal = "https://www.gov.uk/"
+  val exitSurvey = host(9514) + "/feedback/send-documents-for-customs-check"
 
   def confirmUrl(url: String): Unit = {
     fluentWait.until(ExpectedConditions.urlContains(url))
@@ -130,6 +131,8 @@ trait BasePage extends Matchers with BrowserDriver {
   def clickCYAContinue(): Unit = findElementByCss("button.govuk-button:nth-child(2)").click()
 
   def clickBack(): Unit = findElementById("back-link").click()
+
+  def clickSignOut():Unit = findElementByCss(".hmrc-sign-out-nav__link").click()
 
   def optionSelected(css: String): Unit = driver.findElement(By.cssSelector(css)).isSelected shouldBe true
 
