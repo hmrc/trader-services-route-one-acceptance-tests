@@ -50,9 +50,13 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     Thread.sleep(7000l)
   }
 
-
   And("""^the user clicks back""") { () =>
     clickBack()
+  }
+
+  And("""^the user clicks the sign out button they will be redirected to the exit survey feedback form""") { () =>
+    clickSignOut()
+    confirmUrl(exitSurvey)
   }
 
   When("""^the user navigates to the following (.*)""") { (url: String) =>

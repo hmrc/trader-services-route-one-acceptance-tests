@@ -27,27 +27,27 @@ Feature: Customs check - Export Journey
     Then the user is on the First upload page
     When the user clicks the button to upload and selects the "pdf" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
-    Then the user selects Yes to uploading another file
-    Then the user is on the Another upload page
-    When the user clicks the button to upload and selects the "jpeg" file
-    Then the user should be on the new file upload confirmation page after uploading 2 document/s
 
-    Then the user selects Yes to uploading another file
-    Then the user is on the Another upload page
-    When the user clicks the button to upload and selects the "ods" file
-    Then the user should be on the new file upload confirmation page after uploading 3 document/s
+#    Then the user selects Yes to uploading another file
+#    Then the user is on the Another upload page
+#    When the user clicks the button to upload and selects the "jpeg" file
+#    Then the user should be on the new file upload confirmation page after uploading 2 document/s
+#
+#    Then the user selects Yes to uploading another file
+#    Then the user is on the Another upload page
+#    When the user clicks the button to upload and selects the "ods" file
+#    Then the user should be on the new file upload confirmation page after uploading 3 document/s
 
     Then the user selects No to uploading another file
     Then the user is on the Export CYA page
     Then the user clicks Submit on the CYA page
-#    And the user should see 2 Hour SLA
+    And the user should see 2 Hour SLA
     Then the user copies the case reference number
     Then the user waits
 
-#TEST SLA here
 Examples:
 | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   | phone |
-| 223 | C11456A | C1603       | Route 1 | Human remains | Maritime  | Test/Vessel | a. a. smith-smith & smith | log-abc-i@itwRWx.net | 0177 111 1111      |
+| 509 | X12451H | New         | Route 1 | Human remains | Maritime  | Test/Vessel | a. a. smith-smith & smith | log-abc-i@itwRWx.net | 0177 111 1111      |
 
 
 
@@ -64,8 +64,54 @@ Examples:
     When the user clicks Submit on the CYA page
     Then the user waits
 
+#  Scenario Outline: A user wants to complete a New Import journey
+#    Given the user logs into QA
+#    Then the user is on the start page for trader services and selects New
+#    Then the user is on the declaration details page
+#    When the user enters declaration details "<epu>" and "<entryNo>"
+#    And the user enters today's date for entryDate
+#    Then the user clicks Continue
+#    When the user is on the Import Request Type page and selects <requestType>
+#    Then the user is on the Import Route Type Page and selects <route>
+#    When the user is on the Import YesNo Priority Page and selects Yes
+#    Then the user is on the Import Priority Options Page and selects <priority>
+#    When the user is on the ALVS Page and selects Yes
+#    Then the user is on the Import Transport Type Page and selects <transport>
+#    Then the user is on the Import-Optional Vessel Page
+#    Then the user enters "<vesselName>" for vessel name
+#    And the user enters today's date for vesselDate
+#    And the user enters a time for the vessel "12" "25"
+#    And the user clicks Continue
+#    Then the user enters a name "<name>"
+#    And the user enters an email address "<email>"
+#    And the user enters a phone number "<phone>"
+#    And the user clicks Continue
+#    Then the user is on the First upload page
+#    When the user clicks the button to upload and selects the "pdf" file
+#    Then the user should be on the new file upload confirmation page after uploading 1 document/s
+#    Then the user selects No to uploading another file
+#    Then the user is on the Import CYA page
+#    And the user clicks Submit on the CYA page
+#    Then the user copies the case reference number
+#    Then the user waits
+#
+#
+#    Examples:
+#      | epu | entryNo |requestType | route   | priority      | transport | vesselName | name   | email          | phone |
+#      | 333 | 333456A |New         | Route 6 | Human remains | Air       | aeroplane 1 | Mr. F  | valid@test.com | 01256888999|
+#
+#  Scenario: Amend: A user adds a message and a document to a case (upload only)
+#    Given the user is on the start page for trader services and selects Amend
+#    Then the user is on the case ref number page
+#    When the user is on the how to respond page and selects uploadOnly
+#    Then the user is on the Amend upload page
+#    Then the user clicks the button to upload and selects the "xlsx" file
+#    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
+#    Then the user selects No to uploading another file
+#    When the user clicks Submit on the CYA page
+#    Then the user waits
 
-#Legit EPUS
+  #Legit EPUS
 #    410
 #    516
 #    515
@@ -104,61 +150,3 @@ Examples:
 #    121
 #    219
 #    150
-#
-#
-#    CSFP (not catered for)
-#    650
-#    670
-#    690
-#    731
-#    740
-#    770
-#    751
-
-
-  Scenario Outline: A user wants to complete a New Import journey
-    Given the user logs into QA
-    Then the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
-    And the user enters today's date for entryDate
-    Then the user clicks Continue
-    When the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import Route Type Page and selects <route>
-    When the user is on the Import YesNo Priority Page and selects Yes
-    Then the user is on the Import Priority Options Page and selects <priority>
-    When the user is on the ALVS Page and selects Yes
-    Then the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import-Optional Vessel Page
-    Then the user enters "<vesselName>" for vessel name
-    And the user enters today's date for vesselDate
-    And the user enters a time for the vessel "12" "25"
-    And the user clicks Continue
-    Then the user enters a name "<name>"
-    And the user enters an email address "<email>"
-    And the user enters a phone number "<phone>"
-    And the user clicks Continue
-    Then the user is on the First upload page
-    When the user clicks the button to upload and selects the "pdf" file
-    Then the user should be on the new file upload confirmation page after uploading 1 document/s
-    Then the user selects No to uploading another file
-    Then the user is on the Import CYA page
-    And the user clicks Submit on the CYA page
-    Then the user copies the case reference number
-    Then the user waits
-
-
-    Examples:
-      | epu | entryNo |requestType | route   | priority      | transport | vesselName | name   | email          | phone |
-      | 150 | 123456A |New         | Route 6 | Human remains | Air       | aeroplane 1 | Mr. F  | valid@test.com | 01256888999|
-
-  Scenario: Amend: A user adds a message and a document to a case (upload only)
-    Given the user is on the start page for trader services and selects Amend
-    Then the user is on the case ref number page
-    When the user is on the how to respond page and selects uploadOnly
-    Then the user is on the Amend upload page
-    Then the user clicks the button to upload and selects the "xlsx" file
-    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
-    Then the user selects No to uploading another file
-    When the user clicks Submit on the CYA page
-    Then the user waits
