@@ -122,8 +122,13 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def clickFinalContinueAmend():Unit = findElementByCss("  p.govuk-body:nth-child(7) > a:nth-child(1)").click()
 
-  def clickUploadFirst(): Unit = elementToBeClickable(".file-upload__submit").click()
-  def clickUploadContinue(): Unit = elementToBeClickable("button.govuk-button:nth-child(6)").click()
+  //SFU
+  //def clickUploadFirst(): Unit = elementToBeClickable(".file-upload__submit").click()
+  //def clickUploadContinue(): Unit = elementToBeClickable("button.govuk-button:nth-child(6)").click()
+
+  //MFU
+//  def clickUploadFirst(): Unit = elementToBeClickable("#file-4").click()
+  def clickUploadContinue(): Unit = elementToBeClickable(".multi-file-upload > div:nth-child(5) > button:nth-child(1)").click()
 
   def clickContinue(): Unit = findElementByCss("button.govuk-button:nth-child(3)").click()
   def clickContinueCaseRef(): Unit = findElementByCss("button.govuk-button:nth-child(4)").click()
@@ -249,4 +254,3 @@ trait BasePage extends Matchers with BrowserDriver {
     enrollment.sendKeys("GB123456789012345")
   }
 }
-

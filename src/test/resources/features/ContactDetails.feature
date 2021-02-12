@@ -58,25 +58,25 @@ Feature: Contact Details
     When the user enters an email address "<email>"
     When the user enters a phone number "+447123456789"
     When the user clicks Continue
-    Then the user is on the First upload page
-
+    Then the user is on the multi-file upload pages for a/an New journey
+    When the user clicks the button to upload the first file and selects the "pptx" file
+    Then the user clicks only clicks Continue when it's clickable
+    Then the user is on the New CYA page
+    
     Then the user clicks the change link for ContactDetails
     When the user enters a name "Abc O'Test-Smith"
     Then the user enters a phone number "00447123456789"
     When the user clicks Continue
-    Then the user is on the First upload page
 
     Then the user clicks the change link for ContactDetails
     When the user enters a name "Abc’def"
     Then the user enters a phone number "447123456789"
     When the user clicks Continue
-    Then the user is on the First upload page
-
 
     Then the user clicks the change link for ContactDetails
     Then the user enters a phone number "071(234-567)89"
     When the user clicks Continue
-    Then the user is on the First upload page
+    Then the user is on the New CYA page
 
     Examples:
       | epu | entryNo | day | month | year |requestType  | route   | priority      | transport | email   | phone       |

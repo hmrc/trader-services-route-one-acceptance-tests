@@ -24,21 +24,9 @@ Feature: Customs check - Export Journey
     And the user enters an email address "<email>"
     And the user enters a phone number "<phone>"
     And the user clicks Continue
-    Then the user is on the First upload page
-    When the user clicks the button to upload and selects the "pdf" file
-    Then the user should be on the new file upload confirmation page after uploading 1 document/s
-
-#    Then the user selects Yes to uploading another file
-#    Then the user is on the Another upload page
-#    When the user clicks the button to upload and selects the "jpeg" file
-#    Then the user should be on the new file upload confirmation page after uploading 2 document/s
-#
-#    Then the user selects Yes to uploading another file
-#    Then the user is on the Another upload page
-#    When the user clicks the button to upload and selects the "ods" file
-#    Then the user should be on the new file upload confirmation page after uploading 3 document/s
-
-    Then the user selects No to uploading another file
+    Then the user is on the multi-file upload pages for a/an New journey
+    When the user clicks the button to upload the first file and selects the "odt" file
+    Then the user clicks only clicks Continue when it's clickable
     Then the user is on the Export CYA page
     Then the user clicks Submit on the CYA page
     And the user should see 2 Hour SLA
@@ -57,10 +45,9 @@ Examples:
     When the user is on the how to respond page and selects writeAndupload
     Then the user is on the write response page
     And the user enters a response with valid characters
-    Then the user is on the Amend upload page
-    Then the user clicks the button to upload and selects the "png" file
-    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
-    Then the user selects No to uploading another file
+    Then the user is on the multi-file upload pages for a/an Amend journey
+    When the user clicks the button to upload the first file and selects the "odt" file
+    Then the user clicks only clicks Continue when it's clickable
     When the user clicks Submit on the CYA page
     Then the user waits
 
@@ -86,10 +73,9 @@ Examples:
 #    And the user enters an email address "<email>"
 #    And the user enters a phone number "<phone>"
 #    And the user clicks Continue
-#    Then the user is on the First upload page
-#    When the user clicks the button to upload and selects the "pdf" file
-#    Then the user should be on the new file upload confirmation page after uploading 1 document/s
-#    Then the user selects No to uploading another file
+#    Then the user is on the multi-file upload pages for a/an New journey
+#    When the user clicks the button to upload the first file and selects the "odt" file
+#    Then the user clicks only clicks Continue when it's clickable
 #    Then the user is on the Import CYA page
 #    And the user clicks Submit on the CYA page
 #    Then the user copies the case reference number
@@ -104,10 +90,9 @@ Examples:
 #    Given the user is on the start page for trader services and selects Amend
 #    Then the user is on the case ref number page
 #    When the user is on the how to respond page and selects uploadOnly
-#    Then the user is on the Amend upload page
-#    Then the user clicks the button to upload and selects the "xlsx" file
-#    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
-#    Then the user selects No to uploading another file
+#    Then the user is on the multi-file upload pages for a/an Amend journey
+#    When the user clicks the button to upload the first file and selects the "odt" file
+#    Then the user clicks only clicks Continue when it's clickable
 #    When the user clicks Submit on the CYA page
 #    Then the user waits
 

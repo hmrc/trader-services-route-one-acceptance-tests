@@ -19,10 +19,9 @@ Feature: Customs check - Export Journeys
       Then the user is on the Export Contact Details Page
       And the user enters an email address "<email>"
       And the user clicks Continue
-      Then the user is on the First upload page
-      When the user clicks the button to upload and selects the "odt" file
-      Then the user should be on the new file upload confirmation page after uploading 1 document/s
-      Then the user selects No to uploading another file
+      Then the user is on the multi-file upload pages for a/an New journey
+      When the user clicks the button to upload the first file and selects the "odt" file
+      Then the user clicks only clicks Continue when it's clickable
       Then the user is on the Export CYA page
       Then the user clicks Submit on the CYA page
       Then the user is on the New confirmation page
@@ -53,10 +52,9 @@ Feature: Customs check - Export Journeys
     Then the user is on the Export Contact Details Page
     And the user enters an email address "<email>"
     And the user clicks Continue
-    Then the user is on the First upload page
-    When the user clicks the button to upload and selects the "odt" file
-    Then the user should be on the new file upload confirmation page after uploading 1 document/s
-    Then the user selects No to uploading another file
+    Then the user is on the multi-file upload pages for a/an New journey
+    When the user clicks the button to upload the first file and selects the "ppt" file
+    Then the user clicks only clicks Continue when it's clickable
     Then the user is on the Export CYA page
     Then the user clicks Submit on the CYA page
     Then the user is on the New confirmation page
@@ -87,10 +85,9 @@ Feature: Customs check - Export Journeys
     Then the user is on the Export Contact Details Page
     And the user enters an email address "<email>"
     And the user clicks Continue
-    Then the user is on the First upload page
-    When the user clicks the button to upload and selects the "odt" file
-    Then the user should be on the new file upload confirmation page after uploading 1 document/s
-    Then the user selects No to uploading another file
+    Then the user is on the multi-file upload pages for a/an New journey
+    When the user clicks the button to upload the first file and selects the "docx" file
+    Then the user clicks only clicks Continue when it's clickable
     Then the user is on the Export CYA page
     Then the user clicks Submit on the CYA page
     Then the user is on the New confirmation page

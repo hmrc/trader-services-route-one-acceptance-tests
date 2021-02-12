@@ -39,7 +39,6 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
   Then("""^the user clicks the button to upload and selects the "([^"]*)" file"""){ (file:String) =>
     Thread.sleep(500L)
     uploadFile(file)
-    clickUploadFirst()
   }
 
   Then("""^the user should be on the (.*) file upload confirmation page after uploading (.*) document/s"""){
