@@ -50,7 +50,7 @@ class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl w
       case "ninth" =>     uploadFile9(file)
       case "tenth" =>     uploadFile10(file)
     }
-    Thread.sleep(1500)
+    Thread.sleep(5000)
   }
 
   Then("""^the user waits until all uploads are completed"""){ () =>

@@ -1,4 +1,4 @@
-@TraderService
+@TraderServiceUploads
 Feature: A user wants to upload documents
 
   Scenario Outline: A user wants upload some documents
@@ -50,8 +50,6 @@ Feature: A user wants to upload documents
     Then the user clicks the button to add another document
 
     When the user clicks the button to upload the tenth file and selects the "png" file
-    Then the user clicks the button to add another document
-
     And the user waits
     Then the user clicks only clicks Continue when it's clickable
     Then the user is on the Import CYA page
