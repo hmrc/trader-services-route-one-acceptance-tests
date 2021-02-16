@@ -1,4 +1,4 @@
-@TraderServiceUploads
+@TraderServiceUploadsM
 Feature: A user wants to upload documents
 
   Scenario Outline: A user wants upload some documents

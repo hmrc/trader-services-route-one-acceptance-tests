@@ -36,7 +36,7 @@ class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl w
   }
 
   Then("""^the user clicks the button to upload the (.*) file and selects the "([^"]*)" file"""){ (fileOrder:String, file:String) =>
-    Thread.sleep(500L)
+    Thread.sleep(1000L)
 
     fileOrder match {
       case "first" =>     uploadFile1(file)
@@ -50,7 +50,7 @@ class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl w
       case "ninth" =>     uploadFile9(file)
       case "tenth" =>     uploadFile10(file)
     }
-    Thread.sleep(5000)
+    Thread.sleep(5000l)
   }
 
   Then("""^the user waits until all uploads are completed"""){ () =>
