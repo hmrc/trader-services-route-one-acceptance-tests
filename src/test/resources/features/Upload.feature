@@ -1,4 +1,4 @@
-@TraderService
+@TraderServiceUploadsS
 Feature: A user wants to upload documents
 
   Scenario Outline: A user wants upload some documents
@@ -25,7 +25,7 @@ Feature: A user wants to upload documents
     When the user clicks the button to upload and selects the "pdf" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
     Then the user should see their first uploaded doc testPdf.pdf on upload review page
-    
+
     Then the user selects NoOption to uploading another file
     And the user should see "Error:Select yes if you want to upload another document" error message for "uploadAnotherFile"
 
