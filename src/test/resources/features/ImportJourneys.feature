@@ -27,7 +27,7 @@ Feature: Customs check - Import Journeys
     And the user clicks Submit on the CYA page
     Then the user is on the New confirmation page
     And the user should see 2 Hour SLA
-    When the user clicks the send docs link on the NewSLA confirmation page they will go back to the start
+    When the user clicks the send docs link on the New confirmation page they will go back to the start
     And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
@@ -79,7 +79,7 @@ Feature: Customs check - Import Journeys
 #    And the user clicks Submit on the CYA page
 #    Then the user is on the New confirmation page
 #    And the user should see 3 Hour SLA
-#    When the user clicks the send docs link on the NewSLA confirmation page they will go back to the start
+#    When the user clicks the send docs link on the New confirmation page they will go back to the start
 #    And the last selected option for journey type should be pre filled with Nothing
 #
 #    Examples:

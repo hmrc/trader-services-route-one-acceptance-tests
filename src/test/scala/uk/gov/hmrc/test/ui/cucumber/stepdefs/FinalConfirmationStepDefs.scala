@@ -58,8 +58,7 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
   When("""^the user clicks the send docs link on the (.*) confirmation page they will go back to the start""") { (journey: String) =>
 
     journey match {
-      case "NewHold" => clickFinalContinueNewSLA()
-      case "NewSLA" => clickFinalContinueNewSLA()
+      case "New" => clickFinalContinueNew()
       case "Amend" => clickFinalContinueAmend()
     }
     confirmUrl(traderServicesUrl)

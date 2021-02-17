@@ -117,7 +117,7 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def clickByCSS(css: String): Unit = driver.findElement(By.cssSelector(css)).click()
 
-  def clickFinalContinueNewSLA():Unit = findElementByCss("p.govuk-body:nth-child(1) > a:nth-child(1)").click()
+  def clickFinalContinueNew():Unit = findElementByCss("p.govuk-body:nth-child(1) > a:nth-child(1)").click()
 
   def clickFinalContinueAmend():Unit = findElementByCss("  p.govuk-body:nth-child(7) > a:nth-child(1)").click()
 
