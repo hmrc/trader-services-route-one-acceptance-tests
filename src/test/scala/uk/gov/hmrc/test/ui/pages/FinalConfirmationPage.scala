@@ -33,10 +33,9 @@ trait FinalConfirmationPage extends BasePage {
 
   def caseRefNo:WebElement = findElementByCss(".govuk-panel__body > strong:nth-child(2)")
 
-  def subheading1:WebElement = findElementByCss("h2.govuk-heading-m:nth-child(2)")
+  def slaPara:WebElement = findElementByCss("p.govuk-body:nth-child(3)")
 
-  def slaParaHold:WebElement = findElementByCss("p.govuk-body:nth-child(7)")
-  def slaPara:WebElement = findElementByCss("p.govuk-body:nth-child(8)")
+  def receipt:WebElement = findElementByCss(".receipt")
 
   val holdSLA = "When your transportation arrives, we’ll begin the document checks. Once our checks are complete, you’ll hear from us through CHIEF or your declaration software."
 

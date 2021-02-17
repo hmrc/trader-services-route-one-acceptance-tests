@@ -30,6 +30,7 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
       case "New" =>
         confirmUrl(urlConfirmation)
         verifyHeading(headingConfirmation)
+        assertElementTextContains("Your customs check document receipt", receipt)
 
       case "Amend" =>
         confirmUrl(urlAmendConfirm)
@@ -37,7 +38,6 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     }
 
     assertElementText(userCaseRef, caseRefNo)
-    assertElementText("Save your case reference number", subheading1)
   }
 
   Then("""^the user should see guidance links on the page""") { () =>
@@ -58,7 +58,7 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
   When("""^the user clicks the send docs link on the (.*) confirmation page they will go back to the start""") { (journey: String) =>
 
     journey match {
-      case "NewHold" => clickFinalContinueNewNoSLA()
+      case "NewHold" => clickFinalContinueNewSLA()
       case "NewSLA" => clickFinalContinueNewSLA()
       case "Amend" => clickFinalContinueAmend()
     }
@@ -88,7 +88,7 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     case "PostMidnight" => assertElementTextContains("Your document checks should be completed by 08:00 today.", slaPara)
 
       //Route Hold (No SLA)
-    case "No" =>  assertElementTextContains(holdSLA, slaParaHold)
+    case "No" =>  assertElementTextContains(holdSLA, slaPara)
   }
 }
 }
