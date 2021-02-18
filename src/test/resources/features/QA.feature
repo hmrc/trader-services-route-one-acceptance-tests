@@ -35,7 +35,7 @@ Feature: Customs check - Export Journey
 
 Examples:
 | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   | phone |
-| 333 | X12451H | New         | Route 1 | Human remains | Air  | Test/Vessel | a. a. smith-smith & smith | log-abc-i@itwRWx.net | 0177 111 1111      |
+| 213 | X92451X | Cancellation         | Route 1 | Human remains | Air  | TestVessel | smith | aacc@test.com | 0177 111 1111      |
 
 
 
@@ -84,7 +84,7 @@ Examples:
 
     Examples:
       | epu | entryNo |requestType | route   | priority      | transport | vesselName | name   | email          | phone |
-      | 410 | 333456A |New         | Route 6 | Human remains | Air       | aeroplane 1 | Mr. F  | valid@test.com | 01256888999|
+      | 311 | 871456A |New         | Route 6 | Human remains | Air       | aeroplane 1 | Mr. F  | valid@test.com | 01256888999|
 
   Scenario: Amend: A user adds a message and a document to a case (upload only)
     Given the user is on the start page for trader services and selects Amend
