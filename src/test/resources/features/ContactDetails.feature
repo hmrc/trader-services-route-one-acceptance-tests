@@ -38,11 +38,10 @@ Feature: Contact Details
     Then the user should see "Error:Email address must be 128 characters or fewer" error message for "contactEmail"
     Then the user should see "Error:Enter a telephone number in the correct format" error message for "contactNumber"
 
-    Then the user enters a name "invalid test name!"
+    Then the user enters a name "åß∂ƒ©˙∆˚¬œ∑´´†¥¨^^π"
     Then the user enters an email address "a@a.c"
     Then the user enters a phone number "0123456789"
     Then the user clicks Continue
-    Then the user should see "Error:Full name must only include letters a to z, numbers, spaces, hyphens, ampersands, apostrophes and full stops" error message for "contactName"
     Then the user should see "Error:Enter an email address in the correct format, like name@example.com" error message for "contactEmail"
     Then the user should see "Error:Enter a telephone number in the correct format" error message for "contactNumber"
 
@@ -50,7 +49,6 @@ Feature: Contact Details
     Then the user enters an email address "a@a.abcde"
     Then the user enters a phone number "0123-456789"
     Then the user clicks Continue
-    Then the user should see "Error:Full name must only include letters a to z, numbers, spaces, hyphens, ampersands, apostrophes and full stops" error message for "contactName"
     Then the user should see "Error:Enter an email address in the correct format, like name@example.com" error message for "contactEmail"
     Then the user should see "Error:Enter a telephone number in the correct format" error message for "contactNumber"
 
@@ -79,7 +77,7 @@ Feature: Contact Details
     Then the user is on the Import CYA page
 
     Examples:
-      | epu | entryNo | day | month | year |requestType  | route   | priority      | transport | email   | phone       |
-      | 123 | 123456A | 01  | 10    | 2020 |Cancellation | Route 6 | Human remains | Air       | a@a.com | 07123 456 789 |
+      | epu | entryNo | day | month | year |requestType  | route   | priority      | transport | email   |
+      | 123 | 123456A | 01  | 10    | 2020 |Cancellation | Route 6 | Human remains | Air       | a@a.com |
 
 

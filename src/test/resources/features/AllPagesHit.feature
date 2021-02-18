@@ -26,7 +26,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     Then the user clicks Submit on the CYA page
     Then the user is on the New confirmation page
     And the user should see 2 Hour SLA
-    When the user clicks the send docs link on the NewSLA confirmation page they will go back to the start
+    When the user clicks the send docs link on the New confirmation page they will go back to the start
 
 
     Examples:
