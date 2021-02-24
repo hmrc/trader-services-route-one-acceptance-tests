@@ -83,8 +83,11 @@ trait NewCYAPage extends BasePage {
   //Vessel Section
   val h2Vessel = "Transport information"
   val summaryVesselName = "Name of ship, vehicle or airline"
-  val summaryVesselDate = "Date of arrival"
-  val summaryVesselTime = "Estimated time of arrival"
+  val summaryVesselArrivalDate = "Date of arrival"
+  val summaryVesselArrivalTime = "Estimated time of arrival"
+
+  val summaryVesselDepartureDate = "Date of departure"
+  val summaryVesselDepartureTime = "Estimated time of departure"
 
   def vesselNameRow:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(1) > dt:nth-child(1)")
   def vesselNameAnswer:WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(1) > dd:nth-child(2)")

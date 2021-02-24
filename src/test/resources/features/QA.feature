@@ -16,8 +16,8 @@ Feature: Customs check - Export Journey
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Optional Vessel Page
     Then the user enters "<vesselName>" for vessel name
-    And the user enters today's date for vesselDate
-    And the user enters a time for the vessel "12" "25"
+    And the user enters today's date for vesselDateDeparture
+    And the user enters a Time of Departure for the vessel "15" "59"
     Then the user clicks Continue
     Then the user is on the Export Contact Details Page
     Then the user enters a name "<name>"
@@ -25,7 +25,7 @@ Feature: Customs check - Export Journey
     And the user enters a phone number "<phone>"
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
-    When the user clicks the button to upload the first file and selects the "odt" file
+    When the user clicks the button to upload the first file and selects the "jpg" file
     Then the user clicks only clicks Continue when it's clickable
     Then the user is on the Export CYA page
     Then the user clicks Submit on the CYA page
@@ -35,7 +35,7 @@ Feature: Customs check - Export Journey
 
 Examples:
 | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   | phone |
-| 213 | X92451X | Cancellation         | Route 1 | Human remains | Air  | TestVessel | smith | aacc@test.com | 0177 111 1111      |
+| 213 | X92451X | New         | Route 1 | Human remains | Air  | TestVessel | smith | aacc@test.com | 0177 111 1111      |
 
 
 
@@ -44,9 +44,9 @@ Examples:
     Then the user is on the case ref number page
     When the user is on the how to respond page and selects writeAndupload
     Then the user is on the write response page
-    And the user enters a response with valid characters
+    And the user enters a response "sample message" and continues
     Then the user is on the multi-file upload pages for a/an Amend journey
-    When the user clicks the button to upload the first file and selects the "odt" file
+    When the user clicks the button to upload the first file and selects the "jpeg" file
     Then the user clicks only clicks Continue when it's clickable
     When the user clicks Submit on the CYA page
     Then the user waits
@@ -66,15 +66,15 @@ Examples:
     Then the user is on the Import Transport Type Page and selects <transport>
     Then the user is on the Import-Optional Vessel Page
     Then the user enters "<vesselName>" for vessel name
-    And the user enters today's date for vesselDate
-    And the user enters a time for the vessel "12" "25"
+    And the user enters today's date for vesselDateArrival
+    And the user enters a Time of Arrival for the vessel "12" "30"
     And the user clicks Continue
     Then the user enters a name "<name>"
     And the user enters an email address "<email>"
     And the user enters a phone number "<phone>"
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
-    When the user clicks the button to upload the first file and selects the "odt" file
+    When the user clicks the button to upload the first file and selects the "pdf" file
     Then the user clicks only clicks Continue when it's clickable
     Then the user is on the Import CYA page
     And the user clicks Submit on the CYA page
@@ -86,13 +86,11 @@ Examples:
       | epu | entryNo |requestType | route   | priority      | transport | vesselName | name   | email          | phone |
       | 311 | 871456A |New         | Route 6 | Human remains | Air       | aeroplane 1 | Mr. F  | valid@test.com | 01256888999|
 
-  Scenario: Amend: A user adds a message and a document to a case (upload only)
+  Scenario: Amend: A user adds a message and a document to a case (write response only)
     Given the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
-    When the user is on the how to respond page and selects uploadOnly
-    Then the user is on the multi-file upload pages for a/an Amend journey
-    When the user clicks the button to upload the first file and selects the "odt" file
-    Then the user clicks only clicks Continue when it's clickable
+    When the user is on the how to respond page and selects writeOnly
+    And the user enters a response "sample message" and continues
     When the user clicks Submit on the CYA page
     Then the user waits
 

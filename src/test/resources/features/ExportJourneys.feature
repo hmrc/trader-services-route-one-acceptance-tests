@@ -14,13 +14,13 @@ Feature: Customs check - Export Journeys
       Then the user is on the Export Transport Type Page and selects <transport>
       Then the user is on the Export-Optional Vessel Page
       Then the user enters "<vesselName>" for vessel name
-      And the user enters today's date for vesselDate
+      And the user enters today's date for vesselDateDeparture
       Then the user clicks Continue
       Then the user is on the Export Contact Details Page
       And the user enters an email address "<email>"
       And the user clicks Continue
       Then the user is on the multi-file upload pages for a/an New journey
-      When the user clicks the button to upload the first file and selects the "odt" file
+      When the user clicks the button to upload the first file and selects the "pdf" file
       Then the user clicks only clicks Continue when it's clickable
       Then the user is on the Export CYA page
       Then the user clicks Submit on the CYA page
@@ -46,14 +46,14 @@ Feature: Customs check - Export Journeys
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Mandatory Vessel Page
     Then the user enters "<vesselName>" for vessel name
-    And the user enters today's date for vesselDate
-    And the user enters a time for the vessel "23" "59"
+    And the user enters today's date for vesselDateDeparture
+    And the user enters a Time of Departure for the vessel "13" "37"
     Then the user clicks Continue
     Then the user is on the Export Contact Details Page
     And the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
-    When the user clicks the button to upload the first file and selects the "ppt" file
+    When the user clicks the button to upload the first file and selects the "jpg" file
     Then the user clicks only clicks Continue when it's clickable
     Then the user is on the Export CYA page
     Then the user clicks Submit on the CYA page
@@ -79,8 +79,8 @@ Feature: Customs check - Export Journeys
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Mandatory Vessel Page
     Then the user enters "<vesselName>" for vessel name
-    And the user enters today's date for vesselDate
-    And the user enters a time for the vessel "16" "20"
+    And the user enters today's date for vesselDateDeparture
+    And the user enters a Time of Departure for the vessel "16" "21"
     Then the user clicks Continue
     Then the user is on the Export Contact Details Page
     And the user enters an email address "<email>"

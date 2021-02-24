@@ -24,7 +24,7 @@ Feature: Amend Journeys
     Then the user should see "Error:Response must be 1000 characters or fewer" error message for "responseText"
     When the user enters a response with valid characters
     Then the user is on the multi-file upload pages for a/an Amend journey
-    When the user clicks the button to upload the first file and selects the "xls" file
+    When the user clicks the button to upload the first file and selects the "pdf" file
     Then the user clicks the banner link to return to the landing page
     And the last selected option for journey type should be pre filled with Nothing
     Then the user clicks the gov uk icon to go to gov uk
@@ -67,7 +67,7 @@ Feature: Amend Journeys
     Then the user is on the write response page
     And the user enters a response with valid characters
     Then the user is on the multi-file upload pages for a/an Amend journey
-    When the user clicks the button to upload the first file and selects the "png" file
+    When the user clicks the button to upload the first file and selects the "pdf" file
     Then the user clicks only clicks Continue when it's clickable
     Then the user is on the Amend writeAndupload review page and should see their responses
     When the user clicks Submit on the CYA page

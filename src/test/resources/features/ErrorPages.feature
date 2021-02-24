@@ -14,7 +14,7 @@ Feature: Error Pages
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Optional Vessel Page
     Then the user enters "<vesselName>" for vessel name
-    And the user enters today's date for vesselDate
+    And the user enters today's date for vesselDateDeparture
     Then the user clicks Continue
     Then the user is on the Export Contact Details Page
     And the user enters an email address "<email>"
