@@ -22,7 +22,7 @@ Feature: Review/CYA page
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "png" file
-    Then the user clicks only clicks Continue when it's clickable
+    Then the user clicks Continue when files have finished uploading
 
     Then the user is on the Import CYA page
     Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
@@ -59,8 +59,8 @@ Feature: Review/CYA page
     And the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
-    When the user clicks the button to upload the first file and selects the "ods" file
-    Then the user clicks only clicks Continue when it's clickable
+    When the user clicks the button to upload the first file and selects the "pdf" file
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Export CYA page
     Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
     And the user should see the Entry Date row & the date <entryDateCYA> on the CYA page

@@ -26,7 +26,7 @@ Feature: Customs check - Export Journey
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "jpg" file
-    Then the user clicks only clicks Continue when it's clickable
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Export CYA page
     Then the user clicks Submit on the CYA page
     Then the user copies the case reference number
@@ -35,7 +35,7 @@ Feature: Customs check - Export Journey
 
 Examples:
 | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   | phone |
-| 213 | X92451X | New         | Route 1 | Human remains | Air  | TestVessel | smith | aacc@test.com | 0177 111 1111      |
+| 291 | Z64631B | New         | Route 1 | Human remains | Air  | TestVessel | smith | aacc@test.com | 0177 111 1111      |
 
 
 
@@ -47,7 +47,7 @@ Examples:
     And the user enters a response "sample message" and continues
     Then the user is on the multi-file upload pages for a/an Amend journey
     When the user clicks the button to upload the first file and selects the "jpeg" file
-    Then the user clicks only clicks Continue when it's clickable
+    Then the user clicks Continue when files have finished uploading
     When the user clicks Submit on the CYA page
     Then the user waits
 
@@ -75,7 +75,7 @@ Examples:
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user clicks only clicks Continue when it's clickable
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Import CYA page
     And the user clicks Submit on the CYA page
     Then the user copies the case reference number
@@ -84,7 +84,7 @@ Examples:
 
     Examples:
       | epu | entryNo |requestType | route   | priority      | transport | vesselName | name   | email          | phone |
-      | 311 | 871456A |New         | Route 6 | Human remains | Air       | aeroplane 1 | Mr. F  | valid@test.com | 01256888999|
+      | 291 | 777561H |New         | Route 6 | Human remains | Air       | aeroplane 1 | Mr. F  | valid@test.com | 01256888999|
 
   Scenario: Amend: A user adds a message and a document to a case (write response only)
     Given the user is on the start page for trader services and selects Amend

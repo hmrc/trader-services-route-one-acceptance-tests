@@ -51,7 +51,7 @@
 #
 #    When the user clicks the button to upload the tenth file and selects the "jpeg" file
 #    And the user waits
-#    Then the user clicks only clicks Continue when it's clickable
+#    Then the user clicks Continue when files have finished uploading
 #    Then the user is on the Import CYA page
 #    And the user clicks Submit on the CYA page
 #    Then the user is on the New confirmation page

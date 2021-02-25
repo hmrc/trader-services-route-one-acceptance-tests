@@ -35,7 +35,7 @@ trait BasePage extends Matchers with BrowserDriver {
     .withTimeout(Duration.ofSeconds(20))
     .pollingEvery(Duration.ofMillis(250))
 
-  val fluentWaitUpload: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
+  val fluentWaitLong: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
     .withTimeout(Duration.ofSeconds(60))
     .pollingEvery(Duration.ofMillis(250))
 
@@ -61,7 +61,7 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   def confirmUrlUpload(url: String): Unit = {
-    fluentWaitUpload.until(ExpectedConditions.urlContains(url))
+    fluentWaitLong.until(ExpectedConditions.urlContains(url))
     val currentUrl = driver.getCurrentUrl
     assert(currentUrl.contains(url) || url.contains(currentUrl), message(s"Expected url is: $url. Actual url is: $currentUrl"))
   }
@@ -85,12 +85,17 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   def elementToBeClickable(css: String): WebElement = {
-    fluentWaitUpload.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector(css))))
+    fluentWaitLong.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector(css))))
     driver.findElement(By.cssSelector(css))
   }
 
   def findElementByCss(css: String): WebElement = {
     fluentWait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(css))))
+    driver.findElement(By.cssSelector(css))
+  }
+
+  def notFindElementByCss(css: String): WebElement = {
+    fluentWait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(css))))
     driver.findElement(By.cssSelector(css))
   }
 

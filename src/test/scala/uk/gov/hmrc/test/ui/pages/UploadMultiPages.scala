@@ -58,6 +58,8 @@ trait UploadMultiPages extends BasePage {
 
   def uploadAnother(): Unit = findElementByCss(".multi-file-upload__add-another").click()
 
+  def swirlyRing(): WebElement = findElementByCss(".file-upload__spinner")
+
   def uploadFilesToBrowser(fileSeq: String, elementID: String): Unit = {
     fileSeq match {
       case "jpg" => filePath = usrDir + "testJpg.jpg"

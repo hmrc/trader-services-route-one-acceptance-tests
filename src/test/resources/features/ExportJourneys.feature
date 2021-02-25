@@ -21,7 +21,7 @@ Feature: Customs check - Export Journeys
       And the user clicks Continue
       Then the user is on the multi-file upload pages for a/an New journey
       When the user clicks the button to upload the first file and selects the "pdf" file
-      Then the user clicks only clicks Continue when it's clickable
+      Then the user clicks Continue when files have finished uploading
       Then the user is on the Export CYA page
       Then the user clicks Submit on the CYA page
       Then the user is on the New confirmation page
@@ -54,7 +54,7 @@ Feature: Customs check - Export Journeys
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "jpg" file
-    Then the user clicks only clicks Continue when it's clickable
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Export CYA page
     Then the user clicks Submit on the CYA page
     Then the user is on the New confirmation page
@@ -86,8 +86,8 @@ Feature: Customs check - Export Journeys
     And the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
-    When the user clicks the button to upload the first file and selects the "docx" file
-    Then the user clicks only clicks Continue when it's clickable
+    When the user clicks the button to upload the first file and selects the "pdf" file
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Export CYA page
     Then the user clicks Submit on the CYA page
     Then the user is on the New confirmation page

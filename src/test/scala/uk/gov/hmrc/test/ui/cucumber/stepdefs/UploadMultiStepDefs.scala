@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.test.ui.pages.{BasePage, UploadMultiPages, UploadPages}
+import uk.gov.hmrc.test.ui.pages.{BasePage, UploadMultiPages}
 
 
 class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl with EN {
@@ -32,11 +32,11 @@ class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl w
   }
 
   Then("""^the user clicks the button to add another document"""){ () =>
-   uploadAnother
+   uploadAnother()
   }
 
   Then("""^the user clicks the button to upload the (.*) file and selects the "([^"]*)" file"""){ (fileOrder:String, file:String) =>
-    Thread.sleep(1250l)
+    Thread.sleep(900l)
 
     fileOrder match {
       case "first" =>     uploadFile1(file)
@@ -50,11 +50,13 @@ class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl w
       case "ninth" =>     uploadFile9(file)
       case "tenth" =>     uploadFile10(file)
     }
-    Thread.sleep(7500l)
+    clickUploadContinue()
   }
 
-  Then("""^the user waits until all uploads are completed"""){ () =>
-//sort this to be fluent
-    Thread.sleep(7000l)
+  And("""^the user clicks Continue when files have finished uploading""") { () =>
+    if(findElementByCss(".file-upload__spinner").isDisplayed.equals(true)) {
+      notFindElementByCss(".file-upload__spinner")
+      clickUploadContinue()}
+    else {findElementByCss(".file-upload__spinner").isDisplayed.equals(false)}
+    }
   }
-}

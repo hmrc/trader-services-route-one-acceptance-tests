@@ -22,7 +22,7 @@ Feature: Back Links & Change Links
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user clicks only clicks Continue when it's clickable
+    Then the user clicks Continue when files have finished uploading
     Then the user clicks the banner link to return to the landing page
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with Nothing
@@ -127,7 +127,7 @@ Feature: Back Links & Change Links
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "TIF" file
-    Then the user clicks only clicks Continue when it's clickable
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Import CYA page
     When the user answered YesToPriority then they should see the correct responses for the Import journey "<priority>", "No" & "Air"
 
@@ -287,7 +287,7 @@ Feature: Back Links & Change Links
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user clicks only clicks Continue when it's clickable
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Export CYA page
     When the user answered NoToPriority then they should see the correct responses for the Export journey "" & "<transport>"
 
@@ -357,7 +357,7 @@ Feature: Back Links & Change Links
     And the user enters a response with valid characters
     Then the user is on the multi-file upload pages for a/an Amend journey
     When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user clicks only clicks Continue when it's clickable
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Amend writeAndupload review page and should see their responses
 
     When the user clicks the change link on the amend review page for caseRef
@@ -375,12 +375,12 @@ Feature: Back Links & Change Links
     Then the user is on the how to respond page and selects uploadOnly
     Then the user is on the multi-file upload pages for a/an Amend journey
     When the user clicks the button to upload the first file and selects the "TIF" file
-    Then the user clicks only clicks Continue when it's clickable
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Amend uploadOnly review page and should see their responses
     When the user clicks the change link on the amend review page for documents
     Then the user is on the multi-file upload pages for a/an Amend journey
     When the user clicks the button to upload the second file and selects the "png" file
-    Then the user clicks only clicks Continue when it's clickable
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Amend uploadOnly review page and should see their responses
     When the user clicks Submit on the CYA page
     Then the user is on the Amend confirmation page
@@ -394,7 +394,7 @@ Feature: Back Links & Change Links
     And the user enters a response "<text>" and continues
     Then the user is on the multi-file upload pages for a/an Amend journey
     When the user clicks the button to upload the first file and selects the "jpg" file
-    Then the user clicks only clicks Continue when it's clickable
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Amend writeAndupload review page and should see their responses
     Then the user clicks back
     Then the user is on the multi-file upload pages for a/an Amend journey

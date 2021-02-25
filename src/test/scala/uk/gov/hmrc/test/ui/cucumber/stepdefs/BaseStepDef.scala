@@ -41,12 +41,6 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
    clickCYAContinue()
   }
 
-  And("""^the user clicks only clicks Continue when it's clickable""") { () =>
-    //to be replaced & altered
-    Thread.sleep(3000)
-    clickUploadContinue()
-  }
-
   And("""^the user waits""") { () =>
     Thread.sleep(7000l)
   }
