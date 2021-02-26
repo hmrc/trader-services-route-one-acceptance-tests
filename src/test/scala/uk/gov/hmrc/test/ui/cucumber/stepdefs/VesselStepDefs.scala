@@ -23,7 +23,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, VesselQuestionsPage}
 class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl with EN {
 
 
-  When ("""^the user navigates to the (.*) vessel page""") {(Journey:String) =>
+  When("""^the user navigates to the (.*) vessel page""") { (Journey: String) =>
     Journey match {
       case "Import-Optional" => navigateTo(urlImportVessel)
       case "Import-Mandatory" => navigateTo(urlImpMandatoryVessel)
@@ -44,21 +44,38 @@ class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl wit
     verifyHeading(headingVessel)
   }
 
-  Then("""^the user enters "(.*)" for vessel name$""") { (vesselName:String) =>
+  Then("""^the user enters "(.*)" for vessel name$""") { (vesselName: String) =>
     writeById(vesselQName, vesselName)
   }
 
-  Then("""^the user enters a date for the vessel "(.*)" "(.*)" "(.*)"$""") {
-    (vesselDay: String, vesselMonth: String, vesselYear: String) =>
-      writeById(vesselQDay, vesselDay)
-      writeById(vesselQMonth, vesselMonth)
-      writeById(vesselQYear, vesselYear)
+  Then("""^the user enters a Date of (.*) for the vessel "(.*)" "(.*)" "(.*)"$""") {
+    (journey: String, vesselDay: String, vesselMonth: String, vesselYear: String) =>
+
+      journey match {
+        case "Arrival" =>
+          writeById(vesselQArrivalDay, vesselDay)
+          writeById(vesselQArrivalMonth, vesselMonth)
+          writeById(vesselQArrivalYear, vesselYear)
+
+        case "Departure" =>
+          writeById(vesselQDepartureDay, vesselDay)
+          writeById(vesselQDepartureMonth, vesselMonth)
+          writeById(vesselQDepartureYear, vesselYear)
+      }
   }
 
-  Then("""^the user enters a time for the vessel "(.*)" "(.*)"$""") {
-    (vesselHrs: String, vesselMins: String) =>
-      writeById(vesselQHours, vesselHrs)
-      writeById(vesselQMinutes, vesselMins)
+  Then("""^the user enters a Time of (.*) for the vessel "(.*)" "(.*)"$""") {
+    (journey: String, vesselHrs: String, vesselMins: String) =>
+
+      journey match {
+        case "Arrival" =>
+          writeById(vesselQArrivalHours, vesselHrs)
+          writeById(vesselQArrivalMinutes, vesselMins)
+
+        case "Departure" =>
+          writeById(vesselQDepartureHours, vesselHrs)
+          writeById(vesselQDepartureMinutes, vesselMins)
+      }
   }
 
   Then("""^the details entered for Vessel Name should be pre filled with "(.*)"$""") {
@@ -66,18 +83,35 @@ class VesselStepDefs extends VesselQuestionsPage with BasePage with ScalaDsl wit
       verifyInput(vesselQName, vesselName)
   }
 
-  Then("""^the details entered for Date of Arrival should be pre filled with (.*), (.*) & (.*)$""") {
-    (vesselDay: String, vesselMonth: String, vesselYear: String) =>
-      verifyInput(vesselQDay, vesselDay)
-      verifyInput(vesselQMonth, vesselMonth)
-      verifyInput(vesselQYear, vesselYear)
+  Then("""^the details entered for Date of (.*) should be pre filled with (.*), (.*) & (.*)$""") {
+    (journey: String, vesselDay: String, vesselMonth: String, vesselYear: String) =>
+      journey match {
+
+        case "Arrival" =>
+          verifyInput (vesselQArrivalDay, vesselDay)
+          verifyInput(vesselQArrivalMonth, vesselMonth)
+          verifyInput(vesselQArrivalYear, vesselYear)
+
+        case "Departure" =>
+          verifyInput (vesselQDepartureDay, vesselDay)
+          verifyInput(vesselQDepartureMonth, vesselMonth)
+          verifyInput(vesselQDepartureYear, vesselYear)
   }
+}
 
 
-  Then("""^the details entered for Time of Arrival should be pre filled with "(.*)" & "(.*)"$""") {
-    (vesselHrs: String, vesselMins: String) =>
-      verifyInput(vesselQHours, vesselHrs)
-      verifyInput(vesselQMinutes, vesselMins)
+  Then("""^the details entered for Time of (.*) should be pre filled with "(.*)" & "(.*)"$""") {
+    (journey: String, vesselHrs: String, vesselMins: String) =>
 
+      journey match {
+        case "Arrival" =>
+          verifyInput (vesselQArrivalHours, vesselHrs)
+          verifyInput (vesselQArrivalMinutes, vesselMins)
+
+        case "Departure" =>
+          verifyInput (vesselQDepartureHours, vesselHrs)
+          verifyInput (vesselQDepartureMinutes, vesselMins)
+
+      }
   }
 }

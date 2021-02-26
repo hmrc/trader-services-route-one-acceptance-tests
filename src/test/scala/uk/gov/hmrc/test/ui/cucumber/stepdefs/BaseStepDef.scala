@@ -41,12 +41,6 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
    clickCYAContinue()
   }
 
-  And("""^the user clicks only clicks Continue when it's clickable""") { () =>
-    //to be replaced & altered
-    Thread.sleep(3000)
-    clickUploadContinue()
-  }
-
   And("""^the user waits""") { () =>
     Thread.sleep(7000l)
   }
@@ -72,41 +66,62 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
         writeById(entryMonth, todayDate.getMonthValue.toString)
         writeById(entryYear, todayDate.getYear.toString)
 
-      case "vesselDate" =>
-        writeById(vesselQDay, todayDate.getDayOfMonth.toString)
-        writeById(vesselQMonth, todayDate.getMonthValue.toString)
-        writeById(vesselQYear, todayDate.getYear.toString)
+      case "vesselDateArrival" =>
+        writeById(vesselQArrivalDay, todayDate.getDayOfMonth.toString)
+        writeById(vesselQArrivalMonth, todayDate.getMonthValue.toString)
+        writeById(vesselQArrivalYear, todayDate.getYear.toString)
+
+      case "vesselDateDeparture" =>
+        writeById(vesselQDepartureDay, todayDate.getDayOfMonth.toString)
+        writeById(vesselQDepartureMonth, todayDate.getMonthValue.toString)
+        writeById(vesselQDepartureYear, todayDate.getYear.toString)
     }
   }
 
   Then("""^the details entered for (.*) should be pre filled with today's date$""") {
     (dateField: String) =>
 
-        dateField match {
+      dateField match {
 
-          case "entryDate" =>
-            if (todayDate.getDayOfMonth <= 9) {
-              verifyInput(entryDay, todayDate.getDayOfMonth.toString.replaceFirst("", "0"))} else
-              verifyInput(entryDay, todayDate.getDayOfMonth.toString)
+        case "entryDate" =>
+          if (todayDate.getDayOfMonth <= 9) {
+            verifyInput(entryDay, todayDate.getDayOfMonth.toString.replaceFirst("", "0"))
+          } else
+            verifyInput(entryDay, todayDate.getDayOfMonth.toString)
 
-            if (todayDate.getMonthValue <= 9) {
-              verifyInput(entryMonth, todayDate.getMonthValue.toString.replaceFirst("", "0"))} else
-              verifyInput(entryMonth, todayDate.getMonthValue.toString)
+          if (todayDate.getMonthValue <= 9) {
+            verifyInput(entryMonth, todayDate.getMonthValue.toString.replaceFirst("", "0"))
+          } else
+            verifyInput(entryMonth, todayDate.getMonthValue.toString)
 
-            verifyInput(entryYear, todayDate.getYear.toString)
+          verifyInput(entryYear, todayDate.getYear.toString)
 
-          case "vesselDate" =>
-            if (todayDate.getDayOfMonth <= 9) {
-              verifyInput(vesselQDay, todayDate.getDayOfMonth.toString.replaceFirst("", "0"))} else
-              verifyInput(vesselQDay, todayDate.getDayOfMonth.toString)
+        case "vesselDateArrival" =>
+          if (todayDate.getDayOfMonth <= 9) {
+            verifyInput(vesselQArrivalDay, todayDate.getDayOfMonth.toString.replaceFirst("", "0"))
+          } else
+            verifyInput(vesselQArrivalDay, todayDate.getDayOfMonth.toString)
 
-            if (todayDate.getMonthValue <= 9) {
-              verifyInput(vesselQMonth, todayDate.getMonthValue.toString.replaceFirst("", "0"))} else
-              verifyInput(vesselQMonth, todayDate.getMonthValue.toString)
+          if (todayDate.getMonthValue <= 9) {
+            verifyInput(vesselQArrivalMonth, todayDate.getMonthValue.toString.replaceFirst("", "0"))
+          } else
+            verifyInput(vesselQArrivalMonth, todayDate.getMonthValue.toString)
 
-            verifyInput(vesselQYear, todayDate.getYear.toString)
+          verifyInput(vesselQArrivalYear, todayDate.getYear.toString)
 
-        }
+
+        case "vesselDateDeparture" =>
+           if (todayDate.getDayOfMonth <= 9) {
+              verifyInput(vesselQDepartureDay, todayDate.getDayOfMonth.toString.replaceFirst("", "0"))} else
+              verifyInput(vesselQDepartureDay, todayDate.getDayOfMonth.toString)
+
+          if (todayDate.getMonthValue <= 9) {
+              verifyInput(vesselQDepartureMonth, todayDate.getMonthValue.toString.replaceFirst("", "0"))} else
+              verifyInput(vesselQDepartureMonth, todayDate.getMonthValue.toString)
+
+            verifyInput(vesselQDepartureYear, todayDate.getYear.toString)
+
+  }
   }
 
   Then("""^the user should see "([^"]*)" error message for "([^"]*)"$""") { (errorMessage: String, fieldTitle: String) =>
@@ -119,12 +134,20 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
   }
 
 
-  And("""^the user should see the invalid date range error message for "(.*)" field""") { (fieldTitle: String) =>
-    driver.findElement(By.cssSelector("#error-summary-title")).isDisplayed
-    driver.findElement(By.cssSelector("#error-summary-title")).getText shouldBe "There is a problem"
+  And("""^the user should see the invalid (.*) date range error message for "(.*)" field""") {
+    (journey: String, fieldTitle: String) =>
+      driver.findElement(By.cssSelector("#error-summary-title")).isDisplayed
+      driver.findElement(By.cssSelector("#error-summary-title")).getText shouldBe "There is a problem"
 
-    driver.findElement(By.id(s"$fieldTitle-error")).isDisplayed
-    driver.findElement(By.id(s"$fieldTitle-error")).getText should startWith("Error:\nDate of arrival must be between")
+      driver.findElement(By.id(s"$fieldTitle-error")).isDisplayed
+
+      journey match {
+        case "arrival" =>
+      driver.findElement (By.id (s"$fieldTitle-error") ).getText should startWith ("Error:\nDate of arrival must be between")
+
+        case "departure" =>
+          driver.findElement (By.id (s"$fieldTitle-error") ).getText should startWith ("Error:\nDate of departure must be between")
+      }
   }
 
   When("""^the user clicks the error link for "([^"]*)" it should link to the (.*) field""") {

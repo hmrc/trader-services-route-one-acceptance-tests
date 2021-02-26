@@ -21,8 +21,8 @@ Feature: Review/CYA page
     And the user enters a phone number "<phone>"
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
-    When the user clicks the button to upload the first file and selects the "odt" file
-    Then the user clicks only clicks Continue when it's clickable
+    When the user clicks the button to upload the first file and selects the "png" file
+    Then the user clicks Continue when files have finished uploading
 
     Then the user is on the Import CYA page
     Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
@@ -32,8 +32,8 @@ Feature: Review/CYA page
     Then the user should see the Priority YN row & the correct response Yes on the CYA page
     When the user answered YesToPriority then they should see the correct responses for the Import journey "<priority>", "<ALVS>" & "<transport>"
     Then the user should see the Vessel Name row & the correct response "-" on the CYA page
-    And the user should see the Vessel Date row & the correct response "-" on the CYA page
-    And the user should see the Vessel Time row & the correct response "-" on the CYA page
+    And the user should see the Vessel Date Arrival row & the correct response "-" on the CYA page
+    And the user should see the Vessel Time Arrival row & the correct response "-" on the CYA page
     And the user should see the Full Contact details row & the correct responses "<name>", "<email>" & "<phone>" on the CYA page
 
     Examples:
@@ -53,14 +53,14 @@ Feature: Review/CYA page
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Optional Vessel Page
     Then the user enters "<vesselName>" for vessel name
-    And the user enters today's date for vesselDate
+    And the user enters today's date for vesselDateDeparture
     Then the user clicks Continue
     Then the user is on the Export Contact Details Page
     And the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
-    When the user clicks the button to upload the first file and selects the "ods" file
-    Then the user clicks only clicks Continue when it's clickable
+    When the user clicks the button to upload the first file and selects the "pdf" file
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Export CYA page
     Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
     And the user should see the Entry Date row & the date <entryDateCYA> on the CYA page
@@ -69,8 +69,8 @@ Feature: Review/CYA page
     Then the user should see the Priority YN row & the correct response No on the CYA page
     When the user answered NoToPriority then they should see the correct responses for the Export journey "" & "<transport>"
     Then the user should see the Vessel Name row & the correct response "<vesselName>" on the CYA page
-    And the user should see the Vessel Date row & the correct response "<entryDateCYA>" on the CYA page
-    And the user should see the Vessel Time row & the correct response "-" on the CYA page
+    And the user should see the Vessel Date Departure row & the correct response "<entryDateCYA>" on the CYA page
+    And the user should see the Vessel Time Departure row & the correct response "-" on the CYA page
     And the user should see the Mandatory Contact details row & the correct responses "", "<email>" & "" on the CYA page
 
     Examples:

@@ -31,7 +31,7 @@ Feature: A user wants to upload documents
 
     Then the user selects Yes to uploading another file
     Then the user is on the Another upload page
-    When the user clicks the button to upload and selects the "ppt" file
+    When the user clicks the button to upload and selects the "png" file
     Then the user should be on the new file upload confirmation page after uploading 2 document/s
 
     Then the user selects Yes to uploading another file
@@ -42,7 +42,7 @@ Feature: A user wants to upload documents
     Then the user should be on the new file upload confirmation page after uploading 2 document/s
     Then the user selects Yes to uploading another file
     Then the user is on the Another upload page
-    When the user clicks the button to upload and selects the "ods" file
+    When the user clicks the button to upload and selects the "pdf" file
     Then the user should be on the new file upload confirmation page after uploading 3 document/s
     Then the user selects No to uploading another file
     Then the user is on the Import CYA page

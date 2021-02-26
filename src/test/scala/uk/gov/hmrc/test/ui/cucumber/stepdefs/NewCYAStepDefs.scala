@@ -113,16 +113,38 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
     assertElementText(summaryVesselName, vesselNameRow)
     assertElementText(Answer, vesselNameAnswer)
   }
-  Then("""^the user should see the Vessel Date row & the correct response "(.*)" on the CYA page$""") { (Answer: String) =>
-    assertElementText(summaryVesselDate, vesselDateRow)
-    Answer match {
-      case "Today" => assertElementText(todayDateCYA, vesselDateAnswer)
-      case _ =>     assertElementText(Answer, vesselDateAnswer)
+
+  Then("""^the user should see the Vessel Date (.*) row & the correct response "(.*)" on the CYA page$""") {
+    (journey:String, Answer: String) =>
+
+      journey match {
+        case "Arrival" =>
+          assertElementText(summaryVesselArrivalDate, vesselDateRow)
+
+        case "Departure" =>
+          assertElementText(summaryVesselDepartureDate, vesselDateRow)
+
+      }
+         Answer match {
+           case "Today" => assertElementText(todayDateCYA, vesselDateAnswer)
+           case _ =>     assertElementText(Answer, vesselDateAnswer)
     }
   }
-  Then("""^the user should see the Vessel Time row & the correct response "(.*)" on the CYA page$""") { (Answer: String) =>
-    assertElementText(summaryVesselTime, vesselTimeRow)
-    assertElementText(Answer, vesselTimeAnswer)
+
+
+  Then("""^the user should see the Vessel Time (.*) row & the correct response "(.*)" on the CYA page$""") {
+    (journey: String, Answer: String) =>
+
+      journey match {
+        case "Arrival" =>
+          assertElementText(summaryVesselArrivalTime, vesselTimeRow)
+          assertElementText(Answer, vesselTimeAnswer)
+
+        case "Departure" =>
+          assertElementText(summaryVesselDepartureTime, vesselTimeRow)
+          assertElementText(Answer, vesselTimeAnswer)
+
+      }
   }
 
 

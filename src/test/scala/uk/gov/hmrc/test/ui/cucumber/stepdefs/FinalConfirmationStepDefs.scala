@@ -31,6 +31,8 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
         confirmUrl(urlConfirmation)
         verifyHeading(headingConfirmation)
         assertElementTextContains("Your customs check document receipt", receipt)
+        isElementVisible(".print-page").shouldBe(true)
+        isElementVisible("a.action-buttons__button").shouldBe(true)
 
       case "Amend" =>
         confirmUrl(urlAmendConfirm)

@@ -14,7 +14,7 @@ Feature: Error Pages
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Optional Vessel Page
     Then the user enters "<vesselName>" for vessel name
-    And the user enters today's date for vesselDate
+    And the user enters today's date for vesselDateDeparture
     Then the user clicks Continue
     Then the user is on the Export Contact Details Page
     And the user enters an email address "<email>"
@@ -22,7 +22,7 @@ Feature: Error Pages
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user clicks only clicks Continue when it's clickable
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Export CYA page
     Then the user clicks Submit on the CYA page
     Then the user will be on the duplicate case error page

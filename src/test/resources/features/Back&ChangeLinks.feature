@@ -15,14 +15,14 @@ Feature: Back Links & Change Links
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Optional Vessel Page
     Then the user enters "<vesselName>" for vessel name
-    And the user enters today's date for vesselDate
+    And the user enters today's date for vesselDateDeparture
     Then the user clicks Continue
     Then the user is on the Export Contact Details Page
     And the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
-    When the user clicks the button to upload the first file and selects the "odt" file
-    Then the user clicks only clicks Continue when it's clickable
+    When the user clicks the button to upload the first file and selects the "pdf" file
+    Then the user clicks Continue when files have finished uploading
     Then the user clicks the banner link to return to the landing page
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with Nothing
@@ -46,8 +46,8 @@ Feature: Back Links & Change Links
     Then the user is on the Import Transport Type Page and selects <transport>
     Then the user is on the Import-Optional Vessel Page
     When the user enters "<vesselName>" for vessel name
-    And the user enters today's date for vesselDate
-    And the user enters a time for the vessel "23" "15"
+    And the user enters today's date for vesselDateArrival
+    And the user enters a Time of Arrival for the vessel "23" "15"
     And the user clicks Continue
     Then the user is on the Import Contact Details Page
     When the user enters a name "<name>"
@@ -62,7 +62,7 @@ Feature: Back Links & Change Links
     When the user clicks back
     Then the user is on the Import-Optional Vessel Page
     And the details entered for Vessel Name should be pre filled with "<vesselName>"
-    And the details entered for vesselDate should be pre filled with today's date
+    And the details entered for vesselDateArrival should be pre filled with today's date
     And the details entered for Time of Arrival should be pre filled with "23" & "15"
 
     When the user clicks back
@@ -127,7 +127,7 @@ Feature: Back Links & Change Links
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "TIF" file
-    Then the user clicks only clicks Continue when it's clickable
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Import CYA page
     When the user answered YesToPriority then they should see the correct responses for the Import journey "<priority>", "No" & "Air"
 
@@ -167,8 +167,8 @@ Feature: Back Links & Change Links
     And the user clicks Continue
     Then the user is on the Import-Mandatory Vessel Page
     And the user enters "<vesselName>" for vessel name
-    And the user enters today's date for vesselDate
-    And the user enters a time for the vessel "11" "15"
+    And the user enters today's date for vesselDateArrival
+    And the user enters a Time of Arrival for the vessel "11" "15"
     When the user clicks Continue
     Then the user is on the Import CYA page
 
@@ -181,8 +181,8 @@ Feature: Back Links & Change Links
     And the user should see the Priority YN row & the correct response No on the CYA page
     When the user answered NoToPriority then they should see the correct responses for the Import journey "", "<ALVS>" & "<transport>"
     And the user should see the Vessel Name row & the correct response "<vesselName>" on the CYA page
-    And the user should see the Vessel Date row & the correct response "<entryDateCYA>" on the CYA page
-    And the user should see the Vessel Time row & the correct response "11:15" on the CYA page
+    And the user should see the Vessel Date Arrival row & the correct response "<entryDateCYA>" on the CYA page
+    And the user should see the Vessel Time Arrival row & the correct response "11:15" on the CYA page
     And the user should see the Mandatory Contact details row & the correct responses "", "<email>" & "" on the CYA page
 
     Then the user clicks the change link for Declaration
@@ -210,7 +210,7 @@ Feature: Back Links & Change Links
     When the user is on the Export Priority Options Page and selects <priority>
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Optional Vessel Page
-    And the user enters today's date for vesselDate
+    And the user enters today's date for vesselDateDeparture
     Then the user clicks Continue
     Then the user is on the Export Contact Details Page
     When the user enters a name "<name>"
@@ -225,8 +225,8 @@ Feature: Back Links & Change Links
     When the user clicks back
     Then the user is on the Export-Optional Vessel Page
     And the details entered for Vessel Name should be pre filled with ""
-    And the details entered for vesselDate should be pre filled with today's date
-    And the details entered for Time of Arrival should be pre filled with "" & ""
+    And the details entered for vesselDateDeparture should be pre filled with today's date
+    And the details entered for Time of Departure should be pre filled with "" & ""
 
     When the user clicks back
     Then the user is on the Export Transport Page
@@ -278,8 +278,8 @@ Feature: Back Links & Change Links
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Mandatory Vessel Page
     When the user enters "<vesselName>" for vessel name
-    And the user enters today's date for vesselDate
-    And the user enters a time for the vessel "12" "34"
+    And the user enters today's date for vesselDateDeparture
+    And the user enters a Time of Departure for the vessel "12" "34"
     And the user clicks Continue
     Then the user is on the Export Contact Details Page
     And the user enters a name "<name>"
@@ -287,7 +287,7 @@ Feature: Back Links & Change Links
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user clicks only clicks Continue when it's clickable
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Export CYA page
     When the user answered NoToPriority then they should see the correct responses for the Export journey "" & "<transport>"
 
@@ -312,8 +312,8 @@ Feature: Back Links & Change Links
     When the user clicks the change link for Vessel
     And the user is on the Export-Optional Vessel Page
     And the details entered for Vessel Name should be pre filled with "<vesselName>"
-    And the details entered for vesselDate should be pre filled with today's date
-    And the details entered for Time of Arrival should be pre filled with "12" & "34"
+    And the details entered for vesselDateDeparture should be pre filled with today's date
+    And the details entered for Time of Departure should be pre filled with "12" & "34"
     Then the user clicks Continue
     Then the user is on the Export CYA page
 
@@ -332,8 +332,8 @@ Feature: Back Links & Change Links
     Then the user should see the Priority YN row & the correct response Yes on the CYA page
     When the user answered YesToPriority then they should see the correct responses for the Export journey "<priority>" & "<transport>"
     And the user should see the Vessel Name row & the correct response "<vesselName>" on the CYA page
-    And the user should see the Vessel Date row & the correct response "<entryDateCYA>" on the CYA page
-    And the user should see the Vessel Time row & the correct response "12:34" on the CYA page
+    And the user should see the Vessel Date Departure row & the correct response "<entryDateCYA>" on the CYA page
+    And the user should see the Vessel Time Departure row & the correct response "12:34" on the CYA page
     And the user should see the Full Contact details row & the correct responses "<name>", "<email>" & "<phoneNo>" on the CYA page
 
     Then the user clicks the change link for Declaration
@@ -356,8 +356,8 @@ Feature: Back Links & Change Links
     Then the user is on the write response page
     And the user enters a response with valid characters
     Then the user is on the multi-file upload pages for a/an Amend journey
-    When the user clicks the button to upload the first file and selects the "pptx" file
-    Then the user clicks only clicks Continue when it's clickable
+    When the user clicks the button to upload the first file and selects the "pdf" file
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Amend writeAndupload review page and should see their responses
 
     When the user clicks the change link on the amend review page for caseRef
@@ -374,13 +374,13 @@ Feature: Back Links & Change Links
     When the user clicks the change link on the amend review page for amendment
     Then the user is on the how to respond page and selects uploadOnly
     Then the user is on the multi-file upload pages for a/an Amend journey
-    When the user clicks the button to upload the first file and selects the "ppt" file
-    Then the user clicks only clicks Continue when it's clickable
+    When the user clicks the button to upload the first file and selects the "TIF" file
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Amend uploadOnly review page and should see their responses
     When the user clicks the change link on the amend review page for documents
     Then the user is on the multi-file upload pages for a/an Amend journey
-    When the user clicks the button to upload the second file and selects the "xls" file
-    Then the user clicks only clicks Continue when it's clickable
+    When the user clicks the button to upload the second file and selects the "png" file
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Amend uploadOnly review page and should see their responses
     When the user clicks Submit on the CYA page
     Then the user is on the Amend confirmation page
@@ -393,8 +393,8 @@ Feature: Back Links & Change Links
     Then the user is on the write response page
     And the user enters a response "<text>" and continues
     Then the user is on the multi-file upload pages for a/an Amend journey
-    When the user clicks the button to upload the first file and selects the "xls" file
-    Then the user clicks only clicks Continue when it's clickable
+    When the user clicks the button to upload the first file and selects the "jpg" file
+    Then the user clicks Continue when files have finished uploading
     Then the user is on the Amend writeAndupload review page and should see their responses
     Then the user clicks back
     Then the user is on the multi-file upload pages for a/an Amend journey

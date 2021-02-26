@@ -58,6 +58,10 @@ trait UploadMultiPages extends BasePage {
 
   def uploadAnother(): Unit = findElementByCss(".multi-file-upload__add-another").click()
 
+  def swirlyRing: WebElement = findElementByCss(".file-upload__spinner")
+
+  def insetText:WebElement = findElementByCss(".govuk-inset-text")
+
   def uploadFilesToBrowser(fileSeq: String, elementID: String): Unit = {
     fileSeq match {
       case "jpg" => filePath = usrDir + "testJpg.jpg"
@@ -85,6 +89,4 @@ trait UploadMultiPages extends BasePage {
     }
     driver.findElement(By.id(elementID)).sendKeys(filePath)
   }
-
-  def noConditionalReveal:WebElement = findElementById("conditional-uploadAnotherFile-2")
 }

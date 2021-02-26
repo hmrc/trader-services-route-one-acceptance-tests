@@ -30,11 +30,18 @@ trait VesselQuestionsPage extends BasePage {
 
   def vesselQName: WebElement = findElementById("vesselName")
 
-  def vesselQDay: WebElement = findElementById("dateOfArrival.day")
-  def vesselQMonth: WebElement = findElementById("dateOfArrival.month")
-  def vesselQYear: WebElement = findElementById("dateOfArrival.year")
+  def vesselQArrivalDay: WebElement = findElementById("dateOfArrival.day")
+  def vesselQArrivalMonth: WebElement = findElementById("dateOfArrival.month")
+  def vesselQArrivalYear: WebElement = findElementById("dateOfArrival.year")
 
-  def vesselQHours: WebElement = findElementById("timeOfArrival.hour")
-  def vesselQMinutes: WebElement = findElementById("timeOfArrival.minutes")
+  def vesselQDepartureDay: WebElement = findElementById("dateOfDeparture.day")
+  def vesselQDepartureMonth: WebElement = findElementById("dateOfDeparture.month")
+  def vesselQDepartureYear: WebElement = findElementById("dateOfDeparture.year")
+
+  def vesselQArrivalHours: WebElement = findElementById("timeOfArrival.hour")
+  def vesselQArrivalMinutes: WebElement = findElementById("timeOfArrival.minutes")
+
+  def vesselQDepartureHours: WebElement = findElementById("timeOfDeparture.hour")
+  def vesselQDepartureMinutes: WebElement = findElementById("timeOfDeparture.minutes")
 
 }
