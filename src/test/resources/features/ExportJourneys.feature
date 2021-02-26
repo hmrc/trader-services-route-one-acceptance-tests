@@ -20,6 +20,7 @@ Feature: Customs check - Export Journeys
       And the user enters an email address "<email>"
       And the user clicks Continue
       Then the user is on the multi-file upload pages for a/an New journey
+      And the user will only see inset text for request type N/A
       When the user clicks the button to upload the first file and selects the "pdf" file
       Then the user clicks Continue when files have finished uploading
       Then the user is on the Export CYA page
@@ -53,6 +54,7 @@ Feature: Customs check - Export Journeys
     And the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
+    And the user will only see inset text for request type N/A
     When the user clicks the button to upload the first file and selects the "jpg" file
     Then the user clicks Continue when files have finished uploading
     Then the user is on the Export CYA page
@@ -86,6 +88,7 @@ Feature: Customs check - Export Journeys
     And the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
+    And the user will only see inset text for request type C1601
     When the user clicks the button to upload the first file and selects the "pdf" file
     Then the user clicks Continue when files have finished uploading
     Then the user is on the Export CYA page
@@ -112,7 +115,38 @@ Feature: Customs check - Export Journeys
     Then the user is on the Export YesNo Priority Page and selects No
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Mandatory Vessel Page
+    When the user enters "<vesselName>" for vessel name
+    And the user enters today's date for vesselDateDeparture
+    And the user enters a Time of Departure for the vessel "16" "21"
+    Then the user clicks Continue
+    Then the user is on the Export Contact Details Page
+    And the user enters an email address "awdn_ljd@a.co.uk"
+    And the user clicks Continue
+    Then the user is on the multi-file upload pages for a/an New journey
+    And the user will only see inset text for request type C1602
+
+    Examples:
+      | epu | entryNo | requestType | route   | transport     | vesselName |
+      | 123 | A23456A | C1602       | Route 1 | RoadRoRoRail  | abc        |
+
+  Scenario Outline: C1602: A user should be on the mandatory vessel page
+    Given the user is on the start page for trader services and selects New
+    Then the user is on the declaration details page
+    When the user enters declaration details "<epu>" and "<entryNo>"
+    And the user enters today's date for entryDate
+    And the user clicks Continue
+    Then the user is on the Export Request Type page and selects <requestType>
+    Then the user is on the Export Route Type Page and selects <route>
+    Then the user is on the Export YesNo Priority Page and selects No
+    Then the user is on the Export Transport Type Page and selects <transport>
+    Then the user is on the Export-Optional Vessel Page
+    Then the user clicks Continue
+    Then the user is on the Export Contact Details Page
+    And the user enters an email address "awjdlnwjdn@a.com"
+    And the user clicks Continue
+    Then the user is on the multi-file upload pages for a/an New journey
+    And the user will only see inset text for request type C1603
 
     Examples:
       | epu | entryNo | requestType | route   | transport     |
-      | 123 | A23456A | C1602       | Route 1 | RoadRoRoRail  |
+      | 123 | A23456A | C1603       | Route 1 | RoadRoRoRail  |

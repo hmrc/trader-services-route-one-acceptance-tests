@@ -167,9 +167,9 @@ trait BasePage extends Matchers with BrowserDriver {
   def isElementVisible(css: String): Boolean = findElementByCss(css).isDisplayed
 
   def assertElementIsNotVisibleById(id: String): Unit = {
-    driver.manage.timeouts.implicitlyWait(50, TimeUnit.SECONDS)
+    driver.manage.timeouts.implicitlyWait(1, TimeUnit.SECONDS)
     assert(driver.findElements(By.id(id)).size() == 0, message(s"The element with id $id was visible. Expected not visible"))
-    driver.manage.timeouts.implicitlyWait(50, TimeUnit.SECONDS)
+    driver.manage.timeouts.implicitlyWait(1, TimeUnit.SECONDS)
   }
 
   lazy val todayDate: LocalDate = LocalDate.now()

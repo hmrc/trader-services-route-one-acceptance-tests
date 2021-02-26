@@ -36,7 +36,7 @@ class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl w
   }
 
   Then("""^the user clicks the button to upload the (.*) file and selects the "([^"]*)" file"""){ (fileOrder:String, file:String) =>
-    Thread.sleep(900l)
+    Thread.sleep(1500l)
 
     fileOrder match {
       case "first" =>     uploadFile1(file)
@@ -59,4 +59,14 @@ class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl w
       clickUploadContinue()}
     else {findElementByCss(".file-upload__spinner").isDisplayed.equals(false)}
     }
+
+  And("""^the user will only see inset text for request type (.*)""") { (exportRq:String) =>
+
+    exportRq match {
+      case "C1601" => assertElementTextContains("For this export, you must upload form C1601 - Presentation of goods for export (arrival). You can include other supporting documents too.", insetText)
+      case "C1602" => assertElementTextContains("For this export, you must upload form C1602 - Notification of exit of goods (departure). You can include other supporting documents too.", insetText)
+      case "C1603" => assertElementTextContains("For this export, you must upload form C1603 - Notification of retrospective arrival. You can include other supporting documents too.", insetText)
+      case "N/A" => assertElementIsNotVisibleById("govuk-inset-text")
+    }
+  }
   }

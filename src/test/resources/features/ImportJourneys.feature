@@ -21,6 +21,7 @@ Feature: Customs check - Import Journeys
     When the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
+    And the user will only see inset text for request type N/A
     When the user clicks the button to upload the first file and selects the "pdf" file
     Then the user clicks Continue when files have finished uploading
     Then the user is on the Import CYA page
