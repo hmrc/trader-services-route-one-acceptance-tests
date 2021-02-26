@@ -104,7 +104,7 @@ Feature: Customs check - Export Journeys
       | 424 | l15125z | C1601       | Route 3 | Maritime  | Test Vessel | real-person@hotmail.co.uk |
 
 
-  Scenario Outline: C1602: A user should be on the mandatory vessel page
+  Scenario Outline: C1602: A user should be on the mandatory vessel page and the inset text for C1602
     Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
@@ -129,7 +129,7 @@ Feature: Customs check - Export Journeys
       | epu | entryNo | requestType | route   | transport     | vesselName |
       | 123 | A23456A | C1602       | Route 1 | RoadRoRoRail  | abc        |
 
-  Scenario Outline: C1602: A user should be on the mandatory vessel page
+  Scenario Outline: C1603: A user should see the inset text for C1603
     Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"

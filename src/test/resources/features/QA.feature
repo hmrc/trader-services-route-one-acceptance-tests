@@ -35,7 +35,7 @@ Feature: Customs check - Export Journey
 
 Examples:
 | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   | phone |
-| 291 | Z64631B | New         | Route 1 | Human remains | Air  | TestVessel | smith | aacc@test.com | 0177 111 1111      |
+| 060 | Z64631B | New         | Route 1 | Human remains | Air  | TestVessel | smith | aacc@test.com | 0177 111 1111      |
 
 
 
@@ -84,15 +84,15 @@ Examples:
 
     Examples:
       | epu | entryNo |requestType | route   | priority      | transport | vesselName | name   | email          | phone |
-      | 291 | 777561H |New         | Route 6 | Human remains | Air       | aeroplane 1 | Mr. F  | valid@test.com | 01256888999|
+      | 033 | 777561H |New         | Route 6 | Human remains | Air       | aeroplane 1 | Mr. F  | valid@test.com | 01256888999|
 
-  Scenario: Amend: A user adds a message and a document to a case (write response only)
-    Given the user is on the start page for trader services and selects Amend
-    Then the user is on the case ref number page
-    When the user is on the how to respond page and selects writeOnly
-    And the user enters a response "sample message" and continues
-    When the user clicks Submit on the CYA page
-    Then the user waits
+#  Scenario: Amend: A user adds a message and a document to a case (write response only)
+#    Given the user is on the start page for trader services and selects Amend
+#    Then the user is on the case ref number page
+#    When the user is on the how to respond page and selects writeOnly
+#    And the user enters a response "sample message" and continues
+#    When the user clicks Submit on the CYA page
+#    Then the user waits
 
   #Legit EPUS
 #    410
