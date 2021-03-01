@@ -2,7 +2,8 @@
 #Feature: A user wants to upload documents
 #
 #  Scenario Outline: A user wants upload some documents
-#    Given the user is on the start page for trader services and selects New
+#    Given the user navigates to the temporary start page for trader services and clicks start
+#    Then the user is on the start page for trader services and selects New
 #    Then the user is on the declaration details page
 #    When the user enters declaration details "<epu>" and "<entryNo>"
 #    And the user enters today's date for entryDate

@@ -32,8 +32,15 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.WebElement
+
 trait LandingPage extends BasePage {
+
+  val traderServicesStart:String = traderServicesBaseUrl + "/start"
+  val startHeading = "Send documents for a customs check for declarations made in CHIEF"
 
   val traderServicesUrl: String = traderServicesBaseUrl + "/new-or-existing"
   val landingHeading = "What do you want to do?"
+
+  def startButton: WebElement = findElementByCss("")
 }

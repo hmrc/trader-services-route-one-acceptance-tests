@@ -4,6 +4,7 @@ Feature: Customs check - Export Journey
 
   Scenario Outline: A user wants to complete a New Export RouteOne journey
     Given the user logs into QA
+    Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
@@ -40,7 +41,8 @@ Examples:
 
 
   Scenario: Amend: A user adds a message and a document to a case (write response + upload)
-    Given the user is on the start page for trader services and selects Amend
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
     When the user is on the how to respond page and selects writeAndupload
     Then the user is on the write response page
@@ -53,6 +55,7 @@ Examples:
 
   Scenario Outline: A user wants to complete a New Import journey
     Given the user logs into QA
+    Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
@@ -87,7 +90,8 @@ Examples:
       | 033 | 777561H |New         | Route 6 | Human remains | Air       | aeroplane 1 | Mr. F  | valid@test.com | 01256888999|
 
 #  Scenario: Amend: A user adds a message and a document to a case (write response only)
-#    Given the user is on the start page for trader services and selects Amend
+#    Given the user navigates to the temporary start page for trader services and clicks start
+#    Then the user is on the start page for trader services and selects New
 #    Then the user is on the case ref number page
 #    When the user is on the how to respond page and selects writeOnly
 #    And the user enters a response "sample message" and continues
