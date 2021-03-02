@@ -30,6 +30,10 @@ class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with E
     startButton.click()
   }
 
+  Then("""^the user will be on the temporary start page$""") { () =>
+    confirmUrl(traderServicesStart)
+  }
+
   Given("""^the user navigates to the landing page for trader services$""") { () =>
     navigateTo(traderServicesUrl)
   }

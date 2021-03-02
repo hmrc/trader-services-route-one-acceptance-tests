@@ -27,6 +27,8 @@ Feature: Back Links & Change Links
     Then the user clicks the banner link to return to the landing page
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with Nothing
+    When the user clicks back
+    Then the user navigates to the temporary start page for trader services and clicks start
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | vesselName  | email   |
@@ -102,6 +104,8 @@ Feature: Back Links & Change Links
     Then the user clicks the banner link to return to the landing page
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with Nothing
+    When the user clicks back
+    Then the user navigates to the temporary start page for trader services and clicks start
 
     Examples:
 | epu | entryNo | requestType | route   | priority                | transport | vesselName | name       | email      |
