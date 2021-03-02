@@ -21,8 +21,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user should be on the new file upload confirmation page after uploading 1 document/s
-    Then the user selects No to uploading another file
+    And the user clicks Continue when files have finished uploading
     Then the user is on the Export CYA page
     Then the user clicks Submit on the CYA page
     Then the user is on the New confirmation page
@@ -47,14 +46,10 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     Then the user is on the Export YesNo Priority Page and selects No
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Mandatory Vessel Page
-    Then the user enters "<vesselName>" for vessel name
-    And the user enters today's date for vesselDateDeparture
-    And the user enters a Time of Departure for the vessel "14" "10"
-    Then the user clicks Continue
 
     Examples:
-      | epu | entryNo | requestType | route   | transport    | vesselName |
-      | 123 | A23456A | C1601       | Route 1 | RoadRoRoRail | Train1     |
+      | epu | entryNo | requestType | route   | transport    |
+      | 123 | A23456A | C1601       | Route 1 | RoadRoRoRail |
 
 
   Scenario Outline: a11y/ZAP - every page in journey hit (Import - Vessel-Optional)
@@ -77,9 +72,8 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     When the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
-    When the user clicks the button to upload the first file and selects the "pdf" file
+    When the user clicks the button to upload the first file and selects the "jpg" file
     Then the user clicks Continue when files have finished uploading
-    Then the user selects No to uploading another file
     Then the user is on the Import CYA page
     Then the user clicks Submit on the CYA page
     Then the user is on the New confirmation page
@@ -118,8 +112,6 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     Then the user is on the multi-file upload pages for a/an Amend journey
     When the user clicks the button to upload the first file and selects the "pdf" file
     Then the user clicks Continue when files have finished uploading
-    Then the user should see their first uploaded doc testDoc.doc on upload review page
-    Then the user selects No to uploading another file
     Then the user is on the Amend writeAndupload review page and should see their responses
     When the user clicks Submit on the CYA page
     Then the user is on the Amend confirmation page
