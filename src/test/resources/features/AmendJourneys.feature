@@ -2,7 +2,8 @@
 Feature: Amend Journeys
 
   Scenario: Amend case journey (error validation)
-    Given the user is on the start page for trader services and selects Amend
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
     When the user enters no characters for case reference number
     Then the user should see "Error:Enter the case reference number" error message for "caseReferenceNumber"
@@ -32,7 +33,8 @@ Feature: Amend Journeys
 
 #    Write Response
   Scenario: A user wants to add a message to their case (write response only)
-    Given the user is on the start page for trader services and selects Amend
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
     When the user enters valid characters for case reference number
     Then the user is on the how to respond page and selects writeOnly
@@ -45,7 +47,8 @@ Feature: Amend Journeys
 
 #    Upload Only
   Scenario: A user wants to add another document to a case (upload only)
-    Given the user is on the start page for trader services and selects Amend
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
     When the user enters valid characters for case reference number
     Then the user is on the how to respond page and selects uploadOnly
@@ -60,7 +63,8 @@ Feature: Amend Journeys
 
 #    Write Response & Upload
   Scenario: Amend: A user adds a message and a document to a case (write response + upload)
-    Given the user is on the start page for trader services and selects Amend
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
     When the user enters valid characters for case reference number
     When the user is on the how to respond page and selects writeAndupload

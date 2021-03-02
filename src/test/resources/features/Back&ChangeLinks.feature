@@ -3,7 +3,8 @@ Feature: Back Links & Change Links
 
 #  BANNER LINK - RestartCall
   Scenario Outline: A user user goes back to the start after uploading a file (information cleared)
-    Given the user is on the start page for trader services and selects New
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -26,6 +27,8 @@ Feature: Back Links & Change Links
     Then the user clicks the banner link to return to the landing page
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with Nothing
+    When the user clicks back
+    Then the user navigates to the temporary start page for trader services and clicks start
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | vesselName  | email   |
@@ -33,7 +36,8 @@ Feature: Back Links & Change Links
 
   #IMPORT
   Scenario Outline: Import: A user wants to go back through the journey
-    Given the user is on the start page for trader services and selects New
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -100,13 +104,16 @@ Feature: Back Links & Change Links
     Then the user clicks the banner link to return to the landing page
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with Nothing
+    When the user clicks back
+    Then the user navigates to the temporary start page for trader services and clicks start
 
     Examples:
 | epu | entryNo | requestType | route   | priority                | transport | vesselName | name       | email      |
 | 113 | 993456A | New         | Route 3 | Explosives or fireworks | Maritime  | TestShip   | Abc Testb  | a@test.com |
 
   Scenario Outline: Import: A user wants to change an answer via the CYA page
-    Given the user is on the start page for trader services and selects New
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -199,7 +206,8 @@ Feature: Back Links & Change Links
 
 #EXPORT
   Scenario Outline: Export: A user wants to go back through the journey
-    Given the user is on the start page for trader services and selects New
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -267,7 +275,8 @@ Feature: Back Links & Change Links
 
 
   Scenario Outline: Export: A user wants to change an answer via the CYA page
-    Given the user is on the start page for trader services and selects New
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -349,7 +358,8 @@ Feature: Back Links & Change Links
 
 #    AMEND
   Scenario: Amend: A user wants to change their request type and information via the CYA page
-    Given the user is on the start page for trader services and selects Amend
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
     When the user enters valid characters for case reference number
     When the user is on the how to respond page and selects writeAndupload
@@ -386,7 +396,8 @@ Feature: Back Links & Change Links
     Then the user is on the Amend confirmation page
 
   Scenario Outline: Amend Back links - A user wants to go back to the start
-    Given the user is on the start page for trader services and selects <journey>
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
     When the user enters a case ref number "<caseRef>" and continues
     When the user is on the how to respond page and selects <amendType>
@@ -409,10 +420,10 @@ Feature: Back Links & Change Links
     And the details in the case ref field should be pre-filled with "<caseRef>"
     When the user clicks back
     Then the user is on the start page for trader services
-    And the last selected option for journey type should be pre filled with <journey>
+    And the last selected option for journey type should be pre filled with Amend
     Then the user clicks the banner link to return to the landing page
     And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
-      | journey  | caseRef                | amendType    | text      |
-      |  Amend   | PC12010081330XGBNZJO04 | writeAndupload | test text |
+    | caseRef                | amendType    | text      |
+    | PC12010081330XGBNZJO04 | writeAndupload | test text |

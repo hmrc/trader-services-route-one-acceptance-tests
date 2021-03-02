@@ -3,7 +3,8 @@
 Feature: Hit all pages within the service - ZAP & Accessibility testing
 
   Scenario Outline: a11y/ZAP- every page in journey hit (Export - Vessel-Optional)
-    Given the user is on the start page for trader services and selects New
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -35,7 +36,8 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
 
   Scenario Outline: a11y/ZAP - every page in journey hit (Export - Vessel-Mandatory)
 
-    Given the user is on the start page for trader services and selects New
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -56,7 +58,8 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
 
 
   Scenario Outline: a11y/ZAP - every page in journey hit (Import - Vessel-Optional)
-    Given the user is on the start page for trader services and selects New
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -75,7 +78,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user should be on the new file upload confirmation page after uploading 1 document/s
+    Then the user clicks Continue when files have finished uploading
     Then the user selects No to uploading another file
     Then the user is on the Import CYA page
     Then the user clicks Submit on the CYA page
@@ -86,7 +89,8 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
       | 123 | 123456A |New         | Route 6 | Human remains | Air       | Abc Testb  | valid@test.com |
 
   Scenario Outline: a11y/ZAP - every page in journey hit (Import - Vessel-Mandatory)
-    Given the user is on the start page for trader services and selects New
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -104,15 +108,16 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
 
 
   Scenario: 11y/ZAP - Amend: Hit each page
-    Given the user is on the start page for trader services and selects Amend
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
     When the user enters valid characters for case reference number
     When the user is on the how to respond page and selects writeAndupload
     Then the user is on the write response page
     And the user enters a response with valid characters
     Then the user is on the multi-file upload pages for a/an Amend journey
-    When the user clicks the button to upload the first file and selects the "doc" file
-    Then the user should be on the amend file upload confirmation page after uploading 1 document/s
+    When the user clicks the button to upload the first file and selects the "pdf" file
+    Then the user clicks Continue when files have finished uploading
     Then the user should see their first uploaded doc testDoc.doc on upload review page
     Then the user selects No to uploading another file
     Then the user is on the Amend writeAndupload review page and should see their responses

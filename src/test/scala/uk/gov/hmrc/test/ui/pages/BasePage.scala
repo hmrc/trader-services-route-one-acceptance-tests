@@ -250,7 +250,7 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def createUser(): Unit = {
     clickByCSS("#affinityGroup-Individual")
-    clickById("principalEnrolments[0].key-HMRC-CUS-ORG")
+    clickById("principalEnrolments[0].key-HMRC-CTS-ORG")
     clickByCSS("#update")
     enrollment.clear()
     enrollment.sendKeys("GB123456789012345")
