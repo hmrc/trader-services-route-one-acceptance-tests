@@ -4,8 +4,7 @@ Feature: Vessel page validation
 #  Import
 #    All blank fields
   Scenario: Mandatory (Import) Vessel Page
-    Given the user navigates to the temporary start page for trader services and clicks start
-    Then the user is on the start page for trader services and selects New
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "123" and "012345B"
     And the user enters today's date for entryDate
@@ -122,8 +121,7 @@ Feature: Vessel page validation
 #    Export
 #    All blank fields
   Scenario: Mandatory (Export) Vessel Page
-    Given the user navigates to the temporary start page for trader services and clicks start
-    Then the user is on the start page for trader services and selects New
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     When the user enters declaration details "123" and "A12345B"
     And the user enters today's date for entryDate

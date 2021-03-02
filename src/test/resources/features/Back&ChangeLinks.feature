@@ -416,7 +416,7 @@ Feature: Back Links & Change Links
     And the details in the case ref field should be pre-filled with "<caseRef>"
     When the user clicks back
     Then the user is on the start page for trader services
-    And the last selected option for journey type should be pre filled with <journey>
+    And the last selected option for journey type should be pre filled with Amend
     Then the user clicks the banner link to return to the landing page
     And the last selected option for journey type should be pre filled with Nothing
 

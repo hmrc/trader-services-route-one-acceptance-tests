@@ -42,5 +42,5 @@ trait LandingPage extends BasePage {
   val traderServicesUrl: String = traderServicesBaseUrl + "/new-or-existing"
   val landingHeading = "What do you want to do?"
 
-  def startButton: WebElement = findElementByCss("")
+  def startButton: WebElement = findElementByCss("a.govuk-button")
 }

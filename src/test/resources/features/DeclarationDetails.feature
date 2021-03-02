@@ -2,8 +2,7 @@
 Feature: Declaration details validation
 
   Scenario: Error validation on declaration page (all blank fields)
-    Given the user navigates to the temporary start page for trader services and clicks start
-    Then the user is on the start page for trader services and selects New
+    Given the user is on the start page for trader services and selects New
     Then the user is on the declaration details page
     Then the user enters declaration details "" and ""
     And the user enters a date "" "" ""
