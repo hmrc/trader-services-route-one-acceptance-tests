@@ -44,6 +44,10 @@ class ErrorStepDefs extends FinalConfirmationPage with BasePage
     verifyHeading("Page not found")
   }
 
+  Then("""^the user is on the error page for internal server error""") {() =>
+    verifyHeading("Sorry, there is a problem with the service")
+  }
+
   When("""^the user clicks the link on the page not found they will be on the start page""") {() =>
     errorClickLink()
     confirmUrl(traderServicesUrl)
