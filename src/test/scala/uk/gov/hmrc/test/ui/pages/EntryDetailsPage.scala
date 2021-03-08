@@ -18,10 +18,10 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.WebElement
 
-trait DeclarationNumPage extends BasePage {
+trait EntryDetailsPage extends BasePage {
 
-  val urlDecDetails: String = traderServicesBaseUrl + "/new/declaration-details"
-  val headingDecDetails = "What are your declaration details?"
+  val urlEntryDetails: String = traderServicesBaseUrl + "/new/entry-details"
+  val headingEntryDetails = "Entry details"
 
   def EPU: WebElement = findElementById("epu")
   def entryNo: WebElement = findElementById("entryNumber")

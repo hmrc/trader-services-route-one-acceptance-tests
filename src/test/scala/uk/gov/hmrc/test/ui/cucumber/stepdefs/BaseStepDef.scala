@@ -21,13 +21,13 @@ import org.openqa.selenium.By
 import org.scalatest.Matchers
 import org.scalatest.concurrent.Eventually
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage, VesselQuestionsPage}
+import uk.gov.hmrc.test.ui.pages.{BasePage, EntryDetailsPage, VesselQuestionsPage}
 import uk.gov.hmrc.webdriver.SingletonDriver
 
 import scala.util.Try
 
 class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with Eventually
-  with Matchers with DeclarationNumPage with VesselQuestionsPage {
+  with Matchers with EntryDetailsPage with VesselQuestionsPage {
 
   sys.addShutdownHook {
     Try(SingletonDriver.closeInstance)

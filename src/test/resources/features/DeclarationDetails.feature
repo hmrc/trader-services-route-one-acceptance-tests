@@ -1,10 +1,10 @@
 @TraderServiceErrors
-Feature: Declaration details validation
+Feature: Entry details validation
 
-  Scenario: Error validation on declaration page (all blank fields)
+  Scenario: Error validation on entry page (all blank fields)
     Given the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    Then the user enters declaration details "" and ""
+    Then the user is on the entry details page
+    Then the user enters entry details "" and ""
     And the user enters a date "" "" ""
     When the user clicks Continue
     Then the user should see "Error:Enter an EPU number" error message for "epu"
@@ -14,60 +14,60 @@ Feature: Declaration details validation
     When the user clicks the error link for "entryNumber" it should link to the entryNumber field
     When the user clicks the error link for "entryDate" it should link to the entryDate.day field
 
-  Scenario: Error validation on declaration page - EPU
-    Given the user navigates to the declaration details page
+  Scenario: Error validation on entry page - EPU
+    Given the user navigates to the entry details page
 
-    When the user enters declaration details "12" and "123456A"
+    When the user enters entry details "12" and "123456A"
     And the user clicks Continue
     Then the user should see "Error:EPU number must be 3 characters" error message for "epu"
 
-    When the user enters declaration details "1234" and "123456A"
+    When the user enters entry details "1234" and "123456A"
     And the user clicks Continue
     Then the user should see "Error:EPU number must be 3 characters" error message for "epu"
 
-    When the user enters declaration details "abc" and "123456A"
+    When the user enters entry details "abc" and "123456A"
     And the user clicks Continue
     Then the user should see "Error:EPU number must only contain numbers" error message for "epu"
 
-    When the user enters declaration details "670" and "123456A"
+    When the user enters entry details "670" and "123456A"
     And the user clicks Continue
     Then the user should see "Error:EPU number must be between 001 and 669" error message for "epu"
 
-    When the user enters declaration details "000" and "123456A"
+    When the user enters entry details "000" and "123456A"
     And the user clicks Continue
     Then the user should see "Error:EPU number must be between 001 and 669" error message for "epu"
 
 
-  Scenario: Error validation on declaration page - Entry number
-    Given the user navigates to the declaration details page
+  Scenario: Error validation on entry page - Entry number
+    Given the user navigates to the entry details page
 
-    When the user enters declaration details "123" and "1"
+    When the user enters entry details "123" and "1"
     Then the user enters a date "01" "09" "2020"
     And the user clicks Continue
     Then the user should see "Error:Entry number must be 7 characters" error message for "entryNumber"
 
-    When the user enters declaration details "123" and "1234567N"
+    When the user enters entry details "123" and "1234567N"
     Then the user enters a date "01" "09" "2020"
     And the user clicks Continue
     Then the user should see "Error:Entry number must be 7 characters" error message for "entryNumber"
 
-    When the user enters declaration details "123" and "abcdefg"
+    When the user enters entry details "123" and "abcdefg"
     And the user clicks Continue
     Then the user should see "Error:Entry number must have letters before and after the number only" error message for "entryNumber"
 
-    When the user enters declaration details "123" and "A!2345B"
+    When the user enters entry details "123" and "A!2345B"
     And the user clicks Continue
     Then the user should see "Error:Entry number must only contain numbers and letters" error message for "entryNumber"
 
-    When the user enters declaration details "123" and "A123456"
+    When the user enters entry details "123" and "A123456"
     And the user clicks Continue
     Then the user should see "Error:Entry number must have a letter at the end" error message for "entryNumber"
 
 
-  Scenario: Error validation on declaration page - Date (Each one blank in turn)
-    Given the user navigates to the declaration details page
+  Scenario: Error validation on entry page - Date (Each one blank in turn)
+    Given the user navigates to the entry details page
 
-    When the user enters declaration details "123" and "123456A"
+    When the user enters entry details "123" and "123456A"
     Then the user enters a date "" "09" "2020"
     And the user clicks Continue
     Then the user should see "Error:Entry date must include a day" error message for "entryDate"
@@ -80,10 +80,10 @@ Feature: Declaration details validation
     And the user clicks Continue
     Then the user should see "Error:Entry date must include a year" error message for "entryDate"
 
-  Scenario: Error validation on declaration page - Date (Invalid dates)
-    Given the user navigates to the declaration details page
+  Scenario: Error validation on entry page - Date (Invalid dates)
+    Given the user navigates to the entry details page
 
-    When the user enters declaration details "123" and "123456A"
+    When the user enters entry details "123" and "123456A"
     Then the user enters a date "32" "09" "2020"
     And the user clicks Continue
     Then the user should see "Error:Entry date must be a real date" error message for "entryDate"

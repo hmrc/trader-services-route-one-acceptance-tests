@@ -28,7 +28,7 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
       case "Export" => confirmUrl(urlExportCYA)
     }
     verifyHeading(headingMainCYA)
-    verifyH2Declaration(h2Dec)
+    verifyH2EntryDetails(h2Entry)
     verifyH2Questions(h2Questions)
     verifyH2Vessel(h2Vessel)
     verifyH2Contact(h2ContactDetails)
@@ -169,7 +169,7 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
   When("""^the user clicks the change link for (.*)$""") { (changeLink: String) =>
     changeLink match {
 
-      case "Declaration" => clickHref("a[href*='declaration-details']")
+      case "Entry" => clickHref("a[href*='entry-details']")
       case "Request" => clickHref("a[href*='request-type']")
       case "Route" => clickHref("a[href*='route']")
       case "PriorityYN" => clickHref("a[href*='priority-goods']")

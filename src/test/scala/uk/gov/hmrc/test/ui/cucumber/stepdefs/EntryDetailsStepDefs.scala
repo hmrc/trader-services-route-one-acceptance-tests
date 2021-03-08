@@ -17,21 +17,21 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.test.ui.pages.{BasePage, DeclarationNumPage}
+import uk.gov.hmrc.test.ui.pages.{BasePage, EntryDetailsPage}
 
 
-class DeclarationNumStepDefs extends DeclarationNumPage with BasePage with ScalaDsl with EN {
+class EntryDetailsStepDefs extends EntryDetailsPage with BasePage with ScalaDsl with EN {
 
-  Given("""^the user navigates to the declaration details page$""") { () =>
-    navigateTo(urlDecDetails)
+  Given("""^the user navigates to the entry details page$""") { () =>
+    navigateTo(urlEntryDetails)
   }
 
-  Given("""^the user is on the declaration details page$""") { () =>
-    confirmUrl(urlDecDetails)
-    verifyHeading(headingDecDetails)
+  Given("""^the user is on the entry details page$""") { () =>
+    confirmUrl(urlEntryDetails)
+    verifyHeading(headingEntryDetails)
   }
 
-  Then("""^the user enters declaration details "(.*)" and "(.*)"$""") {
+  Then("""^the user enters entry details "(.*)" and "(.*)"$""") {
     (epu: String, entryNumber: String) =>
       writeById(EPU, epu)
       writeById(entryNo, entryNumber)
@@ -50,7 +50,7 @@ class DeclarationNumStepDefs extends DeclarationNumPage with BasePage with Scala
       verifyInput(entryNo, entryNumber)
   }
 
-  Then("""^the details entered for Declaration Date should be pre filled with (.*), (.*) & (.*)$""") {
+  Then("""^the details entered for entry Date should be pre filled with (.*), (.*) & (.*)$""") {
     (dateDay:String, dateMonth:String, dateYear:String) =>
       verifyInput(entryDay, dateDay)
       verifyInput(entryMonth, dateMonth)

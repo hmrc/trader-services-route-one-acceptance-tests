@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.WebElement
 
-trait AmendCYAPage extends BasePage with DeclarationNumPage with QuestionPages {
+trait AmendCYAPage extends BasePage with EntryDetailsPage with QuestionPages {
 
   val urlAmendCYA: String = traderServicesBaseUrl + "/add/check-your-answers"
   val headingMainCYA = "Review your case details"

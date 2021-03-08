@@ -4,8 +4,8 @@ Feature: Error - no options selected
 #  Import
   Scenario Outline: Import questions: error validation - no options selected
     Given the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Import Request Type page and selects NoOption
@@ -33,7 +33,7 @@ Feature: Error - no options selected
 #  Export
   Scenario Outline: Export questions: error validation - no options selected
     Given the user is on the start page for trader services and selects New
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects NoOption

@@ -5,8 +5,8 @@ Feature: Back Links & Change Links
   Scenario Outline: A user user goes back to the start after uploading a file (information cleared)
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
@@ -38,8 +38,8 @@ Feature: Back Links & Change Links
   Scenario Outline: Import: A user wants to go back through the journey
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Import Request Type page and selects <requestType>
@@ -93,7 +93,7 @@ Feature: Back Links & Change Links
     And the last selected option for Import Request should be pre filled with <requestType>
 
     When the user clicks back
-    Then the user is on the declaration details page
+    Then the user is on the entry details page
     And the details entered for EPU & EntryNo should be pre filled with <epu> & <entryNo>
     And the details entered for entryDate should be pre filled with today's date
 
@@ -114,8 +114,8 @@ Feature: Back Links & Change Links
   Scenario Outline: Import: A user wants to change an answer via the CYA page
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Import Request Type page and selects New
@@ -192,9 +192,9 @@ Feature: Back Links & Change Links
     And the user should see the Vessel Time Arrival row & the correct response "11:15" on the CYA page
     And the user should see the Mandatory Contact details row & the correct responses "", "<email>" & "" on the CYA page
 
-    Then the user clicks the change link for Declaration
+    Then the user clicks the change link for Entry
     Then the details entered for EPU & EntryNo should be pre filled with <epu> & <entryNo>
-    Then the user enters declaration details "<epu>" and "X00000H"
+    Then the user enters entry details "<epu>" and "X00000H"
     And the user enters today's date for entryDate
     When the user clicks Continue
     Then the last selected option for Export Request should be pre filled with Nothing
@@ -208,8 +208,8 @@ Feature: Back Links & Change Links
   Scenario Outline: Export: A user wants to go back through the journey
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
@@ -257,7 +257,7 @@ Feature: Back Links & Change Links
     And the last selected option for Export Request should be pre filled with <requestType>
 
     When the user clicks back
-    Then the user is on the declaration details page
+    Then the user is on the entry details page
     And the details entered for EPU & EntryNo should be pre filled with <epu> & <entryNo>
     And the details entered for entryDate should be pre filled with today's date
 
@@ -277,8 +277,8 @@ Feature: Back Links & Change Links
   Scenario Outline: Export: A user wants to change an answer via the CYA page
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects C1601
@@ -345,9 +345,9 @@ Feature: Back Links & Change Links
     And the user should see the Vessel Time Departure row & the correct response "12:34" on the CYA page
     And the user should see the Full Contact details row & the correct responses "<name>", "<email>" & "<phoneNo>" on the CYA page
 
-    Then the user clicks the change link for Declaration
+    Then the user clicks the change link for Entry
     Then the details entered for EPU & EntryNo should be pre filled with <epu> & <entryNo>
-    Then the user enters declaration details "<epu>" and "000000H"
+    Then the user enters entry details "<epu>" and "000000H"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the last selected option for Import Request should be pre filled with Nothing

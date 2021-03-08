@@ -4,8 +4,8 @@ Feature: Customs check - Export Journeys
   Scenario Outline: A user wants to complete a New Export RouteOne journey & see RoRo SLA
       Given the user navigates to the temporary start page for trader services and clicks start
       Then the user is on the start page for trader services and selects New
-      Then the user is on the declaration details page
-      When the user enters declaration details "<epu>" and "<entryNo>"
+      Then the user is on the entry details page
+      When the user enters entry details "<epu>" and "<entryNo>"
       And the user enters today's date for entryDate
       And the user clicks Continue
       Then the user is on the Export Request Type page and selects <requestType>
@@ -39,8 +39,8 @@ Feature: Customs check - Export Journeys
   Scenario Outline: Route-Hold: A user should reach the mandatory vessel page & no SLA provided
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
@@ -74,8 +74,8 @@ Feature: Customs check - Export Journeys
   Scenario Outline: C1601: A user should reach the mandatory vessel page & SLA for Maritime
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
@@ -110,8 +110,8 @@ Feature: Customs check - Export Journeys
   Scenario Outline: C1602: A user should be on the mandatory vessel page and the inset text for C1602
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
@@ -136,8 +136,8 @@ Feature: Customs check - Export Journeys
   Scenario Outline: C1603: A user should see the inset text for C1603
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
