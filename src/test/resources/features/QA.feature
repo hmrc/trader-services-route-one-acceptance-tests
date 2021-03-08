@@ -5,8 +5,8 @@ Feature: Customs check - Export Journey
   Scenario Outline: A user wants to complete a New Export RouteOne journey
     Given the user logs into QA
     Then the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
@@ -55,8 +55,8 @@ Examples:
     Given the user logs into QA
 #    Then the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     Then the user clicks Continue
     When the user is on the Import Request Type page and selects <requestType>

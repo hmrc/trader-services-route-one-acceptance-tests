@@ -24,14 +24,14 @@ trait NewCYAPage extends BasePage {
   val urlExportCYA: String = traderServicesBaseUrl + exportJourneyUrl + "/check-your-answers"
   val headingMainCYA = "Review your case details"
 
-  def verifyH2Declaration(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(2)").getText shouldBe text
+  def verifyH2EntryDetails(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(2)").getText shouldBe text
   def verifyH2Questions(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(4)").getText shouldBe text
   def verifyH2Vessel(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(6)").getText shouldBe text
   def verifyH2Contact(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(8)").getText shouldBe text
 
 
-  //Declaration details section
-  val h2Dec = "Declaration information"
+  //Entry details section
+  val h2Entry = "Entry information"
   val summaryEPU = "EPU number"
   val summaryEntryNo = "Entry number"
   val summaryEntryDate = "Entry date"

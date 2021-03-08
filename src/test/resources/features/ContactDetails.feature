@@ -3,8 +3,8 @@ Feature: Contact Details
 
   Scenario Outline: Contact details - validation test
     Given the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters a date "<day>" "<month>" "<year>"
     And the user clicks Continue
     Then the user is on the Import Request Type page and selects <requestType>

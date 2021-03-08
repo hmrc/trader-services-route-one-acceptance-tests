@@ -3,8 +3,8 @@ Feature: Error Pages
 
   Scenario Outline: A user enters a duplicate case
     Given the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
@@ -35,8 +35,8 @@ Feature: Error Pages
 
   Scenario: A user hits the wrong url
     Given the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user navigates to the following /declaration-detailx
+    Then the user is on the entry details page
+    When the user navigates to the following /entry-detailx
     Then the user is on the error page for page not found
     When the user clicks the link on the page not found they will be on the start page
 

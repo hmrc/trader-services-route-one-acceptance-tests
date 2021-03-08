@@ -5,8 +5,8 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
   Scenario Outline: a11y/ZAP- every page in journey hit (Export - Vessel-Optional)
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
@@ -37,8 +37,8 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
 
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
@@ -55,8 +55,8 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
   Scenario Outline: a11y/ZAP - every page in journey hit (Import - Vessel-Optional)
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     Then the user clicks Continue
     When the user is on the Import Request Type page and selects <requestType>
@@ -85,8 +85,8 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
   Scenario Outline: a11y/ZAP - every page in journey hit (Import - Vessel-Mandatory)
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "<epu>" and "<entryNo>"
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     When the user clicks Continue
     Then the user is on the Import Request Type page and selects <requestType>

@@ -5,8 +5,8 @@ Feature: Vessel page validation
 #    All blank fields
   Scenario: Mandatory (Import) Vessel Page
     Given the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "123" and "012345B"
+    Then the user is on the entry details page
+    When the user enters entry details "123" and "012345B"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Import Request Type page and selects New
@@ -28,8 +28,8 @@ Feature: Vessel page validation
     When the user clicks the error link for "timeOfArrival" it should link to the timeOfArrival.hour field
 
   Scenario: Optional Vessel Page (Import)
-    Then the user navigates to the declaration details page
-    When the user enters declaration details "123" and "012345B"
+    Then the user navigates to the entry details page
+    When the user enters entry details "123" and "012345B"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Import Request Type page and selects New
@@ -122,8 +122,8 @@ Feature: Vessel page validation
 #    All blank fields
   Scenario: Mandatory (Export) Vessel Page
     Given the user is on the start page for trader services and selects New
-    Then the user is on the declaration details page
-    When the user enters declaration details "123" and "A12345B"
+    Then the user is on the entry details page
+    When the user enters entry details "123" and "A12345B"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects C1601
@@ -144,8 +144,8 @@ Feature: Vessel page validation
     When the user clicks the error link for "timeOfDeparture" it should link to the timeOfDeparture.hour field
 
   Scenario: Optional Vessel Page (Export)
-    Then the user navigates to the declaration details page
-    When the user enters declaration details "123" and "A12345B"
+    Then the user navigates to the entry details page
+    When the user enters entry details "123" and "A12345B"
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects New
