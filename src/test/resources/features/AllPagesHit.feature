@@ -118,7 +118,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     When the user clicks the send docs link on the Amend confirmation page they will go back to the start
 
 
-  Scenario Outline: A user enters a duplicate case
+  Scenario Outline: A user enters a duplicate case (Stub EPU: 667)
     Given the user is on the start page for trader services and selects New
     Then the user is on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
@@ -150,7 +150,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
       | 667 | A23456A | Cancellation | Route 2 | Human remains | Air       | Test Vessel | Mr. F | a@a.com |
 
 
-  Scenario Outline: A user enters a duplicate case
+  Scenario Outline: A user enters a failed request (Stub EPU: 666)
     Given the user is on the start page for trader services and selects New
     Then the user is on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
