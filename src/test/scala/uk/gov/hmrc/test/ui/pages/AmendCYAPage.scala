@@ -28,7 +28,7 @@ trait AmendCYAPage extends BasePage with EntryDetailsPage with QuestionPages {
   def verifyH2Documents(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(6)").getText shouldBe text
 
 
-  val h2Entry = "Declaration information"
+  val h2Dec = "Declaration information"
   val decInfoSummary = "Case reference number"
 
   val h2Additional = "Additional information"

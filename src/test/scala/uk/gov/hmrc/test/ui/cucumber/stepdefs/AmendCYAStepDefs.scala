@@ -24,7 +24,7 @@ class AmendCYAStepDefs extends AmendPages with AmendCYAPage with BasePage with S
   Given("""^the user is on the Amend (.*) review page and should see their responses$""") { (journey: String) =>
     confirmUrl(urlAmendCYA)
     verifyHeading(headingMainCYA)
-    verifyH2DecInfo(h2Entry)
+    verifyH2DecInfo(h2Dec)
     assertElementText(additionalInfoType, infoTypeRow)
     assertElementText(userCaseRef, caseRefAnswer)
 
