@@ -37,12 +37,20 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     clickContinue()
   }
 
+  And("""^the user clicks SFU Upload""") { () =>
+    clickByCSS(".file-upload__submit")
+  }
+
+  And("""^the user clicks MFU Continue""") { () =>
+    clickUploadContinueMFU()
+  }
+
   And("""^the user clicks Submit on the CYA page""") { () =>
    clickCYAContinue()
   }
 
-  And("""^the user waits""") { () =>
-    Thread.sleep(7000l)
+  And("""^the user waits (.*)""") { (millis:Int) =>
+    Thread.sleep(millis)
   }
 
   And("""^the user clicks back""") { () =>

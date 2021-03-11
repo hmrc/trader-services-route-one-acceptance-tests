@@ -53,9 +53,6 @@ trait UploadMultiPages extends BasePage {
   def uploadFile9(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId9)
   def uploadFile10(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId10)
 
-  def waitTilUploaded: Unit = if(findElementByCss(".multi-file-upload__progress").getText.contains("Ready to submit").equals(true)){
-  }
-
   def uploadAnother(): Unit = findElementByCss(".multi-file-upload__add-another").click()
 
   def swirlyRing: WebElement = findElementByCss(".file-upload__spinner")
@@ -73,6 +70,8 @@ trait UploadMultiPages extends BasePage {
       case "png" => filePath = usrDir + "testPng.png"
 
       case "pdf" => filePath = usrDir + "testPdf.pdf"
+      case "C1601" => filePath = usrDir + "C1601.pdf"
+      case "C1602" => filePath = usrDir + "C1602.pdf"
 
       case "doc" => filePath = usrDir + "testDoc.doc"
       case "docx" => filePath = usrDir + "testDocx.docx"
@@ -86,6 +85,8 @@ trait UploadMultiPages extends BasePage {
       case "pptx" => filePath = usrDir + "testPptx.pptx"
       case "odp" => filePath = usrDir + "testOdp.odp"
 
+      case "txt" => filePath = usrDir + "testTxt.txt"
+      case "msg" => filePath = usrDir + "testMsg.msg"
     }
     driver.findElement(By.id(elementID)).sendKeys(filePath)
   }

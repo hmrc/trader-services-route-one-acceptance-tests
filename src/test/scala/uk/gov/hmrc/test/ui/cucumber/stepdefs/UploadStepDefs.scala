@@ -22,6 +22,18 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, UploadPages}
 
 class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
 
+
+  Then("""^the user navigates to the single file (.*) upload page"""){ (page:String) =>
+
+    page match {
+      case "New" => navigateTo(urlUpload)
+                    confirmUrl(urlUpload)
+      case "Amend" => navigateTo(urlUploadAmend)
+                      confirmUrl(urlUploadAmend)
+    }
+    verifyHeading(headingUpload)
+  }
+
   Then("""^the user is on the (.*) upload page"""){ (page:String) =>
 
     page match {
@@ -38,7 +50,8 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
 
   Then("""^the user clicks the button to upload and selects the "([^"]*)" file"""){ (file:String) =>
     Thread.sleep(500L)
-    uploadFile(file)
+    uploadFileSFU(file)
+    clickByCSS(".file-upload__submit")
   }
 
   Then("""^the user should be on the (.*) file upload confirmation page after uploading (.*) document/s"""){
@@ -75,6 +88,6 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
       case "No" => clickByCSS("#uploadAnotherFile-2")
       case "NoOption" =>
     }
-    clickUploadContinue()
+    clickUploadContinueSFU()
   }
 }

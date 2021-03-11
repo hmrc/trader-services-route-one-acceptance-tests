@@ -40,8 +40,10 @@ trait UploadPages extends BasePage {
   var filePath = ""
 
   val chooseFileId = "upload-file"
+  val fileIDSFU = "file"
 
   def uploadFile(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId)
+  def uploadFileSFU(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, fileIDSFU)
 
   def uploadFilesToBrowser(fileSeq: String, elementID: String): Unit = {
     fileSeq match {
@@ -70,6 +72,4 @@ trait UploadPages extends BasePage {
     }
     driver.findElement(By.id(elementID)).sendKeys(filePath)
   }
-
-  def noConditionalReveal:WebElement = findElementById("conditional-uploadAnotherFile-2")
 }

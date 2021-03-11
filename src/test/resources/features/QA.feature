@@ -31,11 +31,11 @@ Feature: Customs check - Export Journey
     Then the user clicks Submit on the CYA page
     Then the user copies the case reference number
     And the user should see 2 Hour SLA
-    Then the user waits
+    Then the user waits 1000
 
 Examples:
 | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email   | phone |
-| 060 | Z64631B | New         | Route 1 | Human remains | Air  | TestVessel | smith | aacc@test.com | 0177 111 1111      |
+| 250 | L01856B | New         | Route 1 | Human remains | Air  | TestVessel | smith | aacc@test.com | 0177 111 1111      |
 
 
 
@@ -49,7 +49,7 @@ Examples:
     When the user clicks the button to upload the first file and selects the "jpeg" file
     Then the user clicks Continue when files have finished uploading
     When the user clicks Submit on the CYA page
-    Then the user waits
+    Then the user waits 1000
 
   Scenario Outline: A user wants to complete a New Import journey
     Given the user logs into QA
@@ -80,12 +80,12 @@ Examples:
     Then the user is on the Import CYA page
     And the user clicks Submit on the CYA page
     Then the user copies the case reference number
-    Then the user waits
+    Then the user waits 1000
 
 
     Examples:
       | epu | entryNo |requestType | route   | priority      | transport | vesselName | name   | email          | phone |
-      | 033 | 777561H |New         | Route 6 | Human remains | Air       | aeroplane 1 | Mr. F  | valid@test.com | 01256888999|
+      | 516 | 007561H |New         | Route 6 | Human remains | Air       | aeroplane 1 | Mr. F  | valid@test.com | 01256888999|
 
 #  Scenario: Amend: A user adds a message and a document to a case (write response only)
 #    Given the user navigates to the temporary start page for trader services and clicks start
@@ -94,7 +94,7 @@ Examples:
 #    When the user is on the how to respond page and selects writeOnly
 #    And the user enters a response "sample message" and continues
 #    When the user clicks Submit on the CYA page
-#    Then the user waits
+#    Then the user waits 1000
 
   #Legit EPUS
 #    410

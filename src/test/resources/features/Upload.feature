@@ -1,4 +1,4 @@
-@TraderServiceUploadsS
+@TraderServiceUploads
 Feature: A user wants to upload documents
 
   Scenario Outline: A user wants upload some documents
@@ -19,9 +19,10 @@ Feature: A user wants to upload documents
     When the user enters a name "<name>"
     Then the user enters an email address "<email>"
     And the user clicks Continue
-    Then the user is on the First upload page
-    When the user clicks Continue and waits
-    Then the user should see "Error:Select a file" error message for "upload-file"
+    Then the user navigates to the single file New upload page
+    When the user clicks SFU Upload
+    And the user waits 250
+    Then the user should see "Error:Select a file" error message for "file"
     When the user clicks the button to upload and selects the "pdf" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
     Then the user should see their first uploaded doc testPdf.pdf on upload review page
