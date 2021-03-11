@@ -53,9 +53,6 @@ trait UploadMultiPages extends BasePage {
   def uploadFile9(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId9)
   def uploadFile10(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId10)
 
-  def waitTilUploaded: Unit = if(findElementByCss(".multi-file-upload__progress").getText.contains("Ready to submit").equals(true)){
-  }
-
   def uploadAnother(): Unit = findElementByCss(".multi-file-upload__add-another").click()
 
   def swirlyRing: WebElement = findElementByCss(".file-upload__spinner")

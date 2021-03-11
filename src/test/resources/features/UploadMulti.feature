@@ -20,8 +20,6 @@ Feature: A user wants to upload documents
     Then the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
-#    When the user clicks MFU Continue
-#    Then the user should see "Error:Select a file" error message for "file-1"
     When the user clicks the button to upload the first file and selects the "pdf" file
     When the user clicks the button to upload the second file and selects the "jpeg" file
     When the user clicks the button to upload the third file and selects the "jpg" file
