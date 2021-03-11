@@ -50,13 +50,13 @@ class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl w
       case "ninth" =>     uploadFile9(file)
       case "tenth" =>     uploadFile10(file)
     }
-    clickUploadContinue()
   }
 
   And("""^the user clicks Continue when files have finished uploading""") { () =>
+    clickUploadContinueMFU()
     if(findElementByCss(".file-upload__spinner").isDisplayed.equals(true)) {
       notFindElementByCss(".file-upload__spinner")
-      clickUploadContinue()}
+      clickUploadContinueMFU()}
     else {findElementByCss(".file-upload__spinner").isDisplayed.equals(false)}
     }
 
