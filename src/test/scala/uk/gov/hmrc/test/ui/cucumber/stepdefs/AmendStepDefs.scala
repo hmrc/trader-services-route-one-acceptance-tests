@@ -38,6 +38,12 @@ class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage 
     clickContinueCaseRef()
   }
 
+  Then("""^the user enters a real case reference number (.*)$""") { (caseNo: String) =>
+    caseRefInput.clear()
+    writeById(caseRefInput, caseNo)
+    clickContinueCaseRef()
+  }
+
   Then("""^the user is on the how to respond page$""") { () =>
     confirmUrl(urlHowToSend)
     verifyHeading(howToSendHeading)

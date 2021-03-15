@@ -12,7 +12,7 @@ Feature: Customs check - Import Journeys
     When the user is on the Import Request Type page and selects <requestType>
     Then the user is on the Import Route Type Page and selects <route>
     When the user is on the Import YesNo Priority Page and selects Yes
-    Then the user is on the Import Priority Options Page and selects <priority>
+    Then the user is on the Import Priority Goods Page and selects <priority>
     When the user is on the ALVS Page and selects Yes
     Then the user is on the Import Transport Type Page and selects <transport>
     Then the user is on the Import-Optional Vessel Page
@@ -67,7 +67,7 @@ Feature: Customs check - Import Journeys
 #    When the user is on the Import Request Type page and selects <requestType>
 #    Then the user is on the Import Route Type Page and selects <route>
 #    When the user is on the Import YesNo Priority Page and selects Yes
-#    Then the user is on the Import Priority Options Page and selects <priority>
+#    Then the user is on the Import Priority Goods Page and selects <priority>
 #    When the user is on the ALVS Page and selects Yes
 #    Then the user is on the Import Transport Type Page and selects <transport>
 #    Then the user is on the Import-Optional Vessel Page

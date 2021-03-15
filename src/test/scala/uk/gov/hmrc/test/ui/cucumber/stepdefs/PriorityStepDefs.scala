@@ -83,7 +83,7 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
     verifyHeading(headingPriority)
   }
 
-  When("""^the user is on the (.*) Priority Options Page and selects (.*)""") { (Journey: String, RequestType: String) =>
+  When("""^the user is on the (.*) Priority Goods Page and selects (.*)""") { (Journey: String, RequestType: String) =>
 
       Journey match {
         case "Import" => confirmUrl(urlImportPriority)

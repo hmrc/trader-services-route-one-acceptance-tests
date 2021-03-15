@@ -137,7 +137,9 @@ trait BasePage extends Matchers with BrowserDriver {
   def clickContinue(): Unit = findElementByCss("button.govuk-button:nth-child(3)").click()
   def clickContinueCaseRef(): Unit = findElementByCss("button.govuk-button:nth-child(4)").click()
 
-  def clickCYAContinue(): Unit = findElementByCss("button.govuk-button:nth-child(2)").click()
+//  def clickCYAContinue(): Unit = findElementByCss("button.govuk-button:nth-child(2)").click()
+  def clickCYAContinue(): Unit = findElementByCss("#send-documents-for-customs-check-submit").click()
+
 
   def clickBack(): Unit = findElementById("back-link").click()
 
