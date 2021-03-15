@@ -12,7 +12,7 @@ Feature: Back Links & Change Links
     Then the user is on the Export Request Type page and selects <requestType>
     Then the user is on the Export Route Type Page and selects <route>
     Then the user is on the Export YesNo Priority Page and selects Yes
-    When the user is on the Export Priority Goods page and selects <priority>
+    When the user is on the Export Priority Goods Page and selects <priority>
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Optional Vessel Page
     Then the user enters "<vesselName>" for vessel name
@@ -215,7 +215,7 @@ Feature: Back Links & Change Links
     Then the user is on the Export Request Type page and selects <requestType>
     Then the user is on the Export Route Type Page and selects <route>
     Then the user is on the Export YesNo Priority Page and selects Yes
-    When the user is on the Export Priority Goods page and selects <priority>
+    When the user is on the Export Priority Goods Page and selects <priority>
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Optional Vessel Page
     And the user enters today's date for vesselDateDeparture
@@ -310,7 +310,7 @@ Feature: Back Links & Change Links
 
     When the user clicks the change link for PriorityYN
     Then the user is on the Export YesNo Priority Page and selects Yes
-    Then the user is on the Export Priority Goods page and selects <priority>
+    Then the user is on the Export Priority Goods Page and selects <priority>
     Then the user is on the Export CYA page
 
     When the user clicks the change link for PriorityGoods
