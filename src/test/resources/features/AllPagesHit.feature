@@ -12,7 +12,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     Then the user is on the Export Request Type page and selects <requestType>
     Then the user is on the Export Route Type Page and selects <route>
     Then the user is on the Export YesNo Priority Page and selects Yes
-    When the user is on the Export Priority Options Page and selects <priority>
+    When the user is on the Export Priority Goods Page and selects <priority>
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Optional Vessel Page
     Then the user clicks Continue
@@ -62,7 +62,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     When the user is on the Import Request Type page and selects <requestType>
     Then the user is on the Import Route Type Page and selects <route>
     When the user is on the Import YesNo Priority Page and selects Yes
-    Then the user is on the Import Priority Options Page and selects <priority>
+    Then the user is on the Import Priority Goods Page and selects <priority>
     When the user is on the ALVS Page and selects Yes
     Then the user is on the Import Transport Type Page and selects <transport>
     Then the user is on the Import-Optional Vessel Page
@@ -127,7 +127,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     Then the user is on the Export Request Type page and selects <requestType>
     Then the user is on the Export Route Type Page and selects <route>
     Then the user is on the Export YesNo Priority Page and selects Yes
-    When the user is on the Export Priority Options Page and selects <priority>
+    When the user is on the Export Priority Goods Page and selects <priority>
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Optional Vessel Page
     Then the user enters "<vesselName>" for vessel name
@@ -159,7 +159,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     Then the user is on the Export Request Type page and selects <requestType>
     Then the user is on the Export Route Type Page and selects <route>
     Then the user is on the Export YesNo Priority Page and selects Yes
-    When the user is on the Export Priority Options Page and selects <priority>
+    When the user is on the Export Priority Goods page and selects <priority>
     Then the user is on the Export Transport Type Page and selects <transport>
     Then the user is on the Export-Optional Vessel Page
     Then the user enters "<vesselName>" for vessel name
@@ -184,6 +184,6 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
   Scenario: A user hits the wrong url
     Given the user is on the start page for trader services and selects New
     Then the user is on the entry details page
-    When the user navigates to the following /entry-detailx
+    When the user navigates to the following "/entry-detailx"
     Then the user is on the error page for page not found
     When the user clicks the link on the page not found they will be on the start page

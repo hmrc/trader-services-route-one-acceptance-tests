@@ -46,7 +46,8 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
   }
 
   And("""^the user clicks Submit on the CYA page""") { () =>
-   clickCYAContinue()
+    Thread.sleep(500)
+    clickCYAContinue()
   }
 
   And("""^the user waits (.*)""") { (millis:Int) =>
@@ -62,7 +63,7 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     confirmUrl(exitSurvey)
   }
 
-  When("""^the user navigates to the following (.*)""") { (url: String) =>
+  When("""^the user navigates to the following "(.*)"""") { (url: String) =>
     navigateTo(traderServicesBaseUrl + url)
   }
 

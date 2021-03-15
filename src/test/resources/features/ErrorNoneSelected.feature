@@ -17,9 +17,9 @@ Feature: Error - no options selected
     Then the user is on the Import YesNo Priority Page and selects None
     Then the user should see "Error:Select yes if you’re importing priority goods" error message for "hasPriorityGoods"
     When the user is on the Import YesNo Priority Page and selects Yes
-    When the user is on the Import Priority Options Page and selects NoOption
+    When the user is on the Import Priority Goods Page and selects NoOption
     Then the user should see "Error:Select the type of priority goods" error message for "priorityGoods"
-    When the user is on the Import Priority Options Page and selects <priority>
+    When the user is on the Import Priority Goods Page and selects <priority>
     Then the user is on the ALVS Page and selects NoOption
     Then the user should see "Error:Select yes if you’re using an Automatic Licence Verification System (ALVS)" error message for "hasALVS"
     Then the user is on the ALVS Page and selects No
@@ -45,9 +45,9 @@ Feature: Error - no options selected
     Then the user is on the Export YesNo Priority Page and selects None
     Then the user should see "Error:Select yes if you’re exporting priority goods" error message for "hasPriorityGoods"
     When the user is on the Export YesNo Priority Page and selects Yes
-    When the user is on the Export Priority Options Page and selects NoOption
+    When the user is on the Export Priority Goods page and selects NoOption
     Then the user should see "Error:Select the type of priority goods" error message for "priorityGoods"
-    When the user is on the Export Priority Options Page and selects <priority>
+    When the user is on the Export Priority Goods page and selects <priority>
     Then the user is on the Export Transport Type Page and selects NoOption
     Then the user should see "Error:Select the type of transport you’re using" error message for "freightType"
 

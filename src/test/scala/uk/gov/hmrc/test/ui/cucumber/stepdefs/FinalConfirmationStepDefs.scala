@@ -39,13 +39,8 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
         verifyHeading(headingAmendConfirm)
     }
 
-    assertElementText(userCaseRef, caseRefNo)
+//    assertElementText(userCaseRef, caseRefNo)
   }
-
-  Then("""^the user should see guidance links on the page""") { () =>
-  }
-
-  //  def caseRefOutput = caseRefNo.getText.copy()
 
   Then("""^the user copies the case reference number""") { () =>
     val caseRefOutput = caseRefNo.getText.copy()
