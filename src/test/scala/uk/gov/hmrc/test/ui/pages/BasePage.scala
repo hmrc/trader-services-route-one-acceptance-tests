@@ -124,7 +124,7 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def clickFinalContinueNew():Unit = findElementByCss("p.govuk-body:nth-child(1) > a:nth-child(1)").click()
 
-  def clickFinalContinueAmend():Unit = findElementByCss("  p.govuk-body:nth-child(7) > a:nth-child(1)").click()
+  def clickFinalContinueAmend():Unit = findElementByCss("p.govuk-body:nth-child(1) > a:nth-child(1)").click()
 
   //SFU
   def clickUploadContinueSFU(): Unit = elementToBeClickable("button.govuk-button:nth-child(6)").click()
