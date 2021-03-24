@@ -30,14 +30,16 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
       case "New" =>
         confirmUrl(urlConfirmation)
         verifyHeading(headingConfirmation)
-        assertElementTextContains("Your customs check submission receipt", receipt)
-        isElementVisible(".print-page").shouldBe(true)
         isElementVisible("a.action-buttons__button").shouldBe(true)
+        isElementVisible(" li.action-buttons__item:nth-child(2) > a:nth-child(1)").shouldBe(true)
 
       case "Amend" =>
         confirmUrl(urlAmendConfirm)
         verifyHeading(headingAmendConfirm)
     }
+
+    assertElementTextContains("Your customs check submission receipt", receipt)
+    isElementVisible(".print-page").shouldBe(true)
   }
 
   Then("""^the user copies the case reference number""") { () =>
