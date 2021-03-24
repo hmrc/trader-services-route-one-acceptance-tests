@@ -50,7 +50,7 @@ Feature: Customs check - Export Journey
 
 Examples:
 | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email              | phone         |
-| 601 |C56184T | C1603         | Route 1 | Human remains | RoadRoRoRail  | TestVessel  | smith | aa_kaygcc@test.com | 0177 111 1111 |
+| 603 |C56184T | C1603         | Route 1 | Human remains | RoadRoRoRail  | TestVessel  | smith | aa_kaygcc@test.com | 0177 111 1111 |
 
 # RoadRoRoRail
 
@@ -103,7 +103,7 @@ Examples:
 
     Examples:
       | epu | entryNo |requestType | route   | priority      | transport | vesselName | name   | email          | phone |
-      | 011 | 100041L |New | Route 6 | Human remains | Air       | train 1x | customs agent | valid@test.com | 01256888999|
+      | 014 | 000041L |New | Route 3 | Human remains | Air       | train 1x | customs agent | valid@test.com | 01256888999|
 
   Scenario: Amend: A user adds a message and a document to a case (write response only)
     Given the user navigates to the temporary start page for trader services and clicks start
