@@ -40,7 +40,6 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
 
     assertElementTextContains("Your customs check submission receipt", receipt)
     isElementVisible(".print-page").shouldBe(true)
-    isElementVisible(".receipt").shouldBe(true)
   }
 
   Then("""^the user copies the case reference number""") { () =>

@@ -35,6 +35,8 @@ trait FinalConfirmationPage extends BasePage {
 
   def slaPara:WebElement = findElementByCss("p.govuk-body:nth-child(3)")
 
+  def receipt:WebElement = findElementByCss(".receipt")
+
   val holdSLA = "When your transportation arrives, we’ll begin the document checks. Once our checks are complete, you’ll hear from us through CHIEF or your declaration software."
 
 //  def linkNCH:Unit = driver.findElement(By.linkText("getting your goods cleared by the National Clearance Hub"))
