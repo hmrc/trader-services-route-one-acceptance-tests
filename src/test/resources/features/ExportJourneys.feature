@@ -62,7 +62,7 @@ Feature: Customs check - Export Journeys
     Then the user is on the Export CYA page
     Then the user clicks Submit on the CYA page
     Then the user is on the New confirmation page
-    And the user should see No SLA
+    And the user should see Hold SLA
     When the user clicks the send docs link on the New confirmation page they will go back to the start
     And the last selected option for journey type should be pre filled with Nothing
 
