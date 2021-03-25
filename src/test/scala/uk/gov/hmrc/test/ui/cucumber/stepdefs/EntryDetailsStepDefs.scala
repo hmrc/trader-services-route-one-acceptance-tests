@@ -45,15 +45,15 @@ class EntryDetailsStepDefs extends EntryDetailsPage with BasePage with ScalaDsl 
   }
 
   Then("""^the details entered for EPU & EntryNo should be pre filled with (.*) & (.*)$""") {
-    (epu:String, entryNumber:String) =>
+    (epu: String, entryNumber: String) =>
       verifyInput(EPU, epu)
       verifyInput(entryNo, entryNumber)
   }
 
   Then("""^the details entered for entry Date should be pre filled with (.*), (.*) & (.*)$""") {
-    (dateDay:String, dateMonth:String, dateYear:String) =>
+    (dateDay: String, dateMonth: String, dateYear: String) =>
       verifyInput(entryDay, dateDay)
       verifyInput(entryMonth, dateMonth)
       verifyInput(entryYear, dateYear)
   }
-  }
+}

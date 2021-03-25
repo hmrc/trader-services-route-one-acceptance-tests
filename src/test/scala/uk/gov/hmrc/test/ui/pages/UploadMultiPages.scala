@@ -43,21 +43,30 @@ trait UploadMultiPages extends BasePage {
   val chooseFileId10 = "file-10"
 
   def uploadFile1(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId1)
+
   def uploadFile2(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId2)
+
   def uploadFile3(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId3)
+
   def uploadFile4(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId4)
+
   def uploadFile5(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId5)
+
   def uploadFile6(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId6)
+
   def uploadFile7(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId7)
+
   def uploadFile8(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId8)
+
   def uploadFile9(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId9)
+
   def uploadFile10(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId10)
 
   def uploadAnother(): Unit = findElementByCss(".multi-file-upload__add-another").click()
 
   def swirlyRing: WebElement = findElementByCss(".file-upload__spinner")
 
-  def insetText:WebElement = findElementByCss(".govuk-inset-text")
+  def insetText: WebElement = findElementByCss(".govuk-inset-text")
 
   def uploadFilesToBrowser(fileSeq: String, elementID: String): Unit = {
     fileSeq match {

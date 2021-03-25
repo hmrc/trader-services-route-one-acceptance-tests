@@ -16,20 +16,18 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import java.time.LocalDate
-
 import io.cucumber.scala.{EN, ScalaDsl}
 import org.openqa.selenium.By
 import org.scalatest.Matchers
 import org.scalatest.concurrent.Eventually
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import uk.gov.hmrc.test.ui.pages.{BasePage, EntryDetailsPage, VesselQuestionsPage}
+import uk.gov.hmrc.test.ui.pages.{BasePage, EntryDetailsPage, TransportQuestionsPage}
 import uk.gov.hmrc.webdriver.SingletonDriver
 
 import scala.util.Try
 
 class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with Eventually
-  with Matchers with EntryDetailsPage with VesselQuestionsPage {
+  with Matchers with EntryDetailsPage with TransportQuestionsPage {
 
   sys.addShutdownHook {
     Try(SingletonDriver.closeInstance)
@@ -52,7 +50,7 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     clickCYAContinue()
   }
 
-  And("""^the user waits (.*)""") { (millis:Int) =>
+  And("""^the user waits (.*)""") { (millis: Int) =>
     Thread.sleep(millis)
   }
 
@@ -60,22 +58,9 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     clickBack()
   }
 
-  And("""^the user clicks the sign out button they will be redirected to the exit survey feedback form""") { () =>
-    clickSignOut()
-    confirmUrl(exitSurvey)
-  }
-
   When("""^the user navigates to the following "(.*)"""") { (url: String) =>
     navigateTo(traderServicesBaseUrl + url)
   }
-
-  val today = LocalDate.now
-  val (d, m, y) = (today.getDayOfMonth(), today.getMonthValue(),today.getYear())
-  val (day, month, year) = (today.getDayOfMonth().toString, today.getMonthValue().toString, today.getYear().toString)
-
-  val dayFormatted = f"$d%02d"
-  val monthFormatted = f"$m%02d"
-
 
   Then("""^the user enters today's date for (.*)$""") { (dateField: String) =>
     dateField match {
@@ -85,40 +70,36 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
         writeById(entryMonth, month)
         writeById(entryYear, year)
 
-      case "vesselDateArrival" =>
-        writeById(vesselQArrivalDay, day)
-        writeById(vesselQArrivalMonth, month)
-        writeById(vesselQArrivalYear, year)
+      case "transportDateArrival" =>
+        writeById(transportQArrivalDay, day)
+        writeById(transportQArrivalMonth, month)
+        writeById(transportQArrivalYear, year)
 
-      case "vesselDateDeparture" =>
-        writeById(vesselQDepartureDay, day)
-        writeById(vesselQDepartureMonth, month)
-        writeById(vesselQDepartureYear, year)
+      case "transportDateDeparture" =>
+        writeById(transportQDepartureDay, day)
+        writeById(transportQDepartureMonth, month)
+        writeById(transportQDepartureYear, year)
     }
   }
 
-  Then("""^the details entered for (.*) should be pre filled with today's date$""") {
-    (dateField: String) =>
+  Then("""^the details entered for (.*) should be pre filled with today's date$""") { (dateField: String) =>
+    dateField match {
 
-      dateField match {
+      case "entryDate" =>
+        verifyInput(entryDay, dayFormatted)
+        verifyInput(entryMonth, monthFormatted)
+        verifyInput(entryYear, year)
 
-        case "entryDate" =>
-            verifyInput(entryDay, dayFormatted)
-            verifyInput(entryMonth, monthFormatted)
-            verifyInput(entryYear, year)
+      case "transportDateArrival" =>
+        verifyInput(transportQArrivalDay, dayFormatted)
+        verifyInput(transportQArrivalMonth, monthFormatted)
+        verifyInput(transportQArrivalYear, year)
 
-        case "vesselDateArrival" =>
-            verifyInput(vesselQArrivalDay, dayFormatted)
-            verifyInput(vesselQArrivalMonth, monthFormatted)
-            verifyInput(vesselQArrivalYear, year)
-
-
-        case "vesselDateDeparture" =>
-              verifyInput(vesselQDepartureDay, dayFormatted)
-              verifyInput(vesselQDepartureMonth, monthFormatted)
-              verifyInput(vesselQDepartureYear, year)
-
-  }
+      case "transportDateDeparture" =>
+        verifyInput(transportQDepartureDay, dayFormatted)
+        verifyInput(transportQDepartureMonth, monthFormatted)
+        verifyInput(transportQDepartureYear, year)
+    }
   }
 
   Then("""^the user should see "([^"]*)" error message for "([^"]*)"$""") { (errorMessage: String, fieldTitle: String) =>
@@ -130,35 +111,34 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     driver.findElement(By.id(s"$fieldTitle-error")).getText.replaceAll("\n", "") shouldBe errorMessage
   }
 
-
+  //todo tidy this up?
   And("""^the user should see the invalid (.*) date range error message for "(.*)" field""") {
     (journey: String, fieldTitle: String) =>
       driver.findElement(By.cssSelector("#error-summary-title")).isDisplayed
       driver.findElement(By.cssSelector("#error-summary-title")).getText shouldBe "There is a problem"
-
       driver.findElement(By.id(s"$fieldTitle-error")).isDisplayed
 
       journey match {
         case "arrival" =>
-      driver.findElement (By.id (s"$fieldTitle-error") ).getText should startWith ("Error:\nDate of arrival must be between")
+          driver.findElement(By.id(s"$fieldTitle-error")).getText should startWith("Error:\nDate of arrival must be between")
 
         case "departure" =>
-          driver.findElement (By.id (s"$fieldTitle-error") ).getText should startWith ("Error:\nDate of departure must be between")
+          driver.findElement(By.id(s"$fieldTitle-error")).getText should startWith("Error:\nDate of departure must be between")
       }
   }
 
   When("""^the user clicks the error link for "([^"]*)" it should link to the (.*) field""") {
-    (fieldID: String, fieldBodyID:String) =>
-    clickHref(s"a[href*='$fieldID']")
+    (fieldID: String, fieldBodyID: String) =>
+      clickHref(s"a[href*='$fieldID']")
       findElementById(fieldBodyID).isSelected
       findElementById(fieldBodyID).clear()
-    }
+  }
 
   When("""^the user logs into QA""") {
     navigateTo("https://www.qa.tax.service.gov.uk/auth-login-stub/gg-sign-in")
     writeById(findElementById("redirectionUrl"), "/send-documents-for-customs-check")
     clickByCSS("#inputForm > div.form-field-group > p > input")
   }
-  }
+}
 
 

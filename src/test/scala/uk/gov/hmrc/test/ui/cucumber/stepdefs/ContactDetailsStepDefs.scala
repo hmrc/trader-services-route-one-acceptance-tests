@@ -16,31 +16,26 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import java.util.UUID
-
 import io.cucumber.scala.{EN, ScalaDsl}
 import uk.gov.hmrc.test.ui.pages.ContactDetailsPage
 
 
 class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
 
-
-  When ("""^the user navigates to the (.*) contact details page""") { (Journey:String) =>
-    Journey match {
+  When("""^the user navigates to the (.*) contact details page""") { (journey: String) =>
+    journey match {
       case "Import" => navigateTo(urlImportContact)
       case "Export" => navigateTo(urlExportContact)
     }
   }
 
-
-  Then("""^the user is on the (.*) Contact Details Page$""") { (Journey: String) =>
-    Journey match {
+  Then("""^the user is on the (.*) contact details page$""") { (journey: String) =>
+    journey match {
       case "Import" => confirmUrl(urlImportContact)
       case "Export" => confirmUrl(urlExportContact)
     }
     verifyHeading(headingContactInfo)
   }
-
 
   Then("""^the user enters a name "(.*)"$""") {
     (name: String) =>
@@ -52,7 +47,7 @@ class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
 
       emailAddress match {
         case "testEmail" => writeById(email, generateTestEmailAddress)
-        case _ => writeById (email, emailAddress)
+        case _ => writeById(email, emailAddress)
       }
   }
 
@@ -61,17 +56,10 @@ class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
       writeById(phoneNo, phone)
   }
 
-
-Then("""^the details entered for name, email and phone number should be pre-filled with "(.*)", "(.*)" & "(.*)"$""") {
-  (name:String, emailAddress:String, phone:String) =>
-  verifyInput(fullName, name)
-  verifyInput(email, emailAddress)
-  verifyInput(phoneNo, phone)
-}
-
-  var lastUsedTestEmail: String = ""
-  def generateTestEmailAddress: String = {
-    lastUsedTestEmail = s"test${UUID.randomUUID().toString}@test.com"
-    lastUsedTestEmail
+  Then("""^the details entered for name, email and phone number should be pre-filled with "(.*)", "(.*)" & "(.*)"$""") {
+    (name: String, emailAddress: String, phone: String) =>
+      verifyInput(fullName, name)
+      verifyInput(email, emailAddress)
+      verifyInput(phoneNo, phone)
   }
 }

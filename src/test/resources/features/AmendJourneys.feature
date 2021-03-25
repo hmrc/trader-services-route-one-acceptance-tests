@@ -1,5 +1,5 @@
 @TraderService
-Feature: Amend Journeys
+Feature: Amend journeys
 
   Scenario: Amend case journey (error validation)
     Given the user navigates to the temporary start page for trader services and clicks start
@@ -18,7 +18,7 @@ Feature: Amend Journeys
     Then the user is on the how to respond page and selects noOption
     Then the user should see "Error:Select how you want to send us more information" error message for "typeOfAmendment"
 
-    Then the user is on the how to respond page and selects writeAndupload
+    Then the user is on the how to respond page and selects writeAndUpload
     When the user enters a response with no characters
     Then the user should see "Error:Enter a response to a query from HMRC" error message for "responseText"
     When the user enters a response with tooMany characters
@@ -67,14 +67,14 @@ Feature: Amend Journeys
     Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
     When the user enters valid characters for case reference number
-    When the user is on the how to respond page and selects writeAndupload
+    When the user is on the how to respond page and selects writeAndUpload
     Then the user is on the write response page
     And the user enters a response with valid characters
     Then the user is on the multi-file upload pages for a/an Amend journey
     And the user will only see inset text for request type N/A
     When the user clicks the button to upload the first file and selects the "pdf" file
     Then the user clicks Continue when files have finished uploading
-    Then the user is on the Amend writeAndupload review page and should see their responses
+    Then the user is on the Amend writeAndUpload review page and should see their responses
     When the user clicks Submit on the CYA page
     Then the user is on the Amend confirmation page
     When the user clicks the send docs link on the Amend confirmation page they will go back to the start

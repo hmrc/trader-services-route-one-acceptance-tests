@@ -1,6 +1,6 @@
 @TraderService
 
-Feature: Customs check - Import Journeys
+Feature: Customs check - Import journeys
 
   Scenario Outline: A user wants to complete a New Import journey & see the Air SLA
     Given the user navigates to the temporary start page for trader services and clicks start
@@ -10,14 +10,14 @@ Feature: Customs check - Import Journeys
     And the user enters today's date for entryDate
     Then the user clicks Continue
     When the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import Route Type Page and selects <route>
-    When the user is on the Import YesNo Priority Page and selects Yes
-    Then the user is on the Import Priority Goods Page and selects <priority>
-    When the user is on the ALVS Page and selects Yes
-    Then the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import-Optional Vessel Page
+    Then the user is on the Import Route Type page and selects <route>
+    When the user is on the Import YesNo Priority page and selects Yes
+    Then the user is on the Import Priority Goods page and selects <priority>
+    When the user is on the ALVS page and selects Yes
+    Then the user is on the Import Transport type page and selects <transport>
+    Then the user is on the Import-Optional Transport page
     And the user clicks Continue
-    Then the user is on the Import Contact Details Page
+    Then the user is on the Import contact details page
     When the user enters a name "<name>"
     When the user enters an email address "<email>"
     And the user clicks Continue
@@ -33,12 +33,11 @@ Feature: Customs check - Import Journeys
     And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
-      | epu | entryNo |requestType | route   | priority      | transport | name   | email          |
-      | 123 | 123456A |New         | Route 6 | Human remains | Air       | Mr. F  | valid@test.com |
+      | epu | entryNo | requestType | route   | priority      | transport | name  | email          |
+      | 123 | 123456A | New         | Route 6 | Human remains | Air       | Mr. F | valid@test.com |
 
 
-
-  Scenario Outline: Route-Hold: A user should reach the mandatory vessel page
+  Scenario Outline: Route-Hold: A user should reach the mandatory Transport page
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
     Then the user is on the entry details page
@@ -46,15 +45,15 @@ Feature: Customs check - Import Journeys
     And the user enters today's date for entryDate
     When the user clicks Continue
     Then the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import Route Type Page and selects <route>
-    When the user is on the Import YesNo Priority Page and selects No
-    Then the user is on the ALVS Page and selects No
-    When the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import-Mandatory Vessel Page
+    Then the user is on the Import Route Type page and selects <route>
+    When the user is on the Import YesNo Priority page and selects No
+    Then the user is on the ALVS page and selects No
+    When the user is on the Import Transport type page and selects <transport>
+    Then the user is on the Import-Mandatory Transport page
 
     Examples:
       | epu | entryNo | requestType  | route | transport |
-      | 123 | 123456A | Cancellation | Hold | Maritime   |
+      | 123 | 123456A | Cancellation | Hold  | Maritime  |
 
 #Used to test maritime variants, needs updated per time (WIP)
   Scenario Outline: A user wants to complete a New Import journey & see the appropriate Maritime SLA
@@ -65,14 +64,14 @@ Feature: Customs check - Import Journeys
     And the user enters today's date for entryDate
     Then the user clicks Continue
     When the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import Route Type Page and selects <route>
-    When the user is on the Import YesNo Priority Page and selects Yes
-    Then the user is on the Import Priority Goods Page and selects <priority>
-    When the user is on the ALVS Page and selects Yes
-    Then the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import-Optional Vessel Page
+    Then the user is on the Import Route Type page and selects <route>
+    When the user is on the Import YesNo Priority page and selects Yes
+    Then the user is on the Import Priority Goods page and selects <priority>
+    When the user is on the ALVS page and selects Yes
+    Then the user is on the Import Transport type page and selects <transport>
+    Then the user is on the Import-Optional Transport page
     And the user clicks Continue
-    Then the user is on the Import Contact Details Page
+    Then the user is on the Import contact details page
     When the user enters a name "<name>"
     When the user enters an email address "<email>"
     And the user clicks Continue
@@ -87,5 +86,5 @@ Feature: Customs check - Import Journeys
     And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
-      | epu | entryNo |requestType | route   | priority      | transport | name   | email          |
-      | 555 | 151511c |New         | Route 6 | Human remains | Maritime  | Mr. F  | valid@test.com |
+      | epu | entryNo | requestType | route   | priority      | transport | name  | email          |
+      | 555 | 151511c | New         | Route 6 | Human remains | Maritime  | Mr. F | valid@test.com |

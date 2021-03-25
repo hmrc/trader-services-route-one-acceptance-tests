@@ -43,36 +43,36 @@ class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with E
     verifyHeading(landingHeading)
   }
 
-  Given("""^the user is on the start page for trader services and selects (.*)$""") { (journey:String) =>
+  //  todo tidy css
+  Given("""^the user is on the start page for trader services and selects (.*)$""") { (journey: String) =>
     navigateTo(traderServicesUrl)
     confirmUrl(traderServicesUrl)
     verifyHeading(landingHeading)
 
     journey match {
-    case "New" => driver.findElement(By.cssSelector("#newOrExistingCase")).click()
-    case "Amend" =>  driver.findElement(By.cssSelector("#newOrExistingCase-2")).click()
-  }
+      case "New" => driver.findElement(By.cssSelector("#newOrExistingCase")).click()
+      case "Amend" => driver.findElement(By.cssSelector("#newOrExistingCase-2")).click()
+    }
     clickContinue()
   }
 
-  Then("""^the last selected option for journey type should be pre filled with (.*)$""") { (request:String) =>
+  Then("""^the last selected option for journey type should be pre filled with (.*)$""") { (request: String) =>
 
     request match {
       case "New" => optionSelected("#newOrExistingCase")
       case "Amend" => optionSelected("#newOrExistingCase-2")
-      case "Nothing" => optionNotSelected("#newOrExistingCase")
-                optionNotSelected("#newOrExistingCase-2")
+      case "Nothing" =>
+        optionNotSelected("#newOrExistingCase")
+        optionNotSelected("#newOrExistingCase-2")
     }
   }
 
   And("""^the user clicks the banner link to return to the landing page""") { () =>
-    Thread.sleep(1500)
     findElementByCss(".govuk-header__link--service-name").click()
     confirmUrl(traderServicesUrl)
   }
 
   And("""^the user clicks the gov uk icon to go to gov uk""") { () =>
-    Thread.sleep(1500)
     findElementByCss(".govuk-header__logotype-text").click()
     confirmUrl(govukExternal)
   }

@@ -8,14 +8,14 @@ Feature: Contact Details
     And the user enters a date "<day>" "<month>" "<year>"
     And the user clicks Continue
     Then the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import Route Type Page and selects <route>
-    Then the user is on the Import YesNo Priority Page and selects Yes
-    When the user is on the Import Priority Goods Page and selects <priority>
-    Then the user is on the ALVS Page and selects Yes
-    Then the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import-Optional Vessel Page
+    Then the user is on the Import Route Type page and selects <route>
+    Then the user is on the Import YesNo Priority page and selects Yes
+    When the user is on the Import Priority Goods page and selects <priority>
+    Then the user is on the ALVS page and selects Yes
+    Then the user is on the Import Transport type page and selects <transport>
+    Then the user is on the Import-Optional Transport page
     Then the user clicks Continue
-    When the user is on the Import Contact Details Page
+    When the user is on the Import contact details page
     Then the user clicks Continue
     Then the user should see "Error:Enter an email address" error message for "contactEmail"
     Then the user enters a name "a"
@@ -59,7 +59,7 @@ Feature: Contact Details
     When the user clicks the button to upload the first file and selects the "jpg" file
     Then the user clicks Continue when files have finished uploading
     Then the user is on the Import CYA page
-    
+
     Then the user clicks the change link for ContactDetails
     When the user enters a name "Abc O'Test-Smith"
     Then the user enters a phone number "00447123456789"
@@ -76,7 +76,7 @@ Feature: Contact Details
     Then the user is on the Import CYA page
 
     Examples:
-      | epu | entryNo | day | month | year |requestType  | route   | priority      | transport | email   |
-      | 123 | 123456A | 01  | 10    | 2020 |Cancellation | Route 6 | Human remains | Air       | a@a.com |
+      | epu | entryNo | day | month | year | requestType  | route   | priority      | transport | email   |
+      | 123 | 123456A | 01  | 10    | 2020 | Cancellation | Route 6 | Human remains | Air       | a@a.com |
 
 

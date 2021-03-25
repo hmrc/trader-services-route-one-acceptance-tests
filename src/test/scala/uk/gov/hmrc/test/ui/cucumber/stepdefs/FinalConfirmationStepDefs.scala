@@ -16,15 +16,12 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import java.time.LocalTime
-
 import io.cucumber.scala.{EN, ScalaDsl}
 import play.twirl.api.TemplateMagic.anyToDefault
 import uk.gov.hmrc.test.ui.pages.{AmendPages, BasePage, FinalConfirmationPage, LandingPage}
 
 class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
   with LandingPage with AmendPages with ScalaDsl with EN {
-
 
   Given("""^the user is on the (.*) confirmation page""") { (journey: String) =>
 
@@ -44,6 +41,7 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     isElementVisible(".print-page").shouldBe(true)
   }
 
+  //  todo sort out deprecated import
   Then("""^the user copies the case reference number""") { () =>
     val caseRefOutput = caseRefNo.getText.copy()
     print(caseRefOutput)
@@ -65,34 +63,25 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
   }
 
   When("""^the user clicks the link to add documents they will be redirected to amend journey""") { () =>
-    clickLinkToAmend
+    clickLinkToAmend()
     confirmUrl(urlCaseRef)
     verifyHeading(caseRefHeading)
   }
 
-  val threePm = LocalTime.parse("15:00:00.00")
-  val midnight = LocalTime.parse("00:00:00.00")
-  val eightAm = LocalTime.parse("08:00:00.00")
-
-  val between3pmAndMidnight = nowTime.isAfter(threePm) && nowTime.isBefore(midnight)
-  val betweenMidnightAnd8am  = nowTime.isAfter(midnight) && nowTime.isBefore(eightAm)
-  val between8amAnd3pm = nowTime.isAfter(eightAm) && nowTime.isBefore(threePm)
-
   Then("""^the user should see (.*) SLA""") { (sla: String) =>
 
     sla match {
-        //Air - both, Roro - both, Maritime - Export
-    case "2 Hour" => assertElementTextContains("Your document checks should be completed by " + sl2hrFormatted + " today.", slaPara)
+      //Air - both, Roro - both, Maritime - Export
+      case "2 Hour" => assertElementTextContains("Your document checks should be completed by " + sl2hrFormatted + " today.", slaPara)
 
-      //Maritime - Import
-    case "Maritime-Import"=>
-      if(between8amAnd3pm)assertElementTextContains("Your document checks should be completed by " + sla3hrFormatted + " today.", slaPara)
-      if(between3pmAndMidnight)assertElementTextContains("Your document checks should be completed by 08:00 tomorrow.", slaPara)
-      if(betweenMidnightAnd8am)assertElementTextContains("Your document checks should be completed by 08:00 today.", slaPara)
+      case "Maritime-Import" =>
+        if (between8amAnd3pm) assertElementTextContains("Your document checks should be completed by " + sla3hrFormatted + " today.", slaPara)
+        if (between3pmAndMidnight) assertElementTextContains("Your document checks should be completed by 08:00 tomorrow.", slaPara)
+        if (betweenMidnightAnd8am) assertElementTextContains("Your document checks should be completed by 08:00 today.", slaPara)
 
       //Route Hold (No SLA)
-    case "Hold" =>  assertElementTextContains(holdSLA, slaPara)
+      case "Hold" => assertElementTextContains(holdSLA, slaPara)
+    }
   }
-}
 }
 

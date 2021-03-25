@@ -80,31 +80,31 @@ Feature: User tries to jump ahead in the journey
     When the user enters entry details "110" and "123456S"
     And the user enters today's date for entryDate
     And the user clicks Continue
-    Then the user is on the Import Request Type Page
+    Then the user is on the Import Request Type page
     And the user navigates to the following "/new/import/route-type"
     Then the user is on the Import Request Type page and selects New
-    Then the user is on the Import Route Type Page
+    Then the user is on the Import Route Type page
     And the user navigates to the following "/new/import/has-priority-goods"
-    Then the user is on the Import Route Type Page and selects Route 3
-    Then the user is on the Import YN Priority Page
+    Then the user is on the Import Route Type page and selects Route 3
+    Then the user is on the Import YN Priority page
     And the user navigates to the following "/new/import/which-priority-goods"
-    Then the user is on the Import YesNo Priority Page and selects Yes
-    Then the user is on the Import Priority Goods Page
+    Then the user is on the Import YesNo Priority page and selects Yes
+    Then the user is on the Import Priority Goods page
     And the user navigates to the following "/new/import/automatic-licence-verification"
-    Then the user is on the Import Priority Goods Page and selects Live animals
-    Then the user is on the ALVS Page
+    Then the user is on the Import Priority Goods page and selects Live animals
+    Then the user is on the ALVS page
     And the user navigates to the following "/new/import/transport-type"
-    Then the user is on the ALVS Page and selects Yes
-    Then the user is on the Import Transport Page
+    Then the user is on the ALVS page and selects Yes
+    Then the user is on the Import Transport page
     And the user navigates to the following "/new/import/transport-information"
-    Then the user is on the Import Transport Type Page and selects Maritime
-    Then the user is on the Import-Optional Vessel Page
+    Then the user is on the Import Transport type page and selects Maritime
+    Then the user is on the Import-Optional Transport page
     And the user navigates to the following "/new/import/transport-information-required"
-    Then the user is on the Import-Optional Vessel Page
+    Then the user is on the Import-Optional Transport page
     And the user navigates to the following "/new/import/contact-information"
-    Then the user is on the Import-Optional Vessel Page
+    Then the user is on the Import-Optional Transport page
     And the user clicks Continue
-    Then the user is on the Import Contact Details Page
+    Then the user is on the Import contact details page
 #    And the user navigates to the following "/new/upload-files"
 #    Can skip to the page but can't get past it without email, can only jump to it from contact details page
     And the user enters an email address "trader_customs.shipping@agency.com"

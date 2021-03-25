@@ -8,14 +8,14 @@ Feature: A user wants to upload documents
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import Route Type Page and selects <route>
-    Then the user is on the Import YesNo Priority Page and selects Yes
-    When the user is on the Import Priority Goods Page and selects <priority>
-    Then the user is on the ALVS Page and selects Yes
-    Then the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import-Optional Vessel Page
+    Then the user is on the Import Route Type page and selects <route>
+    Then the user is on the Import YesNo Priority page and selects Yes
+    When the user is on the Import Priority Goods page and selects <priority>
+    Then the user is on the ALVS page and selects Yes
+    Then the user is on the Import Transport type page and selects <transport>
+    Then the user is on the Import-Optional Transport page
     And the user clicks Continue
-    Then the user is on the Import Contact Details Page
+    Then the user is on the Import contact details page
     When the user enters a name "<name>"
     Then the user enters an email address "<email>"
     And the user clicks Continue
@@ -52,5 +52,5 @@ Feature: A user wants to upload documents
     And the user should see 2 Hour SLA
 
     Examples:
-      | epu | entryNo | requestType | route   | priority                | transport    | name       | email      |
-      | 113 | 993456A | New         | Route 3 | Explosives or fireworks | RoadRoRoRail | Abc Testb  | a@test.com |
+      | epu | entryNo | requestType | route   | priority                | transport    | name      | email      |
+      | 113 | 993456A | New         | Route 3 | Explosives or fireworks | RoadRoRoRail | Abc Testb | a@test.com |

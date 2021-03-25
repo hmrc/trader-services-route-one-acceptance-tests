@@ -2,7 +2,7 @@
 
 Feature: Hit all pages within the service - ZAP & Accessibility testing
 
-  Scenario Outline: a11y/ZAP- every page in journey hit (Export - Vessel-Optional)
+  Scenario Outline: a11y/ZAP- every page in journey hit (Export - Transport-Optional)
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
     Then the user is on the entry details page
@@ -10,13 +10,13 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
-    Then the user is on the Export Route Type Page and selects <route>
-    Then the user is on the Export YesNo Priority Page and selects Yes
-    When the user is on the Export Priority Goods Page and selects <priority>
-    Then the user is on the Export Transport Type Page and selects <transport>
-    Then the user is on the Export-Optional Vessel Page
+    Then the user is on the Export Route Type page and selects <route>
+    Then the user is on the Export YesNo Priority page and selects Yes
+    When the user is on the Export Priority Goods page and selects <priority>
+    Then the user is on the export Transport type page and selects <transport>
+    Then the user is on the Export-Optional Transport page
     Then the user clicks Continue
-    Then the user is on the Export Contact Details Page
+    Then the user is on the Export contact details page
     And the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
@@ -33,7 +33,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
       | epu | entryNo | requestType | route   | priority      | transport | email   |
       | 123 | A23456A | New         | Route 1 | Human remains | Air       | a@a.com |
 
-  Scenario Outline: a11y/ZAP - every page in journey hit (Export - Vessel-Mandatory)
+  Scenario Outline: a11y/ZAP - every page in journey hit (Export - Transport-Mandatory)
 
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
@@ -42,17 +42,17 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
-    Then the user is on the Export Route Type Page and selects <route>
-    Then the user is on the Export YesNo Priority Page and selects No
-    Then the user is on the Export Transport Type Page and selects <transport>
-    Then the user is on the Export-Mandatory Vessel Page
+    Then the user is on the Export Route Type page and selects <route>
+    Then the user is on the Export YesNo Priority page and selects No
+    Then the user is on the export Transport type page and selects <transport>
+    Then the user is on the Export-Mandatory Transport page
 
     Examples:
       | epu | entryNo | requestType | route   | transport    |
       | 123 | A23456A | C1601       | Route 1 | RoadRoRoRail |
 
 
-  Scenario Outline: a11y/ZAP - every page in journey hit (Import - Vessel-Optional)
+  Scenario Outline: a11y/ZAP - every page in journey hit (Import - Transport-Optional)
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
     Then the user is on the entry details page
@@ -60,14 +60,14 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     And the user enters today's date for entryDate
     Then the user clicks Continue
     When the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import Route Type Page and selects <route>
-    When the user is on the Import YesNo Priority Page and selects Yes
-    Then the user is on the Import Priority Goods Page and selects <priority>
-    When the user is on the ALVS Page and selects Yes
-    Then the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import-Optional Vessel Page
+    Then the user is on the Import Route Type page and selects <route>
+    When the user is on the Import YesNo Priority page and selects Yes
+    Then the user is on the Import Priority Goods page and selects <priority>
+    When the user is on the ALVS page and selects Yes
+    Then the user is on the Import Transport type page and selects <transport>
+    Then the user is on the Import-Optional Transport page
     And the user clicks Continue
-    Then the user is on the Import Contact Details Page
+    Then the user is on the Import contact details page
     When the user enters a name "<name>"
     When the user enters an email address "<email>"
     And the user clicks Continue
@@ -79,8 +79,8 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     Then the user is on the New confirmation page
 
     Examples:
-      | epu | entryNo |requestType | route   | priority      | transport | name       | email          |
-      | 123 | 123456A |New         | Route 6 | Human remains | Air       | Abc Testb  | valid@test.com |
+      | epu | entryNo | requestType | route   | priority      | transport | name      | email          |
+      | 123 | 123456A | New         | Route 6 | Human remains | Air       | Abc Testb | valid@test.com |
 
   Scenario Outline: a11y/ZAP - every page in journey hit (Import - Vessel-Mandatory)
     Given the user navigates to the temporary start page for trader services and clicks start
@@ -90,15 +90,15 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     And the user enters today's date for entryDate
     When the user clicks Continue
     Then the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import Route Type Page and selects <route>
-    When the user is on the Import YesNo Priority Page and selects No
-    Then the user is on the ALVS Page and selects No
-    When the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import-Mandatory Vessel Page
+    Then the user is on the Import Route Type page and selects <route>
+    When the user is on the Import YesNo Priority page and selects No
+    Then the user is on the ALVS page and selects No
+    When the user is on the Import Transport type page and selects <transport>
+    Then the user is on the Import-Mandatory Transport page
 
     Examples:
-      | epu | entryNo |requestType  | route | transport |
-      | 123 | 123456A |Cancellation | Hold | Maritime   |
+      | epu | entryNo | requestType  | route | transport |
+      | 123 | 123456A | Cancellation | Hold  | Maritime  |
 
 
   Scenario: 11y/ZAP - Amend: Hit each page
@@ -106,13 +106,13 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
     When the user enters valid characters for case reference number
-    When the user is on the how to respond page and selects writeAndupload
+    When the user is on the how to respond page and selects writeAndUpload
     Then the user is on the write response page
     And the user enters a response with valid characters
     Then the user is on the multi-file upload pages for a/an Amend journey
     When the user clicks the button to upload the first file and selects the "pdf" file
     Then the user clicks Continue when files have finished uploading
-    Then the user is on the Amend writeAndupload review page and should see their responses
+    Then the user is on the Amend writeAndUpload review page and should see their responses
     When the user clicks Submit on the CYA page
     Then the user is on the Amend confirmation page
     When the user clicks the send docs link on the Amend confirmation page they will go back to the start
@@ -125,15 +125,15 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
-    Then the user is on the Export Route Type Page and selects <route>
-    Then the user is on the Export YesNo Priority Page and selects Yes
-    When the user is on the Export Priority Goods Page and selects <priority>
-    Then the user is on the Export Transport Type Page and selects <transport>
-    Then the user is on the Export-Optional Vessel Page
-    Then the user enters "<vesselName>" for vessel name
+    Then the user is on the Export Route Type page and selects <route>
+    Then the user is on the Export YesNo Priority page and selects Yes
+    When the user is on the Export Priority Goods page and selects <priority>
+    Then the user is on the export Transport type page and selects <transport>
+    Then the user is on the Export-Optional Transport page
+    Then the user enters "<transportName>" for transport name
     And the user enters today's date for vesselDateDeparture
     Then the user clicks Continue
-    Then the user is on the Export Contact Details Page
+    Then the user is on the Export contact details page
     And the user enters an email address "<email>"
     When the user enters a name "<name>"
     And the user clicks Continue
@@ -146,8 +146,8 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     When the user clicks the link to add documents they will be redirected to amend journey
 
     Examples:
-      | epu | entryNo | requestType  | route   | priority      | transport | vesselName  | name  | email   |
-      | 667 | A23456A | Cancellation | Route 2 | Human remains | Air       | Test Vessel | Mr. F | a@a.com |
+      | epu | entryNo | requestType  | route   | priority      | transport | transportName | name  | email   |
+      | 667 | A23456A | Cancellation | Route 2 | Human remains | Air       | Test Vessel   | Mr. F | a@a.com |
 
 
   Scenario Outline: A user enters a failed request (Stub EPU: 666)
@@ -157,15 +157,15 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
-    Then the user is on the Export Route Type Page and selects <route>
-    Then the user is on the Export YesNo Priority Page and selects Yes
-    When the user is on the Export Priority Goods Page and selects <priority>
-    Then the user is on the Export Transport Type Page and selects <transport>
-    Then the user is on the Export-Optional Vessel Page
-    Then the user enters "<vesselName>" for vessel name
+    Then the user is on the Export Route Type page and selects <route>
+    Then the user is on the Export YesNo Priority page and selects Yes
+    When the user is on the Export Priority Goods page and selects <priority>
+    Then the user is on the export Transport type page and selects <transport>
+    Then the user is on the Export-Optional Transport page
+    Then the user enters "<transportName>" for transport name
     And the user enters today's date for vesselDateDeparture
     Then the user clicks Continue
-    Then the user is on the Export Contact Details Page
+    Then the user is on the Export contact details page
     And the user enters an email address "<email>"
     When the user enters a name "<name>"
     And the user clicks Continue
@@ -177,8 +177,8 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     Then the user is on the error page for internal server error
 
     Examples:
-      | epu | entryNo | requestType  | route   | priority      | transport | vesselName  | name  | email   |
-      | 666 | X23456A | New | Route 3 | Human remains | Air       | Test Vessel | Mr. F | a@a.com |
+      | epu | entryNo | requestType | route   | priority      | transport | transportName | name  | email   |
+      | 666 | X23456A | New         | Route 3 | Human remains | Air       | Test Vessel   | Mr. F | a@a.com |
 
 
   Scenario: A user hits the wrong url

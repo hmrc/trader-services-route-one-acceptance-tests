@@ -1,6 +1,6 @@
 @TraderServiceQA
 
-Feature: Customs check - Export Journey
+Feature: Customs check - Export journey
 
   Scenario Outline: A user wants to complete a New Export RouteOne journey
     Given the user logs into QA
@@ -10,16 +10,16 @@ Feature: Customs check - Export Journey
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
-    Then the user is on the Export Route Type Page and selects <route>
-    Then the user is on the Export YesNo Priority Page and selects Yes
-    When the user is on the Export Priority Goods Page and selects <priority>
-    Then the user is on the Export Transport Type Page and selects <transport>
-    Then the user is on the Export-Optional Vessel Page
-    Then the user enters "<vesselName>" for vessel name
+    Then the user is on the Export Route Type page and selects <route>
+    Then the user is on the Export YesNo Priority page and selects Yes
+    When the user is on the Export Priority Goods page and selects <priority>
+    Then the user is on the export Transport type page and selects <transport>
+    Then the user is on the Export-Optional Transport page
+    Then the user enters "<transportName>" for transport name
     And the user enters today's date for vesselDateDeparture
-    And the user enters a Time of Departure for the vessel "15" "59"
+    And the user enters a Time of Departure for the transport "15" "59"
     Then the user clicks Continue
-    Then the user is on the Export Contact Details Page
+    Then the user is on the Export contact details page
     Then the user enters a name "<name>"
     And the user enters an email address "<email>"
     And the user enters a phone number "<phone>"
@@ -54,9 +54,9 @@ Feature: Customs check - Export Journey
     And the user should see 2 Hour SLA
     Then the user waits 5000
 
-Examples:
-| epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email              | phone         |
-| 019 | L88811G | New       | Route 1 | Human remains | Maritime  | TestVessel  | smith   | aa_kaygcc@test.com | 0177 111 1111 |
+    Examples:
+      | epu | entryNo | requestType | route   | priority      | transport | transportName | name  | email              | phone         |
+      | 433 | A88811G | New         | Route 1 | Human remains | Maritime  | TestVessel    | smith | aa_kaygcc@test.com | 0177 111 1111 |
 
 # RoadRoRoRail
 #
@@ -64,7 +64,7 @@ Examples:
     Given the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
     Then the user enters a real case reference number PCI210325190750UDQO5C2
-    When the user is on the how to respond page and selects writeAndupload
+    When the user is on the how to respond page and selects writeAndUpload
     Then the user is on the write response page
     And the user enters a response "sample message" and continues
     Then the user is on the multi-file upload pages for a/an Amend journey
@@ -83,15 +83,15 @@ Examples:
     And the user enters today's date for entryDate
     Then the user clicks Continue
     When the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import Route Type Page and selects <route>
-    When the user is on the Import YesNo Priority Page and selects Yes
-    Then the user is on the Import Priority Goods Page and selects <priority>
-    When the user is on the ALVS Page and selects Yes
-    Then the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import-Optional Vessel Page
-    Then the user enters "<vesselName>" for vessel name
-    And the user enters today's date for vesselDateArrival
-    And the user enters a Time of Arrival for the vessel "12" "30"
+    Then the user is on the Import Route Type page and selects <route>
+    When the user is on the Import YesNo Priority page and selects Yes
+    Then the user is on the Import Priority Goods page and selects <priority>
+    When the user is on the ALVS page and selects Yes
+    Then the user is on the Import Transport type page and selects <transport>
+    Then the user is on the Import-Optional Transport page
+    Then the user enters "<transportName>" for transport name
+    And the user enters today's date for transportDateArrival
+    And the user enters a time of Arrival for their transportation "12" "30"
     And the user clicks Continue
     Then the user enters a name "<name>"
     And the user enters an email address "<email>"
@@ -108,8 +108,8 @@ Examples:
 
 
     Examples:
-      | epu | entryNo | requestType | route   | priority      | transport | vesselName | name   | email            | phone |
-      | 016 | 880041L | New         | Route 3 | Human remains | Air       | train 1x   | agent  | valid@test.co.uk | 01256888999|
+      | epu | entryNo | requestType | route   | priority      | transport | transportName | name  | email            | phone       |
+      | 096 | 880041L | New         | Route 3 | Human remains | Air       | train 1x      | agent | valid@test.co.uk | 01256888999 |
 
   Scenario: Amend: A user adds a message and a document to a case (write response only)
     Given the user navigates to the temporary start page for trader services and clicks start

@@ -22,30 +22,34 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, PriorityPages}
 
 class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN {
 
-  //Has-priority-goods (Y/N)
+  //Has priority goods page (Y/N)
 
-  When ("""^the user navigates to the (.*) YN priority type page""") {(Journey:String) =>
-    Journey match {
+  When("""^the user navigates to the (.*) YN priority type page""") { (journey: String) =>
+    journey match {
       case "Import" => navigateTo(urlImportYNPriority)
       case "Export" => navigateTo(urlExportYNPriority)
     }
   }
 
-  Then("""^the user is on the (.*) YN Priority Page""") { (Journey: String) =>
-    Journey match {
-      case "Import" => confirmUrl(urlImportYNPriority)
+  Then("""^the user is on the (.*) YN Priority page""") { (journey: String) =>
+    journey match {
+      case "Import" =>
+        confirmUrl(urlImportYNPriority)
         verifyHeading(headingImportYNPrio)
-      case "Export" => confirmUrl(urlExportYNPriority)
+      case "Export" =>
+        confirmUrl(urlExportYNPriority)
         verifyHeading(headingExportYNPrio)
     }
   }
 
-  When("""^the user is on the (.*) YesNo Priority Page and selects (.*)""") { (Journey: String, YesNo: String) =>
+  When("""^the user is on the (.*) YesNo Priority page and selects (.*)""") { (journey: String, YesNo: String) =>
 
-    Journey match {
-      case "Import" => confirmUrl(urlImportYNPriority)
+    journey match {
+      case "Import" =>
+        confirmUrl(urlImportYNPriority)
         verifyHeading(headingImportYNPrio)
-      case "Export" => confirmUrl(urlExportYNPriority)
+      case "Export" =>
+        confirmUrl(urlExportYNPriority)
         verifyHeading(headingExportYNPrio)
     }
 
@@ -57,7 +61,7 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
     clickContinue()
   }
 
-  Then("""^the last selected option for YN Priority should be pre filled with (.*)$""") { (YNpriority:String) =>
+  Then("""^the last selected option for YN Priority should be pre filled with (.*)$""") { (YNpriority: String) =>
 
     YNpriority match {
       case "Yes" => optionSelected("#hasPriorityGoods")
@@ -65,43 +69,42 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
     }
   }
 
+  //Which priority goods page
 
-  //Which-priority-goods
-
-  When ("""^the user navigates to the (.*) priority goods page""") {(Journey:String) =>
-    Journey match {
+  When("""^the user navigates to the (.*) priority goods page""") { (journey: String) =>
+    journey match {
       case "Import" => navigateTo(urlImportPriority)
       case "Export" => navigateTo(urlExportPriority)
     }
   }
 
-  Then("""^the user is on the (.*) Priority Goods Page""") { (Journey: String) =>
-    Journey match {
+  Then("""^the user is on the (.*) Priority Goods page""") { (journey: String) =>
+    journey match {
       case "Import" => confirmUrl(urlImportPriority)
       case "Export" => confirmUrl(urlExportPriority)
     }
     verifyHeading(headingPriority)
   }
 
-  When("""^the user is on the (.*) Priority Goods Page and selects (.*)""") { (Journey: String, RequestType: String) =>
+  When("""^the user is on the (.*) Priority Goods page and selects (.*)""") { (journey: String, requestType: String) =>
 
-      Journey match {
-        case "Import" => confirmUrl(urlImportPriority)
-        case "Export" => confirmUrl(urlExportPriority)
-      }
+    journey match {
+      case "Import" => confirmUrl(urlImportPriority)
+      case "Export" => confirmUrl(urlExportPriority)
+    }
 
-      verifyHeading(headingPriority)
+    verifyHeading(headingPriority)
 
-    RequestType match {
+    requestType match {
       case "Explosives or fireworks" => clickByCSS("#priorityGoods")
       case "Human remains" => clickByCSS("#priorityGoods-2")
       case "Live animals" => clickByCSS("#priorityGoods-3")
       case "NoOption" =>
     }
-        clickContinue()
+    clickContinue()
   }
 
-  Then("""^the last selected option for priority goods should be pre filled with (.*)$""") { (priority:String) =>
+  Then("""^the last selected option for priority goods should be pre filled with (.*)$""") { (priority: String) =>
 
     priority match {
       case "Explosives or fireworks" => optionSelected("#priorityGoods")

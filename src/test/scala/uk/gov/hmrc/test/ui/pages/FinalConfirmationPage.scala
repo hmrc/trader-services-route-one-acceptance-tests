@@ -31,15 +31,13 @@ trait FinalConfirmationPage extends BasePage {
 
   def clickLinkToAmend(): Unit = driver.findElement(By.linkText("add more information or documents to the existing case")).click()
 
-  def caseRefNo:WebElement = findElementByCss(".govuk-panel__body > strong:nth-child(2)")
+  def caseRefNo: WebElement = findElementByCss(".govuk-panel__body > strong:nth-child(2)")
 
-  def slaPara:WebElement = findElementByCss("p.govuk-body:nth-child(3)")
+  def slaPara: WebElement = findElementByCss("p.govuk-body:nth-child(3)")
 
-  def receipt:WebElement = findElementByCss(".receipt")
+  def receipt: WebElement = findElementByCss(".receipt")
 
   val holdSLA = "When your transportation arrives, we’ll begin the document checks. Once our checks are complete, you’ll hear from us through CHIEF or your declaration software."
 
-//  def linkNCH:Unit = driver.findElement(By.linkText("getting your goods cleared by the National Clearance Hub"))
-//  def linkC1Forms:Unit = driver.findElement(By.linkText("arrival and exit when CHIEF is not available"))
-
+  //  todo add link checks
 }

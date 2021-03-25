@@ -20,12 +20,14 @@ import org.openqa.selenium.WebElement
 
 trait ContactDetailsPage extends BasePage {
 
-  val urlImportContact: String = traderServicesBaseUrl + importJourneyUrl + "/contact-information"
-  val urlExportContact: String = traderServicesBaseUrl + exportJourneyUrl + "/contact-information"
+  val urlImportContact: String = traderServicesBaseUrl + importjourneyUrl + "/contact-information"
+  val urlExportContact: String = traderServicesBaseUrl + exportjourneyUrl + "/contact-information"
   val headingContactInfo = "What are your contact details?"
 
-  def fullName:WebElement = findElementById("contactName")
-  def email:WebElement = findElementById("contactEmail")
-  def phoneNo:WebElement = findElementById("contactNumber")
+  def fullName: WebElement = findElementById("contactName")
+
+  def email: WebElement = findElementById("contactEmail")
+
+  def phoneNo: WebElement = findElementById("contactNumber")
 }
 

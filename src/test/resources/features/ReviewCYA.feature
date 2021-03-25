@@ -8,14 +8,14 @@ Feature: Review/CYA page
     And the user enters today's date for entryDate
     Then the user clicks Continue
     When the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import Route Type Page and selects <route>
-    When the user is on the Import YesNo Priority Page and selects Yes
-    Then the user is on the Import Priority Goods Page and selects <priority>
-    When the user is on the ALVS Page and selects <ALVS>
-    Then the user is on the Import Transport Type Page and selects <transport>
-    Then the user is on the Import-Optional Vessel Page
+    Then the user is on the Import Route Type page and selects <route>
+    When the user is on the Import YesNo Priority page and selects Yes
+    Then the user is on the Import Priority Goods page and selects <priority>
+    When the user is on the ALVS page and selects <ALVS>
+    Then the user is on the Import Transport type page and selects <transport>
+    Then the user is on the Import-Optional Transport page
     And the user clicks Continue
-    Then the user is on the Import Contact Details Page
+    Then the user is on the Import contact details page
     When the user enters a name "<name>"
     When the user enters an email address "<email>"
     And the user enters a phone number "<phone>"
@@ -37,8 +37,8 @@ Feature: Review/CYA page
     And the user should see the Full Contact details row & the correct responses "<name>", "<email>" & "<phone>" on the CYA page
 
     Examples:
-      | epu | entryNo |requestType | route   | priority      | ALVS | transport | name       | email          | phone         | entryDateCYA |
-      | 003 | 123456A |New         | Route 6 | Human remains | Yes  | Air       | Abc Testb  | valid@test.com | 01234 567 899 | Today        |
+      | epu | entryNo | requestType | route   | priority      | ALVS | transport | name      | email          | phone         | entryDateCYA |
+      | 003 | 123456A | New         | Route 6 | Human remains | Yes  | Air       | Abc Testb | valid@test.com | 01234 567 899 | Today        |
 
 
   Scenario Outline: A user wants to review their answers (Export)
@@ -49,14 +49,14 @@ Feature: Review/CYA page
     And the user enters today's date for entryDate
     And the user clicks Continue
     Then the user is on the Export Request Type page and selects <requestType>
-    Then the user is on the Export Route Type Page and selects <route>
-    Then the user is on the Export YesNo Priority Page and selects No
-    Then the user is on the Export Transport Type Page and selects <transport>
-    Then the user is on the Export-Optional Vessel Page
-    Then the user enters "<vesselName>" for vessel name
+    Then the user is on the Export Route Type page and selects <route>
+    Then the user is on the Export YesNo Priority page and selects No
+    Then the user is on the export Transport type page and selects <transport>
+    Then the user is on the Export-Optional Transport page
+    Then the user enters "<transportName>" for transport name
     And the user enters today's date for vesselDateDeparture
     Then the user clicks Continue
-    Then the user is on the Export Contact Details Page
+    Then the user is on the Export contact details page
     And the user enters an email address "<email>"
     And the user clicks Continue
     Then the user is on the multi-file upload pages for a/an New journey
@@ -69,11 +69,11 @@ Feature: Review/CYA page
     And the user should see the Route row & the correct response <route> on the CYA page
     Then the user should see the Priority YN row & the correct response No on the CYA page
     When the user answered NoToPriority then they should see the correct responses for the Export journey "" & "<transport>"
-    Then the user should see the Vessel Name row & the correct response "<vesselName>" on the CYA page
+    Then the user should see the Vessel Name row & the correct response "<transportName>" on the CYA page
     And the user should see the Vessel Date Departure row & the correct response "<entryDateCYA>" on the CYA page
     And the user should see the Vessel Time Departure row & the correct response "-" on the CYA page
     And the user should see the Mandatory Contact details row & the correct responses "", "<email>" & "" on the CYA page
 
     Examples:
-      | epu | entryNo |requestType | route   | transport | vesselName  | email        | entryDateCYA |
-      | 123 | A23456A |New         | Route 1 | Maritime  | Test Vessel | abc@test.com | Today        |
+      | epu | entryNo | requestType | route   | transport | transportName | email        | entryDateCYA |
+      | 123 | A23456A | New         | Route 1 | Maritime  | Test Vessel   | abc@test.com | Today        |
