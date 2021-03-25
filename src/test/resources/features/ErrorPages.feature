@@ -6,25 +6,25 @@ Feature: Error pages
     Then the user is on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
-    And the user clicks Continue
+    And the user clicks continue
     Then the user is on the Export Request Type page and selects <requestType>
     Then the user is on the Export Route Type page and selects <route>
     Then the user is on the Export YesNo Priority page and selects Yes
     When the user is on the Export Priority Goods page and selects <priority>
-    Then the user is on the export Transport type page and selects <transport>
-    Then the user is on the Export-Optional Transport page
+    Then the user is on the Export transport type page and selects <transport>
+    Then the user is on the Export-Optional transport details page
     Then the user enters "<transportName>" for transport name
-    And the user enters today's date for vesselDateDeparture
-    Then the user clicks Continue
+    And the user enters today's date for transportDateDeparture
+    Then the user clicks continue
     Then the user is on the Export contact details page
     And the user enters an email address "<email>"
     When the user enters a name "<name>"
-    And the user clicks Continue
+    And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user clicks Continue when files have finished uploading
+    Then the user clicks continue when files have finished uploading
     Then the user is on the Export CYA page
-    Then the user clicks Submit on the CYA page
+    Then the user clicks submit on the CYA page
     Then the user will be on the duplicate case error page
     When the user clicks the link to add documents they will be redirected to amend journey
 
@@ -37,25 +37,25 @@ Feature: Error pages
     Then the user is on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
-    And the user clicks Continue
+    And the user clicks continue
     Then the user is on the Export Request Type page and selects <requestType>
     Then the user is on the Export Route Type page and selects <route>
     Then the user is on the Export YesNo Priority page and selects Yes
     When the user is on the Export Priority Goods page and selects <priority>
-    Then the user is on the export Transport type page and selects <transport>
-    Then the user is on the Export-Optional Transport page
+    Then the user is on the Export transport type page and selects <transport>
+    Then the user is on the Export-Optional transport details page
     Then the user enters "<transportName>" for transport name
-    And the user enters today's date for vesselDateDeparture
-    Then the user clicks Continue
+    And the user enters today's date for transportDateDeparture
+    Then the user clicks continue
     Then the user is on the Export contact details page
     And the user enters an email address "<email>"
     When the user enters a name "<name>"
-    And the user clicks Continue
+    And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user clicks Continue when files have finished uploading
+    Then the user clicks continue when files have finished uploading
     Then the user is on the Export CYA page
-    Then the user clicks Submit on the CYA page
+    Then the user clicks submit on the CYA page
     Then the user is on the error page for internal server error
 
     Examples:

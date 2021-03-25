@@ -8,25 +8,25 @@ Feature: Customs check - Import journeys
     Then the user is on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
-    Then the user clicks Continue
+    Then the user clicks continue
     When the user is on the Import Request Type page and selects <requestType>
     Then the user is on the Import Route Type page and selects <route>
     When the user is on the Import YesNo Priority page and selects Yes
     Then the user is on the Import Priority Goods page and selects <priority>
     When the user is on the ALVS page and selects Yes
-    Then the user is on the Import Transport type page and selects <transport>
-    Then the user is on the Import-Optional Transport page
-    And the user clicks Continue
+    Then the user is on the Import transport type page and selects <transport>
+    Then the user is on the Import-Optional transport details page
+    And the user clicks continue
     Then the user is on the Import contact details page
     When the user enters a name "<name>"
     When the user enters an email address "<email>"
-    And the user clicks Continue
+    And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     And the user will only see inset text for request type N/A
     When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user clicks Continue when files have finished uploading
+    Then the user clicks continue when files have finished uploading
     Then the user is on the Import CYA page
-    And the user clicks Submit on the CYA page
+    And the user clicks submit on the CYA page
     Then the user is on the New confirmation page
     And the user should see 2 Hour SLA
     When the user clicks the send docs link on the New confirmation page they will go back to the start
@@ -43,13 +43,13 @@ Feature: Customs check - Import journeys
     Then the user is on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
-    When the user clicks Continue
+    When the user clicks continue
     Then the user is on the Import Request Type page and selects <requestType>
     Then the user is on the Import Route Type page and selects <route>
     When the user is on the Import YesNo Priority page and selects No
     Then the user is on the ALVS page and selects No
-    When the user is on the Import Transport type page and selects <transport>
-    Then the user is on the Import-Mandatory Transport page
+    When the user is on the Import transport type page and selects <transport>
+    Then the user is on the Import-Mandatory transport details page
 
     Examples:
       | epu | entryNo | requestType  | route | transport |
@@ -62,24 +62,24 @@ Feature: Customs check - Import journeys
     Then the user is on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
-    Then the user clicks Continue
+    Then the user clicks continue
     When the user is on the Import Request Type page and selects <requestType>
     Then the user is on the Import Route Type page and selects <route>
     When the user is on the Import YesNo Priority page and selects Yes
     Then the user is on the Import Priority Goods page and selects <priority>
     When the user is on the ALVS page and selects Yes
-    Then the user is on the Import Transport type page and selects <transport>
-    Then the user is on the Import-Optional Transport page
-    And the user clicks Continue
+    Then the user is on the Import transport type page and selects <transport>
+    Then the user is on the Import-Optional transport details page
+    And the user clicks continue
     Then the user is on the Import contact details page
     When the user enters a name "<name>"
     When the user enters an email address "<email>"
-    And the user clicks Continue
+    And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user clicks Continue when files have finished uploading
+    Then the user clicks continue when files have finished uploading
     Then the user is on the Import CYA page
-    And the user clicks Submit on the CYA page
+    And the user clicks submit on the CYA page
     Then the user is on the New confirmation page
     And the user should see Maritime-Import SLA
     When the user clicks the send docs link on the New confirmation page they will go back to the start

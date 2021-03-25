@@ -161,7 +161,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     }
   }
 
-  Then("""^the user is on the (.*) Transport page""") { (journey: String) =>
+  Then("""^the user is on the (.*) transport type page""") { (journey: String) =>
     journey match {
       case "Import" =>
         confirmUrl(urlTransportImport)
@@ -172,7 +172,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     verifyHeading(headingTransport)
   }
 
-  When("""^the user is on the (.*) Transport type page and selects (.*)""") { (journey: String, requestType: String) =>
+  When("""^the user is on the (.*) transport type page and selects (.*)""") { (journey: String, requestType: String) =>
     journey match {
       case "Import" => confirmUrl(urlTransportImport)
       case "Export" => confirmUrl(urlTransportExport)

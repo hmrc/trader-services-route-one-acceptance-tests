@@ -26,7 +26,7 @@ class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage 
     verifyHeading(caseRefHeading)
   }
 
-  Then("""^the user enters (.*) characters for case reference number$""") { (caseNo: String) =>
+  Then("""^the user enters (.*) characters for case reference number and clicks continue""") { (caseNo: String) =>
     caseRefInput.clear()
 
     caseNo match {

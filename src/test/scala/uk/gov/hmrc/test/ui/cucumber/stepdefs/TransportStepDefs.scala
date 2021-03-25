@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, TransportQuestionsPage}
 
 class TransportStepDefs extends TransportQuestionsPage with BasePage with ScalaDsl with EN {
 
-  When("""^the user navigates to the (.*) transport page""") { (journey: String) =>
+  When("""^the user navigates to the (.*) transport details page""") { (journey: String) =>
     journey match {
       case "Import-Optional" => navigateTo(urlImportTransport)
       case "Import-Mandatory" => navigateTo(urlImpMandatoryTransport)
@@ -31,7 +31,7 @@ class TransportStepDefs extends TransportQuestionsPage with BasePage with ScalaD
     }
   }
 
-  Then("""^the user is on the (.*) Transport page$""") { (journey: String) =>
+  Then("""^the user is on the (.*) transport details page$""") { (journey: String) =>
 
     journey match {
       case "Import-Optional" => confirmUrl(urlImportTransport)

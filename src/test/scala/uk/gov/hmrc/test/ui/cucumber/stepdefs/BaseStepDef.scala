@@ -33,19 +33,19 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     Try(SingletonDriver.closeInstance)
   }
 
-  And("""^the user clicks Continue""") { () =>
+  And("""^the user clicks continue""") { () =>
     clickContinue()
   }
 
-  And("""^the user clicks SFU Upload""") { () =>
+  And("""^the user clicks SFU upload""") { () =>
     clickByCSS(".file-upload__submit")
   }
 
-  And("""^the user clicks MFU Continue""") { () =>
+  And("""^the user clicks MFU continue""") { () =>
     clickUploadContinueMFU()
   }
 
-  And("""^the user clicks Submit on the CYA page""") { () =>
+  And("""^the user clicks submit on the CYA page""") { () =>
     Thread.sleep(500)
     clickCYAContinue()
   }

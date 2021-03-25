@@ -79,7 +79,7 @@ Feature: User tries to jump ahead in the journey
     Then the user is on the entry details page
     When the user enters entry details "110" and "123456S"
     And the user enters today's date for entryDate
-    And the user clicks Continue
+    And the user clicks continue
     Then the user is on the Import Request Type page
     And the user navigates to the following "/new/import/route-type"
     Then the user is on the Import Request Type page and selects New
@@ -95,20 +95,20 @@ Feature: User tries to jump ahead in the journey
     Then the user is on the ALVS page
     And the user navigates to the following "/new/import/transport-type"
     Then the user is on the ALVS page and selects Yes
-    Then the user is on the Import Transport page
+    Then the user is on the Import transport type page
     And the user navigates to the following "/new/import/transport-information"
-    Then the user is on the Import Transport type page and selects Maritime
-    Then the user is on the Import-Optional Transport page
+    Then the user is on the Import transport type page and selects Maritime
+    Then the user is on the Import-Optional transport details page
     And the user navigates to the following "/new/import/transport-information-required"
-    Then the user is on the Import-Optional Transport page
+    Then the user is on the Import-Optional transport details page
     And the user navigates to the following "/new/import/contact-information"
-    Then the user is on the Import-Optional Transport page
-    And the user clicks Continue
+    Then the user is on the Import-Optional transport details page
+    And the user clicks continue
     Then the user is on the Import contact details page
 #    And the user navigates to the following "/new/upload-files"
 #    Can skip to the page but can't get past it without email, can only jump to it from contact details page
     And the user enters an email address "trader_customs.shipping@agency.com"
-    When the user clicks Continue
+    When the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     And the user navigates to the following "/new/import/check-your-answers"
     Then the user is on the multi-file upload pages for a/an New journey

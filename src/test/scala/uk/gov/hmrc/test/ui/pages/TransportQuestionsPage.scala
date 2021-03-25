@@ -28,7 +28,7 @@ trait TransportQuestionsPage extends BasePage {
 
   val headingTransportDetails = "More details about your transport"
 
-  def transportQName: WebElement = findElementById("transportName")
+  def transportQName: WebElement = findElementById("vesselName")
 
   def transportQArrivalDay: WebElement = findElementById("dateOfArrival.day")
 

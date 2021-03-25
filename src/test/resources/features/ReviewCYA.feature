@@ -6,23 +6,23 @@ Feature: Review/CYA page
     Then the user is on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
-    Then the user clicks Continue
+    Then the user clicks continue
     When the user is on the Import Request Type page and selects <requestType>
     Then the user is on the Import Route Type page and selects <route>
     When the user is on the Import YesNo Priority page and selects Yes
     Then the user is on the Import Priority Goods page and selects <priority>
     When the user is on the ALVS page and selects <ALVS>
-    Then the user is on the Import Transport type page and selects <transport>
-    Then the user is on the Import-Optional Transport page
-    And the user clicks Continue
+    Then the user is on the Import transport type page and selects <transport>
+    Then the user is on the Import-Optional transport details page
+    And the user clicks continue
     Then the user is on the Import contact details page
     When the user enters a name "<name>"
     When the user enters an email address "<email>"
     And the user enters a phone number "<phone>"
-    And the user clicks Continue
+    And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "png" file
-    Then the user clicks Continue when files have finished uploading
+    Then the user clicks continue when files have finished uploading
 
     Then the user is on the Import CYA page
     Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
@@ -47,21 +47,21 @@ Feature: Review/CYA page
     Then the user is on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
-    And the user clicks Continue
+    And the user clicks continue
     Then the user is on the Export Request Type page and selects <requestType>
     Then the user is on the Export Route Type page and selects <route>
     Then the user is on the Export YesNo Priority page and selects No
-    Then the user is on the export Transport type page and selects <transport>
-    Then the user is on the Export-Optional Transport page
+    Then the user is on the Export transport type page and selects <transport>
+    Then the user is on the Export-Optional transport details page
     Then the user enters "<transportName>" for transport name
-    And the user enters today's date for vesselDateDeparture
-    Then the user clicks Continue
+    And the user enters today's date for transportDateDeparture
+    Then the user clicks continue
     Then the user is on the Export contact details page
     And the user enters an email address "<email>"
-    And the user clicks Continue
+    And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user clicks Continue when files have finished uploading
+    Then the user clicks continue when files have finished uploading
     Then the user is on the Export CYA page
     Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
     And the user should see the Entry Date row & the date <entryDateCYA> on the CYA page

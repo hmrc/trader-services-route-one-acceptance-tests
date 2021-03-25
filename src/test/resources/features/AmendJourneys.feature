@@ -5,16 +5,16 @@ Feature: Amend journeys
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
-    When the user enters no characters for case reference number
+    When the user enters no characters for case reference number and clicks continue
     Then the user should see "Error:Enter the case reference number" error message for "caseReferenceNumber"
 
-    When the user enters tooFew characters for case reference number
+    When the user enters tooFew characters for case reference number and clicks continue
     Then the user should see "Error:Case reference number must be 22 characters" error message for "caseReferenceNumber"
 
-    When the user enters tooMany characters for case reference number
+    When the user enters tooMany characters for case reference number and clicks continue
     Then the user should see "Error:Case reference number must be 22 characters" error message for "caseReferenceNumber"
 
-    When the user enters valid characters for case reference number
+    When the user enters valid characters for case reference number and clicks continue
     Then the user is on the how to respond page and selects noOption
     Then the user should see "Error:Select how you want to send us more information" error message for "typeOfAmendment"
 
@@ -36,13 +36,13 @@ Feature: Amend journeys
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
-    When the user enters valid characters for case reference number
+    When the user enters valid characters for case reference number and clicks continue
     Then the user is on the how to respond page and selects writeOnly
     Then the user is on the write response page
     When the user enters a response "Sample message" and continues
     Then the user is on the Amend writeOnly review page and should see their responses
     And the user should see what they entered as their message "Sample message"
-    When the user clicks Submit on the CYA page
+    When the user clicks submit on the CYA page
     Then the user is on the Amend confirmation page
 
 #    Upload Only
@@ -50,15 +50,15 @@ Feature: Amend journeys
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
-    When the user enters valid characters for case reference number
+    When the user enters valid characters for case reference number and clicks continue
     Then the user is on the how to respond page and selects uploadOnly
     Then the user is on the multi-file upload pages for a/an Amend journey
     And the user will only see inset text for request type N/A
     When the user clicks the button to upload the first file and selects the "jpg" file
-    Then the user clicks Continue when files have finished uploading
+    Then the user clicks continue when files have finished uploading
     Then the user is on the Amend uploadOnly review page and should see their responses
     And the user should see what the files they uploaded "testJpg.jpg"
-    When the user clicks Submit on the CYA page
+    When the user clicks submit on the CYA page
     Then the user is on the Amend confirmation page
 
 #    Write Response & Upload
@@ -66,15 +66,15 @@ Feature: Amend journeys
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
-    When the user enters valid characters for case reference number
+    When the user enters valid characters for case reference number and clicks continue
     When the user is on the how to respond page and selects writeAndUpload
     Then the user is on the write response page
     And the user enters a response with valid characters
     Then the user is on the multi-file upload pages for a/an Amend journey
     And the user will only see inset text for request type N/A
     When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user clicks Continue when files have finished uploading
+    Then the user clicks continue when files have finished uploading
     Then the user is on the Amend writeAndUpload review page and should see their responses
-    When the user clicks Submit on the CYA page
+    When the user clicks submit on the CYA page
     Then the user is on the Amend confirmation page
     When the user clicks the send docs link on the Amend confirmation page they will go back to the start

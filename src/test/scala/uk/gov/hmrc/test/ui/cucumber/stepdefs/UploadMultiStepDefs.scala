@@ -53,7 +53,7 @@ class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl w
       }
   }
 
-  And("""^the user clicks Continue when files have finished uploading""") { () =>
+  And("""^the user clicks continue when files have finished uploading""") { () =>
     clickUploadContinueMFU()
     if (findElementByCss(".file-upload__spinner").isDisplayed.equals(true)) {
       notFindElementByCss(".file-upload__spinner")
