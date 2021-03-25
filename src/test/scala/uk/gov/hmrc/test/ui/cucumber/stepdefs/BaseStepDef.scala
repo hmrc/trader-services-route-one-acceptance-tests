@@ -16,6 +16,8 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import java.time.LocalDate
+
 import io.cucumber.scala.{EN, ScalaDsl}
 import org.openqa.selenium.By
 import org.scalatest.Matchers
@@ -67,23 +69,31 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     navigateTo(traderServicesBaseUrl + url)
   }
 
+  val today = LocalDate.now
+  val (d, m, y) = (today.getDayOfMonth(), today.getMonthValue(),today.getYear())
+  val (day, month, year) = (today.getDayOfMonth().toString, today.getMonthValue().toString, today.getYear().toString)
+
+  val dayFormatted = f"$d%02d"
+  val monthFormatted = f"$m%02d"
+
+
   Then("""^the user enters today's date for (.*)$""") { (dateField: String) =>
     dateField match {
 
       case "entryDate" =>
-        writeById(entryDay, todayDate.getDayOfMonth.toString)
-        writeById(entryMonth, todayDate.getMonthValue.toString)
-        writeById(entryYear, todayDate.getYear.toString)
+        writeById(entryDay, day)
+        writeById(entryMonth, month)
+        writeById(entryYear, year)
 
       case "vesselDateArrival" =>
-        writeById(vesselQArrivalDay, todayDate.getDayOfMonth.toString)
-        writeById(vesselQArrivalMonth, todayDate.getMonthValue.toString)
-        writeById(vesselQArrivalYear, todayDate.getYear.toString)
+        writeById(vesselQArrivalDay, day)
+        writeById(vesselQArrivalMonth, month)
+        writeById(vesselQArrivalYear, year)
 
       case "vesselDateDeparture" =>
-        writeById(vesselQDepartureDay, todayDate.getDayOfMonth.toString)
-        writeById(vesselQDepartureMonth, todayDate.getMonthValue.toString)
-        writeById(vesselQDepartureYear, todayDate.getYear.toString)
+        writeById(vesselQDepartureDay, day)
+        writeById(vesselQDepartureMonth, month)
+        writeById(vesselQDepartureYear, year)
     }
   }
 
@@ -93,42 +103,20 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
       dateField match {
 
         case "entryDate" =>
-          if (todayDate.getDayOfMonth <= 9) {
-            verifyInput(entryDay, todayDate.getDayOfMonth.toString.replaceFirst("", "0"))
-          } else
-            verifyInput(entryDay, todayDate.getDayOfMonth.toString)
-
-          if (todayDate.getMonthValue <= 9) {
-            verifyInput(entryMonth, todayDate.getMonthValue.toString.replaceFirst("", "0"))
-          } else
-            verifyInput(entryMonth, todayDate.getMonthValue.toString)
-
-          verifyInput(entryYear, todayDate.getYear.toString)
+            verifyInput(entryDay, dayFormatted)
+            verifyInput(entryMonth, monthFormatted)
+            verifyInput(entryYear, year)
 
         case "vesselDateArrival" =>
-          if (todayDate.getDayOfMonth <= 9) {
-            verifyInput(vesselQArrivalDay, todayDate.getDayOfMonth.toString.replaceFirst("", "0"))
-          } else
-            verifyInput(vesselQArrivalDay, todayDate.getDayOfMonth.toString)
-
-          if (todayDate.getMonthValue <= 9) {
-            verifyInput(vesselQArrivalMonth, todayDate.getMonthValue.toString.replaceFirst("", "0"))
-          } else
-            verifyInput(vesselQArrivalMonth, todayDate.getMonthValue.toString)
-
-          verifyInput(vesselQArrivalYear, todayDate.getYear.toString)
+            verifyInput(vesselQArrivalDay, dayFormatted)
+            verifyInput(vesselQArrivalMonth, monthFormatted)
+            verifyInput(vesselQArrivalYear, year)
 
 
         case "vesselDateDeparture" =>
-           if (todayDate.getDayOfMonth <= 9) {
-              verifyInput(vesselQDepartureDay, todayDate.getDayOfMonth.toString.replaceFirst("", "0"))} else
-              verifyInput(vesselQDepartureDay, todayDate.getDayOfMonth.toString)
-
-          if (todayDate.getMonthValue <= 9) {
-              verifyInput(vesselQDepartureMonth, todayDate.getMonthValue.toString.replaceFirst("", "0"))} else
-              verifyInput(vesselQDepartureMonth, todayDate.getMonthValue.toString)
-
-            verifyInput(vesselQDepartureYear, todayDate.getYear.toString)
+              verifyInput(vesselQDepartureDay, dayFormatted)
+              verifyInput(vesselQDepartureMonth, monthFormatted)
+              verifyInput(vesselQDepartureYear, year)
 
   }
   }

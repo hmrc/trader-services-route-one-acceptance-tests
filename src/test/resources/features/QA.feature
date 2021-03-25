@@ -27,20 +27,26 @@ Feature: Customs check - Export Journey
     Then the user is on the multi-file upload pages for a/an New journey
 
     When the user clicks the button to upload the first file and selects the "pdf" file
-#    When the user clicks the button to upload the second file and selects the "jpeg" file
-#    When the user clicks the button to upload the third file and selects the "jpg" file
-#
-#    Then the user clicks the button to add another document
-#    When the user clicks the button to upload the fourth file and selects the "png" file
-#    Then the user clicks the button to add another document
-#    When the user clicks the button to upload the fifth file and selects the "tiff" file
-#    Then the user clicks the button to add another document
-#    When the user clicks the button to upload the sixth file and selects the "C1602" file
-#    Then the user clicks the button to add another document
-#    When the user clicks the button to upload the seventh file and selects the "txt" file
-#    Then the user waits 27000
-    Then the user clicks Continue when files have finished uploading
-#    Then the user clicks MFU Continue
+    When the user clicks the button to upload the second file and selects the "jpeg" file
+    When the user clicks the button to upload the third file and selects the "jpg" file
+
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the fourth file and selects the "png" file
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the fifth file and selects the "tiff" file
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the sixth file and selects the "C1602" file
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the seventh file and selects the "TIF" file
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the eighth file and selects the "msg" file
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the ninth file and selects the "C1601" file
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the tenth file and selects the "txt" file
+    Then the user waits 50000
+#    Then the user clicks Continue when files have finished uploading
+    Then the user clicks MFU Continue
     Then the user is on the Export CYA page
     Then the user clicks Submit on the CYA page
     Then the user waits 5000
@@ -50,14 +56,14 @@ Feature: Customs check - Export Journey
 
 Examples:
 | epu | entryNo | requestType | route   | priority      | transport | vesselName  | name  | email              | phone         |
-| 603 |C56184T | C1603         | Route 1 | Human remains | RoadRoRoRail  | TestVessel  | smith | aa_kaygcc@test.com | 0177 111 1111 |
+| 019 | L88811G | New       | Route 1 | Human remains | Maritime  | TestVessel  | smith   | aa_kaygcc@test.com | 0177 111 1111 |
 
 # RoadRoRoRail
-
+#
   Scenario: Amend: A user adds a message and a document to a case (write response + upload)
     Given the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
-    Then the user enters a real case reference number PCE2103151997ZK93MZD51
+    Then the user enters a real case reference number PCI210325190750UDQO5C2
     When the user is on the how to respond page and selects writeAndupload
     Then the user is on the write response page
     And the user enters a response "sample message" and continues
@@ -102,14 +108,14 @@ Examples:
 
 
     Examples:
-      | epu | entryNo |requestType | route   | priority      | transport | vesselName | name   | email          | phone |
-      | 014 | 000041L |New | Route 3 | Human remains | Air       | train 1x | customs agent | valid@test.com | 01256888999|
+      | epu | entryNo | requestType | route   | priority      | transport | vesselName | name   | email            | phone |
+      | 016 | 880041L | New         | Route 3 | Human remains | Air       | train 1x   | agent  | valid@test.co.uk | 01256888999|
 
   Scenario: Amend: A user adds a message and a document to a case (write response only)
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
-    Then the user enters a real case reference number PCI2103151788LR2K91HY3
+    Then the user enters a real case reference number PCI210325190750UDQO5C2
     When the user is on the how to respond page and selects writeOnly
     And the user enters a response "sample message" and continues
     When the user clicks Submit on the CYA page

@@ -16,6 +16,8 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import java.time.LocalTime
+
 import io.cucumber.scala.{EN, ScalaDsl}
 import play.twirl.api.TemplateMagic.anyToDefault
 import uk.gov.hmrc.test.ui.pages.{AmendPages, BasePage, FinalConfirmationPage, LandingPage}
@@ -68,23 +70,28 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     verifyHeading(caseRefHeading)
   }
 
+  val threePm = LocalTime.parse("15:00:00.00")
+  val midnight = LocalTime.parse("00:00:00.00")
+  val eightAm = LocalTime.parse("08:00:00.00")
+
+  val between3pmAndMidnight = nowTime.isAfter(threePm) && nowTime.isBefore(midnight)
+  val betweenMidnightAnd8am  = nowTime.isAfter(midnight) && nowTime.isBefore(eightAm)
+  val between8amAnd3pm = nowTime.isAfter(eightAm) && nowTime.isBefore(threePm)
+
   Then("""^the user should see (.*) SLA""") { (sla: String) =>
 
     sla match {
         //Air - both, Roro - both, Maritime - Export
-    case "2 Hour" => assertElementTextContains("Your document checks should be completed by " + localTimePlus2 + " today.", slaPara)
+    case "2 Hour" => assertElementTextContains("Your document checks should be completed by " + sl2hrFormatted + " today.", slaPara)
 
       //Maritime - Import
-    case "3 Hour" => assertElementTextContains("Your document checks should be completed by " + localTimePlus3 + " today.", slaPara)
-
-      //Maritime - Import After 1500 but before midnight
-    case "PreMidnight" => assertElementTextContains("Your document checks should be completed by 08:00 tomorrow.", slaPara)
-
-    //Maritime - Import After 1500 (after midnight but before 0500)
-    case "PostMidnight" => assertElementTextContains("Your document checks should be completed by 08:00 today.", slaPara)
+    case "Maritime-Import"=>
+      if(between8amAnd3pm)assertElementTextContains("Your document checks should be completed by " + sla3hrFormatted + " today.", slaPara)
+      if(between3pmAndMidnight)assertElementTextContains("Your document checks should be completed by 08:00 tomorrow.", slaPara)
+      if(betweenMidnightAnd8am)assertElementTextContains("Your document checks should be completed by 08:00 today.", slaPara)
 
       //Route Hold (No SLA)
-    case "No" =>  assertElementTextContains(holdSLA, slaPara)
+    case "Hold" =>  assertElementTextContains(holdSLA, slaPara)
   }
 }
 }

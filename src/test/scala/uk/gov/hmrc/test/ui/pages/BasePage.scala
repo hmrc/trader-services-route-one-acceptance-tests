@@ -177,59 +177,20 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   lazy val todayDate: LocalDate = LocalDate.now()
-  lazy val nowTime:LocalTime = LocalTime.now()
-  lazy val sla2Hour = nowTime.plusHours(2)
-  lazy val sla3Hour = nowTime.plusHours(3)
-
 
   def todayDateCYA: String = {
     s"${todayDate.getDayOfMonth.toString} ${todayDate.getMonth.toString.toLowerCase.capitalize} ${todayDate.getYear.toString}"
   }
 
-  def localTimePlus2: String = {
-    if (sla2Hour.getHour <10 && sla2Hour.getMinute <10) {
-      s"0${sla2Hour.getHour}:0${sla2Hour.getMinute}"
-    }
-    else if (sla2Hour.getHour <10) {
-      s"0${sla2Hour.getHour}:${sla2Hour.getMinute}"
-    }
-    else if (sla2Hour.getMinute <10){
-      s"${sla2Hour.getHour}:0${sla2Hour.getMinute}"
-    }
-    else
-    s"${sla2Hour.getHour}:${sla2Hour.getMinute}"
-  }
+  lazy val nowTime:LocalTime = LocalTime.now()
+  lazy val sla2Hour = nowTime.plusHours(2)
+  lazy val sla3Hour = nowTime.plusHours(3)
 
-  def localTimePlus3: String = {
-    if (sla3Hour.getHour <10 && sla3Hour.getMinute <10) {
-      s"0${sla3Hour.getHour}:0${sla3Hour.getMinute}"
-    }
-    else if (sla3Hour.getHour <10) {
-      s"0${sla3Hour.getHour}:${sla3Hour.getMinute}"
-    }
+  val (sla3h, sla3m) = (sla3Hour.getHour, sla3Hour.getMinute)
+  val (sla2h, sla2m) = (sla2Hour.getHour, sla2Hour.getMinute)
 
-    else if (sla3Hour.getMinute <10){
-      s"${sla3Hour.getHour}:0${sla3Hour.getMinute}"
-    }
-    else
-      s"${sla3Hour.getHour}:${sla3Hour.getMinute}"
-  }
-
-//  def localTimePlusTIDY: String = {
-//    if (sla2Hour.getHour <10) {
-//      s"0${sla2Hour.getHour}"}
-//
-//    if (sla2Hour.getMinute <10){":0${sla2Hour.getMinute}"}
-//    }
-//    else if (sla2Hour.getHour <10) {
-//      s"0${sla2Hour.getHour}:${sla2Hour.getMinute}"
-//    }
-//    else if (sla2Hour.getMinute <10){
-//      s"${sla2Hour.getHour}:0${sla2Hour.getMinute}"
-//    }
-//    else
-//      s"${sla2Hour.getHour}:${sla2Hour.getMinute}"
-//  }
+  val sla3hrFormatted = f"$sla3h%02d:$sla3m%02d"
+  val sl2hrFormatted = f"$sla2h%02d:$sla2m%02d"
 
   def copyFile(srcFile: File, destFile: File): Unit = {
     copyFile(srcFile, destFile)
