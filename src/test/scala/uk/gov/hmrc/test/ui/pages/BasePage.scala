@@ -165,6 +165,10 @@ trait BasePage extends Matchers with BrowserDriver {
     assert(element.getText.contains(content), message(s"Element displayed is: ${element.getText} Expecting: $content"))
   }
 
+  def assertElementTextContainsEither(content: String, content2:String, element: WebElement): Unit = {
+    assert(element.getText.contains(content), message(s"Element displayed is: ${element.getText} Expecting: $content or $content2"))
+  }
+
   def isElementVisible(css: String): Boolean = findElementByCss(css).isDisplayed
 
   def assertElementIsNotVisibleById(id: String): Unit = {
@@ -188,22 +192,30 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   lazy val nowTime: LocalTime = LocalTime.now()
-  lazy val sla2Hour = nowTime.plusHours(2)
-  lazy val sla3Hour = nowTime.plusHours(3)
+  lazy val  sla2Hour = nowTime.plusHours(2).getHour
+  lazy val  sla3Hour = nowTime.plusHours(3).getHour
+  lazy val min = nowTime.getMinute
+  lazy val min1 = nowTime.plusMinutes(1).getMinute
 
-  val (sla3h, sla3m) = (sla3Hour.getHour, sla3Hour.getMinute)
-  val (sla2h, sla2m) = (sla2Hour.getHour, sla2Hour.getMinute)
+//  lazy val sla3h = sla3Hour.getHour
+//  lazy val sla2h = sla2Hour.getHour
+//  lazy val min = nowTime.getMinute
+//  lazy val minAdd1 = min1.getMinute
 
-  val sla3hrFormatted = f"$sla3h%02d:$sla3m%02d"
-  val sl2hrFormatted = f"$sla2h%02d:$sla2m%02d"
+  lazy val sl2hrFormatted = f"$sla2Hour%02d:$min%02d"
+  lazy val sl2hrAddMin = f"$sla2Hour%02d:$min1%02d"
 
-  val threePm = LocalTime.parse("15:00:00.00")
-  val midnight = LocalTime.parse("00:00:00.00")
-  val eightAm = LocalTime.parse("08:00:00.00")
+  lazy val sla3hrFormatted = f"$sla3Hour%02d:$min%02d"
+  lazy val sla3hrAddMin = f"$sla3Hour%02d:$min1%02d"
 
-  val between3pmAndMidnight = nowTime.isAfter(threePm) && nowTime.isBefore(midnight)
-  val betweenMidnightAnd8am = nowTime.isAfter(midnight) && nowTime.isBefore(eightAm)
-  val between8amAnd3pm = nowTime.isAfter(eightAm) && nowTime.isBefore(threePm)
+
+  lazy val threePm = LocalTime.parse("15:00:00.00")
+  lazy val midnight = LocalTime.parse("00:00:00.00")
+  lazy val eightAm = LocalTime.parse("08:00:00.00")
+
+  lazy val between3pmAndMidnight = nowTime.isAfter(threePm) && nowTime.isBefore(midnight)
+  lazy val betweenMidnightAnd8am = nowTime.isAfter(midnight) && nowTime.isBefore(eightAm)
+  lazy val between8amAnd3pm = nowTime.isAfter(eightAm) && nowTime.isBefore(threePm)
 
   //todo check this works
   var lastUsedTestEmail: String = ""

@@ -55,7 +55,7 @@ Feature: Customs check - Import journeys
       | epu | entryNo | requestType  | route | transport |
       | 123 | 123456A | Cancellation | Hold  | Maritime  |
 
-#Used to test maritime variants, needs updated per time (WIP)
+
   Scenario Outline: A user wants to complete a New Import journey & see the appropriate Maritime SLA
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
@@ -82,8 +82,6 @@ Feature: Customs check - Import journeys
     And the user clicks submit on the CYA page
     Then the user is on the New confirmation page
     And the user should see Maritime-Import SLA
-    When the user clicks the send docs link on the New confirmation page they will go back to the start
-    And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | name  | email          |

@@ -77,6 +77,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     Then the user is on the Import CYA page
     Then the user clicks submit on the CYA page
     Then the user is on the New confirmation page
+    And the user should see 2 Hour SLA
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | name      | email          |
