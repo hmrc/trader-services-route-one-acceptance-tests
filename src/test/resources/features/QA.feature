@@ -34,16 +34,16 @@ Feature: Customs check - Export journey
     When the user clicks the button to upload the fourth file and selects the "png" file
     Then the user clicks the button to add another document
     When the user clicks the button to upload the fifth file and selects the "tiff" file
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload the sixth file and selects the "C1602" file
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload the seventh file and selects the "TIF" file
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload the eighth file and selects the "msg" file
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload the ninth file and selects the "C1601" file
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload the tenth file and selects the "txt" file
+#    Then the user clicks the button to add another document
+#    When the user clicks the button to upload the sixth file and selects the "C1602" file
+#    Then the user clicks the button to add another document
+#    When the user clicks the button to upload the seventh file and selects the "TIF" file
+#    Then the user clicks the button to add another document
+#    When the user clicks the button to upload the eighth file and selects the "msg" file
+#    Then the user clicks the button to add another document
+#    When the user clicks the button to upload the ninth file and selects the "C1601" file
+#    Then the user clicks the button to add another document
+#    When the user clicks the button to upload the tenth file and selects the "txt" file
     Then the user waits 50000
 #    Then the user clicks continue when files have finished uploading
     Then the user clicks MFU continue
@@ -56,7 +56,7 @@ Feature: Customs check - Export journey
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | transportName | name  | email              | phone         |
-      | 433 | A88811G | New         | Route 1 | Human remains | Maritime  | TestVessel    | smith | aa_kaygcc@test.com | 0177 111 1111 |
+      | 433 | A88811G | C1601         | Route 1 | Human remains | Maritime  | TestVessel    | smith | aa_kaygcc@test.com | 0177 111 1111 |
 
 # RoadRoRoRail
 #
@@ -68,48 +68,67 @@ Feature: Customs check - Export journey
     Then the user is on the write response page
     And the user enters a response "sample message" and continues
     Then the user is on the multi-file upload pages for a/an Amend journey
-    When the user clicks the button to upload the first file and selects the "msg" file
-#    When the user clicks the button to upload the second file and selects the "tiff" file
-    Then the user clicks continue when files have finished uploading
+
+    When the user clicks the button to upload the first file and selects the "pdf" file
+    When the user clicks the button to upload the second file and selects the "jpeg" file
+    When the user clicks the button to upload the third file and selects the "jpg" file
+
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the fourth file and selects the "png" file
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the fifth file and selects the "tiff" file
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the sixth file and selects the "C1602" file
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the seventh file and selects the "TIF" file
+#    Then the user clicks the button to add another document
+#    When the user clicks the button to upload the eighth file and selects the "msg" file
+#    Then the user clicks the button to add another document
+#    When the user clicks the button to upload the ninth file and selects the "C1601" file
+#    Then the user clicks the button to add another document
+#    When the user clicks the button to upload the tenth file and selects the "txt" file
+    Then the user waits 50000
+
+#    Then the user clicks continue when files have finished uploading
     When the user clicks submit on the CYA page
     Then the user is on the Amend confirmation page
     Then the user waits 4000
 
-  Scenario Outline: A user wants to complete a New Import journey
-    Given the user logs into QA
-    Then the user is on the start page for trader services and selects New
-    Then the user is on the entry details page
-    When the user enters entry details "<epu>" and "<entryNo>"
-    And the user enters today's date for entryDate
-    Then the user clicks continue
-    When the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import Route Type page and selects <route>
-    When the user is on the Import YesNo Priority page and selects Yes
-    Then the user is on the Import Priority Goods page and selects <priority>
-    When the user is on the ALVS page and selects Yes
-    Then the user is on the Import transport type page and selects <transport>
-    Then the user is on the Import-Optional transport details page
-    Then the user enters "<transportName>" for transport name
-    And the user enters today's date for transportDateArrival
-    And the user enters a time of Arrival for their transportation "12" "30"
-    And the user clicks continue
-    Then the user enters a name "<name>"
-    And the user enters an email address "<email>"
-    And the user enters a phone number "<phone>"
-    And the user clicks continue
-    Then the user is on the multi-file upload pages for a/an New journey
-    When the user clicks the button to upload the first file and selects the "txt" file
-    Then the user clicks continue when files have finished uploading
-    Then the user is on the Import CYA page
-    And the user clicks submit on the CYA page
-    And the user should see 2 Hour SLA
-    Then the user copies the case reference number
-    Then the user waits 5000
-
-
-    Examples:
-      | epu | entryNo | requestType | route   | priority      | transport | transportName | name  | email            | phone       |
-      | 096 | 880041L | New         | Route 3 | Human remains | Air       | train 1x      | agent | valid@test.co.uk | 01256888999 |
+#  Scenario Outline: A user wants to complete a New Import journey
+#    Given the user logs into QA
+#    Then the user is on the start page for trader services and selects New
+#    Then the user is on the entry details page
+#    When the user enters entry details "<epu>" and "<entryNo>"
+#    And the user enters today's date for entryDate
+#    Then the user clicks continue
+#    When the user is on the Import Request Type page and selects <requestType>
+#    Then the user is on the Import Route Type page and selects <route>
+#    When the user is on the Import YesNo Priority page and selects Yes
+#    Then the user is on the Import Priority Goods page and selects <priority>
+#    When the user is on the ALVS page and selects Yes
+#    Then the user is on the Import transport type page and selects <transport>
+#    Then the user is on the Import-Optional transport details page
+#    Then the user enters "<transportName>" for transport name
+#    And the user enters today's date for transportDateArrival
+#    And the user enters a time of Arrival for their transportation "12" "30"
+#    And the user clicks continue
+#    Then the user enters a name "<name>"
+#    And the user enters an email address "<email>"
+#    And the user enters a phone number "<phone>"
+#    And the user clicks continue
+#    Then the user is on the multi-file upload pages for a/an New journey
+#    When the user clicks the button to upload the first file and selects the "txt" file
+#    Then the user clicks continue when files have finished uploading
+#    Then the user is on the Import CYA page
+#    And the user clicks submit on the CYA page
+#    And the user should see 2 Hour SLA
+#    Then the user copies the case reference number
+#    Then the user waits 5000
+#
+#
+#    Examples:
+#      | epu | entryNo | requestType | route   | priority      | transport | transportName | name  | email            | phone       |
+#      | 096 | 880041L | New         | Route 3 | Human remains | Air       | train 1x      | agent | valid@test.co.uk | 01256888999 |
 
   Scenario: Amend: A user adds a message and a document to a case (write response only)
     Given the user navigates to the temporary start page for trader services and clicks start
