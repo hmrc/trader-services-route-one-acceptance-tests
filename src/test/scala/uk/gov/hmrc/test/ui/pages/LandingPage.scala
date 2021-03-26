@@ -36,7 +36,7 @@ import org.openqa.selenium.WebElement
 
 trait LandingPage extends BasePage {
 
-  val traderServicesStart:String = traderServicesBaseUrl + "/start"
+  val traderServicesStart: String = traderServicesBaseUrl + "/start"
   val startHeading = "Send documents for a customs check for declarations made in CHIEF"
 
   val traderServicesUrl: String = traderServicesBaseUrl + "/new-or-existing"

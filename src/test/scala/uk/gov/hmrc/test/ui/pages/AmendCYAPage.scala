@@ -24,7 +24,9 @@ trait AmendCYAPage extends BasePage with EntryDetailsPage with QuestionPages {
   val headingMainCYA = "Review your case details"
 
   def verifyH2DecInfo(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(2)").getText shouldBe text
+
   def verifyH2AddInfo(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(4)").getText shouldBe text
+
   def verifyH2Documents(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(6)").getText shouldBe text
 
 
@@ -36,21 +38,25 @@ trait AmendCYAPage extends BasePage with EntryDetailsPage with QuestionPages {
 
   val messageOnly = "Message"
   val uploadOnly = "Documents"
-  val messageAndUpload= "Message and documents"
+  val messageAndUpload = "Message and documents"
 
   val h2Documents = "Documents you are submitting"
   val documentsInfo = "File names"
 
-  def caseRefRow:WebElement = findElementByCss("/html/body/div/main/div/div/div/dl[1]/div/dt")
-  def caseRefAnswer:WebElement = findByXpath("/html/body/div/main/div/div/div/dl[1]/div/dd[1]")
+  def caseRefRow: WebElement = findElementByCss("/html/body/div/main/div/div/div/dl[1]/div/dt")
 
-  def infoTypeRow:WebElement = findByXpath("/html/body/div/main/div/div/div/dl[2]/div[1]/dt")
-  def infoTypeAnswer:WebElement = findByXpath("/html/body/div/main/div/div/div/dl[2]/div[1]/dd[1]")
+  def caseRefAnswer: WebElement = findByXpath("/html/body/div/main/div/div/div/dl[1]/div/dd[1]")
 
-  def messageRow:WebElement = findByXpath("/html/body/div/main/div/div/div/dl[2]/div[2]/dt")
-  def messageAnswer:WebElement = findByXpath("/html/body/div/main/div/div/div/dl[2]/div[2]/dd[1]")
+  def infoTypeRow: WebElement = findByXpath("/html/body/div/main/div/div/div/dl[2]/div[1]/dt")
+
+  def infoTypeAnswer: WebElement = findByXpath("/html/body/div/main/div/div/div/dl[2]/div[1]/dd[1]")
+
+  def messageRow: WebElement = findByXpath("/html/body/div/main/div/div/div/dl[2]/div[2]/dt")
+
+  def messageAnswer: WebElement = findByXpath("/html/body/div/main/div/div/div/dl[2]/div[2]/dd[1]")
 
   def uploadRow: WebElement = findByXpath("/html/body/div/main/div/div/div/dl[3]/div/dt")
+
   def uploadAnswer: WebElement = findByXpath("/html/body/div/main/div/div/div/dl[3]/div/dd[1]")
 
 }

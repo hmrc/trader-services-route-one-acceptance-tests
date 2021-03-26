@@ -38,7 +38,7 @@ class AmendCYAStepDefs extends AmendPages with AmendCYAPage with BasePage with S
         assertElementText(uploadOnly, infoTypeAnswer)
         assertElementText(documentsInfo, uploadRow)
 
-      case "writeAndupload" =>
+      case "writeAndUpload" =>
         verifyH2AddInfo(h2Additional)
         assertElementText(messageAndUpload, infoTypeAnswer)
 

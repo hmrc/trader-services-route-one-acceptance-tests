@@ -24,9 +24,12 @@ trait EntryDetailsPage extends BasePage {
   val headingEntryDetails = "Entry details"
 
   def EPU: WebElement = findElementById("epu")
+
   def entryNo: WebElement = findElementById("entryNumber")
 
   def entryDay: WebElement = findElementById("entryDate.day")
+
   def entryMonth: WebElement = findElementById("entryDate.month")
+
   def entryYear: WebElement = findElementById("entryDate.year")
 }

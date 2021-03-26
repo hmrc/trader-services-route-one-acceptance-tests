@@ -17,13 +17,13 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.test.ui.pages.{BasePage, NewCYAPage, ContactDetailsPage}
+import uk.gov.hmrc.test.ui.pages.{BasePage, ContactDetailsPage, NewCYAPage}
 
 
 class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage with ScalaDsl with EN {
 
-  Given("""^the user is on the (.*) CYA page$""") { (Journey: String) =>
-    Journey match {
+  Given("""^the user is on the (.*) CYA page$""") { (journey: String) =>
+    journey match {
       case "Import" => confirmUrl(urlImportCYA)
       case "Export" => confirmUrl(urlExportCYA)
     }
@@ -34,16 +34,20 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
     verifyH2Contact(h2ContactDetails)
   }
 
-  Then("""^the user should see the EPU & Entry No Rows & the correct responses (.*) & (.*) on the CYA page$""") { (EPU: String, EntryNo:String) =>
-    assertElementText(summaryEPU, epuRow)
-    assertElementText(EPU, epuAnswer)
+  Then("""^the user should see the EPU & Entry No Rows & the correct responses (.*) & (.*) on the CYA page$""") {
+    (EPU: String, EntryNo: String) =>
 
-    assertElementText(summaryEntryNo, entryNoRow)
-    assertElementText(EntryNo, entryNoAnswer)
+      assertElementText(summaryEPU, epuRow)
+      assertElementText(EPU, epuAnswer)
+
+      assertElementText(summaryEntryNo, entryNoRow)
+      assertElementText(EntryNo, entryNoAnswer)
   }
 
+  //  todo - get the css out of the step def
   Then("""^the user should see the Entry Date row & the date (.*) on the CYA page$""") { (Date: String) =>
-    assertElementText(summaryEntryDate, findElementByCss("dl.govuk-summary-list:nth-child(3) > div:nth-child(3) > dt:nth-child(1)"))
+    assertElementText(summaryEntryDate,
+      findElementByCss("dl.govuk-summary-list:nth-child(3) > div:nth-child(3) > dt:nth-child(1)"))
 
     Date match {
       case "Today" => assertElementText(todayDateCYA, entryDateAnswer)
@@ -51,117 +55,116 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
     }
   }
 
-  Then("""^the user should see the (.*) Request Type row & the correct response (.*) on the CYA page$""") { (Journey:String, Answer: String) =>
+  Then("""^the user should see the (.*) Request Type row & the correct response (.*) on the CYA page$""") {
+    (journey: String, answer: String) =>
 
-    Journey match {
-      case "Import" => assertElementText(summaryImportRequest, firstQRow)
-      case "Export" => assertElementText(summaryExportRequest, firstQRow)
-    }
-    assertElementText(Answer, firstQAnswer)
+      journey match {
+        case "Import" => assertElementText(summaryImportRequest, firstQRow)
+        case "Export" => assertElementText(summaryExportRequest, firstQRow)
+      }
+      assertElementText(answer, firstQAnswer)
   }
 
-  Then("""^the user should see the Route row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
+  Then("""^the user should see the Route row & the correct response (.*) on the CYA page$""") { (answer: String) =>
     assertElementText(summaryRoute, secondQRow)
-    assertElementText(Answer, secondQAnswer)
+    assertElementText(answer, secondQAnswer)
   }
 
-  Then("""^the user should see the Priority YN row & the correct response (.*) on the CYA page$""") { (Answer: String) =>
+  Then("""^the user should see the Priority YN row & the correct response (.*) on the CYA page$""") { (answer: String) =>
     assertElementText(summaryPriorityYN, thirdQRow)
-    assertElementText(Answer, thirdQAnswer)
+    assertElementText(answer, thirdQAnswer)
   }
 
 
   When("""^the user answered (.*) then they should see the correct responses for the Import journey "(.*)", "(.*)" & "(.*)"$""") {
-    (YesNo:String, PriorityGoods:String, ALVS: String, Transport:String ) =>
+    (yesNo: String, priorityGoods: String, alvs: String, transport: String) =>
 
-    YesNo match {
-      case "YesToPriority" => assertElementText (summaryPriorityGoods, fourthQRow)
-                              assertElementText (PriorityGoods, fourthQAnswer)
+      yesNo match {
+        case "YesToPriority" =>
+          assertElementText(summaryPriorityGoods, fourthQRow)
+          assertElementText(priorityGoods, fourthQAnswer)
 
-                              assertElementText (summaryALVS, fifthQRow)
-                              assertElementText (ALVS, fifthQAnswer)
+          assertElementText(summaryALVS, fifthQRow)
+          assertElementText(alvs, fifthQAnswer)
 
-                              assertElementText (summaryTransport, sixthQRow)
-                              assertElementText (Transport, sixthQAnswer)
+          assertElementText(summaryTransport, sixthQRow)
+          assertElementText(transport, sixthQAnswer)
 
 
-      case "NoToPriority" =>  assertElementText (summaryALVS, fourthQRow)
-                              assertElementText (ALVS, fourthQAnswer)
+        case "NoToPriority" =>
+          assertElementText(summaryALVS, fourthQRow)
+          assertElementText(alvs, fourthQAnswer)
 
-                              assertElementText (summaryTransport, fifthQRow)
-                              assertElementText (Transport, fifthQAnswer)
-    }
+          assertElementText(summaryTransport, fifthQRow)
+          assertElementText(transport, fifthQAnswer)
+      }
   }
 
   When("""^the user answered (.*) then they should see the correct responses for the Export journey "(.*)" & "(.*)"$""") {
-    (YesNo:String, PriorityGoods:String, Transport:String ) =>
+    (yesNo: String, priorityGoods: String, transport: String) =>
 
-      YesNo match {
-        case "YesToPriority" => assertElementText (summaryPriorityGoods, fourthQRow)
-                                assertElementText (PriorityGoods, fourthQAnswer)
+      yesNo match {
+        case "YesToPriority" =>
+          assertElementText(summaryPriorityGoods, fourthQRow)
+          assertElementText(priorityGoods, fourthQAnswer)
 
-                                assertElementText (summaryTransport, fifthQRow)
-                                assertElementText (Transport, fifthQAnswer)
+          assertElementText(summaryTransport, fifthQRow)
+          assertElementText(transport, fifthQAnswer)
 
-        case "NoToPriority" => assertElementText (summaryTransport, fourthQRow)
-                               assertElementText (Transport, fourthQAnswer)
+        case "NoToPriority" =>
+          assertElementText(summaryTransport, fourthQRow)
+          assertElementText(transport, fourthQAnswer)
       }
   }
 
-
-  Then("""^the user should see the Vessel Name row & the correct response "(.*)" on the CYA page$""") { (Answer: String) =>
-    assertElementText(summaryVesselName, vesselNameRow)
-    assertElementText(Answer, vesselNameAnswer)
+  Then("""^the user should see the Vessel Name row & the correct response "(.*)" on the CYA page$""") {
+    (answer: String) =>
+      assertElementText(summarytransportName, transportNameRow)
+      assertElementText(answer, transportNameAnswer)
   }
 
   Then("""^the user should see the Vessel Date (.*) row & the correct response "(.*)" on the CYA page$""") {
-    (journey:String, Answer: String) =>
+    (journey: String, answer: String) =>
 
       journey match {
-        case "Arrival" =>
-          assertElementText(summaryVesselArrivalDate, vesselDateRow)
-
-        case "Departure" =>
-          assertElementText(summaryVesselDepartureDate, vesselDateRow)
-
+        case "Arrival" => assertElementText(summaryVesselArrivalDate, vesselDateRow)
+        case "Departure" => assertElementText(summaryVesselDepartureDate, vesselDateRow)
       }
-         Answer match {
-           case "Today" => assertElementText(todayDateCYA, vesselDateAnswer)
-           case _ =>     assertElementText(Answer, vesselDateAnswer)
-    }
+      answer match {
+        case "Today" => assertElementText(todayDateCYA, vesselDateAnswer)
+        case _ => assertElementText(answer, vesselDateAnswer)
+      }
   }
 
-
   Then("""^the user should see the Vessel Time (.*) row & the correct response "(.*)" on the CYA page$""") {
-    (journey: String, Answer: String) =>
+    (journey: String, answer: String) =>
 
       journey match {
         case "Arrival" =>
           assertElementText(summaryVesselArrivalTime, vesselTimeRow)
-          assertElementText(Answer, vesselTimeAnswer)
+          assertElementText(answer, vesselTimeAnswer)
 
         case "Departure" =>
           assertElementText(summaryVesselDepartureTime, vesselTimeRow)
-          assertElementText(Answer, vesselTimeAnswer)
-
+          assertElementText(answer, vesselTimeAnswer)
       }
   }
 
 
   Then("""^the user should see the (.*) Contact details row & the correct responses "(.*)", "(.*)" & "(.*)" on the CYA page$""") {
-    (ContactDetails: String, AnswerName: String, AnswerEmail: String, AnswerPhone: String) =>
+    (contactDetails: String, answerName: String, answerEmail: String, answerPhone: String) =>
 
-      ContactDetails match {
+      contactDetails match {
 
         case "Full" =>
-      assertElementText (h2ContactDetails, contactDetailRow)
-      assertElementText (AnswerName, contactDetailAnswerName)
-      assertElementText (AnswerEmail, contactDetailAnswerEmail)
-      assertElementText (AnswerPhone, contactDetailAnswerPhone)
+          assertElementText(h2ContactDetails, contactDetailRow)
+          assertElementText(answerName, contactDetailAnswerName)
+          assertElementText(answerEmail, contactDetailAnswerEmail)
+          assertElementText(answerPhone, contactDetailAnswerPhone)
 
         case "Mandatory" =>
-          assertElementText (h2ContactDetails, contactDetailRow)
-          assertElementText (AnswerEmail, contactDetailAnswerEmailOnly)
+          assertElementText(h2ContactDetails, contactDetailRow)
+          assertElementText(answerEmail, contactDetailAnswerEmailOnly)
       }
   }
 
@@ -180,4 +183,4 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
       case "ContactDetails" => clickHref("a[href*='contact-information']")
     }
   }
-  }
+}

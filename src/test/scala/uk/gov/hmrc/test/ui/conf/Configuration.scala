@@ -20,7 +20,7 @@ import com.typesafe.config.{Config, ConfigFactory}
 import org.openqa.selenium.WebDriver
 import uk.gov.hmrc.webdriver.SingletonDriver
 
-case class Configuration(baseUrl: String, SIGN_IN_PAGE: String, DESTROY_PLANET:String)
+case class Configuration(baseUrl: String, SIGN_IN_page: String, DESTROY_PLANET:String)
 
 object Configuration {
 
@@ -48,26 +48,26 @@ object Configuration {
       case Environment.Local =>
         new Configuration(
           baseUrl = "http://localhost",
-          SIGN_IN_PAGE = "http://localhost:9379/send-documents-for-customs-check",
+          SIGN_IN_page = "http://localhost:9379/send-documents-for-customs-check",
           DESTROY_PLANET = "http://localhost:9099/agents-external-stubs/"
         )
       case Environment.Dev =>
         new Configuration(
           baseUrl = "https://www.development.tax.service.gov.uk/",
-          SIGN_IN_PAGE = "https://www.development.tax.service.gov.uk/send-documents-for-customs-check",
+          SIGN_IN_page = "https://www.development.tax.service.gov.uk/send-documents-for-customs-check",
           DESTROY_PLANET = "https://www.development.tax.service.gov.uk/agents-external-stubs/"
         )
       case Environment.Qa =>
         new Configuration(
           baseUrl = "https://www.qa.tax.service.gov.uk/",
-          SIGN_IN_PAGE = "https://www.qa.tax.service.gov.uk/send-documents-for-customs-check",
+          SIGN_IN_page = "https://www.qa.tax.service.gov.uk/send-documents-for-customs-check",
           DESTROY_PLANET = "https://www.qa.tax.service.gov.uk/agents-external-stubs/"
         )
 
       case Environment.Staging =>
         new Configuration(
           baseUrl = "https://www.staging.tax.service.gov.uk/",
-          SIGN_IN_PAGE = "https://www.staging.tax.service.gov.uk/send-documents-for-customs-check",
+          SIGN_IN_page = "https://www.staging.tax.service.gov.uk/send-documents-for-customs-check",
           DESTROY_PLANET = "https://www.staging.tax.service.gov.uk/agents-external-stubs/"
         )
 

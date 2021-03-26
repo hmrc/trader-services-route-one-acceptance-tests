@@ -1,14 +1,16 @@
-banner links & signout
-----
 back link tests - to include CYA...
+--
+update when/then/and syntax
 ---
-error validation on vessel date
-----
-tests for feedback (QA), conf, amend, signout
-----
-test to check welsh toggle works?
-----
-multi-file upload overhaul...
-----
+deal with todo
+---
+one new test (page) for misc tests:
+check banner links
+sign out link
+welsh toggle
 
+test links on final confirmation pages on existing tests
+check links for case ref page
+
+back links to go up to CYA page (after upload)
 

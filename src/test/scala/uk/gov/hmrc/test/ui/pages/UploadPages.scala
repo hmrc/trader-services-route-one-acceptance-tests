@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.{By, WebElement}
+import org.openqa.selenium.By
 
 trait UploadPages extends BasePage {
 
@@ -43,10 +43,12 @@ trait UploadPages extends BasePage {
   val fileIDSFU = "file"
 
   def uploadFile(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId)
+
   def uploadFileSFU(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, fileIDSFU)
 
   def uploadFilesToBrowser(fileSeq: String, elementID: String): Unit = {
     fileSeq match {
+
       case "jpg" => filePath = usrDir + "testJpg.jpg"
       case "jpeg" => filePath = usrDir + "testJpeg.jpeg"
 
@@ -68,7 +70,6 @@ trait UploadPages extends BasePage {
       case "ppt" => filePath = usrDir + "testPpt.ppt"
       case "pptx" => filePath = usrDir + "testPptx.pptx"
       case "odp" => filePath = usrDir + "testOdp.odp"
-
     }
     driver.findElement(By.id(elementID)).sendKeys(filePath)
   }

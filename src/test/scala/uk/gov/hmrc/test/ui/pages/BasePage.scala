@@ -16,8 +16,8 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import java.io.File
 import java.time.{Duration, LocalDate, LocalTime}
+import java.util.UUID
 import java.util.concurrent.TimeUnit
 
 import org.openqa.selenium._
@@ -47,8 +47,8 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   val traderServicesBaseUrl: String = host(9379) + "/send-documents-for-customs-check"
-  val importJourneyUrl: String = "/new/import"
-  val exportJourneyUrl: String = "/new/export"
+  val importjourneyUrl: String = "/new/import"
+  val exportjourneyUrl: String = "/new/export"
   val amendUrl: String = "/add"
 
   val govukExternal = "https://www.gov.uk/"
@@ -122,28 +122,25 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def clickByCSS(css: String): Unit = driver.findElement(By.cssSelector(css)).click()
 
-  def clickFinalContinueNew():Unit = findElementByCss("p.govuk-body:nth-child(1) > a:nth-child(1)").click()
+  def clickFinalContinueNew(): Unit = findElementByCss("p.govuk-body:nth-child(1) > a:nth-child(1)").click()
 
-  def clickFinalContinueAmend():Unit = findElementByCss("p.govuk-body:nth-child(1) > a:nth-child(1)").click()
+  def clickFinalContinueAmend(): Unit = findElementByCss("p.govuk-body:nth-child(1) > a:nth-child(1)").click()
 
-  //SFU
   def clickUploadContinueSFU(): Unit = elementToBeClickable("button.govuk-button:nth-child(6)").click()
 
-  //MFU
   def clickUploadContinueMFU(): Unit = elementToBeClickable(".multi-file-upload > div:nth-child(5) > button:nth-child(1)").click()
 
-  def clickContinueSubmit():Unit = findElementByCss("#send-documents-for-customs-check-submit")
+  def clickContinueSubmit(): Unit = findElementByCss("#send-documents-for-customs-check-submit")
 
   def clickContinue(): Unit = findElementByCss("button.govuk-button:nth-child(3)").click()
+
   def clickContinueCaseRef(): Unit = findElementByCss("button.govuk-button:nth-child(4)").click()
 
-//  def clickCYAContinue(): Unit = findElementByCss("button.govuk-button:nth-child(2)").click()
   def clickCYAContinue(): Unit = findElementByCss("#send-documents-for-customs-check-submit").click()
-
 
   def clickBack(): Unit = findElementById("back-link").click()
 
-  def clickSignOut():Unit = findElementByCss(".hmrc-sign-out-nav__link").click()
+  def clickSignOut(): Unit = findElementByCss(".hmrc-sign-out-nav__link").click()
 
   def optionSelected(css: String): Unit = driver.findElement(By.cssSelector(css)).isSelected shouldBe true
 
@@ -168,6 +165,10 @@ trait BasePage extends Matchers with BrowserDriver {
     assert(element.getText.contains(content), message(s"Element displayed is: ${element.getText} Expecting: $content"))
   }
 
+  def assertElementTextContainsEither(content: String, content2:String, element: WebElement): Unit = {
+    assert(element.getText.contains(content), message(s"Element displayed is: ${element.getText} Expecting: $content or $content2"))
+  }
+
   def isElementVisible(css: String): Boolean = findElementByCss(css).isDisplayed
 
   def assertElementIsNotVisibleById(id: String): Unit = {
@@ -176,42 +177,67 @@ trait BasePage extends Matchers with BrowserDriver {
     driver.manage.timeouts.implicitlyWait(1, TimeUnit.SECONDS)
   }
 
+  //Time and date
   lazy val todayDate: LocalDate = LocalDate.now()
+
+  val today = LocalDate.now
+  val (d, m, y) = (today.getDayOfMonth(), today.getMonthValue(), today.getYear())
+  val (day, month, year) = (today.getDayOfMonth().toString, today.getMonthValue().toString, today.getYear().toString)
+
+  val dayFormatted = f"$d%02d"
+  val monthFormatted = f"$m%02d"
 
   def todayDateCYA: String = {
     s"${todayDate.getDayOfMonth.toString} ${todayDate.getMonth.toString.toLowerCase.capitalize} ${todayDate.getYear.toString}"
   }
 
-  lazy val nowTime:LocalTime = LocalTime.now()
-  lazy val sla2Hour = nowTime.plusHours(2)
-  lazy val sla3Hour = nowTime.plusHours(3)
+  lazy val nowTime: LocalTime = LocalTime.now()
+  lazy val  sla2Hour = nowTime.plusHours(2).getHour
+  lazy val  sla3Hour = nowTime.plusHours(3).getHour
+  lazy val min = nowTime.getMinute
+  lazy val min1 = nowTime.plusMinutes(1).getMinute
 
-  val (sla3h, sla3m) = (sla3Hour.getHour, sla3Hour.getMinute)
-  val (sla2h, sla2m) = (sla2Hour.getHour, sla2Hour.getMinute)
+  lazy val sl2hrFormatted = f"$sla2Hour%02d:$min%02d"
+  lazy val sl2hrAddMin = f"$sla2Hour%02d:$min1%02d"
 
-  val sla3hrFormatted = f"$sla3h%02d:$sla3m%02d"
-  val sl2hrFormatted = f"$sla2h%02d:$sla2m%02d"
+  lazy val sla3hrFormatted = f"$sla3Hour%02d:$min%02d"
+  lazy val sla3hrAddMin = f"$sla3Hour%02d:$min1%02d"
 
-  def copyFile(srcFile: File, destFile: File): Unit = {
-    copyFile(srcFile, destFile)
+
+  lazy val threePm = LocalTime.parse("15:00:00.00")
+  lazy val midnight = LocalTime.parse("00:00:00.00")
+  lazy val eightAm = LocalTime.parse("08:00:00.00")
+
+  lazy val between3pmAndMidnight = nowTime.isAfter(threePm) && nowTime.isBefore(midnight)
+  lazy val betweenMidnightAnd8am = nowTime.isAfter(midnight) && nowTime.isBefore(eightAm)
+  lazy val between8amAnd3pm = nowTime.isAfter(eightAm) && nowTime.isBefore(threePm)
+
+  //todo check this works
+  var lastUsedTestEmail: String = ""
+
+  def generateTestEmailAddress: String = {
+    lastUsedTestEmail = s"test${UUID.randomUUID().toString}@test.com"
+    lastUsedTestEmail
   }
 
-
   //Agent-stubs
+  def userid: WebElement = driver.findElement(By.id("userId"))
+
+  def planetid: WebElement = driver.findElement(By.id("planetId"))
+
+  def signinBtn: WebElement = driver.findElement(By.id("signIn"))
+
+  def destroyPlanet: WebElement = driver.findElement(By.cssSelector("#destroy-planet"))
+
+  def destroyPlanetLink: WebElement = driver.findElement(By.cssSelector("#link_planet_destroy"))
+
+  def enrollment: WebElement = findElementById("principalEnrolments[0].identifiers[0].value")
+
   def login(): Unit = {
     userid.sendKeys("User1")
     planetid.sendKeys("Planet1")
     signinBtn.click()
   }
-
-  def userid: WebElement = driver.findElement(By.id("userId"))
-  def planetid: WebElement = driver.findElement(By.id("planetId"))
-  def signinBtn: WebElement = driver.findElement(By.id("signIn"))
-
-  def destroyPlanet: WebElement = driver.findElement(By.cssSelector("#destroy-planet"))
-  def destroyPlanetLink: WebElement = driver.findElement(By.cssSelector("#link_planet_destroy"))
-
-  def enrollment: WebElement = findElementById("principalEnrolments[0].identifiers[0].value")
 
   def createUser(): Unit = {
     clickByCSS("#affinityGroup-Individual")

@@ -27,8 +27,8 @@ trait AmendPages extends BasePage {
 
   def amendNCHLink(): Unit = driver.findElement(By.linkText("National clearance hub"))
 
-  val urlHowToSend:String = traderServicesBaseUrl + amendUrl + "/type-of-amendment"
-  val howToSendHeading:String = "How do you want to send us more information?"
+  val urlHowToSend: String = traderServicesBaseUrl + amendUrl + "/type-of-amendment"
+  val howToSendHeading: String = "How do you want to send us more information?"
 
   val urlWriteResponse: String = traderServicesBaseUrl + amendUrl + "/write-response"
   val writeResponseHeading: String = "Write a response to a query from HMRC"

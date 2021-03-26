@@ -34,7 +34,7 @@ class RunZap
 object RunZap extends RunZap with BasePage {
   @BeforeClass
   def setupUser(): Unit = {
-    navigateTo(Configuration.settings.SIGN_IN_PAGE)
+    navigateTo(Configuration.settings.SIGN_IN_page)
     login()
     createUser()
     clickByCSS("#update")

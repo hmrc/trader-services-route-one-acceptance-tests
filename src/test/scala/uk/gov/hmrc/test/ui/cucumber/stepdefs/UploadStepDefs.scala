@@ -23,63 +23,64 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, UploadPages}
 class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
 
 
-  Then("""^the user navigates to the single file (.*) upload page"""){ (page:String) =>
+  Then("""^the user navigates to the single file (.*) upload page""") { (page: String) =>
 
     page match {
       case "New" => navigateTo(urlUpload)
-                    confirmUrl(urlUpload)
+        confirmUrl(urlUpload)
       case "Amend" => navigateTo(urlUploadAmend)
-                      confirmUrl(urlUploadAmend)
+        confirmUrl(urlUploadAmend)
     }
     verifyHeading(headingUpload)
   }
 
-  Then("""^the user is on the (.*) upload page"""){ (page:String) =>
+  Then("""^the user is on the (.*) upload page""") { (page: String) =>
 
     page match {
       case "First" => confirmUrl(urlUpload)
-                      verifyHeading(headingUpload)
+        verifyHeading(headingUpload)
       case "Another" => confirmUrl(urlUpload)
-                        verifyHeading(headingUploadAnother)
+        verifyHeading(headingUploadAnother)
       case "Amend" => confirmUrl(urlUploadAmend)
-                      verifyHeading(headingUpload)
+        verifyHeading(headingUpload)
       case "AnotherAmend" => confirmUrl(urlUploadAmend)
-                             verifyHeading(headingUploadAnother)
+        verifyHeading(headingUploadAnother)
     }
   }
 
-  Then("""^the user clicks the button to upload and selects the "([^"]*)" file"""){ (file:String) =>
+  Then("""^the user clicks the button to upload and selects the "([^"]*)" file""") { (file: String) =>
     Thread.sleep(500L)
     uploadFileSFU(file)
     clickByCSS(".file-upload__submit")
   }
 
-  Then("""^the user should be on the (.*) file upload confirmation page after uploading (.*) document/s"""){
-    (journey:String, docAmount:String) =>
+  Then("""^the user should be on the (.*) file upload confirmation page after uploading (.*) document/s""") {
+    (journey: String, docAmount: String) =>
 
       journey match {
         case "new" => confirmUrlUpload(urlUploaded)
         case "amend" => confirmUrlUpload(urlUploadedAmend)
       }
       docAmount match {
-      case "1" => verifyHeading (headingUploadConfirm1)
-      case "2" => verifyHeading (headingUploadConfirm2)
-      case "3" => verifyHeading (headingUploadConfirm3)
+        case "1" => verifyHeading(headingUploadConfirm1)
+        case "2" => verifyHeading(headingUploadConfirm2)
+        case "3" => verifyHeading(headingUploadConfirm3)
       }
   }
 
+  //  todo tidy css
   Then("""^the user should see their first uploaded doc (.*) on upload review page$""") { (Answer: String) =>
     findElementByCss("div.govuk-summary-list__row:nth-child(1) > dt:nth-child(1)").isDisplayed
     findElementByCss("div.govuk-summary-list__row:nth-child(1) > dd:nth-child(2)").getText shouldBe Answer
   }
 
   When("""^the user clicks the button to remove a document$""") { () =>
-  clickHref("a[href*='remove']")
+    clickHref("a[href*='remove']")
   }
 
   Then("""^the user should see the message saying they have uploaded the max amount of docs""") { () =>
     assertElementText("You’ve uploaded the maximum number of files and cannot add any more.",
-    findElementByCss("p.govuk-body"))
+      findElementByCss("p.govuk-body"))
   }
 
   Then("""^the user selects (.*) to uploading another file""") { (yesNo: String) =>

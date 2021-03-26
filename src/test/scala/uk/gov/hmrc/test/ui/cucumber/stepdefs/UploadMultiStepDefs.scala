@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, UploadMultiPages}
 
 class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl with EN {
 
-  Then("""^the user is on the multi-file upload pages for a/an (.*) journey"""){ (page:String) =>
+  Then("""^the user is on the multi-file upload pages for a/an (.*) journey""") { (page: String) =>
     verifyHeading(headingUpload)
 
     page match {
@@ -31,36 +31,40 @@ class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl w
     }
   }
 
-  Then("""^the user clicks the button to add another document"""){ () =>
-   uploadAnother()
+  Then("""^the user clicks the button to add another document""") { () =>
+    uploadAnother()
   }
 
-  Then("""^the user clicks the button to upload the (.*) file and selects the "([^"]*)" file"""){ (fileOrder:String, file:String) =>
-    Thread.sleep(250l)
+  Then("""^the user clicks the button to upload the (.*) file and selects the "([^"]*)" file""") {
+    (fileOrder: String, file: String) =>
+      Thread.sleep(250l)
 
-    fileOrder match {
-      case "first" =>     uploadFile1(file)
-      case "second" =>    uploadFile2(file)
-      case "third" =>     uploadFile3(file)
-      case "fourth" =>     uploadFile4(file)
-      case "fifth" =>    uploadFile5(file)
-      case "sixth" =>     uploadFile6(file)
-      case "seventh" =>     uploadFile7(file)
-      case "eighth" =>    uploadFile8(file)
-      case "ninth" =>     uploadFile9(file)
-      case "tenth" =>     uploadFile10(file)
-    }
+      fileOrder match {
+        case "first" => uploadFile1(file)
+        case "second" => uploadFile2(file)
+        case "third" => uploadFile3(file)
+        case "fourth" => uploadFile4(file)
+        case "fifth" => uploadFile5(file)
+        case "sixth" => uploadFile6(file)
+        case "seventh" => uploadFile7(file)
+        case "eighth" => uploadFile8(file)
+        case "ninth" => uploadFile9(file)
+        case "tenth" => uploadFile10(file)
+      }
   }
 
-  And("""^the user clicks Continue when files have finished uploading""") { () =>
+  And("""^the user clicks continue when files have finished uploading""") { () =>
     clickUploadContinueMFU()
-    if(findElementByCss(".file-upload__spinner").isDisplayed.equals(true)) {
+    if (findElementByCss(".file-upload__spinner").isDisplayed.equals(true)) {
       notFindElementByCss(".file-upload__spinner")
-      clickUploadContinueMFU()}
-    else {findElementByCss(".file-upload__spinner").isDisplayed.equals(false)}
+      clickUploadContinueMFU()
     }
+    else {
+      findElementByCss(".file-upload__spinner").isDisplayed.equals(false)
+    }
+  }
 
-  And("""^the user will only see inset text for request type (.*)""") { (exportRq:String) =>
+  And("""^the user will only see inset text for request type (.*)""") { (exportRq: String) =>
     exportRq match {
       case "C1601" => assertElementTextContains("For this export, you must upload form C1601 - Presentation of goods for export (arrival). You can include other supporting documents too.", insetText)
       case "C1602" => assertElementTextContains("For this export, you must upload form C1602 - Notification of exit of goods (departure). You can include other supporting documents too.", insetText)
@@ -68,4 +72,4 @@ class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl w
       case "N/A" => assertElementIsNotVisibleById("govuk-inset-text")
     }
   }
-  }
+}
