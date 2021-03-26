@@ -81,7 +81,7 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
       case "Maritime-Import" =>
         if (between8amAnd3pm) assertElementTextContainsEither(
           "Your document checks should be completed by " + sla3hrFormatted + " today.",
-          "Your document checks should be completed by " + sla3hrAddMin + " today.",
+          "Your document checks should be completed by " + sla3hrMin + " today.",
           slaPara)
         if (between3pmAndMidnight) assertElementTextContains("Your document checks should be completed by 08:00 tomorrow.", slaPara)
         if (betweenMidnightAnd8am) assertElementTextContains("Your document checks should be completed by 08:00 today.", slaPara)

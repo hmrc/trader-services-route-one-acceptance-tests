@@ -195,14 +195,13 @@ trait BasePage extends Matchers with BrowserDriver {
   lazy val  sla2Hour = nowTime.plusHours(2).getHour
   lazy val  sla3Hour = nowTime.plusHours(3).getHour
   lazy val min = nowTime.getMinute
-  lazy val min1 = nowTime.plusMinutes(1).getMinute
+  lazy val min1 = nowTime.minusMinutes(1).getMinute
 
   lazy val sl2hrFormatted = f"$sla2Hour%02d:$min%02d"
   lazy val sl2hrAddMin = f"$sla2Hour%02d:$min1%02d"
 
   lazy val sla3hrFormatted = f"$sla3Hour%02d:$min%02d"
-  lazy val sla3hrAddMin = f"$sla3Hour%02d:$min1%02d"
-
+  lazy val sla3hrMin = f"$sla3Hour%02d:$min1%02d"
 
   lazy val threePm = LocalTime.parse("15:00:00.00")
   lazy val midnight = LocalTime.parse("00:00:00.00")
