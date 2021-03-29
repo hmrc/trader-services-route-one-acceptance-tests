@@ -122,9 +122,7 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def clickByCSS(css: String): Unit = driver.findElement(By.cssSelector(css)).click()
 
-  def clickFinalContinueNew(): Unit = findElementByCss("p.govuk-body:nth-child(1) > a:nth-child(1)").click()
-
-  def clickFinalContinueAmend(): Unit = findElementByCss("p.govuk-body:nth-child(1) > a:nth-child(1)").click()
+  def clickSendAnother(): Unit = findElementByCss("a.govuk-button").click()
 
   def clickUploadContinueSFU(): Unit = elementToBeClickable("button.govuk-button:nth-child(6)").click()
 
@@ -192,11 +190,14 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   lazy val nowTime: LocalTime = LocalTime.now()
-  lazy val  sla2Hour = nowTime.plusHours(2).getHour
-  lazy val  sla3Hour = nowTime.plusHours(3).getHour
+  lazy val nowHrs = nowTime.getHour
+  lazy val nowMin = nowTime.getMinute
+  lazy val sla2Hour = nowTime.plusHours(2).getHour
+  lazy val sla3Hour = nowTime.plusHours(3).getHour
   lazy val min = nowTime.getMinute
   lazy val min1 = nowTime.minusMinutes(1).getMinute
 
+  lazy val nowFormatted = f"$nowHrs%02d:$nowMin%02d"
   lazy val sl2hrFormatted = f"$sla2Hour%02d:$min%02d"
   lazy val sl2hrAddMin = f"$sla2Hour%02d:$min1%02d"
 

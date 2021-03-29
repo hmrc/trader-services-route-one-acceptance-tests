@@ -28,8 +28,8 @@ Feature: Customs check - Import journeys
     Then the user is on the Import CYA page
     And the user clicks submit on the CYA page
     Then the user is on the New confirmation page
-    And the user should see 2 Hour SLA
-    When the user clicks the send docs link on the New confirmation page they will go back to the start
+#    And the user should see 2 Hour SLA
+    When the user clicks the button to submit another case on the confirmation page they will go back to the start
     And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
@@ -81,7 +81,7 @@ Feature: Customs check - Import journeys
     Then the user is on the Import CYA page
     And the user clicks submit on the CYA page
     Then the user is on the New confirmation page
-    And the user should see Maritime-Import SLA
+#    And the user should see Maritime-Import SLA
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | name  | email          |

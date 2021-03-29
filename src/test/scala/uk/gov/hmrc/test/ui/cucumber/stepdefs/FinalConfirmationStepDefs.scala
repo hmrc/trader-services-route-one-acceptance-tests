@@ -38,6 +38,7 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     }
 
     assertElementTextContains("Your customs check submission receipt", receipt)
+//    assertElementTextContains(nowFormatted, findElementByCss(".govuk-panel"))
     isElementVisible(".print-page").shouldBe(true)
   }
 
@@ -52,12 +53,8 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     clickContinueCaseRef()
   }
 
-  When("""^the user clicks the send docs link on the (.*) confirmation page they will go back to the start""") { (journey: String) =>
-
-    journey match {
-      case "New" => clickFinalContinueNew()
-      case "Amend" => clickFinalContinueAmend()
-    }
+  When("""^the user clicks the button to submit another case on the confirmation page they will go back to the start""") { () =>
+    clickSendAnother()
     confirmUrl(traderServicesUrl)
     verifyHeading(landingHeading)
   }
@@ -67,6 +64,7 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     confirmUrl(urlCaseRef)
     verifyHeading(caseRefHeading)
   }
+
 
   Then("""^the user should see (.*) SLA""") { (sla: String) =>
 
