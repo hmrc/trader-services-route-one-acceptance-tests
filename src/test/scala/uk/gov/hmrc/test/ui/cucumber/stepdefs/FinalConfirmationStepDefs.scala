@@ -29,8 +29,6 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
       case "New" =>
         confirmUrl(urlConfirmation)
         verifyHeading(headingConfirmation)
-        isElementVisible("a.action-buttons__button").shouldBe(true)
-        isElementVisible(" li.action-buttons__item:nth-child(2) > a:nth-child(1)").shouldBe(true)
 
       case "Amend" =>
         confirmUrl(urlAmendConfirm)
@@ -40,6 +38,8 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     assertElementTextContains("Your customs check submission receipt", receipt)
 //    assertElementTextContains(nowFormatted, findElementByCss(".govuk-panel"))
     isElementVisible(".print-page").shouldBe(true)
+    isElementVisible("a.action-buttons__button").shouldBe(true)
+    isElementVisible(" li.action-buttons__item:nth-child(2) > a:nth-child(1)").shouldBe(true)
   }
 
   //  todo sort out deprecated import
