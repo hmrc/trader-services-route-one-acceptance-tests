@@ -1,4 +1,4 @@
-@TraderService2
+@TraderService
 Feature: Customs check - Export journeys
 
   Scenario Outline: A user wants to complete a New Export RouteOne journey & see RoRo SLA
@@ -26,13 +26,10 @@ Feature: Customs check - Export journeys
     Then the user clicks continue when files have finished uploading
     Then the user is on the Export CYA page
     Then the user clicks submit on the CYA page
-    Then the user clicks submit on the CYA page
-    Then the user clicks submit on the CYA page
-    Then the user clicks submit on the CYA page
     Then the user is on the New confirmation page
 #    And the user should see 2 Hour SLA
-#    When the user clicks the button to submit another case on the confirmation page they will go back to the start
-#    And the last selected option for journey type should be pre filled with Nothing
+    When the user clicks the button to submit another case on the confirmation page they will go back to the start
+    And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport    | transportName | email   |
@@ -63,10 +60,6 @@ Feature: Customs check - Export journeys
     When the user clicks the button to upload the first file and selects the "jpg" file
     Then the user clicks continue when files have finished uploading
     Then the user is on the Export CYA page
-    Then the user clicks submit on the CYA page
-    Then the user clicks submit on the CYA page
-    Then the user clicks submit on the CYA page
-    Then the user clicks submit on the CYA page
     Then the user clicks submit on the CYA page
     Then the user is on the New confirmation page
     And the user should see Hold SLA
@@ -104,13 +97,6 @@ Feature: Customs check - Export journeys
     Then the user is on the Export CYA page
     Then the user clicks submit on the CYA page
     Then the user is on the New confirmation page
-    Then the user clicks submit on the CYA page
-    Then the user clicks submit on the CYA page
-    Then the user clicks submit on the CYA page
-    Then the user clicks submit on the CYA page
-    Then the user clicks submit on the CYA page
-    Then the user clicks submit on the CYA page
-    Then the user clicks submit on the CYA page
 #    And the user should see 2 Hour SLA
     When the user clicks the button to submit another case on the confirmation page they will go back to the start
     And the last selected option for journey type should be pre filled with Nothing
