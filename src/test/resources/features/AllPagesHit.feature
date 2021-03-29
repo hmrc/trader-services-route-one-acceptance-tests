@@ -26,7 +26,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     When the user clicks submit on the CYA page
     Then the user is on the New confirmation page
     And the user should see 2 Hour SLA
-    When the user clicks the send docs link on the New confirmation page they will go back to the start
+    When the user clicks the button to submit another case on the confirmation page they will go back to the start
 
 
     Examples:
@@ -116,7 +116,7 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
     Then the user is on the Amend writeAndUpload review page and should see their responses
     When the user clicks submit on the CYA page
     Then the user is on the Amend confirmation page
-    When the user clicks the send docs link on the Amend confirmation page they will go back to the start
+    When the user clicks the button to submit another case on the confirmation page they will go back to the start
 
 
   Scenario Outline: A user enters a duplicate case (Stub EPU: 667)
