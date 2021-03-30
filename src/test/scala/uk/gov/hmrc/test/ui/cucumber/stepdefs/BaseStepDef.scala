@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import org.openqa.selenium.By
+import org.openqa.selenium.WebElement
 import org.scalatest.Matchers
 import org.scalatest.concurrent.Eventually
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
@@ -62,6 +62,12 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     navigateTo(traderServicesBaseUrl + url)
   }
 
+  When("""^the user logs into QA""") {
+    navigateTo("https://www.qa.tax.service.gov.uk/auth-login-stub/gg-sign-in")
+    writeById(findElementById("redirectionUrl"), "/send-documents-for-customs-check")
+    clickByCSS("#inputForm > div.form-field-group > p > input")
+  }
+
   Then("""^the user enters today's date for (.*)$""") { (dateField: String) =>
     dateField match {
 
@@ -102,28 +108,34 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     }
   }
 
+  //Error checking
+  def errorSummaryTitle: WebElement = findElementByCss("#error-summary-title")
+
+  def errorSummaryField(fieldTitle: String): WebElement = findElementById(s"$fieldTitle-error")
+
+  val errorSummary = "There is a problem"
+
   Then("""^the user should see "([^"]*)" error message for "([^"]*)"$""") { (errorMessage: String, fieldTitle: String) =>
 
-    driver.findElement(By.cssSelector("#error-summary-title")).isDisplayed
-    driver.findElement(By.cssSelector("#error-summary-title")).getText shouldBe "There is a problem"
+    errorSummaryTitle.isDisplayed
+    errorSummaryTitle.getText shouldBe errorSummary
 
-    driver.findElement(By.id(s"$fieldTitle-error")).isDisplayed
-    driver.findElement(By.id(s"$fieldTitle-error")).getText.replaceAll("\n", "") shouldBe errorMessage
+    errorSummaryField(fieldTitle).isDisplayed
+    errorSummaryField(fieldTitle).getText.replaceAll("\n", "") shouldBe errorMessage
   }
 
-  //todo tidy this up?
   And("""^the user should see the invalid (.*) date range error message for "(.*)" field""") {
     (journey: String, fieldTitle: String) =>
-      driver.findElement(By.cssSelector("#error-summary-title")).isDisplayed
-      driver.findElement(By.cssSelector("#error-summary-title")).getText shouldBe "There is a problem"
-      driver.findElement(By.id(s"$fieldTitle-error")).isDisplayed
+      errorSummaryTitle.isDisplayed
+      errorSummaryTitle.getText shouldBe errorSummary
+      errorSummaryField(fieldTitle).isDisplayed
 
       journey match {
         case "arrival" =>
-          driver.findElement(By.id(s"$fieldTitle-error")).getText should startWith("Error:\nDate of arrival must be between")
+          errorSummaryField(fieldTitle).getText should startWith("Error:\nDate of arrival must be between")
 
         case "departure" =>
-          driver.findElement(By.id(s"$fieldTitle-error")).getText should startWith("Error:\nDate of departure must be between")
+          errorSummaryField(fieldTitle).getText should startWith("Error:\nDate of departure must be between")
       }
   }
 
@@ -132,12 +144,6 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
       clickHref(s"a[href*='$fieldID']")
       findElementById(fieldBodyID).isSelected
       findElementById(fieldBodyID).clear()
-  }
-
-  When("""^the user logs into QA""") {
-    navigateTo("https://www.qa.tax.service.gov.uk/auth-login-stub/gg-sign-in")
-    writeById(findElementById("redirectionUrl"), "/send-documents-for-customs-check")
-    clickByCSS("#inputForm > div.form-field-group > p > input")
   }
 }
 

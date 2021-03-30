@@ -1,7 +1,7 @@
 @TraderService
 Feature: Back Links & Change Links
 
-#  BANNER LINK - RestartCall
+# RestartCall
   Scenario Outline: A user user goes back to the start after uploading a file (information cleared)
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
@@ -34,7 +34,7 @@ Feature: Back Links & Change Links
       | epu | entryNo | requestType | route   | priority      | transport | transportName | email   |
       | 123 | A23456A | New         | Route 1 | Human remains | Maritime  | Test Vessel   | a@a.com |
 
-  #IMPORT
+#    Import
   Scenario Outline: Import: A user wants to go back through the journey
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
@@ -204,7 +204,7 @@ Feature: Back Links & Change Links
       | epu | entryNo | requestType  | route | priority      | ALVS | transport | transportName | name      | email      | phoneNo     | entryDateCYA |
       | 113 | 993456A | Cancellation | Hold  | Human remains | Yes  | Maritime  | TestShip      | Abc Testb | a@test.com | 01234567891 | Today        |
 
-#EXPORT
+# Export
   Scenario Outline: Export: A user wants to go back through the journey
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
@@ -356,8 +356,8 @@ Feature: Back Links & Change Links
       | epu | entryNo | requestType | route   | priority     | transport | transportName | name     | email        | phoneNo       | entryDateCYA |
       | 669 | X12088M | New         | Route 2 | Live animals | Air       | Ship Test     | Ms. Test | xyz@test.com | 07712 345 671 | Today        |
 
-#    AMEND
-  Scenario: Amend: A user wants to change their request type and information via the CYA page
+# Amend
+  Scenario: Amend: A user wants to change their answers
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page

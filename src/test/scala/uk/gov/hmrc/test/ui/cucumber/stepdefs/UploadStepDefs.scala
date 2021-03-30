@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
+import org.openqa.selenium.WebElement
 import uk.gov.hmrc.test.ui.pages.{BasePage, UploadPages}
 
 
@@ -68,7 +69,6 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
       }
   }
 
-  //  todo tidy css
   Then("""^the user should see their first uploaded doc (.*) on upload review page$""") { (Answer: String) =>
     findElementByCss("div.govuk-summary-list__row:nth-child(1) > dt:nth-child(1)").isDisplayed
     findElementByCss("div.govuk-summary-list__row:nth-child(1) > dd:nth-child(2)").getText shouldBe Answer

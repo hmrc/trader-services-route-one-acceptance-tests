@@ -36,11 +36,20 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     }
 
     assertElementTextContains("Your customs check submission receipt", receipt)
-//    assertElementTextContains(nowFormatted, findElementByCss(".govuk-panel"))
-    isElementVisible(".print-page").shouldBe(true)
-    isElementVisible("a.action-buttons__button").shouldBe(true)
-    isElementVisible(" li.action-buttons__item:nth-child(2) > a:nth-child(1)").shouldBe(true)
+    //    assertElementTextContains(nowFormatted, findElementByCss(".govuk-panel"))
+    isElementVisible(printPdfIcon).shouldBe(true)
+    isElementVisible(savePdfIcon).shouldBe(true)
+    isElementVisible(saveHtmlIcon).shouldBe(true)
   }
+
+  Then("""^the user will see text to (.*)""") { (journey: String) =>
+    journey match {
+      case "cancel" => assertElementText(cancelPara, fifthElement)
+      case "withdraw" => assertElementText(withdrawPara, fifthElement)
+      case "give-feedback" => assertElementText(feedback, fifthElement)
+    }
+  }
+
 
   //  todo sort out deprecated import
   Then("""^the user copies the case reference number""") { () =>

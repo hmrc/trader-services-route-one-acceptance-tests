@@ -1,5 +1,5 @@
 @TraderServiceErrors
-Feature: Error - no options selected
+Feature: Error - no options selected & amend validation
 
 #  Import
   Scenario Outline: Import questions: error validation - no options selected
@@ -55,5 +55,28 @@ Feature: Error - no options selected
       | epu | entryNo | requestType  | route       | priority      |
       | 123 | A23456A | Cancellation | Route 1 CAP | Human remains |
 
+# Amend
+  Scenario: Amend case journey (error validation)
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects Amend
+    Then the user is on the case ref number page
+    When the user enters no characters for case reference number and clicks continue
+    Then the user should see "Error:Enter the case reference number" error message for "caseReferenceNumber"
 
+    When the user enters tooFew characters for case reference number and clicks continue
+    Then the user should see "Error:Case reference number must be 22 characters" error message for "caseReferenceNumber"
 
+    When the user enters tooMany characters for case reference number and clicks continue
+    Then the user should see "Error:Case reference number must be 22 characters" error message for "caseReferenceNumber"
+
+    When the user enters valid characters for case reference number and clicks continue
+    Then the user is on the how to respond page and selects noOption
+    Then the user should see "Error:Select how you want to send us more information" error message for "typeOfAmendment"
+
+    Then the user is on the how to respond page and selects writeAndUpload
+    When the user enters a response with no characters
+    Then the user should see "Error:Enter a response to a query from HMRC" error message for "responseText"
+    When the user enters a response with tooMany characters
+    Then the user should see "Error:Response must be 1000 characters or fewer" error message for "responseText"
+    When the user enters a response with valid characters
+    Then the user is on the multi-file upload pages for a/an Amend journey

@@ -44,10 +44,8 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
       assertElementText(EntryNo, entryNoAnswer)
   }
 
-  //  todo - get the css out of the step def
   Then("""^the user should see the Entry Date row & the date (.*) on the CYA page$""") { (Date: String) =>
-    assertElementText(summaryEntryDate,
-      findElementByCss("dl.govuk-summary-list:nth-child(3) > div:nth-child(3) > dt:nth-child(1)"))
+    assertElementText(summaryEntryDate, entryDateRow)
 
     Date match {
       case "Today" => assertElementText(todayDateCYA, entryDateAnswer)

@@ -39,5 +39,15 @@ trait FinalConfirmationPage extends BasePage {
 
   val holdSLA = "When your transportation arrives, we’ll begin the document checks. Once our checks are complete, you’ll hear from us through CHIEF or your declaration software."
 
+  val printPdfIcon = ".print-page"
+  val savePdfIcon = "li.action-buttons__item:nth-child(2) > a:nth-child(1)"
+  val saveHtmlIcon = "li.action-buttons__item:nth-child(3) > a:nth-child(1)"
+
+  val cancelPara = "You will now need to cancel this entry in CHIEF."
+  val withdrawPara = "You will now need to withdraw this entry in CHIEF."
+  val feedback = "Give feedback on this service"
+
+  def fifthElement: WebElement = findElementByCss("p.govuk-body:nth-child(5)")
+
   //  todo add link checks
 }

@@ -6,14 +6,13 @@ UI test suite for `Trader Services` using WebDriver and `Cucumber`.
 ## Running the tests
 
 Prior to executing the tests ensure you have:
- - Docker - to run a Chrome or Firefox browser inside a container 
  - Appropriate [drivers installed](#install-driver-binary) - to run tests against locally installed Browser
  - Installed [MongoDB](https://docs.mongodb.com/manual/installation/) 
  - Installed/configured [service manager](https://github.com/hmrc/service-manager).  
+ - Docker - to run a Chrome or Firefox browser inside a container (Optional)
 
 Run the following command to start services locally:
 
-    sudo mongod
     sm --start TRADER_SERVICES_ALL -f
 
 Then execute the `run_tests.sh` script:
@@ -21,6 +20,16 @@ Then execute the `run_tests.sh` script:
     ./run_tests.sh <environment> <browser-driver>
     
     ie. /run_tests.sh dev chrome
+    
+    These tests can be run against dev or staging repeatedly if needed but there is a separate runner for QA 
+    ./run_tests_qa.sh
+    
+    The QA runner can be run daily without making any changes but if you want to run it multiple times ensure that you use 
+    unique parameters or else it may result in a duplicate case. Changing either EPU/EntryNumber/EntryDate in the "Examples" 
+    section should cause the case to be unique 
+    
+    N.b. Some cases with identical parameters above may still not return a duplicate case depending on request type 
+    
 
 The `run_tests.sh` script defaults to the `local` environment with the locally installed `chrome` driver binary.  For a complete list of supported param values, see:
  - `src/test/resources/application.conf` for **environment** 
@@ -79,7 +88,7 @@ tagged as `ZapTests`, via ZAP. Upon completion, the script then triggers a ZAP s
 For example, to execute ZAP tests locally using a Chrome browser
 
 ```
-./run_zap_test.sh local chrome
+./run_zap_tests.sh local chrome
 ```
 
 To execute ZAP tests locally using a Chrome browser

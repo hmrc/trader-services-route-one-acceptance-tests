@@ -1,4 +1,7 @@
-@TraderServiceUploads
+@TraderServiceUpload
+#  Tests for SFU (replaced by MFU which is tested via QA runner/manually)
+#  todo: potentially scrap this page...
+
 Feature: A user wants to upload documents
 
   Scenario Outline: A user wants upload some documents
