@@ -39,7 +39,7 @@ class ErrorStepDefs extends FinalConfirmationPage with BasePage with TransportQu
   }
 
   Then("""^the user is on the error page for page not found""") { () =>
-    verifyHeading("page not found")
+    verifyHeading("Page not found")
   }
 
   Then("""^the user is on the error page for internal server error""") { () =>

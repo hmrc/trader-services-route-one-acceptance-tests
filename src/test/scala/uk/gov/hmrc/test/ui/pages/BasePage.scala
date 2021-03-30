@@ -163,7 +163,7 @@ trait BasePage extends Matchers with BrowserDriver {
     assert(element.getText.contains(content), message(s"Element displayed is: ${element.getText} Expecting: $content"))
   }
 
-  def assertElementTextContainsEither(content: String, content2:String, element: WebElement): Unit = {
+  def assertElementTextContainsEither(content: String, content2: String, element: WebElement): Unit = {
     assert(element.getText.contains(content), message(s"Element displayed is: ${element.getText} Expecting: $content or $content2"))
   }
 

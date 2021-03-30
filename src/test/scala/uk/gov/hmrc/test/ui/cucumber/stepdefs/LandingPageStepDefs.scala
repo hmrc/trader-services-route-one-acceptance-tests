@@ -43,7 +43,7 @@ class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with E
     verifyHeading(landingHeading)
   }
 
-  //  todo tidy css
+
   Given("""^the user is on the start page for trader services and selects (.*)$""") { (journey: String) =>
     navigateTo(traderServicesUrl)
     confirmUrl(traderServicesUrl)

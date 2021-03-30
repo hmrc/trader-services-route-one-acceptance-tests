@@ -20,21 +20,35 @@ Feature: Customs check - Import journeys
     Then the user is on the Import contact details page
     When the user enters a name "<name>"
     When the user enters an email address "<email>"
+    And the user enters a phone number "<phone>"
     And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     And the user will only see inset text for request type N/A
     When the user clicks the button to upload the first file and selects the "pdf" file
     Then the user clicks continue when files have finished uploading
+
     Then the user is on the Import CYA page
+    Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
+    And the user should see the Entry Date row & the date <entryDateCYA> on the CYA page
+    Then the user should see the Import Request Type row & the correct response <requestType> on the CYA page
+    And the user should see the Route row & the correct response <route> on the CYA page
+    Then the user should see the Priority YN row & the correct response Yes on the CYA page
+    When the user answered YesToPriority then they should see the correct responses for the Import journey "<priority>", "<ALVS>" & "<transport>"
+    Then the user should see the Vessel Name row & the correct response "-" on the CYA page
+    And the user should see the Vessel Date Arrival row & the correct response "-" on the CYA page
+    And the user should see the Vessel Time Arrival row & the correct response "-" on the CYA page
+    And the user should see the Full Contact details row & the correct responses "<name>", "<email>" & "<phone>" on the CYA page
     And the user clicks submit on the CYA page
+
     Then the user is on the New confirmation page
+    Then the user will see text to give-feedback
 #    And the user should see 2 Hour SLA
     When the user clicks the button to submit another case on the confirmation page they will go back to the start
     And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
-      | epu | entryNo | requestType | route   | priority      | transport | name  | email          |
-      | 123 | 123456A | New         | Route 6 | Human remains | Air       | Mr. F | valid@test.com |
+      | epu | entryNo | requestType | route   | priority      | ALVS | transport | name      | email          | phone         | entryDateCYA |
+      | 093 | 127756A | New         | Route 6 | Human remains | Yes  | Air       | Abc Testb | valid@test.com | 01234 567 899 | Today        |
 
 
   Scenario Outline: Route-Hold: A user should reach the mandatory Transport page
@@ -52,8 +66,8 @@ Feature: Customs check - Import journeys
     Then the user is on the Import-Mandatory transport details page
 
     Examples:
-      | epu | entryNo | requestType  | route | transport |
-      | 123 | 123456A | Cancellation | Hold  | Maritime  |
+      | epu | entryNo | requestType | route | transport |
+      | 123 | 123456A | New         | Hold  | Maritime  |
 
 
   Scenario Outline: A user wants to complete a New Import journey & see the appropriate Maritime SLA
@@ -81,8 +95,9 @@ Feature: Customs check - Import journeys
     Then the user is on the Import CYA page
     And the user clicks submit on the CYA page
     Then the user is on the New confirmation page
+    Then the user will see text to cancel
 #    And the user should see Maritime-Import SLA
 
     Examples:
-      | epu | entryNo | requestType | route   | priority      | transport | name  | email          |
-      | 555 | 151511c | New         | Route 6 | Human remains | Maritime  | Mr. F | valid@test.com |
+      | epu | entryNo | requestType  | route   | priority      | transport | name  | email          |
+      | 555 | 151511c | Cancellation | Route 6 | Human remains | Maritime  | Mr. F | valid@test.com |

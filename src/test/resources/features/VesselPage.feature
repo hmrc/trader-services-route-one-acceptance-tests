@@ -20,10 +20,10 @@ Feature: Vessel page validation
     When the user enters a date of Arrival for their transportation "" "" ""
     When the user enters a time of Arrival for their transportation "" ""
     When the user clicks continue
-    Then the user should see "Error:Enter the ship, vehicle or airline name" error message for "transportName"
+    Then the user should see "Error:Enter the ship, vehicle or airline name" error message for "vesselName"
     Then the user should see "Error:Enter the date of arrival" error message for "dateOfArrival"
     Then the user should see "Error:Enter the estimated time of arrival" error message for "timeOfArrival"
-    When the user clicks the error link for "transportName" it should link to the transportName field
+    When the user clicks the error link for "vesselName" it should link to the vesselName field
     When the user clicks the error link for "dateOfArrival" it should link to the dateOfArrival.day field
     When the user clicks the error link for "timeOfArrival" it should link to the timeOfArrival.hour field
 
@@ -76,7 +76,7 @@ Feature: Vessel page validation
     When the user enters a date of Arrival for their transportation "ab" "2" "2021"
     When the user enters a time of Arrival for their transportation "ab" "45"
     And the user clicks continue
-    Then the user should see "Error:Name must only include letters a to z, numbers, spaces, hyphens, ampersands, apostrophes and full stops" error message for "transportName"
+    Then the user should see "Error:Name must only include letters a to z, numbers, spaces, hyphens, ampersands, apostrophes and full stops" error message for "vesselName"
     Then the user should see "Error:Date of arrival must be a real date" error message for "dateOfArrival"
     Then the user should see "Error:Hour of arrival must only contain numbers" error message for "timeOfArrival"
 
@@ -84,7 +84,7 @@ Feature: Vessel page validation
     When the user enters a date of Arrival for their transportation "01" "2x" "2021"
     When the user enters a time of Arrival for their transportation "10" "!a"
     And the user clicks continue
-    Then the user should see "Error:Name must be 128 characters or fewer" error message for "transportName"
+    Then the user should see "Error:Name must be 128 characters or fewer" error message for "vesselName"
     Then the user should see "Error:Date of arrival must be a real date" error message for "dateOfArrival"
     Then the user should see "Error:Minutes of arrival must only contain numbers" error message for "timeOfArrival"
 
@@ -136,10 +136,10 @@ Feature: Vessel page validation
     When the user enters a date of Departure for their transportation "" "" ""
     When the user enters a time of Departure for their transportation "" ""
     When the user clicks continue
-    Then the user should see "Error:Enter the ship, vehicle or airline name" error message for "transportName"
+    Then the user should see "Error:Enter the ship, vehicle or airline name" error message for "vesselName"
     Then the user should see "Error:Enter the date of departure" error message for "dateOfDeparture"
     Then the user should see "Error:Enter the estimated time of departure" error message for "timeOfDeparture"
-    When the user clicks the error link for "transportName" it should link to the transportName field
+    When the user clicks the error link for "vesselName" it should link to the vesselName field
     When the user clicks the error link for "dateOfDeparture" it should link to the dateOfDeparture.day field
     When the user clicks the error link for "timeOfDeparture" it should link to the timeOfDeparture.hour field
 
@@ -191,7 +191,7 @@ Feature: Vessel page validation
     When the user enters a date of Departure for their transportation "ab" "2" "2021"
     When the user enters a time of Departure for their transportation "ab" "45"
     And the user clicks continue
-    Then the user should see "Error:Name must only include letters a to z, numbers, spaces, hyphens, ampersands, apostrophes and full stops" error message for "transportName"
+    Then the user should see "Error:Name must only include letters a to z, numbers, spaces, hyphens, ampersands, apostrophes and full stops" error message for "vesselName"
     Then the user should see "Error:Date of departure must be a real date" error message for "dateOfDeparture"
     Then the user should see "Error:Hour of departure must only contain numbers" error message for "timeOfDeparture"
 
@@ -199,7 +199,7 @@ Feature: Vessel page validation
     When the user enters a date of Departure for their transportation "01" "2x" "2021"
     When the user enters a time of Departure for their transportation "10" "!a"
     And the user clicks continue
-    Then the user should see "Error:Name must be 128 characters or fewer" error message for "transportName"
+    Then the user should see "Error:Name must be 128 characters or fewer" error message for "vesselName"
     Then the user should see "Error:Date of departure must be a real date" error message for "dateOfDeparture"
     Then the user should see "Error:Minutes of departure must only contain numbers" error message for "timeOfDeparture"
 
