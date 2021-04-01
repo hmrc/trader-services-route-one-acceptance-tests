@@ -24,7 +24,7 @@ Feature: Amend journeys
     Then the user is on the how to respond page and selects uploadOnly
     Then the user is on the multi-file upload pages for a/an Amend journey
     And the user will only see inset text for request type N/A
-    When the user clicks the button to upload the first file and selects the "jpg" file
+    When the user clicks the button to upload the first file and selects the "xls" file
     Then the user clicks continue when files have finished uploading
     Then the user is on the Amend uploadOnly review page and should see their responses
     And the user should see what the files they uploaded "testJpg.jpg"
@@ -42,7 +42,7 @@ Feature: Amend journeys
     And the user enters a response with valid characters
     Then the user is on the multi-file upload pages for a/an Amend journey
     And the user will only see inset text for request type N/A
-    When the user clicks the button to upload the first file and selects the "pdf" file
+    When the user clicks the button to upload the first file and selects the "xlsx" file
     Then the user clicks continue when files have finished uploading
     Then the user is on the Amend writeAndUpload review page and should see their responses
     When the user clicks submit on the CYA page
