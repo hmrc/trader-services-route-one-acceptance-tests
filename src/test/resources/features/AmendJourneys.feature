@@ -27,7 +27,7 @@ Feature: Amend journeys
     When the user clicks the button to upload the first file and selects the "xls" file
     Then the user clicks continue when files have finished uploading
     Then the user is on the Amend uploadOnly review page and should see their responses
-    And the user should see what the files they uploaded "testJpg.jpg"
+    And the user should see what the files they uploaded "testXls.xls"
     When the user clicks submit on the CYA page
     Then the user is on the Amend confirmation page
 
