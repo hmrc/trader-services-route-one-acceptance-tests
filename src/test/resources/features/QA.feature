@@ -34,30 +34,30 @@ Feature: Customs check - Export journey
     Then the user clicks the button to add another document
     When the user clicks the button to upload the fifth file and selects the "tiff" file
     Then the user clicks the button to add another document
-    When the user clicks the button to upload the sixth file and selects the "doc" file
+    When the user clicks the button to upload the sixth file and selects the "TIF" file
     Then the user clicks the button to add another document
-    When the user clicks the button to upload the seventh file and selects the "TIF" file
+    When the user clicks the button to upload the seventh file and selects the "txt" file
     Then the user clicks the button to add another document
     When the user clicks the button to upload the eighth file and selects the "msg" file
     Then the user clicks the button to add another document
-    When the user clicks the button to upload the ninth file and selects the "docx" file
+    When the user clicks the button to upload the ninth file and selects the "C1601" file
     Then the user clicks the button to add another document
-    When the user clicks the button to upload the tenth file and selects the "txt" file
+    When the user clicks the button to upload the tenth file and selects the "C1602" file
     Then the user waits 50000
-
-    Then the user clicks continue when files have finished uploading
+    Then the user clicks MFU continue
+#    Then the user clicks continue when files have finished uploading
     Then the user is on the Export CYA page
     Then the user clicks submit on the CYA page
     Then the user waits 5000
     Then the user copies the case reference number
     And the user should see 2 Hour SLA
-    Then the user will see text to withdraw
+    Then the user will see text to give-feedback
     Then the user waits 6000
     Then the user clicks the button to submit another case on the confirmation page they will go back to the start
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport    | transportName | name  | email              | phone         |
-      | 050 | K77899X | Withdrawal       | Route 2 | Human remains | RoadRoRoRail | TestVessel    | smith | aa_kaygcc@test.com | 0177 111 1111 |
+      | 100 | V76699X | New         | Route 2 | Human remains | RoadRoRoRail | TestVessel    | smith | aa_kaygcc@test.com | 0177 111 1111 |
 
   Scenario Outline: A user wants to complete a New Import journey
     Given the user logs into QA
@@ -87,22 +87,22 @@ Feature: Customs check - Export journey
     Then the user is on the Import CYA page
     And the user clicks submit on the CYA page
     And the user should see Maritime-Import SLA
-    Then the user will see text to cancel
+    Then the user will see text to give-feedback
     Then the user copies the case reference number
     Then the user waits 5000
     Then the user clicks the button to submit another case on the confirmation page they will go back to the start
 
     Examples:
-      | epu | entryNo | requestType  | route   | priority      | transport | transportName | name  | email            | phone       |
-      | 565 | 800416L | Cancellation | Route 1 | Human remains | Maritime  | train 1x      | agent | valid@test.co.uk | 01256888999 |
+      | epu | entryNo | requestType | route   | priority      | transport | transportName | name  | email            | phone       |
+      | 150 | 033445L | New         | Route 1 | Human remains | Maritime  | train 1x      | agent | valid@test.co.uk | 01256888999 |
 
   Scenario: Amend: A user adds a message and a document to a case (write response + upload)
     Given the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
-    Then the user enters a real case reference number PCI210325190750UDQO5C2
+    Then the user enters a real case reference number PCI2104061959KFPARPJP6
     When the user is on the how to respond page and selects writeAndUpload
     Then the user is on the write response page
-    And the user enters a response "sample message" and continues
+    And the user enters a response "ABCDEFHIJKLMNOPQRSTUVWXYZ abcdefhijklmnopqrstuvwxyz 1234567890 œ∑´´†¥¨^^πåß∂ƒ©˙∆˚¬Ω≈ç√∫~~" and continues
     Then the user is on the multi-file upload pages for a/an Amend journey
     When the user clicks the button to upload the first file and selects the "pdf" file
 
@@ -123,23 +123,24 @@ Feature: Customs check - Export journey
     Then the user clicks the button to add another document
     When the user clicks the button to upload the tenth file and selects the "ods" file
     Then the user waits 50000
-
-    Then the user clicks continue when files have finished uploading
+    Then the user clicks MFU continue
+#    Then the user clicks continue when files have finished uploading
     When the user clicks submit on the CYA page
     Then the user is on the Amend confirmation page
     Then the user waits 4000
     Then the user clicks the button to submit another case on the confirmation page they will go back to the start
 
   Scenario: Amend: A user adds a message and a document to a case (write response only)
-    Given the user navigates to the temporary start page for trader services and clicks start
+    Given the user logs into QA
+    When the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects Amend
     Then the user is on the case ref number page
-    Then the user enters a real case reference number PCI210325190750UDQO5C2
+    Then the user enters a real case reference number PCI2104061959KFPARPJP6
     When the user is on the how to respond page and selects writeOnly
-    And the user enters a response "sample message" and continues
+    And the user enters a response "!@£$%^&*()_+¡€#¢∞§¶•ªº–≠§±-=[];'\,./{}:"|<>?“‘…æ«≤≥æ`~" and continues
     When the user clicks submit on the CYA page
     Then the user waits 5000
-    Then the user clicks the button to submit another case on the confirmation page they will go back to the start
+#    Then the user clicks the button to submit another case on the confirmation page they will go back to the start
 
   #Legit EPUS
 #    410
