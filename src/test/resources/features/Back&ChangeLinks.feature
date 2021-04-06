@@ -27,8 +27,6 @@ Feature: Back Links & Change Links
     Then the user clicks the banner link to return to the landing page
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with Nothing
-    When the user clicks back
-    Then the user navigates to the temporary start page for trader services and clicks start
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | transportName | email   |
@@ -58,7 +56,11 @@ Feature: Back Links & Change Links
     Then the user enters an email address "<email>"
     And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
-
+    When the user clicks the button to upload the first file and selects the "doc" file
+    Then the user clicks continue when files have finished uploading
+    Then the user is on the Import CYA page
+    When the user clicks back
+    Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks back
     Then the user is on the Import contact details page
     And the details entered for name, email and phone number should be pre-filled with "<name>", "<email>" & ""
@@ -223,9 +225,13 @@ Feature: Back Links & Change Links
     Then the user is on the Export contact details page
     When the user enters a name "<name>"
     Then the user enters an email address "<email>"
-    Then the user clicks continue
-    And the user is on the multi-file upload pages for a/an New journey
-
+    And the user clicks continue
+    Then the user is on the multi-file upload pages for a/an New journey
+    When the user clicks the button to upload the first file and selects the "docx" file
+    Then the user clicks continue when files have finished uploading
+    Then the user is on the Export CYA page
+    When the user clicks back
+    Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks back
     Then the user is on the Export contact details page
     And the details entered for name, email and phone number should be pre-filled with "<name>", "<email>" & ""
@@ -409,6 +415,7 @@ Feature: Back Links & Change Links
     Then the user is on the Amend writeAndUpload review page and should see their responses
     Then the user clicks back
     Then the user is on the multi-file upload pages for a/an Amend journey
+
     Then the user clicks back
     Then the user is on the write response page
     And the details in the text box should be pre-filled with "<text>"

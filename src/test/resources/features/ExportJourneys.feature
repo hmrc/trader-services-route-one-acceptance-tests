@@ -21,7 +21,7 @@ Feature: Customs check - Export journeys
     And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     And the user will only see inset text for request type N/A
-    When the user clicks the button to upload the first file and selects the "pdf" file
+    When the user clicks the button to upload the first file and selects the "odt" file
     Then the user clicks continue when files have finished uploading
 
     Then the user is on the Export CYA page
@@ -44,8 +44,8 @@ Feature: Customs check - Export journeys
     And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
-      | epu | entryNo | requestType | route   | priority     | transport | transportName | email        | entryDateCYA |
-      | 123 | A23456A | New         | Route 1 | Live animals | Maritime  | Test Vessel   | abc@test.com | Today        |
+      | epu | entryNo | requestType | route   | transport | transportName | email        | entryDateCYA |
+      | 123 | A23456A | New         | Route 1 | Maritime  | Test Vessel   | abc@test.com | Today        |
 
   Scenario Outline: A user wants to complete a Cancellation Export RouteOne journey & see Air SLA
     Given the user navigates to the temporary start page for trader services and clicks start
@@ -68,7 +68,7 @@ Feature: Customs check - Export journeys
     And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     And the user will only see inset text for request type N/A
-    When the user clicks the button to upload the first file and selects the "pdf" file
+    When the user clicks the button to upload the first file and selects the "odp" file
     Then the user clicks continue when files have finished uploading
     Then the user is on the Export CYA page
     Then the user clicks submit on the CYA page
@@ -104,7 +104,7 @@ Feature: Customs check - Export journeys
     And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     And the user will only see inset text for request type N/A
-    When the user clicks the button to upload the first file and selects the "pdf" file
+    When the user clicks the button to upload the first file and selects the "ods" file
     Then the user clicks continue when files have finished uploading
     Then the user is on the Export CYA page
     Then the user clicks submit on the CYA page
@@ -210,7 +210,7 @@ Feature: Customs check - Export journeys
     And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     And the user will only see inset text for request type C1602
-    When the user clicks the button to upload the first file and selects the "pdf" file
+    When the user clicks the button to upload the first file and selects the "ppt" file
     Then the user clicks continue when files have finished uploading
     Then the user is on the Export CYA page
     Then the user clicks submit on the CYA page
@@ -239,7 +239,7 @@ Feature: Customs check - Export journeys
     And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     And the user will only see inset text for request type C1603
-    When the user clicks the button to upload the first file and selects the "pdf" file
+    When the user clicks the button to upload the first file and selects the "pptx" file
     Then the user clicks continue when files have finished uploading
     Then the user is on the Export CYA page
     Then the user clicks submit on the CYA page

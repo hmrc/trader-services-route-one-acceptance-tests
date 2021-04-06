@@ -24,7 +24,7 @@ Feature: Customs check - Import journeys
     And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     And the user will only see inset text for request type N/A
-    When the user clicks the button to upload the first file and selects the "pdf" file
+    When the user clicks the button to upload the first file and selects the "doc" file
     Then the user clicks continue when files have finished uploading
 
     Then the user is on the Import CYA page
@@ -90,7 +90,7 @@ Feature: Customs check - Import journeys
     When the user enters an email address "<email>"
     And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
-    When the user clicks the button to upload the first file and selects the "pdf" file
+    When the user clicks the button to upload the first file and selects the "docx" file
     Then the user clicks continue when files have finished uploading
     Then the user is on the Import CYA page
     And the user clicks submit on the CYA page
