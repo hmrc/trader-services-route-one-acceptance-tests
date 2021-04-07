@@ -2,7 +2,7 @@
 
 Feature: Customs check - Import journeys
 
-  Scenario Outline: A user wants to complete a New Import journey & see the Air SLA
+  Scenario Outline: A user wants to complete a New Import journey
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
     Then the user is on the entry details page
@@ -51,26 +51,7 @@ Feature: Customs check - Import journeys
       | 093 | 127756A | New         | Route 6 | Human remains | Yes  | Air       | Abc Testb | valid@test.com | 01234 567 899 | Today        |
 
 
-  Scenario Outline: Route-Hold: A user should reach the mandatory Transport page
-    Given the user navigates to the temporary start page for trader services and clicks start
-    Then the user is on the start page for trader services and selects New
-    Then the user is on the entry details page
-    When the user enters entry details "<epu>" and "<entryNo>"
-    And the user enters today's date for entryDate
-    When the user clicks continue
-    Then the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import Route Type page and selects <route>
-    When the user is on the Import YesNo Priority page and selects No
-    Then the user is on the ALVS page and selects No
-    When the user is on the Import transport type page and selects <transport>
-    Then the user is on the Import-Mandatory transport details page
-
-    Examples:
-      | epu | entryNo | requestType | route | transport |
-      | 123 | 123456A | New         | Hold  | Maritime  |
-
-
-  Scenario Outline: A user wants to complete a New Import journey & see the appropriate Maritime SLA
+  Scenario Outline: A user wants to complete a Cancellation Import journey
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
     Then the user is on the entry details page
@@ -101,3 +82,21 @@ Feature: Customs check - Import journeys
     Examples:
       | epu | entryNo | requestType  | route   | priority      | transport | name  | email          |
       | 555 | 151511c | Cancellation | Route 6 | Human remains | Maritime  | Mr. F | valid@test.com |
+
+  Scenario Outline: Route-Hold: A user should reach the mandatory Transport page
+    Given the user navigates to the temporary start page for trader services and clicks start
+    Then the user is on the start page for trader services and selects New
+    Then the user is on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
+    And the user enters today's date for entryDate
+    When the user clicks continue
+    Then the user is on the Import Request Type page and selects <requestType>
+    Then the user is on the Import Route Type page and selects <route>
+    When the user is on the Import YesNo Priority page and selects No
+    Then the user is on the ALVS page and selects No
+    When the user is on the Import transport type page and selects <transport>
+    Then the user is on the Import-Mandatory transport details page
+
+    Examples:
+      | epu | entryNo | requestType | route | transport |
+      | 123 | 123456A | New         | Hold  | Maritime  |

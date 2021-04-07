@@ -57,7 +57,7 @@ Feature: Customs check - Export journey
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport    | transportName | name  | email              | phone         |
-      | 100 | V76699X | New         | Route 2 | Human remains | RoadRoRoRail | TestVessel    | smith | aa_kaygcc@test.com | 0177 111 1111 |
+      | 100 | V76699X | C1601       | Route 6 | Human remains | RoadRoRoRail | TestVessel    | smith | aa_kaygcc@test.com | 0177 111 1111 |
 
   Scenario Outline: A user wants to complete a New Import journey
     Given the user logs into QA
@@ -94,7 +94,7 @@ Feature: Customs check - Export journey
 
     Examples:
       | epu | entryNo | requestType | route   | priority      | transport | transportName | name  | email            | phone       |
-      | 150 | 033445L | New         | Route 1 | Human remains | Maritime  | train 1x      | agent | valid@test.co.uk | 01256888999 |
+      | 150 | 993445L | New         | Route 1 | Human remains | Maritime  | train 1x      | agent | valid@test.co.uk | 01256888999 |
 
   Scenario: Amend: A user adds a message and a document to a case (write response + upload)
     Given the user is on the start page for trader services and selects Amend

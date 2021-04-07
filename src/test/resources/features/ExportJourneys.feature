@@ -1,7 +1,7 @@
 @TraderService
 Feature: Customs check - Export journeys
 
-  Scenario Outline: A user wants to complete a New Export RouteOne journey & see RoRo SLA
+  Scenario Outline: A user wants to complete a New Export RouteOne journey
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
     Then the user is on the entry details page
@@ -47,7 +47,7 @@ Feature: Customs check - Export journeys
       | epu | entryNo | requestType | route   | transport | transportName | email        | entryDateCYA |
       | 123 | A23456A | New         | Route 1 | Maritime  | Test Vessel   | abc@test.com | Today        |
 
-  Scenario Outline: A user wants to complete a Cancellation Export RouteOne journey & see Air SLA
+  Scenario Outline: A user wants to complete a Cancellation Export RouteOne journey
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
     Then the user is on the entry details page
@@ -74,7 +74,6 @@ Feature: Customs check - Export journeys
     Then the user clicks submit on the CYA page
     Then the user is on the New confirmation page
     Then the user will see text to cancel
-    And the user waits 6000
 #    And the user should see 2 Hour SLA
     When the user clicks the button to submit another case on the confirmation page they will go back to the start
     And the last selected option for journey type should be pre filled with Nothing
@@ -83,7 +82,7 @@ Feature: Customs check - Export journeys
       | epu | entryNo | requestType  | route   | priority      | transport | transportName | email   |
       | 123 | A23456A | Cancellation | Route 1 | Human remains | Air       | Test Vessel   | a@a.com |
 
-  Scenario Outline: A user wants to complete a Withdrawal Export RouteOne journey & see Maritime SLA
+  Scenario Outline: A user wants to complete a Withdrawal Export RouteOne journey
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
     Then the user is on the entry details page
@@ -110,7 +109,6 @@ Feature: Customs check - Export journeys
     Then the user clicks submit on the CYA page
     Then the user is on the New confirmation page
     Then the user will see text to withdraw
-    And the user waits 6000
 #    And the user should see 2 Hour SLA
     When the user clicks the button to submit another case on the confirmation page they will go back to the start
     And the last selected option for journey type should be pre filled with Nothing
@@ -147,10 +145,8 @@ Feature: Customs check - Export journeys
     Then the user clicks submit on the CYA page
     Then the user is on the New confirmation page
     And the user should see Hold SLA
-    And the user waits 6000
     When the user clicks the button to submit another case on the confirmation page they will go back to the start
     And the last selected option for journey type should be pre filled with Nothing
-
 
     Examples:
       | epu | entryNo | requestType | route | transport | transportName | email                 |
@@ -177,12 +173,6 @@ Feature: Customs check - Export journeys
     And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     And the user will only see inset text for request type C1601
-    When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user clicks continue when files have finished uploading
-    Then the user is on the Export CYA page
-    Then the user clicks submit on the CYA page
-    Then the user is on the New confirmation page
-    Then the user will see text to give-feedback
 
     Examples:
       | epu | entryNo | requestType | route   | transport | transportName |
@@ -210,12 +200,6 @@ Feature: Customs check - Export journeys
     And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     And the user will only see inset text for request type C1602
-    When the user clicks the button to upload the first file and selects the "ppt" file
-    Then the user clicks continue when files have finished uploading
-    Then the user is on the Export CYA page
-    Then the user clicks submit on the CYA page
-    Then the user is on the New confirmation page
-    Then the user will see text to give-feedback
 
     Examples:
       | epu | entryNo | requestType | route   | transport    | transportName |
@@ -239,12 +223,6 @@ Feature: Customs check - Export journeys
     And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     And the user will only see inset text for request type C1603
-    When the user clicks the button to upload the first file and selects the "pptx" file
-    Then the user clicks continue when files have finished uploading
-    Then the user is on the Export CYA page
-    Then the user clicks submit on the CYA page
-    Then the user is on the New confirmation page
-    Then the user will see text to give-feedback
 
     Examples:
       | epu | entryNo | requestType | route   | transport    |
