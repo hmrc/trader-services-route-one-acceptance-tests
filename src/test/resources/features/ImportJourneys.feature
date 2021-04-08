@@ -45,10 +45,11 @@ Feature: Customs check - Import journeys
 #    And the user should see 2 Hour SLA
     When the user clicks the button to submit another case on the confirmation page they will go back to the start
     And the last selected option for journey type should be pre filled with Nothing
+    When the user clicks the deskpro link they will be redirected to the appropriate page
 
     Examples:
-      | epu | entryNo | requestType | route   | priority      | ALVS | transport | name      | email          | phone         | entryDateCYA |
-      | 093 | 127756A | New         | Route 6 | Human remains | Yes  | Air       | Abc Testb | valid@test.com | 01234 567 899 | Today        |
+      | epu | entryNo | requestType | route   | priority      | ALVS | transport | name      | email            | phone         | entryDateCYA |
+      | 093 | 127756A | New         | Route 6 | Human remains | Yes  | Air       | Abc Testb | valida@email.com | 01234 567 899 | Today        |
 
 
   Scenario Outline: A user wants to complete a Cancellation Import journey
@@ -77,13 +78,15 @@ Feature: Customs check - Import journeys
     And the user clicks submit on the CYA page
     Then the user is on the New confirmation page
     Then the user will see text to cancel
+    When the user clicks the confirmation feedback link they will be redirected to the appropriate page
+
 #    And the user should see Maritime-Import SLA
 
     Examples:
       | epu | entryNo | requestType  | route   | priority      | transport | name  | email          |
       | 555 | 151511c | Cancellation | Route 6 | Human remains | Maritime  | Mr. F | valid@test.com |
 
-  Scenario Outline: Route-Hold: A user should reach the mandatory Transport page
+  Scenario Outline: Route-Hold: A user should reach the mandatory Transport page (+ lang toggle check)
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
     Then the user is on the entry details page
@@ -96,6 +99,8 @@ Feature: Customs check - Import journeys
     Then the user is on the ALVS page and selects No
     When the user is on the Import transport type page and selects <transport>
     Then the user is on the Import-Mandatory transport details page
+    When the user clicks the cy toggle it should translate the page
+    When the user clicks the en toggle it should translate the page
 
     Examples:
       | epu | entryNo | requestType | route | transport |

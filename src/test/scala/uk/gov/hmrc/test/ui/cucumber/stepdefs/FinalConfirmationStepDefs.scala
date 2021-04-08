@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import play.twirl.api.TemplateMagic.anyToDefault
 import uk.gov.hmrc.test.ui.pages.{AmendPages, BasePage, FinalConfirmationPage, LandingPage}
 
 class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
@@ -38,7 +37,6 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     assertElementTextContains("Your customs check submission receipt", receipt)
     //    assertElementTextContains(nowFormatted, findElementByCss(".govuk-panel"))
     isElementVisible(printPdfIcon).shouldBe(true)
-    isElementVisible(savePdfIcon).shouldBe(true)
     isElementVisible(saveHtmlIcon).shouldBe(true)
   }
 
@@ -50,16 +48,9 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     }
   }
 
-
-  //  todo sort out deprecated import
-  Then("""^the user copies the case reference number""") { () =>
-    val caseRefOutput = caseRefNo.getText.copy()
+  Then("""^output the case reference number""") { () =>
+    val caseRefOutput = caseRefNo.getText
     print(caseRefOutput)
-  }
-
-  Then("""^the user pastes the case reference number and continues""") { () =>
-    writeById(caseRefNo, "")
-    clickContinueCaseRef()
   }
 
   When("""^the user clicks the button to submit another case on the confirmation page they will go back to the start""") { () =>
@@ -98,4 +89,3 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     }
   }
 }
-

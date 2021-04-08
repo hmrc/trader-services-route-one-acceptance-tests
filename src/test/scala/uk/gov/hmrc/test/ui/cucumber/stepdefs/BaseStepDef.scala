@@ -21,13 +21,13 @@ import org.openqa.selenium.WebElement
 import org.scalatest.Matchers
 import org.scalatest.concurrent.Eventually
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import uk.gov.hmrc.test.ui.pages.{BasePage, EntryDetailsPage, TransportQuestionsPage}
+import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.webdriver.SingletonDriver
 
 import scala.util.Try
 
 class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with Eventually
-  with Matchers with EntryDetailsPage with TransportQuestionsPage {
+  with Matchers with EntryDetailsPage with TransportQuestionsPage with AmendPages with LandingPage {
 
   sys.addShutdownHook {
     Try(SingletonDriver.closeInstance)
@@ -58,8 +58,59 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     clickBack()
   }
 
+  And("""^the user clicks the (.*) toggle it should translate the page""") { (language: String) =>
+    clickByCSS("  #switch-to-" + s"$language" + "> span:nth-child(2)")
+
+    language match {
+      case "cy" => assertElementText("Anfon dogfennau i’w gwirio gan y tollau", bannerServiceName())
+      case "en" => assertElementText("Send documents for a customs check", bannerServiceName())
+    }
+  }
+
+  And("""^the user signs out they will be on the give feedback page""") { () =>
+    clickSignOut()
+    confirmUrl(giveFeedbackUrl)
+  }
+
   When("""^the user navigates to the following "(.*)"""") { (url: String) =>
     navigateTo(traderServicesBaseUrl + url)
+  }
+
+  When("""^the user clicks the (.*) link they will be redirected to the appropriate page$""") { (link: String) =>
+
+    link match {
+      case "confirmation feedback" => clickGiveFeedbackConfirmation()
+        confirmUrl(giveFeedbackUrl)
+
+      case "amend NCH" => caseRefReveal.click()
+        clickNchAmendLink()
+        confirmUrl(nchAmendUrl)
+
+      case "confirmation NCH" => clickNchConfirmation()
+        confirmUrl(nchConfirmationUrl)
+
+      case "chief unavailable" => clickChiefUnavailable()
+        confirmUrl(chiefUnavailableUrl)
+
+      case "gov.uk icon" => clickGovUkIcon()
+        confirmUrl(govukExternal)
+
+      case "service name" => bannerServiceName().click()
+        confirmUrl(traderServicesUrl)
+
+      case "banner feedback" => clickGiveFeedbackBanner()
+        confirmUrl(giveFeedbackBannerUrl)
+
+      case "deskpro" => clickDeskproLink()
+        switchToNewTab(2)
+        confirmUrl(deskproUrl)
+        closeNewTab()
+
+      case "UR banner" => clickURLink()
+        switchToNewTab(2)
+        confirmUrl(urBannerLink)
+        closeNewTab()
+    }
   }
 
   When("""^the user logs into QA""") {

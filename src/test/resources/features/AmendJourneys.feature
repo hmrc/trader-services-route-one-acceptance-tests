@@ -48,3 +48,6 @@ Feature: Amend journeys
     When the user clicks submit on the CYA page
     Then the user is on the Amend confirmation page
     When the user clicks the button to submit another case on the confirmation page they will go back to the start
+    Then the user is on the start page for trader services and selects Amend
+    Then the user is on the case ref number page
+    Then the user clicks the amend NCH link they will be redirected to the appropriate page

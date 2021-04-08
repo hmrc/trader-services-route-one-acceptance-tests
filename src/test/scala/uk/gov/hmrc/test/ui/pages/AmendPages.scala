@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.{By, WebElement}
+import org.openqa.selenium.WebElement
 
 trait AmendPages extends BasePage {
 
@@ -25,7 +25,7 @@ trait AmendPages extends BasePage {
 
   def caseRefInput: WebElement = findElementByCss("#caseReferenceNumber")
 
-  def amendNCHLink(): Unit = driver.findElement(By.linkText("National clearance hub"))
+  def caseRefReveal: WebElement = findElementByCss(".govuk-details__summary-text")
 
   val urlHowToSend: String = traderServicesBaseUrl + amendUrl + "/type-of-amendment"
   val howToSendHeading: String = "How do you want to send us more information?"
@@ -33,6 +33,6 @@ trait AmendPages extends BasePage {
   val urlWriteResponse: String = traderServicesBaseUrl + amendUrl + "/write-response"
   val writeResponseHeading: String = "Write a response to a query from HMRC"
 
-  def textInput: WebElement = driver.findElement(By.cssSelector("#responseText"))
+  def textInput: WebElement = findElementByCss("#responseText")
 
 }

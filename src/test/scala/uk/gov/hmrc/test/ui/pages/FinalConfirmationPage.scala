@@ -16,20 +16,20 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.{By, WebElement}
+import org.openqa.selenium.WebElement
 
 trait FinalConfirmationPage extends BasePage {
 
-  val urlConfirmation = traderServicesBaseUrl + "/new/confirmation"
+  val urlConfirmation: String = traderServicesBaseUrl + "/new/confirmation"
   val headingConfirmation = "You’ve submitted your documents"
 
-  val urlDuplicate = traderServicesBaseUrl + "/new/case-already-exists"
+  val urlDuplicate: String = traderServicesBaseUrl + "/new/case-already-exists"
   val headingDuplicate = "This case already exists"
 
-  val urlAmendConfirm = traderServicesBaseUrl + amendUrl + "/confirmation"
+  val urlAmendConfirm: String = traderServicesBaseUrl + amendUrl + "/confirmation"
   val headingAmendConfirm = "You’ve submitted your extra information"
 
-  def clickLinkToAmend(): Unit = driver.findElement(By.linkText("add more information or documents to the existing case")).click()
+  def clickLinkToAmend(): Unit = clickHref("a[href*='send-documents-for-customs-check/add']")
 
   def caseRefNo: WebElement = findElementByCss(".govuk-panel__body > strong:nth-child(2)")
 
@@ -40,8 +40,7 @@ trait FinalConfirmationPage extends BasePage {
   val holdSLA = "When your transportation arrives, we’ll begin the document checks. Once our checks are complete, you’ll hear from us through CHIEF or your declaration software."
 
   val printPdfIcon = ".print-page"
-  val savePdfIcon = "li.action-buttons__item:nth-child(2) > a:nth-child(1)"
-  val saveHtmlIcon = "li.action-buttons__item:nth-child(3) > a:nth-child(1)"
+  val saveHtmlIcon = "a.action-buttons__button"
 
   val cancelPara = "You will now need to cancel this entry in CHIEF."
   val withdrawPara = "You will now need to withdraw this entry in CHIEF."
@@ -49,5 +48,4 @@ trait FinalConfirmationPage extends BasePage {
 
   def fifthElement: WebElement = findElementByCss("p.govuk-body:nth-child(5)")
 
-  //  todo add link checks
 }

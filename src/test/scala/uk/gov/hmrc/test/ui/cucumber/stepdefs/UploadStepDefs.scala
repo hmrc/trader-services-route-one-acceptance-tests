@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import org.openqa.selenium.WebElement
 import uk.gov.hmrc.test.ui.pages.{BasePage, UploadPages}
 
 

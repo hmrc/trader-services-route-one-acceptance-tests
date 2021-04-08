@@ -40,8 +40,7 @@ Feature: Customs check - Export journeys
     Then the user is on the New confirmation page
     Then the user will see text to give-feedback
 #    And the user should see 2 Hour SLA
-    When the user clicks the button to submit another case on the confirmation page they will go back to the start
-    And the last selected option for journey type should be pre filled with Nothing
+    When the user clicks the confirmation NCH link they will be redirected to the appropriate page
 
     Examples:
       | epu | entryNo | requestType | route   | transport | transportName | email        | entryDateCYA |
@@ -75,8 +74,7 @@ Feature: Customs check - Export journeys
     Then the user is on the New confirmation page
     Then the user will see text to cancel
 #    And the user should see 2 Hour SLA
-    When the user clicks the button to submit another case on the confirmation page they will go back to the start
-    And the last selected option for journey type should be pre filled with Nothing
+    When the user clicks the chief unavailable link they will be redirected to the appropriate page
 
     Examples:
       | epu | entryNo | requestType  | route   | priority      | transport | transportName | email   |
@@ -145,8 +143,7 @@ Feature: Customs check - Export journeys
     Then the user clicks submit on the CYA page
     Then the user is on the New confirmation page
     And the user should see Hold SLA
-    When the user clicks the button to submit another case on the confirmation page they will go back to the start
-    And the last selected option for journey type should be pre filled with Nothing
+    When the user clicks the gov.uk icon link they will be redirected to the appropriate page
 
     Examples:
       | epu | entryNo | requestType | route | transport | transportName | email                 |
@@ -173,6 +170,8 @@ Feature: Customs check - Export journeys
     And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     And the user will only see inset text for request type C1601
+    When the user clicks the service name link they will be redirected to the appropriate page
+    And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
       | epu | entryNo | requestType | route   | transport | transportName |
@@ -200,6 +199,7 @@ Feature: Customs check - Export journeys
     And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     And the user will only see inset text for request type C1602
+    When the user clicks the banner feedback link they will be redirected to the appropriate page
 
     Examples:
       | epu | entryNo | requestType | route   | transport    | transportName |
@@ -223,6 +223,7 @@ Feature: Customs check - Export journeys
     And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     And the user will only see inset text for request type C1603
+    When the user clicks the UR banner link they will be redirected to the appropriate page
 
     Examples:
       | epu | entryNo | requestType | route   | transport    |
