@@ -98,4 +98,3 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     }
   }
 }
-

@@ -25,11 +25,4 @@ trait BrowserDriver extends LazyLogging {
 
   def driver: WebDriver = SingletonDriver.getInstance()
 
-
-//  var options = new ChromeOptions()
-//  options.addArguments("test-type")
-//  options.addArguments("--proxy-server=http://localhost:11000")
-//
-//  var zapDriver = new ChromeDriver(options)
-
 }

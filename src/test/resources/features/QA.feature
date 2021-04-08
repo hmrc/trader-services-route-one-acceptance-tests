@@ -140,6 +140,7 @@ Feature: Customs check - Export journey
     And the user enters a response "!@£$%^&*()_+¡€#¢∞§¶•ªº–≠§±-=[];'\,./{}:"|<>?“‘…æ«≤≥æ`~" and continues
     When the user clicks submit on the CYA page
     Then the user waits 5000
+    When the user signs out they will be on the give feedback page
 #    Then the user clicks the button to submit another case on the confirmation page they will go back to the start
 
   #Legit EPUS

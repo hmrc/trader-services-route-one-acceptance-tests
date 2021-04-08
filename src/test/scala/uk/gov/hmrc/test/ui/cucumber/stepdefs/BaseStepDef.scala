@@ -21,13 +21,13 @@ import org.openqa.selenium.WebElement
 import org.scalatest.Matchers
 import org.scalatest.concurrent.Eventually
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import uk.gov.hmrc.test.ui.pages.{BasePage, EntryDetailsPage, TransportQuestionsPage}
+import uk.gov.hmrc.test.ui.pages.{AmendPages, BasePage, EntryDetailsPage, LandingPage, TransportQuestionsPage}
 import uk.gov.hmrc.webdriver.SingletonDriver
 
 import scala.util.Try
 
 class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with Eventually
-  with Matchers with EntryDetailsPage with TransportQuestionsPage {
+  with Matchers with EntryDetailsPage with TransportQuestionsPage with AmendPages with LandingPage {
 
   sys.addShutdownHook {
     Try(SingletonDriver.closeInstance)
@@ -58,8 +58,37 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     clickBack()
   }
 
+  And("""^the user signs out they will be on the give feedback page""") { () =>
+    clickSignOut()
+    confirmUrl(giveFeedbackUrl)
+  }
+
   When("""^the user navigates to the following "(.*)"""") { (url: String) =>
     navigateTo(traderServicesBaseUrl + url)
+  }
+
+  When("""^the user clicks the (.*) they will be redirected to the appropriate page$""") { (link: String) =>
+
+    link match {
+      case "feedback" => clickGiveFeedback()
+        confirmUrl(giveFeedbackUrl)
+
+      case "amend NCH" => caseRefReveal.click()
+        clickNchAmendLink()
+        confirmUrl(nchAmendUrl)
+
+      case "confirmation NCH" => clickNchConfirmation()
+        confirmUrl(nchConfirmationUrl)
+
+      case "chief unavailable" => clickChiefUnavailable()
+        confirmUrl(chiefUnavailableUrl)
+
+      case "gov.uk icon" => clickGovUkIcon()
+        confirmUrl(govukExternal)
+
+      case "service name" => clickBannerServiceName()
+        confirmUrl(traderServicesUrl)
+    }
   }
 
   When("""^the user logs into QA""") {

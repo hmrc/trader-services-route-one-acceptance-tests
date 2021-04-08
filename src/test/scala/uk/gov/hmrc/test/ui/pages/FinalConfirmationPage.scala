@@ -20,15 +20,16 @@ import org.openqa.selenium.{By, WebElement}
 
 trait FinalConfirmationPage extends BasePage {
 
-  val urlConfirmation = traderServicesBaseUrl + "/new/confirmation"
+  val urlConfirmation: String = traderServicesBaseUrl + "/new/confirmation"
   val headingConfirmation = "You’ve submitted your documents"
 
-  val urlDuplicate = traderServicesBaseUrl + "/new/case-already-exists"
+  val urlDuplicate: String = traderServicesBaseUrl + "/new/case-already-exists"
   val headingDuplicate = "This case already exists"
 
-  val urlAmendConfirm = traderServicesBaseUrl + amendUrl + "/confirmation"
+  val urlAmendConfirm: String = traderServicesBaseUrl + amendUrl + "/confirmation"
   val headingAmendConfirm = "You’ve submitted your extra information"
 
+  //todo
   def clickLinkToAmend(): Unit = driver.findElement(By.linkText("add more information or documents to the existing case")).click()
 
   def caseRefNo: WebElement = findElementByCss(".govuk-panel__body > strong:nth-child(2)")
@@ -49,5 +50,4 @@ trait FinalConfirmationPage extends BasePage {
 
   def fifthElement: WebElement = findElementByCss("p.govuk-body:nth-child(5)")
 
-  //  todo add link checks
 }

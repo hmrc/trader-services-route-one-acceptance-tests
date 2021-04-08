@@ -77,6 +77,8 @@ Feature: Customs check - Import journeys
     And the user clicks submit on the CYA page
     Then the user is on the New confirmation page
     Then the user will see text to cancel
+    When the user clicks the feedback they will be redirected to the appropriate page
+
 #    And the user should see Maritime-Import SLA
 
     Examples:

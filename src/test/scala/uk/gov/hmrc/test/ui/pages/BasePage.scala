@@ -21,7 +21,7 @@ import java.util.UUID
 import java.util.concurrent.TimeUnit
 
 import org.openqa.selenium._
-import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
+import org.openqa.selenium.support.ui.{ExpectedCondition, ExpectedConditions, FluentWait}
 import org.scalatest.{Assertion, Matchers}
 import uk.gov.hmrc.test.ui.conf.Configuration.environment
 import uk.gov.hmrc.test.ui.conf.Environment
@@ -51,7 +51,6 @@ trait BasePage extends Matchers with BrowserDriver {
   val exportjourneyUrl: String = "/new/export"
   val amendUrl: String = "/add"
 
-  val govukExternal = "https://www.gov.uk/"
   val exitSurvey = host(9514) + "/feedback/send-documents-for-customs-check"
 
   def confirmUrl(url: String): Unit = {
@@ -97,17 +96,6 @@ trait BasePage extends Matchers with BrowserDriver {
   def notFindElementByCss(css: String): WebElement = {
     fluentWait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(css))))
     driver.findElement(By.cssSelector(css))
-  }
-
-  def findElementByLink(href: String): Unit = {
-    fluentWait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText(href))))
-    driver.findElement(By.linkText(href))
-  }
-
-  def findElementByHref(hrefValue: String, hrefcss: WebElement): Unit = {
-    fluentWait.until(ExpectedConditions.visibilityOf(hrefcss))
-    val href = hrefcss.getAttribute("href")
-    assert(href == hrefValue, s"Heading was '$href' but expected '$hrefValue'")
   }
 
   def navigateTo(url: String): Unit = driver.navigate().to(url)
@@ -172,30 +160,60 @@ trait BasePage extends Matchers with BrowserDriver {
   def assertElementIsNotVisibleById(id: String): Unit = {
     driver.manage.timeouts.implicitlyWait(1, TimeUnit.SECONDS)
     assert(driver.findElements(By.id(id)).size() == 0, message(s"The element with id $id was visible. Expected not visible"))
-    driver.manage.timeouts.implicitlyWait(1, TimeUnit.SECONDS)
   }
+
+
+
+  //Handoff check urls
+
+  //Banner
+  def clickBannerServiceName(): Unit = clickByCSS(".govuk-header__link--service-name")
+
+  def clickGovUkIcon(): Unit = clickByCSS(".govuk-header__logotype-text")
+
+  val govukExternal = "https://www.gov.uk/"
+
+  //Confirmation pages
+  def clickGiveFeedback(): Unit = clickHref("a[href*='/feedback/send-documents-for-customs-check']")
+
+  lazy val giveFeedbackUrl = "/feedback/send-documents-for-customs-check"
+
+  def clickNchConfirmation(): Unit = clickHref("a[href*='national-clearance-hub-for-goods-entering-leaving-or-transiting-the-eu']")
+
+  lazy val nchConfirmationUrl = "https://www.gov.uk/guidance/national-clearance-hub-for-goods-entering-leaving-or-transiting-the-eu"
+
+  def clickChiefUnavailable(): Unit = clickHref("a[href*='/import-and-export-presentation-of-goods-for-export-arrival-c1601']")
+
+  lazy val chiefUnavailableUrl = "https://www.gov.uk/government/publications/import-and-export-presentation-of-goods-for-export-arrival-c1601"
+
+  //Amend - case ref page
+  def clickNchAmendLink(): Unit = clickHref("a[href*='national-clearance-hub']")
+
+  val nchAmendUrl = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-clearance-hub"
+  //todo banner feedback & deskpro open on new TAB?
+
 
   //Time and date
   lazy val todayDate: LocalDate = LocalDate.now()
 
-  val today = LocalDate.now
-  val (d, m, y) = (today.getDayOfMonth(), today.getMonthValue(), today.getYear())
-  val (day, month, year) = (today.getDayOfMonth().toString, today.getMonthValue().toString, today.getYear().toString)
+  lazy val today: LocalDate = LocalDate.now
+  lazy val (d, m, y) = (today.getDayOfMonth, today.getMonthValue, today.getYear)
+  lazy val (day, month, year) = (today.getDayOfMonth.toString, today.getMonthValue.toString, today.getYear.toString)
 
-  val dayFormatted = f"$d%02d"
-  val monthFormatted = f"$m%02d"
+  lazy val dayFormatted = f"$d%02d"
+  lazy val monthFormatted = f"$m%02d"
 
   def todayDateCYA: String = {
     s"${todayDate.getDayOfMonth.toString} ${todayDate.getMonth.toString.toLowerCase.capitalize} ${todayDate.getYear.toString}"
   }
 
   lazy val nowTime: LocalTime = LocalTime.now()
-  lazy val nowHrs = nowTime.getHour
-  lazy val nowMin = nowTime.getMinute
-  lazy val sla2Hour = nowTime.plusHours(2).getHour
-  lazy val sla3Hour = nowTime.plusHours(3).getHour
-  lazy val min = nowTime.getMinute
-  lazy val min1 = nowTime.minusMinutes(1).getMinute
+  lazy val nowHrs: Int = nowTime.getHour
+  lazy val nowMin: Int = nowTime.getMinute
+  lazy val sla2Hour: Int = nowTime.plusHours(2).getHour
+  lazy val sla3Hour: Int = nowTime.plusHours(3).getHour
+  lazy val min: Int = nowTime.getMinute
+  lazy val min1: Int = nowTime.minusMinutes(1).getMinute
 
   lazy val nowFormatted = f"$nowHrs%02d:$nowMin%02d"
   lazy val sl2hrFormatted = f"$sla2Hour%02d:$min%02d"
@@ -204,13 +222,13 @@ trait BasePage extends Matchers with BrowserDriver {
   lazy val sla3hrFormatted = f"$sla3Hour%02d:$min%02d"
   lazy val sla3hrMin = f"$sla3Hour%02d:$min1%02d"
 
-  lazy val threePm = LocalTime.parse("15:00:00.00")
-  lazy val midnight = LocalTime.parse("00:00:00.00")
-  lazy val eightAm = LocalTime.parse("08:00:00.00")
+  lazy val threePm: LocalTime = LocalTime.parse("15:00:00.00")
+  lazy val midnight: LocalTime = LocalTime.parse("00:00:00.00")
+  lazy val eightAm: LocalTime = LocalTime.parse("08:00:00.00")
 
-  lazy val between3pmAndMidnight = nowTime.isAfter(threePm) && nowTime.isBefore(midnight)
-  lazy val betweenMidnightAnd8am = nowTime.isAfter(midnight) && nowTime.isBefore(eightAm)
-  lazy val between8amAnd3pm = nowTime.isAfter(eightAm) && nowTime.isBefore(threePm)
+  lazy val between3pmAndMidnight: Boolean = nowTime.isAfter(threePm) && nowTime.isBefore(midnight)
+  lazy val betweenMidnightAnd8am: Boolean = nowTime.isAfter(midnight) && nowTime.isBefore(eightAm)
+  lazy val between8amAnd3pm: Boolean = nowTime.isAfter(eightAm) && nowTime.isBefore(threePm)
 
   //todo check this works
   var lastUsedTestEmail: String = ""
@@ -221,11 +239,11 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   //Agent-stubs
-  def userid: WebElement = driver.findElement(By.id("userId"))
+  def userId: WebElement = driver.findElement(By.id("userId"))
 
-  def planetid: WebElement = driver.findElement(By.id("planetId"))
+  def planetId: WebElement = driver.findElement(By.id("planetId"))
 
-  def signinBtn: WebElement = driver.findElement(By.id("signIn"))
+  def signInButton: WebElement = driver.findElement(By.id("signIn"))
 
   def destroyPlanet: WebElement = driver.findElement(By.cssSelector("#destroy-planet"))
 
@@ -234,9 +252,9 @@ trait BasePage extends Matchers with BrowserDriver {
   def enrollment: WebElement = findElementById("principalEnrolments[0].identifiers[0].value")
 
   def login(): Unit = {
-    userid.sendKeys("User1")
-    planetid.sendKeys("Planet1")
-    signinBtn.click()
+    userId.sendKeys("User1")
+    planetId.sendKeys("Planet1")
+    signInButton.click()
   }
 
   def createUser(): Unit = {

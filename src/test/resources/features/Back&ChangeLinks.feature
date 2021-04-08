@@ -1,37 +1,6 @@
 @TraderService
 Feature: Back Links & Change Links
 
-## RestartCall
-#  Scenario Outline: A user user goes back to the start after uploading a file (information cleared)
-#    Given the user navigates to the temporary start page for trader services and clicks start
-#    Then the user is on the start page for trader services and selects New
-#    Then the user is on the entry details page
-#    When the user enters entry details "<epu>" and "<entryNo>"
-#    And the user enters today's date for entryDate
-#    And the user clicks continue
-#    Then the user is on the Export Request Type page and selects <requestType>
-#    Then the user is on the Export Route Type page and selects <route>
-#    Then the user is on the Export YesNo Priority page and selects Yes
-#    When the user is on the Export Priority Goods page and selects <priority>
-#    Then the user is on the Export transport type page and selects <transport>
-#    Then the user is on the Export-Optional transport details page
-#    Then the user enters "<transportName>" for transport name
-#    And the user enters today's date for transportDateDeparture
-#    Then the user clicks continue
-#    Then the user is on the Export contact details page
-#    And the user enters an email address "<email>"
-#    And the user clicks continue
-#    Then the user is on the multi-file upload pages for a/an New journey
-#    When the user clicks the button to upload the first file and selects the "pdf" file
-#    Then the user clicks continue when files have finished uploading
-#    Then the user clicks the banner link to return to the landing page
-#    Then the user is on the start page for trader services
-#    And the last selected option for journey type should be pre filled with Nothing
-#
-#    Examples:
-#      | epu | entryNo | requestType | route   | priority      | transport | transportName | email   |
-#      | 123 | A23456A | New         | Route 1 | Human remains | Maritime  | Test Vessel   | a@a.com |
-
 #    Import
   Scenario Outline: Import: A user wants to go back through the journey
     Given the user navigates to the temporary start page for trader services and clicks start
@@ -140,23 +109,25 @@ Feature: Back Links & Change Links
     Then the user is on the Import CYA page
     When the user answered YesToPriority then they should see the correct responses for the Import journey "<priority>", "No" & "Air"
 
+    When the user clicks the change link for Documents
+    Then the user is on the multi-file upload pages for a/an New journey
+    And the user clicks the button to upload the second file and selects the "docx" file
+    Then the user clicks continue when files have finished uploading
+
     When the user clicks the change link for ContactDetails
     Then the user is on the Import contact details page
     And the details entered for name, email and phone number should be pre-filled with "<name>", "<email>" & "<phoneNo>"
     Then the user enters a name ""
     Then the user enters a phone number ""
     Then the user clicks continue
-    Then the user is on the Import CYA page
 
     When the user clicks the change link for Transport
     Then the user is on the Import transport type page and selects <transport>
-    Then the user is on the Import CYA page
 
     When the user clicks the change link for Vessel
     Then the user is on the Import-Optional transport details page
     And the user enters "<transportName>" for transport name
     When the user clicks continue
-    Then the user is on the Import CYA page
 
     When the user clicks the change link for ALVS
     Then the user is on the ALVS page and selects <ALVS>
@@ -164,7 +135,6 @@ Feature: Back Links & Change Links
 
     When the user clicks the change link for PriorityYN
     Then the user is on the Import YesNo Priority page and selects No
-    Then the user is on the Import CYA page
 
     When the user clicks the change link for Route
     Then the user is on the Import Route Type page and selects <route>
@@ -183,7 +153,6 @@ Feature: Back Links & Change Links
 
     When the user clicks the change link for Request
     Then the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import CYA page
 
     Then the user should see the Import Request Type row & the correct response <requestType> on the CYA page
     And the user should see the Route row & the correct response Hold (for pre-lodged requests) on the CYA page
@@ -308,21 +277,17 @@ Feature: Back Links & Change Links
 
     When the user clicks the change link for Request
     Then the user is on the Export Request Type page and selects <requestType>
-    Then the user is on the Export CYA page
 
     When the user clicks the change link for Route
     Then the user is on the Export Route Type page and selects <route>
-    Then the user is on the Export CYA page
 
     When the user clicks the change link for PriorityYN
     Then the user is on the Export YesNo Priority page and selects Yes
     Then the user is on the Export Priority Goods page and selects <priority>
-    Then the user is on the Export CYA page
 
     When the user clicks the change link for PriorityGoods
     And the last selected option for priority goods should be pre filled with <priority>
     And the user clicks continue
-    Then the user is on the Export CYA page
 
     When the user clicks the change link for Vessel
     And the user is on the Export-Optional transport details page
@@ -330,17 +295,14 @@ Feature: Back Links & Change Links
     And the details entered for transportDateDeparture should be pre filled with today's date
     And the details entered for Time of Departure should be pre filled with "12" & "34"
     Then the user clicks continue
-    Then the user is on the Export CYA page
 
     When the user clicks the change link for Transport
     And the user is on the Export transport type page and selects <transport>
-    Then the user is on the Export CYA page
 
     When the user clicks the change link for ContactDetails
     Then the user is on the Export contact details page
     And the user enters a phone number "<phoneNo>"
     When the user clicks continue
-    Then the user is on the Export CYA page
 
     Then the user should see the Export Request Type row & the correct response <requestType> on the CYA page
     Then the user should see the Route row & the correct response <route> on the CYA page
