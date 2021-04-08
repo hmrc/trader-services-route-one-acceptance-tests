@@ -48,8 +48,8 @@ Feature: Customs check - Import journeys
     When the user clicks the deskpro link they will be redirected to the appropriate page
 
     Examples:
-      | epu | entryNo | requestType | route   | priority      | ALVS | transport | name      | email          | phone         | entryDateCYA |
-      | 093 | 127756A | New         | Route 6 | Human remains | Yes  | Air       | Abc Testb | valid@test.com | 01234 567 899 | Today        |
+      | epu | entryNo | requestType | route   | priority      | ALVS | transport | name      | email            | phone         | entryDateCYA |
+      | 093 | 127756A | New         | Route 6 | Human remains | Yes  | Air       | Abc Testb | valida@email.com | 01234 567 899 | Today        |
 
 
   Scenario Outline: A user wants to complete a Cancellation Import journey
@@ -99,6 +99,7 @@ Feature: Customs check - Import journeys
     Then the user is on the ALVS page and selects No
     When the user is on the Import transport type page and selects <transport>
     Then the user is on the Import-Mandatory transport details page
+    When the user clicks the welsh toggle it should translate the page
 
     Examples:
       | epu | entryNo | requestType | route | transport |

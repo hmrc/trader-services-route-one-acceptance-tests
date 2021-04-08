@@ -1,6 +1,5 @@
 @TraderServiceUpload
-#  Tests for SFU (replaced by MFU which is tested via QA runner/manually)
-#  todo: potentially scrap this page...
+#  Tests for SFU (replaced by MFU which is tested via QA runner/manually & as part of standard journey flow tests)
 
 Feature: A user wants to upload documents
 

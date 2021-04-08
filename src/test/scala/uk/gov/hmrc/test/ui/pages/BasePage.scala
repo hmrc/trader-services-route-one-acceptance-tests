@@ -53,8 +53,6 @@ trait BasePage extends Matchers with BrowserDriver {
   val exportjourneyUrl: String = "/new/export"
   val amendUrl: String = "/add"
 
-  val exitSurvey = host(9514) + "/feedback/send-documents-for-customs-check"
-
   def confirmUrl(url: String): Unit = {
     fluentWait.until(ExpectedConditions.urlContains(url))
     val currentUrl = driver.getCurrentUrl
@@ -179,7 +177,7 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   //Handoff check urls
-  def clickBannerServiceName(): Unit = clickByCSS(".govuk-header__link--service-name")
+  def bannerServiceName(): WebElement = findElementByCss(".govuk-header__link--service-name")
 
   def clickGovUkIcon(): Unit = clickByCSS(".govuk-header__logotype-text")
 
@@ -251,7 +249,6 @@ trait BasePage extends Matchers with BrowserDriver {
   lazy val betweenMidnightAnd8am: Boolean = nowTime.isAfter(midnight) && nowTime.isBefore(eightAm)
   lazy val between8amAnd3pm: Boolean = nowTime.isAfter(eightAm) && nowTime.isBefore(threePm)
 
-  //todo check this works
   var lastUsedTestEmail: String = ""
 
   def generateTestEmailAddress: String = {

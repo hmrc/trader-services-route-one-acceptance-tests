@@ -58,6 +58,11 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     clickBack()
   }
 
+  And("""^the user clicks the welsh toggle it should translate the page""") { () =>
+    clickByCSS("  #switch-to-cy > span:nth-child(2)")
+    assertElementText("Anfon dogfennau i’w gwirio gan y tollau", bannerServiceName())
+  }
+
   And("""^the user signs out they will be on the give feedback page""") { () =>
     clickSignOut()
     confirmUrl(giveFeedbackUrl)
@@ -86,7 +91,7 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
       case "gov.uk icon" => clickGovUkIcon()
         confirmUrl(govukExternal)
 
-      case "service name" => clickBannerServiceName()
+      case "service name" => bannerServiceName().click()
         confirmUrl(traderServicesUrl)
 
       case "banner feedback" => clickGiveFeedbackBanner()

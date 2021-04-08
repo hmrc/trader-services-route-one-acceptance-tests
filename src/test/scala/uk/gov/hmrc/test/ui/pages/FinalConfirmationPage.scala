@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.{By, WebElement}
+import org.openqa.selenium.WebElement
 
 trait FinalConfirmationPage extends BasePage {
 
@@ -29,8 +29,7 @@ trait FinalConfirmationPage extends BasePage {
   val urlAmendConfirm: String = traderServicesBaseUrl + amendUrl + "/confirmation"
   val headingAmendConfirm = "You’ve submitted your extra information"
 
-  //todo
-  def clickLinkToAmend(): Unit = driver.findElement(By.linkText("add more information or documents to the existing case")).click()
+  def clickLinkToAmend(): Unit = clickHref("a[href*='send-documents-for-customs-check/add']")
 
   def caseRefNo: WebElement = findElementByCss(".govuk-panel__body > strong:nth-child(2)")
 
