@@ -38,7 +38,6 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     assertElementTextContains("Your customs check submission receipt", receipt)
     //    assertElementTextContains(nowFormatted, findElementByCss(".govuk-panel"))
     isElementVisible(printPdfIcon).shouldBe(true)
-    isElementVisible(savePdfIcon).shouldBe(true)
     isElementVisible(saveHtmlIcon).shouldBe(true)
   }
 

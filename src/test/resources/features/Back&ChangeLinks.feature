@@ -72,7 +72,7 @@ Feature: Back Links & Change Links
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with New
 
-    Then the user clicks the banner link to return to the landing page
+    Then the user clicks the service name they will be redirected to the appropriate page
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with Nothing
     When the user clicks back
@@ -240,7 +240,7 @@ Feature: Back Links & Change Links
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with New
 
-    Then the user clicks the banner link to return to the landing page
+    Then the user clicks the service name they will be redirected to the appropriate page
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with Nothing
 
@@ -390,7 +390,7 @@ Feature: Back Links & Change Links
     When the user clicks back
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with Amend
-    Then the user clicks the banner link to return to the landing page
+    Then the user clicks the service name they will be redirected to the appropriate page
     And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
