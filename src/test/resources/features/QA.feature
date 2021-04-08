@@ -39,11 +39,8 @@ Feature: Customs check - Export journey
     When the user clicks the button to upload the seventh file and selects the "txt" file
     Then the user clicks the button to add another document
     When the user clicks the button to upload the eighth file and selects the "msg" file
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload the ninth file and selects the "C1601" file
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload the tenth file and selects the "C1602" file
-    Then the user waits 50000
+
+    Then the user waits 45000
     Then the user clicks MFU continue
 #    Then the user clicks continue when files have finished uploading
     Then the user is on the Export CYA page

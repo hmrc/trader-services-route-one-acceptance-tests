@@ -76,7 +76,7 @@ Feature: Back Links & Change Links
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with Nothing
     When the user clicks back
-    Then the user navigates to the temporary start page for trader services and clicks start
+    Then the user will be on the temporary start page
 
     Examples:
       | epu | entryNo | requestType | route   | priority                | transport | transportName | name      | email      |
@@ -239,10 +239,6 @@ Feature: Back Links & Change Links
     When the user clicks back
     Then the user is on the start page for trader services
     And the last selected option for journey type should be pre filled with New
-
-    Then the user clicks the service name link they will be redirected to the appropriate page
-    Then the user is on the start page for trader services
-    And the last selected option for journey type should be pre filled with Nothing
 
     Examples:
       | epu | entryNo | requestType  | route   | priority      | transport | name      | email      |

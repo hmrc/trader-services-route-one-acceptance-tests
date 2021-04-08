@@ -86,7 +86,7 @@ Feature: Customs check - Import journeys
       | epu | entryNo | requestType  | route   | priority      | transport | name  | email          |
       | 555 | 151511c | Cancellation | Route 6 | Human remains | Maritime  | Mr. F | valid@test.com |
 
-  Scenario Outline: Route-Hold: A user should reach the mandatory Transport page
+  Scenario Outline: Route-Hold: A user should reach the mandatory Transport page (+ lang toggle check)
     Given the user navigates to the temporary start page for trader services and clicks start
     Then the user is on the start page for trader services and selects New
     Then the user is on the entry details page
@@ -99,7 +99,8 @@ Feature: Customs check - Import journeys
     Then the user is on the ALVS page and selects No
     When the user is on the Import transport type page and selects <transport>
     Then the user is on the Import-Mandatory transport details page
-    When the user clicks the welsh toggle it should translate the page
+    When the user clicks the cy toggle it should translate the page
+    When the user clicks the en toggle it should translate the page
 
     Examples:
       | epu | entryNo | requestType | route | transport |
