@@ -21,7 +21,7 @@ import org.openqa.selenium.WebElement
 import org.scalatest.Matchers
 import org.scalatest.concurrent.Eventually
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import uk.gov.hmrc.test.ui.pages.{AmendPages, BasePage, EntryDetailsPage, LandingPage, TransportQuestionsPage}
+import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.webdriver.SingletonDriver
 
 import scala.util.Try
@@ -67,10 +67,10 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     navigateTo(traderServicesBaseUrl + url)
   }
 
-  When("""^the user clicks the (.*) they will be redirected to the appropriate page$""") { (link: String) =>
+  When("""^the user clicks the (.*) link they will be redirected to the appropriate page$""") { (link: String) =>
 
     link match {
-      case "feedback" => clickGiveFeedback()
+      case "confirmation feedback" => clickGiveFeedbackConfirmation()
         confirmUrl(giveFeedbackUrl)
 
       case "amend NCH" => caseRefReveal.click()
@@ -88,6 +88,19 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
 
       case "service name" => clickBannerServiceName()
         confirmUrl(traderServicesUrl)
+
+      case "banner feedback" => clickGiveFeedbackBanner()
+        confirmUrl(giveFeedbackBannerUrl)
+
+      case "deskpro" => clickDeskproLink()
+        switchToNewTab(2)
+        confirmUrl(deskproUrl)
+        closeNewTab()
+
+      case "UR banner" => clickURLink()
+        switchToNewTab(2)
+        confirmUrl(urBannerLink)
+        closeNewTab()
     }
   }
 

@@ -27,6 +27,8 @@ import uk.gov.hmrc.test.ui.conf.Configuration.environment
 import uk.gov.hmrc.test.ui.conf.Environment
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
+import scala.collection.convert.ImplicitConversions.`collection AsScalaIterable`
+
 trait BasePage extends Matchers with BrowserDriver {
 
   val userCaseRef = "PC12010081330XGBNZJO04"
@@ -162,19 +164,28 @@ trait BasePage extends Matchers with BrowserDriver {
     assert(driver.findElements(By.id(id)).size() == 0, message(s"The element with id $id was visible. Expected not visible"))
   }
 
+  def switchToNewTab(totalTabs: Int): Unit = {
+    fluentWait.until[Boolean](new ExpectedCondition[Boolean] {
+      def apply(d: WebDriver): Boolean = d.getWindowHandles.size() == totalTabs
+    })
+    val tab = driver.getWindowHandles.toList
+    driver.switchTo().window(tab.last)
+  }
 
+  def closeNewTab(): Unit = {
+    val tab = driver.getWindowHandles.toList
+    driver.close()
+    driver.switchTo().window(tab(tab.length - 2))
+  }
 
   //Handoff check urls
-
-  //Banner
   def clickBannerServiceName(): Unit = clickByCSS(".govuk-header__link--service-name")
 
   def clickGovUkIcon(): Unit = clickByCSS(".govuk-header__logotype-text")
 
   val govukExternal = "https://www.gov.uk/"
 
-  //Confirmation pages
-  def clickGiveFeedback(): Unit = clickHref("a[href*='/feedback/send-documents-for-customs-check']")
+  def clickGiveFeedbackConfirmation(): Unit = clickHref("a[href*='/feedback/send-documents-for-customs-check']")
 
   lazy val giveFeedbackUrl = "/feedback/send-documents-for-customs-check"
 
@@ -186,12 +197,22 @@ trait BasePage extends Matchers with BrowserDriver {
 
   lazy val chiefUnavailableUrl = "https://www.gov.uk/government/publications/import-and-export-presentation-of-goods-for-export-arrival-c1601"
 
-  //Amend - case ref page
   def clickNchAmendLink(): Unit = clickHref("a[href*='national-clearance-hub']")
 
   val nchAmendUrl = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/national-clearance-hub"
-  //todo banner feedback & deskpro open on new TAB?
 
+  def clickGiveFeedbackBanner(): Unit = clickByCSS(".govuk-phase-banner__text > a:nth-child(1)")
+
+  val giveFeedbackBannerUrl = "/contact/beta-feedback"
+
+  def clickDeskproLink(): Unit = clickByCSS(".report-a-problem > a:nth-child(1)")
+
+  val deskproUrl = "/contact/problem_reports_nonjs"
+
+  //  def clickURLink(): Unit = clickHref("a[href*=ssp-research-banner]")
+  def clickURLink(): Unit = clickByCSS(".govuk-body")
+
+  val urBannerLink = "/signup.take-part-in-research.service.gov.uk/home?utm_campaign=Customs_Check"
 
   //Time and date
   lazy val todayDate: LocalDate = LocalDate.now()
