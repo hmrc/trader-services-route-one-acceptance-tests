@@ -90,4 +90,8 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     }
     clickUploadContinueSFU()
   }
+
+  And("""^the user clicks SFU upload""") { () =>
+    clickByCSS(".file-upload__submit")
+  }
 }

@@ -33,16 +33,12 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     Try(SingletonDriver.closeInstance)
   }
 
+  And("""^the user clicks back""") { () =>
+    clickBack()
+  }
+
   And("""^the user clicks continue""") { () =>
     clickContinue()
-  }
-
-  And("""^the user clicks SFU upload""") { () =>
-    clickByCSS(".file-upload__submit")
-  }
-
-  And("""^the user clicks MFU continue""") { () =>
-    clickUploadContinueMFU()
   }
 
   And("""^the user clicks submit on the CYA page""") { () =>
@@ -54,10 +50,6 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     Thread.sleep(millis)
   }
 
-  And("""^the user clicks back""") { () =>
-    clickBack()
-  }
-
   And("""^the user clicks the (.*) toggle it should translate the page""") { (language: String) =>
     clickByCSS("  #switch-to-" + s"$language" + "> span:nth-child(2)")
 
@@ -67,7 +59,7 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     }
   }
 
-  And("""^the user signs out they will be on the give feedback page""") { () =>
+  When("""^the user signs out they will be on the give feedback page""") { () =>
     clickSignOut()
     confirmUrl(giveFeedbackUrl)
   }
@@ -119,7 +111,7 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     clickByCSS("#inputForm > div.form-field-group > p > input")
   }
 
-  Then("""^the user enters today's date for (.*)$""") { (dateField: String) =>
+  And("""^the user enters today's date for (.*)$""") { (dateField: String) =>
     dateField match {
 
       case "entryDate" =>
@@ -175,7 +167,7 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     errorSummaryField(fieldTitle).getText.replaceAll("\n", "") shouldBe errorMessage
   }
 
-  And("""^the user should see the invalid (.*) date range error message for "(.*)" field""") {
+  Then("""^the user should see the invalid (.*) date range error message for "(.*)" field""") {
     (journey: String, fieldTitle: String) =>
       errorSummaryTitle.isDisplayed
       errorSummaryTitle.getText shouldBe errorSummary

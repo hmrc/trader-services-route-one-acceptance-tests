@@ -21,15 +21,9 @@ Then execute the `run_tests.sh` script:
     
     ie. /run_tests.sh dev chrome
     
-    These tests can be run against dev or staging repeatedly if needed but there is a separate runner for QA 
+    QA runner (Runs a handful of generic smoke test journeys for export/import/amend - change parameters if desired)
     ./run_tests_qa.sh
-    
-    The QA runner can be run daily without making any changes but if you want to run it multiple times ensure that you use 
-    unique parameters or else it may result in a duplicate case. Changing either EPU/EntryNumber/EntryDate in the "Examples" 
-    section should cause the case to be unique 
-    
-    N.b. Some cases with identical parameters above may still not return a duplicate case depending on request type 
-    
+
 
 The `run_tests.sh` script defaults to the `local` environment with the locally installed `chrome` driver binary.  For a complete list of supported param values, see:
  - `src/test/resources/application.conf` for **environment** 

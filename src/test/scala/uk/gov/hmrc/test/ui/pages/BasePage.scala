@@ -28,6 +28,7 @@ import uk.gov.hmrc.test.ui.conf.Environment
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 import scala.collection.convert.ImplicitConversions.`collection AsScalaIterable`
+import scala.util.Random
 
 trait BasePage extends Matchers with BrowserDriver {
 
@@ -207,13 +208,11 @@ trait BasePage extends Matchers with BrowserDriver {
 
   val deskproUrl = "/contact/problem_reports_nonjs"
 
-  //  def clickURLink(): Unit = clickHref("a[href*=ssp-research-banner]")
   def clickURLink(): Unit = clickByCSS(".govuk-body")
 
   val urBannerLink = "/signup.take-part-in-research.service.gov.uk/home?utm_campaign=Customs_Check"
 
   //Time and date
-  lazy val todayDate: LocalDate = LocalDate.now()
 
   lazy val today: LocalDate = LocalDate.now
   lazy val (d, m, y) = (today.getDayOfMonth, today.getMonthValue, today.getYear)
@@ -223,7 +222,7 @@ trait BasePage extends Matchers with BrowserDriver {
   lazy val monthFormatted = f"$m%02d"
 
   def todayDateCYA: String = {
-    s"${todayDate.getDayOfMonth.toString} ${todayDate.getMonth.toString.toLowerCase.capitalize} ${todayDate.getYear.toString}"
+    s"${today.getDayOfMonth.toString} ${today.getMonth.toString.toLowerCase.capitalize} ${today.getYear.toString}"
   }
 
   lazy val nowTime: LocalTime = LocalTime.now()
@@ -248,6 +247,13 @@ trait BasePage extends Matchers with BrowserDriver {
   lazy val between3pmAndMidnight: Boolean = nowTime.isAfter(threePm) && nowTime.isBefore(midnight)
   lazy val betweenMidnightAnd8am: Boolean = nowTime.isAfter(midnight) && nowTime.isBefore(eightAm)
   lazy val between8amAnd3pm: Boolean = nowTime.isAfter(eightAm) && nowTime.isBefore(threePm)
+
+  //Random inputs
+  lazy val randomEPU: String = (Random.nextInt(569) + 100).toString
+  lazy val randomAlpha: String = Random.alphanumeric.filter(_.isLetter).head.toString
+
+  lazy val randomImportEN: String = (100000 + Random.nextInt(899999)).toString + randomAlpha
+  lazy val randomExportEN: String = randomAlpha + (10000 + Random.nextInt(89999)).toString + randomAlpha
 
   var lastUsedTestEmail: String = ""
 
