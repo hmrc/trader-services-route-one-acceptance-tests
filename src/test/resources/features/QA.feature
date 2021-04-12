@@ -7,7 +7,6 @@ Feature: Customs check - Export journey
     Then the user is on the start page for trader services and selects New
     Then the user is on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
-#    And the user waits 7000
     And the user enters today's date for entryDate
     And the user clicks continue
     Then the user is on the Export Request Type page and selects <requestType>
@@ -57,8 +56,8 @@ Feature: Customs check - Export journey
     Then the user clicks the button to submit another case on the confirmation page they will go back to the start
 
     Examples:
-      | epu | entryNo | requestType | route   | priority      | transport    | transportName | name  | email     | phone         |
-      | 008 | D55816G | New         | Route 6 | Human remains | RoadRoRoRail | TestVessel    | smith | testEmail | 0177 111 1111 |
+      | epu       | entryNo        | requestType | route   | priority      | transport    | transportName | name  | email     | phone         |
+      | randomEPU | randomExportEN | New         | Route 6 | Human remains | RoadRoRoRail | TestVessel    | smith | testEmail | 0177 111 1111 |
 
   Scenario Outline: A user wants to complete a New Import journey
     Given the user logs into QA
@@ -95,8 +94,8 @@ Feature: Customs check - Export journey
     Then the user clicks the button to submit another case on the confirmation page they will go back to the start
 
     Examples:
-      | epu | entryNo | requestType | route   | priority      | transport | transportName | name  | email     | phone       |
-      | 008 | 908196Q | New         | Route 1 | Human remains | Maritime  | train 1x      | agent | testEmail | 01256888999 |
+      | epu       | entryNo        | requestType | route   | priority      | transport | transportName | name  | email     | phone       |
+      | randomEPU | randomImportEN | New         | Route 1 | Human remains | Maritime  | train 1x      | agent | testEmail | 01256888999 |
 
   Scenario: Amend: A user adds a message and a document to a case (write response + upload)
     Given the user is on the start page for trader services and selects Amend
@@ -142,7 +141,7 @@ Feature: Customs check - Export journey
     And the user enters a response "!@£$%^&*()_+¡€#¢∞§¶•ªº–≠§±-=[];'\,./{}:"|<>?“‘…æ«≤≥æ`~" and continues
     When the user clicks submit on the CYA page
     Then the user waits 6000
-#    When the user signs out they will be on the give feedback page
+    When the user signs out they will be on the give feedback page
 #
   #Legit EPUS
 #    410
