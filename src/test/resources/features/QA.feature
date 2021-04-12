@@ -8,7 +8,6 @@ Feature: Customs check - Export journey
     Then the user is on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
-    Then the user waits 1500
     And the user clicks continue
     Then the user is on the Export Request Type page and selects <requestType>
     Then the user is on the Export Route Type page and selects <route>
@@ -65,7 +64,6 @@ Feature: Customs check - Export journey
     Then the user is on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
-    Then the user waits 1500
     Then the user clicks continue
     When the user is on the Import Request Type page and selects <requestType>
     Then the user is on the Import Route Type page and selects <route>

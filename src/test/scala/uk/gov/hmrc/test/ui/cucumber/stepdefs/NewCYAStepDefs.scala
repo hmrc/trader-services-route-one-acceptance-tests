@@ -35,7 +35,6 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
   }
 
   //todo?
-  //
   //  EPU match {
   //    case "randomEPU" =>   assertElementText(randomEPU, epuAnswer)
   //    case _ =>   assertElementText(EPU, epuAnswer)
@@ -45,8 +44,6 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
     (EPU: String, EntryNo: String) =>
 
       assertElementText(summaryEPU, epuRow)
-      assertElementText(EPU, epuAnswer)
-
       assertElementText(EPU, epuAnswer)
 
       assertElementText(summaryEntryNo, entryNoRow)

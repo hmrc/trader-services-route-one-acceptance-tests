@@ -72,4 +72,8 @@ class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl w
       case "N/A" => assertElementIsNotVisibleById("govuk-inset-text")
     }
   }
+
+  And("""^the user clicks MFU continue""") { () =>
+    clickUploadContinueMFU()
+  }
 }
