@@ -33,8 +33,17 @@ class EntryDetailsStepDefs extends EntryDetailsPage with BasePage with ScalaDsl 
 
   Then("""^the user enters entry details "(.*)" and "(.*)"$""") {
     (epu: String, entryNumber: String) =>
-      writeById(EPU, epu)
-      writeById(entryNo, entryNumber)
+
+      epu match {
+        case "randomEPU" => writeById(EPU, randomEPU)
+        case _ => writeById(EPU, epu)
+      }
+
+      entryNumber match {
+        case "randomImportEN" => writeById(entryNo, randomImportEN)
+        case "randomExportEN" => writeById(entryNo, randomExportEN)
+        case _ => writeById(entryNo, entryNumber)
+      }
   }
 
   Then("""^the user enters a date "(.*)" "(.*)" "(.*)"$""") {
