@@ -46,7 +46,7 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
   }
 
   And("""^the user clicks submit on the CYA page""") { () =>
-    Thread.sleep(750)
+//    Thread.sleep(750)
     clickCYAContinue()
   }
 

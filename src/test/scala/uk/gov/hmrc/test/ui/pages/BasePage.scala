@@ -248,11 +248,11 @@ trait BasePage extends Matchers with BrowserDriver {
   lazy val betweenMidnightAnd8am: Boolean = nowTime.isAfter(midnight) && nowTime.isBefore(eightAm)
   lazy val between8amAnd3pm: Boolean = nowTime.isAfter(eightAm) && nowTime.isBefore(threePm)
 
-  var randomEPU: String = (100 + Random.nextInt(669)).toString
+  lazy val randomEPU: String = (Random.nextInt(569) + 100).toString
   lazy val randomAlpha: String = Random.alphanumeric.filter(_.isLetter).head.toString
 
-  var randomImportEN: String = (100000 + Random.nextInt(999999)).toString + randomAlpha
-  var randomExportEN: String = randomAlpha + (10000 + Random.nextInt(99999)).toString + randomAlpha
+  lazy val randomImportEN: String = (100000 + Random.nextInt(899999)).toString + randomAlpha
+  lazy val randomExportEN: String = randomAlpha + (10000 + Random.nextInt(89999)).toString + randomAlpha
 
   var lastUsedTestEmail: String = ""
 
