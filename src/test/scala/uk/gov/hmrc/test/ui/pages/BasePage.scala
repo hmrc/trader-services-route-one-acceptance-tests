@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.pages
 
 import java.time.{Duration, LocalDate, LocalTime}
-import java.util.UUID
 import java.util.concurrent.TimeUnit
 
 import org.openqa.selenium._
@@ -213,10 +212,22 @@ trait BasePage extends Matchers with BrowserDriver {
   val urBannerLink = "/signup.take-part-in-research.service.gov.uk/home?utm_campaign=Customs_Check"
 
   //Time and date
-
   lazy val today: LocalDate = LocalDate.now
   lazy val (d, m, y) = (today.getDayOfMonth, today.getMonthValue, today.getYear)
   lazy val (day, month, year) = (today.getDayOfMonth.toString, today.getMonthValue.toString, today.getYear.toString)
+
+  lazy val yesterday: LocalDate = today.minusDays(1)
+  lazy val (yd, ym, yy) = (yesterday.getDayOfMonth.toString, yesterday.getMonthValue.toString, yesterday.getYear.toString)
+
+  lazy val tomorrow: LocalDate = today.plusDays(1)
+  lazy val (td, tm, ty) = (tomorrow.getDayOfMonth.toString, tomorrow.getMonthValue.toString, tomorrow.getYear.toString)
+
+  lazy val sixMonthsFromNow: LocalDate = today.plusMonths(6).plusDays(1)
+  lazy val (d6future, m6future, y6future) = (sixMonthsFromNow.getDayOfMonth.toString, sixMonthsFromNow.getMonthValue.toString, sixMonthsFromNow.getYear.toString)
+
+  lazy val sixMonthsAgo: LocalDate = today.minusMonths(6).minusDays(1)
+  lazy val (d6past, m6past, y6past) = (sixMonthsAgo.getDayOfMonth.toString, sixMonthsAgo.getMonthValue.toString, sixMonthsAgo.getYear.toString)
+
 
   lazy val dayFormatted = f"$d%02d"
   lazy val monthFormatted = f"$m%02d"
@@ -255,10 +266,15 @@ trait BasePage extends Matchers with BrowserDriver {
   lazy val randomImportEN: String = (100000 + Random.nextInt(899999)).toString + randomAlpha
   lazy val randomExportEN: String = randomAlpha + (10000 + Random.nextInt(89999)).toString + randomAlpha
 
+  def randomString(length: Int): String = Random.alphanumeric.take(length).mkString
+
+  val shortString: String = randomString(20)
+  val longString: String = randomString(1000)
+
   var lastUsedTestEmail: String = ""
 
   def generateTestEmailAddress: String = {
-    lastUsedTestEmail = s"test${UUID.randomUUID().toString}@test.com"
+    lastUsedTestEmail = s"$shortString@test.com"
     lastUsedTestEmail
   }
 

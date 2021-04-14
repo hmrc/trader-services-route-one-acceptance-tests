@@ -18,21 +18,21 @@ package uk.gov.hmrc.test.ui.cucumber.runner
 
 import cucumber.api.java.Before
 import io.cucumber.junit.{Cucumber, CucumberOptions}
-import org.junit.{AfterClass, BeforeClass}
 import org.junit.runner.RunWith
+import org.junit.{AfterClass, BeforeClass}
 import uk.gov.hmrc.extentreport.ExtentProperties.webDriver
 import uk.gov.hmrc.test.ui.conf.Configuration
-import uk.gov.hmrc.test.ui.cucumber.runner.Runner.{clickByCSS, createUser, destroyPlanetLink, driver, login, navigateTo}
 import uk.gov.hmrc.test.ui.pages.BasePage
 
 @RunWith(classOf[Cucumber])
 @CucumberOptions(
   features = Array("src/test/resources/features"),
   glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
-  plugin = Array ("pretty", "html:target/cucumber", "json:target/cucumber.json"),
+  plugin = Array("pretty", "html:target/cucumber", "json:target/cucumber.json"),
   tags = "@TraderServiceErrors"
 )
 class RunnerErrors
+
 object RunnerErrors extends Runner with BasePage {
 
   @Before
@@ -53,7 +53,9 @@ object RunnerErrors extends Runner with BasePage {
   @AfterClass
   def destroyUser(): Unit = {
     navigateTo(Configuration.settings.DESTROY_PLANET)
-    if (destroyPlanetLink.isDisplayed.equals(true)){destroyPlanetLink.click()} else clickByCSS("#destroy-planet")
+    if (destroyPlanetLink.isDisplayed.equals(true)) {
+      destroyPlanetLink.click()
+    } else clickByCSS("#destroy-planet")
     driver.switchTo().alert().accept()
   }
 }

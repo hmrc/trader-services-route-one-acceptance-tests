@@ -3,10 +3,10 @@ Feature: Vessel page validation
 
 #  Import
 #    All blank fields
-  Scenario: Mandatory (Import) Vessel page
+  Scenario: Mandatory (Import) Transport page
     Given the user is on the start page for trader services and selects New
     Then the user is on the entry details page
-    When the user enters entry details "123" and "012345B"
+    When the user enters entry details "randomEPU" and "randomImportEN"
     And the user enters today's date for entryDate
     And the user clicks continue
     Then the user is on the Import Request Type page and selects New
@@ -27,9 +27,9 @@ Feature: Vessel page validation
     When the user clicks the error link for "dateOfArrival" it should link to the dateOfArrival.day field
     When the user clicks the error link for "timeOfArrival" it should link to the timeOfArrival.hour field
 
-  Scenario: Optional Vessel page (Import)
+  Scenario: Optional Transport page (Import)
     Then the user navigates to the entry details page
-    When the user enters entry details "123" and "012345B"
+    When the user enters entry details "randomEPU" and "randomImportEN"
     And the user enters today's date for entryDate
     And the user clicks continue
     Then the user is on the Import Request Type page and selects New
@@ -95,12 +95,12 @@ Feature: Vessel page validation
     Then the user should see "Error:Date of arrival must be a real date" error message for "dateOfArrival"
 
 #  Invalid date/time (too far in past or future)
-    When the user enters a date of Arrival for their transportation "01" "12" "2022"
+    When the user enters an invalid past date for arrivalDate
     When the user enters a time of Arrival for their transportation "01" "15"
     And the user clicks continue
     Then the user should see the invalid arrival date range error message for "dateOfArrival" field
 
-    When the user enters a date of Arrival for their transportation "01" "01" "2020"
+    When the user enters an invalid future date for arrivalDate
     When the user enters a time of Arrival for their transportation "09" "45"
     And the user clicks continue
     Then the user should see the invalid arrival date range error message for "dateOfArrival" field
@@ -123,7 +123,7 @@ Feature: Vessel page validation
   Scenario: Mandatory (Export) Vessel page
     Given the user is on the start page for trader services and selects New
     Then the user is on the entry details page
-    When the user enters entry details "123" and "A12345B"
+    When the user enters entry details "randomEPU" and "randomExportEN"
     And the user enters today's date for entryDate
     And the user clicks continue
     Then the user is on the Export Request Type page and selects C1601
@@ -145,7 +145,7 @@ Feature: Vessel page validation
 
   Scenario: Optional Vessel page (Export)
     Then the user navigates to the entry details page
-    When the user enters entry details "123" and "A12345B"
+    When the user enters entry details "randomEPU" and "randomExportEN"
     And the user enters today's date for entryDate
     And the user clicks continue
     Then the user is on the Export Request Type page and selects New
@@ -210,12 +210,12 @@ Feature: Vessel page validation
     Then the user should see "Error:Date of departure must be a real date" error message for "dateOfDeparture"
 
 #  Invalid date/time (too far in past or future)
-    When the user enters a date of Departure for their transportation "01" "12" "2022"
+    When the user enters an invalid future date for departureDate
     When the user enters a time of Departure for their transportation "01" "15"
     And the user clicks continue
     Then the user should see the invalid departure date range error message for "dateOfDeparture" field
 
-    When the user enters a date of Departure for their transportation "01" "01" "2020"
+    When the user enters an invalid past date for departureDate
     When the user enters a time of Departure for their transportation "09" "45"
     And the user clicks continue
     Then the user should see the invalid departure date range error message for "dateOfDeparture" field

@@ -131,24 +131,69 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     }
   }
 
-  Then("""^the details entered for (.*) should be pre filled with today's date$""") { (dateField: String) =>
-    dateField match {
+  When("""^the user enters an invalid (.*) date for (.*)""") { (date: String, field: String) =>
+    date match {
 
-      case "entryDate" =>
-        verifyInput(entryDay, dayFormatted)
-        verifyInput(entryMonth, monthFormatted)
-        verifyInput(entryYear, year)
+      case "past" =>
 
-      case "transportDateArrival" =>
-        verifyInput(transportQArrivalDay, dayFormatted)
-        verifyInput(transportQArrivalMonth, monthFormatted)
-        verifyInput(transportQArrivalYear, year)
+        field match {
+          case "entryDate" =>
+            writeById(entryDay, d6past)
+            writeById(entryMonth, m6past)
+            writeById(entryYear, y6past)
 
-      case "transportDateDeparture" =>
-        verifyInput(transportQDepartureDay, dayFormatted)
-        verifyInput(transportQDepartureMonth, monthFormatted)
-        verifyInput(transportQDepartureYear, year)
+          case "arrivalDate" =>
+            writeById(transportQArrivalDay, yd)
+            writeById(transportQArrivalMonth, ym)
+            writeById(transportQArrivalYear, yy)
+
+          case "departureDate" =>
+            writeById(transportQDepartureDay, yd)
+            writeById(transportQDepartureMonth, ym)
+            writeById(transportQDepartureYear, yy)
+
+        }
+
+      case "future" =>
+
+        field match {
+          case "entryDate" =>
+            writeById(entryDay, td)
+            writeById(entryMonth, tm)
+            writeById(entryYear, ty)
+
+          case "arrivalDate" =>
+            writeById(transportQArrivalDay, d6future)
+            writeById(transportQArrivalMonth, m6future)
+            writeById(transportQArrivalYear, y6future)
+
+          case "departureDate" =>
+            writeById(transportQDepartureDay, d6future)
+            writeById(transportQDepartureMonth, m6future)
+            writeById(transportQDepartureYear, y6future)
+        }
     }
+  }
+
+  Then("""^the details entered for (.*) should be pre filled with today's date$""") {
+    (dateField: String) =>
+      dateField match {
+
+        case "entryDate" =>
+          verifyInput(entryDay, dayFormatted)
+          verifyInput(entryMonth, monthFormatted)
+          verifyInput(entryYear, year)
+
+        case "transportDateArrival" =>
+          verifyInput(transportQArrivalDay, dayFormatted)
+          verifyInput(transportQArrivalMonth, monthFormatted)
+          verifyInput(transportQArrivalYear, year)
+
+        case "transportDateDeparture" =>
+          verifyInput(transportQDepartureDay, dayFormatted)
+          verifyInput(transportQDepartureMonth, monthFormatted)
+          verifyInput(transportQDepartureYear, year)
+      }
   }
 
   //Error checking
@@ -158,15 +203,17 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
 
   val errorSummary = "There is a problem"
 
-  Then("""^the user should see "([^"]*)" error message for "([^"]*)"$""") { (errorMessage: String, fieldTitle: String) =>
+  Then("""^the user should see "([^"]*)" error message for "([^"]*)"$""") {
+    (errorMessage: String, fieldTitle: String) =>
 
-    errorSummaryTitle.isDisplayed
-    errorSummaryTitle.getText shouldBe errorSummary
+      errorSummaryTitle.isDisplayed
+      errorSummaryTitle.getText shouldBe errorSummary
 
-    errorSummaryField(fieldTitle).isDisplayed
-    errorSummaryField(fieldTitle).getText.replaceAll("\n", "") shouldBe errorMessage
+      errorSummaryField(fieldTitle).isDisplayed
+      errorSummaryField(fieldTitle).getText.replaceAll("\n", "") shouldBe errorMessage
   }
 
+  //todo - full error message
   Then("""^the user should see the invalid (.*) date range error message for "(.*)" field""") {
     (journey: String, fieldTitle: String) =>
       errorSummaryTitle.isDisplayed

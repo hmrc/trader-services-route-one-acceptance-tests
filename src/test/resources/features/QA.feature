@@ -51,8 +51,10 @@ Feature: Customs check - Export journey
     Then output the case reference number
     And the user should see 2 Hour SLA
     Then the user will see text to give-feedback
-    Then the user waits 5000
+    Then the user waits 15000
     Then the user clicks the button to submit another case on the confirmation page they will go back to the start
+    When the user clicks the deskpro link they will be redirected to the appropriate page
+    When the user clicks the UR banner link they will be redirected to the appropriate page
 
     Examples:
       | epu       | entryNo        | requestType | route   | priority      | transport    | transportName | name  | email     | phone         |
@@ -90,6 +92,8 @@ Feature: Customs check - Export journey
     Then output the case reference number
     Then the user waits 5000
     Then the user clicks the button to submit another case on the confirmation page they will go back to the start
+    When the user clicks the banner feedback link they will be redirected to the appropriate page
+
 
     Examples:
       | epu       | entryNo        | requestType | route   | priority      | transport | transportName | name  | email     | phone       |
@@ -101,7 +105,7 @@ Feature: Customs check - Export journey
     Then the user enters a real case reference number PCI21040921252PZVD43D4
     When the user is on the how to respond page and selects writeAndUpload
     Then the user is on the write response page
-    And the user enters a response "ABCDEFHIJKLMNOPQRSTUVWXYZ abcdefhijklmnopqrstuvwxyz 1234567890 œ∑´´†¥¨^^πåß∂ƒ©˙∆˚¬Ω≈ç√∫~~" and continues
+    When the user enters "valid" characters in the write response field and continues
     Then the user is on the multi-file upload pages for a/an Amend journey
     When the user clicks the button to upload the first file and selects the "pdf" file
 
@@ -136,9 +140,9 @@ Feature: Customs check - Export journey
     Then the user is on the case ref number page
     Then the user enters a real case reference number PCI21040921252PZVD43D4
     When the user is on the how to respond page and selects writeOnly
-    And the user enters a response "!@£$%^&*()_+¡€#¢∞§¶•ªº–≠§±-=[];'\,./{}:"|<>?“‘…æ«≤≥æ`~" and continues
-    When the user clicks submit on the CYA page
-    Then the user waits 6000
+    And the user enters "valid" characters in the write response field and continues
+#    When the user clicks submit on the CYA page
+    Then the user waits 15000
 #    When the user signs out they will be on the give feedback page
 #
   #Legit EPUS
