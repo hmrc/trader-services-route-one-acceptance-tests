@@ -215,7 +215,6 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
   }
 
 
-  //todo - full error message
   Then("""^the user should see the invalid (.*) date range error message for "(.*)" field""") {
     (journey: String, fieldTitle: String) =>
       errorSummaryTitle.isDisplayed

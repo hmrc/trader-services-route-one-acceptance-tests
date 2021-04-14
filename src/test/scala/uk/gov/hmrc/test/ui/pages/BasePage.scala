@@ -19,11 +19,12 @@ package uk.gov.hmrc.test.ui.pages
 import java.time.{Duration, LocalDate, LocalTime}
 import java.util.concurrent.TimeUnit
 
+import org.junit.{AfterClass, BeforeClass}
 import org.openqa.selenium._
 import org.openqa.selenium.support.ui.{ExpectedCondition, ExpectedConditions, FluentWait}
 import org.scalatest.{Assertion, Matchers}
 import uk.gov.hmrc.test.ui.conf.Configuration.environment
-import uk.gov.hmrc.test.ui.conf.Environment
+import uk.gov.hmrc.test.ui.conf.{Configuration, Environment}
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 import scala.collection.convert.ImplicitConversions.`collection AsScalaIterable`
@@ -242,7 +243,7 @@ trait BasePage extends Matchers with BrowserDriver {
     s"${sixMonthsFromNow.getDayOfMonth.toString} ${sixMonthsFromNow.getMonth.toString.toLowerCase.capitalize} ${sixMonthsFromNow.getYear.toString}"
   }
 
-  def betweenError(journey:String):String = "Error:Date of " + s"$journey" +  " must be between " + todayDateCYA + " (the date of entry) and " + sixMonthsFutureDateCYA
+  def betweenError(journey: String): String = "Error:Date of " + s"$journey" + " must be between " + todayDateCYA + " (the date of entry) and " + sixMonthsFutureDateCYA
 
   lazy val nowTime: LocalTime = LocalTime.now()
   lazy val nowHrs: Int = nowTime.getHour
@@ -312,4 +313,20 @@ trait BasePage extends Matchers with BrowserDriver {
     enrollment.clear()
     enrollment.sendKeys("GB123456789012345")
   }
+
+  @BeforeClass
+  def setupUser(): Unit = {
+    navigateTo(Configuration.settings.SIGN_IN_page)
+    login()
+    createUser()
+    clickByCSS("#update")
+  }
+
+  @AfterClass
+  def destroyUser(): Unit = {
+    navigateTo(Configuration.settings.DESTROY_PLANET)
+    destroyPlanetLink.click()
+    driver.switchTo().alert().accept()
+  }
+
 }
