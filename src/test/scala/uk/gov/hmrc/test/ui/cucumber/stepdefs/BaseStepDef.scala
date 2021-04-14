@@ -203,15 +203,17 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
 
   val errorSummary = "There is a problem"
 
-  Then("""^the user should see "([^"]*)" error message for "([^"]*)"$""") {
+  Then("""^the user should see "(.*)" error message for "([^"]*)"$""") {
     (errorMessage: String, fieldTitle: String) =>
 
       errorSummaryTitle.isDisplayed
       errorSummaryTitle.getText shouldBe errorSummary
 
       errorSummaryField(fieldTitle).isDisplayed
+
       errorSummaryField(fieldTitle).getText.replaceAll("\n", "") shouldBe errorMessage
   }
+
 
   //todo - full error message
   Then("""^the user should see the invalid (.*) date range error message for "(.*)" field""") {
@@ -222,10 +224,10 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
 
       journey match {
         case "arrival" =>
-          errorSummaryField(fieldTitle).getText should startWith("Error:\nDate of arrival must be between")
+          errorSummaryField(fieldTitle).getText.replaceAll("\n", "") shouldBe betweenError("arrival")
 
         case "departure" =>
-          errorSummaryField(fieldTitle).getText should startWith("Error:\nDate of departure must be between")
+          errorSummaryField(fieldTitle).getText.replaceAll("\n", "") shouldBe betweenError("departure")
       }
   }
 

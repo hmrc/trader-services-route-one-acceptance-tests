@@ -222,8 +222,10 @@ trait BasePage extends Matchers with BrowserDriver {
   lazy val tomorrow: LocalDate = today.plusDays(1)
   lazy val (td, tm, ty) = (tomorrow.getDayOfMonth.toString, tomorrow.getMonthValue.toString, tomorrow.getYear.toString)
 
-  lazy val sixMonthsFromNow: LocalDate = today.plusMonths(6).plusDays(1)
-  lazy val (d6future, m6future, y6future) = (sixMonthsFromNow.getDayOfMonth.toString, sixMonthsFromNow.getMonthValue.toString, sixMonthsFromNow.getYear.toString)
+  lazy val sixMonthsFromNow: LocalDate = today.plusMonths(6)
+
+  lazy val overSixMonthsFromNow: LocalDate = today.plusMonths(6).plusDays(1)
+  lazy val (d6future, m6future, y6future) = (overSixMonthsFromNow.getDayOfMonth.toString, overSixMonthsFromNow.getMonthValue.toString, overSixMonthsFromNow.getYear.toString)
 
   lazy val sixMonthsAgo: LocalDate = today.minusMonths(6).minusDays(1)
   lazy val (d6past, m6past, y6past) = (sixMonthsAgo.getDayOfMonth.toString, sixMonthsAgo.getMonthValue.toString, sixMonthsAgo.getYear.toString)
@@ -235,6 +237,12 @@ trait BasePage extends Matchers with BrowserDriver {
   def todayDateCYA: String = {
     s"${today.getDayOfMonth.toString} ${today.getMonth.toString.toLowerCase.capitalize} ${today.getYear.toString}"
   }
+
+  def sixMonthsFutureDateCYA: String = {
+    s"${sixMonthsFromNow.getDayOfMonth.toString} ${sixMonthsFromNow.getMonth.toString.toLowerCase.capitalize} ${sixMonthsFromNow.getYear.toString}"
+  }
+
+  def betweenError(journey:String):String = "Error:Date of " + s"$journey" +  " must be between " + todayDateCYA + " (the date of entry) and " + sixMonthsFutureDateCYA
 
   lazy val nowTime: LocalTime = LocalTime.now()
   lazy val nowHrs: Int = nowTime.getHour
