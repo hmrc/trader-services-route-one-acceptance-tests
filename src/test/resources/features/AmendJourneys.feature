@@ -9,9 +9,9 @@ Feature: Amend journeys
     When the user enters valid characters for case reference number and clicks continue
     Then the user is on the how to respond page and selects writeOnly
     Then the user is on the write response page
-    When the user enters a response "Sample message" and continues
+    When the user enters "Test message" characters in the write response field and continues
     Then the user is on the Amend writeOnly review page and should see their responses
-    And the user should see what they entered as their message "Sample message"
+    And the user should see what they entered as their message "Test message"
     When the user clicks submit on the CYA page
     Then the user is on the Amend confirmation page
 
@@ -39,7 +39,7 @@ Feature: Amend journeys
     When the user enters valid characters for case reference number and clicks continue
     When the user is on the how to respond page and selects writeAndUpload
     Then the user is on the write response page
-    And the user enters a response with valid characters
+    And the user enters "valid" characters in the write response field and continues
     Then the user is on the multi-file upload pages for a/an Amend journey
     And the user will only see inset text for request type N/A
     When the user clicks the button to upload the first file and selects the "xlsx" file

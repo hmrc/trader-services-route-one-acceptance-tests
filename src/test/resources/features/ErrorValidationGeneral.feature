@@ -74,9 +74,9 @@ Feature: Error - no options selected & amend validation
     Then the user should see "Error:Select how you want to send us more information" error message for "typeOfAmendment"
 
     Then the user is on the how to respond page and selects writeAndUpload
-    When the user enters a response with no characters
+    When the user enters "no" characters in the write response field and continues
     Then the user should see "Error:Enter a response to a query from HMRC" error message for "responseText"
-    When the user enters a response with tooMany characters
+    When the user enters "too many" characters in the write response field and continues
     Then the user should see "Error:Response must be 1000 characters or fewer" error message for "responseText"
-    When the user enters a response with valid characters
+    When the user enters "valid" characters in the write response field and continues
     Then the user is on the multi-file upload pages for a/an Amend journey

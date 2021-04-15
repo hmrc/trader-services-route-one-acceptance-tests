@@ -91,19 +91,14 @@ class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage 
     verifyHeading(howToSendHeading)
   }
 
-  Then("""^the user enters a response with (.*) characters""") { (characters: String) =>
-    characters match {
-      case "tooMany" => sendNCharactersById(textInput, 1001)
-      case "valid" => sendNCharactersById(textInput, 1000)
-      case "no" => sendNCharactersById(textInput, 0)
+  Then("""^the user enters "(.*)" characters in the write response field and continues""") { (response: String) =>
+    response match {
+      case "too many" => writeById(textInput, randomString(1001))
+      case "valid" => writeById(textInput, randomString(1000))
+      case "no" => writeById(textInput, randomString(0))
+      case _ => writeById(textInput, response)
     }
     clickContinue()
-  }
-
-  Then("""^the user enters a response "(.*)" and continues$""") {
-    (response: String) =>
-      writeById(textInput, response)
-      clickContinue()
   }
 }
 

@@ -7,8 +7,8 @@ lazy val testSuite = (project in file("."))
     scalaVersion := "2.12.12",
     scalacOptions ++= Seq("-feature"),
     libraryDependencies ++= Dependencies.test,
-      //The testOptions from SbtAutoBuildPlugin supports only ScalaTest. Resetting testOptions for Cucumber Tests.
-      testOptions in Test := Seq.empty,
+    //The testOptions from SbtAutoBuildPlugin supports only ScalaTest. Resetting testOptions for Cucumber Tests.
+    testOptions in Test := Seq.empty,
     resolvers ++= Seq(
       Resolver.bintrayRepo("hmrc", "releases"),
       Resolver.typesafeRepo("releases"),

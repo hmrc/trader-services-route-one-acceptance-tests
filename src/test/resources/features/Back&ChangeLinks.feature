@@ -328,7 +328,7 @@ Feature: Back Links & Change Links
     When the user enters valid characters for case reference number and clicks continue
     When the user is on the how to respond page and selects writeAndUpload
     Then the user is on the write response page
-    And the user enters a response with valid characters
+    And the user enters "valid" characters in the write response field and continues
     Then the user is on the multi-file upload pages for a/an Amend journey
     When the user clicks the button to upload the first file and selects the "pdf" file
     Then the user clicks continue when files have finished uploading
@@ -338,12 +338,12 @@ Feature: Back Links & Change Links
     Then the user is on the case ref number page
     When the user enters valid characters for case reference number and clicks continue
     When the user is on the how to respond page and selects writeOnly
-    And the user enters a response with valid characters
+    And the user enters "Sample message" characters in the write response field and continues
     Then the user is on the Amend writeOnly review page and should see their responses
 
     When the user clicks the change link on the amend review page for message
     Then the user is on the write response page
-    And the user enters a response "Sample message for case workers" and continues
+    And the user enters "Hello caseworker" characters in the write response field and continues
 
     When the user clicks the change link on the amend review page for amendment
     Then the user is on the how to respond page and selects uploadOnly
@@ -366,7 +366,7 @@ Feature: Back Links & Change Links
     When the user enters valid characters for case reference number and clicks continue
     When the user is on the how to respond page and selects <amendType>
     Then the user is on the write response page
-    And the user enters a response "<text>" and continues
+    And the user enters "<text>" characters in the write response field and continues
     Then the user is on the multi-file upload pages for a/an Amend journey
     When the user clicks the button to upload the first file and selects the "jpg" file
     Then the user clicks continue when files have finished uploading

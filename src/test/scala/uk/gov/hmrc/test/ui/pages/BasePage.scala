@@ -17,14 +17,14 @@
 package uk.gov.hmrc.test.ui.pages
 
 import java.time.{Duration, LocalDate, LocalTime}
-import java.util.UUID
 import java.util.concurrent.TimeUnit
 
+import org.junit.{AfterClass, BeforeClass}
 import org.openqa.selenium._
 import org.openqa.selenium.support.ui.{ExpectedCondition, ExpectedConditions, FluentWait}
 import org.scalatest.{Assertion, Matchers}
 import uk.gov.hmrc.test.ui.conf.Configuration.environment
-import uk.gov.hmrc.test.ui.conf.Environment
+import uk.gov.hmrc.test.ui.conf.{Configuration, Environment}
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 import scala.collection.convert.ImplicitConversions.`collection AsScalaIterable`
@@ -213,10 +213,24 @@ trait BasePage extends Matchers with BrowserDriver {
   val urBannerLink = "/signup.take-part-in-research.service.gov.uk/home?utm_campaign=Customs_Check"
 
   //Time and date
-
   lazy val today: LocalDate = LocalDate.now
   lazy val (d, m, y) = (today.getDayOfMonth, today.getMonthValue, today.getYear)
   lazy val (day, month, year) = (today.getDayOfMonth.toString, today.getMonthValue.toString, today.getYear.toString)
+
+  lazy val yesterday: LocalDate = today.minusDays(1)
+  lazy val (yd, ym, yy) = (yesterday.getDayOfMonth.toString, yesterday.getMonthValue.toString, yesterday.getYear.toString)
+
+  lazy val tomorrow: LocalDate = today.plusDays(1)
+  lazy val (td, tm, ty) = (tomorrow.getDayOfMonth.toString, tomorrow.getMonthValue.toString, tomorrow.getYear.toString)
+
+  lazy val sixMonthsFromNow: LocalDate = today.plusMonths(6)
+
+  lazy val overSixMonthsFromNow: LocalDate = today.plusMonths(6).plusDays(1)
+  lazy val (d6future, m6future, y6future) = (overSixMonthsFromNow.getDayOfMonth.toString, overSixMonthsFromNow.getMonthValue.toString, overSixMonthsFromNow.getYear.toString)
+
+  lazy val sixMonthsAgo: LocalDate = today.minusMonths(6).minusDays(1)
+  lazy val (d6past, m6past, y6past) = (sixMonthsAgo.getDayOfMonth.toString, sixMonthsAgo.getMonthValue.toString, sixMonthsAgo.getYear.toString)
+
 
   lazy val dayFormatted = f"$d%02d"
   lazy val monthFormatted = f"$m%02d"
@@ -224,6 +238,12 @@ trait BasePage extends Matchers with BrowserDriver {
   def todayDateCYA: String = {
     s"${today.getDayOfMonth.toString} ${today.getMonth.toString.toLowerCase.capitalize} ${today.getYear.toString}"
   }
+
+  def sixMonthsFutureDateCYA: String = {
+    s"${sixMonthsFromNow.getDayOfMonth.toString} ${sixMonthsFromNow.getMonth.toString.toLowerCase.capitalize} ${sixMonthsFromNow.getYear.toString}"
+  }
+
+  def betweenError(journey: String): String = "Error:Date of " + s"$journey" + " must be between " + todayDateCYA + " (the date of entry) and " + sixMonthsFutureDateCYA
 
   lazy val nowTime: LocalTime = LocalTime.now()
   lazy val nowHrs: Int = nowTime.getHour
@@ -255,10 +275,15 @@ trait BasePage extends Matchers with BrowserDriver {
   lazy val randomImportEN: String = (100000 + Random.nextInt(899999)).toString + randomAlpha
   lazy val randomExportEN: String = randomAlpha + (10000 + Random.nextInt(89999)).toString + randomAlpha
 
+  def randomString(length: Int): String = Random.alphanumeric.take(length).mkString
+
+  val shortString: String = randomString(20)
+  val longString: String = randomString(1000)
+
   var lastUsedTestEmail: String = ""
 
   def generateTestEmailAddress: String = {
-    lastUsedTestEmail = s"test${UUID.randomUUID().toString}@test.com"
+    lastUsedTestEmail = s"$shortString@test.com"
     lastUsedTestEmail
   }
 
@@ -288,4 +313,20 @@ trait BasePage extends Matchers with BrowserDriver {
     enrollment.clear()
     enrollment.sendKeys("GB123456789012345")
   }
+
+  @BeforeClass
+  def setupUser(): Unit = {
+    navigateTo(Configuration.settings.SIGN_IN_page)
+    login()
+    createUser()
+    clickByCSS("#update")
+  }
+
+  @AfterClass
+  def destroyUser(): Unit = {
+    navigateTo(Configuration.settings.DESTROY_PLANET)
+    destroyPlanetLink.click()
+    driver.switchTo().alert().accept()
+  }
+
 }

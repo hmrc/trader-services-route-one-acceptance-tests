@@ -34,12 +34,6 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
     verifyH2Contact(h2ContactDetails)
   }
 
-  //todo?
-  //  EPU match {
-  //    case "randomEPU" =>   assertElementText(randomEPU, epuAnswer)
-  //    case _ =>   assertElementText(EPU, epuAnswer)
-  //  }
-
   Then("""^the user should see the EPU & Entry No Rows & the correct responses (.*) & (.*) on the CYA page$""") {
     (EPU: String, EntryNo: String) =>
 

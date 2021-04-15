@@ -5,7 +5,7 @@ Feature: Contact Details
     Given the user is on the start page for trader services and selects New
     Then the user is on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
-    And the user enters a date "<day>" "<month>" "<year>"
+    And the user enters today's date for entryDate
     And the user clicks continue
     Then the user is on the Import Request Type page and selects <requestType>
     Then the user is on the Import Route Type page and selects <route>
@@ -76,7 +76,7 @@ Feature: Contact Details
     Then the user is on the Import CYA page
 
     Examples:
-      | epu | entryNo | day | month | year | requestType  | route   | priority      | transport | email   |
-      | 123 | 123456A | 01  | 01    | 2021 | Cancellation | Route 6 | Human remains | Air       | a@a.com |
+      | epu       | entryNo        | requestType  | route   | priority      | transport | email   |
+      | randomEPU | randomImportEN | Cancellation | Route 6 | Human remains | Air       | a@a.com |
 
 
