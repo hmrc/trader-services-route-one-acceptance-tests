@@ -17,12 +17,19 @@ Run the following command to start services locally:
 
 Then execute the `run_tests.sh` script:
 
-    ./run_tests.sh <environment> <browser-driver>
+    **Standard runners
+    ./run_tests.sh - runs locally (ensure SM profile above is running)
     
+    ./run_tests.sh <environment> <browser-driver>
     ie. /run_tests.sh dev chrome
     
-    QA runner (Runs a handful of generic smoke test journeys for export/import/amend - change parameters if desired)
+    **QA runner (Runs a handful of generic smoke test journeys for export/import/amend)
     ./run_tests_qa.sh
+    
+    **Further Runners:
+    *Zap: run_tests_zap.sh
+    *Accessiblity: run_tests_accessiblity.sh 
+        *this won't run in the browser but you can run them locally to make sure they pass before running them in jenkins
 
 
 The `run_tests.sh` script defaults to the `local` environment with the locally installed `chrome` driver binary.  For a complete list of supported param values, see:
@@ -50,9 +57,9 @@ To run against a containerised Chrome browser:
 To run the tests against an environment set the corresponding `host` environment property as specified under
  `<env>.host.services` in the [application.conf](/src/test/resources/application.conf). 
 
-For example, to execute the `run_tests.sh` script against QA  environment using Chrome remote-webdriver
+For example, to execute the `run_tests.sh` script against Staging  environment using Chrome remote-webdriver
 
-    ./run_tests.sh qa remote-chrome
+    ./run_tests.sh staging remote-chrome
 
 ## Running ZAP tests
 
@@ -76,20 +83,20 @@ library via [ZapSpec](/src/test/scala/uk/gov/hmrc/test/ui/ZapSpec.scala) from wh
 
 #### Executing a ZAP test
 
-The shell script `run_zap_tests.sh` is available to execute ZAP tests. The script first proxies a set of journey tests, 
+The shell script `run_tests_zap.sh` is available to execute ZAP tests. The script first proxies a set of journey tests, 
 tagged as `ZapTests`, via ZAP. Upon completion, the script then triggers a ZAP scan for the provided `zap-automation` config. 
 
 For example, to execute ZAP tests locally using a Chrome browser
 
 ```
-./run_zap_tests.sh local chrome
+./run_tests_zap.sh local chrome
 ```
 
 To execute ZAP tests locally using a Chrome browser
 
 ```
 ./run-browser-with-docker.sh remote-chrome 
-./run_zap_test.sh local remote-chrome
+./run_tests_zap.sh local remote-chrome
 ``` 
 
 `./run-browser-with-docker.sh` is **NOT** required when running in a CI environment.
@@ -109,6 +116,10 @@ See the `drivers/` directory for some helpful scripts to do the installation wor
     ./installGeckodriver.sh <operating-system> <driver-version>
     or
     ./installChromedriver <operating-system> <driver-version>
+    
+    You can also try the following commands in terminal for mac:
+    brew install chromedriver
+    brew install geckodriver
 
 - *<operating-system>* defaults to **linux64**, however it also supports **macos**
 - *<driver-version>* defaults to **0.21.0** for Gecko/Firefox, and the latest release for Chrome.  You can, however, however pass any version available at the [Geckodriver](https://github.com/mozilla/geckodriver/tags) or [Chromedriver](http://chromedriver.storage.googleapis.com/) repositories.

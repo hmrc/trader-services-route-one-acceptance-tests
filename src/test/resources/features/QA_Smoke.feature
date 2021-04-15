@@ -26,32 +26,32 @@ Feature: Customs check - Export journey
     And the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
     When the user clicks the button to upload the first file and selects the "pdf" file
-#
-#    When the user clicks the button to upload the second file and selects the "jpeg" file
-#    When the user clicks the button to upload the third file and selects the "jpg" file
-#    Then the user clicks the button to add another document
-#    When the user clicks the button to upload the fourth file and selects the "png" file
-#    Then the user clicks the button to add another document
-#    When the user clicks the button to upload the fifth file and selects the "tiff" file
-#    Then the user clicks the button to add another document
-#    When the user clicks the button to upload the sixth file and selects the "TIF" file
-#    Then the user clicks the button to add another document
-#    When the user clicks the button to upload the seventh file and selects the "txt" file
-#    Then the user clicks the button to add another document
-#    When the user clicks the button to upload the eighth file and selects the "msg" file
-#    Then the user clicks the button to add another document
-#    When the user clicks the button to upload the ninth file and selects the "odt" file
-#    Then the user clicks the button to add another document
-#    When the user clicks the button to upload the tenth file and selects the "ods" file
-#    Then the user waits 50000
-#    Then the user clicks MFU continue
-    Then the user clicks continue when files have finished uploading
+
+    When the user clicks the button to upload the second file and selects the "jpeg" file
+    When the user clicks the button to upload the third file and selects the "jpg" file
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the fourth file and selects the "png" file
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the fifth file and selects the "tiff" file
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the sixth file and selects the "TIF" file
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the seventh file and selects the "txt" file
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the eighth file and selects the "msg" file
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the ninth file and selects the "odt" file
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload the tenth file and selects the "ods" file
+    Then the user waits 50000
+    Then the user clicks MFU continue
+#    Then the user clicks continue when files have finished uploading
     Then the user is on the Export CYA page
     Then the user clicks submit on the CYA page
     Then output the case reference number
     And the user should see 2 Hour SLA
     Then the user will see text to give-feedback
-    Then the user waits 15000
+    Then the user waits 10000
     Then the user clicks the button to submit another case on the confirmation page they will go back to the start
     When the user clicks the deskpro link they will be redirected to the appropriate page
     When the user clicks the UR banner link they will be redirected to the appropriate page
@@ -90,7 +90,7 @@ Feature: Customs check - Export journey
     And the user should see Maritime-Import SLA
     Then the user will see text to give-feedback
     Then output the case reference number
-    Then the user waits 5000
+    Then the user waits 10000
     Then the user clicks the button to submit another case on the confirmation page they will go back to the start
     When the user clicks the banner feedback link they will be redirected to the appropriate page
 
@@ -130,7 +130,7 @@ Feature: Customs check - Export journey
 #    Then the user clicks continue when files have finished uploading
     When the user clicks submit on the CYA page
     Then the user is on the Amend confirmation page
-    Then the user waits 5000
+    Then the user waits 10000
     Then the user clicks the button to submit another case on the confirmation page they will go back to the start
 
   Scenario: Amend: A user adds a message and a document to a case (write response only)
@@ -141,46 +141,8 @@ Feature: Customs check - Export journey
     Then the user enters a real case reference number PCI21040921252PZVD43D4
     When the user is on the how to respond page and selects writeOnly
     And the user enters "valid" characters in the write response field and continues
-#    When the user clicks submit on the CYA page
-    Then the user waits 15000
+    When the user clicks submit on the CYA page
+    Then the user is on the Amend confirmation page
+    Then the user waits 10000
 #    When the user signs out they will be on the give feedback page
-#
-  #Legit EPUS
-#    410
-#    516
-#    515
-#    011
-#    033
-#    048
-#    060
-#    245
-#    436
-#    071
-#    120
-#    080
-#    191
-#    470
-#    084
-#    110
-#    155
-#    223
-#    191
-#    065
-#    182
-#    295
-#    218
-#    511
-#    077
-#    221
-#    240
-#    250
-#    291
-#    292
-#    443
-#    270
-#    430
-#    293
-#    290
-#    121
-#    219
-#    150
+
