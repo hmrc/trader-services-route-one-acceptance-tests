@@ -1,4 +1,4 @@
-@TraderServiceErrors2
+@TraderServiceErrors
 Feature: Vessel page validation
 
 #  Import
