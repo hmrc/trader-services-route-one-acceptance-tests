@@ -68,14 +68,6 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     navigateTo(traderServicesBaseUrl + url)
   }
 
-  Then("""^the user will see the banner and accept cookies""") { () =>
-    assertElementText("Cookies on HMRC services", cookieBannerHeading())
-    clickCookieAccept()
-    clickCookieHide()
-    assertElementIsNotVisibleById(".cbanner-govuk-cookie-banner__heading")
-
-  }
-
   When("""^the user clicks the (.*) link they will be redirected to the appropriate page$""") { (link: String) =>
 
     link match {

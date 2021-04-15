@@ -4,7 +4,6 @@ Feature: Hit all pages within the service - ZAP & Accessibility testing
 
   Scenario Outline: a11y/ZAP- every page in journey hit (Export - Transport-Optional)
     Given the user navigates to the temporary start page for trader services and clicks start
-    When the user will see the banner and accept cookies
     Then the user is on the start page for trader services and selects New
     When the user is on the entry details page
     And the user enters entry details "<epu>" and "<entryNo>"
