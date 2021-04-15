@@ -1,4 +1,4 @@
-@TraderServiceErrors
+@TraderServiceErrors2
 Feature: Entry details validation
 
   Scenario: Error validation on entry page (all blank fields)
