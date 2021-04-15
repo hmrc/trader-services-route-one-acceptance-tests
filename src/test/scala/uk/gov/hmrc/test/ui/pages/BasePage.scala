@@ -212,10 +212,6 @@ trait BasePage extends Matchers with BrowserDriver {
 
   val urBannerLink = "/signup.take-part-in-research.service.gov.uk/home?utm_campaign=Customs_Check"
 
-  def clickCookieAccept():Unit = clickByCSS("button.cbanner-govuk-button:nth-child(1)")
-  def cookieBannerHeading():WebElement = findElementByCss(".cbanner-govuk-cookie-banner__heading")
-  def clickCookieHide():Unit = clickByCSS(".cbanner-govuk-button")
-
   //Time and date
   lazy val today: LocalDate = LocalDate.now
   lazy val (d, m, y) = (today.getDayOfMonth, today.getMonthValue, today.getYear)
