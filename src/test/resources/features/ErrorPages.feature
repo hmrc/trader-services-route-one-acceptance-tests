@@ -1,72 +1,67 @@
-@TraderServiceErrors
+@TraderServiceErrors @accessibility @ZAP
 Feature: Error pages
 
   Scenario Outline: A user enters a duplicate case (Stub EPU: 667)
-    Given the user is on the start page for trader services and selects New
-    Then the user is on the entry details page
-    When the user enters entry details "<epu>" and "<entryNo>"
-    And the user enters today's date for entryDate
-    And the user clicks continue
-    Then the user is on the Export Request Type page and selects <requestType>
-    Then the user is on the Export Route Type page and selects <route>
-    Then the user is on the Export YesNo Priority page and selects Yes
-    When the user is on the Export Priority Goods page and selects <priority>
-    Then the user is on the Export transport type page and selects <transport>
-    Then the user is on the Export-Optional transport details page
-    Then the user enters "<transportName>" for transport name
-    And the user enters today's date for transportDateDeparture
-    Then the user clicks continue
-    Then the user is on the Export contact details page
-    And the user enters an email address "<email>"
-    When the user enters a name "<name>"
-    And the user clicks continue
+    Given the user is on the start page for trader services, selects New and continues
+    Then the user will be on the entry details page
+    * the user enters entry details "<epu>" and "<entryNo>"
+    * the user enters today's date for entryDate
+    * the user clicks continue
+    Then the user is on the Export Request type page, selects <requestType> and continues
+    When the user is on the Export Route type page, selects <route> and continues
+    Then the user is on the Export YesNo Priority page, selects Yes and continues
+    When the user is on the Export Priority Goods page, selects <priority> and continues
+    Then the user is on the Export Transport type page, selects <transport> and continues
+    When the user will be on the Export-Optional transport details page
+    * the user clicks continue
+    Then the user will be on the Export Contact details page
+    * the user enters an email address "<email>"
+    * the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
-    When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user clicks continue when files have finished uploading
+    * the user clicks the button to upload the first file and selects the "pdf" file
+    * the user clicks continue when files have finished uploading
     Then the user is on the Export CYA page
-    Then the user clicks submit on the CYA page
+    When the user clicks submit on the CYA page
     Then the user will be on the duplicate case error page
-    When the user clicks the link to add documents they will be redirected to amend journey
 
     Examples:
-      | epu | entryNo | requestType  | route   | priority      | transport | transportName | name  | email   |
-      | 667 | A23456A | Cancellation | Route 2 | Human remains | Air       | Test Vessel   | Mr. F | a@a.com |
+      | epu | entryNo | requestType  | route   | priority      | transport | email   |
+      | 667 | A23456A | Cancellation | Route 2 | Human remains | Air       | a@a.com |
+
 
   Scenario Outline: A user enters a failed request (Stub EPU: 666)
-    Given the user is on the start page for trader services and selects New
-    Then the user is on the entry details page
-    When the user enters entry details "<epu>" and "<entryNo>"
-    And the user enters today's date for entryDate
-    And the user clicks continue
-    Then the user is on the Export Request Type page and selects <requestType>
-    Then the user is on the Export Route Type page and selects <route>
-    Then the user is on the Export YesNo Priority page and selects Yes
-    When the user is on the Export Priority Goods page and selects <priority>
-    Then the user is on the Export transport type page and selects <transport>
-    Then the user is on the Export-Optional transport details page
-    Then the user enters "<transportName>" for transport name
-    And the user enters today's date for transportDateDeparture
-    Then the user clicks continue
-    Then the user is on the Export contact details page
-    And the user enters an email address "<email>"
-    When the user enters a name "<name>"
-    And the user clicks continue
+    Given the user is on the start page for trader services, selects New and continues
+    Then the user will be on the entry details page
+    * the user enters entry details "<epu>" and "<entryNo>"
+    * the user enters today's date for entryDate
+    * the user clicks continue
+    Then the user is on the Export Request type page, selects <requestType> and continues
+    When the user is on the Export Route type page, selects <route> and continues
+    Then the user is on the Export YesNo Priority page, selects Yes and continues
+    When the user is on the Export Priority Goods page, selects <priority> and continues
+    Then the user is on the Export Transport type page, selects <transport> and continues
+    When the user will be on the Export-Optional transport details page
+    * the user clicks continue
+    Then the user will be on the Export Contact details page
+    * the user enters an email address "<email>"
+    * the user clicks continue
     Then the user is on the multi-file upload pages for a/an New journey
-    When the user clicks the button to upload the first file and selects the "pdf" file
-    Then the user clicks continue when files have finished uploading
+    * the user clicks the button to upload the first file and selects the "pdf" file
+    * the user clicks continue when files have finished uploading
     Then the user is on the Export CYA page
-    Then the user clicks submit on the CYA page
-    Then the user is on the error page for internal server error
+    When the user clicks submit on the CYA page
+    Then the user will be on the error page for internal server error
 
     Examples:
-      | epu | entryNo | requestType | route   | priority      | transport | transportName | name  | email   |
-      | 666 | X23456A | New         | Route 3 | Human remains | Air       | Test Vessel   | Mr. F | a@a.com |
+      | epu | entryNo | requestType | route   | priority      | transport | email   |
+      | 666 | X23456A | New         | Route 3 | Human remains | Air       | a@a.com |
+
 
   Scenario: A user hits the wrong url
-    Given the user is on the start page for trader services and selects New
-    Then the user is on the entry details page
+    Given the user is on the start page for trader services, selects New and continues
+    Then the user will be on the entry details page
     When the user navigates to the following "/entry-detailx"
-    Then the user is on the error page for page not found
-    When the user clicks the link on the page not found they will be on the start page
+    Then the user will be on the error page for page not found
+    When the user clicks the link on the Page not found page they will be on the start page
 
 

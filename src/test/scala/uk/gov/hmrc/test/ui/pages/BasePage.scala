@@ -269,11 +269,16 @@ trait BasePage extends Matchers with BrowserDriver {
   lazy val between8amAnd3pm: Boolean = nowTime.isAfter(eightAm) && nowTime.isBefore(threePm)
 
   //Random inputs
-  lazy val randomEPU: String = (Random.nextInt(569) + 100).toString
+  lazy val randomEpuDigits: Int = Random.nextInt(666)
+  val randomEPU: String = f"$randomEpuDigits%03d"
+
   lazy val randomAlpha: String = Random.alphanumeric.filter(_.isLetter).head.toString
 
-  lazy val randomImportEN: String = (100000 + Random.nextInt(899999)).toString + randomAlpha
-  lazy val randomExportEN: String = randomAlpha + (10000 + Random.nextInt(89999)).toString + randomAlpha
+  lazy val randomImportDigits: Int = Random.nextInt(999999)
+  lazy val randomImportEN: String = f"$randomImportDigits%06d" + randomAlpha
+
+  lazy val randomExportDigits: Int = Random.nextInt(99999)
+  lazy val randomExportEN: String = randomAlpha + f"$randomExportDigits%05d" + randomAlpha
 
   def randomString(length: Int): String = Random.alphanumeric.take(length).mkString
 
@@ -328,5 +333,4 @@ trait BasePage extends Matchers with BrowserDriver {
     destroyPlanetLink.click()
     driver.switchTo().alert().accept()
   }
-
 }

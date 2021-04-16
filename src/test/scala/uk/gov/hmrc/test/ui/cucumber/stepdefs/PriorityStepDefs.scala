@@ -22,9 +22,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, PriorityPages}
 
 class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN {
 
-  //Has priority goods page (Y/N)
-
-  When("""^the user navigates to the (.*) YN priority type page""") { (journey: String) =>
+  When("""^the user navigates to the (.*) YN Priority page""") { (journey: String) =>
     journey match {
       case "Import" => navigateTo(urlImportYNPriority)
       case "Export" => navigateTo(urlExportYNPriority)
@@ -42,7 +40,7 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
     }
   }
 
-  When("""^the user is on the (.*) YesNo Priority page and selects (.*)""") { (journey: String, YesNo: String) =>
+  When("""^the user is on the (.*) YesNo Priority page, selects (.*) and continues""") { (journey: String, YesNo: String) =>
 
     journey match {
       case "Import" =>
@@ -69,9 +67,8 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
     }
   }
 
-  //Which priority goods page
 
-  When("""^the user navigates to the (.*) priority goods page""") { (journey: String) =>
+  When("""^the user navigates to the (.*) Priority goods page""") { (journey: String) =>
     journey match {
       case "Import" => navigateTo(urlImportPriority)
       case "Export" => navigateTo(urlExportPriority)
@@ -86,7 +83,7 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
     verifyHeading(headingPriority)
   }
 
-  When("""^the user is on the (.*) Priority Goods page and selects (.*)""") { (journey: String, requestType: String) =>
+  When("""^the user is on the (.*) Priority Goods page, selects (.*) and continues""") { (journey: String, requestType: String) =>
 
     journey match {
       case "Import" => confirmUrl(urlImportPriority)
@@ -104,7 +101,7 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
     clickContinue()
   }
 
-  Then("""^the last selected option for priority goods should be pre filled with (.*)$""") { (priority: String) =>
+  Then("""^the last selected option for Priority goods should be pre filled with (.*)$""") { (priority: String) =>
 
     priority match {
       case "Explosives or fireworks" => optionSelected("#priorityGoods")

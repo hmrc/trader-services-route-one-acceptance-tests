@@ -21,12 +21,12 @@ import uk.gov.hmrc.test.ui.pages.{AmendPages, BasePage, FinalConfirmationPage}
 
 class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage with ScalaDsl with EN {
 
-  Then("""^the user is on the case ref number page$""") { () =>
+  Then("""^the user is on the Case Reference number page$""") { () =>
     confirmUrl(urlCaseRef)
     verifyHeading(caseRefHeading)
   }
 
-  Then("""^the user enters (.*) characters for case reference number and clicks continue""") { (caseNo: String) =>
+  Then("""^the user enters "(.*)" characters for case reference number and continues""") { (caseNo: String) =>
     caseRefInput.clear()
 
     caseNo match {
@@ -34,22 +34,17 @@ class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage 
       case "tooMany" => sendNCharactersById(caseRefInput, 23)
       case "valid" => caseRefInput.sendKeys(userCaseRef)
       case "no" => caseRefInput.sendKeys("")
+      case _ => caseRefInput.sendKeys(caseNo)
     }
     clickContinueCaseRef()
   }
 
-  Then("""^the user enters a real case reference number (.*)$""") { (caseNo: String) =>
-    caseRefInput.clear()
-    writeById(caseRefInput, caseNo)
-    clickContinueCaseRef()
-  }
-
-  Then("""^the user is on the how to respond page$""") { () =>
+  Then("""^the user is on the Amendment type page$""") { () =>
     confirmUrl(urlHowToSend)
     verifyHeading(howToSendHeading)
   }
 
-  Then("""^the user is on the how to respond page and selects (.*)""") { (caseNo: String) =>
+  Then("""^the user is on the Amendment type page, selects (.*) and continues""") { (caseNo: String) =>
     confirmUrl(urlHowToSend)
     verifyHeading(howToSendHeading)
 
@@ -71,6 +66,7 @@ class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage 
     }
   }
 
+  //todo... combine?
   Then("""^the user is on the write response page""") { () =>
     confirmUrl(urlWriteResponse)
     verifyHeading(writeResponseHeading)

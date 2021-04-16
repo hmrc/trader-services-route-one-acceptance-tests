@@ -53,7 +53,7 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
     }
   }
 
-  Then("""^the user should see the (.*) Request Type row & the correct response (.*) on the CYA page$""") {
+  Then("""^the user should see the (.*) Request type row & the correct response (.*) on the CYA page$""") {
     (journey: String, answer: String) =>
 
       journey match {
@@ -115,13 +115,13 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
       }
   }
 
-  Then("""^the user should see the Vessel Name row & the correct response "(.*)" on the CYA page$""") {
+  Then("""^the user should see the Transport name row & the correct response "(.*)" on the CYA page$""") {
     (answer: String) =>
       assertElementText(summarytransportName, transportNameRow)
       assertElementText(answer, transportNameAnswer)
   }
 
-  Then("""^the user should see the Vessel Date (.*) row & the correct response "(.*)" on the CYA page$""") {
+  Then("""^the user should see the Transport date (.*) row & the correct response "(.*)" on the CYA page$""") {
     (journey: String, answer: String) =>
 
       journey match {
@@ -134,7 +134,7 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
       }
   }
 
-  Then("""^the user should see the Vessel Time (.*) row & the correct response "(.*)" on the CYA page$""") {
+  Then("""^the user should see the Transport time (.*) row & the correct response "(.*)" on the CYA page$""") {
     (journey: String, answer: String) =>
 
       journey match {

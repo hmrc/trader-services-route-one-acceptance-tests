@@ -4,17 +4,17 @@ Feature: Vessel page validation
 #  Import
 #    All blank fields
   Scenario: Mandatory (Import) Transport page
-    Given the user is on the start page for trader services and selects New
-    Then the user is on the entry details page
+    Given the user is on the start page for trader services, selects New and continues
+    Then the user will be on the entry details page
     When the user enters entry details "randomEPU" and "randomImportEN"
     And the user enters today's date for entryDate
     And the user clicks continue
-    Then the user is on the Import Request Type page and selects New
-    Then the user is on the Import Route Type page and selects Hold
-    Then the user is on the Import YesNo Priority page and selects No
-    When the user is on the ALVS page and selects Yes
-    Then the user is on the Import transport type page and selects Air
-    Then the user is on the Import-Mandatory transport details page
+    Then the user is on the Import Request type page, selects New and continues
+    Then the user is on the Import Route type page, selects Hold and continues
+    Then the user is on the Import YesNo Priority page, selects No and continues
+    When the user is on the ALVS page, selects Yes and continues
+    Then the user is on the Import Transport type page, selects Air and continues
+    Then the user will be on the Import-Mandatory transport details page
 
     When the user enters "" for transport name
     When the user enters a date of Arrival for their transportation "" "" ""
@@ -32,12 +32,12 @@ Feature: Vessel page validation
     When the user enters entry details "randomEPU" and "randomImportEN"
     And the user enters today's date for entryDate
     And the user clicks continue
-    Then the user is on the Import Request Type page and selects New
-    Then the user is on the Import Route Type page and selects Route 1
-    Then the user is on the Import YesNo Priority page and selects No
-    When the user is on the ALVS page and selects No
-    Then the user is on the Import transport type page and selects Air
-    Then the user is on the Import-Optional transport details page
+    Then the user is on the Import Request type page, selects New and continues
+    Then the user is on the Import Route type page, selects Route 1 and continues
+    Then the user is on the Import YesNo Priority page, selects No and continues
+    When the user is on the ALVS page, selects No and continues
+    Then the user is on the Import Transport type page, selects Air and continues
+    Then the user will be on the Import-Optional transport details page
 
 #    Incomplete fields (time and date must be whole)
     Then the user enters "a-b-c/de&f\1_1+2'" for transport name
@@ -121,16 +121,16 @@ Feature: Vessel page validation
 #    Export
 #    All blank fields
   Scenario: Mandatory (Export) Vessel page
-    Given the user is on the start page for trader services and selects New
-    Then the user is on the entry details page
+    Given the user is on the start page for trader services, selects New and continues
+    Then the user will be on the entry details page
     When the user enters entry details "randomEPU" and "randomExportEN"
     And the user enters today's date for entryDate
     And the user clicks continue
-    Then the user is on the Export Request Type page and selects C1601
-    Then the user is on the Export Route Type page and selects Route 2
-    Then the user is on the Export YesNo Priority page and selects No
-    Then the user is on the Export transport type page and selects Air
-    Then the user is on the Export-Mandatory transport details page
+    Then the user is on the Export Request type page, selects C1601 and continues
+    Then the user is on the Export Route type page, selects Route 2 and continues
+    Then the user is on the Export YesNo Priority page, selects No and continues
+    Then the user is on the Export Transport type page, selects Air and continues
+    Then the user will be on the Export-Mandatory transport details page
 
     When the user enters "" for transport name
     When the user enters a date of Departure for their transportation "" "" ""
@@ -148,11 +148,11 @@ Feature: Vessel page validation
     When the user enters entry details "randomEPU" and "randomExportEN"
     And the user enters today's date for entryDate
     And the user clicks continue
-    Then the user is on the Export Request Type page and selects New
-    Then the user is on the Export Route Type page and selects Route 1
-    Then the user is on the Export YesNo Priority page and selects No
-    Then the user is on the Export transport type page and selects Air
-    Then the user is on the Export-Optional transport details page
+    Then the user is on the Export Request type page, selects New and continues
+    Then the user is on the Export Route type page, selects Route 1 and continues
+    Then the user is on the Export YesNo Priority page, selects No and continues
+    Then the user is on the Export Transport type page, selects Air and continues
+    Then the user will be on the Export-Optional transport details page
 
 #    Incomplete fields (time and date must be whole)
     Then the user enters "a-b-c/de&f\1_1+2'" for transport name

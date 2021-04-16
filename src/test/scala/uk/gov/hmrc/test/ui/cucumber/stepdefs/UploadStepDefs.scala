@@ -68,18 +68,13 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
       }
   }
 
-  Then("""^the user should see their first uploaded doc (.*) on upload review page$""") { (Answer: String) =>
+  Then("""^the user should see their first uploaded doc (.*) on upload review page$""") { (answer: String) =>
     findElementByCss("div.govuk-summary-list__row:nth-child(1) > dt:nth-child(1)").isDisplayed
-    findElementByCss("div.govuk-summary-list__row:nth-child(1) > dd:nth-child(2)").getText shouldBe Answer
+    findElementByCss("div.govuk-summary-list__row:nth-child(1) > dd:nth-child(2)").getText shouldBe answer
   }
 
   When("""^the user clicks the button to remove a document$""") { () =>
     clickHref("a[href*='remove']")
-  }
-
-  Then("""^the user should see the message saying they have uploaded the max amount of docs""") { () =>
-    assertElementText("You’ve uploaded the maximum number of files and cannot add any more.",
-      findElementByCss("p.govuk-body"))
   }
 
   Then("""^the user selects (.*) to uploading another file""") { (yesNo: String) =>

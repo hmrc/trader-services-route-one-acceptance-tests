@@ -64,7 +64,7 @@ class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl w
     }
   }
 
-  And("""^the user will only see inset text for request type (.*)""") { (exportRq: String) =>
+  And("""^the user will only see inset text for Request type (.*)""") { (exportRq: String) =>
     exportRq match {
       case "C1601" => assertElementTextContains("For this export, you must upload form C1601 - Presentation of goods for export (arrival). You can include other supporting documents too.", insetText)
       case "C1602" => assertElementTextContains("For this export, you must upload form C1602 - Notification of exit of goods (departure). You can include other supporting documents too.", insetText)

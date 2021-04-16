@@ -2,8 +2,8 @@
 Feature: Entry details validation
 
   Scenario: Error validation on entry page (all blank fields)
-    Given the user is on the start page for trader services and selects New
-    Then the user is on the entry details page
+    Given the user is on the start page for trader services, selects New and continues
+    Then the user will be on the entry details page
     Then the user enters entry details "" and ""
     And the user enters a date "" "" ""
     When the user clicks continue
