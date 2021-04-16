@@ -22,14 +22,15 @@ import uk.gov.hmrc.test.ui.pages.ContactDetailsPage
 
 class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
 
-  When("""^the user navigates to the (.*) contact details page""") { (journey: String) =>
+  //todo - unused
+  When("""^the user navigates to the (.*) Contact details page""") { (journey: String) =>
     journey match {
       case "Import" => navigateTo(urlImportContact)
       case "Export" => navigateTo(urlExportContact)
     }
   }
 
-  Then("""^the user is on the (.*) contact details page$""") { (journey: String) =>
+  Then("""^the user will be on the (.*) Contact details page$""") { (journey: String) =>
     journey match {
       case "Import" => confirmUrl(urlImportContact)
       case "Export" => confirmUrl(urlExportContact)
@@ -37,12 +38,12 @@ class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
     verifyHeading(headingContactInfo)
   }
 
-  Then("""^the user enters a name "(.*)"$""") {
+  When("""^the user enters a name "(.*)"$""") {
     (name: String) =>
       writeById(fullName, name)
   }
 
-  Then("""^the user enters an email address "(.*)"$""") {
+  And("""^the user enters an email address "(.*)"$""") {
     (emailAddress: String) =>
 
       emailAddress match {
@@ -51,7 +52,7 @@ class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
       }
   }
 
-  Then("""^the user enters a phone number "(.*)"$""") {
+  And("""^the user enters a phone number "(.*)"$""") {
     (phone: String) =>
       writeById(phoneNo, phone)
   }

@@ -21,21 +21,16 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, QuestionPages}
 
 class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl with EN {
 
-  //Navigate to [page]
-  //Is on [page]
-  //Navigate to [page] & select [option]
-  //Check filled/clear
-
   //Request Type
 
-  When("""^the user navigates to the (.*) Request Type page""") { (journey: String) =>
+  When("""^the user navigates to the (.*) Request type page""") { (journey: String) =>
     journey match {
       case "Import" => navigateTo(urlImportRequest)
       case "Export" => navigateTo(urlExportRequest)
     }
   }
 
-  Then("""^the user is on the (.*) Request Type page""") { (journey: String) =>
+  Then("""^the user will be on the (.*) Request type page""") { (journey: String) =>
     journey match {
       case "Import" =>
         confirmUrl(urlImportRequest)
@@ -45,73 +40,78 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
         verifyHeading(headingExportRequest)
     }
   }
-  When("""^the user is on the Import Request Type page and selects (.*)""") { (requestType: String) =>
-    confirmUrl(urlImportRequest)
-    verifyHeading(headingImportRequest)
 
-    requestType match {
-      case "New" => clickByCSS("#requestType")
-      case "Cancellation" => clickByCSS("#requestType-2")
-      case "NoOption" =>
-    }
-    clickContinue()
+  When("""^the user is on the (.*) Request type page, selects (.*) and continues""") {
+    (journey: String, requestType: String) =>
+
+      journey match {
+        case "Import" =>
+          confirmUrl(urlImportRequest)
+          verifyHeading(headingImportRequest)
+
+          requestType match {
+            case "New" => clickByCSS("#requestType")
+            case "Cancellation" => clickByCSS("#requestType-2")
+            case "NoOption" =>
+          }
+
+        case "Export" =>
+          confirmUrl(urlExportRequest)
+          verifyHeading(headingExportRequest)
+
+          requestType match {
+            case "New" => clickByCSS("#requestType")
+            case "Cancellation" => clickByCSS("#requestType-2")
+            case "Withdrawal" => clickByCSS("#requestType-3")
+            case "C1601" => clickByCSS("#requestType-4")
+            case "C1602" => clickByCSS("#requestType-5")
+            case "C1603" => clickByCSS("#requestType-6")
+            case "NoOption" =>
+          }
+      }
+      clickContinue()
   }
 
-  When("""^the user is on the Export Request Type page and selects (.*)""") { (requestType: String) =>
-    confirmUrl(urlExportRequest)
-    verifyHeading(headingExportRequest)
+  Then("""^the last selected option for (.*) Request should be pre filled with (.*)$""") {
+    (journey: String, request: String) =>
 
-    requestType match {
-      case "New" => clickByCSS("#requestType")
-      case "Cancellation" => clickByCSS("#requestType-2")
-      case "Withdrawal" => clickByCSS("#requestType-3")
-      case "C1601" => clickByCSS("#requestType-4")
-      case "C1602" => clickByCSS("#requestType-5")
-      case "C1603" => clickByCSS("#requestType-6")
-      case "NoOption" =>
-    }
-    clickContinue()
+      journey match {
+        case "Import" =>
+          request match {
+            case "New" => optionSelected("#requestType")
+            case "Cancellation" => optionSelected("#requestType-2")
+            case _ => optionNotSelected("#requestType")
+              optionNotSelected("#requestType-2")
+          }
+
+        case "Export" =>
+          request match {
+            case "New" => optionSelected("#requestType")
+            case "Cancellation" => optionSelected("#requestType-2")
+            case "C1601" => optionSelected("#requestType-3")
+            case "C1602" => optionSelected("#requestType-4")
+            case "C1603" => optionSelected("#requestType-5")
+            case "Withdrawal" => optionSelected("#requestType-6")
+
+            case _ => optionNotSelected("#requestType")
+              optionNotSelected("#requestType-2")
+              optionNotSelected("#requestType-3")
+              optionNotSelected("#requestType-4")
+              optionNotSelected("#requestType-5")
+              optionNotSelected("#requestType-6")
+          }
+      }
   }
-
-  Then("""^the last selected option for Import Request should be pre filled with (.*)$""") { (request: String) =>
-
-    request match {
-      case "New" => optionSelected("#requestType")
-      case "Cancellation" => optionSelected("#requestType-2")
-      case _ => optionNotSelected("#requestType")
-        optionNotSelected("#requestType-2")
-    }
-  }
-
-  Then("""^the last selected option for Export Request should be pre filled with (.*)$""") { (request: String) =>
-
-    request match {
-      case "New" => optionSelected("#requestType")
-      case "Cancellation" => optionSelected("#requestType-2")
-      case "C1601" => optionSelected("#requestType-3")
-      case "C1602" => optionSelected("#requestType-4")
-      case "C1603" => optionSelected("#requestType-5")
-      case "Withdrawal" => optionSelected("#requestType-6")
-
-      case _ => optionNotSelected("#requestType")
-        optionNotSelected("#requestType-2")
-        optionNotSelected("#requestType-3")
-        optionNotSelected("#requestType-4")
-        optionNotSelected("#requestType-5")
-        optionNotSelected("#requestType-6")
-    }
-  }
-
 
   //Route
-  When("""^the user navigates to the (.*) route type page""") { (journey: String) =>
+  When("""^the user navigates to the (.*) Route type page""") { (journey: String) =>
     journey match {
       case "Import" => navigateTo(urlRouteImport)
       case "Export" => navigateTo(urlRouteExport)
     }
   }
 
-  Then("""^the user is on the (.*) Route Type page""") { (journey: String) =>
+  Then("""^the user will be on the (.*) Route type page""") { (journey: String) =>
     journey match {
       case "Import" => confirmUrl(urlRouteImport)
       case "Export" => confirmUrl(urlRouteExport)
@@ -119,7 +119,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     verifyHeading(headingRoute)
   }
 
-  When("""^the user is on the (.*) Route Type page and selects (.*)""") { (journey: String, requestType: String) =>
+  When("""^the user is on the (.*) Route type page, selects (.*) and continues""") { (journey: String, requestType: String) =>
 
     journey match {
       case "Import" => confirmUrl(urlRouteImport)
@@ -154,14 +154,14 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
   }
 
   //Transport
-  When("""^the user navigates to the (.*) transport page""") { (journey: String) =>
+  When("""^the user navigates to the (.*) Transport page""") { (journey: String) =>
     journey match {
       case "Import" => navigateTo(urlTransportImport)
       case "Export" => navigateTo(urlTransportExport)
     }
   }
 
-  Then("""^the user is on the (.*) transport type page""") { (journey: String) =>
+  Then("""^the user will be on the (.*) Transport type page""") { (journey: String) =>
     journey match {
       case "Import" =>
         confirmUrl(urlTransportImport)
@@ -172,7 +172,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     verifyHeading(headingTransport)
   }
 
-  When("""^the user is on the (.*) transport type page and selects (.*)""") { (journey: String, requestType: String) =>
+  When("""^the user is on the (.*) Transport type page, selects (.*) and continues""") { (journey: String, requestType: String) =>
     journey match {
       case "Import" => confirmUrl(urlTransportImport)
       case "Export" => confirmUrl(urlTransportExport)
@@ -188,7 +188,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     clickContinue()
   }
 
-  Then("""^the last selected option for transport type should be pre filled with (.*)$""") { (transport: String) =>
+  Then("""^the last selected option for Transport type should be pre filled with (.*)$""") { (transport: String) =>
 
     transport match {
       case "Air" => optionSelected("#freightType")
@@ -198,6 +198,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
   }
 
   //ALVS - Import Only
+  //todo implement or delete
   When("""^the user navigates to the ALVS page""") { () =>
     navigateTo(urlALVS)
   }
@@ -207,7 +208,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     verifyHeading(headingALVS)
   }
 
-  When("""^the user is on the ALVS page and selects (.*)$""") { (yesNo: String) =>
+  When("""^the user is on the ALVS page, selects (.*) and continues""") { (yesNo: String) =>
     confirmUrl(urlALVS)
     verifyHeading(headingALVS)
 

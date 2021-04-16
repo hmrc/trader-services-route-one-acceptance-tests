@@ -23,6 +23,7 @@ import uk.gov.hmrc.test.ui.pages._
 class ErrorStepDefs extends FinalConfirmationPage with BasePage with TransportQuestionsPage with ContactDetailsPage with
   LandingPage with ScalaDsl with EN {
 
+  //todo...?
   And("""^the user enters too many characters for (.*)""") { (field: String) =>
 
     field match {
@@ -38,19 +39,20 @@ class ErrorStepDefs extends FinalConfirmationPage with BasePage with TransportQu
     verifyHeading(headingDuplicate)
   }
 
-  Then("""^the user is on the error page for page not found""") { () =>
+  Then("""^the user will be on the error page for page not found""") { () =>
     verifyHeading("Page not found")
   }
 
-  Then("""^the user is on the error page for internal server error""") { () =>
+  Then("""^the user will be on the error page for internal server error""") { () =>
     verifyHeading("Sorry, there is a problem with the service")
   }
 
-  When("""^the user clicks the link on the page not found they will be on the start page""") { () =>
+  When("""^the user clicks the link on the Page not found page they will be on the start page""") { () =>
     errorClickLink()
     confirmUrl(traderServicesUrl)
     verifyHeading(landingHeading)
   }
 
+  //todo check this
   def errorClickLink(): Unit = driver.findElement(By.linkText("Send your documents for a customs check")).click()
 }

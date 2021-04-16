@@ -4,22 +4,22 @@ Feature: Customs check - Export journey
 
   Scenario Outline: A user wants to complete an Export RouteOne journey
     Given the user logs into QA
-    Then the user is on the start page for trader services and selects New
-    Then the user is on the entry details page
+    Then the user is on the start page for trader services, selects New and continues
+    Then the user will be on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks continue
-    Then the user is on the Export Request Type page and selects <requestType>
-    Then the user is on the Export Route Type page and selects <route>
-    Then the user is on the Export YesNo Priority page and selects Yes
-    When the user is on the Export Priority Goods page and selects <priority>
-    Then the user is on the Export transport type page and selects <transport>
-    Then the user is on the Export-Optional transport details page
+    Then the user is on the Export Request type page, selects <requestType> and continues
+    Then the user is on the Export Route type page, selects <route> and continues
+    Then the user is on the Export YesNo Priority page, selects Yes and continues
+    When the user is on the Export Priority Goods page, selects <priority> and continues
+    Then the user is on the Export Transport type page, selects <transport> and continues
+    Then the user will be on the Export-Optional transport details page
     Then the user enters "<transportName>" for transport name
     And the user enters today's date for transportDateDeparture
     And the user enters a time of Departure for their transportation "15" "59"
     Then the user clicks continue
-    Then the user is on the Export contact details page
+    Then the user will be on the Export Contact details page
     Then the user enters a name "<name>"
     And the user enters an email address "<email>"
     And the user enters a phone number "<phone>"
@@ -62,18 +62,18 @@ Feature: Customs check - Export journey
 
   Scenario Outline: A user wants to complete a New Import journey
     Given the user logs into QA
-    Then the user is on the start page for trader services and selects New
-    Then the user is on the entry details page
+    Then the user is on the start page for trader services, selects New and continues
+    Then the user will be on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     Then the user clicks continue
-    When the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import Route Type page and selects <route>
-    When the user is on the Import YesNo Priority page and selects Yes
-    Then the user is on the Import Priority Goods page and selects <priority>
-    When the user is on the ALVS page and selects Yes
-    Then the user is on the Import transport type page and selects <transport>
-    Then the user is on the Import-Optional transport details page
+    When the user is on the Import Request type page, selects <requestType> and continues
+    Then the user is on the Import Route type page, selects <route> and continues
+    When the user is on the Import YesNo Priority page, selects Yes and continues
+    Then the user is on the Import Priority Goods page, selects <priority> and continues
+    When the user is on the ALVS page, selects Yes and continues
+When the user is on the Import Transport type page, selects <transport> and continues
+    Then the user will be on the Import-Optional transport details page
     Then the user enters "<transportName>" for transport name
     And the user enters today's date for transportDateArrival
     And the user enters a time of Arrival for their transportation "12" "30"
@@ -100,10 +100,10 @@ Feature: Customs check - Export journey
       | randomEPU | randomImportEN | New         | Route 1 | Human remains | Maritime  | train 1x      | agent | testEmail | 01256888999 |
 
   Scenario: Amend: A user adds a message and a document to a case (write response + upload)
-    Given the user is on the start page for trader services and selects Amend
-    Then the user is on the case ref number page
-    Then the user enters a real case reference number PCI21040921252PZVD43D4
-    When the user is on the how to respond page and selects writeAndUpload
+    Given the user is on the start page for trader services, selects Amend and continues
+    Then the user is on the Case Reference number page
+    Then the user enters "PCI21040921252PZVD43D4" characters for case reference number and continues
+    When the user is on the Amendment type page and selects writeAndUpload
     Then the user is on the write response page
     When the user enters "valid" characters in the write response field and continues
     Then the user is on the multi-file upload pages for a/an Amend journey
@@ -135,11 +135,11 @@ Feature: Customs check - Export journey
 
   Scenario: Amend: A user adds a message and a document to a case (write response only)
     Given the user logs into QA
-    When the user navigates to the temporary start page for trader services and clicks start
-    Then the user is on the start page for trader services and selects Amend
-    Then the user is on the case ref number page
-    Then the user enters a real case reference number PCI21040921252PZVD43D4
-    When the user is on the how to respond page and selects writeOnly
+    When the user is on the temp start page and enters the journey they will be on the landing page
+    Then the user is on the start page for trader services, selects Amend and continues
+    Then the user is on the Case Reference number page
+    Then the user enters "PCI21040921252PZVD43D4" characters for case reference number and continues
+    When the user is on the Amendment type page and selects writeOnly
     And the user enters "valid" characters in the write response field and continues
     When the user clicks submit on the CYA page
     Then the user is on the Amend confirmation page

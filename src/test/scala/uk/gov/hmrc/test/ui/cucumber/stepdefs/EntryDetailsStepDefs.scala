@@ -26,12 +26,12 @@ class EntryDetailsStepDefs extends EntryDetailsPage with BasePage with ScalaDsl 
     navigateTo(urlEntryDetails)
   }
 
-  Given("""^the user is on the entry details page$""") { () =>
+  Then("""^the user will be on the entry details page$""") { () =>
     confirmUrl(urlEntryDetails)
     verifyHeading(headingEntryDetails)
   }
 
-  Then("""^the user enters entry details "(.*)" and "(.*)"$""") {
+  When("""^the user enters entry details "(.*)" and "(.*)"$""") {
     (epu: String, entryNumber: String) =>
 
       epu match {
@@ -46,7 +46,7 @@ class EntryDetailsStepDefs extends EntryDetailsPage with BasePage with ScalaDsl 
       }
   }
 
-  Then("""^the user enters a date "(.*)" "(.*)" "(.*)"$""") {
+  And("""^the user enters a date "(.*)" "(.*)" "(.*)"$""") {
     (dateDay: String, dateMonth: String, dateYear: String) =>
       writeById(entryDay, dateDay)
       writeById(entryMonth, dateMonth)

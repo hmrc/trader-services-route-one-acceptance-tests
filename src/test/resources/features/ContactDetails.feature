@@ -2,20 +2,20 @@
 Feature: Contact Details
 
   Scenario Outline: Contact details - validation test
-    Given the user is on the start page for trader services and selects New
-    Then the user is on the entry details page
+    Given the user is on the start page for trader services, selects New and continues
+    Then the user will be on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks continue
-    Then the user is on the Import Request Type page and selects <requestType>
-    Then the user is on the Import Route Type page and selects <route>
-    Then the user is on the Import YesNo Priority page and selects Yes
-    When the user is on the Import Priority Goods page and selects <priority>
-    Then the user is on the ALVS page and selects Yes
-    Then the user is on the Import transport type page and selects <transport>
-    Then the user is on the Import-Optional transport details page
+    Then the user is on the Import Request type page, selects <requestType> and continues
+    Then the user is on the Import Route type page, selects <route> and continues
+    Then the user is on the Import YesNo Priority page, selects Yes and continues
+    When the user is on the Import Priority Goods page, selects <priority> and continues
+    Then the user is on the ALVS page, selects Yes and continues
+When the user is on the Import Transport type page, selects <transport> and continues
+    Then the user will be on the Import-Optional transport details page
     Then the user clicks continue
-    When the user is on the Import contact details page
+    When the user will be on the Import Contact details page
     Then the user clicks continue
     Then the user should see "Error:Enter an email address" error message for "contactEmail"
     Then the user enters a name "a"
