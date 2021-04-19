@@ -59,7 +59,7 @@ Feature: Contact Details
 
     Examples:
       | journey | epu       | entryNo        | requestType | route   | priority      | transport |
-      | Import  | randomEPU | randomImportEN | New         | Route 1 | Human remains | Air       |
+      | Import  | randomEPU | importEN | New         | Route 1 | Human remains | Air       |
 
 
 

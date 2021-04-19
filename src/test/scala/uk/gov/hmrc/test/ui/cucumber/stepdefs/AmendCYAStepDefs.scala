@@ -51,18 +51,18 @@ class AmendCYAStepDefs extends AmendPages with AmendCYAPage with BasePage with S
   When("""^the user clicks the change link on the amend review page for (.*)$""") { (changeLink: String) =>
     changeLink match {
 
-      case "caseRef" => clickHref("a[href*='case-reference-number']")
-      case "amendment" => clickHref("a[href*='type-of-amendment']")
-      case "message" => clickHref("a[href*='write-response']")
-      case "documents" => clickHref("a[href*='upload-files']")
+      case "CaseRef" => clickHref("a[href*='case-reference-number']")
+      case "Amendment" => clickHref("a[href*='type-of-amendment']")
+      case "Message" => clickHref("a[href*='write-response']")
+      case "Documents" => clickHref("a[href*='upload-files']")
     }
   }
 
-  Then("""^the user should see what they entered as their message "(.*)"$""") { (response: String) =>
+  Then("""^the user should see the message they entered "(.*)"$""") { (response: String) =>
     assertElementText(response, messageAnswer)
   }
 
-  Then("""^the user should see what the files they uploaded "(.*)"$""") { (uploads: String) =>
+  Then("""^the user should see the files they uploaded "(.*)"$""") { (uploads: String) =>
     assertElementTextContains(uploads, uploadAnswer)
   }
 }

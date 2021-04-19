@@ -6,7 +6,7 @@ Feature: Vessel page validation
   Background: Get to transport details page (Import - Mandatory)
     Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
-    When the user enters entry details "randomEPU" and "randomImportEN"
+    When the user enters entry details "randomEPU" and "importEN"
     * the user enters today's date for entryDate
     * the user clicks continue
     When the user is on the Request type page, selects New and continues
@@ -114,7 +114,7 @@ Feature: Vessel page validation
 #  Scenario: Mandatory (Export) Vessel page
 #    Given the user is on the start page for trader services, selects New and continues
 #    Then the user will be on the entry details page
-#    When the user enters entry details "randomEPU" and "randomExportEN"
+#    When the user enters entry details "randomEPU" and "exportEN"
 #    And the user enters today's date for entryDate
 #    And the user clicks continue
 #    Then the user is on the Request type page, selects C1601 and continues
@@ -136,7 +136,7 @@ Feature: Vessel page validation
 #
 #  Scenario: Optional Vessel page (Export)
 #    Then the user navigates to the entry details page
-#    When the user enters entry details "randomEPU" and "randomExportEN"
+#    When the user enters entry details "randomEPU" and "exportEN"
 #    And the user enters today's date for entryDate
 #    And the user clicks continue
 #    Then the user is on the Request type page, selects New and continues

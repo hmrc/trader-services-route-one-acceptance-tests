@@ -40,7 +40,7 @@ Feature: Entry details validation
 
     Examples:
       | entryNo        |
-      | randomImportEN |
+      | importEN |
 
   Scenario Outline: Error validation on entry page - Entry number
     When the user enters entry details "<epu>" and "1"
@@ -83,7 +83,7 @@ Feature: Entry details validation
 
     Examples:
       | epu       | entryNo        |
-      | randomEPU | randomExportEN |
+      | randomEPU | exportEN |
 
 
   Scenario Outline: Error validation on entry page - Date (Invalid dates)
@@ -134,4 +134,4 @@ Feature: Entry details validation
 
     Examples:
       | epu       | entryNo        |
-      | randomEPU | randomExportEN |
+      | randomEPU | exportEN |

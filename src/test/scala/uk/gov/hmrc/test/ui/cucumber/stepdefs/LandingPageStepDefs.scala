@@ -23,7 +23,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, LandingPage}
 
 class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with EN {
 
-  Given("""^the user is on the temp start page and enters the journey then they will be on the landing page$""") { () =>
+  Given("""^the user is on the temp start page and enters the journey they will be on the landing page$""") { () =>
     navigateTo(traderServicesStart)
     confirmUrl(traderServicesStart)
     verifyHeading(startHeading)
@@ -32,10 +32,6 @@ class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with E
 
   Then("""^the user will be on the temporary start page$""") { () =>
     confirmUrl(traderServicesStart)
-  }
-
-  When("""^the user navigates to the landing page for trader services$""") { () =>
-    navigateTo(traderServicesUrl)
   }
 
   Then("""^the user will be on the start page for trader services$""") { () =>

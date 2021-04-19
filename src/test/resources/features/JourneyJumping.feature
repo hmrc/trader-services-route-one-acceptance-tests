@@ -2,7 +2,7 @@
 Feature: User tries to jump ahead in the journey
 
   Scenario: A user tries to jump ahead in an export journey to the next page
-    Given the user is on the temp start page and enters the journey then they will be on the landing page
+    Given the user is on the temp start page and enters the journey they will be on the landing page
     When the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     When the user navigates to the following "/new/export/request-type"
@@ -39,7 +39,7 @@ Feature: User tries to jump ahead in the journey
 
 #todo
   Scenario Outline: A user tries to jump ahead in an import journey to the next page
-    Given the user is on the temp start page and enters the journey then they will be on the landing page
+    Given the user is on the temp start page and enters the journey they will be on the landing page
     When the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
@@ -82,11 +82,11 @@ Feature: User tries to jump ahead in the journey
 
     Examples:
       | journey | epu       | entryNo        |
-      | Import  | randomEPU | randomImportEN |
+      | Import  | randomEPU | importEN |
 
 
   Scenario: A user tries to jump ahead in an export journey
-    Given the user is on the temp start page and enters the journey then they will be on the landing page
+    Given the user is on the temp start page and enters the journey they will be on the landing page
     Then the user will be on the start page for trader services
     And the user navigates to the following "/new/export/request-type"
     Then the user will be on the start page for trader services
@@ -109,7 +109,7 @@ Feature: User tries to jump ahead in the journey
 
 #  order of tests / clear case reference number
 #  Scenario: A user tries to jump ahead in an amend journey
-#    Given the user is on the temp start page and enters the journey then they will be on the landing page
+#    Given the user is on the temp start page and enters the journey they will be on the landing page
 #    Then the user will be on the start page for trader services
 #    And the user navigates to the following "/add/case-reference-number"
 #    Then the user will be on the Case Reference number page

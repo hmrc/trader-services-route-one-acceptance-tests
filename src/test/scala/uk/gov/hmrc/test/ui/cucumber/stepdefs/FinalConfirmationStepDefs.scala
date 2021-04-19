@@ -48,7 +48,7 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     }
   }
 
-  Then("""^output the case reference number""") { () =>
+  Then("""^outputs the case reference number""") { () =>
     val caseRefOutput = caseRefNo.getText
     print(caseRefOutput)
   }

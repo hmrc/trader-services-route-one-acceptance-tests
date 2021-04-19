@@ -37,8 +37,8 @@ class EntryDetailsStepDefs extends EntryDetailsPage with BasePage with ScalaDsl 
       }
 
       entryNumber match {
-        case "randomImportEN" => writeById(entryNo, randomImportEN)
-        case "randomExportEN" => writeById(entryNo, randomExportEN)
+        case "importEN" => writeById(entryNo, importEN)
+        case "exportEN" => writeById(entryNo, exportEN)
         case _ => writeById(entryNo, entryNumber)
       }
   }
