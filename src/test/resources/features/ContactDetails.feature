@@ -58,31 +58,6 @@ Feature: Contact Details
     Then the user should see "Error:Enter an email address in the correct format, like name@example.com" error message for "contactEmail"
     * the user should see "Error:Enter a telephone number in the correct format" error message for "contactNumber"
 
-#    When the user enters an email address "customs_agent@traders.co.uk"
-#    When the user enters a phone number "+447123456789"
-#    When the user clicks continue
-#    Then the user is on the multi-file upload pages for New
-#    When the user clicks the button to upload file "1" and selects "<file>"
-#    Then the user clicks continue when files have finished uploading
-#    Then the user will be on the <journey> CYA page
-
-
-#  todo  valid numbers - add to other tests to check FORMATTED
-#    Then the user clicks the change link for ContactDetails
-#    Then the user enters a phone number "00447123456789"
-#    When the user clicks continue
-#    Then the user will be on the Import CYA page
-#
-#    Then the user clicks the change link for ContactDetails
-#    Then the user enters a phone number "447123456789"
-#    When the user clicks continue
-#    Then the user will be on the Import CYA page
-#
-#    Then the user clicks the change link for ContactDetails
-#    Then the user enters a phone number "071(234-567)89"
-#    When the user clicks continue
-#    Then the user will be on the Import CYA page
-
     Examples:
       | journey | epu       | entryNo        | requestType | route   | priority      | transport |
       | Import  | randomEPU | randomImportEN | New         | Route 1 | Human remains | Air       |

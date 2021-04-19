@@ -14,7 +14,7 @@ Feature: Amend journeys
     Then the user is on the Amend <amendmentType> review page and should see their responses
     And the user should see what they entered as their message "<message>"
     When the user clicks submit on the CYA page
-    Then the user is on the <journey> confirmation page
+    Then the user will be on the <journey> confirmation page
     When the user clicks the button to submit another case on the confirmation page they will go back to the start
     Then the user is on the start page for trader services, selects <journey> and continues
     Then the user will be on the Case Reference number page
@@ -40,7 +40,7 @@ Feature: Amend journeys
     Then the user is on the Amend <amendmentType> review page and should see their responses
     * the user should see what the files they uploaded "<file>"
     When the user clicks submit on the CYA page
-    Then the user is on the <journey> confirmation page
+    Then the user will be on the <journey> confirmation page
 
     Examples:
       | journey | caseNo | amendmentType | fileOrder | file        |
@@ -65,7 +65,7 @@ Feature: Amend journeys
     Then the user is on the Amend <amendmentType> review page and should see their responses
     * the user should see what the files they uploaded "<file>"
     When the user clicks submit on the CYA page
-    Then the user is on the Amend confirmation page
+    Then the user will be on the <journey> confirmation page
 
     Examples:
       | journey | caseNo | amendmentType  | message | fileOrder | file        |

@@ -34,7 +34,7 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     verifyHeading(headingUpload)
   }
 
-  Then("""^the user is on the (.*) upload page""") { (page: String) =>
+  Then("""^the user will be on the (.*) upload page""") { (page: String) =>
 
     page match {
       case "First" => confirmUrl(urlUpload)

@@ -50,7 +50,7 @@ Feature: A user wants to upload documents
     Then the user selects No to uploading another file
     Then the user will be on the Import CYA page
     And the user clicks submit on the CYA page
-    Then the user is on the New confirmation page
+    Then the user will be on the New confirmation page
     And the user should see 2 Hour SLA
 
     Examples:

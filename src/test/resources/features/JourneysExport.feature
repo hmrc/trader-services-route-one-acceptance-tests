@@ -18,28 +18,29 @@ Feature: Customs check - Export journeys
     And the user enters today's date for transportDateDeparture
     Then the user clicks continue
     Then the user will be on the Export Contact details page
-    And the user enters an email address "<email>"
-    And the user clicks continue
+    * the user enters an email address "<email>"
+    * the user enters a phone number "00447123456789"
+    * the user clicks continue
     Then the user is on the multi-file upload pages for New
-    And the user will only see inset text for Request type N/A
-    When the user clicks the button to upload file "1" and selects "<file>"
-    Then the user clicks continue when files have finished uploading
-
+    * the user will only see inset text for Request type N/A
+    * the user clicks the button to upload file "1" and selects "<file>"
+    * the user clicks continue when files have finished uploading
     Then the user will be on the Export CYA page
-    Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
-    And the user should see the Entry Date row & the date <entryDateCYA> on the CYA page
-    Then the user should see the Export Request type row & the correct response <requestType> on the CYA page
-    And the user should see the Route row & the correct response <route> on the CYA page
-    Then the user should see the Priority YN row & the correct response No on the CYA page
-    When the user answered NoToPriority then they should see the correct responses for the Export journey "" & "<transport>"
-    Then the user should see the Transport name row & the correct response "<transportName>" on the CYA page
-    And the user should see the Transport date Departure row & the correct response "<entryDateCYA>" on the CYA page
-    And the user should see the Transport time Departure row & the correct response "-" on the CYA page
-    And the user should see the Mandatory Contact details row & the correct responses "", "<email>" & "" on the CYA page
-    Then the user clicks submit on the CYA page
 
-    Then the user is on the New confirmation page
-    Then the user will see text to give-feedback
+    Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
+    * the user should see the Entry Date row & the date <entryDateCYA> on the CYA page
+    * the user should see the Export Request type row & the correct response <requestType> on the CYA page
+    * the user should see the Route row & the correct response <route> on the CYA page
+    * the user should see the Priority YN row & the correct response No on the CYA page
+    * the user answered NoToPriority then they should see the correct responses for the Export journey "" & "<transport>"
+    * the user should see the Transport name row & the correct response "<transportName>" on the CYA page
+    * the user should see the Transport date Departure row & the correct response "<entryDateCYA>" on the CYA page
+    * the user should see the Transport time Departure row & the correct response "-" on the CYA page
+    * the user should see the Mandatory Contact details row & the correct responses "", "<email>" & "07123456789" on the CYA page
+
+    When the user clicks submit on the CYA page
+    Then the user will be on the New confirmation page
+    And the user will see text to give-feedback
 #    And the user should see 2 Hour SLA
     When the user clicks the confirmation NCH link they will be redirected to the appropriate page
 
@@ -72,7 +73,7 @@ Feature: Customs check - Export journeys
     Then the user clicks continue when files have finished uploading
     Then the user will be on the Export CYA page
     Then the user clicks submit on the CYA page
-    Then the user is on the New confirmation page
+    Then the user will be on the New confirmation page
     Then the user will see text to cancel
 #    And the user should see 2 Hour SLA
     When the user clicks the chief unavailable link they will be redirected to the appropriate page
@@ -106,7 +107,7 @@ Feature: Customs check - Export journeys
     Then the user clicks continue when files have finished uploading
     Then the user will be on the Export CYA page
     Then the user clicks submit on the CYA page
-    Then the user is on the New confirmation page
+    Then the user will be on the New confirmation page
     Then the user will see text to withdraw
 #    And the user should see 2 Hour SLA
     When the user clicks the button to submit another case on the confirmation page they will go back to the start
@@ -143,7 +144,7 @@ Feature: Customs check - Export journeys
     Then the user clicks continue when files have finished uploading
     Then the user will be on the Export CYA page
     Then the user clicks submit on the CYA page
-    Then the user is on the New confirmation page
+    Then the user will be on the New confirmation page
     And the user should see Hold SLA
     When the user clicks the gov.uk icon link they will be redirected to the appropriate page
 
