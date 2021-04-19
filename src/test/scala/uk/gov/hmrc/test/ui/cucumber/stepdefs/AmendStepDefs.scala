@@ -21,7 +21,7 @@ import uk.gov.hmrc.test.ui.pages.{AmendPages, BasePage, FinalConfirmationPage}
 
 class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage with ScalaDsl with EN {
 
-  Then("""^the user is on the Case Reference number page$""") { () =>
+  Then("""^the user will be on the Case Reference number page$""") { () =>
     confirmUrl(urlCaseRef)
     verifyHeading(caseRefHeading)
   }
@@ -39,16 +39,13 @@ class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage 
     clickContinueCaseRef()
   }
 
-  Then("""^the user is on the Amendment type page$""") { () =>
+  Then("""^the user will be on the Amendment type page$""") { () =>
     confirmUrl(urlHowToSend)
     verifyHeading(howToSendHeading)
   }
 
-  Then("""^the user is on the Amendment type page, selects (.*) and continues""") { (caseNo: String) =>
-    confirmUrl(urlHowToSend)
-    verifyHeading(howToSendHeading)
-
-    caseNo match {
+  When("""^the user is on the Amendment type page, selects (.*) and continues""") { (amendmentType: String) =>
+    amendmentType match {
       case "writeOnly" => clickByCSS("#typeOfAmendment")
       case "uploadOnly" => clickByCSS("#typeOfAmendment-2")
       case "writeAndUpload" => clickByCSS("#typeOfAmendment-3")
@@ -67,7 +64,7 @@ class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage 
   }
 
   //todo... combine?
-  Then("""^the user is on the write response page""") { () =>
+  Then("""^the user will be on the write response page""") { () =>
     confirmUrl(urlWriteResponse)
     verifyHeading(writeResponseHeading)
   }

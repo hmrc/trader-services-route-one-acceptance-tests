@@ -23,7 +23,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, LandingPage}
 
 class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with EN {
 
-  Given("""^the user is on the temp start page and enters the journey they will be on the landing page$""") { () =>
+  Given("""^the user is on the temp start page and enters the journey then they will be on the landing page$""") { () =>
     navigateTo(traderServicesStart)
     confirmUrl(traderServicesStart)
     verifyHeading(startHeading)
@@ -56,9 +56,9 @@ class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with E
     clickContinue()
   }
 
-  Then("""^the last selected option for journey type should be pre filled with (.*)$""") { (request: String) =>
+  Then("""^the last selected option for journey type should be pre filled with (.*)$""") { (journey: String) =>
 
-    request match {
+    journey match {
       case "New" => optionSelected("#newOrExistingCase")
       case "Amend" => optionSelected("#newOrExistingCase-2")
       case "Nothing" =>

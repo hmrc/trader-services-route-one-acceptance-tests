@@ -9,12 +9,12 @@ Feature: Customs check - Export journey
     When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     And the user clicks continue
-    Then the user is on the Export Request type page, selects <requestType> and continues
-    Then the user is on the Export Route type page, selects <route> and continues
-    Then the user is on the Export YesNo Priority page, selects Yes and continues
-    When the user is on the Export Priority Goods page, selects <priority> and continues
-    Then the user is on the Export Transport type page, selects <transport> and continues
-    Then the user will be on the Export-Optional transport details page
+    Then the user is on the Request type page, selects <requestType> and continues
+    Then the user is on the Route type page, selects <route> and continues
+    Then the user is on the YesNo Priority page, selects Yes and continues
+    When the user is on the Priority Goods page, selects <priority> and continues
+    Then the user is on the Transport type page, selects <transport> and continues
+    Then the user will be on the Export-Optional Transport details page
     Then the user enters "<transportName>" for transport name
     And the user enters today's date for transportDateDeparture
     And the user enters a time of Departure for their transportation "15" "59"
@@ -24,29 +24,25 @@ Feature: Customs check - Export journey
     And the user enters an email address "<email>"
     And the user enters a phone number "<phone>"
     And the user clicks continue
-    Then the user is on the multi-file upload pages for a/an New journey
-    When the user clicks the button to upload the first file and selects the "pdf" file
-
-    When the user clicks the button to upload the second file and selects the "jpeg" file
-    When the user clicks the button to upload the third file and selects the "jpg" file
+    Then the user is on the multi-file upload pages for New
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>"
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>"    When the user clicks the button to upload the third file and selects the "jpg" file
     Then the user clicks the button to add another document
-    When the user clicks the button to upload the fourth file and selects the "png" file
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>" the user clicks the button to upload the fourth file and selects the "png" file
     Then the user clicks the button to add another document
-    When the user clicks the button to upload the fifth file and selects the "tiff" file
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>" the user clicks the button to upload the fifth file and selects the "tiff" file
     Then the user clicks the button to add another document
-    When the user clicks the button to upload the sixth file and selects the "TIF" file
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>"    Then the user clicks the button to add another document
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>"    Then the user clicks the button to add another document
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>" the user clicks the button to upload the eighth file and selects the "msg" file
     Then the user clicks the button to add another document
-    When the user clicks the button to upload the seventh file and selects the "txt" file
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>" the user clicks the button to upload the ninth file and selects the "odt" file
     Then the user clicks the button to add another document
-    When the user clicks the button to upload the eighth file and selects the "msg" file
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload the ninth file and selects the "odt" file
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload the tenth file and selects the "ods" file
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>" the user clicks the button to upload the tenth file and selects the "ods" file
     Then the user waits 50000
     Then the user clicks MFU continue
 #    Then the user clicks continue when files have finished uploading
-    Then the user is on the Export CYA page
+    Then the user will be on the Export CYA page
     Then the user clicks submit on the CYA page
     Then output the case reference number
     And the user should see 2 Hour SLA
@@ -67,12 +63,12 @@ Feature: Customs check - Export journey
     When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
     Then the user clicks continue
-    When the user is on the Import Request type page, selects <requestType> and continues
-    Then the user is on the Import Route type page, selects <route> and continues
-    When the user is on the Import YesNo Priority page, selects Yes and continues
+    When the user is on the Request type page, selects <requestType> and continues
+    Then the user is on the Route type page, selects <route> and continues
+    When the user is on the YesNo Priority page, selects Yes and continues
     Then the user is on the Import Priority Goods page, selects <priority> and continues
     When the user is on the ALVS page, selects Yes and continues
-When the user is on the Import Transport type page, selects <transport> and continues
+    When the user is on the Transport type page, selects <transport> and continues
     Then the user will be on the Import-Optional transport details page
     Then the user enters "<transportName>" for transport name
     And the user enters today's date for transportDateArrival
@@ -82,10 +78,10 @@ When the user is on the Import Transport type page, selects <transport> and cont
     And the user enters an email address "<email>"
     And the user enters a phone number "<phone>"
     And the user clicks continue
-    Then the user is on the multi-file upload pages for a/an New journey
-    When the user clicks the button to upload the first file and selects the "txt" file
+    Then the user is on the multi-file upload pages for New
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>"
     Then the user clicks continue when files have finished uploading
-    Then the user is on the Import CYA page
+    Then the user will be on the Import CYA page
     And the user clicks submit on the CYA page
     And the user should see Maritime-Import SLA
     Then the user will see text to give-feedback
@@ -101,30 +97,36 @@ When the user is on the Import Transport type page, selects <transport> and cont
 
   Scenario: Amend: A user adds a message and a document to a case (write response + upload)
     Given the user is on the start page for trader services, selects Amend and continues
-    Then the user is on the Case Reference number page
+    Then the user will be on the Case Reference number page
     Then the user enters "PCI21040921252PZVD43D4" characters for case reference number and continues
-    When the user is on the Amendment type page and selects writeAndUpload
-    Then the user is on the write response page
+    When the user will be on the Amendment type
+    Then the user is on the Amendment type page, selects <writeAndUpload> and continues
+    Then the user will be on the write response page
     When the user enters "valid" characters in the write response field and continues
-    Then the user is on the multi-file upload pages for a/an Amend journey
-    When the user clicks the button to upload the first file and selects the "pdf" file
-
-    When the user clicks the button to upload the second file and selects the "doc" file
+    Then the user is on the multi-file upload pages for <journey>
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>"
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>"
     When the user clicks the button to upload the third file and selects the "docx" file
     Then the user clicks the button to add another document
-    When the user clicks the button to upload the fourth file and selects the "odt" file
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>"
+    * the user clicks the button to upload the fourth file and selects the "odt" file
     Then the user clicks the button to add another document
-    When the user clicks the button to upload the fifth file and selects the "ppt" file
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>"
+    * the user clicks the button to upload the fifth file and selects the "ppt" file
     Then the user clicks the button to add another document
-    When the user clicks the button to upload the sixth file and selects the "pptx" file
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>"
+    * the user clicks the button to upload the sixth file and selects the "pptx" file
     Then the user clicks the button to add another document
-    When the user clicks the button to upload the seventh file and selects the "odp" file
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>"
+    * the user clicks the button to upload the seventh file and selects the "odp" file
     Then the user clicks the button to add another document
-    When the user clicks the button to upload the eighth file and selects the "xls" file
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>"
+    * the user clicks the button to upload the eighth file and selects the "xls" file
     Then the user clicks the button to add another document
-    When the user clicks the button to upload the ninth file and selects the "xlsx" file
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>"
+    * the user clicks the button to upload the ninth file and selects the "xlsx" file
     Then the user clicks the button to add another document
-    When the user clicks the button to upload the tenth file and selects the "ods" file
+    When the user clicks the button to upload file "<fileOrder>" and selects "<file>"
     Then the user waits 50000
     Then the user clicks MFU continue
 #    Then the user clicks continue when files have finished uploading
@@ -135,11 +137,12 @@ When the user is on the Import Transport type page, selects <transport> and cont
 
   Scenario: Amend: A user adds a message and a document to a case (write response only)
     Given the user logs into QA
-    When the user is on the temp start page and enters the journey they will be on the landing page
+    When the user is on the temp start page and enters the journey then they will be on the landing page
     Then the user is on the start page for trader services, selects Amend and continues
-    Then the user is on the Case Reference number page
+    Then the user will be on the Case Reference number page
     Then the user enters "PCI21040921252PZVD43D4" characters for case reference number and continues
-    When the user is on the Amendment type page and selects writeOnly
+    Then the user will be on the Amendment type page
+    When the user is on the Amendment type page, selects <amendmentType> and continues
     And the user enters "valid" characters in the write response field and continues
     When the user clicks submit on the CYA page
     Then the user is on the Amend confirmation page

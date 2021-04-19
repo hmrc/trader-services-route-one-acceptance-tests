@@ -29,29 +29,19 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
     }
   }
 
-  Then("""^the user is on the (.*) YN Priority page""") { (journey: String) =>
+  Then("""^the user will be on the (.*) YN Priority page""") { (journey: String) =>
     journey match {
       case "Import" =>
         confirmUrl(urlImportYNPriority)
-        verifyHeading(headingImportYNPrio)
+        verifyHeading(headingImportYNPriority)
       case "Export" =>
         confirmUrl(urlExportYNPriority)
-        verifyHeading(headingExportYNPrio)
+        verifyHeading(headingExportYNPriority)
     }
   }
 
-  When("""^the user is on the (.*) YesNo Priority page, selects (.*) and continues""") { (journey: String, YesNo: String) =>
-
-    journey match {
-      case "Import" =>
-        confirmUrl(urlImportYNPriority)
-        verifyHeading(headingImportYNPrio)
-      case "Export" =>
-        confirmUrl(urlExportYNPriority)
-        verifyHeading(headingExportYNPrio)
-    }
-
-    YesNo match {
+  When("""^the user is on the YesNo Priority page, selects (.*) and continues""") { (yesNo: String) =>
+    yesNo match {
       case "Yes" => clickByCSS("#hasPriorityGoods")
       case "No" => clickByCSS("#hasPriorityGoods-2")
       case "None" =>
@@ -75,7 +65,7 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
     }
   }
 
-  Then("""^the user is on the (.*) Priority Goods page""") { (journey: String) =>
+  Then("""^the user will be on the (.*) Priority Goods page""") { (journey: String) =>
     journey match {
       case "Import" => confirmUrl(urlImportPriority)
       case "Export" => confirmUrl(urlExportPriority)
@@ -83,15 +73,7 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
     verifyHeading(headingPriority)
   }
 
-  When("""^the user is on the (.*) Priority Goods page, selects (.*) and continues""") { (journey: String, requestType: String) =>
-
-    journey match {
-      case "Import" => confirmUrl(urlImportPriority)
-      case "Export" => confirmUrl(urlExportPriority)
-    }
-
-    verifyHeading(headingPriority)
-
+  When("""^the user is on the Priority Goods page, selects (.*) and continues""") { (requestType: String) =>
     requestType match {
       case "Explosives or fireworks" => clickByCSS("#priorityGoods")
       case "Human remains" => clickByCSS("#priorityGoods-2")

@@ -31,7 +31,7 @@ class TransportStepDefs extends TransportQuestionsPage with BasePage with ScalaD
     }
   }
 
-  Then("""^the user will be on the (.*) transport details page$""") { (journey: String) =>
+  Then("""^the user will be on the (.*) Transport details page$""") { (journey: String) =>
 
     journey match {
       case "Import-Optional" => confirmUrl(urlImportTransport)

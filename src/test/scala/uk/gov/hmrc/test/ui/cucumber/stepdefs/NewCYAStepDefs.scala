@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, ContactDetailsPage, NewCYAPage}
 
 class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage with ScalaDsl with EN {
 
-  Given("""^the user is on the (.*) CYA page$""") { (journey: String) =>
+  Given("""^the user will be on the (.*) CYA page$""") { (journey: String) =>
     journey match {
       case "Import" => confirmUrl(urlImportCYA)
       case "Export" => confirmUrl(urlExportCYA)
@@ -177,7 +177,7 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
       case "PriorityGoods" => clickHref("a[href*='which-priority-goods']")
       case "ALVS" => clickHref("a[href*='automatic-licence-verification']")
       case "Transport" => clickHref("a[href*='transport-type']")
-      case "Vessel" => clickHref("a[href*='transport-information']")
+      case "TransportDetails" => clickHref("a[href*='transport-information']")
       case "ContactDetails" => clickHref("a[href*='contact-information']")
       case "Documents" => clickHref("a[href*='upload-files']")
     }
