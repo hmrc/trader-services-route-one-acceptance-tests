@@ -34,10 +34,6 @@ class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with E
     confirmUrl(traderServicesStart)
   }
 
-  When("""^the user navigates to the landing page for trader services$""") { () =>
-    navigateTo(traderServicesUrl)
-  }
-
   Then("""^the user will be on the start page for trader services$""") { () =>
     confirmUrl(traderServicesUrl)
     verifyHeading(landingHeading)
@@ -56,9 +52,9 @@ class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with E
     clickContinue()
   }
 
-  Then("""^the last selected option for journey type should be pre filled with (.*)$""") { (request: String) =>
+  Then("""^the last selected option for journey type should be pre filled with (.*)$""") { (journey: String) =>
 
-    request match {
+    journey match {
       case "New" => optionSelected("#newOrExistingCase")
       case "Amend" => optionSelected("#newOrExistingCase-2")
       case "Nothing" =>

@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.{AmendPages, BasePage, FinalConfirmationPage, L
 class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
   with LandingPage with AmendPages with ScalaDsl with EN {
 
-  Given("""^the user is on the (.*) confirmation page""") { (journey: String) =>
+  Given("""^the user will be on the (.*) confirmation page""") { (journey: String) =>
 
     journey match {
       case "New" =>
@@ -48,7 +48,7 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     }
   }
 
-  Then("""^output the case reference number""") { () =>
+  Then("""^outputs the case reference number""") { () =>
     val caseRefOutput = caseRefNo.getText
     print(caseRefOutput)
   }

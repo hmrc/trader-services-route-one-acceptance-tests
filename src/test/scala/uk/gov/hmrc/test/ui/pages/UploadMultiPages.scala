@@ -31,36 +31,9 @@ trait UploadMultiPages extends BasePage {
   val usrDir = System.getProperty("user.dir") + "/src/test/resources/uploadFiles/"
   var filePath = ""
 
-  val chooseFileId1 = "file-1"
-  val chooseFileId2 = "file-2"
-  val chooseFileId3 = "file-3"
-  val chooseFileId4 = "file-4"
-  val chooseFileId5 = "file-5"
-  val chooseFileId6 = "file-6"
-  val chooseFileId7 = "file-7"
-  val chooseFileId8 = "file-8"
-  val chooseFileId9 = "file-9"
-  val chooseFileId10 = "file-10"
+  def chooseFileId(order:String): String = "file-" + s"$order"
 
-  def uploadFile1(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId1)
-
-  def uploadFile2(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId2)
-
-  def uploadFile3(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId3)
-
-  def uploadFile4(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId4)
-
-  def uploadFile5(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId5)
-
-  def uploadFile6(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId6)
-
-  def uploadFile7(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId7)
-
-  def uploadFile8(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId8)
-
-  def uploadFile9(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId9)
-
-  def uploadFile10(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId10)
+  def uploadFile(fileSeq: String, order:String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId(s"$order"))
 
   def uploadAnother(): Unit = findElementByCss(".multi-file-upload__add-another").click()
 
@@ -70,30 +43,30 @@ trait UploadMultiPages extends BasePage {
 
   def uploadFilesToBrowser(fileSeq: String, elementID: String): Unit = {
     fileSeq match {
-      case "jpg" => filePath = usrDir + "testJpg.jpg"
-      case "jpeg" => filePath = usrDir + "testJpeg.jpeg"
+      case "testJpg.jpg" => filePath = usrDir + "testJpg.jpg"
+      case "testJpeg.jpeg" => filePath = usrDir + "testJpeg.jpeg"
 
-      case "TIF" => filePath = usrDir + "testTif.TIF"
-      case "tiff" => filePath = usrDir + "testTiff.tiff"
+      case "testTif.TIF" => filePath = usrDir + "testTif.TIF"
+      case "testTiff.tiff" => filePath = usrDir + "testTiff.tiff"
 
-      case "png" => filePath = usrDir + "testPng.png"
+      case "testPng.png" => filePath = usrDir + "testPng.png"
 
-      case "pdf" => filePath = usrDir + "testPdf.pdf"
+      case "testPdf.pdf" => filePath = usrDir + "testPdf.pdf"
 
-      case "doc" => filePath = usrDir + "testDoc.doc"
-      case "docx" => filePath = usrDir + "testDocx.docx"
-      case "odt" => filePath = usrDir + "testOdt.odt"
+      case "testDoc.doc" => filePath = usrDir + "testDoc.doc"
+      case "testDocx.docx" => filePath = usrDir + "testDocx.docx"
+      case "testOdt.odt" => filePath = usrDir + "testOdt.odt"
 
-      case "xls" => filePath = usrDir + "testXls.xls"
-      case "xlsx" => filePath = usrDir + "testXlsx.xlsx"
-      case "ods" => filePath = usrDir + "testOds.ods"
+      case "testXls.xls" => filePath = usrDir + "testXls.xls"
+      case "testXlsx.xlsx" => filePath = usrDir + "testXlsx.xlsx"
+      case "testOds.ods" => filePath = usrDir + "testOds.ods"
 
-      case "ppt" => filePath = usrDir + "testPpt.ppt"
-      case "pptx" => filePath = usrDir + "testPptx.pptx"
-      case "odp" => filePath = usrDir + "testOdp.odp"
+      case "testPpt.ppt" => filePath = usrDir + "testPpt.ppt"
+      case "testPptx.pptx" => filePath = usrDir + "testPptx.pptx"
+      case "testOdp.odp" => filePath = usrDir + "testOdp.odp"
 
-      case "txt" => filePath = usrDir + "testTxt.txt"
-      case "msg" => filePath = usrDir + "testMsg.msg"
+      case "testTxt.txt" => filePath = usrDir + "testTxt.txt"
+      case "testMsg.msg" => filePath = usrDir + "testMsg.msg"
     }
     driver.findElement(By.id(elementID)).sendKeys(filePath)
   }

@@ -22,10 +22,10 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, UploadMultiPages}
 
 class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl with EN {
 
-  Then("""^the user is on the multi-file upload pages for a/an (.*) journey""") { (page: String) =>
+  Then("""^the user will be on the multi-file upload pages for (.*)""") { (journey: String) =>
     verifyHeading(headingUpload)
 
-    page match {
+    journey match {
       case "New" => confirmUrl(urlUploadMulti)
       case "Amend" => confirmUrl(urlUploadMultiAmend)
     }
@@ -35,22 +35,10 @@ class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl w
     uploadAnother()
   }
 
-  Then("""^the user clicks the button to upload the (.*) file and selects the "([^"]*)" file""") {
+  Then("""^the user clicks the button to upload file "(.*)" and selects "(.*)"""") {
     (fileOrder: String, file: String) =>
       Thread.sleep(250l)
-
-      fileOrder match {
-        case "first" => uploadFile1(file)
-        case "second" => uploadFile2(file)
-        case "third" => uploadFile3(file)
-        case "fourth" => uploadFile4(file)
-        case "fifth" => uploadFile5(file)
-        case "sixth" => uploadFile6(file)
-        case "seventh" => uploadFile7(file)
-        case "eighth" => uploadFile8(file)
-        case "ninth" => uploadFile9(file)
-        case "tenth" => uploadFile10(file)
-      }
+      uploadFile(file, s"$fileOrder")
   }
 
   And("""^the user clicks continue when files have finished uploading""") { () =>

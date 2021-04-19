@@ -22,16 +22,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, TransportQuestionsPage}
 
 class TransportStepDefs extends TransportQuestionsPage with BasePage with ScalaDsl with EN {
 
-  When("""^the user navigates to the (.*) transport details page""") { (journey: String) =>
-    journey match {
-      case "Import-Optional" => navigateTo(urlImportTransport)
-      case "Import-Mandatory" => navigateTo(urlImpMandatoryTransport)
-      case "Export-Optional" => navigateTo(urlExportTransport)
-      case "Export-Mandatory" => navigateTo(urlExpMandatoryTransport)
-    }
-  }
-
-  Then("""^the user will be on the (.*) transport details page$""") { (journey: String) =>
+  Then("""^the user will be on the (.*) Transport details page$""") { (journey: String) =>
 
     journey match {
       case "Import-Optional" => confirmUrl(urlImportTransport)

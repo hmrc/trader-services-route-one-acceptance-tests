@@ -1,71 +1,74 @@
 @TraderServiceErrors
 Feature: Entry details validation
 
-  Scenario: Error validation on entry page (all blank fields)
+  Background: Error validation on entry page (all blank fields)
     Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
-    Then the user enters entry details "" and ""
-    And the user enters a date "" "" ""
-    When the user clicks continue
+
+  Scenario: Error validation on entry page - blank fields
+    When the user enters entry details "" and ""
+    * the user enters a date "" "" ""
+    * the user clicks continue
     Then the user should see "Error:Enter an EPU number" error message for "epu"
-    And the user should see "Error:Enter an entry number" error message for "entryNumber"
-    And the user should see "Error:Enter the entry date" error message for "entryDate"
+    * the user should see "Error:Enter an entry number" error message for "entryNumber"
+    * the user should see "Error:Enter the entry date" error message for "entryDate"
     When the user clicks the error link for "epu" it should link to the epu field
-    When the user clicks the error link for "entryNumber" it should link to the entryNumber field
-    When the user clicks the error link for "entryDate" it should link to the entryDate.day field
+    * the user clicks the error link for "entryNumber" it should link to the entryNumber field
+    * the user clicks the error link for "entryDate" it should link to the entryDate.day field
 
-  Scenario: Error validation on entry page - EPU
-    Given the user navigates to the entry details page
 
-    When the user enters entry details "12" and "123456A"
+  Scenario Outline: Error validation on entry page - EPU
+    When the user enters entry details "12" and "<entryNo>"
     And the user clicks continue
     Then the user should see "Error:EPU number must be 3 characters" error message for "epu"
 
-    When the user enters entry details "1234" and "123456A"
+    When the user enters entry details "1234" and "<entryNo>"
     And the user clicks continue
     Then the user should see "Error:EPU number must be 3 characters" error message for "epu"
 
-    When the user enters entry details "abc" and "123456A"
+    When the user enters entry details "abc" and "<entryNo>"
     And the user clicks continue
     Then the user should see "Error:EPU number must only contain numbers" error message for "epu"
 
-    When the user enters entry details "670" and "123456A"
+    When the user enters entry details "670" and "<entryNo>"
     And the user clicks continue
     Then the user should see "Error:EPU number must be between 001 and 669" error message for "epu"
 
-    When the user enters entry details "000" and "123456A"
+    When the user enters entry details "000" and "<entryNo>"
     And the user clicks continue
     Then the user should see "Error:EPU number must be between 001 and 669" error message for "epu"
 
+    Examples:
+      | entryNo        |
+      | importEN |
 
-  Scenario: Error validation on entry page - Entry number
-    Given the user navigates to the entry details page
-
-    When the user enters entry details "randomEPU" and "1"
+  Scenario Outline: Error validation on entry page - Entry number
+    When the user enters entry details "<epu>" and "1"
     And the user clicks continue
     Then the user should see "Error:Entry number must be 7 characters" error message for "entryNumber"
 
-    When the user enters entry details "randomEPU" and "1234567N"
+    When the user enters entry details "<epu>" and "1234567N"
     And the user clicks continue
     Then the user should see "Error:Entry number must be 7 characters" error message for "entryNumber"
 
-    When the user enters entry details "randomEPU" and "abcdefg"
+    When the user enters entry details "<epu>" and "abcdefg"
     And the user clicks continue
     Then the user should see "Error:Entry number must have letters before and after the number only" error message for "entryNumber"
 
-    When the user enters entry details "randomEPU" and "A!2345B"
+    When the user enters entry details "<epu>" and "A!2345B"
     And the user clicks continue
     Then the user should see "Error:Entry number must only contain numbers and letters" error message for "entryNumber"
 
-    When the user enters entry details "randomEPU" and "A123456"
+    When the user enters entry details "<epu>" and "A123456"
     And the user clicks continue
     Then the user should see "Error:Entry number must have a letter at the end" error message for "entryNumber"
 
+    Examples:
+      | epu       |
+      | randomEPU |
 
-  Scenario: Error validation on entry page - Date (Each one blank in turn)
-    Given the user navigates to the entry details page
-
-    When the user enters entry details "randomEPU" and "123456A"
+  Scenario Outline: Error validation on entry page - Date (Each one blank in turn)
+    When the user enters entry details "<epu>" and "<entryNo>"
     Then the user enters a date "" "01" "2021"
     And the user clicks continue
     Then the user should see "Error:Entry date must include a day" error message for "entryDate"
@@ -78,10 +81,13 @@ Feature: Entry details validation
     And the user clicks continue
     Then the user should see "Error:Entry date must include a year" error message for "entryDate"
 
-  Scenario: Error validation on entry page - Date (Invalid dates)
-    Given the user navigates to the entry details page
+    Examples:
+      | epu       | entryNo        |
+      | randomEPU | exportEN |
 
-    When the user enters entry details "randomEPU" and "randomImportEN"
+
+  Scenario Outline: Error validation on entry page - Date (Invalid dates)
+    When the user enters entry details "<epu>" and "<entryNo>"
     Then the user enters a date "31" "09" "2020"
     And the user clicks continue
     Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
@@ -126,3 +132,6 @@ Feature: Entry details validation
     And the user clicks continue
     Then the user should see "Error:Entry date must be a real date" error message for "entryDate"
 
+    Examples:
+      | epu       | entryNo        |
+      | randomEPU | exportEN |

@@ -22,14 +22,6 @@ import uk.gov.hmrc.test.ui.pages.ContactDetailsPage
 
 class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
 
-  //todo - unused
-  When("""^the user navigates to the (.*) Contact details page""") { (journey: String) =>
-    journey match {
-      case "Import" => navigateTo(urlImportContact)
-      case "Export" => navigateTo(urlExportContact)
-    }
-  }
-
   Then("""^the user will be on the (.*) Contact details page$""") { (journey: String) =>
     journey match {
       case "Import" => confirmUrl(urlImportContact)

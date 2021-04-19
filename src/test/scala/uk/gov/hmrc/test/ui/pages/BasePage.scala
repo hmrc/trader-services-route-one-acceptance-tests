@@ -275,10 +275,10 @@ trait BasePage extends Matchers with BrowserDriver {
   lazy val randomAlpha: String = Random.alphanumeric.filter(_.isLetter).head.toString
 
   lazy val randomImportDigits: Int = Random.nextInt(999999)
-  lazy val randomImportEN: String = f"$randomImportDigits%06d" + randomAlpha
+  lazy val importEN: String = f"$randomImportDigits%06d" + randomAlpha
 
   lazy val randomExportDigits: Int = Random.nextInt(99999)
-  lazy val randomExportEN: String = randomAlpha + f"$randomExportDigits%05d" + randomAlpha
+  lazy val exportEN: String = randomAlpha + f"$randomExportDigits%05d" + randomAlpha
 
   def randomString(length: Int): String = Random.alphanumeric.take(length).mkString
 

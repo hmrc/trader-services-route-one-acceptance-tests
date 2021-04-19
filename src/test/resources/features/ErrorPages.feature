@@ -7,26 +7,29 @@ Feature: Error pages
     * the user enters entry details "<epu>" and "<entryNo>"
     * the user enters today's date for entryDate
     * the user clicks continue
-    Then the user is on the Export Request type page, selects <requestType> and continues
-    When the user is on the Export Route type page, selects <route> and continues
-    Then the user is on the Export YesNo Priority page, selects Yes and continues
-    When the user is on the Export Priority Goods page, selects <priority> and continues
-    Then the user is on the Export Transport type page, selects <transport> and continues
-    When the user will be on the Export-Optional transport details page
+    Then the user will be on the <journey> Request type page
+    When the user is on the Request type page, selects <requestType> and continues
+    Then the user will be on the <journey> Route type page
+    When the user is on the Route type page, selects <route> and continues
+    Then the user will be on the <journey> YN Priority page
+    When the user is on the YesNo Priority page, selects No and continues
+    Then the user will be on the <journey> Transport type page
+    When the user is on the Transport type page, selects <transport> and continues
+    Then the user will be on the Export-Optional Transport details page
     * the user clicks continue
     Then the user will be on the Export Contact details page
     * the user enters an email address "<email>"
     * the user clicks continue
-    Then the user is on the multi-file upload pages for a/an New journey
-    * the user clicks the button to upload the first file and selects the "pdf" file
+    Then the user will be on the multi-file upload pages for New
+    * the user clicks the button to upload file "1" and selects "<file>"
     * the user clicks continue when files have finished uploading
-    Then the user is on the Export CYA page
+    Then the user will be on the <journey> CYA page
     When the user clicks submit on the CYA page
     Then the user will be on the duplicate case error page
 
     Examples:
-      | epu | entryNo | requestType  | route   | priority      | transport | email   |
-      | 667 | A23456A | Cancellation | Route 2 | Human remains | Air       | a@a.com |
+      | journey | epu | entryNo | requestType  | route   | transport | email   | file        |
+      | Export  | 667 | A23456A | Cancellation | Route 2 | Air       | a@a.com | testOds.ods |
 
 
   Scenario Outline: A user enters a failed request (Stub EPU: 666)
@@ -35,26 +38,29 @@ Feature: Error pages
     * the user enters entry details "<epu>" and "<entryNo>"
     * the user enters today's date for entryDate
     * the user clicks continue
-    Then the user is on the Export Request type page, selects <requestType> and continues
-    When the user is on the Export Route type page, selects <route> and continues
-    Then the user is on the Export YesNo Priority page, selects Yes and continues
-    When the user is on the Export Priority Goods page, selects <priority> and continues
-    Then the user is on the Export Transport type page, selects <transport> and continues
-    When the user will be on the Export-Optional transport details page
+    Then the user will be on the <journey> Request type page
+    When the user is on the Request type page, selects <requestType> and continues
+    Then the user will be on the <journey> Route type page
+    When the user is on the Route type page, selects <route> and continues
+    Then the user will be on the <journey> YN Priority page
+    When the user is on the YesNo Priority page, selects No and continues
+    Then the user will be on the <journey> Transport type page
+    When the user is on the Transport type page, selects <transport> and continues
+    When the user will be on the Export-Optional Transport details page
     * the user clicks continue
     Then the user will be on the Export Contact details page
     * the user enters an email address "<email>"
     * the user clicks continue
-    Then the user is on the multi-file upload pages for a/an New journey
-    * the user clicks the button to upload the first file and selects the "pdf" file
+    Then the user will be on the multi-file upload pages for New
+    * the user clicks the button to upload file "1" and selects "<file>"
     * the user clicks continue when files have finished uploading
-    Then the user is on the Export CYA page
+    Then the user will be on the Export CYA page
     When the user clicks submit on the CYA page
     Then the user will be on the error page for internal server error
 
     Examples:
-      | epu | entryNo | requestType | route   | priority      | transport | email   |
-      | 666 | X23456A | New         | Route 3 | Human remains | Air       | a@a.com |
+      | journey | epu | entryNo | requestType | route   | transport | email   | file        |
+      | Export  | 666 | X23456A | New         | Route 3 | Air       | a@a.com | testOdt.odt |
 
 
   Scenario: A user hits the wrong url
