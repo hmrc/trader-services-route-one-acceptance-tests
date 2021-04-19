@@ -33,18 +33,18 @@ Feature: A user wants to upload documents
     And the user should see "Error:Select yes if you want to upload another document" error message for "uploadAnotherFile"
 
     Then the user selects Yes to uploading another file
-    Then the user is on the Another upload page
+    Then the user will be on the Another upload page
     When the user clicks the button to upload and selects the "png" file
     Then the user should be on the new file upload confirmation page after uploading 2 document/s
 
     Then the user selects Yes to uploading another file
-    Then the user is on the Another upload page
+    Then the user will be on the Another upload page
     When the user clicks the button to upload and selects the "jpeg" file
     Then the user should be on the new file upload confirmation page after uploading 3 document/s
     Then the user clicks the button to remove a document
     Then the user should be on the new file upload confirmation page after uploading 2 document/s
     Then the user selects Yes to uploading another file
-    Then the user is on the Another upload page
+    Then the user will be on the Another upload page
     When the user clicks the button to upload and selects the "pdf" file
     Then the user should be on the new file upload confirmation page after uploading 3 document/s
     Then the user selects No to uploading another file
