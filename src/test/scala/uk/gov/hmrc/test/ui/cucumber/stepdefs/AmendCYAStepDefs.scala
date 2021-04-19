@@ -21,7 +21,7 @@ import uk.gov.hmrc.test.ui.pages.{AmendCYAPage, AmendPages, BasePage}
 
 class AmendCYAStepDefs extends AmendPages with AmendCYAPage with BasePage with ScalaDsl with EN {
 
-  Given("""^the user is on the Amend (.*) review page and should see their responses$""") { (journey: String) =>
+  Given("""^the user will be on the Amend (.*) review page and should see their responses$""") { (journey: String) =>
     confirmUrl(urlAmendCYA)
     verifyHeading(headingMainCYA)
     verifyH2DecInfo(h2Dec)

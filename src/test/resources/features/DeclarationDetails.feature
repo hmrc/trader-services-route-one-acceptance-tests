@@ -1,9 +1,11 @@
 @TraderServiceErrors
 Feature: Entry details validation
 
-  Scenario: Error validation on entry page (all blank fields)
+  Background: Error validation on entry page (all blank fields)
     Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
+
+  Scenario: Error validation on entry page - blank fields
     When the user enters entry details "" and ""
     * the user enters a date "" "" ""
     * the user clicks continue
@@ -16,8 +18,6 @@ Feature: Entry details validation
 
 
   Scenario Outline: Error validation on entry page - EPU
-    Given the user navigates to the entry details page
-
     When the user enters entry details "12" and "<entryNo>"
     And the user clicks continue
     Then the user should see "Error:EPU number must be 3 characters" error message for "epu"
@@ -43,8 +43,6 @@ Feature: Entry details validation
       | randomImportEN |
 
   Scenario Outline: Error validation on entry page - Entry number
-    Given the user navigates to the entry details page
-
     When the user enters entry details "<epu>" and "1"
     And the user clicks continue
     Then the user should see "Error:Entry number must be 7 characters" error message for "entryNumber"
@@ -70,8 +68,6 @@ Feature: Entry details validation
       | randomEPU |
 
   Scenario Outline: Error validation on entry page - Date (Each one blank in turn)
-    Given the user navigates to the entry details page
-
     When the user enters entry details "<epu>" and "<entryNo>"
     Then the user enters a date "" "01" "2021"
     And the user clicks continue
@@ -91,8 +87,6 @@ Feature: Entry details validation
 
 
   Scenario Outline: Error validation on entry page - Date (Invalid dates)
-    Given the user navigates to the entry details page
-
     When the user enters entry details "<epu>" and "<entryNo>"
     Then the user enters a date "31" "09" "2020"
     And the user clicks continue

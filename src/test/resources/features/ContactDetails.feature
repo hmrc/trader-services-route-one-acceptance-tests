@@ -2,7 +2,6 @@
 Feature: Contact Details
 
   Scenario Outline: Contact details - validation test
-    Given the user navigates to the <journey> Contact details page
     Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"

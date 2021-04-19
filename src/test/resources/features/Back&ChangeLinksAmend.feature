@@ -10,10 +10,10 @@ Feature: Back Links & Change Links - Amend
     When the user is on the Amendment type page, selects writeAndUpload and continues
     Then the user will be on the write response page
     When the user enters "Hello Caseworker" characters in the write response field and continues
-    Then the user is on the multi-file upload pages for Amend
+    Then the user will be on the multi-file upload pages for Amend
     * the user clicks the button to upload file "1" and selects "testPptx.pptx"
     * the user clicks continue when files have finished uploading
-    Then the user is on the Amend writeAndUpload review page and should see their responses
+    Then the user will be on the Amend writeAndUpload review page and should see their responses
 
 
   Scenario Outline: Amend: Change links
@@ -27,9 +27,9 @@ Feature: Back Links & Change Links - Amend
     Then the user will be on the write response page
     When the user clicks continue
 
-    Then the user is on the multi-file upload pages for <journey>
+    Then the user will be on the multi-file upload pages for <journey>
     And the user clicks MFU continue
-    Then the user is on the Amend <amendType> review page and should see their responses
+    Then the user will be on the Amend <amendType> review page and should see their responses
 
     When the user clicks the change link on the amend review page for amendment
     Then the user will be on the Amendment type page
@@ -37,22 +37,22 @@ Feature: Back Links & Change Links - Amend
 
     Then the user will be on the write response page
     When the user clicks continue
-    Then the user is on the multi-file upload pages for <journey>
+    Then the user will be on the multi-file upload pages for <journey>
     When the user clicks MFU continue
 
-    Then the user is on the Amend <amendType> review page and should see their responses
+    Then the user will be on the Amend <amendType> review page and should see their responses
     When the user clicks the change link on the amend review page for message
     Then the user will be on the write response page
     When the user clicks continue
 
-    Then the user is on the multi-file upload pages for <journey>
+    Then the user will be on the multi-file upload pages for <journey>
     When the user clicks MFU continue
-    Then the user is on the Amend <amendType> review page and should see their responses
+    Then the user will be on the Amend <amendType> review page and should see their responses
 
     When the user clicks the change link on the amend review page for documents
-    Then the user is on the multi-file upload pages for <journey>
+    Then the user will be on the multi-file upload pages for <journey>
     When the user clicks MFU continue
-    Then the user is on the Amend <amendType> review page and should see their responses
+    Then the user will be on the Amend <amendType> review page and should see their responses
 
     When the user clicks submit on the CYA page
     Then the user will be on the <journey> confirmation page
@@ -63,9 +63,9 @@ Feature: Back Links & Change Links - Amend
 
 
   Scenario Outline: Amend Back links - A user wants to go back to the start
-    Then the user is on the Amend <amendType> review page and should see their responses
+    Then the user will be on the Amend <amendType> review page and should see their responses
     When the user clicks back
-    Then the user is on the multi-file upload pages for <journey>
+    Then the user will be on the multi-file upload pages for <journey>
 
     Then the user clicks back
     Then the user will be on the write response page

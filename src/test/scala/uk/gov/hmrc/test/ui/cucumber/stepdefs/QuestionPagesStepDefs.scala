@@ -23,13 +23,6 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
 
   //Request Type
 
-  When("""^the user navigates to the (.*) Request type page""") { (journey: String) =>
-    journey match {
-      case "Import" => navigateTo(urlImportRequest)
-      case "Export" => navigateTo(urlExportRequest)
-    }
-  }
-
   Then("""^the user will be on the (.*) Request type page""") { (journey: String) =>
     journey match {
       case "Import" =>
@@ -92,12 +85,6 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
   }
 
   //Route
-  When("""^the user navigates to the (.*) Route type page""") { (journey: String) =>
-    journey match {
-      case "Import" => navigateTo(urlRouteImport)
-      case "Export" => navigateTo(urlRouteExport)
-    }
-  }
 
   Then("""^the user will be on the (.*) Route type page""") { (journey: String) =>
     journey match {
@@ -132,12 +119,6 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
   }
 
   //Transport
-  When("""^the user navigates to the (.*) Transport page""") { (journey: String) =>
-    journey match {
-      case "Import" => navigateTo(urlTransportImport)
-      case "Export" => navigateTo(urlTransportExport)
-    }
-  }
 
   Then("""^the user will be on the (.*) Transport type page""") { (journey: String) =>
     journey match {
@@ -169,11 +150,6 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
   }
 
   //ALVS - Import Only
-  //todo implement or delete
-  When("""^the user navigates to the ALVS page""") { () =>
-    navigateTo(urlALVS)
-  }
-
   Then("""^the user will be on the ALVS page$""") { () =>
     confirmUrl(urlALVS)
     verifyHeading(headingALVS)

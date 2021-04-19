@@ -21,7 +21,7 @@ Feature: Customs check - Export journeys
     * the user enters an email address "<email>"
     * the user enters a phone number "00447123456789"
     * the user clicks continue
-    Then the user is on the multi-file upload pages for New
+    Then the user will be on the multi-file upload pages for New
     * the user will only see inset text for Request type N/A
     * the user clicks the button to upload file "1" and selects "<file>"
     * the user clicks continue when files have finished uploading
@@ -67,7 +67,7 @@ Feature: Customs check - Export journeys
     Then the user will be on the Export Contact details page
     And the user enters an email address "<email>"
     And the user clicks continue
-    Then the user is on the multi-file upload pages for New
+    Then the user will be on the multi-file upload pages for New
     And the user will only see inset text for Request type N/A
     When the user clicks the button to upload file "1" and selects "<file>"
     Then the user clicks continue when files have finished uploading
@@ -101,7 +101,7 @@ Feature: Customs check - Export journeys
     Then the user will be on the Export Contact details page
     And the user enters an email address "<email>"
     And the user clicks continue
-    Then the user is on the multi-file upload pages for New
+    Then the user will be on the multi-file upload pages for New
     And the user will only see inset text for Request type N/A
     When the user clicks the button to upload file "1" and selects "<file>"
     Then the user clicks continue when files have finished uploading
@@ -138,7 +138,7 @@ Feature: Customs check - Export journeys
     Then the user will be on the Export Contact details page
     And the user enters an email address "<email>"
     And the user clicks continue
-    Then the user is on the multi-file upload pages for New
+    Then the user will be on the multi-file upload pages for New
     And the user will only see inset text for Request type N/A
     When the user clicks the button to upload file "1" and selects "<file>"
     Then the user clicks continue when files have finished uploading
@@ -171,7 +171,7 @@ Feature: Customs check - Export journeys
     Then the user will be on the Export Contact details page
     And the user enters an email address "awdn_ljd@a.co.uk"
     And the user clicks continue
-    Then the user is on the multi-file upload pages for New
+    Then the user will be on the multi-file upload pages for New
     And the user will only see inset text for Request type C1601
     When the user clicks the button to upload file "1" and selects "<file>"
     Then the user clicks continue when files have finished uploading

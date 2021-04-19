@@ -3,46 +3,48 @@ Feature: User tries to jump ahead in the journey
 
   Scenario: A user tries to jump ahead in an export journey to the next page
     Given the user is on the temp start page and enters the journey then they will be on the landing page
-    Then the user is on the start page for trader services, selects New and continues
+    When the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
-    And the user navigates to the following "/new/export/request-type"
+    When the user navigates to the following "/new/export/request-type"
     Then the user will be on the entry details page
-    And the user navigates to the following "/new/export/request-type"
+    When the user navigates to the following "/new/export/request-type"
     Then the user will be on the entry details page
-    And the user navigates to the following "/new/export/route-type"
+    When the user navigates to the following "/new/export/route-type"
     Then the user will be on the entry details page
-    And the user navigates to the following "/new/export/has-priority-goods"
+    When the user navigates to the following "/new/export/has-priority-goods"
     Then the user will be on the entry details page
-    And the user navigates to the following "/new/export/which-priority-goods"
+    When the user navigates to the following "/new/export/which-priority-goods"
     Then the user will be on the entry details page
-    And the user navigates to the following "/new/import/automatic-licence-verification"
+    When the user navigates to the following "/new/import/automatic-licence-verification"
     Then the user will be on the entry details page
-    And the user navigates to the following "/new/export/transport-type"
+    When the user navigates to the following "/new/export/transport-type"
     Then the user will be on the entry details page
-    And the user navigates to the following "/new/export/transport-information"
+    When the user navigates to the following "/new/export/transport-information"
     Then the user will be on the entry details page
-    And the user navigates to the following "/new/export/transport-information-required"
+    When the user navigates to the following "/new/export/transport-information-required"
     Then the user will be on the entry details page
-    And the user navigates to the following "/new/export/contact-information"
+    When the user navigates to the following "/new/export/contact-information"
     Then the user will be on the entry details page
-    And the user navigates to the following "/new/upload-files"
+    When the user navigates to the following "/new/upload-files"
     Then the user will be on the entry details page
-    And the user navigates to the following "/new/file-upload"
+    When the user navigates to the following "/new/file-upload"
     Then the user will be on the entry details page
-    And the user navigates to the following "/new/file-uploaded"
+    When the user navigates to the following "/new/file-uploaded"
     Then the user will be on the entry details page
-    And the user navigates to the following "/new/export/check-your-answers"
+    When the user navigates to the following "/new/export/check-your-answers"
     Then the user will be on the entry details page
-    And the user navigates to the following "/new/confirmation"
+    When the user navigates to the following "/new/confirmation"
     Then the user will be on the start page for trader services
 
+
+#todo
   Scenario Outline: A user tries to jump ahead in an import journey to the next page
     Given the user is on the temp start page and enters the journey then they will be on the landing page
-    Then the user is on the start page for trader services, selects New and continues
+    When the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
-    And the user enters today's date for entryDate
-    And the user clicks continue
+    * the user enters today's date for entryDate
+    * the user clicks continue
     Then the user will be on the <journey> Request type page
     And the user navigates to the following "/new/import/route-type"
     When the user is on the Request type page, selects New and continues
@@ -72,9 +74,9 @@ Feature: User tries to jump ahead in the journey
 #    Can skip to the page but can't get past it without email, can only jump to it from contact details page
     And the user enters an email address "trader_customs.shipping@agency.com"
     When the user clicks continue
-    Then the user is on the multi-file upload pages for New
+    Then the user will be on the multi-file upload pages for New
     And the user navigates to the following "/new/import/check-your-answers"
-    Then the user is on the multi-file upload pages for New
+    Then the user will be on the multi-file upload pages for New
     And the user navigates to the following "/new/confirmation"
     Then the user will be on the start page for trader services
 

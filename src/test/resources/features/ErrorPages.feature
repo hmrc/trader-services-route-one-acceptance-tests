@@ -20,7 +20,7 @@ Feature: Error pages
     Then the user will be on the Export Contact details page
     * the user enters an email address "<email>"
     * the user clicks continue
-    Then the user is on the multi-file upload pages for New
+    Then the user will be on the multi-file upload pages for New
     * the user clicks the button to upload file "1" and selects "<file>"
     * the user clicks continue when files have finished uploading
     Then the user will be on the <journey> CYA page
@@ -51,7 +51,7 @@ Feature: Error pages
     Then the user will be on the Export Contact details page
     * the user enters an email address "<email>"
     * the user clicks continue
-    Then the user is on the multi-file upload pages for New
+    Then the user will be on the multi-file upload pages for New
     * the user clicks the button to upload file "1" and selects "<file>"
     * the user clicks continue when files have finished uploading
     Then the user will be on the Export CYA page

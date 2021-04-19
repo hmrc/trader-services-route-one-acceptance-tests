@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, UploadMultiPages}
 
 class UploadMultiStepDefs extends BasePage with UploadMultiPages with ScalaDsl with EN {
 
-  Then("""^the user is on the multi-file upload pages for (.*)""") { (journey: String) =>
+  Then("""^the user will be on the multi-file upload pages for (.*)""") { (journey: String) =>
     verifyHeading(headingUpload)
 
     journey match {

@@ -24,7 +24,7 @@ Feature: Customs check - Export journey
     And the user enters an email address "<email>"
     And the user enters a phone number "<phone>"
     And the user clicks continue
-    Then the user is on the multi-file upload pages for New
+    Then the user will be on the multi-file upload pages for New
     When the user clicks the button to upload file "1" and selects "testPdf.pdf"
     Then the user clicks continue when files have finished uploading
     Then the user will be on the Export CYA page
@@ -63,7 +63,7 @@ Feature: Customs check - Export journey
     And the user enters an email address "<email>"
     And the user enters a phone number "<phone>"
     And the user clicks continue
-    Then the user is on the multi-file upload pages for New
+    Then the user will be on the multi-file upload pages for New
     When the user clicks the button to upload file "1" and selects "testJpg.jpg"
     Then the user clicks continue when files have finished uploading
     Then the user will be on the Import CYA page
@@ -88,7 +88,7 @@ Feature: Customs check - Export journey
     Then the user is on the Amendment type page, selects writeAndUpload and continues
     Then the user will be on the write response page
     When the user enters "valid" characters in the write response field and continues
-    Then the user is on the multi-file upload pages for Amend
+    Then the user will be on the multi-file upload pages for Amend
     When the user clicks the button to upload file "1" and selects "testDocx.docx"
 #    When the user clicks the button to upload file "<fileOrder>" and selects "<file>"
 #    When the user clicks the button to upload the third file and selects the "docx" file

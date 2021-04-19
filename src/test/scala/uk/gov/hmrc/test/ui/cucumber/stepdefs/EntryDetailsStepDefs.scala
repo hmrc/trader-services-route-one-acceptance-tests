@@ -22,9 +22,6 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, EntryDetailsPage}
 
 class EntryDetailsStepDefs extends EntryDetailsPage with BasePage with ScalaDsl with EN {
 
-  Given("""^the user navigates to the entry details page$""") { () =>
-    navigateTo(urlEntryDetails)
-  }
 
   Then("""^the user will be on the entry details page$""") { () =>
     confirmUrl(urlEntryDetails)

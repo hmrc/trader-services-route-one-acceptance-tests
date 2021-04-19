@@ -22,12 +22,6 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, PriorityPages}
 
 class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN {
 
-  When("""^the user navigates to the (.*) YN Priority page""") { (journey: String) =>
-    journey match {
-      case "Import" => navigateTo(urlImportYNPriority)
-      case "Export" => navigateTo(urlExportYNPriority)
-    }
-  }
 
   Then("""^the user will be on the (.*) YN Priority page""") { (journey: String) =>
     journey match {
@@ -57,13 +51,6 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
     }
   }
 
-
-  When("""^the user navigates to the (.*) Priority goods page""") { (journey: String) =>
-    journey match {
-      case "Import" => navigateTo(urlImportPriority)
-      case "Export" => navigateTo(urlExportPriority)
-    }
-  }
 
   Then("""^the user will be on the (.*) Priority Goods page""") { (journey: String) =>
     journey match {

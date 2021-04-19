@@ -24,7 +24,7 @@ Feature: Back Links & Change Links for a New journey
     Then the user will be on the Import Contact details page
     * the user enters an email address "abc@test.com"
     * the user clicks continue
-    Then the user is on the multi-file upload pages for New
+    Then the user will be on the multi-file upload pages for New
     * the user clicks the button to upload file "1" and selects "testPdf.pdf"
     * the user clicks continue when files have finished uploading
     Then the user will be on the Import CYA page
@@ -56,7 +56,7 @@ Feature: Back Links & Change Links for a New journey
   Scenario Outline: A user changes some answers via the change links
     Given the user will be on the <journey> CYA page
     When the user clicks the change link for Documents
-    Then the user is on the multi-file upload pages for New
+    Then the user will be on the multi-file upload pages for New
     When the user clicks MFU continue
     Then the user will be on the <journey> CYA page
 
@@ -106,7 +106,7 @@ Feature: Back Links & Change Links for a New journey
   Scenario Outline: Import: A user goes back through the journey and their answers should be saved
     Given the user will be on the <journey> CYA page
     When the user clicks back
-    Then the user is on the multi-file upload pages for New
+    Then the user will be on the multi-file upload pages for New
     When the user clicks back
     Then the user will be on the <journey> Contact details page
     And the details entered for name, email and phone number should be pre-filled with "", "<email>" & ""
