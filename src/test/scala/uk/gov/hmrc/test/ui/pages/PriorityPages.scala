@@ -18,14 +18,14 @@ package uk.gov.hmrc.test.ui.pages
 
 trait PriorityPages extends BasePage {
 
-  val urlImportYNPriority: String = traderServicesBaseUrl + importjourneyUrl + "/has-priority-goods"
-  val urlExportYNPriority: String = traderServicesBaseUrl + exportjourneyUrl + "/has-priority-goods"
+  val urlImportYNPriority: String = traderServicesBaseUrl + importJourneyUrl + "/has-priority-goods"
+  val urlExportYNPriority: String = traderServicesBaseUrl + exportJourneyUrl + "/has-priority-goods"
 
   val headingImportYNPriority = "Are you importing any priority goods?"
   val headingExportYNPriority = "Are you exporting any priority goods?"
 
-  val urlImportPriority: String = traderServicesBaseUrl + importjourneyUrl + "/which-priority-goods"
-  val urlExportPriority: String = traderServicesBaseUrl + exportjourneyUrl + "/which-priority-goods"
+  val urlImportPriority: String = traderServicesBaseUrl + importJourneyUrl + "/which-priority-goods"
+  val urlExportPriority: String = traderServicesBaseUrl + exportJourneyUrl + "/which-priority-goods"
   val headingPriority = "Which type of priority goods are you moving?"
 
 }

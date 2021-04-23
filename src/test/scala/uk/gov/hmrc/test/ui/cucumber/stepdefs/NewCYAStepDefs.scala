@@ -22,7 +22,8 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, ContactDetailsPage, NewCYAPage}
 
 class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage with ScalaDsl with EN {
 
-  Given("""^the user will be on the (.*) CYA page$""") { (journey: String) =>
+  Then("""^the user will be on the (.*) CYA page$""") { (journey: String) =>
+
     journey match {
       case "Import" => confirmUrl(urlImportCYA)
       case "Export" => confirmUrl(urlExportCYA)

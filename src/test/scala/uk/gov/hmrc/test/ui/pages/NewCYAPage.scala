@@ -20,8 +20,8 @@ import org.openqa.selenium.WebElement
 
 trait NewCYAPage extends BasePage {
 
-  val urlImportCYA: String = traderServicesBaseUrl + importjourneyUrl + "/check-your-answers"
-  val urlExportCYA: String = traderServicesBaseUrl + exportjourneyUrl + "/check-your-answers"
+  val urlImportCYA: String = traderServicesBaseUrl + importJourneyUrl + "/check-your-answers"
+  val urlExportCYA: String = traderServicesBaseUrl + exportJourneyUrl + "/check-your-answers"
   val headingMainCYA = "Review your case details"
 
   def verifyH2EntryDetails(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(2)").getText shouldBe text
