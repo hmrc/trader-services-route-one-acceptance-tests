@@ -1,4 +1,4 @@
-@TraderService2
+@TraderService
 
 Feature: Full Import Journey
 

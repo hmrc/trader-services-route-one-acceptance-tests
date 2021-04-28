@@ -67,7 +67,7 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
 
 
   Then("""^the user should see (.*) SLA""") { (sla: String) =>
-
+///todo sort out 'either'
     sla match {
       //Air - both, Roro - both, Maritime - Export
       case "2 Hour" =>
