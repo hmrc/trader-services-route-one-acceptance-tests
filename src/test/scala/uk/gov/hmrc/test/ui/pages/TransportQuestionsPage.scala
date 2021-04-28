@@ -20,11 +20,11 @@ import org.openqa.selenium.WebElement
 
 trait TransportQuestionsPage extends BasePage {
 
-  val urlImportTransport: String = traderServicesBaseUrl + importjourneyUrl + "/transport-information"
-  val urlImpMandatoryTransport: String = traderServicesBaseUrl + importjourneyUrl + "/transport-information-required"
+  val urlImportTransport: String = traderServicesBaseUrl + importJourneyUrl + "/transport-information"
+  val urlImpMandatoryTransport: String = traderServicesBaseUrl + importJourneyUrl + "/transport-information-required"
 
-  val urlExportTransport: String = traderServicesBaseUrl + exportjourneyUrl + "/transport-information"
-  val urlExpMandatoryTransport: String = traderServicesBaseUrl + exportjourneyUrl + "/transport-information-required"
+  val urlExportTransport: String = traderServicesBaseUrl + exportJourneyUrl + "/transport-information"
+  val urlExpMandatoryTransport: String = traderServicesBaseUrl + exportJourneyUrl + "/transport-information-required"
 
   val headingTransportDetails = "More details about your transport"
 

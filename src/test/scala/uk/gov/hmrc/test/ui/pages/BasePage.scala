@@ -50,8 +50,8 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   val traderServicesBaseUrl: String = host(9379) + "/send-documents-for-customs-check"
-  val importjourneyUrl: String = "/new/import"
-  val exportjourneyUrl: String = "/new/export"
+  val importJourneyUrl: String = "/new/import"
+  val exportJourneyUrl: String = "/new/export"
   val amendUrl: String = "/add"
 
   def confirmUrl(url: String): Unit = {
