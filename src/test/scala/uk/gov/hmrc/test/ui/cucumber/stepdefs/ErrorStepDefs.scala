@@ -23,7 +23,7 @@ import uk.gov.hmrc.test.ui.pages._
 class ErrorStepDefs extends FinalConfirmationPage with BasePage with TransportQuestionsPage with ContactDetailsPage with
   LandingPage with ScalaDsl with EN {
 
-  //todo...?
+
   And("""^the user enters too many characters for (.*)""") { (field: String) =>
 
     field match {
@@ -53,6 +53,5 @@ class ErrorStepDefs extends FinalConfirmationPage with BasePage with TransportQu
     verifyHeading(landingHeading)
   }
 
-  //todo check this
   def errorClickLink(): Unit = driver.findElement(By.linkText("Send your documents for a customs check")).click()
 }

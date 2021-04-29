@@ -63,7 +63,6 @@ class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage 
     }
   }
 
-  //todo... combine?
   Then("""^the user will be on the write response page""") { () =>
     confirmUrl(urlWriteResponse)
     verifyHeading(writeResponseHeading)

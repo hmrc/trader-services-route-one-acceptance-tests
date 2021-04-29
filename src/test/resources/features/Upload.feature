@@ -1,7 +1,7 @@
-@TraderServiceUpload
+@TraderService
 #  Tests for SFU (replaced by MFU which is tested via QA runner/manually & as part of standard journey flow tests)
 
-Feature: A user wants to upload documents
+Feature: A user wants to upload documents (Single file)
 
   Scenario Outline: A user wants upload some documents
     Given the user is on the start page for trader services, selects New and continues
@@ -11,8 +11,7 @@ Feature: A user wants to upload documents
     And the user clicks continue
     Then the user is on the Request type page, selects <requestType> and continues
     Then the user is on the Route type page, selects <route> and continues
-    Then the user is on the YesNo Priority page, selects Yes and continues
-    When the user is on the Priority Goods page, selects <priority> and continues
+    Then the user is on the YesNo Priority page, selects No and continues
     Then the user is on the ALVS page, selects Yes and continues
     When the user is on the Transport type page, selects <transport> and continues
     Then the user will be on the Import-Optional Transport details page
@@ -23,7 +22,7 @@ Feature: A user wants to upload documents
     And the user clicks continue
     Then the user navigates to the single file New upload page
     When the user clicks SFU upload
-    And the user waits 250
+#    And the user waits 250
     Then the user should see "Error:Select a file" error message for "file"
     When the user clicks the button to upload and selects the "pdf" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
@@ -45,14 +44,14 @@ Feature: A user wants to upload documents
     Then the user should be on the new file upload confirmation page after uploading 2 document/s
     Then the user selects Yes to uploading another file
     Then the user will be on the Another upload page
-    When the user clicks the button to upload and selects the "pdf" file
+    When the user clicks the button to upload and selects the "doc" file
     Then the user should be on the new file upload confirmation page after uploading 3 document/s
     Then the user selects No to uploading another file
     Then the user will be on the Import CYA page
     And the user clicks submit on the CYA page
     Then the user will be on the New confirmation page
-    And the user should see 2 Hour SLA
+#    And the user should see 2 Hour SLA
 
     Examples:
-      | epu | entryNo | requestType | route   | priority                | transport    | name      | email      |
-      | 113 | 993456A | New         | Route 3 | Explosives or fireworks | RoadRoRoRail | Abc Testb | a@test.com |
+      | epu       | entryNo  | requestType | route   | transport    | email      |
+      | randomEPU | importEN | New         | Route 3 | RoadRoRoRail | a@test.com |

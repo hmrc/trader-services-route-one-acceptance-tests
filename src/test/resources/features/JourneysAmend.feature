@@ -67,5 +67,5 @@ Feature: Amend journeys
     Then the user clicks the amend NCH link they will be redirected to the appropriate page
 
     Examples:
-      | journey | caseNo | amendType  | message | file        |
+      | journey | caseNo | amendType      | message | file        |
       | Amend   | valid  | writeAndUpload | valid   | testXls.xls |
