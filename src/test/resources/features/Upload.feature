@@ -17,12 +17,10 @@ Feature: A user wants to upload documents (Single file)
     Then the user will be on the Import-Optional Transport details page
     And the user clicks continue
     Then the user will be on the Import Contact details page
-    When the user enters a name "<name>"
     Then the user enters an email address "<email>"
     And the user clicks continue
     Then the user navigates to the single file New upload page
     When the user clicks SFU upload
-#    And the user waits 250
     Then the user should see "Error:Select a file" error message for "file"
     When the user clicks the button to upload and selects the "pdf" file
     Then the user should be on the new file upload confirmation page after uploading 1 document/s
