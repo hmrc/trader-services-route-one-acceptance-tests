@@ -79,7 +79,7 @@ Feature: Back Links & Change Links - Amend
     Then the user will be on the start page for trader services
     And the last selected option for journey type should be pre filled with Amend
 
-    Then the user clicks the service name link they will be redirected to the appropriate page
+    Then the user clicks the service-name link they will be redirected to the appropriate page
     And the last selected option for journey type should be pre filled with Nothing
 
     Examples:

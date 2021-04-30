@@ -67,22 +67,14 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
 
 
   Then("""^the user should see (.*) SLA""") { (sla: String) =>
-///todo sort out 'either'
     sla match {
       //Air - both, Roro - both, Maritime - Export
-      case "2 Hour" =>
-        assertElementTextContainsEither(
-          "Your document checks should be completed by " + sl2hrFormatted + " today.",
-          "Your document checks should be completed by " + sl2hrAddMin + " today.",
-          slaPara)
+      case "2 Hour" => checkSecondaryContent(sla2hrFormatted + " today.", sla2hrAddMin + " today", slaPara)
 
       case "Maritime-Import" =>
-        if (between8amAnd3pm) assertElementTextContainsEither(
-          "Your document checks should be completed by " + sla3hrFormatted + " today.",
-          "Your document checks should be completed by " + sla3hrMin + " today.",
-          slaPara)
-        if (between3pmAndMidnight) assertElementTextContains("Your document checks should be completed by 08:00 tomorrow.", slaPara)
-        if (betweenMidnightAnd8am) assertElementTextContains("Your document checks should be completed by 08:00 today.", slaPara)
+        if (between8amAnd3pm) checkSecondaryContent(sla3hrFormatted + " today.", sla3hrAddMin + " today", slaPara)
+        if (between3pmAndMidnight) assertElementTextContains("08:00 tomorrow.", slaPara)
+        if (betweenMidnightAnd8am) assertElementTextContains("08:00 today.", slaPara)
 
       //Route Hold (No SLA)
       case "Hold" => assertElementTextContains(holdSLA, slaPara)

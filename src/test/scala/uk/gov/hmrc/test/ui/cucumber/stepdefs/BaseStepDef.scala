@@ -85,17 +85,17 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
         confirmUrl(chiefUnavailableUrl)
 
       case "gov.uk icon" => clickGovUkIcon()
-        confirmUrl(govukExternal)
+        confirmUrl(govUkExternal)
 
-      case "service name" => bannerServiceName().click()
+      case "service-name" => bannerServiceName().click()
         confirmUrl(traderServicesUrl)
 
       case "banner feedback" => clickGiveFeedbackBanner()
         confirmUrl(giveFeedbackBannerUrl)
 
-      case "deskpro" => clickDeskproLink()
+      case "deskpro" => clickDeskProLink()
         switchToNewTab(2)
-        confirmUrl(deskproUrl)
+        confirmUrl(deskProUrl)
         closeNewTab()
 
       case "UR banner" => clickURLink()

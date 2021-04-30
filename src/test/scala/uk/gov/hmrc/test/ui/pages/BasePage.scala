@@ -32,8 +32,6 @@ import scala.util.Random
 
 trait BasePage extends Matchers with BrowserDriver {
 
-  val userCaseRef = "PC12010081330XGBNZJO04"
-
   val fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
     .withTimeout(Duration.ofSeconds(20))
     .pollingEvery(Duration.ofMillis(250))
@@ -133,9 +131,6 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def optionNotSelected(css: String): Unit = driver.findElement(By.cssSelector(css)).isSelected shouldBe false
 
-  def findVerifyInput(id: String, expectedValue: String):
-  Assertion = findElementById(id).getAttribute("value") shouldBe expectedValue
-
   def verifyInput(id: WebElement, expectedValue: String):
   Assertion = id.getAttribute("value") shouldBe expectedValue
 
@@ -152,8 +147,11 @@ trait BasePage extends Matchers with BrowserDriver {
     assert(element.getText.contains(content), message(s"Element displayed is: ${element.getText} Expecting: $content"))
   }
 
-  def assertElementTextContainsEither(content: String, content2: String, element: WebElement): Unit = {
-    assert(element.getText.contains(content), message(s"Element displayed is: ${element.getText} Expecting: $content or $content2"))
+  def checkSecondaryContent(content1: String, content2: String, element: WebElement): Unit = {
+    if (element.getText.contains(content1).equals(false)) {
+      assertElementTextContains(content2, element)
+    }
+    else assertElementTextContains(content1, element)
   }
 
   def isElementVisible(css: String): Boolean = findElementByCss(css).isDisplayed
@@ -182,7 +180,7 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def clickGovUkIcon(): Unit = clickByCSS(".govuk-header__logotype-text")
 
-  val govukExternal = "https://www.gov.uk/"
+  val govUkExternal = "https://www.gov.uk/"
 
   def clickGiveFeedbackConfirmation(): Unit = clickHref("a[href*='/feedback/send-documents-for-customs-check']")
 
@@ -204,9 +202,9 @@ trait BasePage extends Matchers with BrowserDriver {
 
   val giveFeedbackBannerUrl = "/contact/beta-feedback"
 
-  def clickDeskproLink(): Unit = clickByCSS(".report-a-problem > a:nth-child(1)")
+  def clickDeskProLink(): Unit = clickByCSS(".report-a-problem > a:nth-child(1)")
 
-  val deskproUrl = "/contact/problem_reports_nonjs"
+  val deskProUrl = "/contact/problem_reports_nonjs"
 
   def clickURLink(): Unit = clickByCSS(".govuk-body")
 
@@ -254,11 +252,11 @@ trait BasePage extends Matchers with BrowserDriver {
   lazy val min1: Int = nowTime.minusMinutes(1).getMinute
 
   lazy val nowFormatted = f"$nowHrs%02d:$nowMin%02d"
-  lazy val sl2hrFormatted = f"$sla2Hour%02d:$min%02d"
-  lazy val sl2hrAddMin = f"$sla2Hour%02d:$min1%02d"
+  lazy val sla2hrFormatted = f"$sla2Hour%02d:$min%02d"
+  lazy val sla2hrAddMin = f"$sla2Hour%02d:$min1%02d"
 
   lazy val sla3hrFormatted = f"$sla3Hour%02d:$min%02d"
-  lazy val sla3hrMin = f"$sla3Hour%02d:$min1%02d"
+  lazy val sla3hrAddMin = f"$sla3Hour%02d:$min1%02d"
 
   lazy val threePm: LocalTime = LocalTime.parse("15:00:00.00")
   lazy val midnight: LocalTime = LocalTime.parse("00:00:00.00")
@@ -291,6 +289,8 @@ trait BasePage extends Matchers with BrowserDriver {
     lastUsedTestEmail = s"$shortString@test.com"
     lastUsedTestEmail
   }
+
+  val userCaseRef = "PC12010081330XGBNZJO04"
 
   //Agent-stubs
   def userId: WebElement = driver.findElement(By.id("userId"))
