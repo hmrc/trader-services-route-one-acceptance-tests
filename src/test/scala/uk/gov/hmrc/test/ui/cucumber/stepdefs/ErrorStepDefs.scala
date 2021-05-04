@@ -34,9 +34,10 @@ class ErrorStepDefs extends FinalConfirmationPage with BasePage with TransportQu
     }
   }
 
-  When("""^the user will be on the duplicate case error page""") { () =>
+  When("""^the user will be on the duplicate case error page and see their case reference number""") { () =>
     confirmUrl(urlDuplicate)
     verifyHeading(headingDuplicate)
+    assertElementTextContains(userCaseRef, findElementByCss("p.govuk-body:nth-child(2)"))
   }
 
   Then("""^the user will be on the error page for page not found""") { () =>

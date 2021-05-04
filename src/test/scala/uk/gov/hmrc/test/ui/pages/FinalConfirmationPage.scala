@@ -24,7 +24,7 @@ trait FinalConfirmationPage extends BasePage {
   val headingConfirmation = "You’ve submitted your documents"
 
   val urlDuplicate: String = traderServicesBaseUrl + "/new/case-already-exists"
-  val headingDuplicate = "This case already exists"
+  val headingDuplicate = "We’ve received this case"
 
   val urlAmendConfirm: String = traderServicesBaseUrl + amendUrl + "/confirmation"
   val headingAmendConfirm = "You’ve submitted your extra information"

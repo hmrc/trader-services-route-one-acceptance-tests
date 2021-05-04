@@ -25,7 +25,7 @@ Feature: Error pages
     * the user clicks continue when files have finished uploading
     Then the user will be on the <journey> CYA page
     When the user clicks submit on the CYA page
-    Then the user will be on the duplicate case error page
+    Then the user will be on the duplicate case error page and see their case reference number
 
     Examples:
       | journey | epu | entryNo | requestType  | route   | transport | email   | file        |
