@@ -31,8 +31,6 @@ Feature: Full Import Journey
     * the user will only see inset text for Request type N/A
     * the user clicks the button to upload file "1" and selects "<file>"
     When the user clicks continue when files have finished uploading
-    Then the user clicks submit on the CYA page
-    Then the user waits 10000
     Then the user will be on the Import CYA page
 
     Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
