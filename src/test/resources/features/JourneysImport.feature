@@ -18,7 +18,7 @@ Feature: Full Import Journey
     Then the user is on the Route type page, selects <route> and continues
     When the user is on the YesNo Priority page, selects Yes and continues
     Then the user is on the Priority Goods page, selects <priority> and continues
-    When the user is on the ALVS page, selects Yes and continues
+    When the user is on the ALVS page, selects <ALVS> and continues
     When the user is on the Transport type page, selects <transport> and continues
     Then the user will be on the Import-Optional Transport details page
     And the user clicks continue
@@ -31,6 +31,8 @@ Feature: Full Import Journey
     * the user will only see inset text for Request type N/A
     * the user clicks the button to upload file "1" and selects "<file>"
     When the user clicks continue when files have finished uploading
+    Then the user clicks submit on the CYA page
+    Then the user waits 10000
     Then the user will be on the Import CYA page
 
     Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page

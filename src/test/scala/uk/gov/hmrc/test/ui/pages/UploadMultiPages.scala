@@ -67,6 +67,8 @@ trait UploadMultiPages extends BasePage {
 
       case "testTxt.txt" => filePath = usrDir + "testTxt.txt"
       case "testMsg.msg" => filePath = usrDir + "testMsg.msg"
+
+      case "delay.txt" => filePath = usrDir + "delay55.txt"
     }
     driver.findElement(By.id(elementID)).sendKeys(filePath)
   }
