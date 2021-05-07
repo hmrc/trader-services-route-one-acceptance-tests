@@ -67,6 +67,9 @@ trait UploadMultiPages extends BasePage {
 
       case "testTxt.txt" => filePath = usrDir + "testTxt.txt"
       case "testMsg.msg" => filePath = usrDir + "testMsg.msg"
+
+        //The number is the amount of seconds to simulate file transfer time - can be altered
+      case "delay.txt" => filePath = usrDir + "delay55.txt"
     }
     driver.findElement(By.id(elementID)).sendKeys(filePath)
   }
