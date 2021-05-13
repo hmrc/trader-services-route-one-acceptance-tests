@@ -48,6 +48,9 @@ Feature: Full Import Journey
     When the user clicks the button to submit another case on the confirmation page they will go back to the start
     And the last selected option for journey type should be pre filled with Nothing
 
+    When the user clicks the cy toggle it should translate the page
+    When the user clicks the en toggle it should translate the page
+
     Examples:
       | journey | epu | entryNo | requestType | route   | priority      | ALVS | transport | name | email      | file        |
       | Import  | 123 | 123456A | New         | Route 1 | Human remains | Yes  | Air       | Abc  | ab@abc.com | testPdf.pdf |
