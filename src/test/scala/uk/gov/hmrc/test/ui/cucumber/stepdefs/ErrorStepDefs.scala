@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import org.openqa.selenium.By
+import org.openqa.selenium.{By, WebElement}
 import uk.gov.hmrc.test.ui.pages._
 
 class ErrorStepDefs extends FinalConfirmationPage with BasePage with TransportQuestionsPage with ContactDetailsPage with
@@ -46,6 +46,14 @@ class ErrorStepDefs extends FinalConfirmationPage with BasePage with TransportQu
 
   Then("""^the user will be on the error page for internal server error""") { () =>
     verifyHeading("Sorry, there is a problem with the service")
+    if(openingHours) assertElementTextContains(
+      "If you’ve entered any information, we have not saved your answers. When the service is available, you’ll have to start again.",
+      errorContent)
+
+    else
+    assertElementTextContains(
+      "Try again. If the issue persists, please email your documents to nch@hmrc.gov.uk instead.",
+      errorContentOOO)
   }
 
   When("""^the user clicks the link on the Page not found page they will be on the start page""") { () =>

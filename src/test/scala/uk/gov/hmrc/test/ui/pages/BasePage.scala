@@ -261,10 +261,15 @@ trait BasePage extends Matchers with BrowserDriver {
   lazy val threePm: LocalTime = LocalTime.parse("15:00:00.00")
   lazy val midnight: LocalTime = LocalTime.parse("00:00:00.00")
   lazy val eightAm: LocalTime = LocalTime.parse("08:00:00.00")
+  lazy val fourPm: LocalTime = LocalTime.parse("16:00:00.00")
 
   lazy val between3pmAndMidnight: Boolean = nowTime.isAfter(threePm) && nowTime.isBefore(midnight)
   lazy val betweenMidnightAnd8am: Boolean = nowTime.isAfter(midnight) && nowTime.isBefore(eightAm)
   lazy val between8amAnd3pm: Boolean = nowTime.isAfter(eightAm) && nowTime.isBefore(threePm)
+  lazy val openingHours:Boolean = nowTime.isAfter(eightAm) && nowTime.isBefore(fourPm)
+
+  def errorContentOOO: WebElement = findElementByCss("#main-content > div > div > div.govuk-\\!-margin-bottom-6 > p:nth-child(2)")
+  def errorContent: WebElement = findElementByCss("#main-content > div > div > div.govuk-\\!-margin-bottom-6 > p:nth-child(3)")
 
   //Random inputs
   lazy val randomEpuDigits: Int = Random.nextInt(666)
