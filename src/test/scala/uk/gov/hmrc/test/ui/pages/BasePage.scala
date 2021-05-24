@@ -202,11 +202,11 @@ trait BasePage extends Matchers with BrowserDriver {
 
   val giveFeedbackBannerUrl = "/contact/beta-feedback"
 
-  def clickDeskProLink(): Unit = clickByCSS(".report-a-problem > a:nth-child(1)")
+  def clickDeskProLink(): Unit = clickByCSS(".hmrc-report-technical-issue")
 
-  val deskProUrl = "/contact/problem_reports_nonjs"
+  val deskProUrl = "/contact/report-technical-problem?service=send-documents-for-customs-check"
 
-  def clickURLink(): Unit = clickByCSS(".govuk-body")
+  def clickURLink(): Unit = clickByCSS("a.govuk-link:nth-child(2)")
 
   val urBannerLink = "/signup.take-part-in-research.service.gov.uk/home?utm_campaign=Customs_Check"
 
@@ -268,8 +268,12 @@ trait BasePage extends Matchers with BrowserDriver {
   lazy val between8amAnd3pm: Boolean = nowTime.isAfter(eightAm) && nowTime.isBefore(threePm)
   lazy val openingHours:Boolean = nowTime.isAfter(eightAm) && nowTime.isBefore(fourPm)
 
-  def errorContentOOO: WebElement = findElementByCss("#main-content > div > div > div.govuk-\\!-margin-bottom-6 > p:nth-child(2)")
-  def errorContent: WebElement = findElementByCss("#main-content > div > div > div.govuk-\\!-margin-bottom-6 > p:nth-child(3)")
+  def errorContent: WebElement = findElementByCss("#main-content > div > div > div.govuk-\\!-margin-bottom-6 > p:nth-child(2)")
+  def errorContentAmendCaseRef:WebElement = findElementByCss("p.govuk-body:nth-child(3)")
+
+  val errorContentText:String = "Try again. If the issue persists and you need help, you can report the problem (opens in a new window or tab). We will respond to you within two working days."
+  val errorContentOOOText:String = "Try again. If the issue persists, please email your documents to nch@hmrc.gov.uk instead."
+  val errorContentCaseRef:String = "Try to enter your case reference number again."
 
   //Random inputs
   lazy val randomEpuDigits: Int = Random.nextInt(666)

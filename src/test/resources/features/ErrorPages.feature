@@ -1,4 +1,4 @@
-@TraderServiceErrors @accessibility @ZAP
+@TraderService @TraderServiceErrors @accessibility @ZAP
 Feature: Error pages
 
   Scenario Outline: A user enters a duplicate case (Stub EPU: 667)
@@ -62,6 +62,21 @@ Feature: Error pages
       | journey | epu | entryNo | requestType | route   | transport | email   | file        |
       | Export  | 666 | X23456A | New         | Route 3 | Air       | a@a.com | testOdt.odt |
 
+  Scenario Outline: A user enters an invalid case reference number
+    Given the user is on the temp start page and enters the journey they will be on the landing page
+    When the user is on the start page for trader services, selects <journey> and continues
+    Then the user will be on the Case Reference number page
+    When the user enters "<caseNo>" characters for case reference number and continues
+    Then the user will be on the Amendment type page
+    When the user is on the Amendment type page, selects <amendType> and continues
+    Then the user will be on the write response page
+    When the user enters "<message>" characters in the write response field and continues
+    When the user clicks submit on the CYA page
+    Then the user will be on the error page for an amend journey internal server error
+
+    Examples:
+      | journey | caseNo                 | amendType | message   |
+      | Amend   | PC12010081330XGBNZJ666 | writeOnly | Test Text |
 
   Scenario: A user hits the wrong url
     Given the user is on the start page for trader services, selects New and continues
