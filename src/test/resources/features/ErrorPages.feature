@@ -1,4 +1,4 @@
-@TraderService @TraderServiceErrors @accessibility @ZAP
+@TraderServiceErrors @accessibility @ZAP
 Feature: Error pages
 
   Scenario Outline: A user enters a duplicate case (Stub EPU: 667)
