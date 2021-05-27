@@ -48,7 +48,7 @@ Feature: Customs check - Export journeys
       | epu | entryNo | requestType | route   | transport | transportName | email        | entryDateCYA | file        |
       | 123 | A23456A | New         | Route 1 | Maritime  | Test Vessel   | abc@test.com | Today        | testOdp.odp |
 
-  @accessibility @ZAP
+  @accessibility
   Scenario Outline: Route-Hold: A user should reach the mandatory Transport page & no SLA provided
     Given the user is on the temp start page and enters the journey they will be on the landing page
     Then the user is on the start page for trader services, selects New and continues
