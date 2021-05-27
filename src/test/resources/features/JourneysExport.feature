@@ -1,7 +1,7 @@
 @TraderService
 Feature: Customs check - Export journeys
 
-  @accessibility @ZAP
+  @accessibility
   Scenario Outline: A user wants to complete a New Export RouteOne journey
     Given the user is on the temp start page and enters the journey they will be on the landing page
     Then the user is on the start page for trader services, selects New and continues

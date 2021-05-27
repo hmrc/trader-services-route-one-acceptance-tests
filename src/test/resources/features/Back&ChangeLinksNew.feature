@@ -29,7 +29,7 @@ Feature: Back Links & Change Links for a New journey
     * the user clicks continue when files have finished uploading
     Then the user will be on the Import CYA page
 
-  @accessibility @zap
+  @accessibility
   Scenario Outline: A user changes to route hold - makes transport details mandatory
     When the user clicks the change link for Route
     Then the user is on the Route type page, selects Hold and continues
