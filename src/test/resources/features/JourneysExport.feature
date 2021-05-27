@@ -1,7 +1,7 @@
 @TraderService
 Feature: Customs check - Export journeys
 
-  @accessibility @ZAP
+  @accessibility
   Scenario Outline: A user wants to complete a New Export RouteOne journey
     Given the user is on the temp start page and enters the journey they will be on the landing page
     Then the user is on the start page for trader services, selects New and continues
@@ -58,8 +58,11 @@ Feature: Customs check - Export journeys
     And the user clicks continue
     Then the user is on the Request type page, selects <requestType> and continues
     Then the user is on the Route type page, selects <route> and continues
-    When the user is on the YesNo Priority page, selects No and continues
-    Then the user is on the Transport type page, selects <transport> and continues
+    When the user is on the YesNo Priority page, selects Yes and continues
+    Then the user will be on the Export Priority Goods page
+    When the user is on the Priority Goods page, selects <priority> and continues
+    Then the user will be on the Export Transport type page
+    When the user is on the Transport type page, selects <transport> and continues
     Then the user will be on the Export-Mandatory Transport details page
     Then the user enters "<transportName>" for transport name
     And the user enters today's date for transportDateDeparture
@@ -78,8 +81,8 @@ Feature: Customs check - Export journeys
     And the user should see Hold SLA
 
     Examples:
-      | epu       | entryNo  | requestType | route | transport | transportName | email                | file          |
-      | randomEPU | exportEN | New         | Hold  | Maritime  | TestShip      | real_email@ymail.com | testXlsx.xlsx |
+      | epu       | entryNo  | requestType | route | priority      | transport | transportName | email                | file          |
+      | randomEPU | exportEN | New         | Hold  | Human remains | Maritime  | TestShip      | real_email@ymail.com | testXlsx.xlsx |
 
   Scenario Outline: C160* upload inset text
     Given the user is on the temp start page and enters the journey they will be on the landing page
