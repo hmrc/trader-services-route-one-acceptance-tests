@@ -2,7 +2,7 @@
 
 Feature: Full Import Journey
 
-  @accessibility @ZAP
+  @accessibility
   Scenario Outline: A user wants to complete a New Import journey and review their answers
 
     Given the user is on the temp start page and enters the journey they will be on the landing page
