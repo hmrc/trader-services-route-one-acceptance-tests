@@ -43,7 +43,7 @@ Feature: Amend journeys
 
 
 #    Write Response & Upload
-  @accessibility @ZAP
+  @accessibility
   Scenario Outline: Amend: A user adds a message and a document to a case (write response + upload)
     Given the user is on the temp start page and enters the journey they will be on the landing page
     When the user is on the start page for trader services, selects <journey> and continues
