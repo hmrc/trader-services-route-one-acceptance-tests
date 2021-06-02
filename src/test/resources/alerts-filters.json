@@ -1,0 +1,32 @@
+{
+    "add": [
+        {
+            "reason": "Language cookie not set to httpOnly.",
+            "contextId": 1,
+            "url": "http://localhost:9379/send-documents-for-customs-check/language/.*",
+            "ruleId": 10010,
+            "newLevel": -1
+        },
+        {
+            "reason": "This issue is related to [Upscan] outside our scope.",
+            "contextId": 1,
+            "url": "http://localhost:9379/send-documents-for-customs-check/new/journey/.*",
+            "ruleId": 10098,
+            "newLevel": -1
+        },
+        {
+               "reason": "This issue is related to [Upscan] outside our scope.",
+            "contextId": 1,
+            "url": "http://localhost:9379/send-documents-for-customs-check/add/journey/.*",
+            "ruleId": 10098,
+            "newLevel": -1
+        },
+        {
+            "reason": "This issue is related to [Assets Frontend] outside our scope.",
+            "contextId": 1,
+            "url": "http://localhost:9032/assets/3.2.2/javascripts/application.min.js",
+            "ruleId": 10098,
+            "newLevel": -1
+        }
+    ]
+}
