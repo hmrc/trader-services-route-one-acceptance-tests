@@ -30,7 +30,7 @@
       "url": "http://localhost:9032/assets/3.2.2/javascripts/application.min.js",
       "ruleId": 10003,
       "newLevel": 0
-    }.,
+    },
     {
       "reason": "This issue is related to [Agents external stubs] outside our scope.",
       "contextId": 1,
