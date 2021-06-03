@@ -5,6 +5,7 @@
       "contextId": 1,
       "url": "http://localhost:9379/send-documents-for-customs-check/language/.*",
       "ruleId": 10010,
+      "urlIsRegex": "true",
       "newLevel": 0
     },
     {
