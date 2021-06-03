@@ -12,6 +12,7 @@
       "contextId": 1,
       "url": "http:\\/\\/localhost:9379\\/send-documents-for-customs-check\\/new\\/journey\\/.*",
       "ruleId": 10098,
+      "urlIsRegex": "true",
       "newLevel": 0
     },
     {
@@ -19,6 +20,7 @@
       "contextId": 1,
       "url": "http:\\/\\/localhost:9379\\/send-documents-for-customs-check\\/add\\/journey\\/.*",
       "ruleId": 10098,
+      "urlIsRegex": "true",
       "newLevel": 0
     },
     {
