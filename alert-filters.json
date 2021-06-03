@@ -10,14 +10,14 @@
     {
       "reason": "This issue is related to [Upscan] outside our scope.",
       "contextId": 1,
-      "url": "http://localhost:9379/send-documents-for-customs-check/new/journey/*",
+      "url": "http:\/\/localhost:9379\/send-documents-for-customs-check\/new\/journey\/.*",
       "ruleId": 10098,
       "newLevel": 0
     },
     {
       "reason": "This issue is related to [Upscan] outside our scope.",
       "contextId": 1,
-      "url": "http://localhost:9379/send-documents-for-customs-check/add/journey/*",
+      "url": "http://localhost:9379/send-documents-for-customs-check/add/journey/.*",
       "ruleId": 10098,
       "newLevel": 0
     },
