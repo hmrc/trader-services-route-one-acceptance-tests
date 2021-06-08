@@ -1,5 +1,5 @@
 @TraderServiceErrors
-Feature: Vessel page validation
+Feature: Transport details page validation
 
   Background: Get to transport details page (Import - Mandatory)
     Given the user is on the start page for trader services, selects New and continues
@@ -14,7 +14,7 @@ Feature: Vessel page validation
     * the user is on the Transport type page, selects Air and continues
     Then the user will be on the Import-Mandatory Transport details page
 
-  Scenario: Blank fields
+  Scenario: Mandatory transport details - Blank fields
     When the user enters "" for transport name
     * the user enters a date of Arrival for their transportation "" "" ""
     * the user enters a time of Arrival for their transportation "" ""
@@ -26,7 +26,7 @@ Feature: Vessel page validation
     * the user clicks the error link for "dateOfArrival" it should link to the dateOfArrival.day field
     * the user clicks the error link for "timeOfArrival" it should link to the timeOfArrival.hour field
 
-  Scenario: Incomplete fields
+  Scenario: Transport details - Incomplete fields
     When the user enters a date of Arrival for their transportation "" "2" "2021"
     * the user enters a time of Arrival for their transportation "" "59"
     * the user clicks continue
@@ -43,7 +43,7 @@ Feature: Vessel page validation
     And the user clicks continue
     Then the user should see "Error:Date of arrival must include a year" error message for "dateOfArrival"
 
-  Scenario: Invalid data
+  Scenario: Transport details - Invalid data
     When the user enters a date of Arrival for their transportation "32" "2" "2021"
     * the user enters a time of Arrival for their transportation "24" "50"
     * the user clicks continue
@@ -78,7 +78,7 @@ Feature: Vessel page validation
     * the user clicks continue
     Then the user should see "Error:Date of arrival must be a real date" error message for "dateOfArrival"
 
-  Scenario: Invalid data - outside time boundaries
+  Scenario: Transport details - Invalid data - outside time boundaries
     When the user enters an invalid past date for arrivalDate
     * the user enters a time of Arrival for their transportation "01" "15"
     * the user clicks continue
@@ -104,7 +104,7 @@ Feature: Vessel page validation
 
   
 #    Export
-  Scenario: Mandatory (Export) Vessel page
+  Scenario: Mandatory (Export) Transport details page
     Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     When the user enters entry details "randomEPU" and "exportEN"
