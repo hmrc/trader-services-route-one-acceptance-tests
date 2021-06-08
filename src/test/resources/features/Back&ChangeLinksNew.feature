@@ -142,8 +142,6 @@ Feature: Back Links & Change Links for a New journey
     When the user clicks back
     Then the user will be on the temporary start page
 
-    When the user clicks the service-name link they will be redirected to the appropriate page
-
     Examples:
       | journey | epu | entryNo | requestType | route   | priority     | transport | email        |
       | Import  | 001 | 000000Z | New         | Route 1 | Live animals | Air       | abc@test.com |
