@@ -108,7 +108,11 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
   When("""^the user logs into QA""") {
     navigateTo("https://www.qa.tax.service.gov.uk/auth-login-stub/gg-sign-in")
     writeById(findElementById("redirectionUrl"), "/send-documents-for-customs-check")
+    writeById(findElementById("enrolment[0].name"), "HMRC-CTS-ORG")
+    writeById(findElementById("input-0-0-name"), "EoriNumber")
+    writeById(findElementById("input-0-0-value"), "GB123456789012345")
     clickByCSS("#inputForm > div.form-field-group > p > input")
+
   }
 
   And("""^the user enters today's date for (.*)$""") { (dateField: String) =>
