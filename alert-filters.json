@@ -45,7 +45,6 @@
       "contextId": 1,
       "url": "http://localhost:9379/send-documents-for-customs-check/new/file-upload",
       "ruleId": 10202,
-      "urlIsRegex": "true",
       "newLevel": 0
     },
     {
@@ -53,7 +52,6 @@
     "contextId": 1,
     "url": "http://localhost:9379/send-documents-for-customs-check/new/upload-files",
     "ruleId": 10202,
-    "urlIsRegex": "true",
     "newLevel": 0
     },
     {
@@ -61,7 +59,6 @@
       "contextId": 1,
       "url": "http://localhost:9379/send-documents-for-customs-check/add/upload-files",
       "ruleId": 10202,
-      "urlIsRegex": "true",
       "newLevel": 0
     },
     {
