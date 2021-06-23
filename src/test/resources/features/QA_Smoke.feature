@@ -151,7 +151,7 @@ Feature: Customs check - Export journey
     When the user is on the temp start page and enters the journey they will be on the landing page
     When the user is on the start page for trader services, selects <journey> and continues
     Then the user will be on the Case Reference number page
-    When the user enters "PCI21040921252PZVD43D4" characters for case reference number and continues
+    When the user enters "PCI21062334520WW6304O6" characters for case reference number and continues
     Then the user will be on the Amendment type page
     When the user is on the Amendment type page, selects <amendType> and continues
     Then the user will be on the write response page
