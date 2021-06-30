@@ -30,22 +30,22 @@ Feature: Customs check - Export journey
 
     Then the user will be on the multi-file upload pages for New
     When the user clicks the button to upload file "1" and selects "testPdf.pdf"
-#    And the user clicks continue when files have finished uploading
-    * the user clicks the button to upload file "2" and selects "testJpeg.jpeg"
-    * the user clicks the button to add another document
-    * the user clicks the button to upload file "3" and selects "testJpg.jpg"
-    * the user clicks the button to add another document
-    * the user clicks the button to upload file "4" and selects "testTiff.tiff"
-    * the user clicks the button to add another document
-    * the user clicks the button to upload file "5" and selects "testTif.TIF"
-    * the user clicks the button to add another document
-    * the user clicks the button to upload file "6" and selects "testPng.png"
-    * the user clicks the button to add another document
-    * the user clicks the button to upload file "7" and selects "testXlsx.xlsx"
-    * the user clicks the button to add another document
-    * the user clicks the button to upload file "8" and selects "testPpt.ppt"
-    * the user waits 50000
-    When the user clicks MFU continue
+    And the user clicks continue when files have finished uploading
+#    * the user clicks the button to upload file "2" and selects "testJpeg.jpeg"
+#    * the user clicks the button to add another document
+#    * the user clicks the button to upload file "3" and selects "testJpg.jpg"
+#    * the user clicks the button to add another document
+#    * the user clicks the button to upload file "4" and selects "testTiff.tiff"
+#    * the user clicks the button to add another document
+#    * the user clicks the button to upload file "5" and selects "testTif.TIF"
+#    * the user clicks the button to add another document
+#    * the user clicks the button to upload file "6" and selects "testPng.png"
+#    * the user clicks the button to add another document
+#    * the user clicks the button to upload file "7" and selects "testXlsx.xlsx"
+#    * the user clicks the button to add another document
+#    * the user clicks the button to upload file "8" and selects "testPpt.ppt"
+#    * the user waits 50000
+#    When the user clicks MFU continue
     Then the user will be on the Export CYA page
 
     When the user clicks submit on the CYA page
@@ -119,23 +119,23 @@ Feature: Customs check - Export journey
 
     Then the user will be on the multi-file upload pages for <journey>
     When the user clicks the button to upload file "1" and selects "testDocx.docx"
-#    And the user clicks continue when files have finished uploading
-    When the user clicks the button to upload file "2" and selects "testDoc.doc"
-    When the user clicks the button to upload file "3" and selects "testOdt.odt"
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload file "4" and selects "testXlsx.xlsx"
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload file "5" and selects "testXls.xls"
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload file "6" and selects "testOds.ods"
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload file "7" and selects "testPptx.pptx"
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload file "8" and selects "testPpt.ppt"
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload file "9" and selects "testOdp.odp"
-    Then the user waits 50000
-    Then the user clicks MFU continue
+    And the user clicks continue when files have finished uploading
+#    When the user clicks the button to upload file "2" and selects "testDoc.doc"
+#    When the user clicks the button to upload file "3" and selects "testOdt.odt"
+#    Then the user clicks the button to add another document
+#    When the user clicks the button to upload file "4" and selects "testXlsx.xlsx"
+#    Then the user clicks the button to add another document
+#    When the user clicks the button to upload file "5" and selects "testXls.xls"
+#    Then the user clicks the button to add another document
+#    When the user clicks the button to upload file "6" and selects "testOds.ods"
+#    Then the user clicks the button to add another document
+#    When the user clicks the button to upload file "7" and selects "testPptx.pptx"
+#    Then the user clicks the button to add another document
+#    When the user clicks the button to upload file "8" and selects "testPpt.ppt"
+#    Then the user clicks the button to add another document
+#    When the user clicks the button to upload file "9" and selects "testOdp.odp"
+#    Then the user waits 50000
+#    Then the user clicks MFU continue
 
     When the user clicks submit on the CYA page
     Then the user will be on the <journey> confirmation page

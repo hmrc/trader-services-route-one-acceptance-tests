@@ -14,7 +14,7 @@ Feature: Back Links & Change Links - Amend
     * the user clicks continue when files have finished uploading
     Then the user will be on the Amend writeAndUpload review page and should see their responses
 
-  Scenario Outline: Amend: Change links
+  Scenario Outline: Amend: Change links (continue)
     When the user clicks the change link on the amend review page for CaseRef
     Then the user will be on the Case Reference number page
     When the user enters "valid" characters for case reference number and continues
@@ -59,29 +59,30 @@ Feature: Back Links & Change Links - Amend
       | journey | amendType      |
       | Amend   | writeAndUpload |
 
-  Scenario Outline: Amend Back links - A user wants to go back to the start
-    When the user clicks back
-    Then the user will be on the multi-file upload pages for <journey>
-
-    When the user clicks back
-    Then the user will be on the write response page
-    And the details in the text box should be pre-filled with "<message>"
-
-    When the user clicks back
-    Then the user will be on the Amendment type page
-    And the last selected option for type of amendment should be <amendType>
-
-    When the user clicks back
+  Scenario Outline: Amend: Change links (back)
+    When the user clicks the change link on the amend review page for CaseRef
     Then the user will be on the Case Reference number page
-    And the details in the case ref field should be pre-filled with "<caseRef>"
-
     When the user clicks back
-    Then the user will be on the start page for trader services
-    And the last selected option for journey type should be pre filled with Amend
+    Then the user will be on the Amend <amendType> review page and should see their responses
 
-    Then the user clicks the service-name link they will be redirected to the appropriate page
-    And the last selected option for journey type should be pre filled with Nothing
+    When the user clicks the change link on the amend review page for Amendment
+    Then the user will be on the Amendment type page
+    When the user clicks back
+    Then the user will be on the Amend <amendType> review page and should see their responses
+
+    When the user clicks the change link on the amend review page for Message
+    Then the user will be on the write response page
+    When the user clicks back
+    Then the user will be on the Amend <amendType> review page and should see their responses
+
+    When the user clicks the change link on the amend review page for Documents
+    Then the user will be on the multi-file upload pages for <journey>
+    When the user clicks back
+    Then the user will be on the Amend <amendType> review page and should see their responses
+
+    When the user clicks submit on the CYA page
+    Then the user will be on the <journey> confirmation page
 
     Examples:
-      | journey | caseRef                | amendType      | message          |
-      | Amend   | PC12010081330XGBNZJO04 | writeAndUpload | Hello Caseworker |
+      | journey | amendType      |
+      | Amend   | writeAndUpload |
