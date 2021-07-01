@@ -58,13 +58,13 @@ Feature: Change Links for a New journey
     * the user clicks continue
     * the user will be on the <journey> CYA page
 
-    When the user clicks the change link for Transport
-    * the user will be on the <journey> Transport type page
+    When the user clicks the change link for TransportDetails
+    * the user will be on the Import-Optional Transport details page
     * the user clicks continue
     * the user will be on the <journey> CYA page
 
-    When the user clicks the change link for TransportDetails
-    * the user will be on the Import-Optional Transport details page
+    When the user clicks the change link for Transport
+    * the user will be on the <journey> Transport type page
     * the user clicks continue
     * the user will be on the <journey> CYA page
 
@@ -77,6 +77,11 @@ Feature: Change Links for a New journey
     Then the user will be on the <journey> YN Priority page
     When the user is on the YesNo Priority page, selects No and continues
     Then the user will be on the <journey> CYA page
+
+    When the user clicks the change link for Route
+    * the user will be on the <journey> Route type page
+    * the user clicks continue
+    * the user will be on the <journey> CYA page
 
     When the user clicks the change link for Request
     * the user will be on the <journey> Request type page
@@ -107,13 +112,13 @@ Feature: Change Links for a New journey
     * the user clicks back
     * the user will be on the <journey> CYA page
 
-    When the user clicks the change link for Transport
-    * the user will be on the <journey> Transport type page
+    When the user clicks the change link for TransportDetails
+    * the user will be on the Import-Optional Transport details page
     * the user clicks back
     * the user will be on the <journey> CYA page
 
-    When the user clicks the change link for TransportDetails
-    * the user will be on the Import-Optional Transport details page
+    When the user clicks the change link for Transport
+    * the user will be on the <journey> Transport type page
     * the user clicks back
     * the user will be on the <journey> CYA page
 
@@ -126,6 +131,11 @@ Feature: Change Links for a New journey
     Then the user will be on the <journey> YN Priority page
     * the user clicks back
     Then the user will be on the <journey> CYA page
+
+    When the user clicks the change link for Route
+    * the user will be on the <journey> Route type page
+    * the user clicks back
+    * the user will be on the <journey> CYA page
 
     When the user clicks the change link for Request
     * the user will be on the <journey> Request type page
