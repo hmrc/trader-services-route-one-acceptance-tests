@@ -21,7 +21,7 @@ import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages._
 
 class ErrorStepDefs extends FinalConfirmationPage with BasePage with TransportQuestionsPage with ContactDetailsPage with
-  LandingPage with ScalaDsl with EN {
+  LandingPage with AmendPages with ScalaDsl with EN {
 
 
   And("""^the user enters too many characters for (.*)""") { (field: String) =>
@@ -55,6 +55,13 @@ class ErrorStepDefs extends FinalConfirmationPage with BasePage with TransportQu
     assertElementText(errorContentCaseRef, errorContentAmendCaseRef)
   }
 
+  When("""^the user clicks the link to re enter a case ref number they will be on the case ref page""") { () =>
+    caseRefErrorClickLink()
+    confirmUrl(urlCaseRef)
+    verifyHeading(caseRefHeading)
+  }
+
+
   When("""^the user clicks the link on the Page not found page they will be on the start page""") { () =>
     errorClickLink()
     confirmUrl(traderServicesUrl)
@@ -62,4 +69,5 @@ class ErrorStepDefs extends FinalConfirmationPage with BasePage with TransportQu
   }
 
   def errorClickLink(): Unit = driver.findElement(By.linkText("Send your documents for a customs check")).click()
+  def caseRefErrorClickLink():Unit = clickHref("a[href*='send-documents-for-customs-check/add/case-reference-number']")
 }

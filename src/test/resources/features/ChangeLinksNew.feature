@@ -102,10 +102,10 @@ Feature: Change Links for a New journey
       | Import  |
 
   Scenario Outline: User checks the change links
-    When the user clicks the change link for Documents
-    Then the user will be on the multi-file upload pages for New
-    * the user clicks back
-    Then the user will be on the <journey> CYA page
+#    When the user clicks the change link for Documents
+#    Then the user will be on the multi-file upload pages for New
+#    * the user clicks back
+#    Then the user will be on the <journey> CYA page
 
     When the user clicks the change link for ContactDetails
     * the user will be on the <journey> Contact details page
