@@ -104,7 +104,7 @@ Feature: Change Links for a New journey
   Scenario Outline: User checks the change links
     When the user clicks the change link for Documents
     Then the user will be on the multi-file upload pages for New
-    And the user navigates to the following "import/new/check-your-answers"
+    And the user navigates to the following "/new/import/check-your-answers"
 
     When the user clicks the change link for ContactDetails
     * the user will be on the <journey> Contact details page

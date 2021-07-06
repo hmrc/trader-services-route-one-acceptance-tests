@@ -75,10 +75,6 @@ Feature: Error pages
     When the user clicks submit on the CYA page
     Then the user will be on the error page for an amend journey internal server error
     When the user clicks the link to re enter a case ref number they will be on the case ref page
-    And the user enters "valid" characters for case reference number and continues
-    Then the user navigates to the following "/add/check-your-answers"
-    When the user clicks submit on the CYA page
-    Then the user will be on the <journey> confirmation page
 
     Examples:
       | journey | caseNo                 | amendType | message   |

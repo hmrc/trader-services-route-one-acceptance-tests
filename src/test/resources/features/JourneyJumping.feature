@@ -1,4 +1,4 @@
-@TraderService
+@TraderServiceErrors
 Feature: User can navigate to pages within each journey
 
   Scenario: A user tries to jump ahead in an export journey to the next page
