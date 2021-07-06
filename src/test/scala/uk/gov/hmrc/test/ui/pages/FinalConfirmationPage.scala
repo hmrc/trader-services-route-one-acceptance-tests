@@ -29,6 +29,8 @@ trait FinalConfirmationPage extends BasePage {
   val urlAmendConfirm: String = traderServicesBaseUrl + amendUrl + "/confirmation"
   val headingAmendConfirm = "You’ve submitted your extra information"
 
+  val receiptHeading:String = "Print or save your receipt for your records"
+
   def clickLinkToAmend(): Unit = clickHref("a[href*='send-documents-for-customs-check/add']")
 
   def caseRefNo: WebElement = findElementByCss(".govuk-panel__body > strong:nth-child(2)")

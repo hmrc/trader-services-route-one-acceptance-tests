@@ -38,6 +38,7 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     //    assertElementTextContains(nowFormatted, findElementByCss(".govuk-panel"))
     isElementVisible(printPdfIcon).shouldBe(true)
     isElementVisible(saveHtmlIcon).shouldBe(true)
+    assertElementText(receiptHeading, findElementByCss("#confirmation-heading > h2"))
   }
 
   Then("""^the user will see text to (.*)""") { (journey: String) =>
