@@ -48,6 +48,11 @@ class AmendCYAStepDefs extends AmendPages with AmendCYAPage with BasePage with S
     }
   }
 
+  Then("""^the user will be on the Amend review page$""") { () =>
+    confirmUrl(urlAmendCYA)
+    verifyHeading(headingMainCYA)
+  }
+
   When("""^the user clicks the change link on the amend review page for (.*)$""") { (changeLink: String) =>
     changeLink match {
 

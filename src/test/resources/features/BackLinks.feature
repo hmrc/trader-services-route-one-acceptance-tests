@@ -85,7 +85,6 @@ Feature: Back Links
     Then the user will be on the write response page
     When the user enters "Hello Caseworker" characters in the write response field and continues
     Then the user will be on the multi-file upload pages for <journey>
-
     When the user clicks back
     Then the user will be on the write response page
     And the details in the text box should be pre-filled with "<message>"
