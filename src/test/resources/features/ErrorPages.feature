@@ -1,4 +1,4 @@
-@TraderService @accessibility
+@TraderServiceErrors @accessibility
 Feature: Error pages
 
   Scenario Outline: A user enters a failed request (Stub EPU: 666)
