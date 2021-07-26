@@ -39,6 +39,8 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     isElementVisible(printPdfIcon).shouldBe(true)
     isElementVisible(saveHtmlIcon).shouldBe(true)
     assertElementText(receiptHeading, findElementByCss("#confirmation-heading > h2"))
+
+//    Thread.sleep(15000)
   }
 
   Then("""^the user will see text to (.*)""") { (journey: String) =>
