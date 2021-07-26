@@ -23,8 +23,8 @@ Feature: Customs check - Export journey
     * the user clicks continue
 
     Then the user will be on the Export Contact details page
-    * the user enters a name "<name>"
     * the user enters an email address "<email>"
+    * the user enters a name "<name>"
     * the user enters a phone number "<phone>"
     * the user clicks continue
 
@@ -55,12 +55,12 @@ Feature: Customs check - Export journey
     * the user waits 10000
 
     When the user clicks the button to submit another case on the confirmation page they will go back to the start
-    When the user clicks the deskpro link they will be redirected to the appropriate page
-    When the user clicks the UR banner link they will be redirected to the appropriate page
+#    When the user clicks the deskpro link they will be redirected to the appropriate page
+#    When the user clicks the UR banner link they will be redirected to the appropriate page
 
     Examples:
       | epu       | entryNo  | requestType | route   | priority      | transport    | transportName | name  | email     | phone         |
-      | randomEPU | exportEN | New         | Route 6 | Human remains | RoadRoRoRail | TestVessel    | smith | testEmail | 0177 111 1111 |
+      | randomEPU | exportEN | New         | Route 1 | Human remains | RoadRoRoRail | TestVessel    | smith | testEmail | 0177 111 1111 |
 
   Scenario Outline: A user wants to complete a New Import journey
     Given the user logs into QA
@@ -90,13 +90,21 @@ Feature: Customs check - Export journey
     * the user clicks continue
 
     Then the user will be on the multi-file upload pages for New
-    When the user clicks the button to upload file "1" and selects "testJpg.jpg"
-    * the user clicks continue when files have finished uploading
+    When the user clicks the button to upload file "1" and selects "testDocx.docx"
+#    And the user clicks continue when files have finished uploading
+    When the user clicks the button to upload file "2" and selects "testDoc.doc"
+    When the user clicks the button to upload file "3" and selects "testOdt.odt"
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload file "4" and selects "testXlsx.xlsx"
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload file "5" and selects "testXls.xls"
+    Then the user waits 40000
+    Then the user clicks MFU continue
 
     Then the user will be on the Import CYA page
     When the user clicks submit on the CYA page
     Then the user will be on the New confirmation page
-    * the user should see Maritime-Import SLA
+    * the user should see 2 Hour SLA
     * the user will see text to give-feedback
     * outputs the case reference number
     * the user waits 10000
@@ -106,12 +114,13 @@ Feature: Customs check - Export journey
 
     Examples:
       | epu       | entryNo  | requestType | route   | priority      | transport | transportName | name  | email     | phone       |
-      | randomEPU | importEN | New         | Route 1 | Human remains | Maritime  | train 1x      | agent | testEmail | 01256888999 |
+      | randomEPU | importEN | New         | Route 6 | Human remains | Air       | train 1x      | agent | testEmail | 01256888999 |
 
   Scenario Outline: Amend: A user adds a message and a document to a case (write response + upload)
+    Given the user logs into QA
     Given the user is on the start page for trader services, selects <journey> and continues
     Then the user will be on the Case Reference number page
-    When the user enters "PCI21040921252PZVD43D4" characters for case reference number and continues
+    When the user enters "PCI21071941573K2IE F232 " characters for case reference number and continues
     Then the user will be on the Amendment type page
     When the user is on the Amendment type page, selects <amendType> and continues
     Then the user will be on the write response page
@@ -146,12 +155,33 @@ Feature: Customs check - Export journey
       | journey | amendType      |
       | Amend   | writeAndUpload |
 
+  Scenario Outline: Amend: A user adds a document to a case
+    Given the user is on the start page for trader services, selects <journey> and continues
+    Then the user will be on the Case Reference number page
+    When the user enters "PCI21071941573K2IEF232" characters for case reference number and continues
+    Then the user will be on the Amendment type page
+    When the user is on the Amendment type page, selects <amendType> and continues
+
+    Then the user will be on the multi-file upload pages for <journey>
+    When the user clicks the button to upload file "1" and selects "testJpg.jpg"
+    And the user clicks continue when files have finished uploading
+
+    When the user clicks submit on the CYA page
+    Then the user will be on the <journey> confirmation page
+    Then the user waits 10000
+    Then the user clicks the button to submit another case on the confirmation page they will go back to the start
+
+    Examples:
+      | journey | amendType  |
+      | Amend   | uploadOnly |
+
+
   Scenario Outline: Amend: A user adds a message to a case (write response only)
     Given the user logs into QA
     When the user is on the temp start page and enters the journey they will be on the landing page
     When the user is on the start page for trader services, selects <journey> and continues
     Then the user will be on the Case Reference number page
-    When the user enters "PCI21040921252PZVD43D4" characters for case reference number and continues
+    When the user enters " PCI21072243236KD4D6BN2" characters for case reference number and continues
     Then the user will be on the Amendment type page
     When the user is on the Amendment type page, selects <amendType> and continues
     Then the user will be on the write response page
