@@ -19,6 +19,7 @@ Then execute the `run_tests.sh` script:
 
     **Standard runners
     ./run_tests.sh - runs locally (ensure SM profile above is running)
+    ./run_tests_errors.sh - runs tests involving error pages & messages etc ('unhappy paths')
     
     ./run_tests.sh <environment> <browser-driver>
     ie. /run_tests.sh dev chrome
@@ -27,7 +28,6 @@ Then execute the `run_tests.sh` script:
     ./run_tests_qa.sh
     
     **Further Runners:
-    *Zap: run_tests_zap.sh
     *Accessiblity: run_tests_accessiblity.sh 
         *this won't run in the browser but you can run them locally to make sure they pass before running them in jenkins
 
@@ -61,46 +61,10 @@ For example, to execute the `run_tests.sh` script against Staging  environment u
 
     ./run_tests.sh staging remote-chrome
 
-## Running ZAP tests
-
-ZAP tests can be automated using the HMRC [zap-automation](https://github.com/hmrc/zap-automation) library. It is not mandatory to do so and should not be considered a substitute for manual exploratory testing using OWASP ZAP.
-
-#### Tagging tests for ZAP
-
-It is not required to proxy every journey test via ZAP. The intention of proxying a test through ZAP is to expose all the
- relevant pages of an application to ZAP. So tagging a subset of the journey tests or creating a 
- single ZAP focused journey test is sufficient.
-
-#### Configuring the browser to proxy via ZAP 
-
-Setting the system property `zap.proxy=true` configures the browser specified in `browser` property to proxy via ZAP. 
-This is achieved using [webdriver-factory](https://github.com/hmrc/webdriver-factory#proxying-trafic-via-zap).  
-
 #### zap-automation config
-Running ZAP tests require passing a zap-automation config object to the zap-automation library. `zap-automation` config is 
-defined in the [application.conf](/src/test/resources/application.conf). The config is passed to the `zap-automation`
-library via [ZapSpec](/src/test/scala/uk/gov/hmrc/test/ui/ZapSpec.scala) from which the ZAP tests are triggered.
+ZAP tests are now run through DAST runner (in Jenkins).
 
-#### Executing a ZAP test
-
-The shell script `run_tests_zap.sh` is available to execute ZAP tests. The script first proxies a set of journey tests, 
-tagged as `ZapTests`, via ZAP. Upon completion, the script then triggers a ZAP scan for the provided `zap-automation` config. 
-
-For example, to execute ZAP tests locally using a Chrome browser
-
-```
-./run_tests_zap.sh local chrome
-```
-
-To execute ZAP tests locally using a Chrome browser
-
-```
-./run-browser-with-docker.sh remote-chrome 
-./run_tests_zap.sh local remote-chrome
-``` 
-
-`./run-browser-with-docker.sh` is **NOT** required when running in a CI environment.
-
+Alert filtering is still set up within this repo
 
 For more information about ZAP tests, please refer to the `zap-automation` [documentation](https://github.com/hmrc/zap-automation/blob/master/README.md).
 
@@ -120,6 +84,10 @@ See the `drivers/` directory for some helpful scripts to do the installation wor
     You can also try the following commands in terminal for mac:
     brew install chromedriver
     brew install geckodriver
+    
+    Occassionaly these may need updated:
+    brew upgrade chromedriver
+    brew upgrade geckodriver
 
 - *<operating-system>* defaults to **linux64**, however it also supports **macos**
 - *<driver-version>* defaults to **0.21.0** for Gecko/Firefox, and the latest release for Chrome.  You can, however, however pass any version available at the [Geckodriver](https://github.com/mozilla/geckodriver/tags) or [Chromedriver](http://chromedriver.storage.googleapis.com/) repositories.
