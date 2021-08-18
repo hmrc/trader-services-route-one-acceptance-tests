@@ -64,8 +64,7 @@ Feature: Error pages
 
 
   Scenario Outline: A user enters an invalid case reference number
-    Given the user is on the temp start page and enters the journey they will be on the landing page
-    When the user is on the start page for trader services, selects <journey> and continues
+    Given the user is on the start page for trader services, selects <journey> and continues
     Then the user will be on the Case Reference number page
     When the user enters "<caseNo>" characters for case reference number and continues
     Then the user will be on the Amendment type page

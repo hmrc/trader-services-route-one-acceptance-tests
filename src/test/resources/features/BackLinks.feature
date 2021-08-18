@@ -2,8 +2,7 @@
 Feature: Back Links
 
   Scenario Outline: Import: A user goes back through the journey and their answers should be saved
-    Given the user is on the temp start page and enters the journey they will be on the landing page
-    When the user is on the start page for trader services, selects New and continues
+    Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     * the user enters entry details "001" and "000000Z"
     * the user enters today's date for entryDate
@@ -65,9 +64,6 @@ Feature: Back Links
     When the user clicks back
     Then the user will be on the start page for trader services
     And the last selected option for journey type should be pre filled with New
-
-    When the user clicks back
-    Then the user will be on the temporary start page
 
     When the user clicks the service-name link they will be redirected to the appropriate page
 

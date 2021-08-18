@@ -43,8 +43,7 @@ Feature: Error - no options selected & amend validation
 
 
   Scenario Outline: Amend case journey (error validation)
-    Given the user is on the temp start page and enters the journey they will be on the landing page
-    When the user is on the start page for trader services, selects <journey> and continues
+    Given the user is on the start page for trader services, selects <journey> and continues
     Then the user will be on the Case Reference number page
     When the user enters "no" characters for case reference number and continues
     Then the user should see "Error:Enter the case reference number" error message for "caseReferenceNumber"

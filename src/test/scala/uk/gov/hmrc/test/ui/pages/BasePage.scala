@@ -296,6 +296,7 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   val userCaseRef = "PC12010081330XGBNZJO04"
+  val userEoriNumber= "GB" + ""
 
   //Agent-stubs
   def userId: WebElement = driver.findElement(By.id("userId"))

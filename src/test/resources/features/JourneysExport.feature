@@ -3,8 +3,7 @@ Feature: Customs check - Export journeys
 
   @accessibility
   Scenario Outline: A user wants to complete a New Export RouteOne journey
-    Given the user is on the temp start page and enters the journey they will be on the landing page
-    Then the user is on the start page for trader services, selects New and continues
+    Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate
@@ -50,8 +49,7 @@ Feature: Customs check - Export journeys
 
   @accessibility
   Scenario Outline: Route-Hold: A user should reach the mandatory Transport page & no SLA provided
-    Given the user is on the temp start page and enters the journey they will be on the landing page
-    Then the user is on the start page for trader services, selects New and continues
+    Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
     And the user enters today's date for entryDate

@@ -2,8 +2,7 @@
 Feature: Change Links for a New journey
 
   Background: Set up journey - Import
-    Given the user is on the temp start page and enters the journey they will be on the landing page
-    When the user is on the start page for trader services, selects New and continues
+    Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     * the user enters entry details "001" and "000000Z"
     * the user enters today's date for entryDate

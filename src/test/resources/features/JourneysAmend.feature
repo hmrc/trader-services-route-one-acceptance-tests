@@ -3,8 +3,7 @@ Feature: Amend journeys
 
 #    Write Response
   Scenario Outline: A user wants to add a message to their case (write response only)
-    Given the user is on the temp start page and enters the journey they will be on the landing page
-    When the user is on the start page for trader services, selects <journey> and continues
+    Given the user is on the start page for trader services, selects <journey> and continues
     Then the user will be on the Case Reference number page
     When the user enters "<caseNo>" characters for case reference number and continues
     Then the user will be on the Amendment type page
@@ -23,8 +22,7 @@ Feature: Amend journeys
 
 #    Upload Only
   Scenario Outline: A user wants to add another document to a case (upload only)
-    Given the user is on the temp start page and enters the journey they will be on the landing page
-    When the user is on the start page for trader services, selects <journey> and continues
+    Given the user is on the start page for trader services, selects <journey> and continues
     Then the user will be on the Case Reference number page
     When the user enters "<caseNo>" characters for case reference number and continues
     Then the user will be on the Amendment type page
@@ -45,8 +43,7 @@ Feature: Amend journeys
 #    Write Response & Upload
   @accessibility
   Scenario Outline: Amend: A user adds a message and a document to a case (write response + upload)
-    Given the user is on the temp start page and enters the journey they will be on the landing page
-    When the user is on the start page for trader services, selects <journey> and continues
+    Given the user is on the start page for trader services, selects <journey> and continues
     Then the user will be on the Case Reference number page
     When the user enters "<caseNo>" characters for case reference number and continues
     Then the user will be on the Amendment type page
