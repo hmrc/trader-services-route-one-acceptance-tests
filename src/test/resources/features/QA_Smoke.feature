@@ -178,7 +178,6 @@ Feature: Customs check - Export journey
 
   Scenario Outline: Amend: A user adds a message to a case (write response only)
     Given the user logs into QA
-    When the user is on the temp start page and enters the journey they will be on the landing page
     When the user is on the start page for trader services, selects <journey> and continues
     Then the user will be on the Case Reference number page
     When the user enters " PCI21072243236KD4D6BN2" characters for case reference number and continues
