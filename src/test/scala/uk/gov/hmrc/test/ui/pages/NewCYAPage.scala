@@ -94,7 +94,7 @@ trait NewCYAPage extends BasePage {
 
   //Vessel Section
   val h2Vessel = "Transport information"
-  val summarytransportName = "Name of ship, vehicle or airline"
+  val summaryTransportName = "Name of ship, vehicle or airline"
   val summaryVesselArrivalDate = "Date of arrival"
   val summaryVesselArrivalTime = "Estimated time of arrival"
 

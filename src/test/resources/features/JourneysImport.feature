@@ -5,8 +5,7 @@ Feature: Full Import Journey
   @accessibility
   Scenario Outline: A user wants to complete a New Import journey and review their answers
 
-    Given the user is on the temp start page and enters the journey they will be on the landing page
-    When the user is on the start page for trader services, selects New and continues
+    Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
     * the user enters today's date for entryDate

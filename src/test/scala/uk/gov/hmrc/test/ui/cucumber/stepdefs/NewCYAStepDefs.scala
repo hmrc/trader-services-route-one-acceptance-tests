@@ -118,7 +118,7 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
 
   Then("""^the user should see the Transport name row & the correct response "(.*)" on the CYA page$""") {
     (answer: String) =>
-      assertElementText(summarytransportName, transportNameRow)
+      assertElementText(summaryTransportName, transportNameRow)
       assertElementText(answer, transportNameAnswer)
   }
 
