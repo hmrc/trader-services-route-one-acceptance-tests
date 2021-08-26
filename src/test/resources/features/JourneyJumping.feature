@@ -58,10 +58,8 @@ Feature: User can navigate to pages within each journey
     And the user navigates to the following "/new/import/transport-type"
     Then the user will be on the <journey> Transport type page
 
-    And the user navigates to the following "/new/import/transport-information"
-    Then the user will be on the Import-Optional Transport details page
     And the user navigates to the following "/new/import/transport-information-required"
-    Then the user will be on the Import-Optional Transport details page
+    Then the user will be on the <journey> Transport details page
 
     And the user navigates to the following "/new/import/contact-information"
     Then the user will be on the <journey> Contact details page
@@ -98,10 +96,8 @@ Feature: User can navigate to pages within each journey
     And the user navigates to the following "/new/export/transport-type"
     Then the user will be on the <journey> Transport type page
 
-    And the user navigates to the following "/new/export/transport-information"
-    Then the user will be on the Export-Optional Transport details page
     And the user navigates to the following "/new/export/transport-information-required"
-    Then the user will be on the Export-Optional Transport details page
+    Then the user will be on the <journey> Transport details page
 
     And the user navigates to the following "/new/export/contact-information"
     Then the user will be on the <journey> Contact details page

@@ -25,10 +25,8 @@ class TransportStepDefs extends TransportQuestionsPage with BasePage with ScalaD
   Then("""^the user will be on the (.*) Transport details page$""") { (journey: String) =>
 
     journey match {
-      case "Import-Optional" => confirmUrl(urlImportTransport)
-      case "Import-Mandatory" => confirmUrl(urlImpMandatoryTransport)
-      case "Export-Optional" => confirmUrl(urlExportTransport)
-      case "Export-Mandatory" => confirmUrl(urlExpMandatoryTransport)
+      case "Import" => confirmUrl(urlImpMandatoryTransport)
+      case "Export" => confirmUrl(urlExpMandatoryTransport)
 
     }
     verifyHeading(headingTransportDetails)

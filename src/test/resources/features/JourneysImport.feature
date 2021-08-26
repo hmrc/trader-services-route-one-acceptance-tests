@@ -19,8 +19,6 @@ Feature: Full Import Journey
     Then the user is on the Priority Goods page, selects <priority> and continues
     When the user is on the ALVS page, selects <ALVS> and continues
     When the user is on the Transport type page, selects <transport> and continues
-    Then the user will be on the Import-Optional Transport details page
-    And the user clicks continue
     Then the user will be on the Import Contact details page
     * the user enters a name "<name>"
     * the user enters an email address "<email>"
@@ -37,8 +35,8 @@ Feature: Full Import Journey
     * the user should see the Import Request type row & the correct response <requestType> on the CYA page
     * the user should see the Route row & the correct response <route> on the CYA page
     * the user should see the Priority YN row & the correct response Yes on the CYA page
-    * the user answered YesToPriority then they should see the correct responses for the Import journey "<priority>", "<ALVS>" & "<transport>"
-    * the user should see the Full Contact details row & the correct responses "<name>", "<email>" & "07123 456 789" on the CYA page
+#    * the user answered YesToPriority then they should see the correct responses for the Import journey "<priority>", "<ALVS>" & "<transport>"
+#    * the user should see the Full Contact details row & the correct responses "<name>", "<email>" & "07123 456 789" on the CYA page
 
     When the user clicks submit on the CYA page
     Then the user will be on the New confirmation page

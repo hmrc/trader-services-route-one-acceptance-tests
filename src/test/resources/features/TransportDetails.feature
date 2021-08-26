@@ -266,7 +266,7 @@ Feature: Transport details page validation
     Then the user is on the Route type page, selects Route 2 and continues
     Then the user is on the YesNo Priority page, selects No and continues
     Then the user is on the Transport type page, selects Air and continues
-    Then the user will be on the Export-Optional Transport details page
+    Then the user will be on the Export Transport details page
 
     When the user enters a date of Arrival for their transportation "" "2" "2021"
     * the user enters a time of Arrival for their transportation "" "59"

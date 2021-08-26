@@ -6,17 +6,14 @@ Feature: Customs check - Export journeys
     Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
-    And the user enters today's date for entryDate
-    And the user clicks continue
-    Then the user is on the Request type page, selects <requestType> and continues
-    Then the user is on the Route type page, selects <route> and continues
-    Then the user is on the YesNo Priority page, selects No and continues
-    Then the user is on the Transport type page, selects <transport> and continues
-    Then the user will be on the Export-Optional Transport details page
-    Then the user enters "<transportName>" for transport name
-    * the user enters today's date for transportDateDeparture
-    * the user enters a time of Departure for their transportation "01" "45"
-    Then the user clicks continue
+    * the user enters today's date for entryDate
+    * the user clicks continue
+
+#    sort this out
+    When the user is on the Request type page, selects <requestType> and continues
+    When the user is on the Route type page, selects <route> and continues
+    When the user is on the YesNo Priority page, selects No and continues
+    When the user is on the Transport type page, selects <transport> and continues
     Then the user will be on the Export Contact details page
     * the user enters an email address "<email>"
     * the user enters a phone number "00447123456789"
@@ -33,10 +30,7 @@ Feature: Customs check - Export journeys
     * the user should see the Route row & the correct response <route> on the CYA page
     * the user should see the Priority YN row & the correct response No on the CYA page
     * the user answered NoToPriority then they should see the correct responses for the Export journey "" & "<transport>"
-    * the user should see the Transport name row & the correct response "<transportName>" on the CYA page
-    * the user should see the Transport date Departure row & the correct response "<entryDateCYA>" on the CYA page
-    * the user should see the Transport time Departure row & the correct response "01:45" on the CYA page
-    * the user should see the Mandatory Contact details row & the correct responses "", "<email>" & "07123456789" on the CYA page
+#    * the user should see the Mandatory Contact details row & the correct responses "", "<email>" & "07123456789" on the CYA page
 
     When the user clicks submit on the CYA page
     Then the user will be on the New confirmation page
@@ -44,8 +38,8 @@ Feature: Customs check - Export journeys
 #    And the user should see 2 Hour SLA
 
     Examples:
-      | epu | entryNo | requestType | route   | transport | transportName | email        | entryDateCYA | file        |
-      | 123 | A23456A | New         | Route 1 | Maritime  | Test Vessel   | abc@test.com | Today        | testOdp.odp |
+      | epu | entryNo | requestType | route   | transport | email        | entryDateCYA | file        |
+      | 123 | A23456A | New         | Route 1 | Maritime  | abc@test.com | Today        | testOdp.odp |
 
   @accessibility
   Scenario Outline: Route-Hold: A user should reach the mandatory Transport page & no SLA provided
@@ -61,7 +55,7 @@ Feature: Customs check - Export journeys
     When the user is on the Priority Goods page, selects <priority> and continues
     Then the user will be on the Export Transport type page
     When the user is on the Transport type page, selects <transport> and continues
-    Then the user will be on the Export-Mandatory Transport details page
+    Then the user will be on the Export Transport details page
     Then the user enters "<transportName>" for transport name
     And the user enters today's date for transportDateDeparture
     And the user enters a time of Departure for their transportation "13" "37"
@@ -73,7 +67,10 @@ Feature: Customs check - Export journeys
     And the user will only see inset text for Request type N/A
     When the user clicks the button to upload file "1" and selects "<file>"
     Then the user clicks continue when files have finished uploading
-    Then the user will be on the Export CYA page
+    Then the user will be on the Export CYA page - mandatory
+    * the user should see the Transport name row & the correct response "<transportName>" on the CYA page
+    * the user should see the Transport date Departure row & the correct response "Today" on the CYA page
+    * the user should see the Transport time Departure row & the correct response "13:37" on the CYA page
     Then the user clicks submit on the CYA page
     Then the user will be on the New confirmation page
     And the user should see Hold SLA

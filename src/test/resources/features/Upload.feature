@@ -14,8 +14,6 @@ Feature: A user wants to upload documents (Single file)
     Then the user is on the YesNo Priority page, selects No and continues
     Then the user is on the ALVS page, selects Yes and continues
     When the user is on the Transport type page, selects <transport> and continues
-    Then the user will be on the Import-Optional Transport details page
-    And the user clicks continue
     Then the user will be on the Import Contact details page
     Then the user enters an email address "<email>"
     And the user clicks continue
