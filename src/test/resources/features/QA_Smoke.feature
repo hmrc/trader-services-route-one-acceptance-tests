@@ -15,7 +15,7 @@ Feature: Customs check - Export journey
     * the user is on the YesNo Priority page, selects Yes and continues
     * the user is on the Priority Goods page, selects <priority> and continues
     * the user is on the Transport type page, selects <transport> and continues
-    * the user will be on the Export-Optional Transport details page
+    * the user will be on the Export Transport details page
 
     When the user enters "<transportName>" for transport name
     * the user enters today's date for transportDateDeparture
@@ -76,7 +76,7 @@ Feature: Customs check - Export journey
     * the user is on the Priority Goods page, selects <priority> and continues
     * the user is on the ALVS page, selects Yes and continues
     * the user is on the Transport type page, selects <transport> and continues
-    * the user will be on the Import-Optional Transport details page
+    * the user will be on the Import Transport details page
 
     When the user enters "<transportName>" for transport name
     * the user enters today's date for transportDateArrival
@@ -120,7 +120,7 @@ Feature: Customs check - Export journey
     Given the user logs into QA
     Given the user is on the start page for trader services, selects <journey> and continues
     Then the user will be on the Case Reference number page
-    When the user enters "PCI21071941573K2IE F232 " characters for case reference number and continues
+    When the user enters "PCE2108194793OA0VOO303 " characters for case reference number and continues
     Then the user will be on the Amendment type page
     When the user is on the Amendment type page, selects <amendType> and continues
     Then the user will be on the write response page
@@ -158,7 +158,7 @@ Feature: Customs check - Export journey
   Scenario Outline: Amend: A user adds a document to a case
     Given the user is on the start page for trader services, selects <journey> and continues
     Then the user will be on the Case Reference number page
-    When the user enters "PCI21071941573K2IEF232" characters for case reference number and continues
+    When the user enters "PCE21081947  93OA0VOO303" characters for case reference number and continues
     Then the user will be on the Amendment type page
     When the user is on the Amendment type page, selects <amendType> and continues
 
@@ -180,7 +180,7 @@ Feature: Customs check - Export journey
     Given the user logs into QA
     When the user is on the start page for trader services, selects <journey> and continues
     Then the user will be on the Case Reference number page
-    When the user enters " PCI21072243236KD4D6BN2" characters for case reference number and continues
+    When the user enters " PCI2108194409LWEAKJL00" characters for case reference number and continues
     Then the user will be on the Amendment type page
     When the user is on the Amendment type page, selects <amendType> and continues
     Then the user will be on the write response page

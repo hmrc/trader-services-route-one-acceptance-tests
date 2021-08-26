@@ -18,8 +18,6 @@ Feature: Back Links
     Then the user will be on the ALVS page
     When the user is on the ALVS page, selects Yes and continues
     When the user is on the Transport type page, selects Air and continues
-    Then the user will be on the Import-Optional Transport details page
-    * the user clicks continue
     Then the user will be on the Import Contact details page
     * the user enters an email address "abc@test.com"
     * the user clicks continue
@@ -28,9 +26,6 @@ Feature: Back Links
     When the user clicks back
     Then the user will be on the <journey> Contact details page
     And the details entered for name, email and phone number should be pre-filled with "", "<email>" & ""
-
-    When the user clicks back
-    Then the user will be on the Import-Optional Transport details page
 
     When the user clicks back
     Then the user will be on the <journey> Transport type page

@@ -101,28 +101,28 @@ trait NewCYAPage extends BasePage {
   val summaryVesselDepartureDate = "Date of departure"
   val summaryVesselDepartureTime = "Estimated time of departure"
 
-  def transportNameRow: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(1) > dt:nth-child(1)")
+  def seventhRowFirstQ: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(1) > dt:nth-child(1)")
 
-  def transportNameAnswer: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(1) > dd:nth-child(2)")
+  def seventhRowFirstAnswer: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(1) > dd:nth-child(2)")
 
-  def vesselDateRow: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(2) > dt:nth-child(1)")
+  def seventhRowSecondQ: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(2) > dt:nth-child(1)")
 
-  def vesselDateAnswer: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(2) > dd:nth-child(2)")
+  def seventhRowSecondAnswer: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(2) > dd:nth-child(2)")
 
-  def vesselTimeRow: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(3) > dt:nth-child(1)")
+  def seventhRowThirdQ: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(3) > dt:nth-child(1)")
 
-  def vesselTimeAnswer: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(3) > dd:nth-child(2)")
+  def seventhRowThirdAnswer: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(3) > dd:nth-child(2)")
 
   //Contact details section
   val h2ContactDetails = "Contact details"
 
-  def contactDetailRow: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dt:nth-child(1)")
+  def eighthRowFirstQ: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dt:nth-child(1)")
 
-  def contactDetailAnswerName: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(1)")
+  def eighthRowFirstAnswer: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(1)")
 
-  def contactDetailAnswerEmail: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(2)")
+  def eighthRowSecondAnswer: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(2)")
 
-  def contactDetailAnswerPhone: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(3)")
+  def eighthRowThirdAnswer: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(3)")
 
   def contactDetailAnswerEmailOnly: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(1)")
 }

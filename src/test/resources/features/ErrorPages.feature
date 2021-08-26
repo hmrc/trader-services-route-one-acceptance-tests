@@ -15,9 +15,7 @@ Feature: Error pages
     When the user is on the YesNo Priority page, selects No and continues
     Then the user will be on the <journey> Transport type page
     When the user is on the Transport type page, selects <transport> and continues
-    Then the user will be on the Export-Optional Transport details page
-    * the user clicks continue
-    Then the user will be on the Export Contact details page
+    Then the user will be on the <journey> Contact details page
     * the user enters an email address "<email>"
     * the user clicks continue
     Then the user will be on the multi-file upload pages for New
@@ -46,9 +44,7 @@ Feature: Error pages
     When the user is on the YesNo Priority page, selects No and continues
     Then the user will be on the <journey> Transport type page
     When the user is on the Transport type page, selects <transport> and continues
-    Then the user will be on the Export-Optional Transport details page
-    * the user clicks continue
-    Then the user will be on the Export Contact details page
+    Then the user will be on the <journey> Contact details page
     * the user enters an email address "<email>"
     * the user clicks continue
     Then the user will be on the multi-file upload pages for New

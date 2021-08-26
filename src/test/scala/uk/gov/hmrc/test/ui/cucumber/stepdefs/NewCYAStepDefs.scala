@@ -22,6 +22,21 @@ import uk.gov.hmrc.test.ui.pages.{BasePage, ContactDetailsPage, NewCYAPage}
 
 class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage with ScalaDsl with EN {
 
+  Then("""^the user will be on the (.*) CYA page - mandatory$""") { (journey: String) =>
+
+    journey match {
+      case "Import" => confirmUrl(urlImportCYA)
+      case "Export" => confirmUrl(urlExportCYA)
+    }
+    verifyHeading(headingMainCYA)
+    verifyH2EntryDetails(h2Entry)
+    verifyH2Questions(h2Questions)
+//    verifyH2Vessel(h2Vessel)
+//    verifyH2Contact(h2ContactDetails)
+
+//    Thread.sleep(25000)
+  }
+
   Then("""^the user will be on the (.*) CYA page$""") { (journey: String) =>
 
     journey match {
@@ -31,8 +46,9 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
     verifyHeading(headingMainCYA)
     verifyH2EntryDetails(h2Entry)
     verifyH2Questions(h2Questions)
-    verifyH2Vessel(h2Vessel)
-    verifyH2Contact(h2ContactDetails)
+//    verifyH2Contact(h2ContactDetails)
+
+//    Thread.sleep(9000)
   }
 
   Then("""^the user should see the EPU & Entry No Rows & the correct responses (.*) & (.*) on the CYA page$""") {
@@ -118,20 +134,20 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
 
   Then("""^the user should see the Transport name row & the correct response "(.*)" on the CYA page$""") {
     (answer: String) =>
-      assertElementText(summaryTransportName, transportNameRow)
-      assertElementText(answer, transportNameAnswer)
+      assertElementText(summaryTransportName, seventhRowFirstQ)
+      assertElementText(answer, seventhRowFirstAnswer)
   }
 
   Then("""^the user should see the Transport date (.*) row & the correct response "(.*)" on the CYA page$""") {
     (journey: String, answer: String) =>
 
       journey match {
-        case "Arrival" => assertElementText(summaryVesselArrivalDate, vesselDateRow)
-        case "Departure" => assertElementText(summaryVesselDepartureDate, vesselDateRow)
+        case "Arrival" => assertElementText(summaryVesselArrivalDate, seventhRowSecondQ)
+        case "Departure" => assertElementText(summaryVesselDepartureDate, seventhRowSecondQ)
       }
       answer match {
-        case "Today" => assertElementText(todayDateCYA, vesselDateAnswer)
-        case _ => assertElementText(answer, vesselDateAnswer)
+        case "Today" => assertElementText(todayDateCYA, seventhRowSecondAnswer)
+        case _ => assertElementText(answer, seventhRowSecondAnswer)
       }
   }
 
@@ -140,12 +156,12 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
 
       journey match {
         case "Arrival" =>
-          assertElementText(summaryVesselArrivalTime, vesselTimeRow)
-          assertElementText(answer, vesselTimeAnswer)
+          assertElementText(summaryVesselArrivalTime, seventhRowThirdQ)
+          assertElementText(answer, seventhRowThirdAnswer)
 
         case "Departure" =>
-          assertElementText(summaryVesselDepartureTime, vesselTimeRow)
-          assertElementText(answer, vesselTimeAnswer)
+          assertElementText(summaryVesselDepartureTime, seventhRowThirdQ)
+          assertElementText(answer, seventhRowThirdAnswer)
       }
   }
 
@@ -156,13 +172,13 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
       contactDetails match {
 
         case "Full" =>
-          assertElementText(h2ContactDetails, contactDetailRow)
-          assertElementText(answerName, contactDetailAnswerName)
-          assertElementText(answerEmail, contactDetailAnswerEmail)
-          assertElementText(answerPhone, contactDetailAnswerPhone)
+          assertElementText(h2ContactDetails, eighthRowFirstQ)
+          assertElementText(answerName, eighthRowFirstAnswer)
+          assertElementText(answerEmail, eighthRowSecondAnswer)
+          assertElementText(answerPhone, eighthRowThirdAnswer)
 
         case "Mandatory" =>
-          assertElementText(h2ContactDetails, contactDetailRow)
+          assertElementText(h2ContactDetails, eighthRowFirstQ)
           assertElementText(answerEmail, contactDetailAnswerEmailOnly)
       }
   }

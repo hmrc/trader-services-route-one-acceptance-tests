@@ -19,9 +19,6 @@ Feature: Contact Details
     When the user is on the ALVS page, selects Yes and continues
     Then the user will be on the <journey> Transport type page
     When the user is on the Transport type page, selects <transport> and continues
-    Then the user will be on the Import-Optional Transport details page
-    Then the user clicks continue
-
     Then the user will be on the <journey> Contact details page
     * the user clicks continue
     * the user should see "Error:Enter an email address" error message for "contactEmail"
