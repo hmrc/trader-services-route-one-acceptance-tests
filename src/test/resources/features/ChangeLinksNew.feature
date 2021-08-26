@@ -62,10 +62,10 @@ Feature: Change Links for a New journey
     When the user is on the YesNo Priority page, selects No and continues
     Then the user will be on the <journey> CYA page
 
-#    When the user clicks the change link for Route
-#    * the user will be on the <journey> Route type page
-#    * the user clicks continue
-#    * the user will be on the <journey> CYA page
+    When the user clicks the change link for Route
+    * the user will be on the <journey> Route type page
+    * the user clicks continue
+    * the user will be on the <journey> CYA page
 
     When the user clicks the change link for Request
     * the user will be on the <journey> Request type page

@@ -1,8 +1,7 @@
-@TraderService
+@TraderService  @accessibility
 
-Feature: Full Import Journey
+Feature: Customs check - Import journey
 
-  @accessibility
   Scenario Outline: A user wants to complete a New Import journey and review their answers
 
     Given the user is on the start page for trader services, selects New and continues
@@ -19,7 +18,15 @@ Feature: Full Import Journey
     Then the user is on the Priority Goods page, selects <priority> and continues
     When the user is on the ALVS page, selects <ALVS> and continues
     When the user is on the Transport type page, selects <transport> and continues
-    Then the user will be on the Import Contact details page
+
+
+    Then the user will be on the <journey> Transport details page
+    * the user enters "<transportName>" for transport name
+    * the user enters today's date for transportDateArrival
+    * the user enters a time of Arrival for their transportation "01" "37"
+    * the user clicks continue
+
+    Then the user will be on the <journey> Contact details page
     * the user enters a name "<name>"
     * the user enters an email address "<email>"
     * the user enters a phone number "071(234-567)89"
@@ -28,20 +35,22 @@ Feature: Full Import Journey
     * the user will only see inset text for Request type N/A
     * the user clicks the button to upload file "1" and selects "<file>"
     When the user clicks continue when files have finished uploading
-    Then the user will be on the Import CYA page
+    Then the user will be on the <journey> CYA page
 
     Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
     * the user should see the Entry Date row & the date Today on the CYA page
-    * the user should see the Import Request type row & the correct response <requestType> on the CYA page
+    * the user should see the <journey> Request type row & the correct response <requestType> on the CYA page
     * the user should see the Route row & the correct response <route> on the CYA page
     * the user should see the Priority YN row & the correct response Yes on the CYA page
-#    * the user answered YesToPriority then they should see the correct responses for the Import journey "<priority>", "<ALVS>" & "<transport>"
-#    * the user should see the Full Contact details row & the correct responses "<name>", "<email>" & "07123 456 789" on the CYA page
+    * the user answered YesToPriority then they should see the correct responses for the Import journey "<priority>", "<ALVS>" & "<transport>"
+    * the user should see the Transport name row & the correct response "<transportName>" on the CYA page
+    * the user should see the Transport date Arrival row & the correct response "Today" on the CYA page
+    * the user should see the Transport time Arrival row & the correct response "01:37" on the CYA page
+    * the user should see the Full Contact details row & the correct responses "<name>", "<email>" & "07123 456 789" on the CYA page
 
     When the user clicks submit on the CYA page
     Then the user will be on the New confirmation page
-    And the user will see text to give-feedback
-#    And the user should see 2 Hour SLA
+    And the user should see Hold SLA
     When the user clicks the button to submit another case on the confirmation page they will go back to the start
     And the last selected option for journey type should be pre filled with Nothing
 
@@ -49,5 +58,5 @@ Feature: Full Import Journey
     When the user clicks the en toggle it should translate the page
 
     Examples:
-      | journey | epu | entryNo | requestType | route   | priority      | ALVS | transport | name | email      | file        |
-      | Import  | 123 | 123456A | New         | Route 1 | Human remains | Yes  | Air       | Abc  | ab@abc.com | testPdf.pdf |
+      | journey | epu | entryNo | requestType | route | priority      | ALVS | transport | transportName | name | email      | file        |
+      | Import  | 123 | 123456A | New         | Hold  | Human remains | Yes  | Air       | S.S.E Alpha   | Abc  | ab@abc.com | testPdf.pdf |
