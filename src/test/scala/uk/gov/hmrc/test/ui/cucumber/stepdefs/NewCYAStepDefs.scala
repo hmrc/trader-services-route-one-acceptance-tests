@@ -31,8 +31,6 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
     verifyHeading(headingMainCYA)
     verifyH2EntryDetails(h2Entry)
     verifyH2Questions(h2Questions)
-//    verifyH2Vessel(h2Vessel)
-//    verifyH2Contact(h2ContactDetails)
 
 //    Thread.sleep(25000)
   }
@@ -46,7 +44,6 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
     verifyHeading(headingMainCYA)
     verifyH2EntryDetails(h2Entry)
     verifyH2Questions(h2Questions)
-//    verifyH2Contact(h2ContactDetails)
 
 //    Thread.sleep(9000)
   }
@@ -82,7 +79,7 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
 
   Then("""^the user should see the Route row & the correct response (.*) on the CYA page$""") { (answer: String) =>
     assertElementText(summaryRoute, secondQRow)
-    assertElementText(answer, secondQAnswer)
+    assertElementTextContains(answer, secondQAnswer)
   }
 
   Then("""^the user should see the Priority YN row & the correct response (.*) on the CYA page$""") { (answer: String) =>
@@ -134,6 +131,7 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
 
   Then("""^the user should see the Transport name row & the correct response "(.*)" on the CYA page$""") {
     (answer: String) =>
+      verifyH2Vessel(h2Vessel)
       assertElementText(summaryTransportName, seventhRowFirstQ)
       assertElementText(answer, seventhRowFirstAnswer)
   }
@@ -168,7 +166,7 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
 
   Then("""^the user should see the (.*) Contact details row & the correct responses "(.*)", "(.*)" & "(.*)" on the CYA page$""") {
     (contactDetails: String, answerName: String, answerEmail: String, answerPhone: String) =>
-
+      verifyH2Contact(h2ContactDetails)
       contactDetails match {
 
         case "Full" =>
