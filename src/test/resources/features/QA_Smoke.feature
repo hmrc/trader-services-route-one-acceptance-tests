@@ -12,17 +12,22 @@ Feature: Customs check - Export journey
 
     When the user is on the Request type page, selects <requestType> and continues
     * the user is on the Route type page, selects <route> and continues
+
+    Then the user will be on the <journey> Explanation page
+    When the user enters "valid" characters in the explanation field and continues
+    Then the user will be on the <journey> YN Priority page
+
     * the user is on the YesNo Priority page, selects Yes and continues
     * the user is on the Priority Goods page, selects <priority> and continues
     * the user is on the Transport type page, selects <transport> and continues
     * the user will be on the Export Transport details page
 
     When the user enters "<transportName>" for transport name
-    * the user enters today's date for transportDateDeparture
-    * the user enters a time of Departure for their transportation "15" "59"
+    * the user enters today's date for transportDateArrival
+    * the user enters a time of Arrival for their transportation "15" "59"
     * the user clicks continue
 
-    Then the user will be on the Export Contact details page
+    Then the user will be on the <journey> Contact details page
     * the user enters an email address "<email>"
     * the user enters a name "<name>"
     * the user enters a phone number "<phone>"
@@ -46,8 +51,8 @@ Feature: Customs check - Export journey
 #    * the user clicks the button to upload file "8" and selects "testPpt.ppt"
 #    * the user waits 50000
 #    When the user clicks MFU continue
-    Then the user will be on the Export CYA page
-
+    Then the user will be on the <journey> CYA page
+    * the user waits 70000
     When the user clicks submit on the CYA page
     * outputs the case reference number
     * the user should see 2 Hour SLA
@@ -59,8 +64,8 @@ Feature: Customs check - Export journey
 #    When the user clicks the UR banner link they will be redirected to the appropriate page
 
     Examples:
-      | epu       | entryNo  | requestType | route   | priority      | transport    | transportName | name  | email     | phone         |
-      | randomEPU | exportEN | New         | Route 1 | Human remains | RoadRoRoRail | TestVessel    | smith | testEmail | 0177 111 1111 |
+      | journey | epu       | entryNo  | requestType | route   | priority      | transport    | transportName | name  | email     | phone         |
+      | Export  | randomEPU | exportEN | C1601       | Route 3 | Human remains | RoadRoRoRail | TestVessel    | smith | testEmail | 0177 111 1111 |
 
   Scenario Outline: A user wants to complete a New Import journey
     Given the user logs into QA
@@ -72,18 +77,23 @@ Feature: Customs check - Export journey
 
     When the user is on the Request type page, selects <requestType> and continues
     * the user is on the Route type page, selects <route> and continues
+
+    Then the user will be on the <journey> Explanation page
+    When the user enters "valid" characters in the explanation field and continues
+    Then the user will be on the <journey> YN Priority page
+
     * the user is on the YesNo Priority page, selects Yes and continues
     * the user is on the Priority Goods page, selects <priority> and continues
     * the user is on the ALVS page, selects Yes and continues
     * the user is on the Transport type page, selects <transport> and continues
-    * the user will be on the Import Transport details page
+    * the user will be on the <journey> Transport details page
 
     When the user enters "<transportName>" for transport name
     * the user enters today's date for transportDateArrival
     * the user enters a time of Arrival for their transportation "12" "30"
     * the user clicks continue
 
-    Then the user will be on the Import Contact details page
+    Then the user will be on the <journey> Contact details page
     * the user enters a name "<name>"
     * the user enters an email address "<email>"
     * the user enters a phone number "<phone>"
@@ -91,17 +101,19 @@ Feature: Customs check - Export journey
 
     Then the user will be on the multi-file upload pages for New
     When the user clicks the button to upload file "1" and selects "testDocx.docx"
-#    And the user clicks continue when files have finished uploading
-    When the user clicks the button to upload file "2" and selects "testDoc.doc"
-    When the user clicks the button to upload file "3" and selects "testOdt.odt"
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload file "4" and selects "testXlsx.xlsx"
-    Then the user clicks the button to add another document
-    When the user clicks the button to upload file "5" and selects "testXls.xls"
-    Then the user waits 40000
-    Then the user clicks MFU continue
+    And the user clicks continue when files have finished uploading
+#    When the user clicks the button to upload file "2" and selects "testDoc.doc"
+#    When the user clicks the button to upload file "3" and selects "testOdt.odt"
+#    Then the user clicks the button to add another document
+#    When the user clicks the button to upload file "4" and selects "testXlsx.xlsx"
+#    Then the user clicks the button to add another document
+#    When the user clicks the button to upload file "5" and selects "testXls.xls"
+#    Then the user waits 40000
+#    Then the user clicks MFU continue
 
-    Then the user will be on the Import CYA page
+    Then the user will be on the <journey> CYA page
+    * the user waits 60000
+
     When the user clicks submit on the CYA page
     Then the user will be on the New confirmation page
     * the user should see 2 Hour SLA
@@ -113,8 +125,8 @@ Feature: Customs check - Export journey
     When the user clicks the banner feedback link they will be redirected to the appropriate page
 
     Examples:
-      | epu       | entryNo  | requestType | route   | priority      | transport | transportName | name  | email     | phone       |
-      | randomEPU | importEN | New         | Route 6 | Human remains | Air       | train 1x      | agent | testEmail | 01256888999 |
+      | journey | epu       | entryNo  | requestType  | route | priority      | transport | transportName | name  | email     | phone       |
+      | Import  | randomEPU | importEN | Cancellation | Hold  | Human remains | Air       | train 1x      | agent | testEmail | 01256888999 |
 
   Scenario Outline: Amend: A user adds a message and a document to a case (write response + upload)
     Given the user logs into QA

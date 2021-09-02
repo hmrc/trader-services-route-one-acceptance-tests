@@ -75,7 +75,7 @@ class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage 
 
   Then("""^the details in the text box should be pre-filled with "(.*)"$""") {
     (text: String) =>
-      verifyInput(textInput, text)
+      verifyInput(textInputAmend, text)
   }
 
   Then("""^the user is on upload documents page""") { () =>
@@ -85,10 +85,10 @@ class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage 
 
   Then("""^the user enters "(.*)" characters in the write response field and continues""") { (response: String) =>
     response match {
-      case "too many" => writeById(textInput, randomString(1001))
-      case "valid" => writeById(textInput, randomString(1000))
-      case "no" => writeById(textInput, randomString(0))
-      case _ => writeById(textInput, response)
+      case "too many" => writeById(textInputAmend, randomString(1001))
+      case "valid" => writeById(textInputAmend, randomString(1000))
+      case "no" => writeById(textInputAmend, randomString(0))
+      case _ => writeById(textInputAmend, response)
     }
     clickContinue()
   }

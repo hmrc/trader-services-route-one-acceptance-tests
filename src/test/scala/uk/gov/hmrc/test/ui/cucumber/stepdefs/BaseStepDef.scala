@@ -111,7 +111,7 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     writeById(findElementById("enrolment[0].name"), "HMRC-CTS-ORG")
     writeById(findElementById("input-0-0-name"), "EoriNumber")
     writeById(findElementById("input-0-0-value"), "GB123456789012345")
-    clickByCSS("#inputForm > div.form-field-group > p > input")
+    findElementById("submit").click()
 
   }
 

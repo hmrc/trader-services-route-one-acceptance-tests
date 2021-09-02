@@ -33,6 +33,6 @@ trait AmendPages extends BasePage {
   val urlWriteResponse: String = traderServicesBaseUrl + amendUrl + "/write-response"
   val writeResponseHeading: String = "Write a response to a query from HMRC"
 
-  def textInput: WebElement = findElementByCss("#responseText")
+  def textInputAmend: WebElement = findElementByCss("#responseText")
 
 }
