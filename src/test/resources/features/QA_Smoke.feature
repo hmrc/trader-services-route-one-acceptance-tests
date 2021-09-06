@@ -13,8 +13,8 @@ Feature: Customs check - Export journey
     When the user is on the Request type page, selects <requestType> and continues
     * the user is on the Route type page, selects <route> and continues
 
-    Then the user will be on the <journey> Explanation page
-    When the user enters "valid" characters in the explanation field and continues
+    Then the user will be on the <journey> Reason page
+    When the user enters "abcdef" characters in the reason field and continues
     Then the user will be on the <journey> YN Priority page
 
     * the user is on the YesNo Priority page, selects Yes and continues
@@ -35,24 +35,27 @@ Feature: Customs check - Export journey
 
     Then the user will be on the multi-file upload pages for New
     When the user clicks the button to upload file "1" and selects "testPdf.pdf"
-    And the user clicks continue when files have finished uploading
-#    * the user clicks the button to upload file "2" and selects "testJpeg.jpeg"
-#    * the user clicks the button to add another document
-#    * the user clicks the button to upload file "3" and selects "testJpg.jpg"
-#    * the user clicks the button to add another document
-#    * the user clicks the button to upload file "4" and selects "testTiff.tiff"
-#    * the user clicks the button to add another document
-#    * the user clicks the button to upload file "5" and selects "testTif.TIF"
-#    * the user clicks the button to add another document
-#    * the user clicks the button to upload file "6" and selects "testPng.png"
-#    * the user clicks the button to add another document
-#    * the user clicks the button to upload file "7" and selects "testXlsx.xlsx"
-#    * the user clicks the button to add another document
-#    * the user clicks the button to upload file "8" and selects "testPpt.ppt"
-#    * the user waits 50000
-#    When the user clicks MFU continue
+#    And the user clicks continue when files have finished uploading
+    * the user clicks the button to upload file "2" and selects "testJpeg.jpeg"
+    * the user clicks the button to add another document
+    * the user clicks the button to upload file "3" and selects "testJpg.jpg"
+    * the user clicks the button to add another document
+    * the user clicks the button to upload file "4" and selects "testTiff.tiff"
+    * the user clicks the button to add another document
+    * the user clicks the button to upload file "5" and selects "testTif.TIF"
+    * the user clicks the button to add another document
+    * the user clicks the button to upload file "6" and selects "testPng.png"
+    * the user clicks the button to add another document
+    * the user clicks the button to upload file "7" and selects "testXlsx.xlsx"
+    * the user clicks the button to add another document
+    * the user clicks the button to upload file "8" and selects "testPpt.ppt"
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload file "9" and selects "testDoc.doc"
+    When the user clicks the button to upload file "10" and selects "testDocx.docx"
+    * the user waits 50000
+    When the user clicks MFU continue
     Then the user will be on the <journey> CYA page
-    * the user waits 70000
+#    * the user waits 70000
     When the user clicks submit on the CYA page
     * outputs the case reference number
     * the user should see 2 Hour SLA
@@ -78,8 +81,8 @@ Feature: Customs check - Export journey
     When the user is on the Request type page, selects <requestType> and continues
     * the user is on the Route type page, selects <route> and continues
 
-    Then the user will be on the <journey> Explanation page
-    When the user enters "valid" characters in the explanation field and continues
+    Then the user will be on the <journey> Reason page
+    When the user enters "abc" characters in the reason field and continues
     Then the user will be on the <journey> YN Priority page
 
     * the user is on the YesNo Priority page, selects Yes and continues
@@ -101,23 +104,23 @@ Feature: Customs check - Export journey
 
     Then the user will be on the multi-file upload pages for New
     When the user clicks the button to upload file "1" and selects "testDocx.docx"
-    And the user clicks continue when files have finished uploading
-#    When the user clicks the button to upload file "2" and selects "testDoc.doc"
-#    When the user clicks the button to upload file "3" and selects "testOdt.odt"
-#    Then the user clicks the button to add another document
-#    When the user clicks the button to upload file "4" and selects "testXlsx.xlsx"
-#    Then the user clicks the button to add another document
-#    When the user clicks the button to upload file "5" and selects "testXls.xls"
-#    Then the user waits 40000
-#    Then the user clicks MFU continue
+#    And the user clicks continue when files have finished uploading
+    When the user clicks the button to upload file "2" and selects "testDoc.doc"
+    When the user clicks the button to upload file "3" and selects "testOdt.odt"
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload file "4" and selects "testXlsx.xlsx"
+    Then the user clicks the button to add another document
+    When the user clicks the button to upload file "5" and selects "testXls.xls"
+    Then the user waits 40000
+    Then the user clicks MFU continue
 
     Then the user will be on the <journey> CYA page
-    * the user waits 60000
+#    * the user waits 60000
 
     When the user clicks submit on the CYA page
     Then the user will be on the New confirmation page
-    * the user should see 2 Hour SLA
-    * the user will see text to give-feedback
+#    * the user should see 2 Hour SLA
+#    * the user will see text to give-feedback
     * outputs the case reference number
     * the user waits 10000
 

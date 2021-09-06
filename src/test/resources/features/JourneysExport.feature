@@ -52,7 +52,7 @@ Feature: Customs check - Export journey
       | Export  | 123 | A23456A | New         | Hold  | Maritime  | abc@test.com | Today        | PlanEx        | testOdp.odp |
 
 
-  Scenario Outline: A user wants to complete a New Export journey (route 3 explanation)
+  Scenario Outline: A user wants to complete a New Export journey (route 3 reason)
     Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
@@ -64,8 +64,8 @@ Feature: Customs check - Export journey
     Then the user will be on the <journey> Route type page
     Then the user is on the Route type page, selects <route> and continues
 
-    Then the user will be on the <journey> Explanation page
-    When the user enters "valid" characters in the explanation field and continues
+    Then the user will be on the <journey> Reason page
+    When the user enters "valid" characters in the reason field and continues
     Then the user will be on the <journey> YN Priority page
     When the user is on the YesNo Priority page, selects No and continues
     When the user is on the Transport type page, selects <transport> and continues
@@ -99,8 +99,8 @@ Feature: Customs check - Export journey
     Then the user will be on the <journey> Route type page
     Then the user is on the Route type page, selects <route> and continues
 
-    Then the user will be on the <journey> Explanation page
-    When the user enters "valid" characters in the explanation field and continues
+    Then the user will be on the <journey> Reason page
+    When the user enters "valid" characters in the reason field and continues
     Then the user will be on the <journey> YN Priority page
     When the user is on the YesNo Priority page, selects No and continues
     When the user is on the Transport type page, selects <transport> and continues

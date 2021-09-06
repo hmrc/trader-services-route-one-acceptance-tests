@@ -118,17 +118,18 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     }
   }
 
-  //Explanation (Cancellation, Withdrawal, Route 3)
+  //Reason (Cancellation, Withdrawal, Route 3)
 
-  Then("""^the user will be on the (.*) Explanation page""") { (journey: String) =>
+  Then("""^the user will be on the (.*) Reason page""") { (journey: String) =>
     journey match {
-      case "Import" => confirmUrl(urlExplanationImport)
-      case "Export" => confirmUrl(urlExplanationExport)
+      case "Import" => confirmUrl(urlReasonImport)
+        verifyHeading(headingImportReason)
+      case "Export" => confirmUrl(urlReasonExport)
+        verifyHeading(headingExportReason)
     }
-    verifyHeading(headingExplanation)
   }
 
-  When("""^the user enters "(.*)" characters in the explanation field and continues""") { (response: String) =>
+  When("""^the user enters "(.*)" characters in the reason field and continues""") { (response: String) =>
     response match {
       case "too many" => writeById(textInputNew, randomString(1001))
       case "valid" => writeById(textInputNew, randomString(1000))
@@ -138,7 +139,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     clickContinue()
   }
 
-  Then("""^the details in the explanation text box should be pre-filled with "(.*)"$""") {
+  Then("""^the details in the reason text box should be pre-filled with "(.*)"$""") {
     (text: String) =>
       verifyInput(textInputNew, text)
   }

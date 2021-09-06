@@ -30,11 +30,12 @@ trait QuestionPages extends BasePage {
   val urlRouteExport: String = traderServicesBaseUrl + exportJourneyUrl + "/route-type"
   val headingRoute: String = "Which route is this declaration for?"
 
-  val urlExplanationImport: String = traderServicesBaseUrl + importJourneyUrl + "/explanation"
-  val urlExplanationExport: String = traderServicesBaseUrl + exportJourneyUrl + "/explanation"
-  val headingExplanation: String = "Provide an explanation of why you are making this request"
+  val urlReasonImport: String = traderServicesBaseUrl + importJourneyUrl + "/reason"
+  val urlReasonExport: String = traderServicesBaseUrl + exportJourneyUrl + "/reason"
+  val headingImportReason: String = "Provide a reason for this import request"
+  val headingExportReason: String = "Provide a reason for this export request"
 
-  def textInputNew: WebElement = findElementByCss("#explanationText")
+  def textInputNew: WebElement = findElementByCss("#reasonText")
 
   val urlTransportImport: String = traderServicesBaseUrl + importJourneyUrl + "/transport-type"
   val urlTransportExport: String = traderServicesBaseUrl + exportJourneyUrl + "/transport-type"

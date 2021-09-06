@@ -75,8 +75,8 @@ Feature: Customs check - Import journey
     Then the user will be on the <journey> Route type page
     When the user is on the Route type page, selects <route> and continues
     
-    Then the user will be on the <journey> Explanation page
-    When the user enters "valid" characters in the explanation field and continues
+    Then the user will be on the <journey> Reason page
+    When the user enters "valid" characters in the reason field and continues
     Then the user will be on the <journey> YN Priority page
     
     When the user is on the YesNo Priority page, selects No and continues
