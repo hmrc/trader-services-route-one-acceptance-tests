@@ -50,4 +50,4 @@ Feature: A user wants to upload documents (Single file)
 
     Examples:
       | epu       | entryNo  | requestType | route   | transport    | email      |
-      | randomEPU | importEN | New         | Route 3 | RoadRoRoRail | a@test.com |
+      | randomEPU | importEN | New         | Route 1 | RoadRoRoRail | a@test.com |

@@ -60,3 +60,41 @@ Feature: Customs check - Import journey
     Examples:
       | journey | epu | entryNo | requestType | route | priority      | ALVS | transport | transportName | name | email      | file        |
       | Import  | 123 | 123456A | New         | Hold  | Human remains | Yes  | Air       | S.S.E Alpha   | Abc  | ab@abc.com | testPdf.pdf |
+
+
+  Scenario Outline: A user wants to complete a Cancellation Import journey (reason input)
+
+    Given the user is on the start page for trader services, selects New and continues
+    Then the user will be on the entry details page
+    When the user enters entry details "<epu>" and "<entryNo>"
+    * the user enters today's date for entryDate
+    * the user clicks continue
+    Then the user will be on the <journey> Request type page
+
+    When the user is on the Request type page, selects <requestType> and continues
+    Then the user will be on the <journey> Route type page
+    When the user is on the Route type page, selects <route> and continues
+    
+    Then the user will be on the <journey> Reason page
+    When the user enters "valid" characters in the reason field and continues
+    Then the user will be on the <journey> YN Priority page
+    
+    When the user is on the YesNo Priority page, selects No and continues
+    When the user is on the ALVS page, selects <ALVS> and continues
+    When the user is on the Transport type page, selects <transport> and continues
+
+    Then the user will be on the <journey> Contact details page
+    * the user enters an email address "<email>"
+    When the user clicks continue
+    Then the user will be on the multi-file upload pages for New
+    * the user will only see inset text for Request type N/A
+    * the user clicks the button to upload file "1" and selects "<file>"
+    When the user clicks continue when files have finished uploading
+    Then the user will be on the <journey> CYA page
+
+    When the user clicks submit on the CYA page
+    Then the user will be on the New confirmation page
+
+    Examples:
+      | journey | epu | entryNo | requestType  | route   | ALVS | transport | email      | file        |
+      | Import  | 023 | 023456A | Cancellation | Route 1 | Yes  | Air       | ab@abc.com | testPdf.pdf |
