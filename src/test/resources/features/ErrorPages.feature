@@ -27,7 +27,7 @@ Feature: Error pages
 
     Examples:
       | journey | epu | entryNo | requestType | route   | transport | email   | file        |
-      | Export  | 666 | X23456A | New         | Route 3 | Air       | a@a.com | testOdt.odt |
+      | Export  | 666 | X23456A | New         | Route 1 | Air       | a@a.com | testOdt.odt |
 
 
   Scenario Outline: A user enters a duplicate case (Stub EPU: 667)
@@ -55,8 +55,8 @@ Feature: Error pages
     Then the user will be on the duplicate case error page and see their case reference number
 
     Examples:
-      | journey | epu | entryNo | requestType  | route   | transport | email   | file        |
-      | Export  | 667 | A23456A | Cancellation | Route 2 | Air       | a@a.com | testOds.ods |
+      | journey | epu | entryNo | requestType | route   | transport | email   | file        |
+      | Export  | 667 | A23456A | New         | Route 2 | Air       | a@a.com | testOds.ods |
 
 
   Scenario Outline: A user enters an invalid case reference number

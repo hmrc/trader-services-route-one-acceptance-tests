@@ -14,18 +14,18 @@ Feature: Customs check - Export journey
     * the user is on the Route type page, selects <route> and continues
 
     Then the user will be on the <journey> Reason page
-    When the user enters "abcdef" characters in the reason field and continues
+    When the user enters "!@£$%^&*()_+{}:"|<>?`~¡€#¢∞§¶•ªº–≠“‘…æ«≤≥æ234567890-" characters in the reason field and continues
     Then the user will be on the <journey> YN Priority page
 
     * the user is on the YesNo Priority page, selects Yes and continues
     * the user is on the Priority Goods page, selects <priority> and continues
     * the user is on the Transport type page, selects <transport> and continues
-    * the user will be on the Export Transport details page
 
-    When the user enters "<transportName>" for transport name
-    * the user enters today's date for transportDateArrival
-    * the user enters a time of Arrival for their transportation "15" "59"
-    * the user clicks continue
+#    * the user will be on the Export Transport details page
+#    When the user enters "<transportName>" for transport name
+#    * the user enters today's date for transportDateArrival
+#    * the user enters a time of Arrival for their transportation "15" "59"
+#    * the user clicks continue
 
     Then the user will be on the <journey> Contact details page
     * the user enters an email address "<email>"
@@ -52,14 +52,14 @@ Feature: Customs check - Export journey
     Then the user clicks the button to add another document
     When the user clicks the button to upload file "9" and selects "testDoc.doc"
     When the user clicks the button to upload file "10" and selects "testDocx.docx"
-    * the user waits 50000
+    * the user waits 70000
     When the user clicks MFU continue
     Then the user will be on the <journey> CYA page
 #    * the user waits 70000
     When the user clicks submit on the CYA page
     * outputs the case reference number
-    * the user should see 2 Hour SLA
-    * the user will see text to give-feedback
+#    * the user should see 2 Hour SLA
+#    * the user will see text to give-feedback
     * the user waits 10000
 
     When the user clicks the button to submit another case on the confirmation page they will go back to the start
@@ -68,7 +68,7 @@ Feature: Customs check - Export journey
 
     Examples:
       | journey | epu       | entryNo  | requestType | route   | priority      | transport    | transportName | name  | email     | phone         |
-      | Export  | randomEPU | exportEN | C1601       | Route 3 | Human remains | RoadRoRoRail | TestVessel    | smith | testEmail | 0177 111 1111 |
+      | Export  | randomEPU | exportEN | Withdrawal  | Route 1 | Human remains | RoadRoRoRail | TestVessel    | smith | testEmail | 0177 111 1111 |
 
   Scenario Outline: A user wants to complete a New Import journey
     Given the user logs into QA
@@ -89,12 +89,12 @@ Feature: Customs check - Export journey
     * the user is on the Priority Goods page, selects <priority> and continues
     * the user is on the ALVS page, selects Yes and continues
     * the user is on the Transport type page, selects <transport> and continues
-    * the user will be on the <journey> Transport details page
 
-    When the user enters "<transportName>" for transport name
-    * the user enters today's date for transportDateArrival
-    * the user enters a time of Arrival for their transportation "12" "30"
-    * the user clicks continue
+#    * the user will be on the <journey> Transport details page
+#    When the user enters "<transportName>" for transport name
+#    * the user enters today's date for transportDateArrival
+#    * the user enters a time of Arrival for their transportation "12" "30"
+#    * the user clicks continue
 
     Then the user will be on the <journey> Contact details page
     * the user enters a name "<name>"
@@ -128,8 +128,8 @@ Feature: Customs check - Export journey
     When the user clicks the banner feedback link they will be redirected to the appropriate page
 
     Examples:
-      | journey | epu       | entryNo  | requestType  | route | priority      | transport | transportName | name  | email     | phone       |
-      | Import  | randomEPU | importEN | Cancellation | Hold  | Human remains | Air       | train 1x      | agent | testEmail | 01256888999 |
+      | journey | epu       | entryNo  | requestType | route   | priority      | transport | transportName | name  | email     | phone       |
+      | Import  | randomEPU | importEN | New         | Route 3 | Human remains | Air       | train 1x      | agent | testEmail | 01256888999 |
 
   Scenario Outline: Amend: A user adds a message and a document to a case (write response + upload)
     Given the user logs into QA
