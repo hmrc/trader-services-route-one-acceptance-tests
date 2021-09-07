@@ -17,6 +17,23 @@
       "newLevel": 0
     },
     {
+    "reason": "Medium: Vulnerable JS Library. This issue is related to [Assets Frontend] outside our scope.",
+    "contextId": 1,
+    "url": "http://localhost:9032/.*",
+    "ruleId": 10003,
+    "urlIsRegex": "true",
+    "newLevel": -1
+    },
+
+    {
+      "reason": "Low: X-Content-Type-Options Header Missing. This issue is related to [Assets Frontend] outside our scope.",
+      "contextId": 1,
+      "url": "http://localhost:9032/.*",
+      "ruleId": 10021,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
       "reason": "Low: Absence of Anti-CSRF Tokens. This issue is related to [Agents external stubs] outside our scope.",
       "contextId": 1,
       "url": "http://localhost:9099/.*",
