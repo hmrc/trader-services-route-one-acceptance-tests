@@ -1,7 +1,7 @@
 @TraderServiceErrors
-Feature: User can navigate to pages within each journey
+Feature: User can navigate to pages within each journey after inputting entry details
 
-  Scenario: A user tries to jump ahead in an export journey to the next page
+  Scenario: A user tries to jump ahead from entry details in an export journey to the next page
     Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     When the user navigates to the following "/new/export/request-type"
@@ -36,7 +36,7 @@ Feature: User can navigate to pages within each journey
     Then the user will be on the start page for trader services
 
 
-  Scenario Outline: A user tries to jump ahead in an IMPORT journey to the next page
+  Scenario Outline: A user tries to jump ahead to the next pages after inputting Import entry details
     Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
@@ -58,8 +58,8 @@ Feature: User can navigate to pages within each journey
     And the user navigates to the following "/new/import/transport-type"
     Then the user will be on the <journey> Transport type page
 
-    And the user navigates to the following "/new/import/transport-information-required"
-    Then the user will be on the <journey> Transport details page
+    And the user navigates to the following "/new/import/transport-information"
+    Then the user will be on the following url "/new/import/transport-information"
 
     And the user navigates to the following "/new/import/contact-information"
     Then the user will be on the <journey> Contact details page
@@ -69,15 +69,18 @@ Feature: User can navigate to pages within each journey
 
     And the user navigates to the following "/new/import/check-your-answers"
     Then the user will be on the <journey> CYA page
+    When the user clicks submit on the CYA page
+    Then the user will be on the <journey> Missing information page
+    When the user clicks the button on the Missing information page they will return to entry details
 
-    And the user navigates to the following "/new/confirmation"
+    When the user navigates to the following "/new/confirmation"
     Then the user will be on the start page for trader services
 
     Examples:
       | journey | epu       | entryNo  |
       | Import  | randomEPU | importEN |
 
-  Scenario Outline: A user tries to jump ahead in an EXPORT journey to the next page
+  Scenario Outline: A user tries to jump ahead to the next pages after inputting Export entry details
     Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     When the user enters entry details "<epu>" and "<entryNo>"
@@ -96,8 +99,8 @@ Feature: User can navigate to pages within each journey
     And the user navigates to the following "/new/export/transport-type"
     Then the user will be on the <journey> Transport type page
 
-    And the user navigates to the following "/new/export/transport-information-required"
-    Then the user will be on the <journey> Transport details page
+    And the user navigates to the following "/new/export/transport-information"
+    Then the user will be on the following url "/new/export/transport-information"
 
     And the user navigates to the following "/new/export/contact-information"
     Then the user will be on the <journey> Contact details page
@@ -107,33 +110,14 @@ Feature: User can navigate to pages within each journey
 
     And the user navigates to the following "/new/export/check-your-answers"
     Then the user will be on the <journey> CYA page
+    When the user clicks submit on the CYA page
+    Then the user will be on the <journey> Missing information page
+    When the user clicks the button on the Missing information page they will return to entry details
 
-    And the user navigates to the following "/new/confirmation"
+    When the user navigates to the following "/new/confirmation"
     Then the user will be on the start page for trader services
 
     Examples:
       | journey | epu       | entryNo  |
       | Export  | randomEPU | exportEN |
 
-
-  Scenario Outline: A user tries to jump ahead in an AMEND journey to the next page
-    Given the user is on the start page for trader services, selects <journey> and continues
-    Then the user will be on the Case Reference number page
-    And the user navigates to the following "/add/type-of-amendment"
-    Then the user will be on the Amendment type page
-
-    When the user navigates to the following "/add/write-response"
-    Then the user will be on the write response page
-
-    When the user navigates to the following "/add/upload-files"
-    Then the user will be on the multi-file upload pages for <journey>
-    
-    When the user navigates to the following "/add/check-your-answers"
-    Then the user will be on the Amend review page
-
-    And the user navigates to the following "/add/confirmation"
-    Then the user will be on the Case Reference number page
-
-    Examples:
-      | journey |
-      | Amend   | 

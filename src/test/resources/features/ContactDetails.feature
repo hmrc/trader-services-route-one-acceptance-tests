@@ -55,7 +55,7 @@ Feature: Contact Details
     * the user should see "Error:Enter a telephone number in the correct format" error message for "contactNumber"
 
     Examples:
-      | journey | epu       | entryNo        | requestType | route   | priority      | transport |
+      | journey | epu       | entryNo  | requestType | route   | priority      | transport |
       | Import  | randomEPU | importEN | New         | Route 1 | Human remains | Air       |
 
 

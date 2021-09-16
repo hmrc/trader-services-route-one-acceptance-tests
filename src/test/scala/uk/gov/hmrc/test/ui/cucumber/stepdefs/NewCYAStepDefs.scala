@@ -32,7 +32,6 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
     verifyH2EntryDetails(h2Entry)
     verifyH2Questions(h2Questions)
 
-//    Thread.sleep(25000)
   }
 
   Then("""^the user will be on the (.*) CYA page$""") { (journey: String) =>
@@ -45,7 +44,6 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
     verifyH2EntryDetails(h2Entry)
     verifyH2Questions(h2Questions)
 
-//    Thread.sleep(49000)
   }
 
   Then("""^the user should see the EPU & Entry No Rows & the correct responses (.*) & (.*) on the CYA page$""") {
