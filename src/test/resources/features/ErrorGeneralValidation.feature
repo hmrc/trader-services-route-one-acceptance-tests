@@ -18,6 +18,11 @@ Feature: Error - no options selected & amend validation
     Then the user should see "Error:Select the route" error message for "routeType"
     When the user is on the Route type page, selects <route> and continues
 
+    Then the user will be on the <journey> Reason page
+    When the user clicks continue
+    Then the user should see "Error:Enter a reason for this import request" error message for "reasonText"
+    When the user enters "valid" characters in the reason field and continues
+
     Then the user will be on the <journey> YN Priority page
     When the user clicks continue
     Then the user should see "Error:Select yes if you’re importing priority goods" error message for "hasPriorityGoods"
@@ -39,7 +44,7 @@ Feature: Error - no options selected & amend validation
 
     Examples:
       | journey | epu | entryNo | requestType | route   | priority      |
-      | Import  | 123 | 123456A | New         | Route 1 | Human remains |
+      | Import  | 123 | 123456A | New         | Route 3 | Human remains |
 
 
   Scenario Outline: Amend case journey (error validation)

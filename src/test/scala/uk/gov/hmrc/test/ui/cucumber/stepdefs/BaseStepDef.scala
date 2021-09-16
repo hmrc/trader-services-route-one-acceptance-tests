@@ -68,6 +68,10 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     navigateTo(traderServicesBaseUrl + url)
   }
 
+  Then("""^the user will be on the following url "(.*)"""") { (url: String) =>
+    confirmUrl(traderServicesBaseUrl + url)
+  }
+
   When("""^the user clicks the (.*) link they will be redirected to the appropriate page$""") { (link: String) =>
 
     link match {

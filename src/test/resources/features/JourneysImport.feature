@@ -1,4 +1,4 @@
-@TraderService  @accessibility
+@TraderService @accessibility
 
 Feature: Customs check - Import journey
 
@@ -18,8 +18,6 @@ Feature: Customs check - Import journey
     Then the user is on the Priority Goods page, selects <priority> and continues
     When the user is on the ALVS page, selects <ALVS> and continues
     When the user is on the Transport type page, selects <transport> and continues
-
-
     Then the user will be on the <journey> Transport details page
     * the user enters "<transportName>" for transport name
     * the user enters today's date for transportDateArrival
@@ -74,11 +72,11 @@ Feature: Customs check - Import journey
     When the user is on the Request type page, selects <requestType> and continues
     Then the user will be on the <journey> Route type page
     When the user is on the Route type page, selects <route> and continues
-    
+
     Then the user will be on the <journey> Reason page
     When the user enters "valid" characters in the reason field and continues
     Then the user will be on the <journey> YN Priority page
-    
+
     When the user is on the YesNo Priority page, selects No and continues
     When the user is on the ALVS page, selects <ALVS> and continues
     When the user is on the Transport type page, selects <transport> and continues

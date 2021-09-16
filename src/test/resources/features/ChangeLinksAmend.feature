@@ -21,24 +21,13 @@ Feature: Back Links & Change Links - Amend
 
     Then the user will be on the Amendment type page
     When the user clicks continue
-
-    Then the user will be on the write response page
-    When the user clicks continue
-
-    Then the user will be on the multi-file upload pages for <journey>
-    When the user clicks MFU continue
     Then the user will be on the Amend <amendType> review page and should see their responses
 
     When the user clicks the change link on the amend review page for Amendment
     Then the user will be on the Amendment type page
     When the user clicks continue
-
-    Then the user will be on the write response page
-    When the user clicks continue
-    Then the user will be on the multi-file upload pages for <journey>
-    When the user clicks MFU continue
-
     Then the user will be on the Amend <amendType> review page and should see their responses
+
     When the user clicks the change link on the amend review page for Message
     Then the user will be on the write response page
     When the user clicks continue
@@ -51,6 +40,7 @@ Feature: Back Links & Change Links - Amend
     Then the user will be on the multi-file upload pages for <journey>
     When the user clicks MFU continue
     Then the user will be on the Amend <amendType> review page and should see their responses
+
     When the user clicks submit on the CYA page
     Then the user will be on the <journey> confirmation page
 
