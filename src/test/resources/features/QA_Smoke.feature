@@ -55,7 +55,6 @@ Feature: Customs check - Export journey
     * the user waits 70000
     When the user clicks MFU continue
     Then the user will be on the <journey> CYA page
-    * the user waits 70000
     When the user clicks submit on the CYA page
     * outputs the case reference number
     When the user clicks the button to submit another case on the confirmation page they will go back to the start

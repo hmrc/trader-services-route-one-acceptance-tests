@@ -16,9 +16,6 @@ object Dependencies {
     "org.seleniumhq.selenium"    % "selenium-chrome-driver"   % "3.9.1" % "test",
     "org.seleniumhq.selenium"    % "selenium-support"         % "3.9.1" % "test",
     "org.seleniumhq.selenium"    % "selenium-firefox-driver"  % "3.9.1" % "test",
-    "org.jsoup" % "jsoup" % "1.7.3" % "test",
-    "info.cukes" % "cucumber-junit" % CucumberVersion % "test",
-    "info.cukes" % "cucumber-picocontainer" % CucumberVersion % "test",
-    "info.cukes" %% "cucumber-scala" % CucumberVersion % "test"
+    "org.jsoup" % "jsoup" % "1.7.3" % "test"
   )
 }
