@@ -46,7 +46,6 @@ Feature: A user wants to upload documents (Single file)
     Then the user will be on the Import CYA page
     And the user clicks submit on the CYA page
     Then the user will be on the New confirmation page
-#    And the user should see 2 Hour SLA
 
     Examples:
       | epu       | entryNo  | requestType | route   | transport    | email      |

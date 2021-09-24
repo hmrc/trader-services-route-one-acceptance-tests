@@ -1,4 +1,4 @@
-@TraderServiceErrors
+@TraderService
 Feature: Contact Details
 
   Scenario Outline: Contact details - validation test
