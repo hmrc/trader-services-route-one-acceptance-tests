@@ -1,4 +1,4 @@
-@TraderServiceErrors
+@TraderService
 Feature: Transport details page validation
 
   Background: Get to transport details page (Import)

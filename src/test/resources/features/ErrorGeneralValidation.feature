@@ -1,4 +1,4 @@
-@TraderServiceErrors
+@TraderService
 Feature: Error - no options selected & amend validation
 
   Scenario Outline: Questions pages: error validation - no options selected
@@ -70,7 +70,11 @@ Feature: Error - no options selected & amend validation
     Then the user should see "Error:Enter a response to a query from HMRC" error message for "responseText"
     When the user enters "too many" characters in the write response field and continues
     Then the user should see "Error:Response must be 1000 characters or fewer" error message for "responseText"
+    When the user enters "Greetings Case handler" characters in the write response field and continues
+    Then the user will be on the Amend <amendType> review page and should see their responses
+    When the user clicks submit on the CYA page
+    Then the user will be on the <journey> confirmation page
 
     Examples:
-      | journey | caseRef | amendType      |
-      | Amend   | valid   | writeAndUpload |
+      | journey | caseRef | amendType |
+      | Amend   | valid   | writeOnly |

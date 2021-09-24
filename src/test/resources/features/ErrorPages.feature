@@ -1,4 +1,4 @@
-@TraderServiceErrors @accessibility
+@TraderService @accessibility
 Feature: Error pages
 
   Scenario Outline: A user enters a failed request (Stub EPU: 666)
@@ -70,6 +70,13 @@ Feature: Error pages
     When the user clicks submit on the CYA page
     Then the user will be on the error page for an amend journey internal server error
     When the user clicks the link to re enter a case ref number they will be on the case ref page
+
+    When the user enters "valid" characters for case reference number and continues
+    Then the user will be on the Amendment type page
+    When the user is on the Amendment type page, selects <amendType> and continues
+    Then the user will be on the Amend review page
+    When the user clicks submit on the CYA page
+    Then the user will be on the <journey> confirmation page
 
     Examples:
       | journey | caseNo                 | amendType | message   |
