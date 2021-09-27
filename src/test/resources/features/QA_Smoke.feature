@@ -92,7 +92,6 @@ Feature: Customs check - Export journey
     When the user is on the Amendment type page, selects <amendType> and continues
     Then the user will be on the write response page
     When the user enters "valid" characters in the write response field and continues
-    Then the user waits 70000
     When the user clicks submit on the CYA page
     Then the user will be on the <journey> confirmation page
 
