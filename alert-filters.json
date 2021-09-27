@@ -17,6 +17,22 @@
       "newLevel": 0
     },
     {
+      "reason": "Medium: Frame-Options Header Not Set. New (error page)",
+      "contextId": 1,
+      "url": "http://localhost:9379/send-documents-for-customs-check/new/create-case",
+      "ruleId": 10020,
+      "urlIsRegex": "true",
+      "newLevel": 0
+    },
+    {
+    "reason": "Medium: Frame-Options Header Not Set. Amend (error page)",
+    "contextId": 1,
+    "url": "http://localhost:9379/send-documents-for-customs-check/add/amend-case",
+    "ruleId": 10020,
+    "urlIsRegex": "true",
+    "newLevel": 0
+    },
+    {
     "reason": "Medium: Vulnerable JS Library. This issue is related to [Assets Frontend] outside our scope.",
     "contextId": 1,
     "url": "http://localhost:9032/.*",
@@ -60,6 +76,22 @@
       "contextId": 1,
       "url": "http://localhost:9379/send-documents-for-customs-check/add/upload-files",
       "ruleId": 10202,
+      "newLevel": 0
+    },
+    {
+      "reason": "Low: X-Content-Type-Options Header Missing. New (error page)",
+      "contextId": 1,
+      "url": "http://localhost:9379/send-documents-for-customs-check/new/create-case",
+      "ruleId": 10021,
+      "urlIsRegex": "true",
+      "newLevel": 0
+    },
+    {
+      "reason": "Low: X-Content-Type-Options Header Missing. Amend (error page)",
+      "contextId": 1,
+      "url": "http://localhost:9379/send-documents-for-customs-check/add/amend-case",
+      "ruleId": 10021,
+      "urlIsRegex": "true",
       "newLevel": 0
     }
   ]

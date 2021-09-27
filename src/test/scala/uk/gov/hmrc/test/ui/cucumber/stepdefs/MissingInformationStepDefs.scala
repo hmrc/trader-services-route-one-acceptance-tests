@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import uk.gov.hmrc.test.ui.pages.{EntryDetailsPage, LandingPage, MissingInformationPage}
+import uk.gov.hmrc.test.ui.pages.{EntryDetailsPage, MissingInformationPage}
 
 
 class MissingInformationStepDefs extends MissingInformationPage with EntryDetailsPage with ScalaDsl with EN {
