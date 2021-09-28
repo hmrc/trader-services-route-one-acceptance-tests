@@ -31,7 +31,7 @@ class MissingInformationStepDefs extends MissingInformationPage with EntryDetail
   }
 
   When("""^the user clicks the button on the Missing information page they will return to entry details""") { () =>
-    clickToCompleteInfo()
+    clickContinue()
     confirmUrl(urlEntryDetails)
     verifyHeading(headingEntryDetails)
   }
