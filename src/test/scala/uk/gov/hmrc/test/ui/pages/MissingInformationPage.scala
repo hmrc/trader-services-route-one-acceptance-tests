@@ -22,5 +22,4 @@ trait MissingInformationPage extends BasePage {
   val urlExportMissingInfo: String = traderServicesBaseUrl + exportJourneyUrl + "/missing-information"
   val headingMissingInfo = "We’re missing some of your information"
 
-  def clickToCompleteInfo(): Unit = clickByCSS(".govuk-button")
 }
