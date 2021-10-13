@@ -52,7 +52,6 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
 
   Then("""^outputs the case reference number""") { () =>
     val caseRefOutput = caseRefNo.getText
-    print(caseRefOutput)
   }
 
   When("""^the user clicks the button to submit another case on the confirmation page they will go back to the start""") { () =>
