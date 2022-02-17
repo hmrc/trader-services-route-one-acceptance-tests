@@ -16,9 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import java.time.{Duration, LocalDate, LocalTime}
-import java.util.concurrent.TimeUnit
-
 import org.junit.{AfterClass, BeforeClass}
 import org.openqa.selenium._
 import org.openqa.selenium.support.ui.{ExpectedCondition, ExpectedConditions, FluentWait}
@@ -27,6 +24,8 @@ import uk.gov.hmrc.test.ui.conf.Configuration.environment
 import uk.gov.hmrc.test.ui.conf.{Configuration, Environment}
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
+import java.time.{Duration, LocalDate, LocalTime}
+import java.util.concurrent.TimeUnit
 import scala.collection.convert.ImplicitConversions.`collection AsScalaIterable`
 import scala.util.Random
 
@@ -172,9 +171,9 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   //Handoff check urls
-  def bannerServiceName(): WebElement = findElementByCss(".govuk-header__link--service-name")
+  def bannerServiceName(): WebElement = findElementByCss(".hmrc-header__service-name--linked")
 
-  def clickGovUkIcon(): Unit = clickByCSS(".govuk-header__logotype-text")
+  def clickGovUkIcon(): Unit = clickByCSS(".hmrc-header__logotype-text")
 
   val govUkExternal = "https://www.gov.uk/"
 
