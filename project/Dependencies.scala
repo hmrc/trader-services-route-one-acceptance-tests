@@ -2,9 +2,6 @@ import sbt._
 
 object Dependencies {
 
-  val ScalatestVersion = "3.0.5"
-  val CucumberVersion = "1.2.5"
-
   val test = Seq(
     "uk.gov.hmrc"                %% "webdriver-factory"         % "0.25.0"  % "test",
     "org.scalatest"              %% "scalatest"                 % "3.0.7"   % "test",
