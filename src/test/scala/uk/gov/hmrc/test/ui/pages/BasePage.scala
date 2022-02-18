@@ -315,20 +315,10 @@ trait BasePage extends Matchers with BrowserDriver {
     signInButton.click()
   }
 
-  def createUser(): Unit = {
-    clickByCSS("#affinityGroup-Individual")
-    clickById("principalEnrolments[0].key-HMRC-CTS-ORG")
-    clickByCSS("#update")
-    enrollment.clear()
-    enrollment.sendKeys("GB123456789012345")
-  }
-
   @BeforeClass
   def setupUser(): Unit = {
     navigateTo(Configuration.settings.SIGN_IN_page)
     login()
-    createUser()
-    clickByCSS("#update")
   }
 
   @AfterClass
