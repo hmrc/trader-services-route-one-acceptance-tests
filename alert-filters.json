@@ -93,6 +93,12 @@
       "ruleId": 10021,
       "urlIsRegex": "true",
       "newLevel": 0
+    },
+    {
+      "reason": "False positive - there is no PII in this request",
+      "url": "http://localhost:9379/send-documents-for-customs-check/add/check-your-answers",
+      "ruleId": 10062,
+      "newLevel": -1
     }
   ]
 }
