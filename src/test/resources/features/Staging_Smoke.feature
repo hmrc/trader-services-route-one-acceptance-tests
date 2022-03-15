@@ -1,9 +1,9 @@
-@TraderServiceQA
+@TraderServiceStaging
 
 Feature: Customs check - Export journey
 
   Scenario Outline: A user wants to complete an Export RouteOne journey
-    Given the user logs into QA
+    Given the user logs into Staging
     When the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     * the user enters entry details "<epu>" and "<entryNo>"
@@ -14,7 +14,7 @@ Feature: Customs check - Export journey
     * the user is on the Route type page, selects <route> and continues
 
     Then the user will be on the <journey> Reason page
-    When the user enters "!@£$%^&*()_+{}:"|<>?`~¡€#¢∞§¶•ªº–≠“‘…æ«≤≥æ234567890-" characters in the reason field and continues
+    When the user enters "test description" characters in the reason field and continues
     Then the user will be on the <journey> YN Priority page
 
     * the user is on the YesNo Priority page, selects Yes and continues
@@ -40,7 +40,7 @@ Feature: Customs check - Export journey
       | Export  | randomEPU | exportEN | Withdrawal  | Route 1 | Human remains | RoadRoRoRail | smith | testEmail | 0177 111 1111 |
 
   Scenario Outline: A user wants to complete a New Import journey
-    Given the user logs into QA
+    Given the user logs into Staging
     When the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
     * the user enters entry details "<epu>" and "<entryNo>"
@@ -84,7 +84,7 @@ Feature: Customs check - Export journey
       | Import  | randomEPU | importEN | Cancellation | Hold  | Human remains | Air       | train 1x      | agent | testEmail | 01256888999 |
 
   Scenario Outline: Amend: A user adds a message to a case (write response only)
-    Given the user logs into QA
+    Given the user logs into Staging
     When the user is on the start page for trader services, selects <journey> and continues
     Then the user will be on the Case Reference number page
     When the user enters " PCI2108194409LWEAKJL00" characters for case reference number and continues
@@ -120,7 +120,7 @@ Feature: Customs check - Export journey
 
 
   Scenario Outline: Amend: A user adds a message and a document to a case (write response + upload)
-    Given the user logs into QA
+    Given the user logs into Staging
     Given the user is on the start page for trader services, selects <journey> and continues
     Then the user will be on the Case Reference number page
     When the user enters "PCE2108194793OA0VOO303 " characters for case reference number and continues

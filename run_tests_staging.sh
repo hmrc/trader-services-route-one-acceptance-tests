@@ -1,5 +1,5 @@
 #!/bin/bash
-ENV=${1:-qa}
+ENV=${1:-staging}
 BROWSER=${2:-chrome}
 DRIVER=
 
@@ -9,5 +9,4 @@ elif [ "$BROWSER" = "firefox" ]; then
     DRIVER="-Dwebdriver.gecko.driver=/usr/local/bin/geckodriver"
 fi
 
-sbt -Dbrowser=$BROWSER -Denvironment=$ENV $DRIVER "testOnly uk.gov.hmrc.test.ui.cucumber.runner.RunnerQA"
-
+sbt -Dbrowser=$BROWSER -Denvironment=$ENV $DRIVER "testOnly uk.gov.hmrc.test.ui.cucumber.runner.RunnerStaging"
