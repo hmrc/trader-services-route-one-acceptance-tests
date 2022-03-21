@@ -24,8 +24,6 @@ trait TransportQuestionsPage extends BasePage {
 
   val urlExpMandatoryTransport: String = traderServicesBaseUrl + exportJourneyUrl + "/transport-information-required"
 
-  val headingTransportDetails = "More details about your transport"
-
   def transportQName: WebElement = findElementById("vesselName")
 
   def transportQArrivalDay: WebElement = findElementById("dateOfArrival.day")

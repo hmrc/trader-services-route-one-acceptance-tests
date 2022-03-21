@@ -17,46 +17,31 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.WebElement
+import org.scalatest.Assertion
 
 trait AmendCYAPage extends BasePage with EntryDetailsPage with QuestionPages {
 
   val urlAmendCYA: String = traderServicesBaseUrl + "/add/check-your-answers"
-  val headingMainCYA = "Review your case details"
 
-  def verifyH2DecInfo(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(2)").getText shouldBe text
+  def verifyH2DecInfo(): Assertion = assertIsVisible("h2.govuk-heading-l:nth-child(2)")
 
-  def verifyH2AddInfo(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(4)").getText shouldBe text
+  def verifyH2AddInfo(): Assertion = assertIsVisible("h2.govuk-heading-l:nth-child(4)")
 
-  def verifyH2Documents(text: String): Unit = findElementByCss("h2.govuk-heading-l:nth-child(6)").getText shouldBe text
+  def verifyH2Documents(): Assertion = assertIsVisible("h2.govuk-heading-l:nth-child(6)")
 
-  val h2Dec = "Entry information"
-  val decInfoSummary = "Case reference number"
+  def verifyCaseRefAnswer(): Assertion = assert(findByXpath("/html/body/div/main/div/div/div/dl[1]/div/dd[1]").isDisplayed)
 
-  val h2Additional = "Additional information"
-  val additionalInfoType = "Information type"
+  def verifyInfoTypeRow(): Assertion = assert(findByXpath("/html/body/div/main/div/div/div/dl[2]/div[1]/dt").isDisplayed)
 
-  val messageOnly = "Message"
-  val uploadOnly = "Documents"
-  val messageAndUpload = "Message and documents"
+  def verifyInfoTypeAnswer(): Assertion = assert(findByXpath("/html/body/div/main/div/div/div/dl[2]/div[1]/dd[1]").isDisplayed)
 
-  val h2Documents = "Documents you are submitting"
-  val documentsInfo = "File names"
+  def verifyMessageRow(): Assertion = assert(findByXpath("/html/body/div/main/div/div/div/dl[2]/div[2]/dt").isDisplayed)
 
-  def caseRefRow: WebElement = findElementByCss("/html/body/div/main/div/div/div/dl[1]/div/dt")
+  def verifyMessageAnswer(): Assertion = assert(findByXpath("/html/body/div/main/div/div/div/dl[2]/div[2]/dd[1]").isDisplayed)
 
-  def caseRefAnswer: WebElement = findByXpath("/html/body/div/main/div/div/div/dl[1]/div/dd[1]")
+  def verifyUploadRow(): Assertion = assert(findByXpath("/html/body/div/main/div/div/div/dl[3]/div/dt").isDisplayed)
 
-  def infoTypeRow: WebElement = findByXpath("/html/body/div/main/div/div/div/dl[2]/div[1]/dt")
-
-  def infoTypeAnswer: WebElement = findByXpath("/html/body/div/main/div/div/div/dl[2]/div[1]/dd[1]")
-
-  def messageRow: WebElement = findByXpath("/html/body/div/main/div/div/div/dl[2]/div[2]/dt")
-
-  def messageAnswer: WebElement = findByXpath("/html/body/div/main/div/div/div/dl[2]/div[2]/dd[1]")
-
-  def uploadRow: WebElement = findByXpath("/html/body/div/main/div/div/div/dl[3]/div/dt")
-
-  def uploadAnswer: WebElement = findByXpath("/html/body/div/main/div/div/div/dl[3]/div/dd[1]")
+  def verifyUploadAnswer(): Assertion = assert(findByXpath("/html/body/div/main/div/div/div/dl[3]/div/dd[1]").isDisplayed)
 
 }
 

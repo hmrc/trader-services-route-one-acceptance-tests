@@ -27,10 +27,8 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
     journey match {
       case "Import" =>
         confirmUrl(urlImportYNPriority)
-        verifyHeading(headingImportYNPriority)
       case "Export" =>
         confirmUrl(urlExportYNPriority)
-        verifyHeading(headingExportYNPriority)
     }
   }
 
@@ -38,7 +36,7 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
     yesNo match {
       case "Yes" => clickByCSS("#hasPriorityGoods")
       case "No" => clickByCSS("#hasPriorityGoods-2")
-      case "None" =>
+      case _ =>
     }
     clickContinue()
   }
@@ -57,7 +55,6 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
       case "Import" => confirmUrl(urlImportPriority)
       case "Export" => confirmUrl(urlExportPriority)
     }
-    verifyHeading(headingPriority)
   }
 
   When("""^the user is on the Priority Goods page, selects (.*) and continues""") { (requestType: String) =>
@@ -65,7 +62,7 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
       case "Explosives or fireworks" => clickByCSS("#priorityGoods")
       case "Human remains" => clickByCSS("#priorityGoods-2")
       case "Live animals" => clickByCSS("#priorityGoods-3")
-      case "NoOption" =>
+      case _ =>
     }
     clickContinue()
   }

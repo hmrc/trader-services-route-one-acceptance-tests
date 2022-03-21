@@ -23,15 +23,8 @@ trait UploadPages extends BasePage {
   val urlUpload: String = traderServicesBaseUrl + "/new/file-upload"
   val urlUploadAmend: String = traderServicesBaseUrl + amendUrl + "/file-upload"
 
-  val headingUpload = "Upload your first document"
-  val headingUploadAnother = "Upload another document"
-
   val urlUploadVer: String = traderServicesBaseUrl + "/new/file-verification"
   val urlUploadVerAmend: String = traderServicesBaseUrl + amendUrl + "/file-verification"
-
-  val headingUploadConfirm1 = "You’ve uploaded 1 document"
-  val headingUploadConfirm2 = "You’ve uploaded 2 documents"
-  val headingUploadConfirm3 = "You’ve uploaded 3 documents"
 
   val urlUploaded: String = traderServicesBaseUrl + "/new/file-uploaded"
   val urlUploadedAmend: String = traderServicesBaseUrl + amendUrl + "/file-uploaded"
@@ -41,8 +34,6 @@ trait UploadPages extends BasePage {
 
   val chooseFileId = "upload-file"
   val fileIDSFU = "file"
-
-  def uploadFile(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId)
 
   def uploadFileSFU(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, fileIDSFU)
 

@@ -20,6 +20,4 @@ trait MissingInformationPage extends BasePage {
 
   val urlImportMissingInfo: String = traderServicesBaseUrl + importJourneyUrl + "/missing-information"
   val urlExportMissingInfo: String = traderServicesBaseUrl + exportJourneyUrl + "/missing-information"
-  val headingMissingInfo = "We’re missing some of your information"
-
 }

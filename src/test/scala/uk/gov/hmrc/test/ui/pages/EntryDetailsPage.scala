@@ -21,7 +21,6 @@ import org.openqa.selenium.WebElement
 trait EntryDetailsPage extends BasePage {
 
   val urlEntryDetails: String = traderServicesBaseUrl + "/new/entry-details"
-  val headingEntryDetails = "Entry details"
 
   def EPU: WebElement = findElementById("epu")
 

@@ -21,15 +21,10 @@ import org.openqa.selenium.WebElement
 trait FinalConfirmationPage extends BasePage {
 
   val urlConfirmation: String = traderServicesBaseUrl + "/new/confirmation"
-  val headingConfirmation = "You’ve submitted your documents"
 
   val urlDuplicate: String = traderServicesBaseUrl + "/new/case-already-exists"
-  val headingDuplicate = "We’ve received this case"
 
   val urlAmendConfirm: String = traderServicesBaseUrl + amendUrl + "/confirmation"
-  val headingAmendConfirm = "You’ve submitted your extra information"
-
-  val receiptHeading:String = "Print or save your receipt for your records"
 
   def clickLinkToAmend(): Unit = clickHref("a[href*='send-documents-for-customs-check/add']")
 
@@ -37,17 +32,8 @@ trait FinalConfirmationPage extends BasePage {
 
   def slaPara: WebElement = findElementByCss("p.govuk-body:nth-child(3)")
 
-  def receipt: WebElement = findElementByCss(".receipt")
-
   val holdSLA = "When your transportation arrives, we’ll begin the document checks. Once our checks are complete, you’ll hear from us through CHIEF or your declaration software."
 
   val printPdfIcon = ".print-page"
   val saveHtmlIcon = "a.action-buttons__button"
-
-  val cancelPara = "You will now need to cancel this entry in CHIEF."
-  val withdrawPara = "You will now need to withdraw this entry in CHIEF."
-  val feedback = "Give feedback on this service"
-
-  def fifthElement: WebElement = findElementByCss("p.govuk-body:nth-child(5)")
-
 }

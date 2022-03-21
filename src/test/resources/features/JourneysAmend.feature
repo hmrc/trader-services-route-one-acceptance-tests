@@ -11,7 +11,7 @@ Feature: Amend journeys
     Then the user will be on the write response page
     When the user enters "<message>" characters in the write response field and continues
     Then the user will be on the Amend <amendType> review page and should see their responses
-    And the user should see the message they entered "<message>"
+    And the user should see the message they entered
     When the user clicks submit on the CYA page
     Then the user will be on the <journey> confirmation page
 
@@ -31,7 +31,7 @@ Feature: Amend journeys
     * the user clicks the button to upload file "1" and selects "<file>"
     * the user clicks continue when files have finished uploading
     Then the user will be on the Amend <amendType> review page and should see their responses
-    * the user should see the files they uploaded "<file>"
+    * the user should see the files they uploaded
     When the user clicks submit on the CYA page
     Then the user will be on the <journey> confirmation page
 
@@ -54,7 +54,7 @@ Feature: Amend journeys
     * the user clicks the button to upload file "1" and selects "<file>"
     * the user clicks continue when files have finished uploading
     Then the user will be on the Amend <amendType> review page and should see their responses
-    * the user should see the files they uploaded "<file>"
+    * the user should see the files they uploaded
     When the user clicks submit on the CYA page
     Then the user will be on the <journey> confirmation page
 

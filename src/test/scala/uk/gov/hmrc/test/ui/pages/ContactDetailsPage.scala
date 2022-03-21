@@ -22,7 +22,6 @@ trait ContactDetailsPage extends BasePage {
 
   val urlImportContact: String = traderServicesBaseUrl + importJourneyUrl + "/contact-information"
   val urlExportContact: String = traderServicesBaseUrl + exportJourneyUrl + "/contact-information"
-  val headingContactInfo = "What are your contact details?"
 
   def fullName: WebElement = findElementById("contactName")
 

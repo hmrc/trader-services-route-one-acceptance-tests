@@ -27,13 +27,11 @@ class MissingInformationStepDefs extends MissingInformationPage with EntryDetail
       case "Import" => confirmUrl(urlImportMissingInfo)
       case "Export" => confirmUrl(urlExportMissingInfo)
     }
-    verifyHeading(headingMissingInfo)
   }
 
   When("""^the user clicks the button on the Missing information page they will return to entry details""") { () =>
     clickContinue()
     confirmUrl(urlEntryDetails)
-    verifyHeading(headingEntryDetails)
   }
 
 }

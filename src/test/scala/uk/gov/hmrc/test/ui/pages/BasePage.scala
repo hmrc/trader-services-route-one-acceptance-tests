@@ -63,10 +63,6 @@ trait BasePage extends Matchers with BrowserDriver {
     assert(currentUrl.contains(url) || url.contains(currentUrl), message(s"Expected url is: $url. Actual url is: $currentUrl"))
   }
 
-  def findWriteById(id: String, value: String = "") {
-    writeByElement(findElementById(id), value)
-  }
-
   def writeById(id: WebElement, value: String = "") {
     writeByElement(id, value)
   }
@@ -101,10 +97,6 @@ trait BasePage extends Matchers with BrowserDriver {
   def findByXpath(xpath: String): WebElement = driver.findElement(By.xpath(xpath))
 
   def clickHref(href: String): Unit = driver.findElement(By.cssSelector(href)).click()
-
-  def verifyHeading(text: String): Unit = findElementByCss("h1").getText shouldBe text
-
-  def clickById(id: String): Unit = findElementById(id).click()
 
   def clickByCSS(css: String): Unit = driver.findElement(By.cssSelector(css)).click()
 
@@ -150,6 +142,8 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   def isElementVisible(css: String): Boolean = findElementByCss(css).isDisplayed
+
+  def assertIsVisible(css: String): Assertion = assert(isElementVisible(css))
 
   def assertElementIsNotVisibleById(id: String): Unit = {
     driver.manage.timeouts.implicitlyWait(1, TimeUnit.SECONDS)
@@ -228,25 +222,12 @@ trait BasePage extends Matchers with BrowserDriver {
   lazy val dayFormatted = f"$d%02d"
   lazy val monthFormatted = f"$m%02d"
 
-  def todayDateCYA: String = {
-    s"${today.getDayOfMonth.toString} ${today.getMonth.toString.toLowerCase.capitalize} ${today.getYear.toString}"
-  }
-
-  def sixMonthsFutureDateCYA: String = {
-    s"${sixMonthsFromNow.getDayOfMonth.toString} ${sixMonthsFromNow.getMonth.toString.toLowerCase.capitalize} ${sixMonthsFromNow.getYear.toString}"
-  }
-
-  def betweenError(journey: String): String = "Error:Date of " + s"$journey" + " must be between " + todayDateCYA + " (the date of entry) and " + sixMonthsFutureDateCYA
-
   lazy val nowTime: LocalTime = LocalTime.now()
-  lazy val nowHrs: Int = nowTime.getHour
-  lazy val nowMin: Int = nowTime.getMinute
   lazy val sla2Hour: Int = nowTime.plusHours(2).getHour
   lazy val sla3Hour: Int = nowTime.plusHours(3).getHour
   lazy val min: Int = nowTime.getMinute
   lazy val min1: Int = nowTime.minusMinutes(1).getMinute
 
-  lazy val nowFormatted = f"$nowHrs%02d:$nowMin%02d"
   lazy val sla2hrFormatted = f"$sla2Hour%02d:$min%02d"
   lazy val sla2hrAddMin = f"$sla2Hour%02d:$min1%02d"
 
@@ -256,18 +237,13 @@ trait BasePage extends Matchers with BrowserDriver {
   lazy val threePm: LocalTime = LocalTime.parse("15:00:00.00")
   lazy val midnight: LocalTime = LocalTime.parse("00:00:00.00")
   lazy val eightAm: LocalTime = LocalTime.parse("08:00:00.00")
-  lazy val fourPm: LocalTime = LocalTime.parse("16:00:00.00")
 
   lazy val between3pmAndMidnight: Boolean = nowTime.isAfter(threePm) && nowTime.isBefore(midnight)
   lazy val betweenMidnightAnd8am: Boolean = nowTime.isAfter(midnight) && nowTime.isBefore(eightAm)
   lazy val between8amAnd3pm: Boolean = nowTime.isAfter(eightAm) && nowTime.isBefore(threePm)
-  lazy val openingHours:Boolean = nowTime.isAfter(eightAm) && nowTime.isBefore(fourPm)
 
-  def errorContent: WebElement = findElementByCss("#main-content > div > div > div.govuk-\\!-margin-bottom-6 > p:nth-child(2)")
   def errorContentAmendCaseRef:WebElement = findElementByCss("p.govuk-body:nth-child(3)")
 
-  val errorContentText:String = "Try again. If the issue persists and you need help, you can report the problem (opens in a new window or tab). We will respond to you within two working days."
-  val errorContentOOOText:String = "Try again. If the issue persists, please email your documents to nch@hmrc.gov.uk instead."
   val errorContentCaseRef:String = "Try to enter your case reference number again."
 
   //Random inputs
@@ -303,11 +279,7 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def signInButton: WebElement = driver.findElement(By.id("signIn"))
 
-  def destroyPlanet: WebElement = driver.findElement(By.cssSelector("#destroy-planet"))
-
   def destroyPlanetLink: WebElement = driver.findElement(By.cssSelector("#link_planet_destroy"))
-
-  def enrollment: WebElement = findElementById("principalEnrolments[0].identifiers[0].value")
 
   def login(): Unit = {
     userId.sendKeys("User1")
