@@ -27,7 +27,6 @@ class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
       case "Import" => confirmUrl(urlImportContact)
       case "Export" => confirmUrl(urlExportContact)
     }
-    verifyHeading(headingContactInfo)
   }
 
   When("""^the user enters a name "(.*)"$""") {

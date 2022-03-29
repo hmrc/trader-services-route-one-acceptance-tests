@@ -23,34 +23,28 @@ class AmendCYAStepDefs extends AmendPages with AmendCYAPage with BasePage with S
 
   Given("""^the user will be on the Amend (.*) review page and should see their responses$""") { (journey: String) =>
     confirmUrl(urlAmendCYA)
-    verifyHeading(headingMainCYA)
-    verifyH2DecInfo(h2Dec)
-    assertElementText(additionalInfoType, infoTypeRow)
-    assertElementText(userCaseRef, caseRefAnswer)
 
     journey match {
       case "writeOnly" =>
-        verifyH2AddInfo(h2Additional)
-        assertElementText(messageOnly, infoTypeAnswer)
+        verifyH2AddInfo()
+        verifyInfoTypeAnswer()
 
       case "uploadOnly" =>
-        verifyH2Documents(h2Documents)
-        assertElementText(uploadOnly, infoTypeAnswer)
-        assertElementText(documentsInfo, uploadRow)
+        verifyH2Documents()
+        verifyInfoTypeAnswer()
+        verifyUploadRow()
 
       case "writeAndUpload" =>
-        verifyH2AddInfo(h2Additional)
-        assertElementText(messageAndUpload, infoTypeAnswer)
+        verifyH2AddInfo()
+        verifyInfoTypeAnswer()
 
-        verifyH2Documents(h2Documents)
-        assertElementText(documentsInfo, uploadRow)
-
+        verifyH2Documents()
+        verifyUploadRow()
     }
   }
 
   Then("""^the user will be on the Amend review page$""") { () =>
     confirmUrl(urlAmendCYA)
-    verifyHeading(headingMainCYA)
   }
 
   When("""^the user clicks the change link on the amend review page for (.*)$""") { (changeLink: String) =>
@@ -63,11 +57,11 @@ class AmendCYAStepDefs extends AmendPages with AmendCYAPage with BasePage with S
     }
   }
 
-  Then("""^the user should see the message they entered "(.*)"$""") { (response: String) =>
-    assertElementText(response, messageAnswer)
+  Then("""^the user should see the message they entered$""") { () =>
+    verifyMessageAnswer()
   }
 
-  Then("""^the user should see the files they uploaded "(.*)"$""") { (uploads: String) =>
-    assertElementTextContains(uploads, uploadAnswer)
+  Then("""^the user should see the files they uploaded$""") { () =>
+    verifyUploadAnswer()
   }
 }

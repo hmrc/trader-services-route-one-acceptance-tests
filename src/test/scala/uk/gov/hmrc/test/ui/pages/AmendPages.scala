@@ -21,17 +21,14 @@ import org.openqa.selenium.WebElement
 trait AmendPages extends BasePage {
 
   val urlCaseRef: String = traderServicesBaseUrl + amendUrl + "/case-reference-number"
-  val caseRefHeading: String = "What’s the case reference number?"
 
   def caseRefInput: WebElement = findElementByCss("#caseReferenceNumber")
 
   def caseRefReveal: WebElement = findElementByCss(".govuk-details__summary-text")
 
   val urlHowToSend: String = traderServicesBaseUrl + amendUrl + "/type-of-amendment"
-  val howToSendHeading: String = "How do you want to send us more information?"
 
   val urlWriteResponse: String = traderServicesBaseUrl + amendUrl + "/write-response"
-  val writeResponseHeading: String = "Write a response to a query from HMRC"
 
   def textInputAmend: WebElement = findElementByCss("#responseText")
 

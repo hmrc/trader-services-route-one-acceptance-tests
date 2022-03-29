@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import org.openqa.selenium.WebElement
 import org.scalatest.Matchers
 import org.scalatest.concurrent.Eventually
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
@@ -140,50 +139,6 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     }
   }
 
-  When("""^the user enters an invalid (.*) date for (.*)""") { (date: String, field: String) =>
-    date match {
-
-      case "past" =>
-
-        field match {
-          case "entryDate" =>
-            writeById(entryDay, d6past)
-            writeById(entryMonth, m6past)
-            writeById(entryYear, y6past)
-
-          case "arrivalDate" =>
-            writeById(transportQArrivalDay, yd)
-            writeById(transportQArrivalMonth, ym)
-            writeById(transportQArrivalYear, yy)
-
-          case "departureDate" =>
-            writeById(transportQDepartureDay, yd)
-            writeById(transportQDepartureMonth, ym)
-            writeById(transportQDepartureYear, yy)
-
-        }
-
-      case "future" =>
-
-        field match {
-          case "entryDate" =>
-            writeById(entryDay, td)
-            writeById(entryMonth, tm)
-            writeById(entryYear, ty)
-
-          case "arrivalDate" =>
-            writeById(transportQArrivalDay, d6future)
-            writeById(transportQArrivalMonth, m6future)
-            writeById(transportQArrivalYear, y6future)
-
-          case "departureDate" =>
-            writeById(transportQDepartureDay, d6future)
-            writeById(transportQDepartureMonth, m6future)
-            writeById(transportQDepartureYear, y6future)
-        }
-    }
-  }
-
   Then("""^the details entered for (.*) should be pre filled with today's date$""") {
     (dateField: String) =>
       dateField match {
@@ -203,48 +158,6 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
           verifyInput(transportQDepartureMonth, monthFormatted)
           verifyInput(transportQDepartureYear, year)
       }
-  }
-
-  //Error checking
-  def errorSummaryTitle: WebElement = findElementByCss("#error-summary-title")
-
-  def errorSummaryField(fieldTitle: String): WebElement = findElementById(s"$fieldTitle-error")
-
-  val errorSummary = "There is a problem"
-
-  Then("""^the user should see "(.*)" error message for "([^"]*)"$""") {
-    (errorMessage: String, fieldTitle: String) =>
-      Thread.sleep(500)
-
-      errorSummaryTitle.isDisplayed
-      errorSummaryTitle.getText shouldBe errorSummary
-
-      errorSummaryField(fieldTitle).isDisplayed
-
-      errorSummaryField(fieldTitle).getText.replaceAll("\n", "") shouldBe errorMessage
-  }
-
-
-  Then("""^the user should see the invalid (.*) date range error message for "(.*)" field""") {
-    (journey: String, fieldTitle: String) =>
-      errorSummaryTitle.isDisplayed
-      errorSummaryTitle.getText shouldBe errorSummary
-      errorSummaryField(fieldTitle).isDisplayed
-
-      journey match {
-        case "arrival" =>
-          errorSummaryField(fieldTitle).getText.replaceAll("\n", "") shouldBe betweenError("arrival")
-
-        case "departure" =>
-          errorSummaryField(fieldTitle).getText.replaceAll("\n", "") shouldBe betweenError("departure")
-      }
-  }
-
-  When("""^the user clicks the error link for "([^"]*)" it should link to the (.*) field""") {
-    (fieldID: String, fieldBodyID: String) =>
-      clickHref(s"a[href*='$fieldID']")
-      findElementById(fieldBodyID).isSelected
-      findElementById(fieldBodyID).clear()
   }
 }
 

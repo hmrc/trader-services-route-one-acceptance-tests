@@ -23,11 +23,6 @@ trait UploadMultiPages extends BasePage {
   val urlUploadMulti: String = traderServicesBaseUrl + "/new/upload-files"
   val urlUploadMultiAmend: String = traderServicesBaseUrl + amendUrl + "/upload-files"
 
-  val urlUpload: String = traderServicesBaseUrl + "/new/file-upload"
-  val urlUploadAmend: String = traderServicesBaseUrl + amendUrl + "/file-upload"
-
-  val headingUpload = "Upload your documents"
-
   val usrDir = System.getProperty("user.dir") + "/src/test/resources/uploadFiles/"
   var filePath = ""
 
@@ -36,8 +31,6 @@ trait UploadMultiPages extends BasePage {
   def uploadFile(fileSeq: String, order:String): Unit = uploadFilesToBrowser(fileSeq, chooseFileId(s"$order"))
 
   def uploadAnother(): Unit = findElementByCss(".multi-file-upload__add-another").click()
-
-  def swirlyRing: WebElement = findElementByCss(".file-upload__spinner")
 
   def insetText: WebElement = findElementByCss(".govuk-inset-text")
 

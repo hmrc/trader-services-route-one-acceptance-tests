@@ -25,7 +25,6 @@ class EntryDetailsStepDefs extends EntryDetailsPage with BasePage with ScalaDsl 
 
   Then("""^the user will be on the entry details page$""") { () =>
     confirmUrl(urlEntryDetails)
-    verifyHeading(headingEntryDetails)
   }
 
   When("""^the user enters entry details "(.*)" and "(.*)"$""") {

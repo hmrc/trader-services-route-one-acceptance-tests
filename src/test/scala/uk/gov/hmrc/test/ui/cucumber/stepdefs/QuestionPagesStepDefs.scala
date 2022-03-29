@@ -27,10 +27,8 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
     journey match {
       case "Import" =>
         confirmUrl(urlImportRequest)
-        verifyHeading(headingImportRequest)
       case "Export" =>
         confirmUrl(urlExportRequest)
-        verifyHeading(headingExportRequest)
     }
   }
 
@@ -47,7 +45,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
         case "C1602" => clickByCSS("#requestType-5")
         case "C1603" => clickByCSS("#requestType-6")
 
-        case "NoOption" =>
+        case _ =>
       }
       clickContinue()
   }
@@ -91,7 +89,6 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
       case "Import" => confirmUrl(urlRouteImport)
       case "Export" => confirmUrl(urlRouteExport)
     }
-    verifyHeading(headingRoute)
   }
 
   When("""^the user is on the Route type page, selects (.*) and continues""") { (routeType: String) =>
@@ -102,7 +99,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
       case "Route 3" => clickByCSS("#routeType-4")
       case "Route 6" => clickByCSS("#routeType-5")
       case "Hold" => clickByCSS("#routeType-6")
-      case "NoOption" =>
+      case _ =>
     }
     clickContinue()
   }
@@ -123,9 +120,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
   Then("""^the user will be on the (.*) Reason page""") { (journey: String) =>
     journey match {
       case "Import" => confirmUrl(urlReasonImport)
-        verifyHeading(headingImportReason)
       case "Export" => confirmUrl(urlReasonExport)
-        verifyHeading(headingExportReason)
     }
   }
 
@@ -154,7 +149,6 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
       case "Export" =>
         confirmUrl(urlTransportExport)
     }
-    verifyHeading(headingTransport)
   }
 
   When("""^the user is on the Transport type page, selects (.*) and continues""") { (requestType: String) =>
@@ -162,7 +156,7 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
       case "Air" => clickByCSS("#freightType")
       case "Maritime" => clickByCSS("#freightType-2")
       case "RoadRoRoRail" => clickByCSS("#freightType-3")
-      case "NoOption" =>
+      case _ =>
     }
     clickContinue()
   }
@@ -178,14 +172,13 @@ class QuestionPagesStepDefs extends QuestionPages with BasePage with ScalaDsl wi
   //ALVS - Import Only
   Then("""^the user will be on the ALVS page$""") { () =>
     confirmUrl(urlALVS)
-    verifyHeading(headingALVS)
   }
 
   When("""^the user is on the ALVS page, selects (.*) and continues""") { (yesNo: String) =>
     yesNo match {
       case "Yes" => clickByCSS("#hasALVS")
       case "No" => clickByCSS("#hasALVS-2")
-      case "NoOption" =>
+      case _ =>
     }
     clickContinue()
   }

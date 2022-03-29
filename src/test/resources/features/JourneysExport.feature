@@ -32,24 +32,24 @@ Feature: Customs check - Export journey
     * the user clicks continue when files have finished uploading
 
     Then the user will be on the <journey> CYA page
-    And the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
-    * the user should see the Entry Date row & the date <entryDateCYA> on the CYA page
-    * the user should see the <journey> Request type row & the correct response <requestType> on the CYA page
-    * the user should see the Route row & the correct response <route> on the CYA page
-    * the user should see the Priority YN row & the correct response No on the CYA page
-    * the user answered NoToPriority then they should see the correct responses for the Export journey "" & "<transport>"
-    * the user should see the Transport name row & the correct response "<transportName>" on the CYA page
-    * the user should see the Transport date Departure row & the correct response "Today" on the CYA page
-    * the user should see the Transport time Departure row & the correct response "13:37" on the CYA page
-    * the user should see the Mandatory Contact details row & the correct responses "", "<email>" & "07123456789" on the CYA page
+    And the user should see the EPU & Entry No Rows on the CYA page
+    * the user should see the Entry Date row & the date on the CYA page
+    * the user should see the <journey> Request type row on the CYA page
+    * the user should see the Route row on the CYA page
+    * the user should see the Priority YN row on the CYA page
+    * the user answered NoToPriority then they should see the correct responses for the Export journey
+    * the user should see the Transport name row on the CYA page
+    * the user should see the Transport date Departure row on the CYA page
+    * the user should see the Transport time Departure row on the CYA page
+    * the user should see the Mandatory Contact details row on the CYA page
 
     When the user clicks submit on the CYA page
     Then the user will be on the New confirmation page
     And the user should see Hold SLA
 
     Examples:
-      | journey | epu | entryNo | requestType | route | transport | email        | entryDateCYA | transportName | file        |
-      | Export  | 123 | A23456A | New         | Hold  | Maritime  | abc@test.com | Today        | PlanEx        | testOdp.odp |
+      | journey | epu | entryNo | requestType | route | transport | email        | transportName | file        |
+      | Export  | 123 | A23456A | New         | Hold  | Maritime  | abc@test.com | PlanEx        | testOdp.odp |
 
 
   Scenario Outline: A user wants to complete a New Export journey (route 3 reason)

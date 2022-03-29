@@ -27,43 +27,28 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     journey match {
       case "New" =>
         confirmUrl(urlConfirmation)
-        verifyHeading(headingConfirmation)
 
       case "Amend" =>
         confirmUrl(urlAmendConfirm)
-        verifyHeading(headingAmendConfirm)
     }
 
-    assertElementTextContains("Your customs check submission receipt", receipt)
-    //    assertElementTextContains(nowFormatted, findElementByCss(".govuk-panel"))
-    isElementVisible(printPdfIcon).shouldBe(true)
-    isElementVisible(saveHtmlIcon).shouldBe(true)
-    assertElementText(receiptHeading, findElementByCss("#confirmation-heading > h2"))
+    assertIsVisible(printPdfIcon)
+    assertIsVisible(saveHtmlIcon)
 
   }
 
-  Then("""^the user will see text to (.*)""") { (journey: String) =>
-    journey match {
-      case "cancel" => assertElementText(cancelPara, fifthElement)
-      case "withdraw" => assertElementText(withdrawPara, fifthElement)
-      case "give-feedback" => assertElementText(feedback, fifthElement)
-    }
-  }
-
-  Then("""^outputs the case reference number""") { () =>
+  Then("""^outputs the case reference number""") { () => //TODO check way around this
     caseRefNo.getText
   }
 
   When("""^the user clicks the button to submit another case on the confirmation page they will go back to the start""") { () =>
     clickSendAnother()
     confirmUrl(traderServicesUrl)
-    verifyHeading(landingHeading)
   }
 
   When("""^the user clicks the link to add documents they will be redirected to amend journey""") { () =>
     clickLinkToAmend()
     confirmUrl(urlCaseRef)
-    verifyHeading(caseRefHeading)
   }
 
 

@@ -29,7 +29,6 @@ class TransportStepDefs extends TransportQuestionsPage with BasePage with ScalaD
       case "Export" => confirmUrl(urlExpMandatoryTransport)
 
     }
-    verifyHeading(headingTransportDetails)
   }
 
   Then("""^the user enters "(.*)" for transport name$""") { (transportName: String) =>

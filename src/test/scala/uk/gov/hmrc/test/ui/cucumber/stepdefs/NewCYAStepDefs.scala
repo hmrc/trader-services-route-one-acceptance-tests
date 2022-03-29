@@ -28,10 +28,8 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
       case "Import" => confirmUrl(urlImportCYA)
       case "Export" => confirmUrl(urlExportCYA)
     }
-    verifyHeading(headingMainCYA)
-    verifyH2EntryDetails(h2Entry)
-    verifyH2Questions(h2Questions)
-
+    verifyH2EntryDetails()
+    verifyH2Questions()
   }
 
   Then("""^the user will be on the (.*) CYA page$""") { (journey: String) =>
@@ -40,142 +38,95 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
       case "Import" => confirmUrl(urlImportCYA)
       case "Export" => confirmUrl(urlExportCYA)
     }
-    verifyHeading(headingMainCYA)
-    verifyH2EntryDetails(h2Entry)
-    verifyH2Questions(h2Questions)
-
+    verifyH2EntryDetails()
+    verifyH2Questions()
   }
 
-  Then("""^the user should see the EPU & Entry No Rows & the correct responses (.*) & (.*) on the CYA page$""") {
-    (EPU: String, EntryNo: String) =>
-
-      assertElementText(summaryEPU, epuRow)
-      assertElementText(EPU, epuAnswer)
-
-      assertElementText(summaryEntryNo, entryNoRow)
-      assertElementText(EntryNo, entryNoAnswer)
+  Then("""^the user should see the EPU & Entry No Rows on the CYA page$""") { () =>
+    verifyEpuRow()
+    verifyEpuAnswer()
+    verifyEntryNoRow()
+    verifyEntryNoAnswer()
   }
 
-  Then("""^the user should see the Entry Date row & the date (.*) on the CYA page$""") { (Date: String) =>
-    assertElementText(summaryEntryDate, entryDateRow)
-
-    Date match {
-      case "Today" => assertElementText(todayDateCYA, entryDateAnswer)
-      case _ => assertElementText(Date, entryDateAnswer)
-    }
+  Then("""^the user should see the Entry Date row & the date on the CYA page$""") { () =>
+    verifyEntryDateAnswer()
   }
 
-  Then("""^the user should see the (.*) Request type row & the correct response (.*) on the CYA page$""") {
-    (journey: String, answer: String) =>
-
-      journey match {
-        case "Import" => assertElementText(summaryImportRequest, firstQRow)
-        case "Export" => assertElementText(summaryExportRequest, firstQRow)
-      }
-      assertElementText(answer, firstQAnswer)
+  Then("""^the user should see the (.*) Request type row on the CYA page$""") { (journey: String) =>
+      assertElementTextContains(journey.toLowerCase, firstQRow)
+      verifyFirstQAnswer()
   }
 
-  Then("""^the user should see the Route row & the correct response (.*) on the CYA page$""") { (answer: String) =>
-    assertElementText(summaryRoute, secondQRow)
-    assertElementTextContains(answer, secondQAnswer)
+  Then("""^the user should see the Route row on the CYA page$""") { () =>
+    verifySecondQAnswer()
   }
 
-  Then("""^the user should see the Priority YN row & the correct response (.*) on the CYA page$""") { (answer: String) =>
-    assertElementText(summaryPriorityYN, thirdQRow)
-    assertElementText(answer, thirdQAnswer)
+  Then("""^the user should see the Priority YN row on the CYA page$""") { () =>
+    verifyThirdQAnswer()
   }
 
 
-  When("""^the user answered (.*) then they should see the correct responses for the Import journey "(.*)", "(.*)" & "(.*)"$""") {
-    (yesNo: String, priorityGoods: String, alvs: String, transport: String) =>
+  When("""^the user answered (.*) then they should see the correct responses for the Import journey$""") {
+    yesNo: String =>
 
       yesNo match {
         case "YesToPriority" =>
-          assertElementText(summaryPriorityGoods, fourthQRow)
-          assertElementText(priorityGoods, fourthQAnswer)
-
-          assertElementText(summaryALVS, fifthQRow)
-          assertElementText(alvs, fifthQAnswer)
-
-          assertElementText(summaryTransport, sixthQRow)
-          assertElementText(transport, sixthQAnswer)
-
+          verifyFourthQAnswer()
+          verifyFifthQAnswer()
+          verifySixthQAnswer()
 
         case "NoToPriority" =>
-          assertElementText(summaryALVS, fourthQRow)
-          assertElementText(alvs, fourthQAnswer)
-
-          assertElementText(summaryTransport, fifthQRow)
-          assertElementText(transport, fifthQAnswer)
+          verifyFourthQAnswer()
+          verifyFifthQAnswer()
       }
   }
 
-  When("""^the user answered (.*) then they should see the correct responses for the Export journey "(.*)" & "(.*)"$""") {
-    (yesNo: String, priorityGoods: String, transport: String) =>
+  When("""^the user answered (.*) then they should see the correct responses for the Export journey$""") {
+    yesNo: String =>
 
       yesNo match {
         case "YesToPriority" =>
-          assertElementText(summaryPriorityGoods, fourthQRow)
-          assertElementText(priorityGoods, fourthQAnswer)
-
-          assertElementText(summaryTransport, fifthQRow)
-          assertElementText(transport, fifthQAnswer)
+          verifyFourthQAnswer()
+          verifyFifthQAnswer()
 
         case "NoToPriority" =>
-          assertElementText(summaryTransport, fourthQRow)
-          assertElementText(transport, fourthQAnswer)
+          verifyFourthQAnswer()
       }
   }
 
-  Then("""^the user should see the Transport name row & the correct response "(.*)" on the CYA page$""") {
-    (answer: String) =>
-      verifyH2Vessel(h2Vessel)
-      assertElementText(summaryTransportName, seventhRowFirstQ)
-      assertElementText(answer, seventhRowFirstAnswer)
+  Then("""^the user should see the Transport name row on the CYA page$""") { () =>
+    verifyH2Vessel()
+    verifySeventhRowFirstAnswer()
   }
 
-  Then("""^the user should see the Transport date (.*) row & the correct response "(.*)" on the CYA page$""") {
-    (journey: String, answer: String) =>
-
-      journey match {
-        case "Arrival" => assertElementText(summaryVesselArrivalDate, seventhRowSecondQ)
-        case "Departure" => assertElementText(summaryVesselDepartureDate, seventhRowSecondQ)
-      }
-      answer match {
-        case "Today" => assertElementText(todayDateCYA, seventhRowSecondAnswer)
-        case _ => assertElementText(answer, seventhRowSecondAnswer)
-      }
+  Then("""^the user should see the Transport date (.*) row on the CYA page$""") {
+    (journey: String) =>
+      assertElementTextContains(journey.toLowerCase, seventhRowSecondQ)
+      verifySeventhRowSecondAnswer()
   }
 
-  Then("""^the user should see the Transport time (.*) row & the correct response "(.*)" on the CYA page$""") {
-    (journey: String, answer: String) =>
-
-      journey match {
-        case "Arrival" =>
-          assertElementText(summaryVesselArrivalTime, seventhRowThirdQ)
-          assertElementText(answer, seventhRowThirdAnswer)
-
-        case "Departure" =>
-          assertElementText(summaryVesselDepartureTime, seventhRowThirdQ)
-          assertElementText(answer, seventhRowThirdAnswer)
-      }
+  Then("""^the user should see the Transport time (.*) row on the CYA page$""") {
+    (journey: String) =>
+      assertElementTextContains(journey.toLowerCase, seventhRowThirdQ)
+      verifySeventhRowThirdAnswer()
   }
 
 
-  Then("""^the user should see the (.*) Contact details row & the correct responses "(.*)", "(.*)" & "(.*)" on the CYA page$""") {
-    (contactDetails: String, answerName: String, answerEmail: String, answerPhone: String) =>
-      verifyH2Contact(h2ContactDetails)
+  Then("""^the user should see the (.*) Contact details row on the CYA page$""") {
+    (contactDetails: String) =>
+      verifyH2Contact()
       contactDetails match {
 
         case "Full" =>
-          assertElementText(h2ContactDetails, eighthRowFirstQ)
-          assertElementText(answerName, eighthRowFirstAnswer)
-          assertElementText(answerEmail, eighthRowSecondAnswer)
-          assertElementText(answerPhone, eighthRowThirdAnswer)
+          verifyEighthRowFirstQ()
+          verifyEighthRowFirstAnswer()
+          verifyEighthRowSecondAnswer()
+          verifyEighthRowThirdAnswer()
 
         case "Mandatory" =>
-          assertElementText(h2ContactDetails, eighthRowFirstQ)
-          assertElementText(answerEmail, contactDetailAnswerEmailOnly)
+          verifyEighthRowFirstQ()
+          verifyContactDetailAnswerEmailOnly()
       }
   }
 

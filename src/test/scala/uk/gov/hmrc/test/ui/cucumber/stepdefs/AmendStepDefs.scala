@@ -23,7 +23,6 @@ class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage 
 
   Then("""^the user will be on the Case Reference number page$""") { () =>
     confirmUrl(urlCaseRef)
-    verifyHeading(caseRefHeading)
   }
 
   Then("""^the user enters "(.*)" characters for case reference number and continues""") { (caseNo: String) =>
@@ -41,7 +40,6 @@ class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage 
 
   Then("""^the user will be on the Amendment type page$""") { () =>
     confirmUrl(urlHowToSend)
-    verifyHeading(howToSendHeading)
   }
 
   When("""^the user is on the Amendment type page, selects (.*) and continues""") { (amendmentType: String) =>
@@ -49,7 +47,7 @@ class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage 
       case "writeOnly" => clickByCSS("#typeOfAmendment")
       case "uploadOnly" => clickByCSS("#typeOfAmendment-2")
       case "writeAndUpload" => clickByCSS("#typeOfAmendment-3")
-      case "noOption" =>
+      case _ =>
     }
     clickContinue()
   }
@@ -65,7 +63,6 @@ class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage 
 
   Then("""^the user will be on the write response page""") { () =>
     confirmUrl(urlWriteResponse)
-    verifyHeading(writeResponseHeading)
   }
 
   Then("""^the details in the case ref field should be pre-filled with "(.*)"$""") {
@@ -80,7 +77,6 @@ class AmendStepDefs extends AmendPages with FinalConfirmationPage with BasePage 
 
   Then("""^the user is on upload documents page""") { () =>
     confirmUrl(urlHowToSend)
-    verifyHeading(howToSendHeading)
   }
 
   Then("""^the user enters "(.*)" characters in the write response field and continues""") { (response: String) =>

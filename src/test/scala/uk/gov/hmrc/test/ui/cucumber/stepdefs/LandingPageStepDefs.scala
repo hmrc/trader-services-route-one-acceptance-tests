@@ -26,14 +26,12 @@ class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with E
 
   Then("""^the user will be on the start page for trader services$""") { () =>
     confirmUrl(traderServicesUrl)
-    verifyHeading(landingHeading)
   }
 
 
   Given("""^the user is on the start page for trader services, selects (.*) and continues$""") { (journey: String) =>
     navigateTo(traderServicesUrl)
     confirmUrl(traderServicesUrl)
-    verifyHeading(landingHeading)
 
     journey match {
       case "New" => driver.findElement(By.cssSelector("#newOrExistingCase")).click()

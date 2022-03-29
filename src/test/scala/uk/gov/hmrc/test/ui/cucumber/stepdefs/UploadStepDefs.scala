@@ -31,20 +31,15 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
       case "Amend" => navigateTo(urlUploadAmend)
         confirmUrl(urlUploadAmend)
     }
-    verifyHeading(headingUpload)
   }
 
   Then("""^the user will be on the (.*) upload page""") { (page: String) =>
 
     page match {
       case "First" => confirmUrl(urlUpload)
-        verifyHeading(headingUpload)
       case "Another" => confirmUrl(urlUpload)
-        verifyHeading(headingUploadAnother)
       case "Amend" => confirmUrl(urlUploadAmend)
-        verifyHeading(headingUpload)
       case "AnotherAmend" => confirmUrl(urlUploadAmend)
-        verifyHeading(headingUploadAnother)
     }
   }
 
@@ -54,23 +49,18 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     clickByCSS(".file-upload__submit")
   }
 
-  Then("""^the user should be on the (.*) file upload confirmation page after uploading (.*) document/s""") {
-    (journey: String, docAmount: String) =>
+  Then("""^the user should be on the (.*) file upload confirmation page""") {
+    (journey: String) =>
 
       journey match {
         case "new" => confirmUrlUpload(urlUploaded)
         case "amend" => confirmUrlUpload(urlUploadedAmend)
       }
-      docAmount match {
-        case "1" => verifyHeading(headingUploadConfirm1)
-        case "2" => verifyHeading(headingUploadConfirm2)
-        case "3" => verifyHeading(headingUploadConfirm3)
-      }
   }
 
-  Then("""^the user should see their first uploaded doc (.*) on upload review page$""") { (answer: String) =>
-    findElementByCss("div.govuk-summary-list__row:nth-child(1) > dt:nth-child(1)").isDisplayed
-    findElementByCss("div.govuk-summary-list__row:nth-child(1) > dd:nth-child(2)").getText shouldBe answer
+  Then("""^the user should see their first uploaded doc on upload review page$""") { () =>
+    assertIsVisible("div.govuk-summary-list__row:nth-child(1) > dt:nth-child(1)")
+    assertIsVisible("div.govuk-summary-list__row:nth-child(1) > dd:nth-child(2)")
   }
 
   When("""^the user clicks the button to remove a document$""") { () =>
@@ -81,7 +71,7 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     yesNo match {
       case "Yes" => clickByCSS("#uploadAnotherFile")
       case "No" => clickByCSS("#uploadAnotherFile-2")
-      case "NoOption" =>
+      case _ =>
     }
     clickUploadContinueSFU()
   }

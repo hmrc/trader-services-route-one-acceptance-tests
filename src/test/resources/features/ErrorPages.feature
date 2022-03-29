@@ -81,12 +81,3 @@ Feature: Error pages
     Examples:
       | journey | caseNo                 | amendType | message   |
       | Amend   | PC12010081330XGBNZJ666 | writeOnly | Test Text |
-
-  Scenario: A user hits the wrong url
-    Given the user is on the start page for trader services, selects New and continues
-    Then the user will be on the entry details page
-    When the user navigates to the following "/entry-detailx"
-    Then the user will be on the error page for page not found
-    When the user clicks the link on the Page not found page they will be on the start page
-
-

@@ -35,16 +35,16 @@ Feature: Customs check - Import journey
     When the user clicks continue when files have finished uploading
     Then the user will be on the <journey> CYA page
 
-    Then the user should see the EPU & Entry No Rows & the correct responses <epu> & <entryNo> on the CYA page
-    * the user should see the Entry Date row & the date Today on the CYA page
-    * the user should see the <journey> Request type row & the correct response <requestType> on the CYA page
-    * the user should see the Route row & the correct response <route> on the CYA page
-    * the user should see the Priority YN row & the correct response Yes on the CYA page
-    * the user answered YesToPriority then they should see the correct responses for the Import journey "<priority>", "<ALVS>" & "<transport>"
-    * the user should see the Transport name row & the correct response "<transportName>" on the CYA page
-    * the user should see the Transport date Arrival row & the correct response "Today" on the CYA page
-    * the user should see the Transport time Arrival row & the correct response "01:37" on the CYA page
-    * the user should see the Full Contact details row & the correct responses "<name>", "<email>" & "07123 456 789" on the CYA page
+    Then the user should see the EPU & Entry No Rows on the CYA page
+    * the user should see the Entry Date row & the date on the CYA page
+    * the user should see the <journey> Request type row on the CYA page
+    * the user should see the Route row on the CYA page
+    * the user should see the Priority YN row on the CYA page
+    * the user answered YesToPriority then they should see the correct responses for the Import journey
+    * the user should see the Transport name row on the CYA page
+    * the user should see the Transport date Arrival row on the CYA page
+    * the user should see the Transport time Arrival row on the CYA page
+    * the user should see the Full Contact details row on the CYA page
 
     When the user clicks submit on the CYA page
     Then the user will be on the New confirmation page
