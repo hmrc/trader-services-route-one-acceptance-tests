@@ -48,7 +48,7 @@ object Configuration {
       case Environment.Local =>
         new Configuration(
           baseUrl = "http://localhost",
-          SIGN_IN_page = "http://localhost:9379/send-documents-for-customs-check1",
+          SIGN_IN_page = "http://localhost:9379/send-documents-for-customs-check",
           DESTROY_PLANET = "http://localhost:9099/agents-external-stubs/"
         )
       case Environment.Dev =>
