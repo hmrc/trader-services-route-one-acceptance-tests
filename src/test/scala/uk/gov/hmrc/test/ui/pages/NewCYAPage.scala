@@ -35,13 +35,13 @@ trait NewCYAPage extends BasePage {
 
   //Entry details section
 
-  def verifyEpuRow(): Assertion = assert(findByXpath("/html/body/div/main/div/div/div[1]/dl[1]/div[1]/dt").isDisplayed)
+  def verifyEpuRow(): Unit = assert(findByXpath("/html/body/div/main/div/div/div[1]/dl[1]/div[1]/dt").isDisplayed)
 
-  def verifyEpuAnswer(): Assertion = assert(findByXpath("/html/body/div/main/div/div/div[1]/dl[1]/div[1]/dd[1]").isDisplayed)
+  def verifyEpuAnswer(): Unit = assert(findByXpath("/html/body/div/main/div/div/div[1]/dl[1]/div[1]/dd[1]").isDisplayed)
 
-  def verifyEntryNoRow(): Assertion = assert(findByXpath("/html/body/div/main/div/div/div[1]/dl[1]/div[2]/dt").isDisplayed)
+  def verifyEntryNoRow(): Unit = assert(findByXpath("/html/body/div/main/div/div/div[1]/dl[1]/div[2]/dt").isDisplayed)
 
-  def verifyEntryNoAnswer(): Assertion = assert(findByXpath("/html/body/div/main/div/div/div[1]/dl[1]/div[2]/dd[1]").isDisplayed)
+  def verifyEntryNoAnswer(): Unit = assert(findByXpath("/html/body/div/main/div/div/div[1]/dl[1]/div[2]/dd[1]").isDisplayed)
 
   def verifyEntryDateRow(): Assertion = assertIsVisible("dl.govuk-summary-list:nth-child(3) > div:nth-child(3) > dt:nth-child(1)")
 
