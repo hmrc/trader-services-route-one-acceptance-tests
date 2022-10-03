@@ -17,8 +17,8 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import org.scalatest.Matchers
 import org.scalatest.concurrent.Eventually
+import org.scalatest.matchers.must.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.webdriver.SingletonDriver
@@ -56,11 +56,6 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
       case "cy" => assertElementText("Anfon dogfennau i’w gwirio gan y tollau", bannerServiceName())
       case "en" => assertElementText("Send documents for a customs check", bannerServiceName())
     }
-  }
-
-  When("""^the user signs out they will be on the give feedback page""") { () =>
-    clickSignOut()
-    confirmUrl(giveFeedbackUrl)
   }
 
   When("""^the user navigates to the following "(.*)"""") { (url: String) =>

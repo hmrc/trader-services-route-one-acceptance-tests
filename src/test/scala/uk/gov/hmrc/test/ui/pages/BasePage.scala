@@ -18,14 +18,15 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.junit.{AfterClass, BeforeClass}
 import org.openqa.selenium._
-import org.openqa.selenium.support.ui.{ExpectedCondition, ExpectedConditions, FluentWait}
-import org.scalatest.{Assertion, Matchers}
+import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
+import org.scalatest.matchers.must.Matchers
+import org.scalatest.Assertion
+import org.scalatest.matchers.should.Matchers.convertToAnyShouldWrapper
 import uk.gov.hmrc.test.ui.conf.Configuration.environment
 import uk.gov.hmrc.test.ui.conf.{Configuration, Environment}
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 import java.time.{Duration, LocalDate, LocalTime}
-import java.util.concurrent.TimeUnit
 import scala.collection.convert.ImplicitConversions.`collection AsScalaIterable`
 import scala.util.Random
 
@@ -63,11 +64,11 @@ trait BasePage extends Matchers with BrowserDriver {
     assert(currentUrl.contains(url) || url.contains(currentUrl), message(s"Expected url is: $url. Actual url is: $currentUrl"))
   }
 
-  def writeById(id: WebElement, value: String = "") {
+  def writeById(id: WebElement, value: String = ""): Unit = {
     writeByElement(id, value)
   }
 
-  def writeByElement(element: WebElement, value: String = "") {
+  def writeByElement(element: WebElement, value: String = ""): Unit = {
     element.clear()
     element.sendKeys(value)
   }
@@ -112,8 +113,6 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def clickBack(): Unit = findElementById("back-link").click()
 
-  def clickSignOut(): Unit = findElementByCss(".hmrc-sign-out-nav__link").click()
-
   def optionSelected(css: String): Unit = driver.findElement(By.cssSelector(css)).isSelected shouldBe true
 
   def optionNotSelected(css: String): Unit = driver.findElement(By.cssSelector(css)).isSelected shouldBe false
@@ -146,14 +145,12 @@ trait BasePage extends Matchers with BrowserDriver {
   def assertIsVisible(css: String): Assertion = assert(isElementVisible(css))
 
   def assertElementIsNotVisibleById(id: String): Unit = {
-    driver.manage.timeouts.implicitlyWait(1, TimeUnit.SECONDS)
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1))
     assert(driver.findElements(By.id(id)).size() == 0, message(s"The element with id $id was visible. Expected not visible"))
   }
 
   def switchToNewTab(totalTabs: Int): Unit = {
-    fluentWait.until[Boolean](new ExpectedCondition[Boolean] {
-      def apply(d: WebDriver): Boolean = d.getWindowHandles.size() == totalTabs
-    })
+    fluentWait.until[Boolean]((d: WebDriver) => d.getWindowHandles.size() == totalTabs)
     val tab = driver.getWindowHandles.toList
     driver.switchTo().window(tab.last)
   }
