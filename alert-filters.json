@@ -99,6 +99,54 @@
       "url": "http://localhost:9379/send-documents-for-customs-check/add/check-your-answers",
       "ruleId": 10062,
       "newLevel": -1
+    },
+    {
+      "reason":"This issue 'Cross-Domain Misconfiguration' is related to when call googleTag is setting Access-Control-Allow-Origin: * and it isn't something that we control ",
+      "contextId":1,
+      "url":"https://www.googletagmanager.com/.*",
+      "urlIsRegex":"true",
+      "ruleId":10098,
+      "newLevel":-1
+    },
+    {
+      "reason":"This issue 'X-Content-Type-Options Header Missing' is due to the header is set somewhere else",
+      "contextId":1,
+      "url":"https://www.googletagmanager.com/.*",
+      "urlIsRegex":"true",
+      "ruleId":10021,
+      "newLevel":-1
+    },
+    {
+      "reason":"This issue 'X-Content-Type-Options Header Missing' is due to the header is set somewhere else",
+      "contextId":1,
+      "url":"https://optimizationguide-pa.googleapis.com/.*",
+      "urlIsRegex":"true",
+      "ruleId":10021,
+      "newLevel":-1
+    },
+    {
+      "reason":"This issue 'X-Content-Type-Options Header Missing' is due to the header is set somewhere else",
+      "contextId":1,
+      "url":"https://www.gov.uk/assets/.*",
+      "urlIsRegex":"true",
+      "ruleId":10021,
+      "newLevel":-1
+    },
+    {
+      "reason":"This issue 'X-Content-Type-Options Header Missing' is due to the header is set somewhere else",
+      "contextId":1,
+      "url":"https://code.jquery.com/.*",
+      "urlIsRegex":"true",
+      "ruleId":10021,
+      "newLevel":-1
+    },
+    {
+      "reason":"This issue 'Absence of Anti-CSRF Tokens' is triggered by another service",
+      "contextId":1,
+      "url":"https://www.gov.uk/government/organisations/hm-revenue-customs/contact/.*",
+      "urlIsRegex":"true",
+      "ruleId":10202,
+      "newLevel":-1
     }
   ]
 }
