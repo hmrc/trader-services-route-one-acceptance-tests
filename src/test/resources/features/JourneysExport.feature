@@ -1,4 +1,4 @@
-@TraderService   @accessibility
+@TraderService1   @accessibility
 Feature: Customs check - Export journey
 
   Scenario Outline: A user wants to complete a New Export journey and review their answers

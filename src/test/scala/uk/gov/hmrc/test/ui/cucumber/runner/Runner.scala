@@ -25,7 +25,7 @@ import uk.gov.hmrc.test.ui.pages.BasePage
   features = Array("src/test/resources/features"),
   glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
   plugin = Array("pretty", "html:target/cucumber", "json:target/cucumber.json"),
-  tags = "@TraderService"
+  tags = "@TraderService1"
 )
 class Runner
 
