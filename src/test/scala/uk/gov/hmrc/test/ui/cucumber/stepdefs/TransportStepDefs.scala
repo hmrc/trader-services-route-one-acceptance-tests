@@ -19,11 +19,9 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import io.cucumber.scala.{EN, ScalaDsl}
 import uk.gov.hmrc.test.ui.pages.{BasePage, TransportQuestionsPage}
 
-
 class TransportStepDefs extends TransportQuestionsPage with BasePage with ScalaDsl with EN {
 
   Then("""^the user will be on the (.*) Transport details page$""") { (journey: String) =>
-
     journey match {
       case "Import" => confirmUrl(urlImpMandatoryTransport)
       case "Export" => confirmUrl(urlExpMandatoryTransport)
@@ -37,7 +35,6 @@ class TransportStepDefs extends TransportQuestionsPage with BasePage with ScalaD
 
   Then("""^the user enters a date of (.*) for their transportation "(.*)" "(.*)" "(.*)"$""") {
     (journey: String, transportDay: String, transportMonth: String, transportYear: String) =>
-
       journey match {
         case "Arrival" =>
           writeById(transportQArrivalDay, transportDay)
@@ -53,7 +50,6 @@ class TransportStepDefs extends TransportQuestionsPage with BasePage with ScalaD
 
   Then("""^the user enters a time of (.*) for their transportation "(.*)" "(.*)"$""") {
     (journey: String, transportHrs: String, transportMins: String) =>
-
       journey match {
         case "Arrival" =>
           writeById(transportQArrivalHours, transportHrs)
@@ -65,9 +61,8 @@ class TransportStepDefs extends TransportQuestionsPage with BasePage with ScalaD
       }
   }
 
-  Then("""^the details entered for transport name should be pre filled with "(.*)"$""") {
-    (transportName: String) =>
-      verifyInput(transportQName, transportName)
+  Then("""^the details entered for transport name should be pre filled with "(.*)"$""") { (transportName: String) =>
+    verifyInput(transportQName, transportName)
   }
 
   Then("""^the details entered for Date of (.*) should be pre filled with (.*), (.*) & (.*)$""") {
@@ -86,10 +81,8 @@ class TransportStepDefs extends TransportQuestionsPage with BasePage with ScalaD
       }
   }
 
-
   Then("""^the details entered for Time of (.*) should be pre filled with "(.*)" & "(.*)"$""") {
     (journey: String, transportHrs: String, transportMins: String) =>
-
       journey match {
         case "Arrival" =>
           verifyInput(transportQArrivalHours, transportHrs)

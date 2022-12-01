@@ -20,47 +20,47 @@ import org.openqa.selenium.By
 
 trait UploadPages extends BasePage {
 
-  val urlUpload: String = traderServicesBaseUrl + "/new/file-upload"
+  val urlUpload: String      = traderServicesBaseUrl + "/new/file-upload"
   val urlUploadAmend: String = traderServicesBaseUrl + amendUrl + "/file-upload"
 
-  val urlUploadVer: String = traderServicesBaseUrl + "/new/file-verification"
+  val urlUploadVer: String      = traderServicesBaseUrl + "/new/file-verification"
   val urlUploadVerAmend: String = traderServicesBaseUrl + amendUrl + "/file-verification"
 
-  val urlUploaded: String = traderServicesBaseUrl + "/new/file-uploaded"
+  val urlUploaded: String      = traderServicesBaseUrl + "/new/file-uploaded"
   val urlUploadedAmend: String = traderServicesBaseUrl + amendUrl + "/file-uploaded"
 
-  val usrDir = System.getProperty("user.dir") + "/src/test/resources/uploadFiles/"
+  val usrDir   = System.getProperty("user.dir") + "/src/test/resources/uploadFiles/"
   var filePath = ""
 
   val chooseFileId = "upload-file"
-  val fileIDSFU = "file"
+  val fileIDSFU    = "file"
 
   def uploadFileSFU(fileSeq: String): Unit = uploadFilesToBrowser(fileSeq, fileIDSFU)
 
   def uploadFilesToBrowser(fileSeq: String, elementID: String): Unit = {
     fileSeq match {
 
-      case "jpg" => filePath = usrDir + "testJpg.jpg"
+      case "jpg"  => filePath = usrDir + "testJpg.jpg"
       case "jpeg" => filePath = usrDir + "testJpeg.jpeg"
 
-      case "TIF" => filePath = usrDir + "testTif.TIF"
+      case "TIF"  => filePath = usrDir + "testTif.TIF"
       case "tiff" => filePath = usrDir + "testTiff.tiff"
 
       case "png" => filePath = usrDir + "testPng.png"
 
       case "pdf" => filePath = usrDir + "testPdf.pdf"
 
-      case "doc" => filePath = usrDir + "testDoc.doc"
+      case "doc"  => filePath = usrDir + "testDoc.doc"
       case "docx" => filePath = usrDir + "testDocx.docx"
-      case "odt" => filePath = usrDir + "testOdt.odt"
+      case "odt"  => filePath = usrDir + "testOdt.odt"
 
-      case "xls" => filePath = usrDir + "testXls.xls"
+      case "xls"  => filePath = usrDir + "testXls.xls"
       case "xlsx" => filePath = usrDir + "testXlsx.xlsx"
-      case "ods" => filePath = usrDir + "testOds.ods"
+      case "ods"  => filePath = usrDir + "testOds.ods"
 
-      case "ppt" => filePath = usrDir + "testPpt.ppt"
+      case "ppt"  => filePath = usrDir + "testPpt.ppt"
       case "pptx" => filePath = usrDir + "testPptx.pptx"
-      case "odp" => filePath = usrDir + "testOdp.odp"
+      case "odp"  => filePath = usrDir + "testOdp.odp"
     }
     driver.findElement(By.id(elementID)).sendKeys(filePath)
   }

@@ -19,14 +19,21 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import io.cucumber.scala.{EN, ScalaDsl}
 import uk.gov.hmrc.test.ui.pages._
 
-class ErrorStepDefs extends FinalConfirmationPage with BasePage with TransportQuestionsPage with ContactDetailsPage with
-  LandingPage with AmendPages with ScalaDsl with EN {
+class ErrorStepDefs
+    extends FinalConfirmationPage
+    with BasePage
+    with TransportQuestionsPage
+    with ContactDetailsPage
+    with LandingPage
+    with AmendPages
+    with ScalaDsl
+    with EN {
 
   When("""^the user will be on the duplicate case error page and see their case reference number""") { () =>
     confirmUrl(urlDuplicate)
   }
 
-  //Content differs from before and after 4pm
+  // Content differs from before and after 4pm
   Then("""^the user will be on the error page for internal server error""") { () =>
     assertElementText("Sorry, there is a problem with the service", findElementByCss("h1"))
   }

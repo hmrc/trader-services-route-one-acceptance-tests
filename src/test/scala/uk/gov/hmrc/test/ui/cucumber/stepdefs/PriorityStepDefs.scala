@@ -19,9 +19,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import io.cucumber.scala.{EN, ScalaDsl}
 import uk.gov.hmrc.test.ui.pages.{BasePage, PriorityPages}
 
-
 class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN {
-
 
   Then("""^the user will be on the (.*) YN Priority page""") { (journey: String) =>
     journey match {
@@ -35,20 +33,18 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
   When("""^the user is on the YesNo Priority page, selects (.*) and continues""") { (yesNo: String) =>
     yesNo match {
       case "Yes" => clickByCSS("#hasPriorityGoods")
-      case "No" => clickByCSS("#hasPriorityGoods-2")
-      case _ =>
+      case "No"  => clickByCSS("#hasPriorityGoods-2")
+      case _     =>
     }
     clickContinue()
   }
 
   Then("""^the last selected option for YN Priority should be pre filled with (.*)$""") { (YNpriority: String) =>
-
     YNpriority match {
       case "Yes" => optionSelected("#hasPriorityGoods")
-      case "No" => optionSelected("#hasPriorityGoods-2")
+      case "No"  => optionSelected("#hasPriorityGoods-2")
     }
   }
-
 
   Then("""^the user will be on the (.*) Priority Goods page""") { (journey: String) =>
     journey match {
@@ -60,20 +56,18 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
   When("""^the user is on the Priority Goods page, selects (.*) and continues""") { (requestType: String) =>
     requestType match {
       case "Explosives or fireworks" => clickByCSS("#priorityGoods")
-      case "Human remains" => clickByCSS("#priorityGoods-2")
-      case "Live animals" => clickByCSS("#priorityGoods-3")
-      case _ =>
+      case "Human remains"           => clickByCSS("#priorityGoods-2")
+      case "Live animals"            => clickByCSS("#priorityGoods-3")
+      case _                         =>
     }
     clickContinue()
   }
 
   Then("""^the last selected option for Priority goods should be pre filled with (.*)$""") { (priority: String) =>
-
     priority match {
       case "Explosives or fireworks" => optionSelected("#priorityGoods")
-      case "Human remains" => optionSelected("#priorityGoods-2")
-      case "Live animals" => optionSelected("#priorityGoods-3")
+      case "Human remains"           => optionSelected("#priorityGoods-2")
+      case "Live animals"            => optionSelected("#priorityGoods-3")
     }
   }
 }
-

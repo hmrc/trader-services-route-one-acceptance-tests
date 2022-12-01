@@ -3,10 +3,11 @@ resolvers += MavenRepository(
   root = "https://open.artefacts.tax.service.gov.uk/maven2"
 )
 resolvers += Resolver.url(
-  name    = "HMRC-open-artefacts-ivy",
+  name = "HMRC-open-artefacts-ivy",
   baseURL = url("https://open.artefacts.tax.service.gov.uk/ivy2")
 )(
   Resolver.ivyStylePatterns
 )
 
-addSbtPlugin("uk.gov.hmrc" % "sbt-auto-build" % "3.8.0")
+addSbtPlugin("uk.gov.hmrc"   % "sbt-auto-build" % "3.8.0")
+addSbtPlugin("org.scalameta" % "sbt-scalafmt"   % "2.4.6")
