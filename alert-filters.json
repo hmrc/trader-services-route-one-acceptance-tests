@@ -101,9 +101,25 @@
       "newLevel": -1
     },
     {
-      "reason":"This issue 'Cross-Domain Misconfiguration' is related to when call googleTag is setting Access-Control-Allow-Origin: * and it isn't something that we control ",
+      "reason":"This issue 'Cross-Domain Misconfiguration' is related to when call googleTag is setting Access-Control-Allow-Origin: * and it isn't something that we control",
       "contextId":1,
       "url":"https://www.googletagmanager.com/.*",
+      "urlIsRegex":"true",
+      "ruleId":10098,
+      "newLevel":-1
+    },
+    {
+      "reason":"This issue 'Cross-Domain Misconfiguration' is triggered by another service and it isn't something that we control",
+      "contextId":1,
+      "url":"https://code.jquery.com/.*",
+      "urlIsRegex":"true",
+      "ruleId":10098,
+      "newLevel":-1
+    },
+    {
+      "reason":"This issue 'Cross-Domain Misconfiguration' is related to the call to gov uk assets and it isn't something that we control",
+      "contextId":1,
+      "url":"https://www.gov.uk/assets/static/.*",
       "urlIsRegex":"true",
       "ruleId":10098,
       "newLevel":-1
