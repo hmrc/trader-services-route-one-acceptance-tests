@@ -41,32 +41,37 @@ trait BasePage extends Matchers with BrowserDriver {
     .pollingEvery(Duration.ofMillis(250))
 
   def host(localPort: Int): String = environment match {
-    case Environment.Dev => "https://www.development.tax.service.gov.uk"
-    case Environment.Qa => "https://www.qa.tax.service.gov.uk"
+    case Environment.Dev     => "https://www.development.tax.service.gov.uk"
+    case Environment.Qa      => "https://www.qa.tax.service.gov.uk"
     case Environment.Staging => "https://www.staging.tax.service.gov.uk"
-    case _ => s"http://localhost:$localPort"
+    case _                   => s"http://localhost:$localPort"
   }
 
   val traderServicesBaseUrl: String = host(9379) + "/send-documents-for-customs-check"
-  val importJourneyUrl: String = "/new/import"
-  val exportJourneyUrl: String = "/new/export"
-  val amendUrl: String = "/add"
+  val importJourneyUrl: String      = "/new/import"
+  val exportJourneyUrl: String      = "/new/export"
+  val amendUrl: String              = "/add"
 
   def confirmUrl(url: String): Unit = {
     fluentWait.until(ExpectedConditions.urlContains(url))
     val currentUrl = driver.getCurrentUrl
-    assert(currentUrl.contains(url) || url.contains(currentUrl), message(s"Expected url is: $url. Actual url is: $currentUrl"))
+    assert(
+      currentUrl.contains(url) || url.contains(currentUrl),
+      message(s"Expected url is: $url. Actual url is: $currentUrl")
+    )
   }
 
   def confirmUrlUpload(url: String): Unit = {
     fluentWaitLong.until(ExpectedConditions.urlContains(url))
     val currentUrl = driver.getCurrentUrl
-    assert(currentUrl.contains(url) || url.contains(currentUrl), message(s"Expected url is: $url. Actual url is: $currentUrl"))
+    assert(
+      currentUrl.contains(url) || url.contains(currentUrl),
+      message(s"Expected url is: $url. Actual url is: $currentUrl")
+    )
   }
 
-  def writeById(id: WebElement, value: String = ""): Unit = {
+  def writeById(id: WebElement, value: String = ""): Unit =
     writeByElement(id, value)
-  }
 
   def writeByElement(element: WebElement, value: String = ""): Unit = {
     element.clear()
@@ -105,7 +110,8 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def clickUploadContinueSFU(): Unit = elementToBeClickable("button.govuk-button:nth-child(6)").click()
 
-  def clickUploadContinueMFU(): Unit = elementToBeClickable(".multi-file-upload > div:nth-child(5) > button:nth-child(1)").click()
+  def clickUploadContinueMFU(): Unit =
+    elementToBeClickable(".multi-file-upload > div:nth-child(5) > button:nth-child(1)").click()
 
   def clickContinue(): Unit = findElementByCss(".govuk-button").click()
 
@@ -117,28 +123,23 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def optionNotSelected(css: String): Unit = driver.findElement(By.cssSelector(css)).isSelected shouldBe false
 
-  def verifyInput(id: WebElement, expectedValue: String):
-  Assertion = id.getAttribute("value") shouldBe expectedValue
+  def verifyInput(id: WebElement, expectedValue: String): Assertion = id.getAttribute("value") shouldBe expectedValue
 
   def sendNCharactersById(id: WebElement, n: Int, char: String = "a"): Unit = {
     id.clear()
     id.sendKeys(char * n)
   }
 
-  def assertElementText(content: String, element: WebElement): Unit = {
+  def assertElementText(content: String, element: WebElement): Unit =
     assert(element.getText.equals(content), message(s"Element displayed is: ${element.getText} Expecting: $content"))
-  }
 
-  def assertElementTextContains(content: String, element: WebElement): Unit = {
+  def assertElementTextContains(content: String, element: WebElement): Unit =
     assert(element.getText.contains(content), message(s"Element displayed is: ${element.getText} Expecting: $content"))
-  }
 
-  def checkSecondaryContent(content1: String, content2: String, element: WebElement): Unit = {
+  def checkSecondaryContent(content1: String, content2: String, element: WebElement): Unit =
     if (element.getText.contains(content1).equals(false)) {
       assertElementTextContains(content2, element)
-    }
-    else assertElementTextContains(content1, element)
-  }
+    } else assertElementTextContains(content1, element)
 
   def isElementVisible(css: String): Boolean = findElementByCss(css).isDisplayed
 
@@ -146,7 +147,10 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def assertElementIsNotVisibleById(id: String): Unit = {
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1))
-    assert(driver.findElements(By.id(id)).size() == 0, message(s"The element with id $id was visible. Expected not visible"))
+    assert(
+      driver.findElements(By.id(id)).size() == 0,
+      message(s"The element with id $id was visible. Expected not visible")
+    )
   }
 
   def switchToNewTab(totalTabs: Int): Unit = {
@@ -161,7 +165,7 @@ trait BasePage extends Matchers with BrowserDriver {
     driver.switchTo().window(tab(tab.length - 2))
   }
 
-  //Handoff check urls
+  // Handoff check urls
   def bannerServiceName(): WebElement = findElementByCss(".hmrc-header__service-name--linked")
 
   def clickGovUkIcon(): Unit = clickByCSS(".hmrc-header__logotype-text")
@@ -172,13 +176,19 @@ trait BasePage extends Matchers with BrowserDriver {
 
   lazy val giveFeedbackUrl = "/feedback/send-documents-for-customs-check"
 
-  def clickNchConfirmation(): Unit = clickHref("a[href*='national-clearance-hub-for-goods-entering-leaving-or-transiting-the-eu']")
+  def clickNchConfirmation(): Unit = clickHref(
+    "a[href*='national-clearance-hub-for-goods-entering-leaving-or-transiting-the-eu']"
+  )
 
-  lazy val nchConfirmationUrl = "https://www.gov.uk/guidance/national-clearance-hub-for-goods-entering-leaving-or-transiting-the-eu"
+  lazy val nchConfirmationUrl =
+    "https://www.gov.uk/guidance/national-clearance-hub-for-goods-entering-leaving-or-transiting-the-eu"
 
-  def clickChiefUnavailable(): Unit = clickHref("a[href*='/import-and-export-presentation-of-goods-for-export-arrival-c1601']")
+  def clickChiefUnavailable(): Unit = clickHref(
+    "a[href*='/import-and-export-presentation-of-goods-for-export-arrival-c1601']"
+  )
 
-  lazy val chiefUnavailableUrl = "https://www.gov.uk/government/publications/import-and-export-presentation-of-goods-for-export-arrival-c1601"
+  lazy val chiefUnavailableUrl =
+    "https://www.gov.uk/government/publications/import-and-export-presentation-of-goods-for-export-arrival-c1601"
 
   def clickNchAmendLink(): Unit = clickHref("a[href*='national-clearance-hub']")
 
@@ -196,69 +206,74 @@ trait BasePage extends Matchers with BrowserDriver {
 
   val urBannerLink = "/signup.take-part-in-research.service.gov.uk/home?utm_campaign=Customs_Check"
 
-  //Time and date
-  lazy val today: LocalDate = LocalDate.now
-  lazy val (d, m, y) = (today.getDayOfMonth, today.getMonthValue, today.getYear)
+  // Time and date
+  lazy val today: LocalDate   = LocalDate.now
+  lazy val (d, m, y)          = (today.getDayOfMonth, today.getMonthValue, today.getYear)
   lazy val (day, month, year) = (today.getDayOfMonth.toString, today.getMonthValue.toString, today.getYear.toString)
 
   lazy val yesterday: LocalDate = today.minusDays(1)
-  lazy val (yd, ym, yy) = (yesterday.getDayOfMonth.toString, yesterday.getMonthValue.toString, yesterday.getYear.toString)
+  lazy val (yd, ym, yy)         =
+    (yesterday.getDayOfMonth.toString, yesterday.getMonthValue.toString, yesterday.getYear.toString)
 
   lazy val tomorrow: LocalDate = today.plusDays(1)
-  lazy val (td, tm, ty) = (tomorrow.getDayOfMonth.toString, tomorrow.getMonthValue.toString, tomorrow.getYear.toString)
+  lazy val (td, tm, ty)        = (tomorrow.getDayOfMonth.toString, tomorrow.getMonthValue.toString, tomorrow.getYear.toString)
 
   lazy val sixMonthsFromNow: LocalDate = today.plusMonths(6)
 
   lazy val overSixMonthsFromNow: LocalDate = today.plusMonths(6).plusDays(1)
-  lazy val (d6future, m6future, y6future) = (overSixMonthsFromNow.getDayOfMonth.toString, overSixMonthsFromNow.getMonthValue.toString, overSixMonthsFromNow.getYear.toString)
+  lazy val (d6future, m6future, y6future)  = (
+    overSixMonthsFromNow.getDayOfMonth.toString,
+    overSixMonthsFromNow.getMonthValue.toString,
+    overSixMonthsFromNow.getYear.toString
+  )
 
-  lazy val sixMonthsAgo: LocalDate = today.minusMonths(6).minusDays(1)
-  lazy val (d6past, m6past, y6past) = (sixMonthsAgo.getDayOfMonth.toString, sixMonthsAgo.getMonthValue.toString, sixMonthsAgo.getYear.toString)
+  lazy val sixMonthsAgo: LocalDate  = today.minusMonths(6).minusDays(1)
+  lazy val (d6past, m6past, y6past) =
+    (sixMonthsAgo.getDayOfMonth.toString, sixMonthsAgo.getMonthValue.toString, sixMonthsAgo.getYear.toString)
 
-
-  lazy val dayFormatted = f"$d%02d"
+  lazy val dayFormatted   = f"$d%02d"
   lazy val monthFormatted = f"$m%02d"
 
   lazy val nowTime: LocalTime = LocalTime.now()
-  lazy val sla2Hour: Int = nowTime.plusHours(2).getHour
-  lazy val sla3Hour: Int = nowTime.plusHours(3).getHour
-  lazy val min: Int = nowTime.getMinute
-  lazy val min1: Int = nowTime.minusMinutes(1).getMinute
+  lazy val sla2Hour: Int      = nowTime.plusHours(2).getHour
+  lazy val sla3Hour: Int      = nowTime.plusHours(3).getHour
+  lazy val min: Int           = nowTime.getMinute
+  lazy val min1: Int          = nowTime.minusMinutes(1).getMinute
 
   lazy val sla2hrFormatted = f"$sla2Hour%02d:$min%02d"
-  lazy val sla2hrAddMin = f"$sla2Hour%02d:$min1%02d"
+  lazy val sla2hrAddMin    = f"$sla2Hour%02d:$min1%02d"
 
   lazy val sla3hrFormatted = f"$sla3Hour%02d:$min%02d"
-  lazy val sla3hrAddMin = f"$sla3Hour%02d:$min1%02d"
+  lazy val sla3hrAddMin    = f"$sla3Hour%02d:$min1%02d"
 
-  lazy val threePm: LocalTime = LocalTime.parse("15:00:00.00")
+  lazy val threePm: LocalTime  = LocalTime.parse("15:00:00.00")
   lazy val midnight: LocalTime = LocalTime.parse("00:00:00.00")
-  lazy val eightAm: LocalTime = LocalTime.parse("08:00:00.00")
+  lazy val eightAm: LocalTime  = LocalTime.parse("08:00:00.00")
 
   lazy val between3pmAndMidnight: Boolean = nowTime.isAfter(threePm) && nowTime.isBefore(midnight)
   lazy val betweenMidnightAnd8am: Boolean = nowTime.isAfter(midnight) && nowTime.isBefore(eightAm)
-  lazy val between8amAnd3pm: Boolean = nowTime.isAfter(eightAm) && nowTime.isBefore(threePm)
+  lazy val between8amAnd3pm: Boolean      = nowTime.isAfter(eightAm) && nowTime.isBefore(threePm)
 
-  def errorContentAmendCaseRef:WebElement = findElementByCss("p.govuk-body:nth-child(3)")
+  def errorContentAmendCaseRef: WebElement = findElementByCss("p.govuk-body:nth-child(3)")
 
-  val errorContentCaseRef:String = "Try to enter your case reference number again."
+  val errorContentCaseRef: String = "Try to enter your case reference number again."
 
-  //Random inputs
+  // Random inputs
   lazy val randomEpuDigits: Int = Random.nextInt(666)
-  val randomEPU: String = f"$randomEpuDigits%03d"
+  val randomEPU: String         = f"$randomEpuDigits%03d"
 
   lazy val randomAlpha: String = Random.alphanumeric.filter(_.isLetter).head.toString
 
   lazy val randomImportDigits: Int = Random.nextInt(999999)
-  lazy val importEN: String = f"$randomImportDigits%06d" + randomAlpha
+  lazy val importEN: String        = f"$randomImportDigits%06d" + randomAlpha
 
   lazy val randomExportDigits: Int = Random.nextInt(99999)
-  lazy val exportEN: String = randomAlpha + f"$randomExportDigits%05d" + randomAlpha
+  lazy val exportEN: String        = randomAlpha + f"$randomExportDigits%05d" + randomAlpha
 
   def randomString(length: Int): String = Random.alphanumeric.take(length).mkString
 
   val shortString: String = randomString(20)
-  val longString: String = randomString(1000)
+  val longString: String  = randomString(1000)
 
   var lastUsedTestEmail: String = ""
 
@@ -269,7 +284,7 @@ trait BasePage extends Matchers with BrowserDriver {
 
   val userCaseRef = "PC12010081330XGBNZJO04"
 
-  //Agent-stubs
+  // Agent-stubs
   def userId: WebElement = driver.findElement(By.id("userId"))
 
   def planetId: WebElement = driver.findElement(By.id("planetId"))

@@ -32,8 +32,7 @@ trait NewCYAPage extends BasePage {
 
   def verifyH2Contact(): Assertion = assertIsVisible("h2.govuk-heading-l:nth-child(8)")
 
-
-  //Entry details section
+  // Entry details section
 
   def verifyEpuRow(): Unit = assert(findByXpath("/html/body/div/main/div/div/div[1]/dl[1]/div[1]/dt").isDisplayed)
 
@@ -41,61 +40,88 @@ trait NewCYAPage extends BasePage {
 
   def verifyEntryNoRow(): Unit = assert(findByXpath("/html/body/div/main/div/div/div[1]/dl[1]/div[2]/dt").isDisplayed)
 
-  def verifyEntryNoAnswer(): Unit = assert(findByXpath("/html/body/div/main/div/div/div[1]/dl[1]/div[2]/dd[1]").isDisplayed)
+  def verifyEntryNoAnswer(): Unit = assert(
+    findByXpath("/html/body/div/main/div/div/div[1]/dl[1]/div[2]/dd[1]").isDisplayed
+  )
 
-  def verifyEntryDateRow(): Assertion = assertIsVisible("dl.govuk-summary-list:nth-child(3) > div:nth-child(3) > dt:nth-child(1)")
+  def verifyEntryDateRow(): Assertion = assertIsVisible(
+    "dl.govuk-summary-list:nth-child(3) > div:nth-child(3) > dt:nth-child(1)"
+  )
 
-  def verifyEntryDateAnswer(): Assertion = assertIsVisible("dl.govuk-summary-list:nth-child(3) > div:nth-child(3) > dd:nth-child(2)")
+  def verifyEntryDateAnswer(): Assertion = assertIsVisible(
+    "dl.govuk-summary-list:nth-child(3) > div:nth-child(3) > dd:nth-child(2)"
+  )
 
+  // Question Section (order may vary)
 
-  //Question Section (order may vary)
+  // Always request type
+  def firstQRow: WebElement = findElementByCss(
+    "dl.govuk-summary-list:nth-child(5) > div:nth-child(1) > dt:nth-child(1)"
+  )
 
-  //Always request type
-  def firstQRow: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(5) > div:nth-child(1) > dt:nth-child(1)")
+  def verifyFirstQAnswer(): Assertion = assertIsVisible(
+    "dl.govuk-summary-list:nth-child(5) > div:nth-child(1) > dd:nth-child(2)"
+  )
 
-  def verifyFirstQAnswer(): Assertion = assertIsVisible("dl.govuk-summary-list:nth-child(5) > div:nth-child(1) > dd:nth-child(2)")
+  // Always route type
+  def verifySecondQAnswer(): Assertion = assertIsVisible(
+    "dl.govuk-summary-list:nth-child(5) > div:nth-child(2) > dd:nth-child(2)"
+  )
 
-  //Always route type
-  def verifySecondQAnswer(): Assertion = assertIsVisible("dl.govuk-summary-list:nth-child(5) > div:nth-child(2) > dd:nth-child(2)")
+  // Always Priority YN
+  def verifyThirdQAnswer(): Assertion = assertIsVisible(
+    "dl.govuk-summary-list:nth-child(5) > div:nth-child(3) > dd:nth-child(2)"
+  )
 
-  //Always Priority YN
-  def verifyThirdQAnswer(): Assertion = assertIsVisible("dl.govuk-summary-list:nth-child(5) > div:nth-child(3) > dd:nth-child(2)")
-
-  //The following vary based on journey (exp/imp) & answer to priority goods
+  // The following vary based on journey (exp/imp) & answer to priority goods
   def verifyFourthQAnswer(): Assertion = assertIsVisible("div.govuk-summary-list__row:nth-child(4) > dd:nth-child(2)")
 
   def verifyFifthQAnswer(): Assertion = assertIsVisible("div.govuk-summary-list__row:nth-child(5) > dd:nth-child(2)")
 
-  //Only accessible in Import & Yes to priority
+  // Only accessible in Import & Yes to priority
   def verifySixthQAnswer(): Assertion = assertIsVisible("div.govuk-summary-list__row:nth-child(6) > dd:nth-child(2)")
 
+  // Vessel Section
 
-  //Vessel Section
+  def verifySeventhRowFirstAnswer(): Assertion = assertIsVisible(
+    "dl.govuk-summary-list:nth-child(7) > div:nth-child(1) > dd:nth-child(2)"
+  )
 
-  def verifySeventhRowFirstAnswer(): Assertion = assertIsVisible("dl.govuk-summary-list:nth-child(7) > div:nth-child(1) > dd:nth-child(2)")
+  def seventhRowSecondQ: WebElement = findElementByCss(
+    "dl.govuk-summary-list:nth-child(7) > div:nth-child(2) > dt:nth-child(1)"
+  )
 
-  def seventhRowSecondQ: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(2) > dt:nth-child(1)")
+  def verifySeventhRowSecondAnswer(): Assertion = assertIsVisible(
+    "dl.govuk-summary-list:nth-child(7) > div:nth-child(2) > dd:nth-child(2)"
+  )
 
-  def verifySeventhRowSecondAnswer(): Assertion = assertIsVisible("dl.govuk-summary-list:nth-child(7) > div:nth-child(2) > dd:nth-child(2)")
+  def seventhRowThirdQ: WebElement = findElementByCss(
+    "dl.govuk-summary-list:nth-child(7) > div:nth-child(3) > dt:nth-child(1)"
+  )
 
-  def seventhRowThirdQ: WebElement = findElementByCss("dl.govuk-summary-list:nth-child(7) > div:nth-child(3) > dt:nth-child(1)")
+  def verifySeventhRowThirdAnswer(): Assertion = assertIsVisible(
+    "dl.govuk-summary-list:nth-child(7) > div:nth-child(3) > dd:nth-child(2)"
+  )
 
-  def verifySeventhRowThirdAnswer(): Assertion = assertIsVisible("dl.govuk-summary-list:nth-child(7) > div:nth-child(3) > dd:nth-child(2)")
+  // Contact details section
 
-  //Contact details section
+  def verifyEighthRowFirstQ(): Assertion = assertIsVisible(
+    "dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dt:nth-child(1)"
+  )
 
-  def verifyEighthRowFirstQ(): Assertion = assertIsVisible("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dt:nth-child(1)")
+  def verifyEighthRowFirstAnswer(): Assertion = assertIsVisible(
+    "dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(1)"
+  )
 
-  def verifyEighthRowFirstAnswer(): Assertion = assertIsVisible("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(1)")
+  def verifyEighthRowSecondAnswer(): Assertion = assertIsVisible(
+    "dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(2)"
+  )
 
-  def verifyEighthRowSecondAnswer(): Assertion = assertIsVisible("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(2)")
+  def verifyEighthRowThirdAnswer(): Assertion = assertIsVisible(
+    "dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(3)"
+  )
 
-  def verifyEighthRowThirdAnswer(): Assertion = assertIsVisible("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(3)")
-
-  def verifyContactDetailAnswerEmailOnly(): Assertion = assertIsVisible("dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(1)")
+  def verifyContactDetailAnswerEmailOnly(): Assertion = assertIsVisible(
+    "dl.govuk-summary-list:nth-child(9) > div:nth-child(1) > dd:nth-child(2) > div:nth-child(1)"
+  )
 }
-
-
-
-
-

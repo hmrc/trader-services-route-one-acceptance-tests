@@ -22,11 +22,15 @@ import org.openqa.selenium.chrome.ChromeOptions
 import uk.gov.hmrc.webdriver.SingletonDriver
 
 trait BrowserDriver extends LazyLogging {
-  logger.info(s"Instantiating Browser: ${sys.props.getOrElse("browser", "'browser' System property not set. This is required")}")
+  logger.info(
+    s"Instantiating Browser: ${sys.props.getOrElse("browser", "'browser' System property not set. This is required")}"
+  )
 
   val chromeOptions = new ChromeOptions
-  chromeOptions.addArguments("disable-dev-shm-usage",
-    "--disable-features=OptimizationGuideModelDownloading,OptimizationHintsFetching,OptimizationTargetPrediction,OptimizationHints")
+  chromeOptions.addArguments(
+    "disable-dev-shm-usage",
+    "--disable-features=OptimizationGuideModelDownloading,OptimizationHintsFetching,OptimizationTargetPrediction,OptimizationHints"
+  )
 
   implicit lazy val driver: WebDriver = SingletonDriver.getInstance(Some(chromeOptions))
 

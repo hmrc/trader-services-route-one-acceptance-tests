@@ -19,7 +19,6 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import io.cucumber.scala.{EN, ScalaDsl}
 import uk.gov.hmrc.test.ui.pages.ContactDetailsPage
 
-
 class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
 
   Then("""^the user will be on the (.*) Contact details page$""") { (journey: String) =>
@@ -29,23 +28,19 @@ class ContactDetailsStepDefs extends ContactDetailsPage with ScalaDsl with EN {
     }
   }
 
-  When("""^the user enters a name "(.*)"$""") {
-    (name: String) =>
-      writeById(fullName, name)
+  When("""^the user enters a name "(.*)"$""") { (name: String) =>
+    writeById(fullName, name)
   }
 
-  And("""^the user enters an email address "(.*)"$""") {
-    (emailAddress: String) =>
-
-      emailAddress match {
-        case "testEmail" => writeById(email, generateTestEmailAddress)
-        case _ => writeById(email, emailAddress)
-      }
+  And("""^the user enters an email address "(.*)"$""") { (emailAddress: String) =>
+    emailAddress match {
+      case "testEmail" => writeById(email, generateTestEmailAddress)
+      case _           => writeById(email, emailAddress)
+    }
   }
 
-  And("""^the user enters a phone number "(.*)"$""") {
-    (phone: String) =>
-      writeById(phoneNo, phone)
+  And("""^the user enters a phone number "(.*)"$""") { (phone: String) =>
+    writeById(phoneNo, phone)
   }
 
   Then("""^the details entered for name, email and phone number should be pre-filled with "(.*)", "(.*)" & "(.*)"$""") {

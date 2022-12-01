@@ -20,30 +20,30 @@ import com.typesafe.config.{Config, ConfigFactory}
 import org.openqa.selenium.WebDriver
 import uk.gov.hmrc.webdriver.SingletonDriver
 
-case class Configuration(baseUrl: String, SIGN_IN_page: String, DESTROY_PLANET:String)
+case class Configuration(baseUrl: String, SIGN_IN_page: String, DESTROY_PLANET: String)
 
 object Configuration {
 
   val driverInstance: WebDriver = SingletonDriver.getInstance()
 
-  val config: Config = ConfigFactory.load()
+  val config: Config        = ConfigFactory.load()
   val defaultConfig: Config = config
-  val envConfig: Config = config.withFallback(defaultConfig)
+  val envConfig: Config     = config.withFallback(defaultConfig)
 
   lazy val environment: Environment.Name = {
     val environmentProperty = Option(System.getProperty("environment")).getOrElse("Local").toLowerCase
     environmentProperty match {
-      case "local" => Environment.Local
-      case "qa" => Environment.Qa
-      case "dev" => Environment.Dev
+      case "local"   => Environment.Local
+      case "qa"      => Environment.Qa
+      case "dev"     => Environment.Dev
       case "staging" => Environment.Staging
-      case _ => throw new IllegalArgumentException(s"Environment '$environmentProperty' not known")
+      case _         => throw new IllegalArgumentException(s"Environment '$environmentProperty' not known")
     }
   }
 
   lazy val settings: Configuration = create()
 
-  private def create(): Configuration = {
+  private def create(): Configuration =
     environment match {
       case Environment.Local =>
         new Configuration(
@@ -51,13 +51,13 @@ object Configuration {
           SIGN_IN_page = "http://localhost:9379/send-documents-for-customs-check",
           DESTROY_PLANET = "http://localhost:9099/agents-external-stubs/"
         )
-      case Environment.Dev =>
+      case Environment.Dev   =>
         new Configuration(
           baseUrl = "https://www.development.tax.service.gov.uk/",
           SIGN_IN_page = "https://www.development.tax.service.gov.uk/send-documents-for-customs-check",
           DESTROY_PLANET = "https://www.development.tax.service.gov.uk/agents-external-stubs/"
         )
-      case Environment.Qa =>
+      case Environment.Qa    =>
         new Configuration(
           baseUrl = "https://www.qa.tax.service.gov.uk/",
           SIGN_IN_page = "https://www.qa.tax.service.gov.uk/send-documents-for-customs-check",
@@ -73,7 +73,6 @@ object Configuration {
 
       case _ => throw new IllegalArgumentException(s"Environment '$environment' not known")
     }
-  }
 }
 
 object Environment extends Enumeration {

@@ -19,26 +19,24 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import io.cucumber.scala.{EN, ScalaDsl}
 import uk.gov.hmrc.test.ui.pages.{BasePage, UploadPages}
 
-
 class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
 
-
   Then("""^the user navigates to the single file (.*) upload page""") { (page: String) =>
-
     page match {
-      case "New" => navigateTo(urlUpload)
+      case "New"   =>
+        navigateTo(urlUpload)
         confirmUrl(urlUpload)
-      case "Amend" => navigateTo(urlUploadAmend)
+      case "Amend" =>
+        navigateTo(urlUploadAmend)
         confirmUrl(urlUploadAmend)
     }
   }
 
   Then("""^the user will be on the (.*) upload page""") { (page: String) =>
-
     page match {
-      case "First" => confirmUrl(urlUpload)
-      case "Another" => confirmUrl(urlUpload)
-      case "Amend" => confirmUrl(urlUploadAmend)
+      case "First"        => confirmUrl(urlUpload)
+      case "Another"      => confirmUrl(urlUpload)
+      case "Amend"        => confirmUrl(urlUploadAmend)
       case "AnotherAmend" => confirmUrl(urlUploadAmend)
     }
   }
@@ -49,13 +47,11 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     clickByCSS(".file-upload__submit")
   }
 
-  Then("""^the user should be on the (.*) file upload confirmation page""") {
-    (journey: String) =>
-
-      journey match {
-        case "new" => confirmUrlUpload(urlUploaded)
-        case "amend" => confirmUrlUpload(urlUploadedAmend)
-      }
+  Then("""^the user should be on the (.*) file upload confirmation page""") { (journey: String) =>
+    journey match {
+      case "new"   => confirmUrlUpload(urlUploaded)
+      case "amend" => confirmUrlUpload(urlUploadedAmend)
+    }
   }
 
   Then("""^the user should see their first uploaded doc on upload review page$""") { () =>
@@ -70,8 +66,8 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
   Then("""^the user selects (.*) to uploading another file""") { (yesNo: String) =>
     yesNo match {
       case "Yes" => clickByCSS("#uploadAnotherFile")
-      case "No" => clickByCSS("#uploadAnotherFile-2")
-      case _ =>
+      case "No"  => clickByCSS("#uploadAnotherFile-2")
+      case _     =>
     }
     clickUploadContinueSFU()
   }

@@ -50,9 +50,9 @@ class AmendCYAStepDefs extends AmendPages with AmendCYAPage with BasePage with S
   When("""^the user clicks the change link on the amend review page for (.*)$""") { (changeLink: String) =>
     changeLink match {
 
-      case "CaseRef" => clickHref("a[href*='case-reference-number']")
+      case "CaseRef"   => clickHref("a[href*='case-reference-number']")
       case "Amendment" => clickHref("a[href*='type-of-amendment']")
-      case "Message" => clickHref("a[href*='write-response']")
+      case "Message"   => clickHref("a[href*='write-response']")
       case "Documents" => clickHref("a[href*='upload-files']")
     }
   }
