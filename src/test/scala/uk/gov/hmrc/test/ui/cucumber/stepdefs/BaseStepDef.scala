@@ -25,8 +25,17 @@ import uk.gov.hmrc.webdriver.SingletonDriver
 
 import scala.util.Try
 
-class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with Eventually
-  with Matchers with EntryDetailsPage with TransportQuestionsPage with AmendPages with LandingPage {
+class BaseStepDef
+    extends BasePage
+    with ScalaDsl
+    with EN
+    with BrowserDriver
+    with Eventually
+    with Matchers
+    with EntryDetailsPage
+    with TransportQuestionsPage
+    with AmendPages
+    with LandingPage {
 
   sys.addShutdownHook {
     Try(SingletonDriver.closeInstance)
@@ -67,36 +76,44 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
   }
 
   When("""^the user clicks the (.*) link they will be redirected to the appropriate page$""") { (link: String) =>
-
     link match {
-      case "confirmation feedback" => clickGiveFeedbackConfirmation()
+      case "confirmation feedback" =>
+        clickGiveFeedbackConfirmation()
         confirmUrl(giveFeedbackUrl)
 
-      case "amend NCH" => caseRefReveal.click()
+      case "amend NCH" =>
+        caseRefReveal.click()
         clickNchAmendLink()
         confirmUrl(nchAmendUrl)
 
-      case "confirmation NCH" => clickNchConfirmation()
+      case "confirmation NCH" =>
+        clickNchConfirmation()
         confirmUrl(nchConfirmationUrl)
 
-      case "chief unavailable" => clickChiefUnavailable()
+      case "chief unavailable" =>
+        clickChiefUnavailable()
         confirmUrl(chiefUnavailableUrl)
 
-      case "gov.uk icon" => clickGovUkIcon()
+      case "gov.uk icon" =>
+        clickGovUkIcon()
         confirmUrl(govUkExternal)
 
-      case "service-name" => bannerServiceName().click()
+      case "service-name" =>
+        bannerServiceName().click()
         confirmUrl(traderServicesUrl)
 
-      case "banner feedback" => clickGiveFeedbackBanner()
+      case "banner feedback" =>
+        clickGiveFeedbackBanner()
         confirmUrl(giveFeedbackBannerUrl)
 
-      case "deskpro" => clickDeskProLink()
+      case "deskpro" =>
+        clickDeskProLink()
         switchToNewTab(2)
         confirmUrl(deskProUrl)
         closeNewTab()
 
-      case "UR banner" => clickURLink()
+      case "UR banner" =>
+        clickURLink()
         switchToNewTab(2)
         confirmUrl(urBannerLink)
         closeNewTab()
@@ -134,26 +151,23 @@ class BaseStepDef extends BasePage with ScalaDsl with EN with BrowserDriver with
     }
   }
 
-  Then("""^the details entered for (.*) should be pre filled with today's date$""") {
-    (dateField: String) =>
-      dateField match {
+  Then("""^the details entered for (.*) should be pre filled with today's date$""") { (dateField: String) =>
+    dateField match {
 
-        case "entryDate" =>
-          verifyInput(entryDay, dayFormatted)
-          verifyInput(entryMonth, monthFormatted)
-          verifyInput(entryYear, year)
+      case "entryDate" =>
+        verifyInput(entryDay, dayFormatted)
+        verifyInput(entryMonth, monthFormatted)
+        verifyInput(entryYear, year)
 
-        case "transportDateArrival" =>
-          verifyInput(transportQArrivalDay, dayFormatted)
-          verifyInput(transportQArrivalMonth, monthFormatted)
-          verifyInput(transportQArrivalYear, year)
+      case "transportDateArrival" =>
+        verifyInput(transportQArrivalDay, dayFormatted)
+        verifyInput(transportQArrivalMonth, monthFormatted)
+        verifyInput(transportQArrivalYear, year)
 
-        case "transportDateDeparture" =>
-          verifyInput(transportQDepartureDay, dayFormatted)
-          verifyInput(transportQDepartureMonth, monthFormatted)
-          verifyInput(transportQDepartureYear, year)
-      }
+      case "transportDateDeparture" =>
+        verifyInput(transportQDepartureDay, dayFormatted)
+        verifyInput(transportQDepartureMonth, monthFormatted)
+        verifyInput(transportQDepartureYear, year)
+    }
   }
 }
-
-

@@ -19,11 +19,15 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import io.cucumber.scala.{EN, ScalaDsl}
 import uk.gov.hmrc.test.ui.pages.{AmendPages, BasePage, FinalConfirmationPage, LandingPage}
 
-class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
-  with LandingPage with AmendPages with ScalaDsl with EN {
+class FinalConfirmationStepDefs
+    extends FinalConfirmationPage
+    with BasePage
+    with LandingPage
+    with AmendPages
+    with ScalaDsl
+    with EN {
 
   Given("""^the user will be on the (.*) confirmation page""") { (journey: String) =>
-
     journey match {
       case "New" =>
         confirmUrl(urlConfirmation)
@@ -40,11 +44,13 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
 
   }
 
-  Then("""^outputs the case reference number""") { () => //TODO check way around this
+  Then("""^outputs the case reference number""") { () => // TODO check way around this
     caseRefNo.getText
   }
 
-  When("""^the user clicks the button to submit another case on the confirmation page they will go back to the start""") { () =>
+  When(
+    """^the user clicks the button to submit another case on the confirmation page they will go back to the start"""
+  ) { () =>
     clickSendAnother()
     confirmUrl(traderServicesUrl)
   }
@@ -54,10 +60,9 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
     confirmUrl(urlCaseRef)
   }
 
-
   Then("""^the user should see (.*) SLA""") { (sla: String) =>
     sla match {
-      //Air - both, Roro - both, Maritime - Export
+      // Air - both, Roro - both, Maritime - Export
       case "2 Hour" => checkSecondaryContent(sla2hrFormatted + " today.", sla2hrAddMin + " today", slaPara)
 
       case "Maritime-Import" =>
@@ -65,8 +70,8 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
         if (between3pmAndMidnight) assertElementTextContains("08:00 tomorrow.", slaPara)
         if (betweenMidnightAnd8am) assertElementTextContains("08:00 today.", slaPara)
 
-      //Route Hold (No SLA)
-      case "Hold" => assertElementTextContains(holdSLA, slaPara)
+      // Route Hold (No SLA)
+      case "Hold"            => assertElementTextContains(holdSLA, slaPara)
     }
   }
 }

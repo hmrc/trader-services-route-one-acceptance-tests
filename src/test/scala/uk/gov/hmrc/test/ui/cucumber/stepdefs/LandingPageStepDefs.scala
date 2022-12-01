@@ -20,35 +20,30 @@ import io.cucumber.scala.{EN, ScalaDsl}
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.{BasePage, LandingPage}
 
-
 class LandingPageStepDefs extends LandingPage with BasePage with ScalaDsl with EN {
-
 
   Then("""^the user will be on the start page for trader services$""") { () =>
     confirmUrl(traderServicesUrl)
   }
-
 
   Given("""^the user is on the start page for trader services, selects (.*) and continues$""") { (journey: String) =>
     navigateTo(traderServicesUrl)
     confirmUrl(traderServicesUrl)
 
     journey match {
-      case "New" => driver.findElement(By.cssSelector("#newOrExistingCase")).click()
+      case "New"   => driver.findElement(By.cssSelector("#newOrExistingCase")).click()
       case "Amend" => driver.findElement(By.cssSelector("#newOrExistingCase-2")).click()
     }
     clickContinue()
   }
 
   Then("""^the last selected option for journey type should be pre filled with (.*)$""") { (journey: String) =>
-
     journey match {
-      case "New" => optionSelected("#newOrExistingCase")
-      case "Amend" => optionSelected("#newOrExistingCase-2")
+      case "New"     => optionSelected("#newOrExistingCase")
+      case "Amend"   => optionSelected("#newOrExistingCase-2")
       case "Nothing" =>
         optionNotSelected("#newOrExistingCase")
         optionNotSelected("#newOrExistingCase-2")
     }
   }
 }
-

@@ -29,5 +29,4 @@ import uk.gov.hmrc.test.ui.pages.BasePage
 )
 class AccessibilityRunner
 
-object AccessibilityRunner extends AccessibilityRunner with BasePage {
-}
+object AccessibilityRunner extends AccessibilityRunner with BasePage {}

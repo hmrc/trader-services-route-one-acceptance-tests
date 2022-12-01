@@ -22,7 +22,9 @@ import org.openqa.selenium.chrome.ChromeOptions
 import uk.gov.hmrc.webdriver.SingletonDriver
 
 trait BrowserDriver extends LazyLogging {
-  logger.info(s"Instantiating Browser: ${sys.props.getOrElse("browser", "'browser' System property not set. This is required")}")
+  logger.info(
+    s"Instantiating Browser: ${sys.props.getOrElse("browser", "'browser' System property not set. This is required")}"
+  )
 
 
   val javascriptDisable: Boolean = sys.props.get("disable.javascript").exists(_.toBoolean)

@@ -29,5 +29,4 @@ import uk.gov.hmrc.test.ui.pages.BasePage
 )
 class Runner
 
-object Runner extends Runner with BasePage {
-}
+object Runner extends Runner with BasePage {}

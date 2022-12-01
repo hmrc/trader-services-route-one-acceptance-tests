@@ -29,4 +29,3 @@ trait ContactDetailsPage extends BasePage {
 
   def phoneNo: WebElement = findElementById("contactNumber")
 }
-

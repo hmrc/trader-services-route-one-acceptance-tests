@@ -20,7 +20,6 @@ import org.openqa.selenium.WebElement
 
 trait QuestionPages extends BasePage {
 
-
   val urlImportRequest: String = traderServicesBaseUrl + importJourneyUrl + "/request-type"
   val urlExportRequest: String = traderServicesBaseUrl + exportJourneyUrl + "/request-type"
 
@@ -35,7 +34,7 @@ trait QuestionPages extends BasePage {
   val urlTransportImport: String = traderServicesBaseUrl + importJourneyUrl + "/transport-type"
   val urlTransportExport: String = traderServicesBaseUrl + exportJourneyUrl + "/transport-type"
 
-  //ALVS - Import only
+  // ALVS - Import only
   val urlALVS: String = traderServicesBaseUrl + importJourneyUrl + "/automatic-licence-verification"
 
 }

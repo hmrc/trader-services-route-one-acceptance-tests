@@ -32,7 +32,8 @@ trait FinalConfirmationPage extends BasePage {
 
   def slaPara: WebElement = findElementByCss("p.govuk-body:nth-child(3)")
 
-  val holdSLA = "When your transportation arrives, we’ll begin the document checks. Once our checks are complete, you’ll hear from us through CHIEF or your declaration software."
+  val holdSLA =
+    "When your transportation arrives, we’ll begin the document checks. Once our checks are complete, you’ll hear from us through CHIEF or your declaration software."
 
   val printPdfIcon = ".print-page"
   val saveHtmlIcon = "a.action-buttons__button"

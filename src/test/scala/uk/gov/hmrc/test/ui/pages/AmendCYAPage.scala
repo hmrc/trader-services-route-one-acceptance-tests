@@ -32,19 +32,18 @@ trait AmendCYAPage extends BasePage with EntryDetailsPage with QuestionPages {
 
   def verifyInfoTypeRow(): Unit = assert(findByXpath("/html/body/div/main/div/div/div/dl[2]/div[1]/dt").isDisplayed)
 
-  def verifyInfoTypeAnswer(): Unit = assert(findByXpath("/html/body/div/main/div/div/div/dl[2]/div[1]/dd[1]").isDisplayed)
+  def verifyInfoTypeAnswer(): Unit = assert(
+    findByXpath("/html/body/div/main/div/div/div/dl[2]/div[1]/dd[1]").isDisplayed
+  )
 
   def verifyMessageRow(): Unit = assert(findByXpath("/html/body/div/main/div/div/div/dl[2]/div[2]/dt").isDisplayed)
 
-  def verifyMessageAnswer(): Unit = assert(findByXpath("/html/body/div/main/div/div/div/dl[2]/div[2]/dd[1]").isDisplayed)
+  def verifyMessageAnswer(): Unit = assert(
+    findByXpath("/html/body/div/main/div/div/div/dl[2]/div[2]/dd[1]").isDisplayed
+  )
 
   def verifyUploadRow(): Unit = assert(findByXpath("/html/body/div/main/div/div/div/dl[3]/div/dt").isDisplayed)
 
   def verifyUploadAnswer(): Unit = assert(findByXpath("/html/body/div/main/div/div/div/dl[3]/div/dd[1]").isDisplayed)
 
 }
-
-
-
-
-
