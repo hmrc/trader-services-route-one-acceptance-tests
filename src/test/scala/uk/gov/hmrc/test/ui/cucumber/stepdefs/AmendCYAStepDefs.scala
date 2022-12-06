@@ -52,7 +52,7 @@ class AmendCYAStepDefs extends AmendPages with AmendCYAPage with BasePage with S
 
       case "CaseRef"   => clickHref("a[href*='case-reference-number']")
       case "Amendment" => clickHref("a[href*='type-of-amendment']")
-      case "Message" => clickHref("a[href*='write-response']")
+      case "Message"   => clickHref("a[href*='write-response']")
       case "Documents" => if(javascriptDisable) {
         clickHref("a[href*='file-upload']")
       } else {
