@@ -132,7 +132,12 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
       case "Transport"        => clickHref("a[href*='transport-type']")
       case "TransportDetails" => clickHref("a[href*='transport-information']")
       case "ContactDetails"   => clickHref("a[href*='contact-information']")
-      case "Documents"        => clickHref("a[href*='upload-files']")
+      case "Documents"        =>
+        if (javascriptDisable) {
+          clickHref("a[href*='file-upload']")
+        } else {
+          clickHref("a[href*='upload-files']")
+        }
     }
   }
 }
