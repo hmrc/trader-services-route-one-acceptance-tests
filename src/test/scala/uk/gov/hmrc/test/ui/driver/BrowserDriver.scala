@@ -25,7 +25,6 @@ trait BrowserDriver extends LazyLogging {
     s"Instantiating Browser: ${sys.props.getOrElse("browser", "'browser' System property not set. This is required")}"
   )
 
-
   val javascriptDisable: Boolean = sys.props.get("disable.javascript").exists(_.toBoolean)
 
   implicit lazy val driver: WebDriver = SingletonDriver.getInstance()

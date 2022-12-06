@@ -29,5 +29,4 @@ import uk.gov.hmrc.test.ui.pages.BasePage
 )
 class JsDisabledRunner
 
-object JsDisabledRunner extends JsDisabledRunner with BasePage {
-}
+object JsDisabledRunner extends JsDisabledRunner with BasePage {}

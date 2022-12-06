@@ -36,7 +36,7 @@ class FinalConfirmationStepDefs
         confirmUrl(urlAmendConfirm)
     }
 
-    if(!javascriptDisable) {
+    if (!javascriptDisable) {
       assertIsVisible(printPdfIcon)
     }
 
