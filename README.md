@@ -101,3 +101,11 @@ If tests are quit/forced to stop part way it will cause issues as
  
 You will need to run the script again to trigger the teardown of agents stubs data (ie the @AfterClass to destroy user/planet)
 The test run will fail but if you run them again it will work 
+
+## Running the tests via remote-chrome
+
+If you want to run the acceptance tests via remote-chrome using the ```./run-tests-with-docker.sh``` command, you will first need to start up the frontend along with these extra arguments:
+
+```sm --start TRADER_SERVICES_ROUTE_ONE_FRONTEND -r --appendArgs '{"TRADER_SERVICES_ROUTE_ONE_FRONTEND":["-DProd.external-url.bas-gateway-frontend.host=http://localhost:9099","-DTest.external-url.bas-gateway-frontend.host=http://localhost:9099","-DDev.external-url.bas-gateway-frontend.host=http://localhost:9099"]}'```
+
+Once the frontend has started up with these configurations, you will then be able to run the tests using ```./run-tests-with-docker.sh```
