@@ -309,6 +309,12 @@ trait BasePage extends Matchers with BrowserDriver {
   def destroyUser(): Unit = {
     navigateTo(Configuration.settings.DESTROY_PLANET)
     destroyPlanetLink.click()
-    driver.switchTo().alert().accept()
+    try {
+      driver.switchTo().alert().accept()
+    } catch {
+      case _: NoAlertPresentException =>
+      case e: Exception               => throw e
+    }
+
   }
 }
