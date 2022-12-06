@@ -32,7 +32,10 @@ class FinalConfirmationStepDefs extends FinalConfirmationPage with BasePage
         confirmUrl(urlAmendConfirm)
     }
 
-    assertIsVisible(printPdfIcon)
+    if(!javascriptDisable) {
+      assertIsVisible(printPdfIcon)
+    }
+
     assertIsVisible(saveHtmlIcon)
 
   }
