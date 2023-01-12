@@ -53,6 +53,17 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
     }
   }
 
+  Then("""^the user will be on the (.*) Priority Goods page and navigates to ALVS in import journey""") { (journey: String) =>
+    journey match {
+      case "Import" => {
+        confirmUrl(urlImportPriority)
+        navigateTo(s"$traderServicesBaseUrl/new/import/automatic-licence-verification")
+        confirmUrl(urlALVS)
+      }
+      case "Export" => confirmUrl(urlExportPriority)
+    }
+  }
+
   When("""^the user is on the Priority Goods page, selects (.*) and continues""") { (requestType: String) =>
     requestType match {
       case "Explosives or fireworks" => clickByCSS("#priorityGoods")

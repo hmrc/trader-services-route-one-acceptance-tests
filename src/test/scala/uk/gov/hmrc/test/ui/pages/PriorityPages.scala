@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-trait PriorityPages extends BasePage {
+trait PriorityPages extends QuestionPages {
 
   val urlImportYNPriority: String = traderServicesBaseUrl + importJourneyUrl + "/has-priority-goods"
   val urlExportYNPriority: String = traderServicesBaseUrl + exportJourneyUrl + "/has-priority-goods"

@@ -24,9 +24,6 @@ Then execute the `run_tests.sh` script:
     ./run_tests.sh <environment> <browser-driver>
     ie. /run_tests.sh dev chrome
     
-    **QA runner (Runs a handful of generic smoke test journeys for export/import/amend)
-    ./run_tests_qa.sh
-    
     **Further Runners:
     *Accessiblity: run_tests_accessiblity.sh 
         *this won't run in the browser but you can run them locally to make sure they pass before running them in jenkins
