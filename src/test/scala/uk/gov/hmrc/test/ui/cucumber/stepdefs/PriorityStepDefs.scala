@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,6 +49,17 @@ class PriorityStepDefs extends PriorityPages with BasePage with ScalaDsl with EN
   Then("""^the user will be on the (.*) Priority Goods page""") { (journey: String) =>
     journey match {
       case "Import" => confirmUrl(urlImportPriority)
+      case "Export" => confirmUrl(urlExportPriority)
+    }
+  }
+
+  Then("""^the user will be on the (.*) Priority Goods page and navigates to ALVS in import journey""") { (journey: String) =>
+    journey match {
+      case "Import" => {
+        confirmUrl(urlImportPriority)
+        navigateTo(s"$traderServicesBaseUrl/new/import/automatic-licence-verification")
+        confirmUrl(urlALVS)
+      }
       case "Export" => confirmUrl(urlExportPriority)
     }
   }
