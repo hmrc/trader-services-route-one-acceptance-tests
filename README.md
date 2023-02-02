@@ -1,5 +1,3 @@
-**This is a template README.md.  Be sure to update this with project specific content that describes your ui test project.**
-
 # trader-services-route-one-acceptance-tests
 UI test suite for `Trader Services` using WebDriver and `Cucumber`.  
 
