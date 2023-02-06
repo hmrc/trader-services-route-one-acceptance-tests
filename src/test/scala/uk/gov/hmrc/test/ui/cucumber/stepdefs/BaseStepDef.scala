@@ -50,13 +50,9 @@ class BaseStepDef
   }
 
   And("""^the user clicks submit on the CYA page""") { () =>
-    Thread.sleep(750)
     clickContinue()
   }
 
-  And("""^the user waits (.*)""") { (millis: Int) =>
-    Thread.sleep(millis)
-  }
 
   And("""^the user clicks the (.*) toggle it should translate the page""") { (language: String) =>
     clickByCSS("  #switch-to-" + s"$language" + "> span:nth-child(2)")
