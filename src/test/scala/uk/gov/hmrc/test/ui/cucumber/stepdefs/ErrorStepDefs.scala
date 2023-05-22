@@ -39,7 +39,6 @@ class ErrorStepDefs
   }
 
   Then("""^the user will be on the error page for an amend journey internal server error""") { () =>
-    Thread.sleep(9999999)
     assertElementText("Sorry, there is a problem with the service", findElementByCss("h1"))
     assertElementText(errorContentCaseRef, errorContentAmendCaseRef)
   }
