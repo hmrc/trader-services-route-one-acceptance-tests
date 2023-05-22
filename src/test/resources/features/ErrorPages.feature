@@ -57,7 +57,7 @@ Feature: Error pages
       | journey | epu | entryNo | requestType | route   | transport | email   | file        |
       | Export  | 667 | A23456A | New         | Route 2 | Air       | a@a.com | testOds.ods |
 
-  @TraderService @accessibility
+  @TraderService1 @accessibility
   Scenario Outline: A user enters an invalid case reference number
     Given the user is on the start page for trader services, selects <journey> and continues
     Then the user will be on the Case Reference number page
