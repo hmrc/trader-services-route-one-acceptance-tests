@@ -26,12 +26,97 @@ class NewCYAStepDefs extends NewCYAPage with BasePage with ContactDetailsPage wi
       case "Import" => confirmUrl(urlImportCYA)
       case "Export" => confirmUrl(urlExportCYA)
     }
+    verifyH2EntryDetails()
+    verifyH2Questions()
   }
 
   Then("""^the user will be on the (.*) CYA page$""") { (journey: String) =>
     journey match {
       case "Import" => confirmUrl(urlImportCYA)
       case "Export" => confirmUrl(urlExportCYA)
+    }
+    verifyH2EntryDetails()
+    verifyH2Questions()
+  }
+
+  Then("""^the user should see the EPU & Entry No Rows on the CYA page$""") { () =>
+    verifyEpuRow()
+    verifyEpuAnswer()
+    verifyEntryNoRow()
+    verifyEntryNoAnswer()
+  }
+
+  Then("""^the user should see the Entry Date row & the date on the CYA page$""") { () =>
+    verifyEntryDateAnswer()
+  }
+
+  Then("""^the user should see the (.*) Request type row on the CYA page$""") { (journey: String) =>
+    assertElementTextContains(journey.toLowerCase, firstQRow)
+    verifyFirstQAnswer()
+  }
+
+  Then("""^the user should see the Route row on the CYA page$""") { () =>
+    verifySecondQAnswer()
+  }
+
+  Then("""^the user should see the Priority YN row on the CYA page$""") { () =>
+    verifyThirdQAnswer()
+  }
+
+  When("""^the user answered (.*) then they should see the correct responses for the Import journey$""") {
+    yesNo: String =>
+      yesNo match {
+        case "YesToPriority" =>
+          verifyFourthQAnswer()
+          verifyFifthQAnswer()
+          verifySixthQAnswer()
+
+        case "NoToPriority" =>
+          verifyFourthQAnswer()
+          verifyFifthQAnswer()
+      }
+  }
+
+  When("""^the user answered (.*) then they should see the correct responses for the Export journey$""") {
+    yesNo: String =>
+      yesNo match {
+        case "YesToPriority" =>
+          verifyFourthQAnswer()
+          verifyFifthQAnswer()
+
+        case "NoToPriority" =>
+          verifyFourthQAnswer()
+      }
+  }
+
+  Then("""^the user should see the Transport name row on the CYA page$""") { () =>
+    verifyH2Vessel()
+    verifySeventhRowFirstAnswer()
+  }
+
+  Then("""^the user should see the Transport date (.*) row on the CYA page$""") { (journey: String) =>
+    assertElementTextContains(journey.toLowerCase, seventhRowSecondQ)
+    verifySeventhRowSecondAnswer()
+  }
+
+  Then("""^the user should see the Transport time (.*) row on the CYA page$""") { (journey: String) =>
+    assertElementTextContains(journey.toLowerCase, seventhRowThirdQ)
+    verifySeventhRowThirdAnswer()
+  }
+
+  Then("""^the user should see the (.*) Contact details row on the CYA page$""") { (contactDetails: String) =>
+    verifyH2Contact()
+    contactDetails match {
+
+      case "Full" =>
+        verifyEighthRowFirstQ()
+        verifyEighthRowFirstAnswer()
+        verifyEighthRowSecondAnswer()
+        verifyEighthRowThirdAnswer()
+
+      case "Mandatory" =>
+        verifyEighthRowFirstQ()
+        verifyContactDetailAnswerEmailOnly()
     }
   }
 

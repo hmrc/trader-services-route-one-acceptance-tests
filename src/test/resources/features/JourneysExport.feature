@@ -32,6 +32,16 @@ Feature: Customs check - Export journey
     * the user clicks continue when files have finished uploading
 
     Then the user will be on the <journey> CYA page
+    And the user should see the EPU & Entry No Rows on the CYA page
+    * the user should see the Entry Date row & the date on the CYA page
+    * the user should see the <journey> Request type row on the CYA page
+    * the user should see the Route row on the CYA page
+    * the user should see the Priority YN row on the CYA page
+    * the user answered NoToPriority then they should see the correct responses for the Export journey
+    * the user should see the Transport name row on the CYA page
+    * the user should see the Transport date Departure row on the CYA page
+    * the user should see the Transport time Departure row on the CYA page
+    * the user should see the Mandatory Contact details row on the CYA page
 
     When the user clicks submit on the CYA page
     Then the user will be on the New confirmation page
@@ -108,6 +118,17 @@ Feature: Customs check - Export journey
     * the user selects No to uploading another file
 
     Then the user will be on the <journey> CYA page
+    And the user should see the EPU & Entry No Rows on the CYA page
+    * the user should see the Entry Date row & the date on the CYA page
+    * the user should see the <journey> Request type row on the CYA page
+    * the user should see the Route row on the CYA page
+    * the user should see the Priority YN row on the CYA page
+    * the user answered NoToPriority then they should see the correct responses for the Export journey
+    * the user should see the Transport name row on the CYA page
+    * the user should see the Transport date Departure row on the CYA page
+    * the user should see the Transport time Departure row on the CYA page
+    * the user should see the Mandatory Contact details row on the CYA page
+
     When the user clicks submit on the CYA page
     Then the user will be on the New confirmation page
     And the user should see Hold SLA
