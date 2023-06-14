@@ -23,6 +23,24 @@ class AmendCYAStepDefs extends AmendPages with AmendCYAPage with BasePage with S
 
   Given("""^the user will be on the Amend (.*) review page and should see their responses$""") { (journey: String) =>
     confirmUrl(urlAmendCYA)
+
+    journey match {
+      case "writeOnly" =>
+        verifyH2AddInfo()
+        verifyInfoTypeAnswer()
+
+      case "uploadOnly" =>
+        verifyH2Documents()
+        verifyInfoTypeAnswer()
+        verifyUploadRow()
+
+      case "writeAndUpload" =>
+        verifyH2AddInfo()
+        verifyInfoTypeAnswer()
+
+        verifyH2Documents()
+        verifyUploadRow()
+    }
   }
 
   Then("""^the user will be on the Amend review page$""") { () =>
@@ -44,4 +62,11 @@ class AmendCYAStepDefs extends AmendPages with AmendCYAPage with BasePage with S
     }
   }
 
+  Then("""^the user should see the message they entered$""") { () =>
+    verifyMessageAnswer()
+  }
+
+  Then("""^the user should see the files they uploaded$""") { () =>
+    verifyUploadAnswer()
+  }
 }
