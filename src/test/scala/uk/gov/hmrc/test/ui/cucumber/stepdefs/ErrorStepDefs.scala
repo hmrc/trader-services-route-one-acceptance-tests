@@ -33,6 +33,10 @@ class ErrorStepDefs
     confirmUrl(urlDuplicate)
   }
 
+  When("""^the user redirects to Signout link with google link""") { () =>
+    navigateTo(traderServicesBaseUrl + "/sign-out?continueUrl=https://www.google.com")
+  }
+
   // Content differs from before and after 4pm
   Then("""^the user will be on the error page for internal server error""") { () =>
     assertElementText("Sorry, there is a problem with the service", findElementByCss("h1"))
