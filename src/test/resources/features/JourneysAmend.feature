@@ -50,7 +50,7 @@ Feature: Amend journeys
     When the user is on the Amendment type page, selects <amendType> and continues
     Then the user navigates to the single file Amend upload page
     * the user clicks the button to upload and selects the "pdf" file
-    * the user should be on the amend file upload confirmation page
+    * the user should be on the amend file verification page
     * the user selects No to uploading another file
     Then the user will be on the Amend <amendType> review page and should see their responses
     * the user should see the files they uploaded

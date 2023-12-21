@@ -122,7 +122,7 @@ Feature: Customs check - Import journey
     When the user clicks continue
     Then the user navigates to the single file New upload page
     * the user clicks the button to upload and selects the "pdf" file
-    * the user should be on the new file upload confirmation page
+    * the user should be on the new file verification page
     * the user selects No to uploading another file
     Then the user will be on the <journey> CYA page
 

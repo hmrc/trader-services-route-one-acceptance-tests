@@ -1,6 +1,6 @@
-@TraderService   @accessibility
 Feature: Customs check - Export journey
 
+  @TraderService   @accessibility
   Scenario Outline: A user wants to complete a New Export journey and review their answers
     Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
@@ -52,6 +52,7 @@ Feature: Customs check - Export journey
       | Export  | 123 | A23456A | New         | Hold  | Maritime  | abc@test.com | PlanEx        | testOdp.odp |
 
 
+  @TraderService   @accessibility
   Scenario Outline: A user wants to complete a New Export journey (route 3 reason)
     Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
@@ -114,7 +115,7 @@ Feature: Customs check - Export journey
     * the user clicks continue
     Then the user navigates to the single file New upload page
     * the user clicks the button to upload and selects the "pdf" file
-    * the user should be on the new file upload confirmation page
+    * the user should be on the new file verification page
     * the user selects No to uploading another file
 
     Then the user will be on the <journey> CYA page
@@ -161,7 +162,7 @@ Feature: Customs check - Export journey
     * the user clicks continue
     Then the user navigates to the single file New upload page
     * the user clicks the button to upload and selects the "pdf" file
-    * the user should be on the new file upload confirmation page
+    * the user should be on the new file verification page
     * the user selects No to uploading another file
 
     Then the user will be on the <journey> CYA page
