@@ -11,7 +11,7 @@ Feature: Back Links & Change Links - Amend
     When the user enters "Hello Caseworker" characters in the write response field and continues
     Then the user navigates to the single file Amend upload page
     * the user clicks the button to upload and selects the "pdf" file
-    * the user should be on the amend file upload confirmation page
+    * the user should be on the amend file verification page
     * the user selects No to uploading another file
     Then the user will be on the Amend writeAndUpload review page and should see their responses
 

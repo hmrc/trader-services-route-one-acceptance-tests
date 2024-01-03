@@ -53,6 +53,13 @@ class UploadStepDefs extends BasePage with UploadPages with ScalaDsl with EN {
     }
   }
 
+  Then("""^the user should be on the (.*) file verification page""") { (journey: String) =>
+    journey match {
+      case "new" => confirmUrlUpload(urlUploadVer)
+      case "amend" => confirmUrlUpload(urlUploadVerAmend)
+    }
+  }
+
   Then("""^the user should see their first uploaded doc on upload review page$""") { () =>
     assertIsVisible("div.govuk-summary-list__row:nth-child(1) > dt:nth-child(1)")
     assertIsVisible("div.govuk-summary-list__row:nth-child(1) > dd:nth-child(2)")
