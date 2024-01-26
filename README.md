@@ -11,7 +11,7 @@ Prior to executing the tests ensure you have:
 
 Run the following command to start services locally:
 
-    sm --start TRADER_SERVICES_ALL -f
+    sm2 --start TRADER_SERVICES_ALL
 
 Then execute the `run_tests.sh` script:
 
