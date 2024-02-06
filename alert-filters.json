@@ -163,6 +163,22 @@
       "urlIsRegex":"true",
       "ruleId":10202,
       "newLevel":-1
+    },
+    {
+      "reason": "Medium: Content Security Policy (CSP) Header Not Set",
+      "contextId": 1,
+      "url": "http://localhost:9379/send-documents-for-customs-check/new/create-case",
+      "ruleId": 10038,
+      "urlIsRegex": "true",
+      "newLevel": 0
+    },
+    {
+      "reason": "Medium: Content Security Policy (CSP) Header Not Set",
+      "contextId": 1,
+      "url": "http://localhost:9379/send-documents-for-customs-check/add/amend-case",
+      "ruleId": 10038,
+      "urlIsRegex": "true",
+      "newLevel": 0
     }
   ]
 }
