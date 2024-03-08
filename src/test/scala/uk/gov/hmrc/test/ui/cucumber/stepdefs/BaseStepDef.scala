@@ -21,9 +21,6 @@ import org.scalatest.concurrent.Eventually
 import org.scalatest.matchers.must.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 import uk.gov.hmrc.test.ui.pages._
-import uk.gov.hmrc.webdriver.SingletonDriver
-
-import scala.util.Try
 
 class BaseStepDef
     extends BasePage
@@ -36,10 +33,6 @@ class BaseStepDef
     with TransportQuestionsPage
     with AmendPages
     with LandingPage {
-
-  sys.addShutdownHook {
-    Try(SingletonDriver.closeInstance)
-  }
 
   And("""^the user clicks back""") { () =>
     clickBack()

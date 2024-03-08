@@ -27,7 +27,8 @@ import uk.gov.hmrc.test.ui.conf.{Configuration, Environment}
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 import java.time.{Duration, LocalDate, LocalTime}
-import scala.collection.convert.ImplicitConversions.`collection AsScalaIterable`
+//import scala.collection.convert.ImplicitConversions.`collection AsScalaIterable`
+import scala.jdk.CollectionConverters
 import scala.util.Random
 
 trait BasePage extends Matchers with BrowserDriver {
@@ -137,7 +138,7 @@ trait BasePage extends Matchers with BrowserDriver {
     assert(element.getText.contains(content), message(s"Element displayed is: ${element.getText} Expecting: $content"))
 
   def checkSecondaryContent(content1: String, content2: String, element: WebElement): Unit =
-    if (element.getText.contains(content1).equals(false)) {
+    if (!element.getText.contains(content1)) {
       assertElementTextContains(content2, element)
     } else assertElementTextContains(content1, element)
 
