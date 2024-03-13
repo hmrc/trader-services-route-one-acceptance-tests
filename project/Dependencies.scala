@@ -11,9 +11,6 @@ object Dependencies {
     "junit"                   % "junit"                   % "4.13.2"   % Test,
     "com.novocode"            % "junit-interface"         % "0.11"     % Test,
     "com.typesafe"            % "config"                  % "1.4.2"    % Test,
-    "org.seleniumhq.selenium" % "selenium-chrome-driver"  % "4.8.1"    % Test,
-    "org.seleniumhq.selenium" % "selenium-support"        % "4.8.1"    % Test,
-    "org.seleniumhq.selenium" % "selenium-firefox-driver" % "4.8.1"    % Test,
     "org.jsoup"               % "jsoup"                   % "1.15.4"   % Test
   )
 }
