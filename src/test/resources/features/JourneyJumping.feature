@@ -1,4 +1,4 @@
-@TraderService @JsDisabledTraderService
+@TraderService
 Feature: User can navigate to pages within each journey after inputting entry details
 
   Scenario: A user tries to jump ahead from entry details in an export journey to the next page
@@ -77,5 +77,3 @@ Feature: User can navigate to pages within each journey after inputting entry de
       | journey | epu       | entryNo  | journeyUrl |
       | Import  | randomEPU | importEN |   import   |
       | Export  | randomEPU | exportEN |   export   |
-
-

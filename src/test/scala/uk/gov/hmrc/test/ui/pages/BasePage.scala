@@ -16,19 +16,16 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.junit.{AfterClass, BeforeClass}
 import org.openqa.selenium._
-import org.openqa.selenium.support.ui.{ExpectedCondition, ExpectedConditions, FluentWait, WebDriverWait}
-import org.scalatest.matchers.must.Matchers
+import org.openqa.selenium.support.ui.{ExpectedCondition, ExpectedConditions, WebDriverWait}
 import org.scalatest.Assertion
+import org.scalatest.matchers.must.Matchers
 import org.scalatest.matchers.should.Matchers.convertToAnyShouldWrapper
 import uk.gov.hmrc.test.ui.conf.Configuration.environment
-import uk.gov.hmrc.test.ui.conf.{Configuration, Environment}
+import uk.gov.hmrc.test.ui.conf.Environment
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 import java.time.{Duration, LocalDate, LocalTime}
-//import scala.collection.convert.ImplicitConversions.`collection AsScalaIterable`
-import scala.jdk.CollectionConverters
 import scala.util.Random
 
 trait BasePage extends Matchers with BrowserDriver {
@@ -37,14 +34,6 @@ trait BasePage extends Matchers with BrowserDriver {
     val wait = new WebDriverWait(driver, Duration.ofSeconds(10))
     wait.until(condition)
   }
-
-  val fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
-    .withTimeout(Duration.ofSeconds(20))
-    .pollingEvery(Duration.ofMillis(250))
-
-  val fluentWaitLong: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
-    .withTimeout(Duration.ofSeconds(60))
-    .pollingEvery(Duration.ofMillis(250))
 
   def host(localPort: Int): String = environment match {
     case Environment.Dev     => "https://www.development.tax.service.gov.uk"
