@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.junit.{AfterClass, BeforeClass}
 import org.openqa.selenium._
-import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
+import org.openqa.selenium.support.ui.{ExpectedCondition, ExpectedConditions, FluentWait, WebDriverWait}
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.Assertion
 import org.scalatest.matchers.should.Matchers.convertToAnyShouldWrapper
@@ -32,6 +32,11 @@ import scala.jdk.CollectionConverters
 import scala.util.Random
 
 trait BasePage extends Matchers with BrowserDriver {
+
+  def waitFor[T](condition: ExpectedCondition[T]): T = {
+    val wait = new WebDriverWait(driver, Duration.ofSeconds(10))
+    wait.until(condition)
+  }
 
   val fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
     .withTimeout(Duration.ofSeconds(20))
@@ -54,7 +59,7 @@ trait BasePage extends Matchers with BrowserDriver {
   val amendUrl: String              = "/add"
 
   def confirmUrl(url: String): Unit = {
-    fluentWait.until(ExpectedConditions.urlContains(url))
+    waitFor(ExpectedConditions.urlContains(url))
     val currentUrl = driver.getCurrentUrl
     assert(
       currentUrl.contains(url) || url.contains(currentUrl),
@@ -63,7 +68,7 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   def confirmUrlUpload(url: String): Unit = {
-    fluentWaitLong.until(ExpectedConditions.urlContains(url))
+    waitFor(ExpectedConditions.urlContains(url))
     val currentUrl = driver.getCurrentUrl
     assert(
       currentUrl.contains(url) || url.contains(currentUrl),
@@ -80,22 +85,22 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   def findElementById(id: String): WebElement = {
-    fluentWait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id(id))))
+    waitFor(ExpectedConditions.visibilityOf(driver.findElement(By.id(id))))
     driver.findElement(By.id(id))
   }
 
   def elementToBeClickable(css: String): WebElement = {
-    fluentWaitLong.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector(css))))
+    waitFor(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector(css))))
     driver.findElement(By.cssSelector(css))
   }
 
   def findElementByCss(css: String): WebElement = {
-    fluentWait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(css))))
+    waitFor(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(css))))
     driver.findElement(By.cssSelector(css))
   }
 
   def notFindElementByCss(css: String): WebElement = {
-    fluentWait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(css))))
+    waitFor(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(css))))
     driver.findElement(By.cssSelector(css))
   }
 
@@ -152,18 +157,6 @@ trait BasePage extends Matchers with BrowserDriver {
       driver.findElements(By.id(id)).size() == 0,
       message(s"The element with id $id was visible. Expected not visible")
     )
-  }
-
-  def switchToNewTab(totalTabs: Int): Unit = {
-    fluentWait.until[Boolean]((d: WebDriver) => d.getWindowHandles.size() == totalTabs)
-    val tab = driver.getWindowHandles.toList
-    driver.switchTo().window(tab.last)
-  }
-
-  def closeNewTab(): Unit = {
-    val tab = driver.getWindowHandles.toList
-    driver.close()
-    driver.switchTo().window(tab(tab.length - 2))
   }
 
   // Handoff check urls
@@ -298,24 +291,5 @@ trait BasePage extends Matchers with BrowserDriver {
     userId.sendKeys("User1")
     planetId.sendKeys("Planet1")
     signInButton.click()
-  }
-
-  @BeforeClass
-  def setupUser(): Unit = {
-    navigateTo(Configuration.settings.SIGN_IN_page)
-    login()
-  }
-
-  @AfterClass
-  def destroyUser(): Unit = {
-    navigateTo(Configuration.settings.DESTROY_PLANET)
-    destroyPlanetLink.click()
-    try {
-      driver.switchTo().alert().accept()
-    } catch {
-      case _: NoAlertPresentException =>
-      case e: Exception               => throw e
-    }
-
   }
 }

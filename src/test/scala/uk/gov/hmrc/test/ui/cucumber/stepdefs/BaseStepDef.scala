@@ -19,14 +19,12 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import io.cucumber.scala.{EN, ScalaDsl}
 import org.scalatest.concurrent.Eventually
 import org.scalatest.matchers.must.Matchers
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
 import uk.gov.hmrc.test.ui.pages._
 
 class BaseStepDef
     extends BasePage
     with ScalaDsl
     with EN
-    with BrowserDriver
     with Eventually
     with Matchers
     with EntryDetailsPage
@@ -94,18 +92,6 @@ class BaseStepDef
       case "banner feedback" =>
         clickGiveFeedbackBanner()
         confirmUrl(giveFeedbackBannerUrl)
-
-      case "deskpro" =>
-        clickDeskProLink()
-        switchToNewTab(2)
-        confirmUrl(deskProUrl)
-        closeNewTab()
-
-      case "UR banner" =>
-        clickURLink()
-        switchToNewTab(2)
-        confirmUrl(urBannerLink)
-        closeNewTab()
     }
   }
 

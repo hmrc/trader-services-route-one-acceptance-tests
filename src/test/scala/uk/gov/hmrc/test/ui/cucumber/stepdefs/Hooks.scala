@@ -18,13 +18,16 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
 import uk.gov.hmrc.selenium.webdriver.Browser
+import uk.gov.hmrc.test.ui.conf.Configuration
+import uk.gov.hmrc.test.ui.cucumber.runner.Runner.{login, navigateTo}
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 object Hooks extends ScalaDsl with EN with Browser with BrowserDriver {
   Before {
     startBrowser()
     driver.manage().deleteAllCookies()
-//    driver.close()
+    navigateTo(Configuration.settings.SIGN_IN_page)
+    login()
   }
 
   After {
