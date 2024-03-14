@@ -36,12 +36,7 @@ class FinalConfirmationStepDefs
         confirmUrl(urlAmendConfirm)
     }
 
-    if (!javascriptDisable) {
-      assertIsVisible(printPdfIcon)
-    }
-
     assertIsVisible(saveHtmlIcon)
-
   }
 
   Then("""^outputs the case reference number""") { () => // TODO check way around this

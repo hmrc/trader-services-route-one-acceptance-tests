@@ -16,17 +16,12 @@
 
 package uk.gov.hmrc.test.ui.driver
 
-import com.typesafe.scalalogging.LazyLogging
-import org.openqa.selenium.WebDriver
-import uk.gov.hmrc.webdriver.SingletonDriver
+import org.openqa.selenium.remote.RemoteWebDriver
+import uk.gov.hmrc.selenium.webdriver.Driver
 
-trait BrowserDriver extends LazyLogging {
-  logger.info(
-    s"Instantiating Browser: ${sys.props.getOrElse("browser", "'browser' System property not set. This is required")}"
-  )
 
-  val javascriptDisable: Boolean = sys.props.get("disable.javascript").exists(_.toBoolean)
-
-  implicit lazy val driver: WebDriver = SingletonDriver.getInstance()
+trait BrowserDriver {
+  implicit def driver: RemoteWebDriver = Driver.instance
 
 }
+
