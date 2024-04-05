@@ -163,6 +163,22 @@
       "urlIsRegex":"true",
       "ruleId":10202,
       "newLevel":-1
+    },
+    {
+      "reason":"This issue can be ignored as it is a POST error scenario for (CSP) header not set",
+      "contextId":1,
+      "url":"http://localhost:9379/send-documents-for-customs-check/new/create-case",
+      "urlIsRegex":"true",
+      "ruleId":10038,
+      "newLevel":-1
+    },
+    {
+      "reason":"This issue can be ignored as it is a POST error scenario for (CSP) header not set",
+      "contextId":1,
+      "url":"http://localhost:9379/send-documents-for-customs-check/add/amend-case",
+      "urlIsRegex":"true",
+      "ruleId":10038,
+      "newLevel":-1
     }
   ]
 }
