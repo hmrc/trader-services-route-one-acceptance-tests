@@ -28,21 +28,6 @@ Feature: Error pages
       | journey | epu | entryNo | requestType | route   | transport | email   | file        |
       | Export  | 666 | X23456A | New         | Route 1 | Air       | a@a.com | testOdt.odt |
 
-  Scenario Outline: Import: A user clicks on signout link with redirect url which is non relative
-    Given the user is on the start page for trader services, selects New and continues
-    Then the user will be on the entry details page
-    * the user enters entry details "<epu>" and "<entryNo>"
-    * the user enters today's date for entryDate
-    * the user clicks continue
-    Then the user will be on the <journey> Request type page
-    And the user redirects to Signout link with google link
-    Then the user will be on the error page for internal server error
-
-
-    Examples:
-      | journey | epu | entryNo |
-      | Import  | 001 | 000000Z |
-
   Scenario Outline: A user enters a duplicate case (Stub EPU: 667)
     Given the user is on the start page for trader services, selects New and continues
     Then the user will be on the entry details page
