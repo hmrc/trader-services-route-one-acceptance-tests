@@ -1,0 +1,8 @@
+{
+  "exclusions": [
+    {
+      "path": "/agents-external-stubs/",
+      "reason": "Stubbed endpoints are owned by a different team."
+    }
+  ]
+}
