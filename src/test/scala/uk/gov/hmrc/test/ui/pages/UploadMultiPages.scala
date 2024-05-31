@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.{By, WebElement}
-import org.openqa.selenium.remote.LocalFileDetector
 
 trait UploadMultiPages extends BasePage {
 
@@ -65,7 +64,6 @@ trait UploadMultiPages extends BasePage {
       // The number is the amount of seconds to simulate file transfer time - can be altered
       case "delay.txt" => filePath = usrDir + "delay55.txt"
     }
-    driver.setFileDetector(new LocalFileDetector())
     driver.findElement(By.id(elementID)).sendKeys(filePath)
   }
 }

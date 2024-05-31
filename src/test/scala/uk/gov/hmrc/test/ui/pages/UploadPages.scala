@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
-import org.openqa.selenium.remote.LocalFileDetector
 
 trait UploadPages extends BasePage {
 
@@ -63,7 +62,6 @@ trait UploadPages extends BasePage {
       case "pptx" => filePath = usrDir + "testPptx.pptx"
       case "odp"  => filePath = usrDir + "testOdp.odp"
     }
-    driver.setFileDetector(new LocalFileDetector())
     driver.findElement(By.id(elementID)).sendKeys(filePath)
   }
 }

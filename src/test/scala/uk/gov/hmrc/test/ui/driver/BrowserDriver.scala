@@ -16,12 +16,12 @@
 
 package uk.gov.hmrc.test.ui.driver
 
-import org.openqa.selenium.remote.RemoteWebDriver
+import org.openqa.selenium.WebDriver
 import uk.gov.hmrc.selenium.webdriver.Driver
 
 
 trait BrowserDriver {
-  implicit def driver: RemoteWebDriver = Driver.instance
+  implicit def driver: WebDriver = Driver.instance
 
 }
 
