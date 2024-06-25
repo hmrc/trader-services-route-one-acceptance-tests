@@ -28,8 +28,6 @@ trait FinalConfirmationPage extends BasePage {
 
   def clickLinkToAmend(): Unit = clickHref("a[href*='send-documents-for-customs-check/add']")
 
-  def caseRefNo: WebElement = findElementByCss(".govuk-panel__body > strong:nth-child(2)")
-
   def slaPara: WebElement = findElementByCss("p.govuk-body:nth-child(3)")
 
   val holdSLA =

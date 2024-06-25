@@ -39,10 +39,6 @@ class FinalConfirmationStepDefs
     assertIsVisible(saveHtmlIcon)
   }
 
-  Then("""^outputs the case reference number""") { () => // TODO check way around this
-    caseRefNo.getText
-  }
-
   When(
     """^the user clicks the button to submit another case on the confirmation page they will go back to the start"""
   ) { () =>
