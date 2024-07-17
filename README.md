@@ -12,12 +12,6 @@ Run the following command to start services locally:
 
     sm2 --start TRADER_SERVICES_ALL
 
-### Selenium Grid
-
-Confirm that [docker-selenium-grid](https://github.com/hmrc/docker-selenium-grid) is up-to-date and follow the provided [instructions](https://github.com/hmrc/docker-selenium-grid/blob/main/README.md).
-
-or use [local-selenium-grid](https://github.com/hmrc/local-selenium-grid) and follow the provided [instructions](https://github.com/hmrc/local-selenium-grid/blob/main/README.md).
-
 ## Tests
 
 Run tests as follows:
