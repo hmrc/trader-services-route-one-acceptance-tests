@@ -149,7 +149,7 @@ trait BasePage extends Matchers with BrowserDriver {
   }
 
   // Handoff check urls
-  def bannerServiceName(): WebElement = findElementByCss(".hmrc-header__service-name--linked")
+  def bannerServiceName(): WebElement = findElementByCss(".govuk-header__service-name")
 
   def clickGovUkIcon(): Unit = clickByCSS(".hmrc-header__logotype-text")
 
