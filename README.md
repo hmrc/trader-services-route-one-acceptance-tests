@@ -1,5 +1,5 @@
 # trader-services-route-one-acceptance-tests
-UI test suite for `Trader Services` using UITestRunner and `<scalatest/cucumber>`.  
+UI test suite for `Trader Services` using UITestRunner and `<scalatest>`.  
 
 ## Running the tests
 
