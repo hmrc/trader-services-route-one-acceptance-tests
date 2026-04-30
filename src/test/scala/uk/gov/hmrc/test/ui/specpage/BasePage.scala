@@ -20,7 +20,6 @@ import org.openqa.selenium._
 import org.openqa.selenium.support.ui.{ExpectedCondition, ExpectedConditions, WebDriverWait}
 import org.scalatest.Assertion
 import org.scalatest.matchers.must.Matchers
-import org.scalatest.matchers.should.Matchers.convertToAnyShouldWrapper
 import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.conf.Configuration.environment
 import uk.gov.hmrc.test.ui.conf.Environment
@@ -115,11 +114,11 @@ trait BasePage extends Matchers with BrowserDriver {
 
   def clickBack(): Unit = findElementById("back-link").click()
 
-  def optionSelected(css: String): Unit = Driver.instance.findElement(By.cssSelector(css)).isSelected shouldBe true
+  def optionSelected(css: String): Unit = Driver.instance.findElement(By.cssSelector(css)).isSelected mustBe true
 
-  def optionNotSelected(css: String): Unit = Driver.instance.findElement(By.cssSelector(css)).isSelected shouldBe false
+  def optionNotSelected(css: String): Unit = Driver.instance.findElement(By.cssSelector(css)).isSelected mustBe false
 
-  def verifyInput(id: WebElement, expectedValue: String): Assertion = id.getAttribute("value") shouldBe expectedValue
+  def verifyInput(id: WebElement, expectedValue: String): Assertion = id.getAttribute("value") mustBe expectedValue
 
   def sendNCharactersById(id: WebElement, n: Int, char: String = "a"): Unit = {
     id.clear()
