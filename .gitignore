@@ -25,3 +25,5 @@ lib_managed
 src_managed/
 project/project
 project/target
+/.metals
+/.vscode
