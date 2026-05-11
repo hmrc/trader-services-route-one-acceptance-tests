@@ -39,7 +39,7 @@ object BaseStepDefSteps extends BasePage with EntryDetailsPage
 
   // ^the user clicks the (.*) toggle it should translate the page
   def andTheUserClicksTheXToggleItShouldTranslateThePage(language: String): Unit = {
-    clickByCSS("  #switch-to-" + s"$language" + "> span:nth-child(2)")
+    clickByCSS(s"a[hreflang='$language']")
 
         language match {
           case "cy" => assertElementText("Anfon dogfennau i’w gwirio gan y tollau", bannerServiceName())
