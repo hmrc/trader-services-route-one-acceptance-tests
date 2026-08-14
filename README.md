@@ -7,6 +7,7 @@ Prior to executing the tests ensure you have:
  - Installed [MongoDB](https://docs.mongodb.com/manual/installation/) 
  - Installed/configured [service manager 2](https://github.com/hmrc/sm2).  
  - Docker - to run a Chrome or Firefox browser inside a container (Optional)
+ - Node.js and npm [Installation instructions](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
 Run the following command to start services locally:
 
